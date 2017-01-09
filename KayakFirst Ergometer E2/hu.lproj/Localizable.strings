@@ -1,0 +1,170 @@
+/* 
+  Localizable.strings
+  KayakFirst Ergometer E2
+
+  Created by Balazs Vidumanszki on 2017. 01. 09..
+  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+*/
+
+//Info
+"app_version"="Verzió: ";
+
+//DashBoard
+"dashboard_title_av_200"="Átlag 200m:";
+"dashboard_title_av_500"="Átlag 500m:";
+"dashboard_title_av_1000"="Átlag 1000m:";
+"dashboard_title_actual_200"="Most 200m:";
+"dashboard_title_actual_500"="Most 500m:";
+"dashboard_title_actual_1000"="Most 1000m:";
+"dashboard_title_stroke_min"="Csapás/perc:";
+"dashboard_title_pull_force"="Húzáserő (N):";
+"dashboard_title_distance"="Távolság (m):";
+"dashboard_title_duration"="Időtartam:";
+"dashboard_title_current_speed"="Sebesség most (km/h):";
+"dashboard_title_av_speed"="Átl.sebesség (km/h):";
+"dashboard_title_drag_drop"="Húzzon ide egyet!";
+"dashboard_title_av_strokes"="Átl. Csapás/perc:";
+"dashboard_title_av_pull_force"="Átl. Húzáserő (N):";
+
+//Bluetooth List
+"fragment_bluetooth_title"="Csatlakoztassa az eszközt az alábbi ergométerek egyikéhez...";
+"fragment_bluetooth_subtitle"="... vagy derítsen fel újat!";
+"fragment_bluetooth_button_refresh"="Bluetooth keresés";
+"fragment_bluetooth_button_turn_on"="Bluetooth bekapcsolása";
+"fragment_bluetooth_not_supported"="A készülék nem támogtaja a Bluetooth BLE-t...";
+"fragment_bluetooth_off"="Bluetooth ki van kapcsolva...";
+"fragment_bluetooth_list_empty"="A közelben nem található Bluetooth eszköz...\n\n(Amennyiben nem találja ennek a gépnek az azonosítóját a képernyőn, húzzon egy rövidet a gépen, az bekapcsolja a jeladót, majd próbálkozzon újra a kapcsolódással!)";
+"fragment_bluetooth_location_permission"="A Bluetooth használatához kérem engedélyezze a helyadatokat\n Beállítások > Engedélyek, majd kapcsolja be: Helyadatok";
+"fragment_bluetooth_app_details_settings"="Beállítások";
+
+//Bluetotoh
+"bluetooth_connect"="Bluetooth csatlakoztatva";
+"bluetooth_disconnect"="Bluetooth kapcsolat bontva";
+
+//Dialog
+"dialog_title_finish"="Biztosan ki szeretne lépni?";
+"dialog_message_finish"="A mérés be fog fejeződni...";
+"dialog_title_bluetooth_connecting"="Bluetooth csatlakozás";
+"dialog_message_bluetooth_connecting"="Csatlakozás az eszközhöz";
+"dialog_title_bluetooth_discovery"="Bluetooth keresés";
+"dialog_message_bluetooth_discovery"="Bluetooth eszközök keresése ";
+"dialog_title_bluetooth_disconnect"="Bluetooth kapcsolat aktív";
+"dialog_message_bluetooth_disconnect"="Szeretné bontani?";
+"dialog_title_reset_password"="Adja meg az e-mail címét";
+
+//Notification
+"notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
+
+//StartDelay
+"delay_start_seconds"="Az edzés elkezdődik";
+"delay_quick_start"="Gyorsindítás";
+
+//Other
+"yes"="igen";
+"no"="nem";
+"ok"="Ok";
+"cancel"="Mégsem";
+
+//Menu
+"menu_profile"="Profil";
+"menu_log"="Naptár";
+"menu_about"="Információ";
+
+//Calendar
+"calendar_jump_today"="Ugrás a mai napra";
+"calendar_empty_list"="Nincs tárolt adat";
+
+//Chart
+"chart_training_no_value_selected"="A diagram megtekintéséhez válasszon legalább egy értéket";
+"chart_y_left"="B";
+"chart_y_right"="J";
+
+//Trainig
+"training_start"="Kezdés";
+"training_duration"="Időtartam";
+"training_distance"="Táv";
+"training_sum"="Totál";
+"training_sum_average"="Átlag";
+"training_sum_best"="Max.";
+"training_sum_speed"="Sebesség\nKm/h";
+"training_sum_stroke"="Csapásszám\n\\Perc";
+"training_sum_pull_force"="Húzóerő\nN";
+"training_sum_t_200"="Iram\n200";
+"training_sum_t_500"="Iram\n500";
+"training_sum_t_1000"="Iram\n1000";
+"training_diagram_time"="Idő diagr.";
+"training_diagram_distance"="Táv diagr.";
+"training_details_sum"="Össz.";
+"training_details_all"="Összes";
+
+//Calculate
+"calculate_t200"="Iram 200";
+"calculate_t500"="Iram 500";
+"calculate_t1000"="Iram 1000";
+"calculate_strokes"="Csapásszám";
+"calculate_f"="Húzóerő";
+"calculate_s"="Táv";
+"calculate_v"="Sebesség";
+"calculate_t"="Idő";
+
+//User
+"user_login"="Bejelentkezés";
+"user_register"="Regisztráció";
+"user_name"="Felhasználónév";
+"user_password"="Jelszó";
+"user_forgot_password"="Elfelejtett jelszó?";
+"user_required"="Kötelező";
+"user_optional"="Nem kötelező";
+"user_first_name"="Keresztnév";
+"user_last_name"="Vezetéknév";
+"user_birth_date"="Születési dátum";
+"user_birth_date_placeholder"="éééé.hh.nn.";
+"user_email"="Email";
+"user_weight"="Testsúly";
+"user_country"="Ország";
+"user_gender"="Nem";
+"user_gender_female"="Nő";
+"user_gender_male"="Férfi";
+"user_accept"="Elfogadom";
+"user_terms_conditions"=" a felhasználási feltételeket";
+"user_login_social"="Vagy bejelentkezés:";
+"user_login_no_login"="Folytatás bejelentkezés nélkül";
+"user_login_no_data"="(Az edzés adatok nem lesznek eltárolva)";
+"user_profile"="Profil";
+"user_log_out"="Kijelentkezés";
+"user_save"="Mentés";
+"user_password_old"="Jelenlegi jelszó";
+"user_password_new"="Új jelszó";
+"user_password_confirm"="Jelszó mégegyszer";
+"user_progress_log_in"="Bejelentkezés...";
+"user_progress_log_out"="Kijelentkezés...";
+"user_reset_password"="Jelszó visszaállítása";
+"user_reseting_password"="Jelszó visszaállítása...";
+"user_reseted_password"="Az emailt kiküldtük";
+"user_registering"="Regisztráció...";
+"user_updating"="Profil frissítése...";
+"user_updated"="Profil frissítve";
+"user_updating_password"="Jelszó frissítése...";
+"user_registration_required"="Kérem töltse ki a regisztrációs adatokat";
+"user_spinner_choose"="Válasszon";
+"user_required_field"="* Kötelező mező";
+
+//Unit
+"unit_speed"="km/h";
+"unit_force"="n";
+
+//Error
+"error_no_internet"="Nincs internetkapcsolat";
+"error_user_invalid_credentials"="Érvénytelen hitelesítő adatok";
+"error_server"="Szerver hiba";
+"error_field_not_blank"="Ez a mező nem lehet üres";
+"error_email"="Érvénytelen email cím";
+"error_user_name"="Legalább 2 karaktert adjon meg";
+"error_password"="Legalább 4 karaktert adjon meg";
+"error_weight"="Testsúly legalább 30";
+"error_birth_date"="A születési dátum nem lehet a jövőben";
+"error_google_sign_out"="Google kijelentkezési probléma";
+
+//Date
+"date_format"="yyyy.MM.dd";
+"date_time_format"="yyyy.MM.dd kk:mm";
