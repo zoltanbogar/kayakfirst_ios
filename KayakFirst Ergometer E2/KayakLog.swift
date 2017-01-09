@@ -8,17 +8,13 @@
 
 import Foundation
 
-class KayakLog {
-    
-    private static let logNeeded = true
-    
-    private static let logDateFormat = "HH.mm.ss.SSS"
-    
-    class func log (_ key: String, _ message: String) {
-        if logNeeded {
-            let date = DateFormatHelper.getDate(dateFormat: logDateFormat, timeIntervallSince1970: Date().timeIntervalSince1970)
-            print("\(date) - \(key): \(message)")
-        }
+private let logNeeded = true
+
+private let logDateFormat = "HH.mm.ss.SSS"
+
+func log (_ key: String, _ message: String) {
+    if logNeeded {
+        let date = DateFormatHelper.getDate(dateFormat: logDateFormat, timeIntervallSince1970: Date().timeIntervalSince1970)
+        print("\(date) - \(key): \(message)")
     }
-    
 }
