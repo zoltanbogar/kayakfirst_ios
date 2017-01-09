@@ -8,12 +8,51 @@
 
 import Foundation
 
+//MARK: time enum
+enum TimeEnum: String {
+    case timeFormatTwo = "%02d:%02d"
+    case timeFormatThree = "%02d:%02d:%02d"
+}
+
 class DateFormatHelper {
+    
+    //MARK: Properties
+    var format: TimeEnum?
+
+    func getTime(millisec: Double) -> String? {
+        var timeText: String? = nil
+        
+        let hours = Int(millisec / (1000 * 60 * 60))
+        let minutes = Int((millisec / (1000 * 60)).truncatingRemainder(dividingBy: 60))
+        let seconds = Int((millisec / 1000).truncatingRemainder(dividingBy: 60))
+        if getFormatValues() == 3 {
+            timeText = String(format: (format?.rawValue)!, hours, minutes, seconds)
+        } else  {
+           timeText = String(format: (format?.rawValue)!, minutes, seconds)
+        }
+        return timeText
+    }
+    
+    private func getFormatValues() -> Int {
+        var formatValues = 0
+        if let formatString = format?.rawValue {
+            for c in formatString.characters {
+                if c == "%" {
+                    formatValues += 1
+                }
+            }
+        }
+        return formatValues
+    }
     
     class func getDate(dateFormat: String, timeIntervallSince1970: TimeInterval) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         return formatter.string(from: Date(timeIntervalSince1970: timeIntervallSince1970))
     }
+    
+    
+    
+    
     
 }
