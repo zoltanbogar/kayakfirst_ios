@@ -19,6 +19,7 @@ class DateFormatHelper {
     //MARK: Properties
     var format: TimeEnum?
 
+    //MARK: Functions
     func getTime(millisec: Double) -> String? {
         var timeText: String? = nil
         
@@ -43,6 +44,11 @@ class DateFormatHelper {
             }
         }
         return formatValues
+    }
+    
+    class func isSameDay(timeStamp1: TimeInterval, timeStamp2: TimeInterval) -> Bool {
+        let format = "yyyy.MM.dd"
+        return getDate(dateFormat: format, timeIntervallSince1970: timeStamp1) == getDate(dateFormat: format, timeIntervallSince1970: timeStamp2)
     }
     
     class func getDate(dateFormat: String, timeIntervallSince1970: TimeInterval) -> String {
