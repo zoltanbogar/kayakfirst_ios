@@ -46,6 +46,14 @@ class DateFormatHelper {
         return formatValues
     }
     
+    class func getZeroHour(timeStamp: Double) -> Double {
+        return Calendar(identifier: .gregorian).startOfDay(for: Date(timeIntervalSince1970: timeStamp)).timeIntervalSince1970
+    }
+    
+    class func get23Hour(timeStamp: Double) -> Double {
+        return getZeroHour(timeStamp: timeStamp) + 86340
+    }
+    
     class func isSameDay(timeStamp1: TimeInterval, timeStamp2: TimeInterval) -> Bool {
         let format = "yyyy.MM.dd"
         return getDate(dateFormat: format, timeIntervallSince1970: timeStamp1) == getDate(dateFormat: format, timeIntervallSince1970: timeStamp2)
@@ -56,9 +64,4 @@ class DateFormatHelper {
         formatter.dateFormat = dateFormat
         return formatter.string(from: Date(timeIntervalSince1970: timeIntervallSince1970))
     }
-    
-    
-    
-    
-    
 }
