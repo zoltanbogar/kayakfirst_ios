@@ -12,6 +12,10 @@
 		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		06703F711E24025A0028135A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06703F701E24025A0028135A /* Colors.swift */; };
+		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
+		06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */; };
+		06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */; };
+		06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
 		06C6ABB41E2267A000562B27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB31E2267A000562B27 /* ViewController.swift */; };
 		06C6ABB71E2267A000562B27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB51E2267A000562B27 /* Main.storyboard */; };
@@ -47,6 +51,10 @@
 		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		06703F701E24025A0028135A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
+		06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement.swift; sourceTree = "<group>"; };
+		06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual200.swift; sourceTree = "<group>"; };
+		06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual500.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06C6ABB31E2267A000562B27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +106,25 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		06C1B9861E25961300AB4C47 /* design */ = {
+			isa = PBXGroup;
+			children = (
+				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
+				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
+			);
+			name = design;
+			sourceTree = "<group>";
+		};
+		06C1B9891E259C1000AB4C47 /* dashboard_elements */ = {
+			isa = PBXGroup;
+			children = (
+				06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */,
+				06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */,
+				06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */,
+			);
+			name = dashboard_elements;
+			sourceTree = "<group>";
+		};
 		06C6ABA51E2267A000562B27 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +148,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				06C1B9861E25961300AB4C47 /* design */,
 				064764C51E237022004B9ED3 /* utils */,
 				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
 				06C6ABB31E2267A000562B27 /* ViewController.swift */,
@@ -289,6 +317,10 @@
 			files = (
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
+				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
+				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
+				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
+				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* ViewController.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
