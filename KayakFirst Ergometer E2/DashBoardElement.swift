@@ -7,17 +7,58 @@
 //
 
 import UIKit
+
 class DashBoardElement: CustomUi {
     
-    override func initUi() -> UIView {
-        let view = UIView()
+    private var labelTitle: UILabel?
+    internal var labelValue: UILabel?
+    
+    override func initUi(superview: UIView) {
+        let verticalStackLayout = UIStackView(frame: superview.frame)
+        verticalStackLayout.axis = .vertical
+        verticalStackLayout.distribution = .fillProportionally
+        verticalStackLayout.addArrangedSubview(initTitleLabel())
+        verticalStackLayout.addArrangedSubview(initValueLabel())
         
-        let labelTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-        labelTitle.text = getTitle()
+        superview.addSubview(verticalStackLayout)
         
-        view.addSubview(labelTitle)
+        setTitle()
+    }
+    
+    private func initTitleLabel() -> UIView {
+        labelTitle = UILabel()
+        labelTitle!.textAlignment = .center
+        labelTitle!.text = getTitle()
         
-        return view
+        return labelTitle!
+    }
+    
+    private func initValueLabel() -> UIView {
+        labelValue = UILabel()
+        labelValue!.textAlignment = .center
+        
+        return labelValue!
+    }
+    
+    public func refresh() {
+        labelValue?.text = getFormattedText()
+    }
+    
+    private func setTitle() {
+        labelTitle?.text = getTitle()
+    }
+    
+    //MARK: abstract functions
+    internal func getStringFormatter() -> TimeEnum {
+        return TimeEnum.timeFormatThree
+    }
+    
+    internal func getFormattedText() -> String {
+        return ""
+    }
+    
+    internal func getValue() -> Double {
+        return 0.0
     }
     
     internal func getTitle() -> String {

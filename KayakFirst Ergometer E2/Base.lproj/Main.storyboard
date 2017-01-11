@@ -61,6 +61,9 @@
                             <constraint firstAttribute="trailing" secondItem="pOr-XD-OIf" secondAttribute="trailing" id="wSF-BA-faW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dashBoardElement_actual200" destination="Mge-NW-PjG" id="zra-cF-SRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

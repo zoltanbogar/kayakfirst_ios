@@ -21,17 +21,23 @@ class CustomUi: UIView {
         initView(frame)
     }
     
-    func initUi() -> UIView {
-        return UIView()
-    }
-    
     private func initView(_ frame: CGRect?) {
-        let view = initUi()
+        let view = UIView()
         self.addSubview(view)
         
         let viewFrame = frame != nil ? frame : (view.superview?.bounds)!
         
         view.frame = viewFrame!
+        
+        initUi(superview: view)
+    }
+    
+    func initUi(superview: UIView) {
+        //nothing here
+    }
+    
+    internal func initConstraints(superView: UIView) {
+        //nothing here
     }
     
 }

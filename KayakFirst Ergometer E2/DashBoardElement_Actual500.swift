@@ -6,11 +6,21 @@
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
-import Foundation
-class DashBoardElement_Actual500: DashBoardElement {
+import UIKit
+
+class DashBoardElement_Actual500: DashBoardelementTime {
+    
+    override func getStringFormatter() -> TimeEnum {
+        return TimeEnum.timeFormatTwo
+    }
+    
+    //TODO
+    override func getValue() -> Double {
+        return 0.0
+    }
     
     override internal func getTitle() -> String {
-        return try! getString("dashboard_title_av_500")
+        return try! getString("dashboard_title_actual_500")
     }
     
 }
