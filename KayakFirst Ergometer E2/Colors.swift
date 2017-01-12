@@ -9,28 +9,23 @@
 import Foundation
 import UIKit
 
-enum Colors: String {
-    case colorPrimary = "#383e42"
-    case colorPrimaryDark = "#000000"
-    case colorAccent = "#e25303"
-    case colorAccentDark = "#cb4a02"
-    case colorWhite = "#f2f2f2"
-    case colorWhiteDark = "#d9d9d9"
-    case colorInactive = "#4d4d4d"
-    case dragDropStart = "#ffe25303"
-    case dragDropEnter = "#bbe25303"
-    case startDelayBackground = "#eedf5626"
-    //case colorDashboardDivider = "#4d4d4d"
-    case colorBluetooth = "#2196F3"
-    case colorTransparent = "#00000000"
-    case colorT = "#FFFF00"
-    case colorStrokes = "#cd2929"
-    case colorF = "#0dd278"
-    case colorV = "#005cff"
-}
-
-func getColor(_ colorsEnum: Colors) -> UIColor {
-    return getColor(colorsEnum.rawValue)
+class Colors {
+    static let colorPrimary = getColor("#383e42")
+    static let colorPrimaryDark = getColor("#000000")
+    static let colorAccent = getColor("#e25303")
+    static let colorAccentDark = getColor("#cb4a02")
+    static let colorWhite = getColor("#f2f2f2")
+    static let colorWhiteDark = getColor("#d9d9d9")
+    static let colorInactive = getColor("#4d4d4d")
+    static let dragDropStart = getColor("#ffe25303")
+    static let dragDropEnter = getColor("#bbe25303")
+    static let colorDashBoardDivider = getColor("#4d4d4d")
+    static let colorBluetooth = getColor("#2196F3")
+    static let colorTransparent = getColor("#00000000")
+    static let colorT = getColor("#FFFF00")
+    static let colorStrokes = getColor("#cd2929")
+    static let colorF = getColor("#0dd278")
+    static let colorV = getColor("#005cff")
 }
 
 func getColor(_ hex: String) -> UIColor {

@@ -22,7 +22,7 @@ class DashBoardElement: CustomUi {
         
         superview.addSubview(verticalStackLayout)
         
-        superview.backgroundColor = getColor(Colors.colorPrimary)
+        superview.backgroundColor = Colors.colorPrimary
         
         setTitle()
     }
@@ -31,7 +31,7 @@ class DashBoardElement: CustomUi {
         labelTitle = UILabel()
         labelTitle!.textAlignment = .center
         labelTitle!.text = getTitle()
-        labelTitle!.textColor = getColor(Colors.colorWhite)
+        labelTitle!.textColor = Colors.colorWhite
         
         return labelTitle!
     }

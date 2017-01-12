@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = getColor(Colors.colorPrimary)
-        separatorView.backgroundColor = getColor(Colors.colorInactive)
+        self.view.backgroundColor = Colors.colorPrimary
+        separatorView.backgroundColor = Colors.colorInactive
     }
 
     override func didReceiveMemoryWarning() {
