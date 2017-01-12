@@ -60,10 +60,10 @@
 "delay_quick_start"="Start now";
 
 //Other
-"yes"="yes";
-"no"="no";
-"ok"="ok";
-"cancel"="Cancel";
+"other_yes"="yes";
+"other_no"="no";
+"other_ok"="ok";
+"other_cancel"="Cancel";
 
 //Menu
 "menu_profile"="Profile";
