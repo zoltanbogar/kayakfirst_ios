@@ -21,48 +21,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pOr-XD-OIf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHB-Le-KTB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="dJj-NP-x34">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="323"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="yoW-ma-JNx">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-NW-PjG" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZm-JG-zU6" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                <rect key="frame" x="188" y="0.0" width="187" height="323"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="IMh-8G-ayf">
-                                        <rect key="frame" x="0.0" y="324" width="375" height="323"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-wM-LGG" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciW-86-yC9" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                <rect key="frame" x="188" y="0.0" width="187" height="323"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-XI-l5u">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="647"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doj-8d-32R" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIs-KX-Jbw" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="324" width="187" height="323"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="jfE-kx-Pt6">
+                                                <rect key="frame" x="188" y="0.0" width="187" height="647"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Y9-BT-xDO" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vec-cB-u48" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="324" width="187" height="323"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yoW-ma-JNx" secondAttribute="trailing" id="1Tq-kC-4qi"/>
+                                    <constraint firstItem="yoW-ma-JNx" firstAttribute="top" secondItem="lHB-Le-KTB" secondAttribute="top" id="DKx-aT-XkC"/>
+                                    <constraint firstItem="yoW-ma-JNx" firstAttribute="leading" secondItem="lHB-Le-KTB" secondAttribute="leading" id="XiJ-I2-PTt"/>
+                                    <constraint firstAttribute="bottom" secondItem="yoW-ma-JNx" secondAttribute="bottom" id="brB-h4-wKq"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.42485789077080938" green="1" blue="0.32523040690991412" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pOr-XD-OIf" secondAttribute="bottom" id="Iqb-ga-Ax7"/>
-                            <constraint firstItem="pOr-XD-OIf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Og4-pa-mPM"/>
-                            <constraint firstItem="pOr-XD-OIf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lkv-Qg-LQc"/>
-                            <constraint firstAttribute="trailing" secondItem="pOr-XD-OIf" secondAttribute="trailing" id="wSF-BA-faW"/>
+                            <constraint firstAttribute="trailing" secondItem="lHB-Le-KTB" secondAttribute="trailing" id="5px-A7-cIo"/>
+                            <constraint firstItem="lHB-Le-KTB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9f6-1B-x8k"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lHB-Le-KTB" secondAttribute="bottom" id="prb-Ht-QkZ"/>
+                            <constraint firstItem="lHB-Le-KTB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="quc-bj-r3s"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dashBoardElement_actual200" destination="Mge-NW-PjG" id="zra-cF-SRJ"/>
+                        <outlet property="separatorView" destination="lHB-Le-KTB" id="0ax-Rp-c2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

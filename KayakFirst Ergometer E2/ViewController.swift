@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var separatorView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.backgroundColor = getColor(Colors.colorPrimary)
+        separatorView.backgroundColor = getColor(Colors.colorInactive)
     }
 
     override func didReceiveMemoryWarning() {

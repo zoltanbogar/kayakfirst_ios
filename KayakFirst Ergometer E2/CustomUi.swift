@@ -22,10 +22,15 @@ class CustomUi: UIView {
     }
     
     private func initView(_ frame: CGRect?) {
+        //self.backgroundColor = getColor(Colors.colorTransparent)
         let view = UIView()
         self.addSubview(view)
         
-        let viewFrame = frame != nil ? frame : (view.superview?.bounds)!
+        var viewFrame = frame
+        
+        if !checkFrame(frame: viewFrame) {
+            viewFrame = view.superview?.bounds
+        }
         
         view.frame = viewFrame!
         
@@ -38,6 +43,16 @@ class CustomUi: UIView {
     
     internal func initConstraints(superView: UIView) {
         //nothing here
+    }
+    
+    private func checkFrame(frame: CGRect?) -> Bool {
+        if frame == nil {
+            return false
+        } else if frame?.width == 0 && frame?.height == 0 {
+            return false
+        } else {
+            return true
+        }
     }
     
 }
