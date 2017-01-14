@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,55 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHB-Le-KTB">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="yoW-ma-JNx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="VSl-XI-l5u">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="647"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doj-8d-32R" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIs-KX-Jbw" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="324" width="187" height="323"/>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="jfE-kx-Pt6">
-                                                <rect key="frame" x="188" y="0.0" width="187" height="647"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Y9-BT-xDO" customClass="DashBoardElement_Actual200" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="323"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vec-cB-u48" customClass="DashBoardElement_Actual500" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="324" width="187" height="323"/>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yoW-ma-JNx" secondAttribute="trailing" id="1Tq-kC-4qi"/>
-                                    <constraint firstItem="yoW-ma-JNx" firstAttribute="top" secondItem="lHB-Le-KTB" secondAttribute="top" id="DKx-aT-XkC"/>
-                                    <constraint firstItem="yoW-ma-JNx" firstAttribute="leading" secondItem="lHB-Le-KTB" secondAttribute="leading" id="XiJ-I2-PTt"/>
-                                    <constraint firstAttribute="bottom" secondItem="yoW-ma-JNx" secondAttribute="bottom" id="brB-h4-wKq"/>
-                                </constraints>
-                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-ER-md2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sda-V4-xKK"/>
+                                    <barButtonItem title="Item" id="yND-Zt-x9V"/>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="lHB-Le-KTB" secondAttribute="trailing" id="5px-A7-cIo"/>
-                            <constraint firstItem="lHB-Le-KTB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9f6-1B-x8k"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lHB-Le-KTB" secondAttribute="bottom" id="prb-Ht-QkZ"/>
-                            <constraint firstItem="lHB-Le-KTB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="quc-bj-r3s"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="separatorView" destination="lHB-Le-KTB" id="0ax-Rp-c2V"/>
+                        <outlet property="btnPlay" destination="yND-Zt-x9V" id="O6O-pg-Wpp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
