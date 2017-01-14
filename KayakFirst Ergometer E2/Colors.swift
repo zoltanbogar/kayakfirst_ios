@@ -19,6 +19,7 @@ class Colors {
     static let colorInactive = getColor("#4d4d4d")
     static let dragDropStart = getColor("#ffe25303")
     static let dragDropEnter = getColor("#bbe25303")
+    static let startDelayBackground = getColor("#eedf5626")
     static let colorDashBoardDivider = getColor("#4d4d4d")
     static let colorBluetooth = getColor("#2196F3")
     static let colorTransparent = getColor("#00000000")

@@ -21,19 +21,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-ER-md2">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-ER-md2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="sda-V4-xKK"/>
                                     <barButtonItem title="Item" id="yND-Zt-x9V"/>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8e-sv-q0F" customClass="StartDelayView" customModule="KayakFirst_Ergometer_E2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Z8e-sv-q0F" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="0jE-HT-pql"/>
+                            <constraint firstItem="QU9-ER-md2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6fq-lf-67C"/>
+                            <constraint firstItem="QU9-ER-md2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="C5V-Bz-JBB"/>
+                            <constraint firstItem="Z8e-sv-q0F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WlA-r5-pf5"/>
+                            <constraint firstAttribute="trailing" secondItem="QU9-ER-md2" secondAttribute="trailing" id="XDk-dE-uj7"/>
+                            <constraint firstItem="Z8e-sv-q0F" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fsN-Ej-Znr"/>
+                            <constraint firstItem="Z8e-sv-q0F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="heR-vo-67r"/>
+                            <constraint firstItem="QU9-ER-md2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sGC-4Y-8qd"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btnPlay" destination="yND-Zt-x9V" id="O6O-pg-Wpp"/>
+                        <outlet property="startDelayView" destination="Z8e-sv-q0F" id="zw8-Tj-qWN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

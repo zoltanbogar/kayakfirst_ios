@@ -22,7 +22,7 @@ class CustomUi: UIView {
     }
     
     private func initView(_ frame: CGRect?) {
-        //self.backgroundColor = getColor(Colors.colorTransparent)
+        self.backgroundColor = Colors.colorTransparent
         let view = UIView()
         self.addSubview(view)
         

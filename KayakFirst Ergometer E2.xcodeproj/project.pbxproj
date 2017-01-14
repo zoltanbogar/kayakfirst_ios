@@ -24,6 +24,7 @@
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
 		06BF94F21E2A31270010C8A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F11E2A31270010C8A7 /* BaseViewController.swift */; };
 		06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F31E2A36140010C8A7 /* DesignUtils.swift */; };
+		06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */; };
 		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
 		06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */; };
 		06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */; };
@@ -75,6 +76,7 @@
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		06BF94F11E2A31270010C8A7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		06BF94F31E2A36140010C8A7 /* DesignUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
+		06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
 		06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement.swift; sourceTree = "<group>"; };
 		06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual200.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
 				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
+				06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
+				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
