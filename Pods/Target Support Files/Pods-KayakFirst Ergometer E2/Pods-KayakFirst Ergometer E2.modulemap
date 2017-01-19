@@ -1,0 +1,6 @@
+framework module Pods_KayakFirst_Ergometer_E2 {
+  umbrella header "Pods-KayakFirst Ergometer E2-umbrella.h"
+
+  export *
+  module * { export * }
+}
