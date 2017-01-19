@@ -13,10 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        initMainWindow()
+        
         return true
+    }
+    
+    private func initMainWindow() {
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.backgroundColor = Colors.colorPrimary
+        
+        let viewController = DashboardViewController()
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -23,7 +23,6 @@
 		069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F31E28456A00CE6398 /* DialogOnFinish.swift */; };
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
-		06BF94F21E2A31270010C8A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F11E2A31270010C8A7 /* BaseViewController.swift */; };
 		06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F31E2A36140010C8A7 /* DesignUtils.swift */; };
 		06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */; };
 		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
@@ -32,7 +31,6 @@
 		06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
 		06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB31E2267A000562B27 /* DashboardViewController.swift */; };
-		06C6ABB71E2267A000562B27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB51E2267A000562B27 /* Main.storyboard */; };
 		06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB81E2267A000562B27 /* Assets.xcassets */; };
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
@@ -58,7 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0602B4451E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -77,7 +74,6 @@
 		069433F31E28456A00CE6398 /* DialogOnFinish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogOnFinish.swift; sourceTree = "<group>"; };
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
-		06BF94F11E2A31270010C8A7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		06BF94F31E2A36140010C8A7 /* DesignUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
 		06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
@@ -87,7 +83,6 @@
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06C6ABB31E2267A000562B27 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		06C6ABB61E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
-				06BF94F11E2A31270010C8A7 /* BaseViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -233,7 +227,6 @@
 				06C1B9861E25961300AB4C47 /* design */,
 				064764C51E237022004B9ED3 /* utils */,
 				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
-				06C6ABB51E2267A000562B27 /* Main.storyboard */,
 				06C6ABB81E2267A000562B27 /* Assets.xcassets */,
 				06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */,
 				06C6ABBD1E2267A000562B27 /* Info.plist */,
@@ -383,7 +376,6 @@
 				06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */,
 				0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */,
 				06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */,
-				06C6ABB71E2267A000562B27 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +454,6 @@
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
-				06BF94F21E2A31270010C8A7 /* BaseViewController.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
@@ -522,15 +513,6 @@
 				0602B44C1E23C9B900ABA70F /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		06C6ABB51E2267A000562B27 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				06C6ABB61E2267A000562B27 /* Base */,
-				0602B4451E23C76E00ABA70F /* hu */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */ = {
