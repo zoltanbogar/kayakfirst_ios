@@ -39,6 +39,7 @@
 		06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938F61E3F299A00920753 /* LoginViewController.swift */; };
 		06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */; };
 		06F938FE1E3F386500920753 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FD1E3F386500920753 /* UITextField+.swift */; };
+		06F939001E3F720A00920753 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FF1E3F720A00920753 /* Dimens.swift */; };
 		F2AE34EE861A1337DC55E42A /* Pods_KayakFirst_Ergometer_E2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		06F938F61E3F299A00920753 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogElementTextField.swift; sourceTree = "<group>"; };
 		06F938FD1E3F386500920753 /* UITextField+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		06F938FF1E3F720A00920753 /* Dimens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimens.swift; sourceTree = "<group>"; };
 		4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KayakFirst_Ergometer_E2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31816E028C7E966780D9DF9 /* Pods-KayakFirst Ergometer E2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.release.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.release.xcconfig"; sourceTree = "<group>"; };
 		DDFF98EF1EA2CB93E4A696A8 /* Pods-KayakFirst Ergometer E2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				069433EB1E283F5A00CE6398 /* EmailCheck.swift */,
 				069433F71E28487800CE6398 /* PasswordCheck.swift */,
 				06BF94F31E2A36140010C8A7 /* DesignUtils.swift */,
+				06F938FF1E3F720A00920753 /* Dimens.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
+				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

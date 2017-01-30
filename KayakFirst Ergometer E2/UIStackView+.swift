@@ -11,11 +11,23 @@ import SnapKit
 
 extension UIStackView {
     
+    func addVerticalSpacing() {
+        let view = UIView()
+        view.setContentHuggingPriority(500, for: .vertical)
+        addArrangedSubview(view)
+    }
+    
     func addVerticalSpacing(spacing: CGFloat) {
         let view = UIView()
         view.snp.makeConstraints { make in
             make.height.equalTo(spacing)
         }
+        addArrangedSubview(view)
+    }
+    
+    func addHorizontalSpacing() {
+        let view = UIView()
+        view.setContentHuggingPriority(500, for: .horizontal)
         addArrangedSubview(view)
     }
     

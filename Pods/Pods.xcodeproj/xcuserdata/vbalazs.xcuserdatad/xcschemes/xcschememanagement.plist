@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KayakFirst Ergometer E2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2D2EEEC69425C5893A43DC96274F2FFA</key>
+		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>450F705A2B90A8498EA68CD6E832B14E</key>
+		<key>CD4BD50191FA1D3E30E55E92F7ECE568</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA08C88745AB4C4382841D5AC40A8CBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
