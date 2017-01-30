@@ -30,7 +30,7 @@ func getRoundedButton(width: Int, image: UIImage, color: UIColor) -> UIButton {
 func getKayakButton(width: CGFloat, height: CGFloat, text: String, backgroundColor: UIColor, textColor: UIColor) -> UIButton {
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: width, height: height))
     
-    button.layer.cornerRadius = 10
+    button.layer.cornerRadius = 5
     button.backgroundColor = backgroundColor
     button.setTitleColor(textColor, for: .normal)
     button.setTitle(text, for: .normal)

@@ -14,7 +14,7 @@ class ResetPasswordDialog: BaseDialog {
     init() {
         super.init(title: try! getString("dialog_title_reset_password"), message: nil)
         showPositiveButton(title: try! getString("user_reset_password"))
-        showNegativeButton(title: try! getString("cancel"))
+        showNegativeButton(title: try! getString("other_cancel"))
         
         alertController?.addTextField(configurationHandler: initTextField)
         

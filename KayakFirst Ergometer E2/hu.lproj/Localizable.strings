@@ -60,10 +60,10 @@
 "delay_quick_start"="Gyorsindítás";
 
 //Other
-"yes"="igen";
-"no"="nem";
-"ok"="Ok";
-"cancel"="Mégsem";
+"other_yes"="igen";
+"other_no"="nem";
+"other_ok"="Ok";
+"other_cancel"="Mégsem";
 
 //Menu
 "menu_profile"="Profil";
