@@ -8,7 +8,10 @@
 
 import UIKit
 
-class DialogElementTextField: UIView {
+class DialogElementTextField: UIView, UITextFieldDelegate {
+    
+    private static let colorNormal = Colors.colorWhite
+    private static let colorHighlited = Colors.colorAccent
     
     var title: String? {
         get {
@@ -64,6 +67,17 @@ class DialogElementTextField: UIView {
         }
     }
     
+    var clickCallback: (() -> ())?
+    private var _editable = true
+    var isEditable: Bool {
+        get {
+            return _editable
+        }
+        set {
+            _editable = newValue
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -101,10 +115,11 @@ class DialogElementTextField: UIView {
     
     private lazy var valueTextField: UITextField! = {
         let view = UITextField()
-        view.setBottomBorder(Colors.colorAccent)
+        view.setBottomBorder(colorNormal)
         view.textColor = Colors.colorAccent
         view.tintColor = Colors.colorAccent
         view.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        view.delegate = self
         
         return view
     }()
@@ -120,5 +135,20 @@ class DialogElementTextField: UIView {
     
     @objc private func textFieldDidChange() {
         self.error = nil
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        valueTextField.setBottomBorder(DialogElementTextField.colorHighlited)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        valueTextField.setBottomBorder(DialogElementTextField.colorNormal)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let click = clickCallback {
+            click()
+        }
+        return _editable
     }
 }

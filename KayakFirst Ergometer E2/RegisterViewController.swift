@@ -94,6 +94,10 @@ class RegisterViewController: KayakScrollViewController {
     private lazy var tfBirthDate: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = try! getString("user_birth_date")
+        textField.isEditable = false
+        textField.clickCallback = {
+            self.clickBithDate()
+        }
         
         return textField
     }()
@@ -137,6 +141,10 @@ class RegisterViewController: KayakScrollViewController {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = try! getString("user_country")
         textField.required = true
+        textField.isEditable = false
+        textField.clickCallback = {
+            self.clickCountry()
+        }
         
         return textField
     }()
@@ -145,6 +153,10 @@ class RegisterViewController: KayakScrollViewController {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = try! getString("user_gender")
         textField.required = true
+        textField.isEditable = false
+        textField.clickCallback = {
+            self.clickGender()
+        }
         
         return textField
     }()
@@ -157,5 +169,17 @@ class RegisterViewController: KayakScrollViewController {
         
         return label
     }()
+    
+    private func clickBithDate() {
+        log("REGISTER", "clickBirthDate")
+    }
+    
+    private func clickCountry() {
+        log("REGISTER", "clickCountry")
+    }
+    
+    private func clickGender() {
+        log("REGISTER", "clickGender")
+    }
     
 }
