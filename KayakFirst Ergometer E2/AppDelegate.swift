@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = Colors.colorPrimary
         
-        let viewController = DashboardViewController()
+        let viewController = LoginViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         
