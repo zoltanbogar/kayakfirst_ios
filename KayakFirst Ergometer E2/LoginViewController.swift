@@ -114,27 +114,24 @@ class LoginViewController: KayakScrollViewController {
     }()
     
     private lazy var labelNoLogin: UILabel! = {
-        let label = UILabel()
+        let label = AppUILabel()
         label.text = try! getString("user_login_no_login")
-        label.textColor = Colors.colorWhite
         label.textAlignment = .center
         
         return label
     }()
     
     private lazy var labelNoLoginData: UILabel! = {
-        let label = UILabel()
+        let label = AppUILabel()
         label.text = try! getString("user_login_no_data")
-        label.textColor = Colors.colorWhite
         label.textAlignment = .center
         
         return label
     }()
     
     private lazy var labelSocial: UILabel! = {
-        let label = UILabel()
+        let label = AppUILabel()
         label.text = try! getString("user_login_social")
-        label.textColor = Colors.colorWhite
         label.textAlignment = .right
         
         return label

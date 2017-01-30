@@ -44,8 +44,7 @@ class DialogElementTextField: UIView {
     }
     
     lazy var titleLabel: UILabel! = {
-        let view = UILabel()
-        view.textColor = Colors.colorWhite
+        let view = AppUILabel()
         return view
     }()
     
