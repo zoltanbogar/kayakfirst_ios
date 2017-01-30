@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>M13Checkbox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-KayakFirst Ergometer E2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1C56753D4A8ABA2518E263027C7A4D2A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>20A9DD9ABBF08BC57372A26C35327BF1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD4BD50191FA1D3E30E55E92F7ECE568</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DA08C88745AB4C4382841D5AC40A8CBF</key>
+		<key>6D11E61937D5FB2753D2075B106C8CAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

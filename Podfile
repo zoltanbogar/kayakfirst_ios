@@ -4,4 +4,5 @@ target 'KayakFirst Ergometer E2' do
   use_frameworks!
 	pod 'SnapKit', '~> 3.1.2'
     pod 'IQKeyboardManagerSwift'
+    pod 'M13Checkbox'
 end
