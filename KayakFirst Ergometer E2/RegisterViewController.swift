@@ -21,8 +21,11 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     //MARK: properties
     private var birthDate: TimeInterval?
     private var gender: String?
+    private var countryCode: String?
     
     private let stackView = UIStackView()
+    private let genderPickerView = UIPickerView()
+    private let countryPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,9 +131,11 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
             make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
         
-        let genderPickerView = UIPickerView()
         genderPickerView.delegate = self
         tfGender.valueTextField.inputView = genderPickerView
+        
+        countryPickerView.delegate = self
+        tfCountry.valueTextField.inputView = countryPickerView
     }
     
     private lazy var tfFirstName: DialogElementTextField! = {
@@ -197,10 +202,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = try! getString("user_country")
         textField.required = true
-        textField.isEditable = false
-        textField.clickCallback = {
-            self.clickCountry()
-        }
+        textField.text = try! getString("user_spinner_choose")
         
         return textField
     }()
@@ -312,25 +314,37 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return genderOptions.count
+        if pickerView == genderPickerView {
+            return genderOptions.count
+        } else {
+            return NSLocale.locales().count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return genderOptions[row]
+        if pickerView == genderPickerView {
+            return genderOptions[row]
+        } else {
+            return NSLocale.locales()[row].countryName
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedGender = genderOptions[row]
-        let genderFemaleLocalized = try! getString("user_gender_female")
-        
-        if selectedGender == genderFemaleLocalized {
-            gender = genderFemale
+        if pickerView == genderPickerView {
+            let selectedGender = genderOptions[row]
+            let genderFemaleLocalized = try! getString("user_gender_female")
+            
+            if selectedGender == genderFemaleLocalized {
+                gender = genderFemale
+            } else {
+                gender = genderMale
+            }
+            
+            tfGender.text = selectedGender
         } else {
-            gender = genderMale
+            countryCode = NSLocale.locales()[row].countryCode
+            
+            tfCountry.text = NSLocale.locales()[row].countryName
         }
-        
-        tfGender.text = selectedGender
     }
-    
-    
 }
