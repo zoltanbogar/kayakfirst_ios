@@ -7,107 +7,118 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01C4D30CC55E67E67B9C2505E1D8681A /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA353D45CCE8B728E0FEE4A522D4E5 /* Constraint.swift */; };
-		0695F5AA185DF67458D30169B51E23F7 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E168B5A119EB9F0ADF35642ED2AAF0 /* ConstraintRelatableTarget.swift */; };
+		0023202434FCE4B73EF7AAFCE09AFBA7 /* Pods-KayakFirst Ergometer E2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDCB2F3096BF7B87F8576A04B4FA8AF7 /* Pods-KayakFirst Ergometer E2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03A95EB83E0A8E10F7E0B4DB551D5200 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B845B159D8B2321A7396CF57B1A4B0 /* DatePickerDialog.swift */; };
+		03EDBC670ACBAB75D44D9516F4ED2E47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
 		08F70BDD45F0B73F1AD27507808FEC3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
-		0B9FAA59E53F8381BAD75316E70145BE /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3C594B40C32A3C5991E452B6622F8E /* IQUIView+IQKeyboardToolbar.swift */; };
-		0F1AB05F96133448C56FF56EB09397FA /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731CC111DA68026B6649B9D8837F845 /* ConstraintDSL.swift */; };
-		123D28717B28730D7DDD56E56B646294 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43D06C8177494CB2FCCC48498B43CDD /* IQUITextFieldView+Additions.swift */; };
-		1334B83ADBA1DBEF4D03B7527DE1FD15 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36341DC7CD8675906740A3F95D3A5EFD /* ConstraintMakerEditable.swift */; };
+		0B9FAA59E53F8381BAD75316E70145BE /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A4485F8FCCFBB8DBA8C98235159197 /* IQUIView+IQKeyboardToolbar.swift */; };
+		0E55543BE107CE0385863BBB1E19921F /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1AE008FEF7566500FDE709DD4DF67 /* ConstraintMakerRelatable.swift */; };
+		1098DFF28594D7C5D4C792DD82C66DAC /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D81F127B181EC41626AD257A2CD7E4A /* ConstraintMakerPriortizable.swift */; };
+		11F63E28E70C67756C31847D12DA886D /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D063974151C13CE9F3C440EF483595 /* ConstraintPriorityTarget.swift */; };
+		123D28717B28730D7DDD56E56B646294 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F5303BD0A4A54F3257D4D364F2E6B /* IQUITextFieldView+Additions.swift */; };
+		1C5DA14E64E6796607BBB64022DED119 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F384DB49EE9B83928842162AE109A /* ConstraintView+Extensions.swift */; };
 		1C8F85A1033B5AE0FE8126CE2E937E9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AD02E9CEE9B012A246B3874CF4587 /* CoreGraphics.framework */; };
-		1D864DF83D74991F630FBFAB13D467B3 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35070BAA8070A91FD2718380F76ABA42 /* ConstraintInsets.swift */; };
-		22BF5066806248FBD63CD64193B95AB6 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06795D4E60EDE441F11EBB85A43B583A /* IQUIScrollView+Additions.swift */; };
-		249BDE84BB4377A93365020CD2A26E5E /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E6956F041E3F14403EC892C67D7EE /* ConstraintDescription.swift */; };
-		2BC48BA9EC7B6F6F334FB9CF2758D461 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D7C490C91DE6D77FD115B9C843642D /* IQUIView+Hierarchy.swift */; };
-		2E35E6A893A8EB613B253B19E6A2C8D4 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6AA8AFF45AF19083938185F4ED5967 /* ConstraintMakerExtendable.swift */; };
-		2EBD7B6D6EEBAD72870AECB44D1E3AE2 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E133859923C6A5DBBD2EA20617B931 /* IQBarButtonItem.swift */; };
-		32D47B0AE0C145C1E9662CC2468FED0E /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED6377104E1795DC870D6A5BF7EAB02 /* IQTitleBarButtonItem.swift */; };
-		3AFA54C6DC0961AD0F4CC8A4F1AF915E /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67347CD8EF23767D38E41B4F03F382A /* M13CheckboxDisclosurePathGenerator.swift */; };
-		3BF82BF55E1A7239197D939FBE9D4914 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94DE13CA1947AB6A8184D66EF2135A4 /* ConstraintAttributes.swift */; };
-		3D0E3F0D9814489CA9FCEF4F28E92C7E /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF72640C65939E856E955A5694CF8A6 /* ConstraintLayoutGuideDSL.swift */; };
-		3D0FDB5444604D5D858282E7A90020CA /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5CB2FD0B2FE79AA5BC397ACEA5D5C9 /* ConstraintMultiplierTarget.swift */; };
-		3D976DD35C822B9B6971ED06121B4A44 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A69E422BDC1E191E7D04025110D45 /* M13CheckboxFlatController.swift */; };
-		3E2FFD3C073383B859F71C2B1411FA89 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16002355C4F0C626638DEE454F30A189 /* M13Checkbox+IB.swift */; };
-		40897730B01BE8C60FB61A02DD7A1F6A /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524463A118556FD183575F3327AD678 /* M13CheckboxStrokeController.swift */; };
-		4207E0D99AB0BF9C52532CCC3191959F /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C29815E1F7495FC5F8ACD23D2D3671 /* ConstraintOffsetTarget.swift */; };
-		445378EF15B25DB3370FF77B2F6F42D7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9220547BC9A56F233DF16BFEF23181BA /* M13Checkbox.swift */; };
-		513E2B4514E1E4E24ABEECEBE5A412AA /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2E5DCB0673AE92C6537509699E5E8 /* ConstraintMakerPriortizable.swift */; };
-		54B9F10AF7881012B865C7BE58B48B2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
-		54F89D09F8185DC95C2B0D2276E20649 /* Pods-KayakFirst Ergometer E2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B195A1DF35544D8238DBD24726227 /* Pods-KayakFirst Ergometer E2-dummy.m */; };
-		5B981698211292E1F92A21CC9F182675 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB400BC4EE739C6AC9DDEA8682C402E /* IQKeyboardManagerSwift-dummy.m */; };
-		5C1B7FB4706A09F7E95F26B02797BE19 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E748D3BEBD07AE294E9E75839C633B1 /* IQKeyboardReturnKeyHandler.swift */; };
-		5EE4C7927A27C1D677C134F52317FB30 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A46371FCFC40F0DAA7B1FFB627E0B0 /* ConstraintInsetTarget.swift */; };
-		643E5E15AE467FD87D05594679C88B7D /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D1946175F0704D06ABDEBF9D63CB22 /* ConstraintViewDSL.swift */; };
-		6B7F6283CE6F6418FD195E43D2216FBF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F86486FFF731B367F3D24CABFF10A986 /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6BF162BAB4B64C6CFE976CA98BE89FEA /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690672C65161214D783B937528BDB73B /* ConstraintLayoutGuide.swift */; };
-		6F19F6CC9427A768D7EBEDF30268C249 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394F8A590BECC0D8141788E3590A44C5 /* ConstraintConstantTarget.swift */; };
-		73F93E565E7F6E7E383175E67B24E931 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C3B74F8ADEDCCAA91408D48DB152AC /* LayoutConstraint.swift */; };
-		76D3E2602CFAE6474D2DFA89F5328A24 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409CD58C2286FFF23C1C6A79779E8A2 /* M13CheckboxPathGenerator.swift */; };
-		7C6BA616474A9F685C1F0B7B6C66BBAF /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F2BE8C4E2F891E3144DEA2AB07A782 /* ConstraintView+Extensions.swift */; };
-		80CD994ABA1A2B01AD1838A4D4BB794C /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5CA2A6505E710A3DDB6B7F70C472A /* M13CheckboxFillController.swift */; };
-		80E34254247C5B1984E2FB9EC58774E4 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57FAA0B9162E17F5BC857991EF00471 /* M13CheckboxDotController.swift */; };
-		85CB53B9E438E280DA1690CCFD778689 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15156A2B02AEC2BE6B3FFCD70B095EB4 /* M13CheckboxRadioPathGenerator.swift */; };
-		85DD3F3B300A9D2B25189B199EF5BE71 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E63E2BD74FFDCCAC4B151FDBC14FA9 /* UILayoutSupport+Extensions.swift */; };
+		22BF5066806248FBD63CD64193B95AB6 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5513EB032434B9C3F660873AFB8A3F5 /* IQUIScrollView+Additions.swift */; };
+		24B4024DC9FCCF0CDE869D55AA69FC8F /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E392ED6F2473EDD8342C05AE88BFCA /* Debugging.swift */; };
+		2BC48BA9EC7B6F6F334FB9CF2758D461 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9D5A63B0A8D0C985CA2AC53D471A6C /* IQUIView+Hierarchy.swift */; };
+		2EBD7B6D6EEBAD72870AECB44D1E3AE2 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1146F9F7456A9796105F52E1801C1811 /* IQBarButtonItem.swift */; };
+		2FB703986B176A7B7917E67B81B4700C /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830BE7630E39EDF91252009447C6A24C /* ConstraintMakerEditable.swift */; };
+		32D47B0AE0C145C1E9662CC2468FED0E /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB0A3E3625BF3A4C64BC4F5FB3D81A /* IQTitleBarButtonItem.swift */; };
+		3A6F16B280C3F36963571A4FA85B964F /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378DA84760AC8CCD4C3B06B3247F3300 /* ConstraintView.swift */; };
+		3AFA54C6DC0961AD0F4CC8A4F1AF915E /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46DD112E2804949D8F5342BF45C932 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		3D976DD35C822B9B6971ED06121B4A44 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A186804F4966DD6233DD6E1C7E5B75E /* M13CheckboxFlatController.swift */; };
+		3E2FFD3C073383B859F71C2B1411FA89 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE92F7C18D011F01AB4B0EEB6C285C3 /* M13Checkbox+IB.swift */; };
+		40897730B01BE8C60FB61A02DD7A1F6A /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C76A1859A8F86318DE06EFA67C65B /* M13CheckboxStrokeController.swift */; };
+		428AFC724875E93E5122ACB4DB6F77B7 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B467B2A70557DD0DD5409925E5537 /* ConstraintLayoutSupportDSL.swift */; };
+		445378EF15B25DB3370FF77B2F6F42D7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97080A11E9C218BE82C1992FD4AB84C3 /* M13Checkbox.swift */; };
+		4D26EB171D823C09499F45E162A5AD2C /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F00823F215002DC385294F29666EFEC1 /* SnapKit-dummy.m */; };
+		4F98D1CD12ACEAA4D788CECA401BD1A9 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB12EE9631E907303BB24F214DC2307 /* LayoutConstraint.swift */; };
+		511863F7EDF3CED02391B62F2D8ADB87 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D28672E01B071E028D131844EC9E0A /* ConstraintRelation.swift */; };
+		53343C8D9965C70B4C19264F14A68CFE /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27EC83FB4D5938CB835DB4A1452C2F /* ConstraintLayoutSupport.swift */; };
+		574A9D438AE77306270E7F27841C7836 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259F50498D7531406DB6C94EFE010ED /* UILayoutSupport+Extensions.swift */; };
+		5B981698211292E1F92A21CC9F182675 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1E3B39556DF3C2926C649DCBF29CE3 /* IQKeyboardManagerSwift-dummy.m */; };
+		5C1B7FB4706A09F7E95F26B02797BE19 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1673EBE7BF60F6C4DBC43E9EDB9A0A /* IQKeyboardReturnKeyHandler.swift */; };
+		61F04F97CD48F1C201D904F4A5A4999F /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B2AF29A1EEC81F1730772FE4DC1B7 /* ConstraintAttributes.swift */; };
+		6B7F6283CE6F6418FD195E43D2216FBF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 93C4DD463FAFE73F85EEEA2B17350103 /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DEDEC6B7CF1EC519F8108A050232479 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBF4C48925D9B00A49F5CE1F5A3EB1 /* ConstraintMaker.swift */; };
+		76D3E2602CFAE6474D2DFA89F5328A24 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA6837D46285C23A4C6EAE5FECE12E /* M13CheckboxPathGenerator.swift */; };
+		772590C3D1D832CC107F9D062F155BD1 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4EF622A3AD75C6C210146FB5AD6991 /* ConstraintLayoutGuide.swift */; };
+		773000357BC0A281416E6F137CD93F69 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BBFE41269CF5FA0CEEE516CC7CD8D6 /* LayoutConstraintItem.swift */; };
+		7BB056BB4AD65CB66380CBDD52CB0FD3 /* DatePickerDialog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 93E7824B3AC9233482DCBEB7DABC9806 /* DatePickerDialog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F17BB0DC4BE0B4CB020A6401D8F0336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
+		80CD994ABA1A2B01AD1838A4D4BB794C /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D79044C41F157A0BDF269CC9A56D19 /* M13CheckboxFillController.swift */; };
+		80E34254247C5B1984E2FB9EC58774E4 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCA8B3B81E8003513DE2D43C8A9D2FD /* M13CheckboxDotController.swift */; };
+		823879247E5F195DFB618418E48B7A31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
+		82E66D79D8EA4FF152A007A4ACB32599 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C535AFCA448B5A72A64301A3D912318 /* ConstraintInsetTarget.swift */; };
+		85287A3BF02AD0C279FCBA19ABD8D4DE /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A5A85138C5D545840A1DF8477DF9E /* ConstraintConfig.swift */; };
+		85CB53B9E438E280DA1690CCFD778689 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F9BC068D1AAF837475AA4CDBFC6FB0 /* M13CheckboxRadioPathGenerator.swift */; };
 		86C713C329C0814CB0ECCC0FFD4EF091 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695DA86B20FEA7BF7EA40FA7DB65A479 /* UIKit.framework */; };
-		89959176E9E2C981CE0A235B706E8AA7 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578BFA7FEB35ECDA72F688960D98E60 /* IQKeyboardManagerConstants.swift */; };
-		8ED3FB14D1852DD05FDF6E23E94A4657 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833FDA34AC66CBEF896D09F8BBAFA78 /* M13CheckboxAddRemovePathGenerator.swift */; };
-		9DB74ADEAD056F2133400C1009012333 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A0645E3C381AFB30C40C2D1C797581 /* LayoutConstraintItem.swift */; };
-		9F3063B6ADD6AAC23EF7FA16AED60683 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5A7890A07323130368B77EBDACBE1 /* ConstraintItem.swift */; };
-		A489BF21251F182954DDB158A44C3A5E /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C09922A6885876518FDF9C614BDFAE /* ConstraintConfig.swift */; };
-		A50218EC76648886FE767F1DCD9626DE /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF231E90779CAD19B0456125C524907 /* IQPreviousNextView.swift */; };
-		A88CFE3F9DCE30C3AA3A2F6086C6EE84 /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C047A75FA68D212AC6A391A44CE277FE /* IQKeyboardManager.swift */; };
-		A9F1A9CF01AF7F7A691A0A8C9E2D3A71 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8B4897CDA66FB935C6EDF9A448EE83 /* IQToolbar.swift */; };
-		AAE54CDA46FD620F4BC54BC583EA255C /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3BCCC92BAB06F38DE1F0A7CD0E0308 /* M13Checkbox-dummy.m */; };
-		AB327533C4486C3576F34418FDB08A47 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F3BD5175618C7F12FEFE8652C94F61 /* SnapKit-dummy.m */; };
+		89959176E9E2C981CE0A235B706E8AA7 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80440081EE2D035CDD6AF366B6122F60 /* IQKeyboardManagerConstants.swift */; };
+		8ABE557A34CF7FCC1C8550AD49506C32 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F387366EF7EAE00DC2A9A5324A03FA /* ConstraintMakerFinalizable.swift */; };
+		8B7DE669F61AA1F898B745CEBF857C83 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F2A47C609917E2C97092A7F971D329 /* ConstraintLayoutGuideDSL.swift */; };
+		8ED3FB14D1852DD05FDF6E23E94A4657 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80DA033CDD50ADDF2B3080D4A7F9E8C /* M13CheckboxAddRemovePathGenerator.swift */; };
+		94F113A611F4D42CB9E59BCCB11FCC8A /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94E9F5E2DC3DA79F9A12C03AB19CE1F /* ConstraintDSL.swift */; };
+		A04E1E480DEA4FD5ACDF4F11162558A8 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBF1DE26C8C3FFF50AF0A3124A315A2 /* ConstraintViewDSL.swift */; };
+		A2B444C5C18149ED81FF878602845CA0 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CBDAC26B943B1A8054DE03533763 /* ConstraintConstantTarget.swift */; };
+		A2F829EAA2B2A04EA331BE85E7E79012 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2070949E18161594B83F4ABEE66B8 /* ConstraintLayoutGuide+Extensions.swift */; };
+		A50218EC76648886FE767F1DCD9626DE /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62B456A79AAEC4EDA98627409D6F5CE /* IQPreviousNextView.swift */; };
+		A88CFE3F9DCE30C3AA3A2F6086C6EE84 /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21026A117416D4C2A54FA6D00699779 /* IQKeyboardManager.swift */; };
+		A9F1A9CF01AF7F7A691A0A8C9E2D3A71 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC05545D59AD219D009947E2903F70 /* IQToolbar.swift */; };
+		AAE54CDA46FD620F4BC54BC583EA255C /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B056541C42C0D9D855B7266BA9AFE4F3 /* M13Checkbox-dummy.m */; };
+		AC1A7BE37AC4D4A45A8572C656AF5946 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 770D6F1A48777C64A82B93A1DB4A1352 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC3809C0D72C84E9F1E59D6514CCE655 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
-		B0636AF6FC09FDA321E259FC0447034E /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B993DDFF5A3737E90D546A924AA7770 /* ConstraintMakerRelatable.swift */; };
-		B0E679FF770EE8E7073391580C373D92 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD8B459955923C2BB0D573576FABC3 /* IQTextView.swift */; };
-		B49E26DF5871F564A7C9528173CE2D5F /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 886830BE977D1D8856D698221DF82F6D /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B742968A40926266D4EF20365B56F362 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792165F2CA033667D6F57205316D40A1 /* Foundation.framework */; };
-		B8363FC789B46545D54E41BB6E5FCEC8 /* Pods-KayakFirst Ergometer E2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDCB2F3096BF7B87F8576A04B4FA8AF7 /* Pods-KayakFirst Ergometer E2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B030528A9E45DFA77A0108217B2AF961 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F5282938857ADF0CCF3621F961BA /* ConstraintMultiplierTarget.swift */; };
+		B0E679FF770EE8E7073391580C373D92 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E50B7F52AF06E6C3A7847BBE917A0 /* IQTextView.swift */; };
+		B49E26DF5871F564A7C9528173CE2D5F /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ADEAB5FC1483EF869ADDE28E0486E82 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9557585483AD395045D19F792D8BDE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695DA86B20FEA7BF7EA40FA7DB65A479 /* UIKit.framework */; };
-		BCB82BDDA7C30F0B0AFE479CC479B522 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EFBC178C69080B88A90F5F6E0D209 /* M13CheckboxExpandController.swift */; };
-		BCD6B3BA5E1132F0FD49AC39F2BF4D62 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB25F4926EBF122F108F19EBFD3E1F0B /* IQKeyboardManagerConstantsInternal.swift */; };
-		BF874DCB0645A4F04491875B53077B6A /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C38B0853639D434CF80A1808C7FFB414 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFA5C634010461B82A3AF7C25898DCA4 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9762BA2949594D2B3503C15065BFD49A /* ConstraintMakerFinalizable.swift */; };
-		C229B268A587C8274AD2E34AADE560A2 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2DF6FE2442D149F25E344DF259CBB /* ConstraintMaker.swift */; };
-		C277B9EAC728D880FF1F15EE98C8B200 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF76F2385667EA3252A2B22D473D9F /* M13CheckboxController.swift */; };
-		C41E8C0AF82A89E5002D2F0EB8130721 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC158E0966DE4AC9182D57ABFE20187 /* ConstraintLayoutSupportDSL.swift */; };
-		C6D0B50C214C9E7CC815F2773D702779 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD7D07B116B05DD242E61E1FFDC27F /* M13CheckboxAnimationGenerator.swift */; };
-		C759ACB2C97ED8A9EC91C2DF79C95F1D /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE9EB67BE8567B4F59BD5F0C4CC96D4 /* IQUIWindow+Hierarchy.swift */; };
+		BCB82BDDA7C30F0B0AFE479CC479B522 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF82B82DC7CDA10F5C619A6838B8B32 /* M13CheckboxExpandController.swift */; };
+		BCD6B3BA5E1132F0FD49AC39F2BF4D62 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B25C42F6B305F15AD604F0181BEAFB /* IQKeyboardManagerConstantsInternal.swift */; };
+		BD1A3BD0CB991E16BD8A008BD1DD7688 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEC434A1745698931AAE3617ACFB00 /* ConstraintDescription.swift */; };
+		C277B9EAC728D880FF1F15EE98C8B200 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0122C020DEBDCD73F6184A34F1E2BEE5 /* M13CheckboxController.swift */; };
+		C6D0B50C214C9E7CC815F2773D702779 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F34EA17F498BF8B2C3FF0A59AA109D /* M13CheckboxAnimationGenerator.swift */; };
+		C759ACB2C97ED8A9EC91C2DF79C95F1D /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396A171C87C6A4DE68143C03821045D /* IQUIWindow+Hierarchy.swift */; };
 		C85C1170ADDE3E04A0E9C9B6385BE5BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9AD02E9CEE9B012A246B3874CF4587 /* CoreGraphics.framework */; };
-		C8D41C0D4E89BE8510BA40F04EFF4FA8 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5039FB23E739A1DBE6A9E786814A6 /* M13CheckboxCheckPathGenerator.swift */; };
-		C92BC0B8E4CBCFD16762838B30654F29 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEB90CCD0E0EDDAE14EAFAEF7B52A /* IQUIViewController+Additions.swift */; };
-		D6039515F84B2167BBAC8D1CE12A5F4E /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EEBE424C746E928F120C15EB2D507 /* M13CheckboxGestureRecognizer.swift */; };
-		D65B8481AFF5531FC2E4382CBA63C057 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85F4A13BF141A105FCD30FBB7FD16D27 /* IQKeyboardManager.bundle */; };
-		E9AD3D7B3B4B82CD4D9B817109239F55 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D40F6FB408D4870E41C90C32C3B14A /* IQNSArray+Sort.swift */; };
-		EA265BDD7C11AE96427D9A435A802603 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E81FE7CB125A0602704C7FE64E0AD3B /* ConstraintPriorityTarget.swift */; };
-		EB961A9C2DC222AF2E7C5F1EC9B16AED /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B17A3C09F0C26F347C2E88A27018E2 /* ConstraintLayoutGuide+Extensions.swift */; };
-		EEB7E8FF701544CA8A4D606F909B2FC1 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F39EDE10D409D14EC14079E1EAA295 /* ConstraintRelation.swift */; };
-		F502C2F46C1A68165E9C8A8B6BA888B9 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DE45260419431804246B492E927A76 /* ConstraintLayoutSupport.swift */; };
-		F60FA12FBEF8067819F660C6E9849EB9 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC16F4CAE6089DD6DD4C160FBB68DD /* Debugging.swift */; };
-		F7A5B0214108C732898DD2C00BA6FE56 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8900F9AC3DE2041FFB8336D5D6E45730 /* M13CheckboxBounceController.swift */; };
-		FA2B271AAF040F6C1B860C6C3DF0558F /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412E97B431B0667B0F62F60C0E1B994 /* M13CheckboxSpiralController.swift */; };
-		FFD4D80231B99CF9B0C64E75FF6EC0B5 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF04ACD7AB30EBAAEF10FEB52F16D34 /* ConstraintView.swift */; };
-		FFF489DE367C237C0E8F7E4442DA06D7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884DDF85F5E442C40E3CA07F33ACE016 /* M13CheckboxFadeController.swift */; };
+		C8D41C0D4E89BE8510BA40F04EFF4FA8 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972328EF490B21340B3D2A72CD9CDFB3 /* M13CheckboxCheckPathGenerator.swift */; };
+		C92BC0B8E4CBCFD16762838B30654F29 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2C1D6EF659589E0B6664872BF0FCC3 /* IQUIViewController+Additions.swift */; };
+		D01C8F4432C4DFD3CD1D41EBA526C969 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B7A6A52801519614D0243D8E9940CA /* ConstraintRelatableTarget.swift */; };
+		D043F906946B6832DE006D4E77E2295C /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538E45AEBFAE84841A5E36C7715F25ED /* ConstraintMakerExtendable.swift */; };
+		D0682F6CA015BF655B780062ACF1C198 /* Pods-KayakFirst Ergometer E2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B195A1DF35544D8238DBD24726227 /* Pods-KayakFirst Ergometer E2-dummy.m */; };
+		D1DEF5864371967673B4D264BECD8F46 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F82075537D71DF0A179A53E1F5C7E98 /* ConstraintItem.swift */; };
+		D5ABB7E450CDF462B9251EAAE3EACC49 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5BDF517AEDADE800AFC89F730950F /* Constraint.swift */; };
+		D6039515F84B2167BBAC8D1CE12A5F4E /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782AFEC75CC44981C30C8E43857AE43 /* M13CheckboxGestureRecognizer.swift */; };
+		D65B8481AFF5531FC2E4382CBA63C057 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 89C09EA7A4E01EA36317CB2921D4F015 /* IQKeyboardManager.bundle */; };
+		DE45DAEE660ADE5C146EE7CF7259F35A /* DatePickerDialog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1A4751A5AA95DB4985FE142949269 /* DatePickerDialog-dummy.m */; };
+		E681D4715A03B14E273C740E5532B742 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826463857554D1DEB883CA98FD533DB /* ConstraintInsets.swift */; };
+		E9AD3D7B3B4B82CD4D9B817109239F55 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B05620AFEB10116710065D2FE4BB96 /* IQNSArray+Sort.swift */; };
+		F7A5B0214108C732898DD2C00BA6FE56 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EAC2FACCF760B75909BDBD7DEE35E2 /* M13CheckboxBounceController.swift */; };
+		F9655EF5EDA968EC6F8BBBD44DA75F04 /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4895EE0BECDC3C8E55D11451D96D36D5 /* ConstraintOffsetTarget.swift */; };
+		FA2B271AAF040F6C1B860C6C3DF0558F /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D78AB6C0FDC44F6962943169F1E8B5 /* M13CheckboxSpiralController.swift */; };
+		FFF489DE367C237C0E8F7E4442DA06D7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C3B9B51192CDD93383F36D84A769B9 /* M13CheckboxFadeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		132FF92D84DE9E13FA168F07110BD3D0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6D11E61937D5FB2753D2075B106C8CAF;
-			remoteInfo = SnapKit;
-		};
-		25AE41C5FF18A4A9FE22B516375F55EB /* PBXContainerItemProxy */ = {
+		08ACA139CBE66820744404CEFA8CE02C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 20A9DD9ABBF08BC57372A26C35327BF1;
 			remoteInfo = M13Checkbox;
 		};
-		F3FB8EC43E71CCA2C1639F61E20C59FE /* PBXContainerItemProxy */ = {
+		520737195F51A56FB0799D5E3D38CC33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 184A1650DC0B648BD756068E60BF2C59;
+			remoteInfo = DatePickerDialog;
+		};
+		524A662FED1100034657885A81C3F4F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EB8616D9B2EE3566C9779286E47F6F5;
+			remoteInfo = SnapKit;
+		};
+		9F494EA89BA8BF2E460F71B2CAD4CA67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -117,109 +128,117 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00B17A3C09F0C26F347C2E88A27018E2 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
-		02C3B74F8ADEDCCAA91408D48DB152AC /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
-		06795D4E60EDE441F11EBB85A43B583A /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
-		07E168B5A119EB9F0ADF35642ED2AAF0 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
-		0DD2E5DCB0673AE92C6537509699E5E8 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		0E748D3BEBD07AE294E9E75839C633B1 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
-		1315FC0AA06AD5F56851728861E9260E /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
-		15156A2B02AEC2BE6B3FFCD70B095EB4 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxRadioPathGenerator.swift; path = Sources/Paths/M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
-		16002355C4F0C626638DEE454F30A189 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
-		1833FDA34AC66CBEF896D09F8BBAFA78 /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAddRemovePathGenerator.swift; path = Sources/Paths/M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
-		191E6956F041E3F14403EC892C67D7EE /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
-		1F6AA8AFF45AF19083938185F4ED5967 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
-		20C09922A6885876518FDF9C614BDFAE /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
+		0122C020DEBDCD73F6184A34F1E2BEE5 /* M13CheckboxController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxController.swift; path = Sources/M13CheckboxController.swift; sourceTree = "<group>"; };
+		0259F50498D7531406DB6C94EFE010ED /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		0525D0EF92CE14AB54BF1378433BD50D /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
+		0B3DFDE1CA4B3A8D467EB77E35496A09 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		0D1673EBE7BF60F6C4DBC43E9EDB9A0A /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		1146F9F7456A9796105F52E1801C1811 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
+		11D78AB6C0FDC44F6962943169F1E8B5 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralController.swift; path = Sources/Managers/M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		1411D5B5888DDC6E1E593DFA306FED01 /* DatePickerDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DatePickerDialog.framework; path = DatePickerDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1827F5282938857ADF0CCF3621F961BA /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
+		186B467B2A70557DD0DD5409925E5537 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
+		19D79044C41F157A0BDF269CC9A56D19 /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillController.swift; path = Sources/Managers/M13CheckboxFillController.swift; sourceTree = "<group>"; };
+		1B39CBDAC26B943B1A8054DE03533763 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		1BBF1DE26C8C3FFF50AF0A3124A315A2 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
+		1C1E3B39556DF3C2926C649DCBF29CE3 /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
+		1E68337B0AEC173459E820EDC86D51CA /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
+		1FA1AE008FEF7566500FDE709DD4DF67 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
+		20D063974151C13CE9F3C440EF483595 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
 		2288CC6EAB043719DD003EF987FF8301 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A9EFBC178C69080B88A90F5F6E0D209 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandController.swift; path = Sources/Managers/M13CheckboxExpandController.swift; sourceTree = "<group>"; };
-		306EEBE424C746E928F120C15EB2D507 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
-		30DE45260419431804246B492E927A76 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
-		34E67D5C4C079A0CBD2814817A4D1966 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35070BAA8070A91FD2718380F76ABA42 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
-		36341DC7CD8675906740A3F95D3A5EFD /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
-		394F8A590BECC0D8141788E3590A44C5 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
-		3ED5CA2A6505E710A3DDB6B7F70C472A /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillController.swift; path = Sources/Managers/M13CheckboxFillController.swift; sourceTree = "<group>"; };
-		3F3BB3D057AC9773A423D804E5AC373A /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SnapKit.modulemap; sourceTree = "<group>"; };
-		4524463A118556FD183575F3327AD678 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeController.swift; path = Sources/Managers/M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
-		4AAC0A3D9271389AAC3C8DA9F098C8AA /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25B05620AFEB10116710065D2FE4BB96 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		29E392ED6F2473EDD8342C05AE88BFCA /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
+		2B9D5A63B0A8D0C985CA2AC53D471A6C /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		2DCBF4C48925D9B00A49F5CE1F5A3EB1 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		378DA84760AC8CCD4C3B06B3247F3300 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
+		37F9BC068D1AAF837475AA4CDBFC6FB0 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxRadioPathGenerator.swift; path = Sources/Paths/M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
+		38BBFE41269CF5FA0CEEE516CC7CD8D6 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
+		3ADEAB5FC1483EF869ADDE28E0486E82 /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
+		3FD62A479BE16EC71B22BD5C9F907F7B /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SnapKit.modulemap; sourceTree = "<group>"; };
+		464F384DB49EE9B83928842162AE109A /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
+		4895EE0BECDC3C8E55D11451D96D36D5 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
+		4A186804F4966DD6233DD6E1C7E5B75E /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatController.swift; path = Sources/Managers/M13CheckboxFlatController.swift; sourceTree = "<group>"; };
 		4B962A0783949E7DF1B5A9CEE386393A /* Pods-KayakFirst Ergometer E2-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KayakFirst Ergometer E2-frameworks.sh"; sourceTree = "<group>"; };
-		4B993DDFF5A3737E90D546A924AA7770 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
-		4CC158E0966DE4AC9182D57ABFE20187 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
+		4BB12EE9631E907303BB24F214DC2307 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
+		4C4EF622A3AD75C6C210146FB5AD6991 /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
 		4D9AD02E9CEE9B012A246B3874CF4587 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		4FF231E90779CAD19B0456125C524907 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
-		560A69E422BDC1E191E7D04025110D45 /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatController.swift; path = Sources/Managers/M13CheckboxFlatController.swift; sourceTree = "<group>"; };
-		56E5A7890A07323130368B77EBDACBE1 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
-		57E63E2BD74FFDCCAC4B151FDBC14FA9 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
-		585B6AF2583260928BBC023BF05F88BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59B2DF6FE2442D149F25E344DF259CBB /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		4E6F5303BD0A4A54F3257D4D364F2E6B /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		4F82075537D71DF0A179A53E1F5C7E98 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
+		5081A98677E2203855558CD75641A226 /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
+		50DB0A3E3625BF3A4C64BC4F5FB3D81A /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		538E45AEBFAE84841A5E36C7715F25ED /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
+		5A0A5A85138C5D545840A1DF8477DF9E /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		5DAB615BDCF581D7660C7F326573F00E /* Pods-KayakFirst Ergometer E2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-KayakFirst Ergometer E2.modulemap"; sourceTree = "<group>"; };
-		5E81FE7CB125A0602704C7FE64E0AD3B /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
-		5F3C594B40C32A3C5991E452B6622F8E /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
-		64BC16F4CAE6089DD6DD4C160FBB68DD /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
-		690672C65161214D783B937528BDB73B /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
+		665E4443ACAF7300D47EA7F23502B5DF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66A4485F8FCCFBB8DBA8C98235159197 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+IQKeyboardToolbar.swift"; path = "IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		695DA86B20FEA7BF7EA40FA7DB65A479 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		6BFE6510B5A4731ACA01E73ABAC9B656 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
-		70191A935CB43706D9DE3CF7F05632A7 /* IQKeyboardManagerSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManagerSwift.xcconfig; sourceTree = "<group>"; };
-		73AA353D45CCE8B728E0FEE4A522D4E5 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
-		7409CD58C2286FFF23C1C6A79779E8A2 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathGenerator.swift; path = Sources/Paths/M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
-		7412E97B431B0667B0F62F60C0E1B994 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralController.swift; path = Sources/Managers/M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		6F07656C0C94AB7C5D5DBFA75ECC54EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7057C1B69713867030422E3844E4F5CF /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		749A6307D23343FCF5F294AF4B0E34E9 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		756B195A1DF35544D8238DBD24726227 /* Pods-KayakFirst Ergometer E2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KayakFirst Ergometer E2-dummy.m"; sourceTree = "<group>"; };
+		76B8007C896ABA1172833BDB290A4F92 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76EAC2FACCF760B75909BDBD7DEE35E2 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceController.swift; path = Sources/Managers/M13CheckboxBounceController.swift; sourceTree = "<group>"; };
+		770D6F1A48777C64A82B93A1DB4A1352 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		792165F2CA033667D6F57205316D40A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		79C29815E1F7495FC5F8ACD23D2D3671 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
-		7DF6C9F2AE5C503538C23CA6D80FE5E3 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
-		81D40F6FB408D4870E41C90C32C3B14A /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQNSArray+Sort.swift"; path = "IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift"; sourceTree = "<group>"; };
-		85F3BD5175618C7F12FEFE8652C94F61 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
-		85F4A13BF141A105FCD30FBB7FD16D27 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		884DDF85F5E442C40E3CA07F33ACE016 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeController.swift; path = Sources/Managers/M13CheckboxFadeController.swift; sourceTree = "<group>"; };
-		886830BE977D1D8856D698221DF82F6D /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
+		7AAA6837D46285C23A4C6EAE5FECE12E /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathGenerator.swift; path = Sources/Paths/M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
+		7C535AFCA448B5A72A64301A3D912318 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
+		80440081EE2D035CDD6AF366B6122F60 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
+		81EEC434A1745698931AAE3617ACFB00 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
+		830BE7630E39EDF91252009447C6A24C /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		886C3529F06AF2CBD0B3745D0B117FE2 /* Pods-KayakFirst Ergometer E2-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KayakFirst Ergometer E2-acknowledgements.plist"; sourceTree = "<group>"; };
-		8900F9AC3DE2041FFB8336D5D6E45730 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceController.swift; path = Sources/Managers/M13CheckboxBounceController.swift; sourceTree = "<group>"; };
-		8DF72640C65939E856E955A5694CF8A6 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
-		9220547BC9A56F233DF16BFEF23181BA /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		89C09EA7A4E01EA36317CB2921D4F015 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = IQKeyboardManager.bundle; path = IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		8AF82B82DC7CDA10F5C619A6838B8B32 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandController.swift; path = Sources/Managers/M13CheckboxExpandController.swift; sourceTree = "<group>"; };
+		8BE92F7C18D011F01AB4B0EEB6C285C3 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		8D81F127B181EC41626AD257A2CD7E4A /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
+		8E27EC83FB4D5938CB835DB4A1452C2F /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
+		8E7C76A1859A8F86318DE06EFA67C65B /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeController.swift; path = Sources/Managers/M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
+		90B845B159D8B2321A7396CF57B1A4B0 /* DatePickerDialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = Sources/DatePickerDialog.swift; sourceTree = "<group>"; };
+		90FC311CB31DC976E6EEC1725BDCEA9C /* DatePickerDialog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DatePickerDialog-prefix.pch"; sourceTree = "<group>"; };
+		914E50B7F52AF06E6C3A7847BBE917A0 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		95D1946175F0704D06ABDEBF9D63CB22 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
-		9731CC111DA68026B6649B9D8837F845 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
-		9762BA2949594D2B3503C15065BFD49A /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
-		97D5039FB23E739A1DBE6A9E786814A6 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxCheckPathGenerator.swift; path = Sources/Paths/M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
-		99F2BE8C4E2F891E3144DEA2AB07A782 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
-		9DE9EB67BE8567B4F59BD5F0C4CC96D4 /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIWindow+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
-		A09AF24879384C56CBA61410804226C5 /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
-		A2D7C490C91DE6D77FD115B9C843642D /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIView+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		93C4DD463FAFE73F85EEEA2B17350103 /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
+		93E7824B3AC9233482DCBEB7DABC9806 /* DatePickerDialog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DatePickerDialog-umbrella.h"; sourceTree = "<group>"; };
+		97080A11E9C218BE82C1992FD4AB84C3 /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		972328EF490B21340B3D2A72CD9CDFB3 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxCheckPathGenerator.swift; path = Sources/Paths/M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
+		98B25C42F6B305F15AD604F0181BEAFB /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		9D46DD112E2804949D8F5342BF45C932 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDisclosurePathGenerator.swift; path = Sources/Paths/M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
+		9E2C1D6EF659589E0B6664872BF0FCC3 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		A4276B535D11492C5121D75178124233 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55D9969A6A901333F00794BB2CF5D6D /* Pods-KayakFirst Ergometer E2-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KayakFirst Ergometer E2-resources.sh"; sourceTree = "<group>"; };
-		A6E133859923C6A5DBBD2EA20617B931 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
-		AD3BCCC92BAB06F38DE1F0A7CD0E0308 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
-		B1F39EDE10D409D14EC14079E1EAA295 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
-		B43D06C8177494CB2FCCC48498B43CDD /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
-		B50FEB90CCD0E0EDDAE14EAFAEF7B52A /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
-		B5DD7D07B116B05DD242E61E1FFDC27F /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationGenerator.swift; path = Sources/M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
-		B67347CD8EF23767D38E41B4F03F382A /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDisclosurePathGenerator.swift; path = Sources/Paths/M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
-		BD6F55C6BE343372610BC70BB20A403F /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
-		BEB400BC4EE739C6AC9DDEA8682C402E /* IQKeyboardManagerSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManagerSwift-dummy.m"; sourceTree = "<group>"; };
-		C047A75FA68D212AC6A391A44CE277FE /* IQKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
+		AFA3D68CF45A6A37ED33E35A069A521B /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = M13Checkbox.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B056541C42C0D9D855B7266BA9AFE4F3 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
+		B62B456A79AAEC4EDA98627409D6F5CE /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
+		B826463857554D1DEB883CA98FD533DB /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
+		BDEC05545D59AD219D009947E2903F70 /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
+		C0A5BDF517AEDADE800AFC89F730950F /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		C126DB7DF13B39E3725F9BF529E925BB /* Pods-KayakFirst Ergometer E2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KayakFirst Ergometer E2.debug.xcconfig"; sourceTree = "<group>"; };
-		C38B0853639D434CF80A1808C7FFB414 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
-		C578BFA7FEB35ECDA72F688960D98E60 /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstants.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
-		D9A0645E3C381AFB30C40C2D1C797581 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
-		DED6377104E1795DC870D6A5BF7EAB02 /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
-		E308E477D3F8542113E0EFA41DBC3BA5 /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
-		E4DF76F2385667EA3252A2B22D473D9F /* M13CheckboxController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxController.swift; path = Sources/M13CheckboxController.swift; sourceTree = "<group>"; };
-		E57FAA0B9162E17F5BC857991EF00471 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotController.swift; path = Sources/Managers/M13CheckboxDotController.swift; sourceTree = "<group>"; };
-		E7DA63A57866DB8668AF49464C29F17F /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = M13Checkbox.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E94DE13CA1947AB6A8184D66EF2135A4 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
-		EA5CB2FD0B2FE79AA5BC397ACEA5D5C9 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
-		EAF04ACD7AB30EBAAEF10FEB52F16D34 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
-		EB25F4926EBF122F108F19EBFD3E1F0B /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManagerConstantsInternal.swift; path = IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
-		ED8B4897CDA66FB935C6EDF9A448EE83 /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
-		F0AD3D99F8F8F4699657A85AA4959A27 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C396A171C87C6A4DE68143C03821045D /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIWindow+Hierarchy.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
+		C3B5B321D54DB3EFA6C0C2356F8A612C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4B7A6A52801519614D0243D8E9940CA /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
+		C4D28672E01B071E028D131844EC9E0A /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
+		C4F2A47C609917E2C97092A7F971D329 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
+		C72B2AF29A1EEC81F1730772FE4DC1B7 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
+		C8ABA477C9A7F7C941A6BCA0024C82F2 /* DatePickerDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DatePickerDialog.modulemap; sourceTree = "<group>"; };
+		C94E9F5E2DC3DA79F9A12C03AB19CE1F /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
+		C96E2AD05B4FB63C136ED3A84DF86FEF /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
+		CA89FFAA44775EFEB68935AD8E959BFF /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KayakFirst_Ergometer_E2.framework; path = "Pods-KayakFirst Ergometer E2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF2070949E18161594B83F4ABEE66B8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
+		D4F387366EF7EAE00DC2A9A5324A03FA /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
+		D5513EB032434B9C3F660873AFB8A3F5 /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		DCCA8B3B81E8003513DE2D43C8A9D2FD /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotController.swift; path = Sources/Managers/M13CheckboxDotController.swift; sourceTree = "<group>"; };
+		E48944A49C4F4A567C82686EE7212689 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
+		E7D2ED5009F181FB61DA42BCD1C9777D /* DatePickerDialog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DatePickerDialog.xcconfig; sourceTree = "<group>"; };
+		E9A1A4751A5AA95DB4985FE142949269 /* DatePickerDialog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DatePickerDialog-dummy.m"; sourceTree = "<group>"; };
+		F00823F215002DC385294F29666EFEC1 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
+		F21026A117416D4C2A54FA6D00699779 /* IQKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardManager.swift; path = IQKeyboardManagerSwift/IQKeyboardManager.swift; sourceTree = "<group>"; };
+		F3C3B9B51192CDD93383F36D84A769B9 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeController.swift; path = Sources/Managers/M13CheckboxFadeController.swift; sourceTree = "<group>"; };
 		F4ACF874E09FDFFB3E31562D9879E11B /* Pods-KayakFirst Ergometer E2-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KayakFirst Ergometer E2-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F593CA27E4C6261CD71DC21D5FD312DD /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KayakFirst_Ergometer_E2.framework; path = "Pods-KayakFirst Ergometer E2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7A46371FCFC40F0DAA7B1FFB627E0B0 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
-		F7D3DC3921B582556222036C1806121F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F86486FFF731B367F3D24CABFF10A986 /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
+		F5F34EA17F498BF8B2C3FF0A59AA109D /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationGenerator.swift; path = Sources/M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
+		F782AFEC75CC44981C30C8E43857AE43 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		F80DA033CDD50ADDF2B3080D4A7F9E8C /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAddRemovePathGenerator.swift; path = Sources/Paths/M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
+		FB22B10BA2EFA72CB2A07C777F2E18E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB5BF2CF5FB45C289A202DB8BB3781E1 /* Pods-KayakFirst Ergometer E2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KayakFirst Ergometer E2.release.xcconfig"; sourceTree = "<group>"; };
-		FBCD8B459955923C2BB0D573576FABC3 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
 		FDCB2F3096BF7B87F8576A04B4FA8AF7 /* Pods-KayakFirst Ergometer E2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KayakFirst Ergometer E2-umbrella.h"; sourceTree = "<group>"; };
-		FE24CB8597F5039A8ADF2EB96F30BD85 /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,11 +252,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		503F7DBE541BA76E326B7F7735F93B17 /* Frameworks */ = {
+		14AE0B66195BD8F0598FB4F3260AD55E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B9F10AF7881012B865C7BE58B48B2F /* Foundation.framework in Frameworks */,
+				7F17BB0DC4BE0B4CB020A6401D8F0336 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31AE3E263B8032AC2966F95252E5AADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				823879247E5F195DFB618418E48B7A31 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,17 +278,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		77CA4C876C846BF08F5918B2BADB35E4 /* Frameworks */ = {
+		DC91A041C90A17FF19B6B132595D67DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B742968A40926266D4EF20365B56F362 /* Foundation.framework in Frameworks */,
+				03EDBC670ACBAB75D44D9516F4ED2E47 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B1E110C4BFFE5CD1DCC0B7A97FF5064 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1411D5B5888DDC6E1E593DFA306FED01 /* DatePickerDialog.framework */,
+				A4276B535D11492C5121D75178124233 /* IQKeyboardManagerSwift.framework */,
+				AFA3D68CF45A6A37ED33E35A069A521B /* M13Checkbox.framework */,
+				CA89FFAA44775EFEB68935AD8E959BFF /* Pods_KayakFirst_Ergometer_E2.framework */,
+				76B8007C896ABA1172833BDB290A4F92 /* SnapKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,18 +309,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		27DEB23FEFC8CB5F7B553E08DEF69D51 /* Support Files */ = {
+		177F882FD806C949C88DE3342408080A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3DC3921B582556222036C1806121F /* Info.plist */,
-				3F3BB3D057AC9773A423D804E5AC373A /* SnapKit.modulemap */,
-				1315FC0AA06AD5F56851728861E9260E /* SnapKit.xcconfig */,
-				85F3BD5175618C7F12FEFE8652C94F61 /* SnapKit-dummy.m */,
-				7DF6C9F2AE5C503538C23CA6D80FE5E3 /* SnapKit-prefix.pch */,
-				C38B0853639D434CF80A1808C7FFB414 /* SnapKit-umbrella.h */,
+				30B141CFE0D0D0B31C437A1354387436 /* DatePickerDialog */,
+				1D9930A04884EF6D789AFD9E9DF16165 /* IQKeyboardManagerSwift */,
+				9D851C68724758859623C1DF89769608 /* M13Checkbox */,
+				CD005A9EB5C6299BEF733241F20A8092 /* SnapKit */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SnapKit";
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1D9930A04884EF6D789AFD9E9DF16165 /* IQKeyboardManagerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				1146F9F7456A9796105F52E1801C1811 /* IQBarButtonItem.swift */,
+				F21026A117416D4C2A54FA6D00699779 /* IQKeyboardManager.swift */,
+				80440081EE2D035CDD6AF366B6122F60 /* IQKeyboardManagerConstants.swift */,
+				98B25C42F6B305F15AD604F0181BEAFB /* IQKeyboardManagerConstantsInternal.swift */,
+				0D1673EBE7BF60F6C4DBC43E9EDB9A0A /* IQKeyboardReturnKeyHandler.swift */,
+				25B05620AFEB10116710065D2FE4BB96 /* IQNSArray+Sort.swift */,
+				B62B456A79AAEC4EDA98627409D6F5CE /* IQPreviousNextView.swift */,
+				914E50B7F52AF06E6C3A7847BBE917A0 /* IQTextView.swift */,
+				50DB0A3E3625BF3A4C64BC4F5FB3D81A /* IQTitleBarButtonItem.swift */,
+				BDEC05545D59AD219D009947E2903F70 /* IQToolbar.swift */,
+				D5513EB032434B9C3F660873AFB8A3F5 /* IQUIScrollView+Additions.swift */,
+				4E6F5303BD0A4A54F3257D4D364F2E6B /* IQUITextFieldView+Additions.swift */,
+				2B9D5A63B0A8D0C985CA2AC53D471A6C /* IQUIView+Hierarchy.swift */,
+				66A4485F8FCCFBB8DBA8C98235159197 /* IQUIView+IQKeyboardToolbar.swift */,
+				9E2C1D6EF659589E0B6664872BF0FCC3 /* IQUIViewController+Additions.swift */,
+				C396A171C87C6A4DE68143C03821045D /* IQUIWindow+Hierarchy.swift */,
+				A606457B83880190DDA92324B8575F85 /* Resources */,
+				DEB4D539B2BC8BF93C9BBF3D7204375A /* Support Files */,
+			);
+			name = IQKeyboardManagerSwift;
+			path = IQKeyboardManagerSwift;
 			sourceTree = "<group>";
 		};
 		2D185E38271E1279D6AC3E7A00CAF9BA /* iOS */ = {
@@ -294,6 +356,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		30B141CFE0D0D0B31C437A1354387436 /* DatePickerDialog */ = {
+			isa = PBXGroup;
+			children = (
+				90B845B159D8B2321A7396CF57B1A4B0 /* DatePickerDialog.swift */,
+				7A441A1A03D58C7EB9681D15832AEE88 /* Support Files */,
+			);
+			name = DatePickerDialog;
+			path = DatePickerDialog;
+			sourceTree = "<group>";
+		};
 		41CFB39C53BBB633D7824298D7D7AB2E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,80 +374,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		45B9F054ADCB74665C7D65924312586A /* M13Checkbox */ = {
+		7A441A1A03D58C7EB9681D15832AEE88 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9220547BC9A56F233DF16BFEF23181BA /* M13Checkbox.swift */,
-				16002355C4F0C626638DEE454F30A189 /* M13Checkbox+IB.swift */,
-				1833FDA34AC66CBEF896D09F8BBAFA78 /* M13CheckboxAddRemovePathGenerator.swift */,
-				B5DD7D07B116B05DD242E61E1FFDC27F /* M13CheckboxAnimationGenerator.swift */,
-				8900F9AC3DE2041FFB8336D5D6E45730 /* M13CheckboxBounceController.swift */,
-				97D5039FB23E739A1DBE6A9E786814A6 /* M13CheckboxCheckPathGenerator.swift */,
-				E4DF76F2385667EA3252A2B22D473D9F /* M13CheckboxController.swift */,
-				B67347CD8EF23767D38E41B4F03F382A /* M13CheckboxDisclosurePathGenerator.swift */,
-				E57FAA0B9162E17F5BC857991EF00471 /* M13CheckboxDotController.swift */,
-				2A9EFBC178C69080B88A90F5F6E0D209 /* M13CheckboxExpandController.swift */,
-				884DDF85F5E442C40E3CA07F33ACE016 /* M13CheckboxFadeController.swift */,
-				3ED5CA2A6505E710A3DDB6B7F70C472A /* M13CheckboxFillController.swift */,
-				560A69E422BDC1E191E7D04025110D45 /* M13CheckboxFlatController.swift */,
-				306EEBE424C746E928F120C15EB2D507 /* M13CheckboxGestureRecognizer.swift */,
-				7409CD58C2286FFF23C1C6A79779E8A2 /* M13CheckboxPathGenerator.swift */,
-				15156A2B02AEC2BE6B3FFCD70B095EB4 /* M13CheckboxRadioPathGenerator.swift */,
-				7412E97B431B0667B0F62F60C0E1B994 /* M13CheckboxSpiralController.swift */,
-				4524463A118556FD183575F3327AD678 /* M13CheckboxStrokeController.swift */,
-				98E38725BE96FCCDB78810B74EDF46E5 /* Support Files */,
+				C8ABA477C9A7F7C941A6BCA0024C82F2 /* DatePickerDialog.modulemap */,
+				E7D2ED5009F181FB61DA42BCD1C9777D /* DatePickerDialog.xcconfig */,
+				E9A1A4751A5AA95DB4985FE142949269 /* DatePickerDialog-dummy.m */,
+				90FC311CB31DC976E6EEC1725BDCEA9C /* DatePickerDialog-prefix.pch */,
+				93E7824B3AC9233482DCBEB7DABC9806 /* DatePickerDialog-umbrella.h */,
+				C3B5B321D54DB3EFA6C0C2356F8A612C /* Info.plist */,
 			);
-			name = M13Checkbox;
-			path = M13Checkbox;
-			sourceTree = "<group>";
-		};
-		5F0AC39863A79D1B3EB9EB9C729EE67C /* SnapKit */ = {
-			isa = PBXGroup;
-			children = (
-				73AA353D45CCE8B728E0FEE4A522D4E5 /* Constraint.swift */,
-				E94DE13CA1947AB6A8184D66EF2135A4 /* ConstraintAttributes.swift */,
-				20C09922A6885876518FDF9C614BDFAE /* ConstraintConfig.swift */,
-				394F8A590BECC0D8141788E3590A44C5 /* ConstraintConstantTarget.swift */,
-				191E6956F041E3F14403EC892C67D7EE /* ConstraintDescription.swift */,
-				9731CC111DA68026B6649B9D8837F845 /* ConstraintDSL.swift */,
-				35070BAA8070A91FD2718380F76ABA42 /* ConstraintInsets.swift */,
-				F7A46371FCFC40F0DAA7B1FFB627E0B0 /* ConstraintInsetTarget.swift */,
-				56E5A7890A07323130368B77EBDACBE1 /* ConstraintItem.swift */,
-				690672C65161214D783B937528BDB73B /* ConstraintLayoutGuide.swift */,
-				00B17A3C09F0C26F347C2E88A27018E2 /* ConstraintLayoutGuide+Extensions.swift */,
-				8DF72640C65939E856E955A5694CF8A6 /* ConstraintLayoutGuideDSL.swift */,
-				30DE45260419431804246B492E927A76 /* ConstraintLayoutSupport.swift */,
-				4CC158E0966DE4AC9182D57ABFE20187 /* ConstraintLayoutSupportDSL.swift */,
-				59B2DF6FE2442D149F25E344DF259CBB /* ConstraintMaker.swift */,
-				36341DC7CD8675906740A3F95D3A5EFD /* ConstraintMakerEditable.swift */,
-				1F6AA8AFF45AF19083938185F4ED5967 /* ConstraintMakerExtendable.swift */,
-				9762BA2949594D2B3503C15065BFD49A /* ConstraintMakerFinalizable.swift */,
-				0DD2E5DCB0673AE92C6537509699E5E8 /* ConstraintMakerPriortizable.swift */,
-				4B993DDFF5A3737E90D546A924AA7770 /* ConstraintMakerRelatable.swift */,
-				EA5CB2FD0B2FE79AA5BC397ACEA5D5C9 /* ConstraintMultiplierTarget.swift */,
-				79C29815E1F7495FC5F8ACD23D2D3671 /* ConstraintOffsetTarget.swift */,
-				5E81FE7CB125A0602704C7FE64E0AD3B /* ConstraintPriorityTarget.swift */,
-				07E168B5A119EB9F0ADF35642ED2AAF0 /* ConstraintRelatableTarget.swift */,
-				B1F39EDE10D409D14EC14079E1EAA295 /* ConstraintRelation.swift */,
-				EAF04ACD7AB30EBAAEF10FEB52F16D34 /* ConstraintView.swift */,
-				99F2BE8C4E2F891E3144DEA2AB07A782 /* ConstraintView+Extensions.swift */,
-				95D1946175F0704D06ABDEBF9D63CB22 /* ConstraintViewDSL.swift */,
-				64BC16F4CAE6089DD6DD4C160FBB68DD /* Debugging.swift */,
-				02C3B74F8ADEDCCAA91408D48DB152AC /* LayoutConstraint.swift */,
-				D9A0645E3C381AFB30C40C2D1C797581 /* LayoutConstraintItem.swift */,
-				57E63E2BD74FFDCCAC4B151FDBC14FA9 /* UILayoutSupport+Extensions.swift */,
-				27DEB23FEFC8CB5F7B553E08DEF69D51 /* Support Files */,
-			);
-			name = SnapKit;
-			path = SnapKit;
-			sourceTree = "<group>";
-		};
-		7BDAC649A0350199B3DC4FE3813CDC4B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				85F4A13BF141A105FCD30FBB7FD16D27 /* IQKeyboardManager.bundle */,
-			);
-			name = Resources;
+			name = "Support Files";
+			path = "../Target Support Files/DatePickerDialog";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -383,8 +393,8 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				977A0A284411C333FC4F9B3271394A77 /* Pods */,
-				B1DB0BAAE9B845D983C1789535D57686 /* Products */,
+				177F882FD806C949C88DE3342408080A /* Pods */,
+				0B1E110C4BFFE5CD1DCC0B7A97FF5064 /* Products */,
 				41CFB39C53BBB633D7824298D7D7AB2E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -407,84 +417,143 @@
 			path = "Target Support Files/Pods-KayakFirst Ergometer E2";
 			sourceTree = "<group>";
 		};
-		977A0A284411C333FC4F9B3271394A77 /* Pods */ = {
+		8D5CE1F231177C46354F86F5EDC306AE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				AC8E703CCCD23376772F476356D18F07 /* IQKeyboardManagerSwift */,
-				45B9F054ADCB74665C7D65924312586A /* M13Checkbox */,
-				5F0AC39863A79D1B3EB9EB9C729EE67C /* SnapKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		98E38725BE96FCCDB78810B74EDF46E5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				34E67D5C4C079A0CBD2814817A4D1966 /* Info.plist */,
-				A09AF24879384C56CBA61410804226C5 /* M13Checkbox.modulemap */,
-				BD6F55C6BE343372610BC70BB20A403F /* M13Checkbox.xcconfig */,
-				AD3BCCC92BAB06F38DE1F0A7CD0E0308 /* M13Checkbox-dummy.m */,
-				6BFE6510B5A4731ACA01E73ABAC9B656 /* M13Checkbox-prefix.pch */,
-				F86486FFF731B367F3D24CABFF10A986 /* M13Checkbox-umbrella.h */,
+				665E4443ACAF7300D47EA7F23502B5DF /* Info.plist */,
+				3FD62A479BE16EC71B22BD5C9F907F7B /* SnapKit.modulemap */,
+				749A6307D23343FCF5F294AF4B0E34E9 /* SnapKit.xcconfig */,
+				F00823F215002DC385294F29666EFEC1 /* SnapKit-dummy.m */,
+				0B3DFDE1CA4B3A8D467EB77E35496A09 /* SnapKit-prefix.pch */,
+				770D6F1A48777C64A82B93A1DB4A1352 /* SnapKit-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/M13Checkbox";
+			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
-		AC8E703CCCD23376772F476356D18F07 /* IQKeyboardManagerSwift */ = {
+		9D851C68724758859623C1DF89769608 /* M13Checkbox */ = {
 			isa = PBXGroup;
 			children = (
-				A6E133859923C6A5DBBD2EA20617B931 /* IQBarButtonItem.swift */,
-				C047A75FA68D212AC6A391A44CE277FE /* IQKeyboardManager.swift */,
-				C578BFA7FEB35ECDA72F688960D98E60 /* IQKeyboardManagerConstants.swift */,
-				EB25F4926EBF122F108F19EBFD3E1F0B /* IQKeyboardManagerConstantsInternal.swift */,
-				0E748D3BEBD07AE294E9E75839C633B1 /* IQKeyboardReturnKeyHandler.swift */,
-				81D40F6FB408D4870E41C90C32C3B14A /* IQNSArray+Sort.swift */,
-				4FF231E90779CAD19B0456125C524907 /* IQPreviousNextView.swift */,
-				FBCD8B459955923C2BB0D573576FABC3 /* IQTextView.swift */,
-				DED6377104E1795DC870D6A5BF7EAB02 /* IQTitleBarButtonItem.swift */,
-				ED8B4897CDA66FB935C6EDF9A448EE83 /* IQToolbar.swift */,
-				06795D4E60EDE441F11EBB85A43B583A /* IQUIScrollView+Additions.swift */,
-				B43D06C8177494CB2FCCC48498B43CDD /* IQUITextFieldView+Additions.swift */,
-				A2D7C490C91DE6D77FD115B9C843642D /* IQUIView+Hierarchy.swift */,
-				5F3C594B40C32A3C5991E452B6622F8E /* IQUIView+IQKeyboardToolbar.swift */,
-				B50FEB90CCD0E0EDDAE14EAFAEF7B52A /* IQUIViewController+Additions.swift */,
-				9DE9EB67BE8567B4F59BD5F0C4CC96D4 /* IQUIWindow+Hierarchy.swift */,
-				7BDAC649A0350199B3DC4FE3813CDC4B /* Resources */,
-				BF21B1395DAE23EEB687F5E93E9E57F0 /* Support Files */,
+				97080A11E9C218BE82C1992FD4AB84C3 /* M13Checkbox.swift */,
+				8BE92F7C18D011F01AB4B0EEB6C285C3 /* M13Checkbox+IB.swift */,
+				F80DA033CDD50ADDF2B3080D4A7F9E8C /* M13CheckboxAddRemovePathGenerator.swift */,
+				F5F34EA17F498BF8B2C3FF0A59AA109D /* M13CheckboxAnimationGenerator.swift */,
+				76EAC2FACCF760B75909BDBD7DEE35E2 /* M13CheckboxBounceController.swift */,
+				972328EF490B21340B3D2A72CD9CDFB3 /* M13CheckboxCheckPathGenerator.swift */,
+				0122C020DEBDCD73F6184A34F1E2BEE5 /* M13CheckboxController.swift */,
+				9D46DD112E2804949D8F5342BF45C932 /* M13CheckboxDisclosurePathGenerator.swift */,
+				DCCA8B3B81E8003513DE2D43C8A9D2FD /* M13CheckboxDotController.swift */,
+				8AF82B82DC7CDA10F5C619A6838B8B32 /* M13CheckboxExpandController.swift */,
+				F3C3B9B51192CDD93383F36D84A769B9 /* M13CheckboxFadeController.swift */,
+				19D79044C41F157A0BDF269CC9A56D19 /* M13CheckboxFillController.swift */,
+				4A186804F4966DD6233DD6E1C7E5B75E /* M13CheckboxFlatController.swift */,
+				F782AFEC75CC44981C30C8E43857AE43 /* M13CheckboxGestureRecognizer.swift */,
+				7AAA6837D46285C23A4C6EAE5FECE12E /* M13CheckboxPathGenerator.swift */,
+				37F9BC068D1AAF837475AA4CDBFC6FB0 /* M13CheckboxRadioPathGenerator.swift */,
+				11D78AB6C0FDC44F6962943169F1E8B5 /* M13CheckboxSpiralController.swift */,
+				8E7C76A1859A8F86318DE06EFA67C65B /* M13CheckboxStrokeController.swift */,
+				F59BEE021C413951AD9AA8AA67F4EBAB /* Support Files */,
 			);
-			name = IQKeyboardManagerSwift;
-			path = IQKeyboardManagerSwift;
+			name = M13Checkbox;
+			path = M13Checkbox;
 			sourceTree = "<group>";
 		};
-		B1DB0BAAE9B845D983C1789535D57686 /* Products */ = {
+		A606457B83880190DDA92324B8575F85 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F0AD3D99F8F8F4699657A85AA4959A27 /* IQKeyboardManagerSwift.framework */,
-				E7DA63A57866DB8668AF49464C29F17F /* M13Checkbox.framework */,
-				F593CA27E4C6261CD71DC21D5FD312DD /* Pods_KayakFirst_Ergometer_E2.framework */,
-				4AAC0A3D9271389AAC3C8DA9F098C8AA /* SnapKit.framework */,
+				89C09EA7A4E01EA36317CB2921D4F015 /* IQKeyboardManager.bundle */,
 			);
-			name = Products;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		BF21B1395DAE23EEB687F5E93E9E57F0 /* Support Files */ = {
+		CD005A9EB5C6299BEF733241F20A8092 /* SnapKit */ = {
 			isa = PBXGroup;
 			children = (
-				585B6AF2583260928BBC023BF05F88BF /* Info.plist */,
-				FE24CB8597F5039A8ADF2EB96F30BD85 /* IQKeyboardManagerSwift.modulemap */,
-				70191A935CB43706D9DE3CF7F05632A7 /* IQKeyboardManagerSwift.xcconfig */,
-				BEB400BC4EE739C6AC9DDEA8682C402E /* IQKeyboardManagerSwift-dummy.m */,
-				E308E477D3F8542113E0EFA41DBC3BA5 /* IQKeyboardManagerSwift-prefix.pch */,
-				886830BE977D1D8856D698221DF82F6D /* IQKeyboardManagerSwift-umbrella.h */,
+				C0A5BDF517AEDADE800AFC89F730950F /* Constraint.swift */,
+				C72B2AF29A1EEC81F1730772FE4DC1B7 /* ConstraintAttributes.swift */,
+				5A0A5A85138C5D545840A1DF8477DF9E /* ConstraintConfig.swift */,
+				1B39CBDAC26B943B1A8054DE03533763 /* ConstraintConstantTarget.swift */,
+				81EEC434A1745698931AAE3617ACFB00 /* ConstraintDescription.swift */,
+				C94E9F5E2DC3DA79F9A12C03AB19CE1F /* ConstraintDSL.swift */,
+				B826463857554D1DEB883CA98FD533DB /* ConstraintInsets.swift */,
+				7C535AFCA448B5A72A64301A3D912318 /* ConstraintInsetTarget.swift */,
+				4F82075537D71DF0A179A53E1F5C7E98 /* ConstraintItem.swift */,
+				4C4EF622A3AD75C6C210146FB5AD6991 /* ConstraintLayoutGuide.swift */,
+				CCF2070949E18161594B83F4ABEE66B8 /* ConstraintLayoutGuide+Extensions.swift */,
+				C4F2A47C609917E2C97092A7F971D329 /* ConstraintLayoutGuideDSL.swift */,
+				8E27EC83FB4D5938CB835DB4A1452C2F /* ConstraintLayoutSupport.swift */,
+				186B467B2A70557DD0DD5409925E5537 /* ConstraintLayoutSupportDSL.swift */,
+				2DCBF4C48925D9B00A49F5CE1F5A3EB1 /* ConstraintMaker.swift */,
+				830BE7630E39EDF91252009447C6A24C /* ConstraintMakerEditable.swift */,
+				538E45AEBFAE84841A5E36C7715F25ED /* ConstraintMakerExtendable.swift */,
+				D4F387366EF7EAE00DC2A9A5324A03FA /* ConstraintMakerFinalizable.swift */,
+				8D81F127B181EC41626AD257A2CD7E4A /* ConstraintMakerPriortizable.swift */,
+				1FA1AE008FEF7566500FDE709DD4DF67 /* ConstraintMakerRelatable.swift */,
+				1827F5282938857ADF0CCF3621F961BA /* ConstraintMultiplierTarget.swift */,
+				4895EE0BECDC3C8E55D11451D96D36D5 /* ConstraintOffsetTarget.swift */,
+				20D063974151C13CE9F3C440EF483595 /* ConstraintPriorityTarget.swift */,
+				C4B7A6A52801519614D0243D8E9940CA /* ConstraintRelatableTarget.swift */,
+				C4D28672E01B071E028D131844EC9E0A /* ConstraintRelation.swift */,
+				378DA84760AC8CCD4C3B06B3247F3300 /* ConstraintView.swift */,
+				464F384DB49EE9B83928842162AE109A /* ConstraintView+Extensions.swift */,
+				1BBF1DE26C8C3FFF50AF0A3124A315A2 /* ConstraintViewDSL.swift */,
+				29E392ED6F2473EDD8342C05AE88BFCA /* Debugging.swift */,
+				4BB12EE9631E907303BB24F214DC2307 /* LayoutConstraint.swift */,
+				38BBFE41269CF5FA0CEEE516CC7CD8D6 /* LayoutConstraintItem.swift */,
+				0259F50498D7531406DB6C94EFE010ED /* UILayoutSupport+Extensions.swift */,
+				8D5CE1F231177C46354F86F5EDC306AE /* Support Files */,
+			);
+			name = SnapKit;
+			path = SnapKit;
+			sourceTree = "<group>";
+		};
+		DEB4D539B2BC8BF93C9BBF3D7204375A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB22B10BA2EFA72CB2A07C777F2E18E5 /* Info.plist */,
+				C96E2AD05B4FB63C136ED3A84DF86FEF /* IQKeyboardManagerSwift.modulemap */,
+				0525D0EF92CE14AB54BF1378433BD50D /* IQKeyboardManagerSwift.xcconfig */,
+				1C1E3B39556DF3C2926C649DCBF29CE3 /* IQKeyboardManagerSwift-dummy.m */,
+				1E68337B0AEC173459E820EDC86D51CA /* IQKeyboardManagerSwift-prefix.pch */,
+				3ADEAB5FC1483EF869ADDE28E0486E82 /* IQKeyboardManagerSwift-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/IQKeyboardManagerSwift";
 			sourceTree = "<group>";
 		};
+		F59BEE021C413951AD9AA8AA67F4EBAB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F07656C0C94AB7C5D5DBFA75ECC54EF /* Info.plist */,
+				5081A98677E2203855558CD75641A226 /* M13Checkbox.modulemap */,
+				7057C1B69713867030422E3844E4F5CF /* M13Checkbox.xcconfig */,
+				B056541C42C0D9D855B7266BA9AFE4F3 /* M13Checkbox-dummy.m */,
+				E48944A49C4F4A567C82686EE7212689 /* M13Checkbox-prefix.pch */,
+				93C4DD463FAFE73F85EEEA2B17350103 /* M13Checkbox-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/M13Checkbox";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2675140161515F2E9F99FEB0F11F1ED3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BB056BB4AD65CB66380CBDD52CB0FD3 /* DatePickerDialog-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		567B37DC278CDDE51AE548136F3FE771 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC1A7BE37AC4D4A45A8572C656AF5946 /* SnapKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		714DC262BF2FB332E82AC2E7CD6D73D1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,19 +562,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D82002831F4B1E73053CC48D1D62A0 /* Headers */ = {
+		9BB5F868E6F54E3FB8D909D48CA86113 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8363FC789B46545D54E41BB6E5FCEC8 /* Pods-KayakFirst Ergometer E2-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7166253337929F98A68BFFE4617DF91 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF874DCB0645A4F04491875B53077B6A /* SnapKit-umbrella.h in Headers */,
+				0023202434FCE4B73EF7AAFCE09AFBA7 /* Pods-KayakFirst Ergometer E2-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,24 +581,38 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1C56753D4A8ABA2518E263027C7A4D2A /* Pods-KayakFirst Ergometer E2 */ = {
+		0EB8616D9B2EE3566C9779286E47F6F5 /* SnapKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 520590958E7E4F599A611F442911E801 /* Build configuration list for PBXNativeTarget "Pods-KayakFirst Ergometer E2" */;
+			buildConfigurationList = 2D41EBC8DE851B1DF0CE5D4E5460628A /* Build configuration list for PBXNativeTarget "SnapKit" */;
 			buildPhases = (
-				43E247EA194B52D1FC535C937FCFCB53 /* Sources */,
-				77CA4C876C846BF08F5918B2BADB35E4 /* Frameworks */,
-				73D82002831F4B1E73053CC48D1D62A0 /* Headers */,
+				2FDFCBD55F9E98F455C5B36CFA33409C /* Sources */,
+				14AE0B66195BD8F0598FB4F3260AD55E /* Frameworks */,
+				567B37DC278CDDE51AE548136F3FE771 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				66E9EFAA753D927D6ADB541FEDCF69A0 /* PBXTargetDependency */,
-				82CC02560842FFDFE0CEBFF1F36FB16F /* PBXTargetDependency */,
-				0852C640293F2A86362322E815FFC81F /* PBXTargetDependency */,
 			);
-			name = "Pods-KayakFirst Ergometer E2";
-			productName = "Pods-KayakFirst Ergometer E2";
-			productReference = F593CA27E4C6261CD71DC21D5FD312DD /* Pods_KayakFirst_Ergometer_E2.framework */;
+			name = SnapKit;
+			productName = SnapKit;
+			productReference = 76B8007C896ABA1172833BDB290A4F92 /* SnapKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		184A1650DC0B648BD756068E60BF2C59 /* DatePickerDialog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD5CF02785F10F0CDA34F90832C66CFA /* Build configuration list for PBXNativeTarget "DatePickerDialog" */;
+			buildPhases = (
+				1D432F1231D861C3C85333A043376EAE /* Sources */,
+				31AE3E263B8032AC2966F95252E5AADC /* Frameworks */,
+				2675140161515F2E9F99FEB0F11F1ED3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DatePickerDialog;
+			productName = DatePickerDialog;
+			productReference = 1411D5B5888DDC6E1E593DFA306FED01 /* DatePickerDialog.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */ = {
@@ -554,7 +629,7 @@
 			);
 			name = M13Checkbox;
 			productName = M13Checkbox;
-			productReference = E7DA63A57866DB8668AF49464C29F17F /* M13Checkbox.framework */;
+			productReference = AFA3D68CF45A6A37ED33E35A069A521B /* M13Checkbox.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4DC059E04CBA98AEDDB5C34E02D551E9 /* IQKeyboardManagerSwift */ = {
@@ -572,24 +647,28 @@
 			);
 			name = IQKeyboardManagerSwift;
 			productName = IQKeyboardManagerSwift;
-			productReference = F0AD3D99F8F8F4699657A85AA4959A27 /* IQKeyboardManagerSwift.framework */;
+			productReference = A4276B535D11492C5121D75178124233 /* IQKeyboardManagerSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6D11E61937D5FB2753D2075B106C8CAF /* SnapKit */ = {
+		6D06D8B40BCBBECD2F86B3C3DB0C6CC4 /* Pods-KayakFirst Ergometer E2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 550651A1BA431880C7339E56B57EFE57 /* Build configuration list for PBXNativeTarget "SnapKit" */;
+			buildConfigurationList = A1480E574F1F4C5236ABFFDC921B1B98 /* Build configuration list for PBXNativeTarget "Pods-KayakFirst Ergometer E2" */;
 			buildPhases = (
-				8AEBA2DF2CC239A2B51DD4B5A7EEA034 /* Sources */,
-				503F7DBE541BA76E326B7F7735F93B17 /* Frameworks */,
-				D7166253337929F98A68BFFE4617DF91 /* Headers */,
+				4A624F61C1B65E035B21877B7FDB844A /* Sources */,
+				DC91A041C90A17FF19B6B132595D67DA /* Frameworks */,
+				9BB5F868E6F54E3FB8D909D48CA86113 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7161A753F8401469D5B922F4FD50EC55 /* PBXTargetDependency */,
+				78548E5A8755EFD3B667EB883321E552 /* PBXTargetDependency */,
+				1C9517F6769AEEF726265B26BFF75D15 /* PBXTargetDependency */,
+				4EC683201A2CB99CC7ABA7DE04F29F71 /* PBXTargetDependency */,
 			);
-			name = SnapKit;
-			productName = SnapKit;
-			productReference = 4AAC0A3D9271389AAC3C8DA9F098C8AA /* SnapKit.framework */;
+			name = "Pods-KayakFirst Ergometer E2";
+			productName = "Pods-KayakFirst Ergometer E2";
+			productReference = CA89FFAA44775EFEB68935AD8E959BFF /* Pods_KayakFirst_Ergometer_E2.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -609,14 +688,15 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = B1DB0BAAE9B845D983C1789535D57686 /* Products */;
+			productRefGroup = 0B1E110C4BFFE5CD1DCC0B7A97FF5064 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				184A1650DC0B648BD756068E60BF2C59 /* DatePickerDialog */,
 				4DC059E04CBA98AEDDB5C34E02D551E9 /* IQKeyboardManagerSwift */,
 				20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */,
-				1C56753D4A8ABA2518E263027C7A4D2A /* Pods-KayakFirst Ergometer E2 */,
-				6D11E61937D5FB2753D2075B106C8CAF /* SnapKit */,
+				6D06D8B40BCBBECD2F86B3C3DB0C6CC4 /* Pods-KayakFirst Ergometer E2 */,
+				0EB8616D9B2EE3566C9779286E47F6F5 /* SnapKit */,
 			);
 		};
 /* End PBXProject section */
@@ -633,51 +713,60 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		43E247EA194B52D1FC535C937FCFCB53 /* Sources */ = {
+		1D432F1231D861C3C85333A043376EAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54F89D09F8185DC95C2B0D2276E20649 /* Pods-KayakFirst Ergometer E2-dummy.m in Sources */,
+				DE45DAEE660ADE5C146EE7CF7259F35A /* DatePickerDialog-dummy.m in Sources */,
+				03A95EB83E0A8E10F7E0B4DB551D5200 /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8AEBA2DF2CC239A2B51DD4B5A7EEA034 /* Sources */ = {
+		2FDFCBD55F9E98F455C5B36CFA33409C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C4D30CC55E67E67B9C2505E1D8681A /* Constraint.swift in Sources */,
-				3BF82BF55E1A7239197D939FBE9D4914 /* ConstraintAttributes.swift in Sources */,
-				A489BF21251F182954DDB158A44C3A5E /* ConstraintConfig.swift in Sources */,
-				6F19F6CC9427A768D7EBEDF30268C249 /* ConstraintConstantTarget.swift in Sources */,
-				249BDE84BB4377A93365020CD2A26E5E /* ConstraintDescription.swift in Sources */,
-				0F1AB05F96133448C56FF56EB09397FA /* ConstraintDSL.swift in Sources */,
-				1D864DF83D74991F630FBFAB13D467B3 /* ConstraintInsets.swift in Sources */,
-				5EE4C7927A27C1D677C134F52317FB30 /* ConstraintInsetTarget.swift in Sources */,
-				9F3063B6ADD6AAC23EF7FA16AED60683 /* ConstraintItem.swift in Sources */,
-				EB961A9C2DC222AF2E7C5F1EC9B16AED /* ConstraintLayoutGuide+Extensions.swift in Sources */,
-				6BF162BAB4B64C6CFE976CA98BE89FEA /* ConstraintLayoutGuide.swift in Sources */,
-				3D0E3F0D9814489CA9FCEF4F28E92C7E /* ConstraintLayoutGuideDSL.swift in Sources */,
-				F502C2F46C1A68165E9C8A8B6BA888B9 /* ConstraintLayoutSupport.swift in Sources */,
-				C41E8C0AF82A89E5002D2F0EB8130721 /* ConstraintLayoutSupportDSL.swift in Sources */,
-				C229B268A587C8274AD2E34AADE560A2 /* ConstraintMaker.swift in Sources */,
-				1334B83ADBA1DBEF4D03B7527DE1FD15 /* ConstraintMakerEditable.swift in Sources */,
-				2E35E6A893A8EB613B253B19E6A2C8D4 /* ConstraintMakerExtendable.swift in Sources */,
-				BFA5C634010461B82A3AF7C25898DCA4 /* ConstraintMakerFinalizable.swift in Sources */,
-				513E2B4514E1E4E24ABEECEBE5A412AA /* ConstraintMakerPriortizable.swift in Sources */,
-				B0636AF6FC09FDA321E259FC0447034E /* ConstraintMakerRelatable.swift in Sources */,
-				3D0FDB5444604D5D858282E7A90020CA /* ConstraintMultiplierTarget.swift in Sources */,
-				4207E0D99AB0BF9C52532CCC3191959F /* ConstraintOffsetTarget.swift in Sources */,
-				EA265BDD7C11AE96427D9A435A802603 /* ConstraintPriorityTarget.swift in Sources */,
-				0695F5AA185DF67458D30169B51E23F7 /* ConstraintRelatableTarget.swift in Sources */,
-				EEB7E8FF701544CA8A4D606F909B2FC1 /* ConstraintRelation.swift in Sources */,
-				7C6BA616474A9F685C1F0B7B6C66BBAF /* ConstraintView+Extensions.swift in Sources */,
-				FFD4D80231B99CF9B0C64E75FF6EC0B5 /* ConstraintView.swift in Sources */,
-				643E5E15AE467FD87D05594679C88B7D /* ConstraintViewDSL.swift in Sources */,
-				F60FA12FBEF8067819F660C6E9849EB9 /* Debugging.swift in Sources */,
-				73F93E565E7F6E7E383175E67B24E931 /* LayoutConstraint.swift in Sources */,
-				9DB74ADEAD056F2133400C1009012333 /* LayoutConstraintItem.swift in Sources */,
-				AB327533C4486C3576F34418FDB08A47 /* SnapKit-dummy.m in Sources */,
-				85DD3F3B300A9D2B25189B199EF5BE71 /* UILayoutSupport+Extensions.swift in Sources */,
+				D5ABB7E450CDF462B9251EAAE3EACC49 /* Constraint.swift in Sources */,
+				61F04F97CD48F1C201D904F4A5A4999F /* ConstraintAttributes.swift in Sources */,
+				85287A3BF02AD0C279FCBA19ABD8D4DE /* ConstraintConfig.swift in Sources */,
+				A2B444C5C18149ED81FF878602845CA0 /* ConstraintConstantTarget.swift in Sources */,
+				BD1A3BD0CB991E16BD8A008BD1DD7688 /* ConstraintDescription.swift in Sources */,
+				94F113A611F4D42CB9E59BCCB11FCC8A /* ConstraintDSL.swift in Sources */,
+				E681D4715A03B14E273C740E5532B742 /* ConstraintInsets.swift in Sources */,
+				82E66D79D8EA4FF152A007A4ACB32599 /* ConstraintInsetTarget.swift in Sources */,
+				D1DEF5864371967673B4D264BECD8F46 /* ConstraintItem.swift in Sources */,
+				A2F829EAA2B2A04EA331BE85E7E79012 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
+				772590C3D1D832CC107F9D062F155BD1 /* ConstraintLayoutGuide.swift in Sources */,
+				8B7DE669F61AA1F898B745CEBF857C83 /* ConstraintLayoutGuideDSL.swift in Sources */,
+				53343C8D9965C70B4C19264F14A68CFE /* ConstraintLayoutSupport.swift in Sources */,
+				428AFC724875E93E5122ACB4DB6F77B7 /* ConstraintLayoutSupportDSL.swift in Sources */,
+				6DEDEC6B7CF1EC519F8108A050232479 /* ConstraintMaker.swift in Sources */,
+				2FB703986B176A7B7917E67B81B4700C /* ConstraintMakerEditable.swift in Sources */,
+				D043F906946B6832DE006D4E77E2295C /* ConstraintMakerExtendable.swift in Sources */,
+				8ABE557A34CF7FCC1C8550AD49506C32 /* ConstraintMakerFinalizable.swift in Sources */,
+				1098DFF28594D7C5D4C792DD82C66DAC /* ConstraintMakerPriortizable.swift in Sources */,
+				0E55543BE107CE0385863BBB1E19921F /* ConstraintMakerRelatable.swift in Sources */,
+				B030528A9E45DFA77A0108217B2AF961 /* ConstraintMultiplierTarget.swift in Sources */,
+				F9655EF5EDA968EC6F8BBBD44DA75F04 /* ConstraintOffsetTarget.swift in Sources */,
+				11F63E28E70C67756C31847D12DA886D /* ConstraintPriorityTarget.swift in Sources */,
+				D01C8F4432C4DFD3CD1D41EBA526C969 /* ConstraintRelatableTarget.swift in Sources */,
+				511863F7EDF3CED02391B62F2D8ADB87 /* ConstraintRelation.swift in Sources */,
+				1C5DA14E64E6796607BBB64022DED119 /* ConstraintView+Extensions.swift in Sources */,
+				3A6F16B280C3F36963571A4FA85B964F /* ConstraintView.swift in Sources */,
+				A04E1E480DEA4FD5ACDF4F11162558A8 /* ConstraintViewDSL.swift in Sources */,
+				24B4024DC9FCCF0CDE869D55AA69FC8F /* Debugging.swift in Sources */,
+				4F98D1CD12ACEAA4D788CECA401BD1A9 /* LayoutConstraint.swift in Sources */,
+				773000357BC0A281416E6F137CD93F69 /* LayoutConstraintItem.swift in Sources */,
+				4D26EB171D823C09499F45E162A5AD2C /* SnapKit-dummy.m in Sources */,
+				574A9D438AE77306270E7F27841C7836 /* UILayoutSupport+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A624F61C1B65E035B21877B7FDB844A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0682F6CA015BF655B780062ACF1C198 /* Pods-KayakFirst Ergometer E2-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,30 +823,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0852C640293F2A86362322E815FFC81F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			target = 6D11E61937D5FB2753D2075B106C8CAF /* SnapKit */;
-			targetProxy = 132FF92D84DE9E13FA168F07110BD3D0 /* PBXContainerItemProxy */;
-		};
-		66E9EFAA753D927D6ADB541FEDCF69A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IQKeyboardManagerSwift;
-			target = 4DC059E04CBA98AEDDB5C34E02D551E9 /* IQKeyboardManagerSwift */;
-			targetProxy = F3FB8EC43E71CCA2C1639F61E20C59FE /* PBXContainerItemProxy */;
-		};
-		82CC02560842FFDFE0CEBFF1F36FB16F /* PBXTargetDependency */ = {
+		1C9517F6769AEEF726265B26BFF75D15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = M13Checkbox;
 			target = 20A9DD9ABBF08BC57372A26C35327BF1 /* M13Checkbox */;
-			targetProxy = 25AE41C5FF18A4A9FE22B516375F55EB /* PBXContainerItemProxy */;
+			targetProxy = 08ACA139CBE66820744404CEFA8CE02C /* PBXContainerItemProxy */;
+		};
+		4EC683201A2CB99CC7ABA7DE04F29F71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 0EB8616D9B2EE3566C9779286E47F6F5 /* SnapKit */;
+			targetProxy = 524A662FED1100034657885A81C3F4F8 /* PBXContainerItemProxy */;
+		};
+		7161A753F8401469D5B922F4FD50EC55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DatePickerDialog;
+			target = 184A1650DC0B648BD756068E60BF2C59 /* DatePickerDialog */;
+			targetProxy = 520737195F51A56FB0799D5E3D38CC33 /* PBXContainerItemProxy */;
+		};
+		78548E5A8755EFD3B667EB883321E552 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManagerSwift;
+			target = 4DC059E04CBA98AEDDB5C34E02D551E9 /* IQKeyboardManagerSwift */;
+			targetProxy = 9F494EA89BA8BF2E460F71B2CAD4CA67 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0241C69DB86CFE9C95F781C0F7848B9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD6F55C6BE343372610BC70BB20A403F /* M13Checkbox.xcconfig */;
+			baseConfigurationReference = 7057C1B69713867030422E3844E4F5CF /* M13Checkbox.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -788,9 +883,9 @@
 			};
 			name = Debug;
 		};
-		15F5FD8BC7B9174CE5D1A9EF75EE1481 /* Debug */ = {
+		0900618CB8549C8FB891EB190760ADE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1315FC0AA06AD5F56851728861E9260E /* SnapKit.xcconfig */;
+			baseConfigurationReference = C126DB7DF13B39E3725F9BF529E925BB /* Pods-KayakFirst Ergometer E2.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -803,18 +898,21 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-KayakFirst Ergometer E2/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SnapKit;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_KayakFirst_Ergometer_E2;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -865,7 +963,137 @@
 			};
 			name = Debug;
 		};
-		7ADE405F63074D658058815B1DC495EB /* Release */ = {
+		5BBB52D298C5783EEA30E519DE97BAC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7D2ED5009F181FB61DA42BCD1C9777D /* DatePickerDialog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DatePickerDialog/DatePickerDialog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DatePickerDialog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DatePickerDialog/DatePickerDialog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = DatePickerDialog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7A83D5DA459FEF013B8BC8813FAC37DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7D2ED5009F181FB61DA42BCD1C9777D /* DatePickerDialog.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DatePickerDialog/DatePickerDialog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DatePickerDialog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DatePickerDialog/DatePickerDialog.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = DatePickerDialog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8B057773120D53DBB692700549D84EAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0525D0EF92CE14AB54BF1378433BD50D /* IQKeyboardManagerSwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A2ED5D07909FC9971ABEC4BB630EC6C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0525D0EF92CE14AB54BF1378433BD50D /* IQKeyboardManagerSwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A5D9BFAC3B7ABDB6AA9E512C86FE89FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB5BF2CF5FB45C289A202DB8BB3781E1 /* Pods-KayakFirst Ergometer E2.release.xcconfig */;
 			buildSettings = {
@@ -900,77 +1128,9 @@
 			};
 			name = Release;
 		};
-		8546D00CC750A6B66857867E4A297490 /* Debug */ = {
+		B0B5AF8119F209665A2C72A6E5C30A32 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C126DB7DF13B39E3725F9BF529E925BB /* Pods-KayakFirst Ergometer E2.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-KayakFirst Ergometer E2/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_KayakFirst_Ergometer_E2;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8B057773120D53DBB692700549D84EAD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70191A935CB43706D9DE3CF7F05632A7 /* IQKeyboardManagerSwift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = IQKeyboardManagerSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A1F01F8B17795B6F6D1A3A9858DDCAC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1315FC0AA06AD5F56851728861E9260E /* SnapKit.xcconfig */;
+			baseConfigurationReference = 749A6307D23343FCF5F294AF4B0E34E9 /* SnapKit.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -999,39 +1159,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		A2ED5D07909FC9971ABEC4BB630EC6C8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70191A935CB43706D9DE3CF7F05632A7 /* IQKeyboardManagerSwift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = IQKeyboardManagerSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1075,7 +1202,7 @@
 		};
 		B99F646D4B2652928D787694A7A909CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD6F55C6BE343372610BC70BB20A403F /* M13Checkbox.xcconfig */;
+			baseConfigurationReference = 7057C1B69713867030422E3844E4F5CF /* M13Checkbox.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1105,6 +1232,39 @@
 			};
 			name = Release;
 		};
+		BD55B3E35798ABACE7CA6C7BABEC5A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 749A6307D23343FCF5F294AF4B0E34E9 /* SnapKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1113,6 +1273,15 @@
 			buildConfigurations = (
 				0241C69DB86CFE9C95F781C0F7848B9E /* Debug */,
 				B99F646D4B2652928D787694A7A909CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D41EBC8DE851B1DF0CE5D4E5460628A /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD55B3E35798ABACE7CA6C7BABEC5A8F /* Debug */,
+				B0B5AF8119F209665A2C72A6E5C30A32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1126,29 +1295,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		520590958E7E4F599A611F442911E801 /* Build configuration list for PBXNativeTarget "Pods-KayakFirst Ergometer E2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8546D00CC750A6B66857867E4A297490 /* Debug */,
-				7ADE405F63074D658058815B1DC495EB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		550651A1BA431880C7339E56B57EFE57 /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				15F5FD8BC7B9174CE5D1A9EF75EE1481 /* Debug */,
-				A1F01F8B17795B6F6D1A3A9858DDCAC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		75B8C8837854098D8D911F8A3335DDAC /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2ED5D07909FC9971ABEC4BB630EC6C8 /* Debug */,
 				8B057773120D53DBB692700549D84EAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1480E574F1F4C5236ABFFDC921B1B98 /* Build configuration list for PBXNativeTarget "Pods-KayakFirst Ergometer E2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0900618CB8549C8FB891EB190760ADE3 /* Debug */,
+				A5D9BFAC3B7ABDB6AA9E512C86FE89FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD5CF02785F10F0CDA34F90832C66CFA /* Build configuration list for PBXNativeTarget "DatePickerDialog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BBB52D298C5783EEA30E519DE97BAC5 /* Debug */,
+				7A83D5DA459FEF013B8BC8813FAC37DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

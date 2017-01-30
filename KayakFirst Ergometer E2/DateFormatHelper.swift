@@ -14,6 +14,10 @@ enum TimeEnum: String {
     case timeFormatThree = "%02d:%02d:%02d"
 }
 
+func currentTimeMillis() -> TimeInterval {
+    return NSDate().timeIntervalSince1970 * 1000
+}
+
 class DateFormatHelper {
     
     //MARK: Properties
@@ -62,6 +66,10 @@ class DateFormatHelper {
     class func getDate(dateFormat: String, timeIntervallSince1970: TimeInterval) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
-        return formatter.string(from: Date(timeIntervalSince1970: timeIntervallSince1970))
+        return formatter.string(from: Date(timeIntervalSince1970: (timeIntervallSince1970 / 1000)))
+    }
+    
+    class func getMilliSeconds(date: Date) -> TimeInterval {
+        return date.timeIntervalSince1970 * 1000
     }
 }

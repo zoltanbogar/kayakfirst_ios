@@ -8,10 +8,15 @@
 
 import UIKit
 import M13Checkbox
+import DatePickerDialog
 
 class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
     
+    //MARK: constants
     private let viewBottomHeight: CGFloat = 100
+    
+    //MARK: properties
+    private var birthDate: TimeInterval?
     
     private let stackView = UIStackView()
     
@@ -251,7 +256,24 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
     }()
     
     private func clickBithDate() {
-        log("REGISTER", "clickBirthDate")
+        DatePickerDialog().show(
+            title: try! getString("user_birth_date"),
+            doneButtonTitle: try! getString("other_ok"),
+            cancelButtonTitle: try! getString("other_cancel"),
+            datePickerMode: .date) { date in
+                if let selectedDate = date {
+                    let selectedBirthDate = DateFormatHelper.getMilliSeconds(date: selectedDate)
+                    
+                    if selectedBirthDate >= currentTimeMillis() {
+                        self.tfBirthDate.error = try! getString("error_birth_date")
+                    } else {
+                        self.birthDate = selectedBirthDate
+                        
+                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: try! getString("date_format"), timeIntervallSince1970: self.birthDate!)
+                        self.tfBirthDate.error = nil
+                    }
+                }
+        }
     }
     
     private func clickCountry() {

@@ -5,4 +5,5 @@ target 'KayakFirst Ergometer E2' do
 	pod 'SnapKit', '~> 3.1.2'
     pod 'IQKeyboardManagerSwift'
     pod 'M13Checkbox'
+    pod 'DatePickerDialog'
 end

@@ -78,6 +78,15 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
     }
     
+    var text: String? {
+        get {
+            return valueTextField.text
+        }
+        set {
+            valueTextField.text = newValue
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
