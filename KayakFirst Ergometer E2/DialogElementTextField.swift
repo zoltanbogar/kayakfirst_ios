@@ -38,6 +38,21 @@ class DialogElementTextField: UIView {
         }
     }
     
+    var error: String? {
+        get {
+            return errorLabel.text
+        }
+        
+        set {
+            if let value = newValue {
+                errorLabel.isHidden = false
+                errorLabel.text = value
+            } else {
+                errorLabel.isHidden = true
+            }
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -47,6 +62,7 @@ class DialogElementTextField: UIView {
         
         addSubview(titleLabel)
         addSubview(valueTextField)
+        addSubview(errorLabel)
         
         titleLabel.snp.makeConstraints{ make in
             make.left.equalTo(titleLabel.superview!)
@@ -59,19 +75,39 @@ class DialogElementTextField: UIView {
             make.top.equalTo(titleLabel.snp.bottom)
             make.width.equalTo(valueTextField.superview!)
         }
+        
+        errorLabel.snp.makeConstraints { make in
+            make.left.equalTo(errorLabel.superview!)
+            make.top.equalTo(valueTextField.snp.bottom)
+            make.width.equalTo(errorLabel.superview!)
+        }
     }
     
-    lazy var titleLabel: UILabel! = {
+    private lazy var titleLabel: UILabel! = {
         let view = AppUILabel()
         return view
     }()
     
-    lazy var valueTextField: UITextField! = {
+    private lazy var valueTextField: UITextField! = {
         let view = UITextField()
         view.setBottomBorder(Colors.colorAccent)
         view.textColor = Colors.colorAccent
         view.tintColor = Colors.colorAccent
+        view.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         return view
     }()
+    
+    private lazy var errorLabel: UILabel! = {
+        let label = UILabel()
+        label.textColor = UIColor.red
+        label.textAlignment = .right
+        label.isHidden = true
+        
+        return label
+    }()
+    
+    @objc private func textFieldDidChange() {
+        self.error = nil
+    }
 }
