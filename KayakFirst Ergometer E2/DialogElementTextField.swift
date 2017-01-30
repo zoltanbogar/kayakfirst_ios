@@ -20,6 +20,24 @@ class DialogElementTextField: UIView {
         }
     }
     
+    var keyBoardType: UIKeyboardType? {
+        get {
+            return valueTextField.keyboardType
+        }
+        set {
+            valueTextField.keyboardType = newValue!
+        }
+    }
+    
+    var secureTextEntry: Bool {
+        get {
+            return valueTextField.isSecureTextEntry
+        }
+        set {
+            valueTextField.isSecureTextEntry = newValue
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }

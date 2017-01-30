@@ -86,6 +86,7 @@ class LoginViewController: KayakScrollViewController {
     private lazy var tfPassword: DialogElementTextField! = {
         let view = DialogElementTextField(frame: CGRect.zero)
         view.title = try! getString("user_password")
+        view.secureTextEntry = true
         
         return view
     }()
