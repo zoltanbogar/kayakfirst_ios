@@ -8,6 +8,7 @@
 
 import UIKit
 
+let margin05: CGFloat = 10.0
 let margin: CGFloat = 20.0
 let margin2: CGFloat = 40.0
 let buttonHeight: CGFloat = 40.0

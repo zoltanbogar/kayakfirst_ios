@@ -92,7 +92,7 @@ class LoginViewController: KayakScrollViewController {
     }()
     
     private lazy var btnLogin: UIButton! = {
-        let button = getKayakButton(width: 0, height: buttonHeight, text: try! getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, height: buttonHeight, text: try! getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
         
         return button
@@ -108,7 +108,7 @@ class LoginViewController: KayakScrollViewController {
     }()
     
     private lazy var btnQuickStart: UIButton! = {
-        let button = getKayakButton(width: 0, height: buttonHeight, text: try! getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorPrimaryDark)
+        let button = AppUIButton(width: 0, height: buttonHeight, text: try! getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorPrimaryDark)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button

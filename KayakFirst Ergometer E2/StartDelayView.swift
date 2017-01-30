@@ -44,7 +44,7 @@ class StartDelayView: CustomUi {
     }
     
     private func initBtnQuickStart(view: UIStackView) {
-        let btnQuickStart = getKayakButton(
+        let btnQuickStart = AppUIButton(
             width: view.frame.width,
             height: 100,
             text: try! getString("delay_quick_start"),

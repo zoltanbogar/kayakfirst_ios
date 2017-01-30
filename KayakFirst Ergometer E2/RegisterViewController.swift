@@ -95,19 +95,19 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
         checkBox.snp.makeConstraints{ make in
             make.left.equalTo(viewBottom)
             make.top.equalTo(viewBottom)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
         
         viewBottom.addSubview(labelAccept)
         labelAccept.snp.makeConstraints { make in
-            make.left.equalTo(checkBox.snp.right)
+            make.left.equalTo(checkBox.snp.right).offset(margin05)
             make.centerY.equalTo(checkBox.snp.centerY)
         }
         
         viewBottom.addSubview(textFieldTermsCondition)
         textFieldTermsCondition.snp.makeConstraints { make in
-            make.left.equalTo(labelAccept.snp.right)
+            make.left.equalTo(labelAccept.snp.right).offset(margin05)
             make.bottom.equalTo(labelAccept.snp.bottom)
         }
         
@@ -116,7 +116,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
             make.width.equalTo(viewBottom.snp.width)
             make.left.equalTo(viewBottom.snp.left)
             make.height.equalTo(buttonHeight)
-            make.bottom.equalTo(viewBottom.snp.bottom)
+            make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
     }
     
@@ -242,9 +242,11 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
         return textField
     }()
     
-    private lazy var btnRegister: UIButton! = {
-        let button = getKayakButton(width: 0, height: 0, text: try! getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
-        
+    private lazy var btnRegister: AppUIButton! = {
+        let button = AppUIButton(width: 0, height: 0, text: try! getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        button.addTarget(self, action: #selector(clickRegister), for: .touchUpInside)
+        button.setDisabled(true)
+               
         return button
     }()
     
@@ -261,7 +263,12 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
     }
     
     @objc private func checkBoxTarget() {
-        log("REGISTER", "checkBox: \(checkBox.checkState)")
+        let isChecked = checkBox.checkState == M13Checkbox.CheckState.checked
+        btnRegister.setDisabled(!isChecked)
+    }
+    
+    @objc private func clickRegister() {
+        log("REGISTER", "clickRegister")
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
