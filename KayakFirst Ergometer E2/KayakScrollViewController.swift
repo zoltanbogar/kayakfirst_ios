@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KayakScrollViewController: UIViewController {
+class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
     
     private let scrollContainer = UIView()
     private let scrollView = UIScrollView()
@@ -16,6 +16,9 @@ class KayakScrollViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
+        
         view.addSubview(scrollContainer)
         scrollContainer.snp.makeConstraints { make in
             make.top.left.right.bottom.equalTo(view)
@@ -38,5 +41,11 @@ class KayakScrollViewController: UIViewController {
         scrollView.contentSize = containerView.bounds.size
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let verticalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = Colors.colorWhite
+        
+        let horizontalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 2)] as! UIImageView)
+        horizontalIndicator.backgroundColor = Colors.colorWhite
+    }
 }

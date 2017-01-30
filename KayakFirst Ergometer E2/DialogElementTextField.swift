@@ -70,6 +70,7 @@ class DialogElementTextField: UIView {
         let view = UITextField()
         view.setBottomBorder(Colors.colorAccent)
         view.textColor = Colors.colorAccent
+        view.tintColor = Colors.colorAccent
         
         return view
     }()

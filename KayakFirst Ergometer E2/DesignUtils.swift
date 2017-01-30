@@ -33,6 +33,7 @@ func getKayakButton(width: CGFloat, height: CGFloat, text: String, backgroundCol
     button.layer.cornerRadius = 5
     button.backgroundColor = backgroundColor
     button.setTitleColor(textColor, for: .normal)
+    button.setTitleColor(Colors.colorInactive, for: .highlighted)
     button.setTitle(text.uppercased(), for: .normal)
     
     return button
