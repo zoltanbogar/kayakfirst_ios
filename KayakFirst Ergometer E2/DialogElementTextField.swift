@@ -122,7 +122,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         return view
     }()
     
-    private lazy var valueTextField: UITextField! = {
+    lazy var valueTextField: UITextField! = {
         let view = UITextField()
         view.setBottomBorder(colorNormal)
         view.textColor = Colors.colorAccent

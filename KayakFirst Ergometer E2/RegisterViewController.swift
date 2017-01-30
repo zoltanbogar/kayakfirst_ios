@@ -10,13 +10,17 @@ import UIKit
 import M13Checkbox
 import DatePickerDialog
 
-class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
+class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = 100
+    private let genderOptions = [try! getString("user_gender_female"), try! getString("user_gender_male")]
+    private let genderFemale = "female"
+    private let genderMale = "male"
     
     //MARK: properties
     private var birthDate: TimeInterval?
+    private var gender: String?
     
     private let stackView = UIStackView()
     
@@ -123,6 +127,10 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
             make.height.equalTo(buttonHeight)
             make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
+        
+        let genderPickerView = UIPickerView()
+        genderPickerView.delegate = self
+        tfGender.valueTextField.inputView = genderPickerView
     }
     
     private lazy var tfFirstName: DialogElementTextField! = {
@@ -201,10 +209,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = try! getString("user_gender")
         textField.required = true
-        textField.isEditable = false
-        textField.clickCallback = {
-            self.clickGender()
-        }
+        textField.text = try! getString("user_spinner_choose")
         
         return textField
     }()
@@ -301,5 +306,31 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate {
             return true
         }
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return genderOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return genderOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedGender = genderOptions[row]
+        let genderFemaleLocalized = try! getString("user_gender_female")
+        
+        if selectedGender == genderFemaleLocalized {
+            gender = genderFemale
+        } else {
+            gender = genderMale
+        }
+        
+        tfGender.text = selectedGender
+    }
+    
     
 }
