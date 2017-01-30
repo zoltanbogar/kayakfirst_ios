@@ -11,7 +11,7 @@ import UIKit
 class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
     
     private let scrollContainer = UIView()
-    private let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
     let containerView = UIView()
     
     override func viewDidLoad() {

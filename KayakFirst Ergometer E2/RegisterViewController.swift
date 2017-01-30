@@ -17,6 +17,9 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     private let genderOptions = [try! getString("user_gender_female"), try! getString("user_gender_male")]
     private let genderFemale = "female"
     private let genderMale = "male"
+    private let minCharacterUserName = 2
+    private let minCharacterPassword = 4
+    private let minBodyWeight = 30
     
     //MARK: properties
     private var birthDate: TimeInterval?
@@ -283,21 +286,15 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         }
     }
     
-    private func clickCountry() {
-        log("REGISTER", "clickCountry")
-    }
-    
-    private func clickGender() {
-        log("REGISTER", "clickGender")
-    }
-    
     @objc private func checkBoxTarget() {
         let isChecked = checkBox.checkState == M13Checkbox.CheckState.checked
         btnRegister.setDisabled(!isChecked)
     }
     
     @objc private func clickRegister() {
-        log("REGISTER", "clickRegister")
+        if checkFields() {
+            log("REGISTER", "checkFieldsOk")
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -346,5 +343,53 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
             
             tfCountry.text = NSLocale.locales()[row].countryName
         }
+    }
+    
+    private func checkFields() -> Bool {
+        var isValid = true;
+        var viewToScroll: UIView? = nil
+        
+        let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
+        if userNameCharacters < minCharacterUserName {
+            tfUserName.error = try! getString("error_user_name")
+            isValid = false
+            viewToScroll = tfUserName
+        }
+        
+        let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
+        if passwordCharacters < minCharacterPassword {
+            tfPassword.error = try! getString("error_password")
+            isValid = false
+            viewToScroll = tfPassword
+        }
+        if !isValidEmail(email: tfEmail.text) {
+            tfEmail.error = try! getString("error_email")
+            isValid = false
+            viewToScroll = tfEmail
+        }
+        
+        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
+        if bodyWeight < minBodyWeight {
+            tfWeight.error = try! getString("error_weight")
+            isValid = false
+            viewToScroll = tfWeight
+        }
+        
+        let chooseText = try! getString("user_spinner_choose")
+        if tfCountry.text! == chooseText {
+            isValid = false
+            viewToScroll = tfCountry
+        }
+        
+        if tfGender.text! == chooseText {
+            isValid = false
+            viewToScroll = tfGender
+        }
+        
+        if let scroll = viewToScroll {
+            scrollView.scrollToView(view: scroll, animated: true)
+        }
+        
+        return isValid
     }
 }
