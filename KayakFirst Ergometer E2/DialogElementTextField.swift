@@ -53,6 +53,17 @@ class DialogElementTextField: UIView {
         }
     }
     
+    var required: Bool? {
+        get {
+            return false
+        }
+        set {
+            if let titleText = title {
+                title = titleText + " *"
+            }
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }

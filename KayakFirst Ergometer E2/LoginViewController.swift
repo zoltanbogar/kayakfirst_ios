@@ -157,7 +157,8 @@ class LoginViewController: KayakScrollViewController {
     @objc private func btnLoginClick() {
         log("LOGIN", "btnLoginClick")
         
-        tfPassword.error = "Apple"
+        let viewController = RegisterViewController()
+        self.present(viewController, animated: true, completion: nil)
     }
     
     @objc private func btnForgotPasswordClick() {
