@@ -27,4 +27,12 @@ extension NSLocale {
         return locales
     }
     
+    class func getCountryNameByCode(countryCode: String?) -> String {
+        if let code = countryCode {
+            return (Locale.current as NSLocale).displayName(forKey: .countryCode, value: code) ?? ""
+        } else {
+            return ""
+        }
+    }
+    
 }

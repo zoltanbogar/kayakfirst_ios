@@ -63,10 +63,13 @@ class DateFormatHelper {
         return getDate(dateFormat: format, timeIntervallSince1970: timeStamp1) == getDate(dateFormat: format, timeIntervallSince1970: timeStamp2)
     }
     
-    class func getDate(dateFormat: String, timeIntervallSince1970: TimeInterval) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = dateFormat
-        return formatter.string(from: Date(timeIntervalSince1970: (timeIntervallSince1970 / 1000)))
+    class func getDate(dateFormat: String, timeIntervallSince1970: TimeInterval?) -> String {
+        if let timeStamp = timeIntervallSince1970 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = dateFormat
+            return formatter.string(from: Date(timeIntervalSince1970: (timeStamp / 1000)))
+        }
+        return ""
     }
     
     class func getMilliSeconds(date: Date) -> TimeInterval {

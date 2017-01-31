@@ -14,18 +14,13 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = 100
-    private let genderOptions = [try! getString("user_gender_female"), try! getString("user_gender_male")]
-    private let genderFemale = "female"
-    private let genderMale = "male"
-    private let minCharacterUserName = 2
-    private let minCharacterPassword = 4
-    private let minBodyWeight = 30
     
     //MARK: properties
     private var birthDate: TimeInterval?
     private var gender: String?
     private var countryCode: String?
     
+    //MARK: views
     private let stackView = UIStackView()
     private let genderPickerView = UIPickerView()
     private let countryPickerView = UIPickerView()
@@ -279,7 +274,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
                     } else {
                         self.birthDate = selectedBirthDate
                         
-                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: try! getString("date_format"), timeIntervallSince1970: self.birthDate!)
+                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: try! getString("date_format"), timeIntervallSince1970: self.birthDate)
                         self.tfBirthDate.error = nil
                     }
                 }
@@ -294,6 +289,20 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     @objc private func clickRegister() {
         if checkFields() {
             log("REGISTER", "checkFieldsOk")
+            
+            let viewController = ProfileViewController()
+            viewController.user = User(
+                id: 0,
+                userName: tfUserName.text,
+                email: tfEmail.text,
+                firstName: tfFirstName.text,
+                lastName: tfLastName.text,
+                birthDate: birthDate,
+                bodyWeight: Double(tfWeight.text!),
+                country: countryCode,
+                gender: gender)
+            
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     
@@ -312,7 +321,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == genderPickerView {
-            return genderOptions.count
+            return User.genderOptions.count
         } else {
             return NSLocale.locales().count
         }
@@ -320,7 +329,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == genderPickerView {
-            return genderOptions[row]
+            return User.genderOptions[row]
         } else {
             return NSLocale.locales()[row].countryName
         }
@@ -328,13 +337,13 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == genderPickerView {
-            let selectedGender = genderOptions[row]
+            let selectedGender = User.genderOptions[row]
             let genderFemaleLocalized = try! getString("user_gender_female")
             
             if selectedGender == genderFemaleLocalized {
-                gender = genderFemale
+                gender = User.genderFemale
             } else {
-                gender = genderMale
+                gender = User.genderMale
             }
             
             tfGender.text = selectedGender
@@ -350,14 +359,14 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         var viewToScroll: UIView? = nil
         
         let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
-        if userNameCharacters < minCharacterUserName {
+        if userNameCharacters < User.minCharacterUserName {
             tfUserName.error = try! getString("error_user_name")
             isValid = false
             viewToScroll = tfUserName
         }
         
         let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
-        if passwordCharacters < minCharacterPassword {
+        if passwordCharacters < User.minCharacterPassword {
             tfPassword.error = try! getString("error_password")
             isValid = false
             viewToScroll = tfPassword
@@ -369,7 +378,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         }
         
         let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < minBodyWeight {
+        if bodyWeight < User.minBodyWeight {
             tfWeight.error = try! getString("error_weight")
             isValid = false
             viewToScroll = tfWeight

@@ -21,6 +21,10 @@ class BaseDialog {
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController!, animated: true, completion: nil)
     }
     
+    func show(viewController: UIViewController) {
+        viewController.present(alertController!, animated: true, completion: nil)
+    }
+    
     func dismiss() {
         alertController?.dismiss(animated: true, completion: nil)
     }

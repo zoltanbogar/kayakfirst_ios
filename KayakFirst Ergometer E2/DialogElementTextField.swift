@@ -87,6 +87,20 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
     }
     
+    var active: Bool {
+        get {
+            return true
+        }
+        set {
+            if newValue {
+                valueTextField.alpha = 1
+            } else {
+                valueTextField.alpha = 0.5
+            }
+            isEditable = newValue
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
