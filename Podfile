@@ -6,4 +6,6 @@ target 'KayakFirst Ergometer E2' do
     pod 'IQKeyboardManagerSwift'
     pod 'M13Checkbox'
     pod 'DatePickerDialog'
+    pod 'Alamofire-Synchronous', '~> 4.0'
+    pod 'SwiftyJSON'
 end

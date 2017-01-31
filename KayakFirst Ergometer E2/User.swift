@@ -10,6 +10,11 @@ import UIKit
 
 struct User {
     
+    //MARK: preferences
+    static let keyUserToken = "user_token"
+    static let keyRefreshToken = "refresh_token"
+    
+    //MARK: constants
     static let genderOptions = [getString("user_gender_female"), getString("user_gender_male")]
     static let genderFemale = "female"
     static let genderMale = "male"

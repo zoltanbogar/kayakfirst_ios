@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8F67504D9FFBD670FBDFF1A07D234C67"
-               BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
-               BlueprintName = "Pods-KayakFirst Ergometer E2"
+               BlueprintIdentifier = "EBE460D3E3A3CF1AFBBDFA387940E5E7"
+               BuildableName = "Alamofire_Synchronous.framework"
+               BlueprintName = "Alamofire-Synchronous"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8F67504D9FFBD670FBDFF1A07D234C67"
-            BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
-            BlueprintName = "Pods-KayakFirst Ergometer E2"
+            BlueprintIdentifier = "EBE460D3E3A3CF1AFBBDFA387940E5E7"
+            BuildableName = "Alamofire_Synchronous.framework"
+            BlueprintName = "Alamofire-Synchronous"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

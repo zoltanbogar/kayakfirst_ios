@@ -14,7 +14,7 @@ private let logDateFormat = "HH.mm.ss.SSS"
 
 func log (_ key: String, _ message: String) {
     if logNeeded {
-        let date = DateFormatHelper.getDate(dateFormat: logDateFormat, timeIntervallSince1970: Date().timeIntervalSince1970)
+        let date = DateFormatHelper.getDate(dateFormat: logDateFormat, timeIntervallSince1970: currentTimeMillis())
         print("\(date) - \(key): \(message)")
     }
 }

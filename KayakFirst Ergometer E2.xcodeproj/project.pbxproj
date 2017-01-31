@@ -20,6 +20,8 @@
 		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		06703F711E24025A0028135A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06703F701E24025A0028135A /* Colors.swift */; };
+		0677FEFB1E41397B00A9B977 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFA1E41397B00A9B977 /* AppService.swift */; };
+		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433EB1E283F5A00CE6398 /* EmailCheck.swift */; };
@@ -83,6 +85,8 @@
 		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		06703F701E24025A0028135A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0677FEFA1E41397B00A9B977 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433EB1E283F5A00CE6398 /* EmailCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		0677FEF91E41396300A9B977 /* server */ = {
+			isa = PBXGroup;
+			children = (
+				0677FEFA1E41397B00A9B977 /* AppService.swift */,
+				0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */,
+			);
+			name = server;
+			sourceTree = "<group>";
+		};
 		069433E61E28361B00CE6398 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +277,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				0677FEF91E41396300A9B977 /* server */,
 				060C8B751E4068220057DD61 /* domain */,
 				0602D3AA1E31568F001E382E /* extensions */,
 				06BF94F01E2A30E20010C8A7 /* view_controller */,
@@ -493,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
+				0677FEFB1E41397B00A9B977 /* AppService.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
@@ -527,6 +542,7 @@
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
+				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
