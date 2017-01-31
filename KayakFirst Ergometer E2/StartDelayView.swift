@@ -25,7 +25,7 @@ class StartDelayView: CustomUi {
     
     private func initTitleLabel(view: UIStackView) {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
-        titleLabel.text = try!getString("delay_start_seconds")
+        titleLabel.text = getString("delay_start_seconds")
         titleLabel.textColor = Colors.colorWhite
         titleLabel.textAlignment = .center
         titleLabel.font = titleLabel.font.withSize(50)
@@ -47,7 +47,7 @@ class StartDelayView: CustomUi {
         let btnQuickStart = AppUIButton(
             width: view.frame.width,
             height: 100,
-            text: try! getString("delay_quick_start"),
+            text: getString("delay_quick_start"),
             backgroundColor: Colors.colorWhite,
             textColor: Colors.colorAccent)
             

@@ -19,7 +19,7 @@ class DashBoardElement_Actual200: DashBoardelementTime {
     }
     
     override internal func getTitle() -> String {
-        return try! getString("dashboard_title_actual_200")
+        return getString("dashboard_title_actual_200")
     }
     
 }

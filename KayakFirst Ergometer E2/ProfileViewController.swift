@@ -104,7 +104,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfFirstName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_first_name")
+        textField.title = getString("user_first_name")
         textField.active = false
         textField.text = self.user?.firstName
         
@@ -113,7 +113,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfLastName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_last_name")
+        textField.title = getString("user_last_name")
         textField.active = false
         textField.text = self.user?.lastName
         
@@ -122,17 +122,17 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfBirthDate: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_birth_date")
+        textField.title = getString("user_birth_date")
         textField.isEditable = false
         textField.active = false
-        textField.text = DateFormatHelper.getDate(dateFormat: try! getString("date_format"), timeIntervallSince1970: self.user?.birthDate)
+        textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.user?.birthDate)
         
         return textField
     }()
     
     private lazy var tfUserName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_name")
+        textField.title = getString("user_name")
         textField.required = true
         textField.active = false
         textField.text = self.user?.userName
@@ -142,7 +142,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfPassword: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_password")
+        textField.title = getString("user_password")
         textField.secureTextEntry = true
         textField.required = true
         textField.isEditable = false
@@ -155,7 +155,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfEmail: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_email")
+        textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
         textField.required = true
         textField.active = false
@@ -166,7 +166,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfWeight: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_weight")
+        textField.title = getString("user_weight")
         textField.keyBoardType = .numberPad
         textField.required = true
         textField.text = "\(Int((self.user?.bodyWeight)!))"
@@ -176,7 +176,7 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfCountry: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_country")
+        textField.title = getString("user_country")
         textField.required = true
         textField.active = false
         textField.text = NSLocale.getCountryNameByCode(countryCode: self.user?.country)
@@ -186,15 +186,15 @@ class ProfileViewController: KayakScrollViewController {
     
     private lazy var tfGender: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_gender")
+        textField.title = getString("user_gender")
         textField.required = true
         textField.active = false
         
         if let gender = self.user?.gender {
             if gender == User.genderFemale {
-                textField.text = try! getString("user_gender_female")
+                textField.text = getString("user_gender_female")
             } else {
-                textField.text = try! getString("user_gender_male")
+                textField.text = getString("user_gender_male")
             }
         }
         
@@ -202,7 +202,7 @@ class ProfileViewController: KayakScrollViewController {
     }()
     
     private lazy var btnLogout: AppUIButton! = {
-        let button = AppUIButton(width: 0, height: 0, text: try! getString("user_log_out"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
+        let button = AppUIButton(width: 0, height: 0, text: getString("user_log_out"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
         button.addTarget(self, action: #selector(clickLogout), for: .touchUpInside)
         
         return button

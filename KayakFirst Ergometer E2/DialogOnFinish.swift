@@ -11,10 +11,10 @@ import UIKit
 class DialogOnFinish: BaseDialog {
     
     init() {
-        super.init(title: try! getString("dialog_title_finish"), message: try! getString("dialog_message_finish"))
+        super.init(title: getString("dialog_title_finish"), message: getString("dialog_message_finish"))
         
-        showNegativeButton(title: try! getString("other_no"))
-        showPositiveButton(title: try! getString("other_yes"))
+        showNegativeButton(title: getString("other_no"))
+        showPositiveButton(title: getString("other_yes"))
     }
     
     override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {

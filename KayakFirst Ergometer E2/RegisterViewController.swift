@@ -138,21 +138,21 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfFirstName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_first_name")
+        textField.title = getString("user_first_name")
         
         return textField
     }()
     
     private lazy var tfLastName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_last_name")
+        textField.title = getString("user_last_name")
         
         return textField
     }()
     
     private lazy var tfBirthDate: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_birth_date")
+        textField.title = getString("user_birth_date")
         textField.isEditable = false
         textField.clickCallback = {
             self.clickBithDate()
@@ -163,7 +163,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfUserName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_name")
+        textField.title = getString("user_name")
         textField.required = true
         
         return textField
@@ -171,7 +171,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfPassword: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_password")
+        textField.title = getString("user_password")
         textField.secureTextEntry = true
         textField.required = true
         
@@ -180,7 +180,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfEmail: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_email")
+        textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
         textField.required = true
         
@@ -189,7 +189,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfWeight: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_weight")
+        textField.title = getString("user_weight")
         textField.keyBoardType = .numberPad
         textField.required = true
         
@@ -198,25 +198,25 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var tfCountry: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_country")
+        textField.title = getString("user_country")
         textField.required = true
-        textField.text = try! getString("user_spinner_choose")
+        textField.text = getString("user_spinner_choose")
         
         return textField
     }()
     
     private lazy var tfGender: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
-        textField.title = try! getString("user_gender")
+        textField.title = getString("user_gender")
         textField.required = true
-        textField.text = try! getString("user_spinner_choose")
+        textField.text = getString("user_spinner_choose")
         
         return textField
     }()
     
     private lazy var labelRequired: UILabel! = {
         let label = AppUILabel()
-        label.text = try! getString("user_required_field")
+        label.text = getString("user_required_field")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
         label.textAlignment = .right
         
@@ -237,7 +237,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private lazy var labelAccept: UILabel! = {
         let label = AppUILabel()
-        label.text = try! getString("user_accept")
+        label.text = getString("user_accept")
         
         return label
     }()
@@ -246,14 +246,14 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         let textField = UITextField()
         textField.setBottomBorder(Colors.colorAccent)
         textField.textColor = Colors.colorAccent
-        textField.text = try! getString("user_terms_conditions")
+        textField.text = getString("user_terms_conditions")
         textField.delegate = self
         
         return textField
     }()
     
     private lazy var btnRegister: AppUIButton! = {
-        let button = AppUIButton(width: 0, height: 0, text: try! getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, height: 0, text: getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(clickRegister), for: .touchUpInside)
         button.setDisabled(true)
                
@@ -262,19 +262,19 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     private func clickBithDate() {
         DatePickerDialog().show(
-            title: try! getString("user_birth_date"),
-            doneButtonTitle: try! getString("other_ok"),
-            cancelButtonTitle: try! getString("other_cancel"),
+            title: getString("user_birth_date"),
+            doneButtonTitle: getString("other_ok"),
+            cancelButtonTitle: getString("other_cancel"),
             datePickerMode: .date) { date in
                 if let selectedDate = date {
                     let selectedBirthDate = DateFormatHelper.getMilliSeconds(date: selectedDate)
                     
                     if selectedBirthDate >= currentTimeMillis() {
-                        self.tfBirthDate.error = try! getString("error_birth_date")
+                        self.tfBirthDate.error = getString("error_birth_date")
                     } else {
                         self.birthDate = selectedBirthDate
                         
-                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: try! getString("date_format"), timeIntervallSince1970: self.birthDate)
+                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.birthDate)
                         self.tfBirthDate.error = nil
                     }
                 }
@@ -338,7 +338,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == genderPickerView {
             let selectedGender = User.genderOptions[row]
-            let genderFemaleLocalized = try! getString("user_gender_female")
+            let genderFemaleLocalized = getString("user_gender_female")
             
             if selectedGender == genderFemaleLocalized {
                 gender = User.genderFemale
@@ -360,31 +360,31 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         
         let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
         if userNameCharacters < User.minCharacterUserName {
-            tfUserName.error = try! getString("error_user_name")
+            tfUserName.error = getString("error_user_name")
             isValid = false
             viewToScroll = tfUserName
         }
         
         let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
         if passwordCharacters < User.minCharacterPassword {
-            tfPassword.error = try! getString("error_password")
+            tfPassword.error = getString("error_password")
             isValid = false
             viewToScroll = tfPassword
         }
         if !isValidEmail(email: tfEmail.text) {
-            tfEmail.error = try! getString("error_email")
+            tfEmail.error = getString("error_email")
             isValid = false
             viewToScroll = tfEmail
         }
         
         let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
         if bodyWeight < User.minBodyWeight {
-            tfWeight.error = try! getString("error_weight")
+            tfWeight.error = getString("error_weight")
             isValid = false
             viewToScroll = tfWeight
         }
         
-        let chooseText = try! getString("user_spinner_choose")
+        let chooseText = getString("user_spinner_choose")
         if tfCountry.text! == chooseText {
             isValid = false
             viewToScroll = tfCountry

@@ -12,9 +12,9 @@ class ResetPasswordDialog: BaseDialog {
     var textField: UITextField?
     
     init() {
-        super.init(title: try! getString("dialog_title_reset_password"), message: nil)
-        showPositiveButton(title: try! getString("user_reset_password"))
-        showNegativeButton(title: try! getString("other_cancel"))
+        super.init(title: getString("dialog_title_reset_password"), message: nil)
+        showPositiveButton(title: getString("user_reset_password"))
+        showNegativeButton(title: getString("other_cancel"))
         
         alertController?.addTextField(configurationHandler: initTextField)
         

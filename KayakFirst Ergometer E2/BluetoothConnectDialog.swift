@@ -11,7 +11,7 @@ import Foundation
 class BluetoothConnectDialog: ProgressDialog {
     
     init() {
-        super.init(title: try! getString("dialog_title_bluetooth_connecting"))
+        super.init(title: getString("dialog_title_bluetooth_connecting"))
     }
     
 }

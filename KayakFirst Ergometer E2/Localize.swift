@@ -8,11 +8,11 @@
 
 import Foundation
 
-public func getString(_ key: String) throws -> String {
+public func getString(_ key: String) -> String {
     let localizedString = NSLocalizedString(key, comment: "")
     
     if localizedString == key {
-        throw "Localizable key does not exists: \(key)"
+        fatalError("Localizable key does not exists: \(key)")
     }
     
     return NSLocalizedString(key, comment: "")

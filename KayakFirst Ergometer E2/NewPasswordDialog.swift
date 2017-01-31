@@ -15,10 +15,10 @@ class NewPasswordDialog: BaseDialog {
     var textFieldConfirm: UITextField?
     
     init() {
-        super.init(title: try! getString("user_password"), message: nil)
+        super.init(title: getString("user_password"), message: nil)
         
-        showNegativeButton(title: try! getString("other_cancel"))
-        showPositiveButton(title: try! getString("other_ok"))
+        showNegativeButton(title: getString("other_cancel"))
+        showPositiveButton(title: getString("other_ok"))
         
         setEnabledPositive(isEnabled: false)
         
@@ -29,7 +29,7 @@ class NewPasswordDialog: BaseDialog {
     
     private func initTextFieldCurrent(textField: UITextField) {
         textField.isSecureTextEntry = true
-        textField.placeholder = try! getString("user_password_old")
+        textField.placeholder = getString("user_password_old")
         self.textFieldCurrent = textField
         
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -37,7 +37,7 @@ class NewPasswordDialog: BaseDialog {
     
     private func initTextFieldNew(textField: UITextField) {
         textField.isSecureTextEntry = true
-        textField.placeholder = try! getString("user_password_new")
+        textField.placeholder = getString("user_password_new")
         self.textFieldNew = textField
         
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -45,7 +45,7 @@ class NewPasswordDialog: BaseDialog {
     
     private func initTextFieldConfirm(textField: UITextField) {
         textField.isSecureTextEntry = true
-        textField.placeholder = try! getString("user_password_confirm")
+        textField.placeholder = getString("user_password_confirm")
         self.textFieldConfirm = textField
         
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

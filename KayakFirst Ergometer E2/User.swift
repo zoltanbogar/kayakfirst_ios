@@ -10,7 +10,7 @@ import UIKit
 
 struct User {
     
-    static let genderOptions = [try! getString("user_gender_female"), try! getString("user_gender_male")]
+    static let genderOptions = [getString("user_gender_female"), getString("user_gender_male")]
     static let genderFemale = "female"
     static let genderMale = "male"
     static let minCharacterUserName = 2

@@ -78,21 +78,21 @@ class LoginViewController: KayakScrollViewController {
     
     private lazy var tfUserName: DialogElementTextField! = {
         let view = DialogElementTextField(frame: CGRect.zero)
-        view.title = try! getString("user_name")
+        view.title = getString("user_name")
         
         return view
     }()
     
     private lazy var tfPassword: DialogElementTextField! = {
         let view = DialogElementTextField(frame: CGRect.zero)
-        view.title = try! getString("user_password")
+        view.title = getString("user_password")
         view.secureTextEntry = true
         
         return view
     }()
     
     private lazy var btnLogin: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: try! getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
         
         return button
@@ -101,14 +101,14 @@ class LoginViewController: KayakScrollViewController {
     private lazy var btnForgotPassword: UIButton! = {
         let button = UIButton()
         button.backgroundColor = Colors.colorTransparent
-        button.setTitle(try! getString("user_forgot_password"), for: .normal)
+        button.setTitle(getString("user_forgot_password"), for: .normal)
         button.addTarget(self, action: #selector(btnForgotPasswordClick), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var btnQuickStart: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: try! getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorPrimaryDark)
+        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorPrimaryDark)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button
@@ -116,7 +116,7 @@ class LoginViewController: KayakScrollViewController {
     
     private lazy var labelNoLogin: UILabel! = {
         let label = AppUILabel()
-        label.text = try! getString("user_login_no_login")
+        label.text = getString("user_login_no_login")
         label.textAlignment = .center
         
         return label
@@ -124,7 +124,7 @@ class LoginViewController: KayakScrollViewController {
     
     private lazy var labelNoLoginData: UILabel! = {
         let label = AppUILabel()
-        label.text = try! getString("user_login_no_data")
+        label.text = getString("user_login_no_data")
         label.textAlignment = .center
         
         return label
@@ -132,7 +132,7 @@ class LoginViewController: KayakScrollViewController {
     
     private lazy var labelSocial: UILabel! = {
         let label = AppUILabel()
-        label.text = try! getString("user_login_social")
+        label.text = getString("user_login_social")
         label.textAlignment = .right
         
         return label
