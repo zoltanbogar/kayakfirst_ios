@@ -12,6 +12,8 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0A1E41B44100F6A29F /* ServerService.swift */; };
+		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
 		060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B731E4064ED0057DD61 /* ProfileViewController.swift */; };
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
@@ -77,6 +79,8 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		060A7D0A1E41B44100F6A29F /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
+		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		060C8B731E4064ED0057DD61 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
@@ -170,6 +174,14 @@
 			name = extensions;
 			sourceTree = "<group>";
 		};
+		060A7D091E41B43500F6A29F /* service */ = {
+			isa = PBXGroup;
+			children = (
+				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
+			);
+			name = service;
+			sourceTree = "<group>";
+		};
 		060C8B751E4068220057DD61 /* domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +201,7 @@
 				069433F71E28487800CE6398 /* PasswordCheck.swift */,
 				06BF94F31E2A36140010C8A7 /* DesignUtils.swift */,
 				06F938FF1E3F720A00920753 /* Dimens.swift */,
+				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -196,6 +209,7 @@
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
+				060A7D091E41B43500F6A29F /* service */,
 				0677FEFA1E41397B00A9B977 /* AppService.swift */,
 				0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */,
 			);
@@ -514,6 +528,7 @@
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
+				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
@@ -543,6 +558,7 @@
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
+				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

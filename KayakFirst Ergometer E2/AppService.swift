@@ -10,6 +10,12 @@ import Foundation
 
 class AppService {
     
+    //MARK: init
+    static let sharedInstance = AppService()
+    private init() {
+        //private empty constructor
+    }
+    
     //MARK: system
     internal let preferences = UserDefaults.standard
     
@@ -31,11 +37,6 @@ class AppService {
                 return preferences.string(forKey: User.keyRefreshToken)
             }
         }
-    }
-    
-    //Mark: Init
-    internal init() {
-        //empty constructor
     }
     
     internal func runWithTokenCheck() -> Any? {
