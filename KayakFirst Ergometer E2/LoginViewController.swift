@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: KayakScrollViewController {
+class LoginViewController: KayakScrollViewController, UserDataCallBack {
     
     private let stackView = UIStackView()
     
@@ -155,10 +155,10 @@ class LoginViewController: KayakScrollViewController {
     }()
     
     @objc private func btnLoginClick() {
-        log("LOGIN", "btnLoginClick")
+        UserService.sharedInstance.login(userDataCallBack: self, userName: tfUserName.text, userPassword: tfPassword.text)
         
-        let viewController = RegisterViewController()
-        self.present(viewController, animated: true, completion: nil)
+        //let viewController = RegisterViewController()
+        //self.present(viewController, animated: true, completion: nil)
     }
     
     @objc private func btnForgotPasswordClick() {
@@ -175,5 +175,20 @@ class LoginViewController: KayakScrollViewController {
     
     @objc private func btnGoogleClick() {
         log("LOGIN", "btnGoogleClick")
+    }
+    
+    func onUserDataAvailable(data: Any?) {
+        if let login = data {
+            let loginDto = login as? LoginDto
+            
+            let viewController = ProfileViewController()
+            viewController.user = loginDto?.user
+            self.present(viewController, animated: true, completion: nil)
+        }
+        //TODO
+    }
+    
+    func onError(error: Responses) {
+        //TODO
     }
 }

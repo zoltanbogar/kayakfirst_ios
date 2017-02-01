@@ -10,9 +10,7 @@ import Foundation
 
 class AppService {
     
-    //MARK: init
-    static let sharedInstance = AppService()
-    private init() {
+    internal init() {
         //private empty constructor
     }
     
@@ -39,9 +37,9 @@ class AppService {
         }
     }
     
-    internal func runWithTokenCheck() -> Any? {
+    internal func runWithTokenCheck(serverService: ServerService<AnyObject>) -> Any? {
         //TODO
-        return nil
+        return serverService.run()
     }
     
     private func refreshUserToken() {

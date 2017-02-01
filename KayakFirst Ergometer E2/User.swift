@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 struct User {
     
@@ -31,4 +32,16 @@ struct User {
     let bodyWeight: Double?
     let country: String?
     let gender: String?
+    
+    init(json: JSON) {
+        self.id = json["id"].int64Value
+        self.userName = json["username"].stringValue
+        self.email = json["email"].stringValue
+        self.firstName = json["firstName"].stringValue
+        self.lastName = json["lastName"].stringValue
+        self.birthDate = json["birthDate"].doubleValue
+        self.bodyWeight = json["bodyWeight"].doubleValue
+        self.country = json["country"].stringValue
+        self.gender = json["gender"].stringValue
+    }
 }

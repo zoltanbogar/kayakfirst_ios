@@ -16,7 +16,7 @@ enum Responses: String {
     case error_no_internet = "error_no_internet"
 }
 
-class ServerService<E> {
+class ServerService<E: AnyObject> {
     
     //MARK: constants
     let baseUrl = "http://kayak.einnovart.hu/api/"
@@ -28,7 +28,8 @@ class ServerService<E> {
         var result: E?
         if Reachability.isConnectedToNetwork() {
             let response = initAlamofire()
-            let statusCode = response.response?.statusCode == nil ? 0 : response.response?.statusCode
+            
+            let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
             
             if statusCode! >= 200 && statusCode! < 300 {
                 result = handleServiceCommunication(alamofireRequest: response)
@@ -48,16 +49,6 @@ class ServerService<E> {
         fatalError("Must be implemented")
     }
     
-    private func initAlamofire() -> DataRequest {
-        let url = baseUrl + initUrlTag()
-        return Alamofire.request(
-            url,
-            method: initMethod(),
-            parameters: initParameters(),
-            encoding: initEncoding(),
-            headers: initHeader())
-    }
-    
     internal func initUrlTag() -> String {
         fatalError("Must be implemented")
     }
@@ -75,7 +66,7 @@ class ServerService<E> {
     }
     
     internal func initHeader() -> HTTPHeaders? {
-        let token = AppService.sharedInstance.token
+        let token = UserService.sharedInstance.token
         
         if let userToken = token {
             return [
@@ -83,6 +74,17 @@ class ServerService<E> {
             ]
         }
         return nil
+    }
+    
+    private func initAlamofire() -> DataRequest {
+        let url = baseUrl + initUrlTag()
+        return Alamofire.request(
+            url,
+            method: initMethod(),
+            parameters: initParameters(),
+            encoding: initEncoding(),
+            headers: initHeader())
+        .debugLog()
     }
     
 }

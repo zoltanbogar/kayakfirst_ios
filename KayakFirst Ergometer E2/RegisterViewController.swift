@@ -289,20 +289,6 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     @objc private func clickRegister() {
         if checkFields() {
             log("REGISTER", "checkFieldsOk")
-            
-            let viewController = ProfileViewController()
-            viewController.user = User(
-                id: 0,
-                userName: tfUserName.text,
-                email: tfEmail.text,
-                firstName: tfFirstName.text,
-                lastName: tfLastName.text,
-                birthDate: birthDate,
-                bodyWeight: Double(tfWeight.text!),
-                country: countryCode,
-                gender: gender)
-            
-            self.present(viewController, animated: true, completion: nil)
         }
     }
     
