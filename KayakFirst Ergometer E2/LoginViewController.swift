@@ -171,7 +171,7 @@ class LoginViewController: KayakScrollViewController {
             self.progressView?.show(isShow: true)
             UserService.sharedInstance.resetPassword(userDataCallBack: self.resetPasswordCallback, email: email)
         }
-        resetPasswordDialog.show()
+        resetPasswordDialog.show(viewController: self)
     }
     
     private func resetPasswordCallback(error: Responses?, userData: Bool?) {

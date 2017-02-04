@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewController: UIViewController
         
         if UserService.sharedInstance.getUser() != nil {
-            viewController = ProfileViewController()
+            viewController = MainNavigationViewController()
         } else {
             viewController = WelcomeViewController()
         }

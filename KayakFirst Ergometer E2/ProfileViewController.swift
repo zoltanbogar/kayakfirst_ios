@@ -27,6 +27,8 @@ class ProfileViewController: KayakScrollViewController {
     }
     
     private func initView() {
+        self.navigationItem.setRightBarButtonItems([btnSave], animated: true)
+        
         progressView = ProgressView(superView: view)
         
         stackView.axis = .vertical
@@ -213,6 +215,41 @@ class ProfileViewController: KayakScrollViewController {
         return button
     }()
     
+    private lazy var btnSave: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "done_24dp")
+        button.target = self
+        button.action = #selector(btnSaveClick)
+        
+        return button
+    }()
+    
+    @objc private func btnSaveClick() {
+        if checkBodyWeight() {
+            progressView?.show(isShow: true)
+            UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
+                                                  userDto: UserDto(
+                lastName: tfLastName.text,
+                firstName: tfFirstName.text,
+                email: tfEmail.text,
+                bodyWeight: Double(tfWeight.text!),
+                gender: user?.gender,
+                birthDate: user?.birthDate,
+                country: user?.country,
+                password: tfPassword.text,
+                userName: tfUserName.text))
+        }
+    }
+    
+    private func checkBodyWeight() -> Bool {
+        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
+        if bodyWeight < User.minBodyWeight {
+            tfWeight.error = getString("error_weight")
+            return false
+        }
+        return true
+    }
+    
     @objc private func clickLogout() {
         progressView?.show(isShow: true)
         UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
@@ -232,7 +269,7 @@ class ProfileViewController: KayakScrollViewController {
         let passworDialog = NewPasswordDialog()
         passworDialog.handler = { currentPassword, newPassword in
             self.progressView?.show(isShow: true)
-            UserService.sharedInstance.resetPassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
+            UserService.sharedInstance.updatePassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
         }
         passworDialog.show(viewController: self)
     }
@@ -241,7 +278,7 @@ class ProfileViewController: KayakScrollViewController {
         self.progressView?.show(isShow: false)
         
         if let user = userData {
-            //TODO
+            self.navigationController?.popViewController(animated: true)
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }

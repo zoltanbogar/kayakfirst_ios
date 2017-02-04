@@ -32,9 +32,14 @@ class UserService: AppService {
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogout).execute()
     }
     
-    func resetPassword(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), currentPassword: String, newPassword: String) {
+    func updatePassword(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), currentPassword: String, newPassword: String) {
         let updatePassword = UpdatePassword(currentPassword: currentPassword, newPassword: newPassword)
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: updatePassword).execute()
+    }
+    
+    func updateUser(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), userDto: UserDto) {
+        let userUpdate = UserUpdate(userDto: userDto)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userUpdate).execute()
     }
     
     func resetPassword(userDataCallBack: @escaping (_ error: Responses?, _ userData: Bool?) -> (), email: String) {

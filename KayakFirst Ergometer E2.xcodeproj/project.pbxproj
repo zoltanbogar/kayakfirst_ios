@@ -16,6 +16,8 @@
 		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
 		060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B731E4064ED0057DD61 /* ProfileViewController.swift */; };
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
+		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
+		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -32,6 +34,7 @@
 		069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F31E28456A00CE6398 /* DialogOnFinish.swift */; };
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
+		069441631E46572D00648B50 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069441621E46572D00648B50 /* MainNavigationViewController.swift */; };
 		06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F31E2A36140010C8A7 /* DesignUtils.swift */; };
 		06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */; };
 		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
@@ -97,6 +100,8 @@
 		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		060C8B731E4064ED0057DD61 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 		069433F31E28456A00CE6398 /* DialogOnFinish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogOnFinish.swift; sourceTree = "<group>"; };
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
+		069441621E46572D00648B50 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		06BF94F31E2A36140010C8A7 /* DesignUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
 		06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
 				06F657C71E4628C7002AA9D0 /* UserLogout.swift */,
 				06F657CB1E463DB6002AA9D0 /* UserRegister.swift */,
+				061148821E468121003A8FE6 /* UserUpdate.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -277,6 +284,8 @@
 				06F939031E3F858100920753 /* RegisterViewController.swift */,
 				060C8B731E4064ED0057DD61 /* ProfileViewController.swift */,
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
+				069441621E46572D00648B50 /* MainNavigationViewController.swift */,
+				061148801E467A13003A8FE6 /* MainViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -589,7 +598,9 @@
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
+				069441631E46572D00648B50 /* MainNavigationViewController.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
+				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
@@ -603,6 +614,7 @@
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
+				061148811E467A13003A8FE6 /* MainViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
