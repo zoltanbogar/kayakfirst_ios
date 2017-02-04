@@ -45,6 +45,7 @@
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
 		06F657B81E45C899002AA9D0 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B71E45C899002AA9D0 /* AppService.swift */; };
+		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F9145C1E427ACE0041B303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145B1E427ACE0041B303 /* UserService.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
@@ -122,6 +123,7 @@
 		06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayakFirst_Ergometer_E2UITests.swift; sourceTree = "<group>"; };
 		06C6ABD31E2267A100562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06F657B71E45C899002AA9D0 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F9145B1E427ACE0041B303 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				069433F11E2843F400CE6398 /* BluetoothDisconnectiDialog.swift */,
 				069433F31E28456A00CE6398 /* DialogOnFinish.swift */,
 				069433F51E28462D00CE6398 /* NewPasswordDialog.swift */,
+				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
+				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,

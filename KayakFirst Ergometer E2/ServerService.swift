@@ -14,6 +14,8 @@ import SwiftyJSON
 //MARK: responses
 enum Responses: String {
     case error_no_internet = "error_no_internet"
+    case error_invalid_credentials = "INVALID_CREDENTIALS"
+    case error_server_error = "server_error"
 }
 
 class ServerService<E> {
@@ -34,7 +36,7 @@ class ServerService<E> {
             if statusCode! >= 200 && statusCode! < 300 {
                 result = handleServiceCommunication(alamofireRequest: response)
             } else {
-                //TODO
+                error = initError(alamofireRequest: response)
             }
             
         } else {
@@ -85,6 +87,24 @@ class ServerService<E> {
             encoding: initEncoding(),
             headers: initHeader())
         .debugLog()
+    }
+    
+    private func initError(alamofireRequest: DataRequest) -> Responses? {
+        let response = alamofireRequest.responseJSON()
+        
+        if let json = response.result.value {
+            let jsonValue = JSON(json)
+            
+            let errorString = jsonValue["error"].stringValue
+            
+            switch errorString {
+            case Responses.error_invalid_credentials.rawValue:
+                return Responses.error_invalid_credentials
+            default:
+                return Responses.error_server_error
+            }
+        }
+        return nil
     }
     
 }

@@ -18,4 +18,9 @@ public func getString(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
+public func getCapitalizedString(_ key: String) -> String {
+    let string = getString(key)
+    return string.capitalized
+}
+
 extension String: Error{}

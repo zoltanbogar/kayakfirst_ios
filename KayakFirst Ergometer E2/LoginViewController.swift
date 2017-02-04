@@ -155,10 +155,9 @@ class LoginViewController: KayakScrollViewController {
     }()
     
     @objc private func btnLoginClick() {
-        UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text, userPassword: tfPassword.text)
-        
-        //let viewController = RegisterViewController()
-        //self.present(viewController, animated: true, completion: nil)
+        if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
+            UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text, userPassword: tfPassword.text)
+        }
     }
     
     @objc private func btnForgotPasswordClick() {
@@ -183,7 +182,7 @@ class LoginViewController: KayakScrollViewController {
             viewController.user = loginDto.user
             self.present(viewController, animated: true, completion: nil)
         } else if let userError = error {
-            //TODO
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
     }
 }
