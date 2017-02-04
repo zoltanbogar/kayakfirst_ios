@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class LoginDto: AnyObject {
+class LoginDto {
     
     var user: User?
     let userToken: String

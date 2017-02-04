@@ -16,7 +16,7 @@ enum Responses: String {
     case error_no_internet = "error_no_internet"
 }
 
-class ServerService<E: AnyObject> {
+class ServerService<E> {
     
     //MARK: constants
     let baseUrl = "http://kayak.einnovart.hu/api/"

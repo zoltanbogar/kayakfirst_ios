@@ -16,44 +16,61 @@ class UserService: AppService {
         //private constructor
     }
     
-    func login(userDataCallBack: UserDataCallBack, userName: String?, userPassword: String?) {
+    //MARK: server endpoints
+    func login(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), userName: String?, userPassword: String?) {
         if userName != nil && userPassword != nil {
             let userLogin: ServerService = UserLogin(userName: userName!, userPassword: userPassword!)
             LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogin).execute(param: nil)
         }
     }
     
-    //MARK: AsyncTask
-    private class LoadUserData: AsyncTask<Any, Any, Any> {
-        
-        private var userService: UserService
-        private var userDataCallback: UserDataCallBack?
-        private var serverService: ServerService<AnyObject>
-        
-        init(userService: UserService, userDataCallback: UserDataCallBack?, serverService: ServerService<AnyObject>) {
-            self.userService = userService
-            self.userDataCallback = userDataCallback
-            self.serverService = serverService
-        }
-        
-        internal override func doInBackground(param: Any?) -> Any? {
-            return userService.runWithTokenCheck(serverService: serverService)
-        }
-        
-        internal override func onPostExecute(result: Any?) {
-            if let callback = userDataCallback {
-                if result != nil {
-                    callback.onUserDataAvailable(data: result)
-                } else {
-                    callback.onError(error: serverService.error!)
-                }
+    //MARK: tokens
+    internal let preferences = UserDefaults.standard
+    
+    var token: String? {
+        get {
+            if preferences.object(forKey: User.keyUserToken) == nil {
+                return nil
+            } else {
+                return preferences.string(forKey: User.keyUserToken)
             }
         }
     }
+    private var refreshToken: String? {
+        get {
+            if preferences.object(forKey: User.keyRefreshToken) == nil {
+                return nil
+            } else {
+                return preferences.string(forKey: User.keyRefreshToken)
+            }
+        }
+    }
+    
+    internal func setTokens(token: String?, refreshToken: String?) {
+        preferences.set(token, forKey: User.keyUserToken)
+        preferences.set(refreshToken, forKey: User.keyRefreshToken)
+        preferences.synchronize()
+    }
 }
 
-//MARK: Protocols
-protocol UserDataCallBack {
-    func onUserDataAvailable(data: Any?)
-    func onError(error: Responses)
+//MARK: AsyncTask
+private class LoadUserData<UserData>: AsyncTask<Any, Any, UserData> {
+    
+    private var userService: UserService
+    private var userDataCallback: (_ error: Responses?, _ userData: UserData?) -> ()
+    private var serverService: ServerService<UserData>
+    
+    init(userService: UserService, userDataCallback: @escaping (_ error: Responses?, _ userData: UserData?) -> (), serverService: ServerService<UserData>) {
+        self.userService = userService
+        self.userDataCallback = userDataCallback
+        self.serverService = serverService
+    }
+    
+    internal override func doInBackground(param: Any?) -> UserData? {
+        return userService.runWithTokenCheck(serverService: serverService)
+    }
+    
+    internal override func onPostExecute(result: UserData?) {
+        userDataCallback(serverService.error, result)
+    }
 }

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserLogin: ServerService<AnyObject> {
+class UserLogin: ServerService<LoginDto> {
     
     private let userName: String
     private let userPassword: String
@@ -20,7 +20,7 @@ class UserLogin: ServerService<AnyObject> {
         self.userPassword = userPassword
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> AnyObject? {
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> LoginDto? {
         var loginDto: LoginDto?
         let response = alamofireRequest.responseJSON()
         
