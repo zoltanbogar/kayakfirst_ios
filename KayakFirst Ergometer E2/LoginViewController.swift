@@ -196,8 +196,7 @@ class LoginViewController: KayakScrollViewController {
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
         progressView?.show(isShow: false)
         if userData != nil {
-            //TODO: navigate to mainView no Profile
-            showProfile()
+            (self.tabBarController as! WelcomeViewController).showMainView()
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }

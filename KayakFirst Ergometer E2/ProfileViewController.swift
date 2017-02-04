@@ -128,7 +128,9 @@ class ProfileViewController: KayakScrollViewController {
         textField.title = getString("user_birth_date")
         textField.isEditable = false
         textField.active = false
-        textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.user?.birthDate)
+        if self.user?.birthDate != 0 {
+            textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.user?.birthDate)
+        }
         
         return textField
     }()
@@ -220,7 +222,7 @@ class ProfileViewController: KayakScrollViewController {
         self.progressView?.show(isShow: false)
         
         if let user = userData {
-            //TODO
+            showWelcomeViewController()
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
@@ -243,6 +245,11 @@ class ProfileViewController: KayakScrollViewController {
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
+    }
+    
+    private func showWelcomeViewController() {
+        let controller = WelcomeViewController()
+        self.present(controller, animated: true, completion: nil)
     }
     
 }

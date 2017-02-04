@@ -24,6 +24,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     private let stackView = UIStackView()
     private let genderPickerView = UIPickerView()
     private let countryPickerView = UIPickerView()
+    private var progressView: ProgressView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     }
     
     private func initView() {
+        progressView = ProgressView(superView: view)
+        
         stackView.axis = .vertical
         
         containerView.addSubview(stackView)
@@ -95,7 +98,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         viewBottom.backgroundColor = Colors.colorPrimary
         view.addSubview(viewBottom)
         viewBottom.snp.makeConstraints { make in
-            make.bottom.equalTo(view.snp.bottom)
+            make.bottom.equalTo(view.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin2, 0))
             make.left.equalTo(stackView.snp.left)
             make.width.equalTo(stackView.snp.width)
             make.height.equalTo(viewBottomHeight)
@@ -288,7 +291,28 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     
     @objc private func clickRegister() {
         if checkFields() {
-            log("REGISTER", "checkFieldsOk")
+            progressView?.show(isShow: true)
+            UserService.sharedInstance.register(
+                userDataCallBack: registerCallback,
+                userDto: UserDto(
+                    lastName: tfLastName.text,
+                    firstName: tfFirstName.text,
+                    email: tfEmail.text,
+                    bodyWeight: Double(tfWeight.text!),
+                    gender: gender,
+                    birthDate: birthDate,
+                    country: countryCode,
+                    password: tfPassword.text,
+                    userName: tfUserName.text))
+        }
+    }
+    
+    private func registerCallback(error: Responses?, userData: User?) {
+        progressView?.show(isShow: false)
+        if userData != nil {
+            (self.tabBarController as! WelcomeViewController).showMainView()
+        } else if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
     }
     

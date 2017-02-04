@@ -17,6 +17,11 @@ class UserService: AppService {
     }
     
     //MARK: server endpoints
+    func register(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), userDto: UserDto) {
+        let userRegister = UserRegister(userDto: userDto)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userRegister).execute()
+    }
+    
     func login(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), userName: String, userPassword: String) {
         let userLogin = UserLogin(userName: userName, userPassword: userPassword)
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogin).execute()

@@ -52,6 +52,9 @@
 		06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C11E461F3E002AA9D0 /* RefreshToken.swift */; };
 		06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */; };
 		06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C71E4628C7002AA9D0 /* UserLogout.swift */; };
+		06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */; };
+		06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CB1E463DB6002AA9D0 /* UserRegister.swift */; };
+		06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CD1E463DD5002AA9D0 /* UserDto.swift */; };
 		06F9145C1E427ACE0041B303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145B1E427ACE0041B303 /* UserService.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
@@ -136,6 +139,9 @@
 		06F657C11E461F3E002AA9D0 /* RefreshToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
 		06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenDto.swift; sourceTree = "<group>"; };
 		06F657C71E4628C7002AA9D0 /* UserLogout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogout.swift; sourceTree = "<group>"; };
+		06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		06F657CB1E463DB6002AA9D0 /* UserRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
+		06F657CD1E463DD5002AA9D0 /* UserDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		06F9145B1E427ACE0041B303 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */,
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
 				06F657C71E4628C7002AA9D0 /* UserLogout.swift */,
+				06F657CB1E463DB6002AA9D0 /* UserRegister.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -269,6 +276,7 @@
 				06F938F61E3F299A00920753 /* LoginViewController.swift */,
 				06F939031E3F858100920753 /* RegisterViewController.swift */,
 				060C8B731E4064ED0057DD61 /* ProfileViewController.swift */,
+				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -362,6 +370,7 @@
 			children = (
 				06F914601E42802B0041B303 /* LoginDto.swift */,
 				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
+				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
 			);
 			name = backend;
 			sourceTree = "<group>";
@@ -580,6 +589,7 @@
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
+				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
@@ -594,12 +604,14 @@
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
+				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
 				060219651E377B90005B945B /* KayakScrollViewController.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
+				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,

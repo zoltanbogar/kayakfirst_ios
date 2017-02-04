@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserService.sharedInstance.getUser() != nil {
             viewController = ProfileViewController()
         } else {
-            viewController = LoginViewController()
+            viewController = WelcomeViewController()
         }
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
