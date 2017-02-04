@@ -11,13 +11,14 @@ import UIKit
 
 class Colors {
     static let colorPrimary = getColor("#383e42")
+    static let colorPrimaryTransparent = getColor("#aa383e42")
     static let colorPrimaryDark = getColor("#000000")
     static let colorAccent = getColor("#e25303")
     static let colorAccentDark = getColor("#cb4a02")
     static let colorWhite = getColor("#f2f2f2")
     static let colorWhiteDark = getColor("#d9d9d9")
     static let colorInactive = getColor("#4d4d4d")
-    static let dragDropStart = getColor("#ffe25303")
+    static let dragDropStart = getColor("#77e25303")
     static let dragDropEnter = getColor("#bbe25303")
     static let startDelayBackground = getColor("#eedf5626")
     static let colorDashBoardDivider = getColor("#4d4d4d")

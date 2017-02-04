@@ -10,7 +10,9 @@ import UIKit
 
 class LoginViewController: KayakScrollViewController {
     
+    //MARK: views
     private let stackView = UIStackView()
+    private var progressView: ProgressView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,8 @@ class LoginViewController: KayakScrollViewController {
     }
     
     private func initView() {
+        progressView = ProgressView(superView: view)
+        
         stackView.axis = .vertical
         
         containerView.addSubview(stackView)
@@ -156,6 +160,7 @@ class LoginViewController: KayakScrollViewController {
     
     @objc private func btnLoginClick() {
         if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
+            progressView?.show(isShow: true)
             UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text, userPassword: tfPassword.text)
         }
     }
@@ -177,6 +182,7 @@ class LoginViewController: KayakScrollViewController {
     }
     
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
+        progressView?.show(isShow: false)
         if let loginDto = userData {
             let viewController = ProfileViewController()
             viewController.user = loginDto.user
