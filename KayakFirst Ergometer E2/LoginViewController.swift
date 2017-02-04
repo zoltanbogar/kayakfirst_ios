@@ -195,12 +195,19 @@ class LoginViewController: KayakScrollViewController {
     
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
         progressView?.show(isShow: false)
-        if let loginDto = userData {
-            let viewController = ProfileViewController()
-            viewController.user = loginDto.user
-            self.present(viewController, animated: true, completion: nil)
+        if userData != nil {
+            //TODO: navigate to mainView no Profile
+            showProfile()
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
+    }
+    
+    //TODO: delete this
+    private func showProfile() {
+        if UserService.sharedInstance.getUser() != nil {
+            let viewController = ProfileViewController()
+            self.present(viewController, animated: true, completion: nil)
         }
     }
 }

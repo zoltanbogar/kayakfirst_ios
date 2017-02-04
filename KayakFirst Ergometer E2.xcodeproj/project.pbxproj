@@ -51,6 +51,7 @@
 		06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */; };
 		06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C11E461F3E002AA9D0 /* RefreshToken.swift */; };
 		06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */; };
+		06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C71E4628C7002AA9D0 /* UserLogout.swift */; };
 		06F9145C1E427ACE0041B303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145B1E427ACE0041B303 /* UserService.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
@@ -134,6 +135,7 @@
 		06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
 		06F657C11E461F3E002AA9D0 /* RefreshToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
 		06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenDto.swift; sourceTree = "<group>"; };
+		06F657C71E4628C7002AA9D0 /* UserLogout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogout.swift; sourceTree = "<group>"; };
 		06F9145B1E427ACE0041B303 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */,
 				06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */,
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
+				06F657C71E4628C7002AA9D0 /* UserLogout.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
+				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,

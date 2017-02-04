@@ -25,7 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = Colors.colorPrimary
         
-        let viewController = LoginViewController()
+        var viewController: UIViewController
+        
+        if UserService.sharedInstance.getUser() != nil {
+            viewController = ProfileViewController()
+        } else {
+            viewController = LoginViewController()
+        }
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         

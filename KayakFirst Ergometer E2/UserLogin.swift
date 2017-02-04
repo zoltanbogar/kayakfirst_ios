@@ -31,7 +31,7 @@ class UserLogin: ServerService<LoginDto> {
             loginDto = LoginDto(json: jsonVlaue)
             loginDto!.user = user
             
-            UserService.sharedInstance.setTokens(token: loginDto?.userToken, refreshToken: loginDto?.refreshToken)
+            UserService.sharedInstance.addLoginDto(loginDto: loginDto)
         }
         
         return loginDto

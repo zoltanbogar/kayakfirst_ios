@@ -18,7 +18,7 @@ class ProfileViewController: KayakScrollViewController {
     private var progressView: ProgressView?
     
     //MARK: properties
-    var user: User?
+    var user = UserService.sharedInstance.getUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,7 +212,18 @@ class ProfileViewController: KayakScrollViewController {
     }()
     
     @objc private func clickLogout() {
-        log("PROFILE", "clickLogout")
+        progressView?.show(isShow: true)
+        UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
+    }
+    
+    private func logoutCallback(error: Responses?, userData: Bool?) {
+        self.progressView?.show(isShow: false)
+        
+        if let user = userData {
+            //TODO
+        } else if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
     }
     
     private func clickPassword() {
