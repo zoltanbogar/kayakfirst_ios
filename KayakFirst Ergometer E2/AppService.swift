@@ -12,11 +12,20 @@ import UIKit
 class AppService {
     
     func runWithTokenCheck<E>(serverService: ServerService<E>) -> E? {
-        return serverService.run()
+        var data = serverService.run()
+        
+        if data == nil && serverService.error == Responses.error_expired_token {
+            refreshUserToken()
+            
+            data = serverService.run()
+        }
+        
+        return data
     }
     
     private func refreshUserToken() {
-        //TODO
+        let refreshTokenDto = RefreshToken().run()
+        UserService.sharedInstance.setTokens(token: refreshTokenDto?.token, refreshToken: refreshTokenDto?.refreshToken)
     }
     
     static func errorHandlingWithAlert(viewController: UIViewController, error: Responses) {

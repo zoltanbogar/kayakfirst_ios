@@ -48,6 +48,9 @@
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
 		06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */; };
+		06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */; };
+		06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C11E461F3E002AA9D0 /* RefreshToken.swift */; };
+		06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */; };
 		06F9145C1E427ACE0041B303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145B1E427ACE0041B303 /* UserService.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
@@ -128,6 +131,9 @@
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
+		06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResetPassword.swift; sourceTree = "<group>"; };
+		06F657C11E461F3E002AA9D0 /* RefreshToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
+		06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTokenDto.swift; sourceTree = "<group>"; };
 		06F9145B1E427ACE0041B303 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
 				06F9145D1E427FFC0041B303 /* UserLogin.swift */,
 				06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */,
+				06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */,
+				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -350,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				06F914601E42802B0041B303 /* LoginDto.swift */,
+				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
 			);
 			name = backend;
 			sourceTree = "<group>";
@@ -578,10 +587,13 @@
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
+				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
+				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
 				060219651E377B90005B945B /* KayakScrollViewController.swift in Sources */,
+				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,

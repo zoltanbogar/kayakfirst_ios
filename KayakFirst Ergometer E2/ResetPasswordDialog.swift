@@ -9,7 +9,8 @@
 import UIKit
 class ResetPasswordDialog: BaseDialog {
     
-    var textField: UITextField?
+    private var textField: UITextField?
+    var handler: ((_ email: String) ->())?
     
     init() {
         super.init(title: getString("dialog_title_reset_password"), message: nil)
@@ -33,8 +34,9 @@ class ResetPasswordDialog: BaseDialog {
     }
     
     override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
-        //TODO
-        log("DIALOG", "\(textField?.text)")
+        if let emailHandler = handler {
+            emailHandler(textField!.text!)
+        }
     }
     
 }

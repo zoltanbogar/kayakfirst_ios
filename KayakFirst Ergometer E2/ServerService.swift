@@ -16,6 +16,7 @@ enum Responses: String {
     case error_no_internet = "error_no_internet"
     case error_invalid_credentials = "INVALID_CREDENTIALS"
     case error_server_error = "server_error"
+    case error_expired_token = "Expired JWT Token"
 }
 
 class ServerService<E> {
@@ -102,6 +103,8 @@ class ServerService<E> {
             switch errorString {
             case Responses.error_invalid_credentials.rawValue:
                 return Responses.error_invalid_credentials
+            case Responses.error_expired_token.rawValue:
+                return Responses.error_expired_token
             default:
                 return Responses.error_server_error
             }

@@ -27,6 +27,11 @@ class UserService: AppService {
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: updatePassword).execute()
     }
     
+    func resetPassword(userDataCallBack: @escaping (_ error: Responses?, _ userData: Bool?) -> (), email: String) {
+        let resetPassword = UserResetPassword(email: email)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: resetPassword).execute()
+    }
+    
     //MARK: tokens
     internal let preferences = UserDefaults.standard
     
@@ -39,7 +44,7 @@ class UserService: AppService {
             }
         }
     }
-    private var refreshToken: String? {
+    var refreshToken: String? {
         get {
             if preferences.object(forKey: User.keyRefreshToken) == nil {
                 return nil

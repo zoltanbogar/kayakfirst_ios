@@ -166,9 +166,21 @@ class LoginViewController: KayakScrollViewController {
     }
     
     @objc private func btnForgotPasswordClick() {
-        ResetPasswordDialog().show()
+        let resetPasswordDialog = ResetPasswordDialog()
+        resetPasswordDialog.handler = { email in
+            self.progressView?.show(isShow: true)
+            UserService.sharedInstance.resetPassword(userDataCallBack: self.resetPasswordCallback, email: email)
+        }
+        resetPasswordDialog.show()
     }
     
+    private func resetPasswordCallback(error: Responses?, userData: Bool?) {
+        progressView?.show(isShow: false)
+        if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
+    }
+
     @objc private func btnQuickStartClick() {
         log("LOGIN", "btnQuickStartClick")
     }
