@@ -161,7 +161,7 @@ class LoginViewController: KayakScrollViewController {
     @objc private func btnLoginClick() {
         if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
             progressView?.show(isShow: true)
-            UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text, userPassword: tfPassword.text)
+            UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text!, userPassword: tfPassword.text!)
         }
     }
     

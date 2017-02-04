@@ -15,6 +15,7 @@ class ProfileViewController: KayakScrollViewController {
     
     //MARK: views
     private let stackView = UIStackView()
+    private var progressView: ProgressView?
     
     //MARK: properties
     var user: User?
@@ -26,6 +27,8 @@ class ProfileViewController: KayakScrollViewController {
     }
     
     private func initView() {
+        progressView = ProgressView(superView: view)
+        
         stackView.axis = .vertical
         
         containerView.addSubview(stackView)
@@ -213,7 +216,22 @@ class ProfileViewController: KayakScrollViewController {
     }
     
     private func clickPassword() {
-        NewPasswordDialog().show(viewController: self)
+        let passworDialog = NewPasswordDialog()
+        passworDialog.handler = { currentPassword, newPassword in
+            self.progressView?.show(isShow: true)
+            UserService.sharedInstance.resetPassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
+        }
+        passworDialog.show(viewController: self)
+    }
+    
+    private func userDataCallback(error: Responses?, userData: User?) {
+        self.progressView?.show(isShow: false)
+        
+        if let user = userData {
+            //TODO
+        } else if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
     }
     
 }

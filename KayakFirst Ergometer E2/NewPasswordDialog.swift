@@ -10,9 +10,11 @@ import UIKit
 
 class NewPasswordDialog: BaseDialog {
     
-    var textFieldCurrent: UITextField?
-    var textFieldNew: UITextField?
-    var textFieldConfirm: UITextField?
+    private var textFieldCurrent: UITextField?
+    private var textFieldNew: UITextField?
+    private var textFieldConfirm: UITextField?
+    
+    var handler: ((_ currentPassword: String, _ newPassword: String) ->())?
     
     init() {
         super.init(title: getString("user_password"), message: nil)
@@ -62,7 +64,9 @@ class NewPasswordDialog: BaseDialog {
     }
     
     override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
-        //TODO
+        if let passwordHandler = handler {
+            passwordHandler(textFieldCurrent!.text!, textFieldNew!.text!)
+        }
     }
     
 }

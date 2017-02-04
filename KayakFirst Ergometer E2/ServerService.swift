@@ -97,6 +97,8 @@ class ServerService<E> {
             
             let errorString = jsonValue["error"].stringValue
             
+            log("alamofireLog", "error: \(errorString)")
+            
             switch errorString {
             case Responses.error_invalid_credentials.rawValue:
                 return Responses.error_invalid_credentials

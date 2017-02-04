@@ -14,6 +14,10 @@ class AsyncTask<Param, Progress, Result> {
         //internal constructor
     }
     
+    func execute() {
+        execute(param: nil)
+    }
+    
     func execute(param: Param?) {
         var result: Result?
         

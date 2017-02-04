@@ -17,11 +17,14 @@ class UserService: AppService {
     }
     
     //MARK: server endpoints
-    func login(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), userName: String?, userPassword: String?) {
-        if userName != nil && userPassword != nil {
-            let userLogin: ServerService = UserLogin(userName: userName!, userPassword: userPassword!)
-            LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogin).execute(param: nil)
-        }
+    func login(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), userName: String, userPassword: String) {
+        let userLogin = UserLogin(userName: userName, userPassword: userPassword)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogin).execute()
+    }
+    
+    func resetPassword(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), currentPassword: String, newPassword: String) {
+        let updatePassword = UpdatePassword(currentPassword: currentPassword, newPassword: newPassword)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: updatePassword).execute()
     }
     
     //MARK: tokens

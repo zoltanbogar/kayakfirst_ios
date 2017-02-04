@@ -30,6 +30,8 @@ class UserLogin: ServerService<LoginDto> {
             let user = User(json: jsonVlaue["user"])
             loginDto = LoginDto(json: jsonVlaue)
             loginDto!.user = user
+            
+            UserService.sharedInstance.setTokens(token: loginDto?.userToken, refreshToken: loginDto?.refreshToken)
         }
         
         return loginDto
