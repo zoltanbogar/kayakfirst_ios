@@ -15,10 +15,14 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     private var calendarView: CVCalendarView?
     private var calendarMenuView: CVCalendarMenuView?
     
+    //MARK: trainigData
+    private var trainingDays: [TimeInterval]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initView();
+        getTrainingDays()
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,6 +38,20 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         view.addSubview(labelMonth)
     }
     
+    private func getTrainingDays() {
+        TrainingService.sharedInstance.getTrainingDays(trainingDataCallback: trainingDaysCallback)
+    }
+    
+    private func trainingDaysCallback(error: Responses?, trainingData: [TimeInterval]?) {
+        if let trainingDays = trainingData {
+            self.trainingDays = trainingDays
+            calendarView?.contentController.refreshPresentedMonth()
+        } else if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
+    }
+    
+    //MARK: inint views
     private lazy var labelMonth: UILabel! = {
         let label = AppUILabel(frame: CGRect(x: 0, y: 75, width: self.view.frame.width, height: 20))
         label.textAlignment = .center
@@ -50,7 +68,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         calendarView?.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
         calendarView?.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
         
-        refreshMonthLabel(timeStamp: currentTimeMillis())
+        refreshMonth(timeStamp: currentTimeMillis())
         
         return calendarView!
     }
@@ -73,7 +91,12 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     }
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-        return true
+        if let trainingDayList = trainingDays {
+            if trainingDayList.contains(dayView.date.getTimeMillis()) {
+                return true
+            }
+        }
+        return false
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
@@ -90,10 +113,11 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     }*/
     
     func presentedDateUpdated(_ date: CVDate) {
-        refreshMonthLabel(timeStamp: date.getTimeMillis())
+        refreshMonth(timeStamp: date.getTimeMillis())
     }
     
-    private func refreshMonthLabel(timeStamp: TimeInterval) {
+    private func refreshMonth(timeStamp: TimeInterval) {
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
+        calendarView?.contentController.refreshPresentedMonth()
     }
 }

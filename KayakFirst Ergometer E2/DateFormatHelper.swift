@@ -50,11 +50,22 @@ class DateFormatHelper {
         return formatValues
     }
     
-    class func getZeroHour(timeStamp: Double) -> Double {
-        return Calendar(identifier: .gregorian).startOfDay(for: Date(timeIntervalSince1970: timeStamp)).timeIntervalSince1970
+    class func getZeroHour(timeStamp: TimeInterval) -> TimeInterval {
+        let date = Date(timeIntervalSince1970: timeStamp/1000)
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        
+        return getMilliSeconds(date: calendar.date(from: dateComponents)!)
     }
     
-    class func get23Hour(timeStamp: Double) -> Double {
+    class func get23Hour(timeStamp: TimeInterval) -> TimeInterval {
         return getZeroHour(timeStamp: timeStamp) + 86340
     }
     
