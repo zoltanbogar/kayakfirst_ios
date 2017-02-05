@@ -18,6 +18,8 @@
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
 		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
+		0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */; };
+		0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -102,6 +104,8 @@
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
+		0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVDate+.swift"; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */,
 				0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */,
 				06F914621E428A240041B303 /* Alamofire+.swift */,
+				0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				069441621E46572D00648B50 /* MainNavigationViewController.swift */,
 				061148801E467A13003A8FE6 /* MainViewController.swift */,
+				0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
+				0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
@@ -634,6 +641,7 @@
 				06F9145C1E427ACE0041B303 /* UserService.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
+				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

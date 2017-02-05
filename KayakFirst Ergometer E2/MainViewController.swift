@@ -21,6 +21,12 @@ class MainViewController: UIViewController {
         btnProfile.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
+        
+        view.addSubview(btnCalendar)
+        btnCalendar.snp.makeConstraints { make in
+            make.top.equalTo(btnProfile.snp.bottom)
+            make.centerX.equalTo(view)
+        }
     }
     
     private lazy var btnProfile: UIButton! = {
@@ -31,9 +37,22 @@ class MainViewController: UIViewController {
         return button
     }()
     
+    private lazy var btnCalendar: UIButton! = {
+        let button = UIButton()
+        button.setTitle("History", for: .normal)
+        button.addTarget(self, action: #selector(btnCalendarClick), for: .touchUpInside)
+        
+        return button
+    }()
+    
     @objc private func btnProfileClick() {
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
+    @objc private func btnCalendarClick() {
+        let vc = CalendarViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

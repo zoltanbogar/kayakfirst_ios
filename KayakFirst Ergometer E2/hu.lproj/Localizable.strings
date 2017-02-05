@@ -168,3 +168,4 @@
 //Date
 "date_format"="yyyy.MM.dd";
 "date_time_format"="yyyy.MM.dd kk:mm";
+"date_format_month"="yyyy MMMM";
