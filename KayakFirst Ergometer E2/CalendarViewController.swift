@@ -18,6 +18,12 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     //MARK: trainigData
     private var trainingDays: [TimeInterval]?
     
+    //MARK: service
+    private let trainingService = TrainingService.sharedInstance
+    
+    //MARK: preferences
+    private var selectedDate: TimeInterval?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,20 +44,65 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         view.addSubview(labelMonth)
     }
     
+    //MARK: call service
     private func getTrainingDays() {
         TrainingService.sharedInstance.getTrainingDays(trainingDataCallback: trainingDaysCallback)
     }
     
+    private func getTrainigsList() {
+        var hasData = false
+        if let trainingDaysList = trainingDays {
+            for trainingDay in trainingDaysList {
+                hasData = DateFormatHelper.isSameDay(timeStamp1: trainingDay, timeStamp2: selectedDate!)
+                
+                if hasData {
+                    break
+                }
+            }
+        }
+        
+        if hasData {
+            if getDailyData() {
+                //TODO
+            } else {
+                let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
+                let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
+                trainingService.getTrainingList(trainingDataCallback: trainingListCallback, timeStampFrom: fromDate, timeStampTo: toDate)
+            }
+        }
+    }
+    
+    private func getDailyData() -> Bool {
+        //TODO: implement
+        return false
+    }
+    
+    //MARK: callbacks
     private func trainingDaysCallback(error: Responses?, trainingData: [TimeInterval]?) {
         if let trainingDays = trainingData {
             self.trainingDays = trainingDays
             calendarView?.contentController.refreshPresentedMonth()
+            getTrainigsList()
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
     }
     
-    //MARK: inint views
+    private func trainingListCallback(error: Responses?, trainingData: [Training]?) {
+        if let trainings = trainingData {
+            
+            //TODO: delete this
+            for training in trainings {
+                log("Training", "userId: \(training.userId), dataType: \(training.dataType), dataValue: \(training.dataValue)")
+            }
+            
+            
+        } else if let userError = error {
+            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        }
+    }
+    
+    //MARK: init views
     private lazy var labelMonth: UILabel! = {
         let label = AppUILabel(frame: CGRect(x: 0, y: 75, width: self.view.frame.width, height: 20))
         label.textAlignment = .center
@@ -69,6 +120,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         calendarView?.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
         
         refreshMonth(timeStamp: currentTimeMillis())
+        selectedDate = currentTimeMillis()
         
         return calendarView!
     }
@@ -114,6 +166,11 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     
     func presentedDateUpdated(_ date: CVDate) {
         refreshMonth(timeStamp: date.getTimeMillis())
+        
+        if selectedDate != date.getTimeMillis() {
+            selectedDate = date.getTimeMillis()
+            getTrainigsList()
+        }
     }
     
     private func refreshMonth(timeStamp: TimeInterval) {

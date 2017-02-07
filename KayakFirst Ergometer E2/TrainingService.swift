@@ -17,9 +17,14 @@ class TrainingService: AppService {
     }
     
     //MARK: server endpoints
-    func getTrainingDays(trainingDataCallback: @escaping (_ error: Responses?, _ userData: [TimeInterval]?) -> ()) {
+    func getTrainingDays(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [TimeInterval]?) -> ()) {
         let downloadTrainingDays = DownloadTrainingDays()
         LoadData(trainingService: self, trainingDataCallback: trainingDataCallback, serverService: downloadTrainingDays).execute()
+    }
+    
+    func getTrainingList(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [Training]?) -> (), timeStampFrom: TimeInterval, timeStampTo: TimeInterval) {
+        let downloadTrainigs = DownloadTrainings(sessionIdFrom: timeStampFrom, sessionIdTo: timeStampTo)
+        LoadData(trainingService: self, trainingDataCallback: trainingDataCallback, serverService: downloadTrainigs).execute()
     }
 }
 

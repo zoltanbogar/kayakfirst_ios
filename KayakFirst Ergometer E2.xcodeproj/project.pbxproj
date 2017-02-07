@@ -18,6 +18,10 @@
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
 		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
+		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
+		06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */; };
+		06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD41E4998AE0066C072 /* DownloadDto.swift */; };
+		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
 		0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */; };
 		0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */; };
 		0613DAA11E47843900CAD5A6 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA01E47843900CAD5A6 /* TrainingService.swift */; };
@@ -106,6 +110,10 @@
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
+		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDto.swift; sourceTree = "<group>"; };
+		06117BD41E4998AE0066C072 /* DownloadDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadDto.swift; sourceTree = "<group>"; };
+		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
 		0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVDate+.swift"; sourceTree = "<group>"; };
 		0613DAA01E47843900CAD5A6 /* TrainingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
@@ -231,6 +239,7 @@
 				06F657CB1E463DB6002AA9D0 /* UserRegister.swift */,
 				061148821E468121003A8FE6 /* UserUpdate.swift */,
 				0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */,
+				06117BD61E4999FA0066C072 /* DownloadTrainings.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -239,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				060C8B761E40682C0057DD61 /* User.swift */,
+				06117BD01E4996350066C072 /* Training.swift */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -392,6 +402,8 @@
 				06F914601E42802B0041B303 /* LoginDto.swift */,
 				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
 				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
+				06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */,
+				06117BD41E4998AE0066C072 /* DownloadDto.swift */,
 			);
 			name = backend;
 			sourceTree = "<group>";
@@ -607,6 +619,7 @@
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
+				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
@@ -615,6 +628,7 @@
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
+				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
 				0613DAA11E47843900CAD5A6 /* TrainingService.swift in Sources */,
 				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
@@ -643,10 +657,12 @@
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
+				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
 				06F9145C1E427ACE0041B303 /* UserService.swift in Sources */,
+				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
