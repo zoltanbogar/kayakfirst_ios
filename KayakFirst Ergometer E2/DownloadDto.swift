@@ -12,13 +12,13 @@ import SwiftyJSON
 struct DownloadDto {
     
     let id: Int64
-    let sessionId: Int64
+    let sessionId: TimeInterval
     let traningType: String
     let data: [DownloadTrainingDto]
     
     init(json: JSON) {
         self.id = json["id"].int64Value
-        self.sessionId = json["sessionId"].int64Value
+        self.sessionId = json["sessionId"].doubleValue
         self.traningType = json["trainingType"].stringValue
         
         var downloadTrainingDtos = [DownloadTrainingDto]()

@@ -20,7 +20,7 @@ struct Training {
     let timeStamp: TimeInterval
     let currentDistance: Double
     let userId: Int64
-    let sessionId: Int64
+    let sessionId: TimeInterval
     let trainingType: String
     let dataType: String
     let dataValue: Double

@@ -20,6 +20,9 @@ func currentTimeMillis() -> TimeInterval {
 
 class DateFormatHelper {
     
+    //MARK: constants
+    static let timeFormat = "kk:mm"
+    
     //MARK: Properties
     var format: TimeEnum?
 

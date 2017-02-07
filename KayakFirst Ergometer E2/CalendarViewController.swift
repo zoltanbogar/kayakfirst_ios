@@ -111,7 +111,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     private func trainingListCallback(error: Responses?, trainingData: [Training]?) {
         if let trainings = trainingData {
             
-            tableViewTraining?.dataList = trainings
+            tableViewTraining?.dataList = SumTraining.createSumTrainingList(trainings: trainings)
             
             //TODO: delete this
             for training in trainings {

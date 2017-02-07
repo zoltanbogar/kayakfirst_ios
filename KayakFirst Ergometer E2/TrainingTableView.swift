@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainingTablewView: TableViewWithEmpty<Training> {
+class TrainingTablewView: TableViewWithEmpty<SumTraining> {
     
     override init(view: UIView, frame: CGRect) {
         super.init(view: view, frame: frame)

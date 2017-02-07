@@ -20,6 +20,9 @@
 		060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */; };
 		060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA21E4A654E006DD8AB /* TrainingTableView.swift */; };
 		060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */; };
+		060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */; };
+		060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */; };
+		060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */; };
 		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -116,6 +119,9 @@
 		060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiTableViewCell.swift; sourceTree = "<group>"; };
 		060D9BA21E4A654E006DD8AB /* TrainingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableView.swift; sourceTree = "<group>"; };
 		060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTraining.swift; sourceTree = "<group>"; };
+		060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateEnum.swift; sourceTree = "<group>"; };
+		060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */,
 				06F914621E428A240041B303 /* Alamofire+.swift */,
 				0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */,
+				060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 			children = (
 				060C8B761E40682C0057DD61 /* User.swift */,
 				06117BD01E4996350066C072 /* Training.swift */,
+				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -270,6 +278,14 @@
 				060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */,
 			);
 			name = table_view;
+			sourceTree = "<group>";
+		};
+		060D9BA81E4A853E006DD8AB /* ergometer */ = {
+			isa = PBXGroup;
+			children = (
+				060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */,
+			);
+			name = ergometer;
 			sourceTree = "<group>";
 		};
 		064764C51E237022004B9ED3 /* utils */ = {
@@ -382,6 +398,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				060D9BA81E4A853E006DD8AB /* ergometer */,
 				0677FEF91E41396300A9B977 /* server */,
 				060C8B751E4068220057DD61 /* domain */,
 				0602D3AA1E31568F001E382E /* extensions */,
@@ -664,15 +681,18 @@
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
+				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
+				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				060219651E377B90005B945B /* KayakScrollViewController.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
+				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
