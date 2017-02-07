@@ -14,6 +14,10 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     //MARK: views
     private var calendarView: CVCalendarView?
     private var calendarMenuView: CVCalendarMenuView?
+    private var tableViewTraining: TrainingTablewView?
+    private let stackView = UIStackView()
+    private let viewCalendar = UIView()
+    private let viewTableView = UIView()
     
     //MARK: trainigData
     private var trainingDays: [TimeInterval]?
@@ -39,9 +43,23 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     }
     
     private func initView() {
-        view.addSubview(initCalendarMenuView())
-        view.addSubview(initCalendarView())
-        view.addSubview(labelMonth)
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        
+        stackView.addArrangedSubview(viewCalendar)
+        stackView.addArrangedSubview(viewTableView)
+        
+        viewCalendar.addSubview(initCalendarView())
+        viewCalendar.addSubview(labelMonth)
+        viewCalendar.addSubview(initCalendarMenuView())
+        viewTableView.addSubview(initTableViewTraining())
+        tableViewTraining!.snp.makeConstraints { make in
+            make.edges.equalTo(viewTableView)
+        }
     }
     
     //MARK: call service
@@ -69,6 +87,8 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
                 let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
                 trainingService.getTrainingList(trainingDataCallback: trainingListCallback, timeStampFrom: fromDate, timeStampTo: toDate)
             }
+        } else {
+            tableViewTraining?.dataList = nil
         }
     }
     
@@ -91,6 +111,8 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     private func trainingListCallback(error: Responses?, trainingData: [Training]?) {
         if let trainings = trainingData {
             
+            tableViewTraining?.dataList = trainings
+            
             //TODO: delete this
             for training in trainings {
                 log("Training", "userId: \(training.userId), dataType: \(training.dataType), dataValue: \(training.dataValue)")
@@ -111,7 +133,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     }()
     
     private func initCalendarView() -> CVCalendarView {
-        calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: view.frame.width, height: view.frame.height/2))
+        calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: view.frame.width, height: 200))
         calendarView?.calendarAppearanceDelegate = self
         calendarView?.calendarDelegate = self
         
@@ -132,6 +154,12 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         calendarMenuView?.menuViewDelegate = self
         
         return calendarMenuView!
+    }
+    
+    private func initTableViewTraining() -> TrainingTablewView {
+        tableViewTraining = TrainingTablewView(view: self.viewTableView, frame: CGRect.zero)
+        
+        return tableViewTraining!
     }
     
     func presentationMode() -> CalendarMode {
@@ -177,4 +205,6 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
         calendarView?.contentController.refreshPresentedMonth()
     }
+    
+    
 }
