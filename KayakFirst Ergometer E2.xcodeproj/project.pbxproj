@@ -27,6 +27,8 @@
 		060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */; };
 		060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */; };
 		060DDFE21E4B01C000FE2D14 /* DailyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE11E4B01C000FE2D14 /* DailyData.swift */; };
+		060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */; };
+		060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */; };
 		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -130,6 +132,8 @@
 		060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingAvgs.swift; sourceTree = "<group>"; };
 		060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDtoDownload.swift; sourceTree = "<group>"; };
 		060DDFE11E4B01C000FE2D14 /* DailyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyData.swift; sourceTree = "<group>"; };
+		060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsPagerViewController.swift; sourceTree = "<group>"; };
+		060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewController.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 				069441621E46572D00648B50 /* MainNavigationViewController.swift */,
 				061148801E467A13003A8FE6 /* MainViewController.swift */,
 				0613DA9C1E475B1400CAD5A6 /* CalendarViewController.swift */,
+				060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */,
+				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
+				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
@@ -715,6 +722,7 @@
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */,
+				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,

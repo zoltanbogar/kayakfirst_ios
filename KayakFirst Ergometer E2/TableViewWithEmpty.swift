@@ -14,7 +14,7 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     private let cellIdentifier = "cell"
     
     //MARK: data
-    var _dataList: [E]?
+    private var _dataList: [E]?
     var dataList: [E]? {
         get {
             return _dataList
@@ -24,6 +24,9 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
             reloadData()
         }
     }
+    
+    //MARK: callback
+    var rowClickCallback: ((E, _ position: Int) -> ())?
     
     //MARK: init
     init(view: UIView, frame: CGRect) {
@@ -62,6 +65,13 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         cell.data = dataList?[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let calback = rowClickCallback {
+            let position = indexPath.row
+            calback(dataList![position], position)
+        }
     }
     
     //MARK: abstract functions

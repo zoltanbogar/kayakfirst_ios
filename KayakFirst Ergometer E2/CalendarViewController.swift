@@ -175,6 +175,13 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     private func initTableViewTraining() -> TrainingTablewView {
         tableViewTraining = TrainingTablewView(view: self.viewTableView, frame: CGRect.zero)
         
+        tableViewTraining?.rowClickCallback = { sumTraining, position in
+            let viewController = TrainingDetailsPagerViewController()
+            viewController.position = position
+            viewController.sumTrainingList = self.tableViewTraining!.dataList
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        
         return tableViewTraining!
     }
     
