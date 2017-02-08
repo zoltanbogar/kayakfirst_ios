@@ -25,8 +25,10 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     //MARK: service
     private let trainingService = TrainingService.sharedInstance
     
-    //MARK: preferences
+    //MARK: properties
     private var selectedDate: TimeInterval?
+    private var dailyDataList: [DailyData]?
+    private var error: Responses?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,11 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         tableViewTraining!.snp.makeConstraints { make in
             make.edges.equalTo(viewTableView)
         }
+        
+        viewTableView.addSubview(progressBar)
+        progressBar.snp.makeConstraints { make in
+            make.center.equalTo(viewTableView)
+        }
     }
     
     //MARK: call service
@@ -81,20 +88,59 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         
         if hasData {
             if getDailyData() {
-                //TODO
+                refreshTableView()
             } else {
                 let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
                 let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
                 trainingService.getTrainingList(trainingDataCallback: trainingListCallback, timeStampFrom: fromDate, timeStampTo: toDate)
+                showProgressBar(isShow: true)
             }
         } else {
             tableViewTraining?.dataList = nil
+            showProgressBar(isShow: false)
+        }
+        errorHandling()
+    }
+    
+    private func refreshTableView() {
+        if let dailyData = dailyDataList {
+            var dataAvailable = false
+            
+            for d in dailyData {
+                if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: selectedDate!) {
+                    let sumTrainings = d.sumTrainingList
+                    
+                    dataAvailable = sumTrainings != nil
+                    tableViewTraining?.dataList = sumTrainings
+                }
+            }
+            showProgressBar(isShow: !dataAvailable)
         }
     }
     
     private func getDailyData() -> Bool {
-        //TODO: implement
+        if dailyDataList == nil {
+            dailyDataList = [DailyData]()
+        }
+        
+        for d in dailyDataList! {
+            if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: selectedDate!) {
+                return true
+            }
+        }
+        dailyDataList!.append(DailyData(date: selectedDate!))
         return false
+    }
+    
+    private func addDailyData(trainingList: [Training]?) {
+        if trainingList != nil && trainingList!.count > 0 {
+            for d in dailyDataList! {
+                if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: trainingList![0].sessionId) {
+                    let sumTrainingList = SumTraining.createSumTrainingList(trainings: trainingList!)
+                    d.add(sumTrainings: sumTrainingList!)
+                }
+            }
+        }
     }
     
     //MARK: callbacks
@@ -103,28 +149,53 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
             self.trainingDays = trainingDays
             calendarView?.contentController.refreshPresentedMonth()
             getTrainigsList()
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
+        self.error = error
+        errorHandling()
     }
     
     private func trainingListCallback(error: Responses?, trainingData: [Training]?) {
         if let trainings = trainingData {
-            
-            tableViewTraining?.dataList = SumTraining.createSumTrainingList(trainings: trainings)
-            
-            //TODO: delete this
-            for training in trainings {
-                log("Training", "userId: \(training.userId), dataType: \(training.dataType), dataValue: \(training.dataValue)")
-            }
-            
-            
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+            addDailyData(trainingList: trainings)
+            refreshTableView()
+        }
+        self.error = error
+        errorHandling()
+    }
+    
+    //MARK: error
+    private func errorHandling() {
+        if let globalError = self.error {
+            showProgressBar(isShow: false)
+            AppService.errorHandlingWithAlert(viewController: self, error: globalError)
         }
     }
     
     //MARK: init views
+    private func initTableViewTraining() -> TrainingTablewView {
+        tableViewTraining = TrainingTablewView(view: self.viewTableView, frame: CGRect.zero)
+        
+        return tableViewTraining!
+    }
+    
+    private lazy var progressBar: UIActivityIndicatorView! = {
+        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
+        spinner.activityIndicatorViewStyle = .whiteLarge
+        
+        return spinner
+    }()
+    
+    private func showProgressBar(isShow: Bool) {
+        if isShow {
+            progressBar.startAnimating()
+            tableViewTraining?.dataList = nil
+        } else {
+            progressBar.stopAnimating()
+        }
+        
+        progressBar.isHidden = !isShow
+    }
+    
     private lazy var labelMonth: UILabel! = {
         let label = AppUILabel(frame: CGRect(x: 0, y: 75, width: self.view.frame.width, height: 20))
         label.textAlignment = .center
@@ -154,12 +225,6 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         calendarMenuView?.menuViewDelegate = self
         
         return calendarMenuView!
-    }
-    
-    private func initTableViewTraining() -> TrainingTablewView {
-        tableViewTraining = TrainingTablewView(view: self.viewTableView, frame: CGRect.zero)
-        
-        return tableViewTraining!
     }
     
     func presentationMode() -> CalendarMode {

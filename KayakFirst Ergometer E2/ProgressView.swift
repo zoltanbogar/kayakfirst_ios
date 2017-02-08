@@ -19,8 +19,8 @@ class ProgressView: UIView {
         view.addSubview(spinner)
         spinner.snp.makeConstraints { make in
             make.center.equalTo(view)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.width.equalTo(buttonHeight)
+            make.height.equalTo(buttonHeight)
         }
         superView.addSubview(view)
         view.snp.makeConstraints { make in

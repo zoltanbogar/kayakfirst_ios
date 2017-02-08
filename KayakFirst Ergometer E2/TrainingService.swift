@@ -16,6 +16,9 @@ class TrainingService: AppService {
         //private constructor
     }
     
+    //MARK: properties
+    private var avgTrainingDictionary: [String : Double]?
+    
     //MARK: server endpoints
     func getTrainingDays(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [TimeInterval]?) -> ()) {
         let downloadTrainingDays = DownloadTrainingDays()
@@ -23,6 +26,37 @@ class TrainingService: AppService {
     }
     
     func getTrainingList(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [Training]?) -> (), timeStampFrom: TimeInterval, timeStampTo: TimeInterval) {
+        getTrainingAvgList(trainingDataCallback: { error, trainingData in
+            if let trainingAvgs = trainingData {
+                //TODO: hashmap
+                
+                if self.avgTrainingDictionary == nil {
+                    self.avgTrainingDictionary = [String : Double]()
+                }
+                
+                for trainingAvg in trainingAvgs {
+                    self.avgTrainingDictionary!.updateValue(trainingAvg.avgValue, forKey: trainingAvg.avgHash)
+                }
+                
+                self.getTrainingListLocale(trainingDataCallback: trainingDataCallback, timeStampFrom: timeStampFrom, timeStampTo: timeStampTo)
+            }
+        },
+            timeStampFrom: timeStampFrom, timeStampTo: timeStampTo)
+    }
+    
+    func getTrainigAvg(hash: String) -> Double? {
+        if let dictionary = avgTrainingDictionary {
+            return dictionary[hash]
+        }
+        return nil
+    }
+    
+    private func getTrainingAvgList(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [TrainingAvg]?) -> (), timeStampFrom: TimeInterval, timeStampTo: TimeInterval) {
+        let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: timeStampFrom, sessionIdTo: timeStampTo)
+        LoadData(trainingService: self, trainingDataCallback: trainingDataCallback, serverService: downloadTrainingAvgs).execute()
+    }
+    
+    private func getTrainingListLocale(trainingDataCallback: @escaping (_ error: Responses?, _ trainingData: [Training]?) -> (), timeStampFrom: TimeInterval, timeStampTo: TimeInterval) {
         let downloadTrainigs = DownloadTrainings(sessionIdFrom: timeStampFrom, sessionIdTo: timeStampTo)
         LoadData(trainingService: self, trainingDataCallback: trainingDataCallback, serverService: downloadTrainigs).execute()
     }

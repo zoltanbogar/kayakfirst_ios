@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class SumTraining {
+class SumTraining: Equatable {
     
     //MARK: constants
     private let oneHourMilliseconds: TimeInterval = 60 * 60 * 1000
@@ -129,6 +129,10 @@ class SumTraining {
             return sumTrainingList
         }
         return nil
+    }
+    
+    static func == (lhs: SumTraining, rhs: SumTraining) -> Bool {
+        return lhs.duration == rhs.duration && lhs.startTime == rhs.startTime
     }
     
 }
