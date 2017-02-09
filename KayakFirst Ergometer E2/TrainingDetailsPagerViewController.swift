@@ -38,6 +38,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         
         dataSource = self
         
+        self.automaticallyAdjustsScrollViewInsets = false
         setFirstViewController()
     }
     
@@ -85,9 +86,11 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     private func initViewControllers() {
         if let sumTrainings = sumTrainingList {
             trainingViewControllers = [UIViewController]()
-            for sumTraining in sumTrainings {
+            for i in 0..<sumTrainings.count {
                 let controller = TrainingDetailsViewController()
-                controller.sumTraining = sumTraining
+                controller.sumTraining = sumTrainings[i]
+                controller.position = i
+                controller.createTrainingList = CreateTrainingList(sumTrainings: sumTrainingList!)
                 trainingViewControllers!.append(controller)
             }
         }

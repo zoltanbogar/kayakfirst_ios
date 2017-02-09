@@ -29,6 +29,25 @@
 		060DDFE21E4B01C000FE2D14 /* DailyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE11E4B01C000FE2D14 /* DailyData.swift */; };
 		060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */; };
 		060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */; };
+		060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */; };
+		060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */; };
+		060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF11E4BD8C800FE2D14 /* TrainingSumElementAverage.swift */; };
+		060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF31E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift */; };
+		060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF51E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift */; };
+		060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF71E4BDC3B00FE2D14 /* TrainingSEForceAv.swift */; };
+		060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF91E4BDDC100FE2D14 /* TrainingSESpeedAv.swift */; };
+		060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFFB1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift */; };
+		060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFFD1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift */; };
+		060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFFF1E4BDEC100FE2D14 /* TrainingSEForce.swift */; };
+		060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0011E4BDF3700FE2D14 /* TrainingSESpeed.swift */; };
+		060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0031E4BDF6E00FE2D14 /* TrainingSEStroke.swift */; };
+		060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0051E4BDFB400FE2D14 /* TrainingSET1000.swift */; };
+		060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0071E4BE00B00FE2D14 /* TrainingSET200.swift */; };
+		060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0091E4BE02100FE2D14 /* TrainingSET500.swift */; };
+		060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00B1E4BE0AF00FE2D14 /* TrainingSumView.swift */; };
+		060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */; };
+		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
+		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
 		061148811E467A13003A8FE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -134,6 +153,25 @@
 		060DDFE11E4B01C000FE2D14 /* DailyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyData.swift; sourceTree = "<group>"; };
 		060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsPagerViewController.swift; sourceTree = "<group>"; };
 		060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewController.swift; sourceTree = "<group>"; };
+		060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTrainingSumElement.swift; sourceTree = "<group>"; };
+		060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTrainingList.swift; sourceTree = "<group>"; };
+		060DDFF11E4BD8C800FE2D14 /* TrainingSumElementAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementAverage.swift; sourceTree = "<group>"; };
+		060DDFF31E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementMaximum.swift; sourceTree = "<group>"; };
+		060DDFF51E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementMinimumTime.swift; sourceTree = "<group>"; };
+		060DDFF71E4BDC3B00FE2D14 /* TrainingSEForceAv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSEForceAv.swift; sourceTree = "<group>"; };
+		060DDFF91E4BDDC100FE2D14 /* TrainingSESpeedAv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSESpeedAv.swift; sourceTree = "<group>"; };
+		060DDFFB1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSEStrokesAv.swift; sourceTree = "<group>"; };
+		060DDFFD1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementAvgTime.swift; sourceTree = "<group>"; };
+		060DDFFF1E4BDEC100FE2D14 /* TrainingSEForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSEForce.swift; sourceTree = "<group>"; };
+		060DE0011E4BDF3700FE2D14 /* TrainingSESpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSESpeed.swift; sourceTree = "<group>"; };
+		060DE0031E4BDF6E00FE2D14 /* TrainingSEStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSEStroke.swift; sourceTree = "<group>"; };
+		060DE0051E4BDFB400FE2D14 /* TrainingSET1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET1000.swift; sourceTree = "<group>"; };
+		060DE0071E4BE00B00FE2D14 /* TrainingSET200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200.swift; sourceTree = "<group>"; };
+		060DE0091E4BE02100FE2D14 /* TrainingSET500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500.swift; sourceTree = "<group>"; };
+		060DE00B1E4BE0AF00FE2D14 /* TrainingSumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumView.swift; sourceTree = "<group>"; };
+		060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET1000Av.swift; sourceTree = "<group>"; };
+		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
+		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -303,6 +341,39 @@
 			name = ergometer;
 			sourceTree = "<group>";
 		};
+		060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */ = {
+			isa = PBXGroup;
+			children = (
+				060DE00B1E4BE0AF00FE2D14 /* TrainingSumView.swift */,
+				060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */,
+				060DDFF11E4BD8C800FE2D14 /* TrainingSumElementAverage.swift */,
+				060DDFF31E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift */,
+				060DDFF51E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift */,
+				060DDFF71E4BDC3B00FE2D14 /* TrainingSEForceAv.swift */,
+				060DDFF91E4BDDC100FE2D14 /* TrainingSESpeedAv.swift */,
+				060DDFFB1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift */,
+				060DDFFD1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift */,
+				060DDFFF1E4BDEC100FE2D14 /* TrainingSEForce.swift */,
+				060DE0011E4BDF3700FE2D14 /* TrainingSESpeed.swift */,
+				060DE0031E4BDF6E00FE2D14 /* TrainingSEStroke.swift */,
+				060DE0051E4BDFB400FE2D14 /* TrainingSET1000.swift */,
+				060DE0071E4BE00B00FE2D14 /* TrainingSET200.swift */,
+				060DE0091E4BE02100FE2D14 /* TrainingSET500.swift */,
+				060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */,
+				060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */,
+				060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */,
+			);
+			name = training_sum_elements;
+			sourceTree = "<group>";
+		};
+		060DDFEE1E4BD2BF00FE2D14 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */,
+			);
+			name = database;
+			sourceTree = "<group>";
+		};
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +438,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */,
 				060D9BA11E4A6539006DD8AB /* table_view */,
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
 				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
@@ -415,6 +487,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				060D9BA81E4A853E006DD8AB /* ergometer */,
 				0677FEF91E41396300A9B977 /* server */,
 				060C8B751E4068220057DD61 /* domain */,
@@ -658,17 +731,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
+				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
+				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
+				060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */,
 				060D9B9E1E4A5E46006DD8AB /* TableViewWithEmpty.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
@@ -678,6 +755,7 @@
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
+				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
@@ -687,16 +765,22 @@
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
+				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,
+				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
 				0613DAA11E47843900CAD5A6 /* TrainingService.swift in Sources */,
 				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
+				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
 				06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
+				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,
+				060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */,
+				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
@@ -705,6 +789,7 @@
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
+				060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
@@ -716,15 +801,20 @@
 				060C8B741E4064ED0057DD61 /* ProfileViewController.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
 				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,
+				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
+				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
+				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
+				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				0613DA9D1E475B1400CAD5A6 /* CalendarViewController.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
+				060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
@@ -732,9 +822,11 @@
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
+				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
+				060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
