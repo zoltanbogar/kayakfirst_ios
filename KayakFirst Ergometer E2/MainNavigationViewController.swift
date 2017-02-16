@@ -13,7 +13,7 @@ class MainNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainViewController = MainViewController()
+        let mainViewController = MainTabViewController()
         pushViewController(mainViewController, animated: true)
     }
     

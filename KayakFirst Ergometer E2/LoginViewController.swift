@@ -201,12 +201,4 @@ class LoginViewController: KayakScrollViewController {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
     }
-    
-    //TODO: delete this
-    private func showProfile() {
-        if UserService.sharedInstance.getUser() != nil {
-            let viewController = ProfileViewController()
-            self.present(viewController, animated: true, completion: nil)
-        }
-    }
 }

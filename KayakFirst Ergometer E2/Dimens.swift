@@ -24,3 +24,8 @@ func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
     
     return height
 }
+
+func getTabBarHeight(viewController: UIViewController) -> CGFloat {
+    let tabBarHeight = viewController.tabBarController?.tabBar.frame.size.height
+    return tabBarHeight == nil ? 0 : tabBarHeight!
+}

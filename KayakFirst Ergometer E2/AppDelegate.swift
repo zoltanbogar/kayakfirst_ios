@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        initColors()
         initMainWindow()
         initKeyboardManager()
         
@@ -34,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
-        
     }
     
     private func initKeyboardManager() {
@@ -61,6 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    private func initColors() {
+        UITabBar.appearance().tintColor = Colors.colorAccent
+        UITabBar.appearance().barTintColor = Colors.colorPrimary
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = Colors.colorPrimary
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
 
 

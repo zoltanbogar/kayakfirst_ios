@@ -70,6 +70,9 @@
 "menu_log"="Naptár";
 "menu_about"="Információ";
 
+//Navigation
+"navigation_profile"="Profil";
+
 //Calendar
 "calendar_jump_today"="Ugrás a mai napra";
 "calendar_empty_list"="Nincs tárolt adat";
@@ -169,3 +172,8 @@
 "date_format"="yyyy.MM.dd";
 "date_time_format"="yyyy.MM.dd kk:mm";
 "date_format_month"="yyyy MMMM";
+
+//Translate!
+"navigation_home"="Home";
+"navigation_calendar"="Calendar";
+"navigation_settings"="Settings";

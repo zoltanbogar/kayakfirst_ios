@@ -21,7 +21,7 @@ class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
         
         view.addSubview(scrollContainer)
         scrollContainer.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(view)
+            make.top.left.right.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
         }
         
         view.addSubview(scrollView)

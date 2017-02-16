@@ -70,6 +70,9 @@
 "menu_log"="History";
 "menu_about"="About";
 
+//Navigation
+"navigation_profile"="Profile";
+
 //Calendar
 "calendar_jump_today"="Jump to today";
 "calendar_empty_list"="There is no Training Data";
@@ -169,3 +172,8 @@
 "date_format"="dd.MM.yyyy";
 "date_time_format"="dd.MM.yyyy kk:mm";
 "date_format_month"="MMMM yyyy";
+
+//Translate!
+"navigation_home"="Home";
+"navigation_calendar"="Calendar";
+"navigation_settings"="Settings";

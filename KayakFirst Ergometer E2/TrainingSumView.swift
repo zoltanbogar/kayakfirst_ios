@@ -54,9 +54,9 @@ class TrainingSumView: UIView {
         horizontalStackView2.addArrangedSubview(seStrokeAv)
         horizontalStackView2.addArrangedSubview(seForceAv)
         mainStackView.addArrangedSubview(horizontalStackView2)
-        horizontalStackView2.snp.makeConstraints { make in
+        /*horizontalStackView2.snp.makeConstraints { make in
             make.width.equalTo(mainStackView)
-        }
+        }*/
         
         mainStackView.addArrangedSubview(labelBest)
         

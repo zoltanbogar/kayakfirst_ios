@@ -1,14 +1,14 @@
 //
-//  ProfileViewController.swift
+//  ProfileVc.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 01. 31..
+//  Created by Balazs Vidumanszki on 2017. 02. 16..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import UIKit
 
-class ProfileViewController: KayakScrollViewController {
+class ProfileVc: BaseMainTabScrollVc {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
@@ -26,11 +26,7 @@ class ProfileViewController: KayakScrollViewController {
         initView()
     }
     
-    private func initView() {
-        self.navigationItem.setRightBarButtonItems([btnSave], animated: true)
-        
-        progressView = ProgressView(superView: view)
-        
+    internal override func initView() {
         stackView.axis = .vertical
         
         containerView.addSubview(stackView)
@@ -92,7 +88,7 @@ class ProfileViewController: KayakScrollViewController {
         viewBottom.backgroundColor = Colors.colorPrimary
         view.addSubview(viewBottom)
         viewBottom.snp.makeConstraints { make in
-            make.bottom.equalTo(view.snp.bottom)
+            make.bottom.equalTo(scrollView.snp.bottom)
             make.left.equalTo(stackView.snp.left)
             make.width.equalTo(stackView.snp.width)
             make.height.equalTo(viewBottomHeight)
@@ -105,6 +101,11 @@ class ProfileViewController: KayakScrollViewController {
             make.height.equalTo(buttonHeight)
             make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
+        progressView = ProgressView(superView: view)
+    }
+    
+    override func initTabBarItems() {
+        self.tabBarController?.navigationItem.setRightBarButtonItems([btnSave], animated: true)
     }
     
     private lazy var tfFirstName: DialogElementTextField! = {
@@ -229,15 +230,15 @@ class ProfileViewController: KayakScrollViewController {
             progressView?.show(isShow: true)
             UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
                                                   userDto: UserDto(
-                lastName: tfLastName.text,
-                firstName: tfFirstName.text,
-                email: tfEmail.text,
-                bodyWeight: Double(tfWeight.text!),
-                gender: user?.gender,
-                birthDate: user?.birthDate,
-                country: user?.country,
-                password: tfPassword.text,
-                userName: tfUserName.text))
+                                                    lastName: tfLastName.text,
+                                                    firstName: tfFirstName.text,
+                                                    email: tfEmail.text,
+                                                    bodyWeight: Double(tfWeight.text!),
+                                                    gender: user?.gender,
+                                                    birthDate: user?.birthDate,
+                                                    country: user?.country,
+                                                    password: tfPassword.text,
+                                                    userName: tfUserName.text))
         }
     }
     

@@ -1,15 +1,16 @@
 //
-//  CalendarViewController.swift
+//  CalendarVc.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 05..
+//  Created by Balazs Vidumanszki on 2017. 02. 16..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import UIKit
 import CVCalendar
 
-class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
+//TODO: if one day is loaded it will not be refresh
+class CalendarVc: BaseMainTabVC, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: views
     private var calendarView: CVCalendarView?
@@ -32,8 +33,6 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initView();
         getTrainingDays()
     }
     
@@ -44,12 +43,12 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         calendarMenuView?.commitMenuViewUpdate()
     }
     
-    private func initView() {
+    internal override func initView() {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        view.addSubview(stackView)
+        contentView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+            make.edges.equalTo(contentView)
         }
         
         stackView.addArrangedSubview(viewCalendar)
@@ -67,6 +66,10 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         progressBar.snp.makeConstraints { make in
             make.center.equalTo(viewTableView)
         }
+    }
+    
+    override func initTabBarItems() {
+        self.tabBarController?.navigationItem.setRightBarButtonItems([btnToday], animated: true)
     }
     
     //MARK: call service
@@ -102,6 +105,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         errorHandling()
     }
     
+    //TODO: delete dailyData!!!
     private func refreshTableView() {
         if let dailyData = dailyDataList {
             var dataAvailable = false
@@ -114,6 +118,8 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
                     tableViewTraining?.dataList = sumTrainings
                 }
             }
+            //TODO: delete log
+            log("PROGRESS", "dataAvailable: \(dataAvailable)")
             showProgressBar(isShow: !dataAvailable)
         }
     }
@@ -234,6 +240,19 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         return calendarMenuView!
     }
     
+    private lazy var btnToday: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_event_white_24dp")
+        button.target = self
+        button.action = #selector(btnTodayClick)
+        
+        return button
+    }()
+    
+    @objc private func btnTodayClick() {
+        calendarView?.toggleCurrentDayView()
+    }
+    
     func presentationMode() -> CalendarMode {
         return .monthView
     }
@@ -259,11 +278,6 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         return Colors.colorWhite
     }
     
-    //TODO
-    /*func shouldAutoSelectDayOnMonthChange() -> Bool {
-        return false
-    }*/
-    
     func presentedDateUpdated(_ date: CVDate) {
         refreshMonth(timeStamp: date.getTimeMillis())
         
@@ -273,6 +287,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         }
     }
     
+    //TODO: bug: if calendar swipes a little the training data will be empty for this day
     private func refreshMonth(timeStamp: TimeInterval) {
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
         calendarView?.contentController.refreshPresentedMonth()

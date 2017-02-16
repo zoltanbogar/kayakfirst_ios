@@ -40,6 +40,11 @@ class TrainingDetailsViewController: UIViewController {
         initUi()
     }
     
+    override func viewDidLayoutSubviews() {
+        //viewBottom.setNeedsLayout()
+        //viewBottom.layoutIfNeeded()
+    }
+    
     private func initUi() {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
