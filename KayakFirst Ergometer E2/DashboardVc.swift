@@ -8,15 +8,14 @@
 
 import UIKit
 
-class DashboardVc: UIViewController {
+class DashboardVc: BaseVC {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        initTabBarItems()
+    //MARK: views
+    override func initView() {
+        //TODO
     }
     
-    func initTabBarItems() {
+    override func initTabBarItems() {
         self.navigationItem.setRightBarButtonItems(nil, animated: true)
     }
     

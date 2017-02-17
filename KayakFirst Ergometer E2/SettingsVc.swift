@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsVc: BaseMainTabVC {
+class SettingsVc: BaseVC {
     
     override func initView() {
         //TODO

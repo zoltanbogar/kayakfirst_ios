@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVc: BaseMainTabVC {
+class MainVc: BaseVC {
     
     //MARK: views
     override func initView() {

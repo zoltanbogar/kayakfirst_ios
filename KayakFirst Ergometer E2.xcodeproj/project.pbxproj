@@ -11,6 +11,8 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376B1E578F4F00A973BF /* DragDropLayout.swift */; };
+		060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376D1E579FB700A973BF /* RoundedBorderView.swift */; };
 		060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0A1E41B44100F6A29F /* ServerService.swift */; };
 		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
@@ -73,7 +75,7 @@
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
 		069441631E46572D00648B50 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069441621E46572D00648B50 /* MainNavigationViewController.swift */; };
-		06BCB0D21E564D7D00F41652 /* BaseMainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseMainTabVC.swift */; };
+		06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseVC.swift */; };
 		06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* MainVc.swift */; };
 		06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D51E564F2200F41652 /* CalendarVc.swift */; };
 		06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D71E564F3C00F41652 /* ProfileVc.swift */; };
@@ -142,6 +144,8 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		060A376B1E578F4F00A973BF /* DragDropLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropLayout.swift; sourceTree = "<group>"; };
+		060A376D1E579FB700A973BF /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		060A7D0A1E41B44100F6A29F /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -204,7 +208,7 @@
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		069441621E46572D00648B50 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
-		06BCB0D11E564D7D00F41652 /* BaseMainTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMainTabVC.swift; sourceTree = "<group>"; };
+		06BCB0D11E564D7D00F41652 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		06BCB0D31E564F0200F41652 /* MainVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVc.swift; sourceTree = "<group>"; };
 		06BCB0D51E564F2200F41652 /* CalendarVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVc.swift; sourceTree = "<group>"; };
 		06BCB0D71E564F3C00F41652 /* ProfileVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVc.swift; sourceTree = "<group>"; };
@@ -303,6 +307,14 @@
 				060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		060A376A1E578F4000A973BF /* drag_drop */ = {
+			isa = PBXGroup;
+			children = (
+				060A376B1E578F4F00A973BF /* DragDropLayout.swift */,
+			);
+			name = drag_drop;
 			sourceTree = "<group>";
 		};
 		060A7D091E41B43500F6A29F /* service */ = {
@@ -443,7 +455,7 @@
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */,
 				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
-				06BCB0D11E564D7D00F41652 /* BaseMainTabVC.swift */,
+				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
 				06BCB0D31E564F0200F41652 /* MainVc.swift */,
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
@@ -455,6 +467,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				060A376A1E578F4000A973BF /* drag_drop */,
 				060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */,
 				060D9BA11E4A6539006DD8AB /* table_view */,
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
@@ -465,6 +478,7 @@
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
+				060A376D1E579FB700A973BF /* RoundedBorderView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -768,7 +782,9 @@
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
+				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
+				060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
@@ -809,7 +825,7 @@
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
-				06BCB0D21E564D7D00F41652 /* BaseMainTabVC.swift in Sources */,
+				06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,

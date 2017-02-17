@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseMainTabVC: UIViewController {
+class BaseVC: UIViewController {
     
     //MARK: properties
     let contentView = UIView()
@@ -35,7 +35,15 @@ class BaseMainTabVC: UIViewController {
     private func initViewEdges() {
         view.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
+            make.edges.equalTo(view).inset(UIEdgeInsetsMake(getTopMargin(), 0, getTabBarHeight(viewController: self), 0))
+        }
+    }
+    
+    private func getTopMargin() -> CGFloat {
+        if (self.parent as? UITabBarController) != nil {
+            return 0
+        } else {
+            return getNavigationBarHeight(viewController: self)
         }
     }
     
