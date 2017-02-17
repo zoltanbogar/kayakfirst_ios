@@ -30,6 +30,6 @@ class MainVc: BaseMainTabVC {
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {
-        
+        startOutdoorViewController(viewController: self)
     }
 }

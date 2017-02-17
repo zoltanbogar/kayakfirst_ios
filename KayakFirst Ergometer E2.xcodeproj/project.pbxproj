@@ -90,6 +90,10 @@
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
+		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
+		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
+		06DE18471E56D1D500374107 /* OutdoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18461E56D1D500374107 /* OutdoorViewController.swift */; };
+		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
 		06F657B81E45C899002AA9D0 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B71E45C899002AA9D0 /* AppService.swift */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
@@ -223,6 +227,10 @@
 		06C6ABCD1E2267A100562B27 /* KayakFirst Ergometer E2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayakFirst_Ergometer_E2UITests.swift; sourceTree = "<group>"; };
 		06C6ABD31E2267A100562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
+		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		06DE18461E56D1D500374107 /* OutdoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdoorViewController.swift; sourceTree = "<group>"; };
+		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
 		06F657B71E45C899002AA9D0 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -426,6 +434,7 @@
 		06BF94F01E2A30E20010C8A7 /* view_controller */ = {
 			isa = PBXGroup;
 			children = (
+				06DE18481E56D22B00374107 /* training_viewcontroller */,
 				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
 				06F938F61E3F299A00920753 /* LoginViewController.swift */,
 				06F939031E3F858100920753 /* RegisterViewController.swift */,
@@ -530,6 +539,17 @@
 				06C6ABD31E2267A100562B27 /* Info.plist */,
 			);
 			path = "KayakFirst Ergometer E2UITests";
+			sourceTree = "<group>";
+		};
+		06DE18481E56D22B00374107 /* training_viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				06DE18441E56D13600374107 /* TrainingViewController.swift */,
+				06DE18461E56D1D500374107 /* OutdoorViewController.swift */,
+				06DE18421E56D0A100374107 /* SetDashboardVc.swift */,
+				06DE18491E56D24700374107 /* DashboardVc.swift */,
+			);
+			name = training_viewcontroller;
 			sourceTree = "<group>";
 		};
 		06F9145F1E42801C0041B303 /* backend */ = {
@@ -748,6 +768,7 @@
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
+				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
@@ -774,6 +795,8 @@
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
 				069441631E46572D00648B50 /* MainNavigationViewController.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
+				06DE18471E56D1D500374107 /* OutdoorViewController.swift in Sources */,
+				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
@@ -789,6 +812,7 @@
 				06BCB0D21E564D7D00F41652 /* BaseMainTabVC.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06F938F71E3F299A00920753 /* LoginViewController.swift in Sources */,
+				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
