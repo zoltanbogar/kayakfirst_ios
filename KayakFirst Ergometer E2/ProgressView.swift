@@ -27,14 +27,14 @@ class ProgressView: UIView {
             make.edges.equalTo(superView)
         }
         
-        show(isShow: false)
+        show(false)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func show(isShow: Bool) {
+    func show(_ isShow: Bool) {
         if isShow {
             spinner.startAnimating()
         } else {
@@ -43,5 +43,4 @@ class ProgressView: UIView {
         
         view.isHidden = !isShow
     }
-    
 }

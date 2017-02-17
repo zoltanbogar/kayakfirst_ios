@@ -163,7 +163,7 @@ class LoginViewController: UIViewController {
     
     @objc private func btnLoginClick() {
         if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
-            progressView?.show(isShow: true)
+            progressView?.show(true)
             UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text!, userPassword: tfPassword.text!)
         }
     }
@@ -171,14 +171,14 @@ class LoginViewController: UIViewController {
     @objc private func btnForgotPasswordClick() {
         let resetPasswordDialog = ResetPasswordDialog()
         resetPasswordDialog.handler = { email in
-            self.progressView?.show(isShow: true)
+            self.progressView?.show(true)
             UserService.sharedInstance.resetPassword(userDataCallBack: self.resetPasswordCallback, email: email)
         }
         resetPasswordDialog.show(viewController: self)
     }
     
     private func resetPasswordCallback(error: Responses?, userData: Bool?) {
-        progressView?.show(isShow: false)
+        progressView?.show(false)
         if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
@@ -197,7 +197,7 @@ class LoginViewController: UIViewController {
     }
     
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
-        progressView?.show(isShow: false)
+        progressView?.show(false)
         if userData != nil {
             (self.tabBarController as! WelcomeViewController).showMainView()
         } else if let userError = error {

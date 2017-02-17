@@ -229,7 +229,7 @@ class ProfileVc: BaseMainTabVC {
     
     @objc private func btnSaveClick() {
         if checkBodyWeight() {
-            progressView?.show(isShow: true)
+            progressView?.show(true)
             UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
                                                   userDto: UserDto(
                                                     lastName: tfLastName.text,
@@ -254,12 +254,12 @@ class ProfileVc: BaseMainTabVC {
     }
     
     @objc private func clickLogout() {
-        progressView?.show(isShow: true)
+        progressView?.show(true)
         UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
     }
     
     private func logoutCallback(error: Responses?, userData: Bool?) {
-        self.progressView?.show(isShow: false)
+        self.progressView?.show(false)
         
         if let user = userData {
             showWelcomeViewController()
@@ -271,14 +271,14 @@ class ProfileVc: BaseMainTabVC {
     private func clickPassword() {
         let passworDialog = NewPasswordDialog()
         passworDialog.handler = { currentPassword, newPassword in
-            self.progressView?.show(isShow: true)
+            self.progressView?.show(true)
             UserService.sharedInstance.updatePassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
         }
         passworDialog.show(viewController: self)
     }
     
     private func userDataCallback(error: Responses?, userData: User?) {
-        self.progressView?.show(isShow: false)
+        self.progressView?.show(false)
         
         if let user = userData {
             self.navigationController?.popViewController(animated: true)

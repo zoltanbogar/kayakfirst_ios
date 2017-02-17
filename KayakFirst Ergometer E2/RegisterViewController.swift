@@ -294,7 +294,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     @objc private func clickRegister() {
         if checkFields() {
-            progressView?.show(isShow: true)
+            progressView?.show(true)
             UserService.sharedInstance.register(
                 userDataCallBack: registerCallback,
                 userDto: UserDto(
@@ -311,7 +311,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     
     private func registerCallback(error: Responses?, userData: User?) {
-        progressView?.show(isShow: false)
+        progressView?.show(false)
         if userData != nil {
             (self.tabBarController as! WelcomeViewController).showMainView()
         } else if let userError = error {
