@@ -10,7 +10,26 @@ import UIKit
 
 class MainVc: BaseMainTabVC {
     
+    //MARK: views
     override func initView() {
-        //TODO
+        contentView.addSubview(btnOutdoor)
+        btnOutdoor.snp.makeConstraints { make in
+            make.center.equalTo(contentView)
+        }
+    }
+    
+    private lazy var btnOutdoor: UIButton! = {
+        let button = UIButton()
+        
+        button.setTitle("Outdoor", for: .normal)
+        
+        button.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    //MARK: button listeners
+    @objc private func clickBtnOutdoor() {
+        
     }
 }

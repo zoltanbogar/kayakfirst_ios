@@ -10,7 +10,7 @@ import UIKit
 import M13Checkbox
 import DatePickerDialog
 
-class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = 100
@@ -25,6 +25,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     private let genderPickerView = UIPickerView()
     private let countryPickerView = UIPickerView()
     private var progressView: ProgressView?
+    private var scrollView: AppScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +34,14 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
     }
     
     private func initView() {
-        progressView = ProgressView(superView: view)
+        scrollView = AppScrollView(view: view)
         
         stackView.axis = .vertical
         
-        containerView.addSubview(stackView)
+        scrollView!.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
+            make.edges.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
         }
         
         let stackViewName = UIStackView()
@@ -137,6 +138,8 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         
         countryPickerView.delegate = self
         tfCountry.valueTextField.inputView = countryPickerView
+        
+        progressView = ProgressView(superView: view)
     }
     
     private lazy var tfFirstName: DialogElementTextField! = {
@@ -406,7 +409,7 @@ class RegisterViewController: KayakScrollViewController, UITextFieldDelegate, UI
         }
         
         if let scroll = viewToScroll {
-            scrollView.scrollToView(view: scroll, animated: true)
+            scrollView!.scrollToView(view: scroll, animated: true)
         }
         
         return isValid

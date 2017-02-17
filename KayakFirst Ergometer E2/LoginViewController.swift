@@ -8,11 +8,12 @@
 
 import UIKit
 
-class LoginViewController: KayakScrollViewController {
+class LoginViewController: UIViewController {
     
     //MARK: views
     private let stackView = UIStackView()
     private var progressView: ProgressView?
+    private var scrollView: AppScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +22,14 @@ class LoginViewController: KayakScrollViewController {
     }
     
     private func initView() {
-        progressView = ProgressView(superView: view)
+        scrollView = AppScrollView(view: view)
         
         stackView.axis = .vertical
         
-        containerView.addSubview(stackView)
+        scrollView!.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
+            make.edges.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
         }
         
         stackView.addArrangedSubview(tfUserName)
@@ -78,6 +79,8 @@ class LoginViewController: KayakScrollViewController {
         stackView.addArrangedSubview(labelNoLogin)
         stackView.addArrangedSubview(labelNoLoginData)
         stackView.addArrangedSubview(btnQuickStart)
+        
+        progressView = ProgressView(superView: view)
     }
     
     private lazy var tfUserName: DialogElementTextField! = {

@@ -1,27 +1,39 @@
 //
-//  KayakScrollViewController.swift
+//  AppScrollView.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 01. 24..
+//  Created by Balazs Vidumanszki on 2017. 02. 17..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import UIKit
 
-class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
+class AppScrollView: UIView, UIScrollViewDelegate {
     
+    //MARK: properties
+    private let view: UIView
     private let scrollContainer = UIView()
     let scrollView = UIScrollView()
     let containerView = UIView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    //MARK: init
+    init(view: UIView) {
+        self.view = view
+        super.init(frame: view.frame)
         scrollView.delegate = self
         
+        initView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: views
+    private func initView() {
         view.addSubview(scrollContainer)
         scrollContainer.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
+            make.top.left.right.bottom.equalTo(view)
         }
         
         view.addSubview(scrollView)
@@ -37,10 +49,11 @@ class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        scrollView.contentSize = containerView.bounds.size
+    override func addSubview(_ view: UIView) {
+        containerView.addSubview(view)
     }
     
+    //MARK: design
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let verticalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
         verticalIndicator.backgroundColor = Colors.colorWhite
@@ -48,4 +61,12 @@ class KayakScrollViewController: UIViewController, UIScrollViewDelegate {
         let horizontalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 2)] as! UIImageView)
         horizontalIndicator.backgroundColor = Colors.colorWhite
     }
+    
+    //MARK: functions
+    func scrollToView(view: UIView, animated: Bool) {
+        scrollView.scrollToView(view: view, animated: animated)
+    }
+    
+    
+    
 }

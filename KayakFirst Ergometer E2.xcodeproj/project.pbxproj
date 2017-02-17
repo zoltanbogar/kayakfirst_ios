@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		060219651E377B90005B945B /* KayakScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060219641E377B90005B945B /* KayakScrollViewController.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -47,6 +46,7 @@
 		060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */; };
 		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
 		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
+		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
 		061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainTabViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -78,7 +78,6 @@
 		06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D51E564F2200F41652 /* CalendarVc.swift */; };
 		06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D71E564F3C00F41652 /* ProfileVc.swift */; };
 		06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D91E564F5800F41652 /* SettingsVc.swift */; };
-		06BCB0DC1E56583F00F41652 /* BaseMainTabScrollVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0DB1E56583F00F41652 /* BaseMainTabScrollVc.swift */; };
 		06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F31E2A36140010C8A7 /* DesignUtils.swift */; };
 		06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */; };
 		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
@@ -133,7 +132,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		060219641E377B90005B945B /* KayakScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakScrollViewController.swift; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,6 +173,7 @@
 		060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET1000Av.swift; sourceTree = "<group>"; };
 		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
 		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
+		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -206,7 +205,6 @@
 		06BCB0D51E564F2200F41652 /* CalendarVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVc.swift; sourceTree = "<group>"; };
 		06BCB0D71E564F3C00F41652 /* ProfileVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVc.swift; sourceTree = "<group>"; };
 		06BCB0D91E564F5800F41652 /* SettingsVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVc.swift; sourceTree = "<group>"; };
-		06BCB0DB1E56583F00F41652 /* BaseMainTabScrollVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMainTabScrollVc.swift; sourceTree = "<group>"; };
 		06BF94F31E2A36140010C8A7 /* DesignUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
 		06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 			isa = PBXGroup;
 			children = (
 				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
-				060219641E377B90005B945B /* KayakScrollViewController.swift */,
 				06F938F61E3F299A00920753 /* LoginViewController.swift */,
 				06F939031E3F858100920753 /* RegisterViewController.swift */,
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
@@ -438,7 +435,6 @@
 				060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */,
 				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseMainTabVC.swift */,
-				06BCB0DB1E56583F00F41652 /* BaseMainTabScrollVc.swift */,
 				06BCB0D31E564F0200F41652 /* MainVc.swift */,
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
@@ -459,6 +455,7 @@
 				06F939011E3F793100920753 /* AppUILabel.swift */,
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
+				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -743,7 +740,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06BCB0DC1E56583F00F41652 /* BaseMainTabScrollVc.swift in Sources */,
 				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
@@ -804,6 +800,7 @@
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
 				060DDFE21E4B01C000FE2D14 /* DailyData.swift in Sources */,
 				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
+				060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */,
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
@@ -813,7 +810,6 @@
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
-				060219651E377B90005B945B /* KayakScrollViewController.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,

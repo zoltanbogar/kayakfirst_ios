@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVc: BaseMainTabScrollVc {
+class ProfileVc: BaseMainTabVC {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
@@ -16,6 +16,7 @@ class ProfileVc: BaseMainTabScrollVc {
     //MARK: views
     private let stackView = UIStackView()
     private var progressView: ProgressView?
+    private var scrollView: AppScrollView?
     
     //MARK: properties
     var user = UserService.sharedInstance.getUser()
@@ -27,12 +28,13 @@ class ProfileVc: BaseMainTabScrollVc {
     }
     
     internal override func initView() {
+        scrollView = AppScrollView(view: contentView)
         stackView.axis = .vertical
         
-        containerView.addSubview(stackView)
+        scrollView!.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
+            make.edges.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
         }
         
         let stackViewName = UIStackView()
@@ -86,9 +88,9 @@ class ProfileVc: BaseMainTabScrollVc {
         
         let viewBottom = UIView()
         viewBottom.backgroundColor = Colors.colorPrimary
-        view.addSubview(viewBottom)
+        contentView.addSubview(viewBottom)
         viewBottom.snp.makeConstraints { make in
-            make.bottom.equalTo(scrollView.snp.bottom)
+            make.bottom.equalTo(contentView.snp.bottom)
             make.left.equalTo(stackView.snp.left)
             make.width.equalTo(stackView.snp.width)
             make.height.equalTo(viewBottomHeight)
@@ -101,7 +103,7 @@ class ProfileVc: BaseMainTabScrollVc {
             make.height.equalTo(buttonHeight)
             make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
-        progressView = ProgressView(superView: view)
+        progressView = ProgressView(superView: contentView)
     }
     
     override func initTabBarItems() {
