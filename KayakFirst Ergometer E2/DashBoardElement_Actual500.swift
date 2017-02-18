@@ -7,20 +7,24 @@
 //
 
 import UIKit
-
 class DashBoardElement_Actual500: DashBoardelementTime {
     
-    override func getStringFormatter() -> TimeEnum {
-        return TimeEnum.timeFormatTwo
+    static let tagInt = 2
+    
+    override func getStringFormatter() -> String {
+        return TimeEnum.timeFormatTwo.rawValue
     }
     
-    //TODO
     override func getValue() -> Double {
-        return 0.0
+        return telemetry.t_500
     }
     
     override internal func getTitle() -> String {
         return getString("dashboard_title_actual_500")
+    }
+    
+    override func getTagInt() -> Int {
+        return DashBoardElement_Actual500.tagInt
     }
     
 }

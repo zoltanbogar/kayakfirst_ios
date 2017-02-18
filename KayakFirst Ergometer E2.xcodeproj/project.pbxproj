@@ -13,6 +13,20 @@
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
 		060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376B1E578F4F00A973BF /* DragDropLayout.swift */; };
 		060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376D1E579FB700A973BF /* RoundedBorderView.swift */; };
+		060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */; };
+		060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */; };
+		060A37761E584FBA00A973BF /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37751E584FBA00A973BF /* Telemetry.swift */; };
+		060A37781E5851D400A973BF /* DashBoardElement_Av200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37771E5851D400A973BF /* DashBoardElement_Av200.swift */; };
+		060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37791E58521100A973BF /* DashBoardElement_Av500.swift */; };
+		060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A377B1E58522E00A973BF /* DashBoardElement_Av1000.swift */; };
+		060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A377D1E58528400A973BF /* DashBoardElementBase.swift */; };
+		060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A377F1E5853C500A973BF /* DashBoardElement_AvPullForce.swift */; };
+		060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37811E58543900A973BF /* DashBoardElement_AvSpeed.swift */; };
+		060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37831E58547600A973BF /* DashBoardElement_AvStrokes.swift */; };
+		060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37851E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift */; };
+		060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37891E58551400A973BF /* DashBoardElement_Distance.swift */; };
+		060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */; };
+		060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */; };
 		060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0A1E41B44100F6A29F /* ServerService.swift */; };
 		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
@@ -146,6 +160,20 @@
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
 		060A376B1E578F4F00A973BF /* DragDropLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropLayout.swift; sourceTree = "<group>"; };
 		060A376D1E579FB700A973BF /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
+		060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual1000.swift; sourceTree = "<group>"; };
+		060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Duration.swift; sourceTree = "<group>"; };
+		060A37751E584FBA00A973BF /* Telemetry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
+		060A37771E5851D400A973BF /* DashBoardElement_Av200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Av200.swift; sourceTree = "<group>"; };
+		060A37791E58521100A973BF /* DashBoardElement_Av500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Av500.swift; sourceTree = "<group>"; };
+		060A377B1E58522E00A973BF /* DashBoardElement_Av1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Av1000.swift; sourceTree = "<group>"; };
+		060A377D1E58528400A973BF /* DashBoardElementBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementBase.swift; sourceTree = "<group>"; };
+		060A377F1E5853C500A973BF /* DashBoardElement_AvPullForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_AvPullForce.swift; sourceTree = "<group>"; };
+		060A37811E58543900A973BF /* DashBoardElement_AvSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_AvSpeed.swift; sourceTree = "<group>"; };
+		060A37831E58547600A973BF /* DashBoardElement_AvStrokes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_AvStrokes.swift; sourceTree = "<group>"; };
+		060A37851E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_CurrentSpeed.swift; sourceTree = "<group>"; };
+		060A37891E58551400A973BF /* DashBoardElement_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Distance.swift; sourceTree = "<group>"; };
+		060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_PullForce.swift; sourceTree = "<group>"; };
+		060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Strokes.swift; sourceTree = "<group>"; };
 		060A7D0A1E41B44100F6A29F /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -220,11 +248,11 @@
 		06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual200.swift; sourceTree = "<group>"; };
 		06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual500.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
 		06C6ABB31E2267A000562B27 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "KayakFirst Ergometer E2/Assets.xcassets"; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "KayakFirst Ergometer E2/Info.plist"; sourceTree = "<group>"; };
 		06C6ABC21E2267A100562B27 /* KayakFirst Ergometer E2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayakFirst_Ergometer_E2Tests.swift; sourceTree = "<group>"; };
 		06C6ABC81E2267A100562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -315,6 +343,14 @@
 				060A376B1E578F4F00A973BF /* DragDropLayout.swift */,
 			);
 			name = drag_drop;
+			sourceTree = "<group>";
+		};
+		060A37741E584F6F00A973BF /* training_calculate */ = {
+			isa = PBXGroup;
+			children = (
+				060A37751E584FBA00A973BF /* Telemetry.swift */,
+			);
+			name = training_calculate;
 			sourceTree = "<group>";
 		};
 		060A7D091E41B43500F6A29F /* service */ = {
@@ -487,9 +523,22 @@
 			isa = PBXGroup;
 			children = (
 				06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */,
+				0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */,
 				06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */,
 				06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */,
-				0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */,
+				060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */,
+				060A37771E5851D400A973BF /* DashBoardElement_Av200.swift */,
+				060A37791E58521100A973BF /* DashBoardElement_Av500.swift */,
+				060A377B1E58522E00A973BF /* DashBoardElement_Av1000.swift */,
+				060A377D1E58528400A973BF /* DashBoardElementBase.swift */,
+				060A377F1E5853C500A973BF /* DashBoardElement_AvPullForce.swift */,
+				060A37811E58543900A973BF /* DashBoardElement_AvSpeed.swift */,
+				060A37831E58547600A973BF /* DashBoardElement_AvStrokes.swift */,
+				060A37851E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift */,
+				060A37891E58551400A973BF /* DashBoardElement_Distance.swift */,
+				060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */,
+				060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */,
+				060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */,
 			);
 			name = dashboard_elements;
 			sourceTree = "<group>";
@@ -498,6 +547,11 @@
 			isa = PBXGroup;
 			children = (
 				06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */,
+				06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */,
+				0602B44B1E23C9B400ABA70F /* Localizable.strings */,
+				06C6ABBD1E2267A000562B27 /* Info.plist */,
+				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
+				06C6ABB81E2267A000562B27 /* Assets.xcassets */,
 				06C6ABC51E2267A100562B27 /* KayakFirst Ergometer E2Tests */,
 				06C6ABD01E2267A100562B27 /* KayakFirst Ergometer E2UITests */,
 				06C6ABAF1E2267A000562B27 /* Products */,
@@ -520,19 +574,15 @@
 			isa = PBXGroup;
 			children = (
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
-				060D9BA81E4A853E006DD8AB /* ergometer */,
-				0677FEF91E41396300A9B977 /* server */,
-				060C8B751E4068220057DD61 /* domain */,
-				0602D3AA1E31568F001E382E /* extensions */,
-				06BF94F01E2A30E20010C8A7 /* view_controller */,
-				069433E61E28361B00CE6398 /* dialog */,
 				06C1B9861E25961300AB4C47 /* design */,
+				069433E61E28361B00CE6398 /* dialog */,
+				060C8B751E4068220057DD61 /* domain */,
+				060D9BA81E4A853E006DD8AB /* ergometer */,
+				0602D3AA1E31568F001E382E /* extensions */,
+				0677FEF91E41396300A9B977 /* server */,
+				060A37741E584F6F00A973BF /* training_calculate */,
 				064764C51E237022004B9ED3 /* utils */,
-				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
-				06C6ABB81E2267A000562B27 /* Assets.xcassets */,
-				06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */,
-				06C6ABBD1E2267A000562B27 /* Info.plist */,
-				0602B44B1E23C9B400ABA70F /* Localizable.strings */,
+				06BF94F01E2A30E20010C8A7 /* view_controller */,
 			);
 			path = "KayakFirst Ergometer E2";
 			sourceTree = "<group>";
@@ -777,12 +827,15 @@
 				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
+				060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
+				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
+				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
 				060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
@@ -805,11 +858,15 @@
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
+				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
+				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
 				069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
 				069441631E46572D00648B50 /* MainNavigationViewController.swift in Sources */,
+				060A37781E5851D400A973BF /* DashBoardElement_Av200.swift in Sources */,
+				060A37761E584FBA00A973BF /* Telemetry.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				06DE18471E56D1D500374107 /* OutdoorViewController.swift in Sources */,
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
@@ -817,6 +874,7 @@
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,
+				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
@@ -832,6 +890,7 @@
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
+				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
 				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,
 				060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */,
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
@@ -845,6 +904,7 @@
 				061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */,
+				060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
@@ -862,6 +922,8 @@
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
 				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
+				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
+				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
@@ -872,11 +934,13 @@
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,
 				06F9145C1E427ACE0041B303 /* UserService.swift in Sources */,
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
+				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
+				060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
 				060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */,
 			);
@@ -921,6 +985,7 @@
 				0602B44C1E23C9B900ABA70F /* en */,
 			);
 			name = Localizable.strings;
+			path = "KayakFirst Ergometer E2";
 			sourceTree = "<group>";
 		};
 		06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */ = {
@@ -930,6 +995,7 @@
 				0602B4461E23C76E00ABA70F /* hu */,
 			);
 			name = LaunchScreen.storyboard;
+			path = "KayakFirst Ergometer E2";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

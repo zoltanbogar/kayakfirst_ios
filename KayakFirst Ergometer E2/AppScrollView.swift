@@ -12,7 +12,6 @@ class AppScrollView: UIView, UIScrollViewDelegate {
     
     //MARK: properties
     private let view: UIView
-    private let scrollContainer = UIView()
     let scrollView = UIScrollView()
     let containerView = UIView()
     
@@ -31,9 +30,10 @@ class AppScrollView: UIView, UIScrollViewDelegate {
     
     //MARK: views
     private func initView() {
+        let scrollContainer = UIView()
         view.addSubview(scrollContainer)
         scrollContainer.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(view)
+            make.edges.equalTo(view)
         }
         
         view.addSubview(scrollView)

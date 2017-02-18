@@ -14,7 +14,8 @@ let margin1_5: CGFloat = 30
 let margin2: CGFloat = 40.0
 let buttonHeight: CGFloat = 40.0
 let dashboardRadius: CGFloat = 7
-let dashboardSetStrokeWidth: CGFloat = 1
+let dashboardSetStrokeWidth: CGFloat = 0.5
+let dashboardStrokeWidth: CGFloat = 1.5
 
 func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
     let navigationBarHeight = viewController.navigationController?.navigationBar.frame.height

@@ -8,63 +8,167 @@
 
 import UIKit
 
-class DashBoardElement: CustomUi {
+class DashBoardElement: RoundedBorderView {
     
-    private var labelTitle: UILabel?
-    internal var labelValue: UILabel?
-    
-    override func initUi(superview: UIView) {
-        let verticalStackLayout = UIStackView(frame: superview.frame)
-        verticalStackLayout.axis = .vertical
-        verticalStackLayout.distribution = .fillProportionally
-        verticalStackLayout.addArrangedSubview(initTitleLabel())
-        verticalStackLayout.addArrangedSubview(initValueLabel())
-        
-        superview.addSubview(verticalStackLayout)
-        
-        superview.backgroundColor = Colors.colorPrimary
-        
-        setTitle()
+    //MARK: properties
+    internal let telemetry = Telemetry.sharedInstance
+    var isSelected: Bool = false {
+        didSet {
+            selectedView.isHidden = !isSelected
+        }
     }
     
-    private func initTitleLabel() -> UIView {
-        labelTitle = UILabel()
-        labelTitle!.textAlignment = .center
-        labelTitle!.text = getTitle()
-        labelTitle!.textColor = Colors.colorWhite
+    //MARK: init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        return labelTitle!
+        initView()
+        
+        tag = getTagInt()
     }
     
-    private func initValueLabel() -> UIView {
-        labelValue = UILabel()
-        labelValue!.textAlignment = .center
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        return labelValue!
+        refresh()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     public func refresh() {
         labelValue?.text = getFormattedText()
     }
     
-    private func setTitle() {
-        labelTitle?.text = getTitle()
+    //MARK: size
+    override var intrinsicContentSize: CGSize {
+        get {
+            let height: CGFloat = 100
+            return CGSize(width: 0, height: height)
+        }
     }
     
     //MARK: abstract functions
-    internal func getStringFormatter() -> TimeEnum {
-        return TimeEnum.timeFormatThree
+    internal func getStringFormatter() -> String {
+        fatalError("Must be implemented")
     }
     
     internal func getFormattedText() -> String {
-        return ""
+        fatalError("Must be implemented")
     }
     
     internal func getValue() -> Double {
-        return 0.0
+        fatalError("Must be implemented")
     }
     
     internal func getTitle() -> String {
-        return ""
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTagInt() -> Int {
+        fatalError("Must be implemented")
+    }
+    
+    //MARK: views
+    private func initView() {
+        borderWidth = dashboardStrokeWidth
+        
+        addSubview(labelTitle)
+        labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+            make.centerX.equalTo(self)
+        }
+        addSubview(labelValue)
+        labelValue.snp.makeConstraints { make in
+            make.center.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+        }
+        addSubview(selectedView)
+        selectedView.snp.makeConstraints { make in
+            make.edges.equalTo(self)
+        }
+    }
+    
+    private lazy var labelTitle: UILabel! = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = self.getTitle()
+        label.textColor = Colors.colorWhite
+        
+        return label
+    }()
+    
+    private lazy var labelValue: UILabel! = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = Colors.colorWhite
+        
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        
+        return label
+    }()
+    
+    private lazy var selectedView: UIView! = {
+        let view = UIView()
+        
+        view.backgroundColor = Colors.dragDropStart
+        
+        view.isHidden = true
+        
+        return view
+    }()
+    
+    func getSnapshotView() -> UIView {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
+        UIGraphicsEndImageContext()
+        
+        let snapshot : UIView = UIImageView(image: image)
+        snapshot.layer.masksToBounds = false
+        snapshot.layer.cornerRadius = 0.0
+        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        snapshot.layer.shadowRadius = 5.0
+        snapshot.layer.shadowOpacity = 0.4
+        return snapshot
+    }
+    
+    class func getDashBoardElementByTag(tag: Int) -> DashBoardElement {
+        var dashBoardelement: DashBoardElement
+        
+        switch tag {
+        case DashBoardElement_Actual200.tagInt:
+            dashBoardelement = DashBoardElement_Actual200()
+        case DashBoardElement_Actual500.tagInt:
+            dashBoardelement = DashBoardElement_Actual500()
+        case DashBoardElement_Actual1000.tagInt:
+            dashBoardelement = DashBoardElement_Actual1000()
+        case DashBoardElement_Av200.tagInt:
+            dashBoardelement = DashBoardElement_Av200()
+        case DashBoardElement_Av500.tagInt:
+            dashBoardelement = DashBoardElement_Av500()
+        case DashBoardElement_Av1000.tagInt:
+            dashBoardelement = DashBoardElement_Av1000()
+        case DashBoardElement_AvPullForce.tagInt:
+            dashBoardelement = DashBoardElement_AvPullForce()
+        case DashBoardElement_AvSpeed.tagInt:
+            dashBoardelement = DashBoardElement_AvSpeed()
+        case DashBoardElement_AvStrokes.tagInt:
+            dashBoardelement = DashBoardElement_AvStrokes()
+        case DashBoardElement_CurrentSpeed.tagInt:
+            dashBoardelement = DashBoardElement_CurrentSpeed()
+        case DashBoardElement_Distance.tagInt:
+            dashBoardelement = DashBoardElement_Distance()
+        case DashBoardElement_Duration.tagInt:
+            dashBoardelement = DashBoardElement_Duration()
+        case DashBoardElement_PullForce.tagInt:
+            dashBoardelement = DashBoardElement_PullForce()
+        case DashBoardElement_Strokes.tagInt:
+            dashBoardelement = DashBoardElement_Strokes()
+        default:
+            fatalError("Error in dashBoardelement tag")
+        }
+        
+        return dashBoardelement
     }
 }

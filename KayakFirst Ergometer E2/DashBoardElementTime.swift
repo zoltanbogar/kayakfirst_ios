@@ -12,16 +12,14 @@ class DashBoardelementTime: DashBoardElement {
     
     private let dateFormatHelper = DateFormatHelper()
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        dateFormatHelper.format = getStringFormatter()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        dateFormatHelper.format = getStringFormatter()
+        dateFormatHelper.format = TimeEnum(rawValue: getStringFormatter())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
     }
     
     override func getFormattedText() -> String {

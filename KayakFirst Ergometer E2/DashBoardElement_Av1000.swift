@@ -1,29 +1,29 @@
 //
-//  DashBoardElement_Actual200.swift
+//  DashBoardElement_Av1000.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 01. 10..
+//  Created by Balazs Vidumanszki on 2017. 02. 18..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
-class DashBoardElement_Actual200: DashBoardelementTime {
+class DashBoardElement_Av1000: DashBoardelementTime {
     
-    static let tagInt = 1
+    static let tagInt = 6
     
     override func getStringFormatter() -> String {
         return TimeEnum.timeFormatTwo.rawValue
     }
     
     override func getValue() -> Double {
-        return telemetry.t_200
+        return telemetry.t_1000_av
     }
     
     override internal func getTitle() -> String {
-        return getString("dashboard_title_actual_200")
+        return getString("dashboard_title_av_1000")
     }
     
     override func getTagInt() -> Int {
-        return DashBoardElement_Actual200.tagInt
+        return DashBoardElement_Av1000.tagInt
     }
 }

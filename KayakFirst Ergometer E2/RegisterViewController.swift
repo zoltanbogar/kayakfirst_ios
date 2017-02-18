@@ -35,7 +35,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     private func initView() {
         scrollView = AppScrollView(view: view)
-        
         stackView.axis = .vertical
         
         scrollView!.addSubview(stackView)
