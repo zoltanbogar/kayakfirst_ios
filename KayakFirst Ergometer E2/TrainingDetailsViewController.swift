@@ -18,6 +18,7 @@ class TrainingDetailsViewController: BaseVC {
             labelStart.text = sumTraining?.formattedStartTime
             labelDuration.text = sumTraining?.formattedDuration
             labelDistance.text = sumTraining?.formattedDistance
+            initTitle()
         }
     }
     var position: Int = 0
@@ -47,6 +48,13 @@ class TrainingDetailsViewController: BaseVC {
                 imgArrowRight.isHidden = false
             }
         }
+    }
+    
+    private func initTitle() {
+        let timeStamp = sumTraining!.startTime
+        let titleString = DateFormatHelper.getDate(dateFormat: getString("date_time_format"), timeIntervallSince1970: timeStamp)
+        //TODO: not works!!
+        self.parent?.navigationController?.navigationItem.title = titleString
     }
     
     //MARK: views
