@@ -11,13 +11,8 @@ import UIKit
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource {
     
     //MARK: properties
-    private var _sumTrainingList: [SumTraining]?
     var sumTrainingList: [SumTraining]? {
-        get {
-            return _sumTrainingList
-        }
-        set {
-            _sumTrainingList = newValue
+        didSet {
             initViewControllers()
         }
     }
@@ -90,6 +85,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
                 let controller = TrainingDetailsViewController()
                 controller.sumTraining = sumTrainings[i]
                 controller.position = i
+                controller.maxPosition = sumTrainings.count
                 controller.createTrainingList = CreateTrainingList(sumTrainings: sumTrainingList!)
                 trainingViewControllers!.append(controller)
             }
