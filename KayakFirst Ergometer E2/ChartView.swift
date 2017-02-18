@@ -17,14 +17,39 @@ enum ChartMode: String {
 
 class ChartView: UIView {
     
+    //MARK: properties
+    private var position: Int?
+    private var createTrainingList: CreateTrainingList?
+    private var lineChartData: AppLineChartData?
+    private var diagramLabelList: [DiagramLabel]?
+    
     //MARK: init
-    init() {
+    init(position: Int, createTrainingList: CreateTrainingList) {
         super.init(frame: CGRect.zero)
+        
+        self.position = position
+        self.createTrainingList = createTrainingList
+        
         initView()
+        initLabelList()
+        initChart()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initLabelList() {
+        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelSpeed]
+    }
+    
+    private func initChart() {
+        lineChartData = LineChartTime(lineChart: lineChart, position: position!, createTrainingList: createTrainingList!)
+        refreshChart()
+    }
+    
+    private func refreshChart() {
+        lineChartData?.createTrainingListByLabel(diagramLabels: diagramLabelList!)
     }
     
     //MARK: views
@@ -110,22 +135,25 @@ class ChartView: UIView {
         labelT200.isActive = true
         labelT500.isActive = false
         labelT1000.isActive = false
+        refreshChart()
     }
     
     private func labelT500Listener(_ label: DiagramLabel) {
         labelT200.isActive = false
         labelT500.isActive = true
         labelT1000.isActive = false
+        refreshChart()
     }
     
     private func labelT1000Listener(_ label: DiagramLabel) {
         labelT200.isActive = false
         labelT500.isActive = false
         labelT1000.isActive = true
+        refreshChart()
     }
     
     private func labelListener(_ label: DiagramLabel) {
-        
+        refreshChart()
     }
     
 }

@@ -72,6 +72,8 @@
 		061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D91E58D97C0058EAF4 /* LabelT200.swift */; };
 		061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DB1E58D9950058EAF4 /* LabelT500.swift */; };
 		061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DD1E58D9A50058EAF4 /* LabelT1000.swift */; };
+		061145E01E58DF750058EAF4 /* LineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DF1E58DF750058EAF4 /* LineChartData.swift */; };
+		061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145E11E58E8CA0058EAF4 /* LineChartTime.swift */; };
 		061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainTabViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -226,6 +228,8 @@
 		061145D91E58D97C0058EAF4 /* LabelT200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT200.swift; sourceTree = "<group>"; };
 		061145DB1E58D9950058EAF4 /* LabelT500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT500.swift; sourceTree = "<group>"; };
 		061145DD1E58D9A50058EAF4 /* LabelT1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT1000.swift; sourceTree = "<group>"; };
+		061145DF1E58DF750058EAF4 /* LineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartData.swift; sourceTree = "<group>"; };
+		061145E11E58E8CA0058EAF4 /* LineChartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartTime.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -456,6 +460,8 @@
 			isa = PBXGroup;
 			children = (
 				061145CD1E58C97F0058EAF4 /* ChartView.swift */,
+				061145DF1E58DF750058EAF4 /* LineChartData.swift */,
+				061145E11E58E8CA0058EAF4 /* LineChartTime.swift */,
 			);
 			name = chart;
 			sourceTree = "<group>";
@@ -879,6 +885,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
+				061145E01E58DF750058EAF4 /* LineChartData.swift in Sources */,
 				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
@@ -987,6 +994,7 @@
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
+				061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */,
 				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,

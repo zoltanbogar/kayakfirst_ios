@@ -67,4 +67,23 @@ enum CalculateEnum: String {
             fatalError("There is no title for this")
         }
     }
+    
+    static func getTrainingListSumByLabel(diagramLabel: DiagramLabel, createTrainingList: CreateTrainingList) -> [[Training]] {
+        switch diagramLabel.getLabel() {
+        case CalculateEnum.T_200:
+            return createTrainingList.t200List
+        case CalculateEnum.T_500:
+            return createTrainingList.t500List
+        case CalculateEnum.T_1000:
+            return createTrainingList.t1000List
+        case CalculateEnum.STROKES:
+            return createTrainingList.strokesList
+        case CalculateEnum.F:
+            return createTrainingList.fList
+        case CalculateEnum.V:
+            return createTrainingList.distanceList
+        default:
+            fatalError("There is no createTrainingList for this")
+        }
+    }
 }

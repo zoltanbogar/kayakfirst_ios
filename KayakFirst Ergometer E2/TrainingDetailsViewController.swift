@@ -177,7 +177,7 @@ class TrainingDetailsViewController: BaseVC {
     }()
     
     private lazy var chartTime: ChartView! = {
-        let view = ChartView()
+        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!)
         
         return view
     }()
