@@ -434,6 +434,15 @@
 			name = database;
 			sourceTree = "<group>";
 		};
+		061145CB1E58A2BC0058EAF4 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */,
+				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
+			);
+			name = calendar;
+			sourceTree = "<group>";
+		};
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,14 +489,13 @@
 		06BF94F01E2A30E20010C8A7 /* view_controller */ = {
 			isa = PBXGroup;
 			children = (
+				061145CB1E58A2BC0058EAF4 /* calendar */,
 				06DE18481E56D22B00374107 /* training_viewcontroller */,
 				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
 				06F938F61E3F299A00920753 /* LoginViewController.swift */,
 				06F939031E3F858100920753 /* RegisterViewController.swift */,
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
-				060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */,
-				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
 				060A378F1E58969300A973BF /* MainTabVc.swift */,
 				06BCB0D31E564F0200F41652 /* MainVc.swift */,

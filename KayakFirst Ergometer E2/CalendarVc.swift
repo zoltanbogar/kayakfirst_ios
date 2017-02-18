@@ -69,7 +69,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     override func initTabBarItems() {
-        self.tabBarController?.navigationItem.setRightBarButtonItems([btnToday], animated: true)
+        self.navigationItem.setRightBarButtonItems([btnToday], animated: true)
     }
     
     //MARK: call service

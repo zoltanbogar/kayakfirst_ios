@@ -21,7 +21,7 @@ class BaseTrainingSumElement: UIView {
         self.position = position
         self.createTrainingList = createTrainingList
 
-        initUi()
+        initView()
         initTrainingList()
         
         run()
@@ -31,17 +31,27 @@ class BaseTrainingSumElement: UIView {
         super.init(coder: aDecoder)
     }
     
+    //MARK: other
     func run() {
         labelTitle.text = getTitle()
         labelValue.text = getFormattedValue(value: calculate())
     }
     
+    private func initTrainingList() {
+        trainingList = getTrainingList()
+    }
+    
     //MARK: views
-    private func initUi() {
+    private func initView() {
         addSubview(labelTitle)
+        labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(self)
+            make.centerX.equalTo(self)
+        }
         addSubview(labelValue)
         labelValue.snp.makeConstraints { make in
             make.top.equalTo(labelTitle.snp.bottom)
+            make.centerX.equalTo(self)
         }
     }
     
@@ -79,9 +89,5 @@ class BaseTrainingSumElement: UIView {
     
     func calculate() -> Double {
         fatalError("Must be implemented")
-    }
-    
-    private func initTrainingList() {
-        trainingList = getTrainingList()
     }
 }

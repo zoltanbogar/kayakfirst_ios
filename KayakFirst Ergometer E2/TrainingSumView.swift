@@ -13,12 +13,10 @@ class TrainingSumView: UIView {
     //MARK: properties
     private var position: Int?
     private var createTrainingList: CreateTrainingList?
-    private var mainView: UIView?
     
     //MARK: init
     init(frame: CGRect, position: Int, createTrainingList: CreateTrainingList) {
         super.init(frame: frame)
-        mainView = UIView(frame: frame)
         
         self.position = position
         self.createTrainingList = createTrainingList
@@ -32,10 +30,9 @@ class TrainingSumView: UIView {
     
     //MARK: views
     private func initView() {
-        let mainStackView = UIStackView(frame: mainView!.bounds)
+        let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually
-        addSubview(mainStackView)
         
         mainStackView.addArrangedSubview(labelAverage)
         
@@ -54,9 +51,6 @@ class TrainingSumView: UIView {
         horizontalStackView2.addArrangedSubview(seStrokeAv)
         horizontalStackView2.addArrangedSubview(seForceAv)
         mainStackView.addArrangedSubview(horizontalStackView2)
-        /*horizontalStackView2.snp.makeConstraints { make in
-            make.width.equalTo(mainStackView)
-        }*/
         
         mainStackView.addArrangedSubview(labelBest)
         
@@ -67,9 +61,6 @@ class TrainingSumView: UIView {
         horizontalStackView3.addArrangedSubview(seT500)
         horizontalStackView3.addArrangedSubview(seT200)
         mainStackView.addArrangedSubview(horizontalStackView3)
-        horizontalStackView3.snp.makeConstraints { make in
-            make.width.equalTo(mainStackView)
-        }
         
         let horizontalStackView4 = UIStackView()
         horizontalStackView4.axis = .horizontal
@@ -78,8 +69,10 @@ class TrainingSumView: UIView {
         horizontalStackView4.addArrangedSubview(seStroke)
         horizontalStackView4.addArrangedSubview(seForce)
         mainStackView.addArrangedSubview(horizontalStackView4)
-        horizontalStackView4.snp.makeConstraints { make in
-            make.width.equalTo(mainStackView)
+        
+        addSubview(mainStackView)
+        mainStackView.snp.makeConstraints { make in
+            make.edges.equalTo(self)
         }
     }
     

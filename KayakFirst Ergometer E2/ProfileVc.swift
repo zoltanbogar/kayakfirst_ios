@@ -107,7 +107,7 @@ class ProfileVc: MainTabVc {
     }
     
     override func initTabBarItems() {
-        self.tabBarController?.navigationItem.setRightBarButtonItems([btnSave], animated: true)
+        self.navigationItem.setRightBarButtonItems([btnSave], animated: true)
     }
     
     private lazy var tfFirstName: DialogElementTextField! = {

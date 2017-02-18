@@ -28,7 +28,7 @@ class BaseVC: UIViewController {
     }
     
     func initTabBarItems() {
-        self.tabBarController?.navigationItem.setRightBarButtonItems(nil, animated: true)
+        self.navigationItem.setRightBarButtonItems(nil, animated: true)
     }
     
     //MARK: views
