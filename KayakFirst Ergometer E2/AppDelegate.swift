@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewController: UIViewController
         
         if UserService.sharedInstance.getUser() != nil {
-            viewController = MainNavigationViewController()
+            viewController = MainTabViewController()
         } else {
             viewController = WelcomeViewController()
         }

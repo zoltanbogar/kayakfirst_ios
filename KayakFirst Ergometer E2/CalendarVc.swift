@@ -10,7 +10,7 @@ import UIKit
 import CVCalendar
 
 //TODO: if one day is loaded it will not be refresh
-class CalendarVc: BaseVC, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
+class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: views
     private var calendarView: CVCalendarView?

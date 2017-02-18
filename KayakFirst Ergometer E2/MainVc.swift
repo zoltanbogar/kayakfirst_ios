@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVc: BaseVC {
+class MainVc: MainTabVc {
     
     //MARK: views
     override func initView() {
@@ -30,6 +30,8 @@ class MainVc: BaseVC {
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {
-        startOutdoorViewController(viewController: self)
+        if let parent = self.navigationController as? TrainingViewController {
+            parent.showSetDashboard()
+        }
     }
 }

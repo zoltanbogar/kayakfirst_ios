@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVc: BaseVC {
+class ProfileVc: MainTabVc {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2

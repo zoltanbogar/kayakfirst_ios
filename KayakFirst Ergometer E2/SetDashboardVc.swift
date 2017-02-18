@@ -310,12 +310,12 @@ class SetDashboardVc: BaseVC {
     
     //MARK: button listeners
     @objc private func btnDoneClick() {
-        if let parent = self.navigationController as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewController {
             parent.showDashboard()
         }
     }
     
     @objc private func btnCloseClick() {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }

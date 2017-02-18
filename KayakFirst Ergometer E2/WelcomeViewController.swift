@@ -36,7 +36,7 @@ class WelcomeViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func showMainView() {
-        let controller = MainNavigationViewController()
+        let controller = MainTabViewController()
         self.present(controller, animated: true, completion: nil)
     }
     

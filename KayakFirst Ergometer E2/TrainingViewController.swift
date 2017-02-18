@@ -10,10 +10,11 @@ import UIKit
 
 class TrainingViewController: UINavigationController {
     
-    //TODO
-    
+    //MARK: training
+    func showSetDashboard() {
+        pushViewController(SetDashboardVc(), animated: true)
+    }
     func showDashboard() {
         pushViewController(DashboardVc(), animated: true)
     }
-    
 }

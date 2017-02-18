@@ -39,12 +39,8 @@ class BaseVC: UIViewController {
         }
     }
     
-    private func getTopMargin() -> CGFloat {
-        if (self.parent as? UITabBarController) != nil {
-            return 0
-        } else {
-            return getNavigationBarHeight(viewController: self)
-        }
+    func getTopMargin() -> CGFloat {
+       return getNavigationBarHeight(viewController: self)
     }
     
     //MARK: abstract functions
