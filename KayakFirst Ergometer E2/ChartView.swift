@@ -40,7 +40,7 @@ class ChartView: UIView {
     }
     
     private func initLabelList() {
-        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelSpeed]
+        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelForce, labelSpeed]
     }
     
     private func initChart() {
@@ -65,6 +65,7 @@ class ChartView: UIView {
         stackViewR.axis = .horizontal
         stackViewR.distribution = .fillEqually
         stackViewR.addArrangedSubview(labelStrokes)
+        stackViewR.addArrangedSubview(labelForce)
         stackViewR.addArrangedSubview(labelSpeed)
         
         let stackViewLabels = UIStackView()
@@ -116,6 +117,14 @@ class ChartView: UIView {
     
     private lazy var labelStrokes: LabelStroke! = {
         let label = LabelStroke()
+        
+        label.labelSelectedListener = self.labelListener
+        
+        return label
+    }()
+    
+    private lazy var labelForce: LabelForce! = {
+        let label = LabelForce()
         
         label.labelSelectedListener = self.labelListener
         

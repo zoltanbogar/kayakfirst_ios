@@ -81,7 +81,7 @@ enum CalculateEnum: String {
         case CalculateEnum.F:
             return createTrainingList.fList
         case CalculateEnum.V:
-            return createTrainingList.distanceList
+            return createTrainingList.vList
         default:
             fatalError("There is no createTrainingList for this")
         }

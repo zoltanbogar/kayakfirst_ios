@@ -13,6 +13,7 @@ class LineChartTime: AppLineChartData {
     
     //MARK: properties
     private var seqTimeStamp: TimeInterval = 0
+    fileprivate let dateFormatHelper = DateFormatHelper()
     
     override func createEntries(trainingList: [[Training]], label: CalculateEnum) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
@@ -41,4 +42,27 @@ class LineChartTime: AppLineChartData {
         return entries
     }
     
+    override func xAxisFormatter() -> IAxisValueFormatter {
+        return XAxisFormatter(lineChartData: self)
+    }
+}
+
+class XAxisFormatter: NSObject, IAxisValueFormatter {
+    
+    private var lineChartData: LineChartTime
+    
+    init(lineChartData: LineChartTime) {
+        self.lineChartData = lineChartData
+    }
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        if value > 60 * 60 * 1000 {
+            lineChartData.dateFormatHelper.format = TimeEnum.timeFormatThree
+        } else {
+            lineChartData.dateFormatHelper.format = TimeEnum.timeFormatTwo
+        }
+        
+        
+        return lineChartData.dateFormatHelper.getTime(millisec: value)!
+    }
 }

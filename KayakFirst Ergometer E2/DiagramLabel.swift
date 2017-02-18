@@ -12,7 +12,7 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     
     //MARK: constants
     private let defaultTextColor = Colors.colorWhite
-    private let defaultLabels: [CalculateEnum] = [CalculateEnum.STROKES, CalculateEnum.V, CalculateEnum.T_200]
+    private let defaultLabels: [CalculateEnum] = [CalculateEnum.STROKES, CalculateEnum.V, CalculateEnum.F, CalculateEnum.T_200]
     
     //MARK: properties
     private var isSelected = false
