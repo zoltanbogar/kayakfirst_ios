@@ -2,6 +2,9 @@ PODS:
   - Alamofire (4.3.0)
   - Alamofire-Synchronous (4.0.0):
     - Alamofire (~> 4.0)
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
+  - Charts/Core (3.0.1)
   - CVCalendar (1.4.1)
   - DatePickerDialog (1.1.7)
   - IQKeyboardManagerSwift (4.0.8)
@@ -11,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire-Synchronous (~> 4.0)
+  - Charts
   - CVCalendar (~> 1.4.1)
   - DatePickerDialog
   - IQKeyboardManagerSwift
@@ -21,6 +25,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   CVCalendar: 61912eb5dc39c3bcfe22a731147a559a696fbc15
   DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
@@ -28,6 +33,6 @@ SPEC CHECKSUMS:
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d6f9515cecc19b8c52db1bd29b23fe2651a40b35
+PODFILE CHECKSUM: 545dff4aa97ae841b75cfe19f240a05dedea41c9
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

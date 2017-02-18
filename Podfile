@@ -9,4 +9,5 @@ target 'KayakFirst Ergometer E2' do
     pod 'Alamofire-Synchronous', '~> 4.0'
     pod 'SwiftyJSON'
     pod 'CVCalendar', '~> 1.4.1'
+    pod 'Charts'
 end

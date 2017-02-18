@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DatePickerDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,11 +67,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>335491692A314D45AD20B203115F607E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
@@ -77,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8A59935FAD304A67F42D7F8C8D07054</key>
+		<key>95CA09B5CB43E57A1FDE22161F90B3A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D45A56B6F3C5C5DB33B02BA679FA0539</key>
+		<key>A56AB1948982EBCAAABB42542AA990CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC06F00EA046A089735E6ACB0C1CB75E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -93,6 +98,11 @@
 			<true/>
 		</dict>
 		<key>EBE460D3E3A3CF1AFBBDFA387940E5E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F307B842FF76B2DE6C55DB67C0885325</key>
 		<dict>
 			<key>primary</key>
 			<true/>

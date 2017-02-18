@@ -27,4 +27,7 @@ extension UITextField {
             make.left.equalTo((borderLine.superview?.snp.left)!)
         }
     }
+    func removeBorderLine() {
+        removeAllSubviews()
+    }
 }

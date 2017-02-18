@@ -176,6 +176,12 @@ class TrainingDetailsViewController: BaseVC {
         return view
     }()
     
+    private lazy var chartTime: ChartView! = {
+        let view = ChartView()
+        
+        return view
+    }()
+    
     private lazy var imgArrowLeft: UIImageView! = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_keyboard_arrow_left_white")
@@ -194,9 +200,7 @@ class TrainingDetailsViewController: BaseVC {
         let viewSub: UIView
         switch sender.selectedSegmentIndex {
         case 1:
-            //TODO
-            viewSub = UIView(frame: viewBottom.bounds)
-            viewSub.backgroundColor = Colors.colorT
+            viewSub = chartTime
         case 2:
             //TODO
             viewSub = UIView(frame: viewBottom.bounds)

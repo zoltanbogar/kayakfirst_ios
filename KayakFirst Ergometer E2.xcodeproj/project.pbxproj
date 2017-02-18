@@ -64,6 +64,14 @@
 		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
 		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
+		061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145CD1E58C97F0058EAF4 /* ChartView.swift */; };
+		061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D01E58CF600058EAF4 /* DiagramLabel.swift */; };
+		061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D31E58D91F0058EAF4 /* LabelForce.swift */; };
+		061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D51E58D93E0058EAF4 /* LabelSpeed.swift */; };
+		061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D71E58D9620058EAF4 /* LabelStroke.swift */; };
+		061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D91E58D97C0058EAF4 /* LabelT200.swift */; };
+		061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DB1E58D9950058EAF4 /* LabelT500.swift */; };
+		061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DD1E58D9A50058EAF4 /* LabelT1000.swift */; };
 		061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainTabViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -210,6 +218,14 @@
 		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
 		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
+		061145CD1E58C97F0058EAF4 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		061145D01E58CF600058EAF4 /* DiagramLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramLabel.swift; sourceTree = "<group>"; };
+		061145D31E58D91F0058EAF4 /* LabelForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelForce.swift; sourceTree = "<group>"; };
+		061145D51E58D93E0058EAF4 /* LabelSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSpeed.swift; sourceTree = "<group>"; };
+		061145D71E58D9620058EAF4 /* LabelStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStroke.swift; sourceTree = "<group>"; };
+		061145D91E58D97C0058EAF4 /* LabelT200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT200.swift; sourceTree = "<group>"; };
+		061145DB1E58D9950058EAF4 /* LabelT500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT500.swift; sourceTree = "<group>"; };
+		061145DD1E58D9A50058EAF4 /* LabelT1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT1000.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -346,6 +362,7 @@
 		060A37741E584F6F00A973BF /* training_calculate */ = {
 			isa = PBXGroup;
 			children = (
+				061145D21E58D6920058EAF4 /* calculate */,
 				060A37751E584FBA00A973BF /* Telemetry.swift */,
 			);
 			name = training_calculate;
@@ -393,14 +410,6 @@
 			name = table_view;
 			sourceTree = "<group>";
 		};
-		060D9BA81E4A853E006DD8AB /* ergometer */ = {
-			isa = PBXGroup;
-			children = (
-				060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */,
-			);
-			name = ergometer;
-			sourceTree = "<group>";
-		};
 		060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +450,36 @@
 				060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */,
 			);
 			name = calendar;
+			sourceTree = "<group>";
+		};
+		061145CC1E58C9750058EAF4 /* chart */ = {
+			isa = PBXGroup;
+			children = (
+				061145CD1E58C97F0058EAF4 /* ChartView.swift */,
+			);
+			name = chart;
+			sourceTree = "<group>";
+		};
+		061145CF1E58CF540058EAF4 /* diagram_label */ = {
+			isa = PBXGroup;
+			children = (
+				061145D01E58CF600058EAF4 /* DiagramLabel.swift */,
+				061145D31E58D91F0058EAF4 /* LabelForce.swift */,
+				061145D51E58D93E0058EAF4 /* LabelSpeed.swift */,
+				061145D71E58D9620058EAF4 /* LabelStroke.swift */,
+				061145D91E58D97C0058EAF4 /* LabelT200.swift */,
+				061145DB1E58D9950058EAF4 /* LabelT500.swift */,
+				061145DD1E58D9A50058EAF4 /* LabelT1000.swift */,
+			);
+			name = diagram_label;
+			sourceTree = "<group>";
+		};
+		061145D21E58D6920058EAF4 /* calculate */ = {
+			isa = PBXGroup;
+			children = (
+				060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */,
+			);
+			name = calculate;
 			sourceTree = "<group>";
 		};
 		064764C51E237022004B9ED3 /* utils */ = {
@@ -509,6 +548,8 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				061145CF1E58CF540058EAF4 /* diagram_label */,
+				061145CC1E58C9750058EAF4 /* chart */,
 				060A376A1E578F4000A973BF /* drag_drop */,
 				060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */,
 				060D9BA11E4A6539006DD8AB /* table_view */,
@@ -583,7 +624,6 @@
 				06C1B9861E25961300AB4C47 /* design */,
 				069433E61E28361B00CE6398 /* dialog */,
 				060C8B751E4068220057DD61 /* domain */,
-				060D9BA81E4A853E006DD8AB /* ergometer */,
 				0602D3AA1E31568F001E382E /* extensions */,
 				0677FEF91E41396300A9B977 /* server */,
 				060A37741E584F6F00A973BF /* training_calculate */,
@@ -839,6 +879,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
+				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
@@ -860,6 +901,7 @@
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
+				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
@@ -878,11 +920,14 @@
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,
+				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
 				0613DAA11E47843900CAD5A6 /* TrainingService.swift in Sources */,
+				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
+				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
@@ -925,11 +970,13 @@
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
 				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
+				061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
+				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */,
@@ -940,6 +987,7 @@
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
+				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
