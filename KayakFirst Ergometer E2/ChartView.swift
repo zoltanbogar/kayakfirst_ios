@@ -22,11 +22,13 @@ class ChartView: UIView {
     private var createTrainingList: CreateTrainingList?
     private var lineChartData: AppLineChartData?
     private var diagramLabelList: [DiagramLabel]?
+    private var chartMode: ChartMode?
     
     //MARK: init
-    init(position: Int, createTrainingList: CreateTrainingList) {
+    init(position: Int, createTrainingList: CreateTrainingList, chartMode: ChartMode) {
         super.init(frame: CGRect.zero)
         
+        self.chartMode = chartMode
         self.position = position
         self.createTrainingList = createTrainingList
         
@@ -44,7 +46,11 @@ class ChartView: UIView {
     }
     
     private func initChart() {
-        lineChartData = LineChartTime(lineChart: lineChart, position: position!, createTrainingList: createTrainingList!)
+        if chartMode! == ChartMode.chartModeDistance {
+            lineChartData = LineChartDistance(lineChart: lineChart, position: position!, createTrainingList: createTrainingList!)
+        } else {
+            lineChartData = LineChartTime(lineChart: lineChart, position: position!, createTrainingList: createTrainingList!)
+        }
         refreshChart()
     }
     

@@ -12,7 +12,7 @@ class AppLineChartData {
     //MARK: properties
     private var lineChart: LineChartView
     internal var position: Int
-    private var createTrainingList: CreateTrainingList
+    internal var createTrainingList: CreateTrainingList
     private var lineDataSets: [LineChartDataSet]?
     private var label: CalculateEnum?
     private var hasLeftData = false
@@ -46,7 +46,7 @@ class AppLineChartData {
         
         for l in diagramLabels {
             if l.isActive {
-                addData(trainingsList: CalculateEnum.getTrainingListSumByLabel(diagramLabel: l, createTrainingList: createTrainingList), diagramLabel: l)
+                addData(trainingsList: CalculateEnum.getTrainingListSumByLabel(label: l.getLabel(), createTrainingList: createTrainingList), diagramLabel: l)
             } else {
                 label = nil
             }
@@ -126,7 +126,7 @@ class AppLineChartData {
         
         leftYDateFormatHelper.format = TimeEnum.timeFormatTwo
         leftAxis.valueFormatter = LeftYAxisFormatter(lineChartData: self)
-        rightAxis.valueFormatter = RightYAxisFormatter(lineChartData: self)
+        rightAxis.valueFormatter = RightYAxisFormatter()
         
         leftAxis.gridColor = Colors.colorInactive
         rightAxis.drawGridLinesEnabled = false
@@ -161,12 +161,6 @@ class LeftYAxisFormatter: NSObject, IAxisValueFormatter {
 }
 
 class RightYAxisFormatter: NSObject, IAxisValueFormatter {
-    
-    private var lineChartData: AppLineChartData
-    
-    init(lineChartData: AppLineChartData) {
-        self.lineChartData = lineChartData
-    }
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return String(format: "%.0f", value)

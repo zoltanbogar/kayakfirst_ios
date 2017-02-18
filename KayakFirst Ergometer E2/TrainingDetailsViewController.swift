@@ -177,7 +177,13 @@ class TrainingDetailsViewController: BaseVC {
     }()
     
     private lazy var chartTime: ChartView! = {
-        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!)
+        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!, chartMode: ChartMode.chartModeTime)
+        
+        return view
+    }()
+    
+    private lazy var chartDistance: ChartView! = {
+        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!, chartMode: ChartMode.chartModeDistance)
         
         return view
     }()
@@ -202,9 +208,7 @@ class TrainingDetailsViewController: BaseVC {
         case 1:
             viewSub = chartTime
         case 2:
-            //TODO
-            viewSub = UIView(frame: viewBottom.bounds)
-            viewSub.backgroundColor = Colors.colorBluetooth
+            viewSub = chartDistance
         default:
             viewSub = sumTrainingView
         }

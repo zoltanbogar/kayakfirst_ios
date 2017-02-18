@@ -72,8 +72,9 @@
 		061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D91E58D97C0058EAF4 /* LabelT200.swift */; };
 		061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DB1E58D9950058EAF4 /* LabelT500.swift */; };
 		061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DD1E58D9A50058EAF4 /* LabelT1000.swift */; };
-		061145E01E58DF750058EAF4 /* LineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DF1E58DF750058EAF4 /* LineChartData.swift */; };
+		061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145DF1E58DF750058EAF4 /* AppLineChartData.swift */; };
 		061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145E11E58E8CA0058EAF4 /* LineChartTime.swift */; };
+		061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145E31E5900440058EAF4 /* LineChartDistance.swift */; };
 		061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainTabViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
 		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
@@ -228,8 +229,9 @@
 		061145D91E58D97C0058EAF4 /* LabelT200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT200.swift; sourceTree = "<group>"; };
 		061145DB1E58D9950058EAF4 /* LabelT500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT500.swift; sourceTree = "<group>"; };
 		061145DD1E58D9A50058EAF4 /* LabelT1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelT1000.swift; sourceTree = "<group>"; };
-		061145DF1E58DF750058EAF4 /* LineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartData.swift; sourceTree = "<group>"; };
+		061145DF1E58DF750058EAF4 /* AppLineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLineChartData.swift; sourceTree = "<group>"; };
 		061145E11E58E8CA0058EAF4 /* LineChartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartTime.swift; sourceTree = "<group>"; };
+		061145E31E5900440058EAF4 /* LineChartDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartDistance.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
 		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
@@ -460,8 +462,9 @@
 			isa = PBXGroup;
 			children = (
 				061145CD1E58C97F0058EAF4 /* ChartView.swift */,
-				061145DF1E58DF750058EAF4 /* LineChartData.swift */,
+				061145DF1E58DF750058EAF4 /* AppLineChartData.swift */,
 				061145E11E58E8CA0058EAF4 /* LineChartTime.swift */,
+				061145E31E5900440058EAF4 /* LineChartDistance.swift */,
 			);
 			name = chart;
 			sourceTree = "<group>";
@@ -885,7 +888,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
-				061145E01E58DF750058EAF4 /* LineChartData.swift in Sources */,
+				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
 				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
@@ -924,6 +927,7 @@
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
+				061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,

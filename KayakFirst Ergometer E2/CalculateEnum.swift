@@ -68,8 +68,8 @@ enum CalculateEnum: String {
         }
     }
     
-    static func getTrainingListSumByLabel(diagramLabel: DiagramLabel, createTrainingList: CreateTrainingList) -> [[Training]] {
-        switch diagramLabel.getLabel() {
+    static func getTrainingListSumByLabel(label: CalculateEnum, createTrainingList: CreateTrainingList) -> [[Training]] {
+        switch label {
         case CalculateEnum.T_200:
             return createTrainingList.t200List
         case CalculateEnum.T_500:
@@ -82,6 +82,8 @@ enum CalculateEnum: String {
             return createTrainingList.fList
         case CalculateEnum.V:
             return createTrainingList.vList
+        case CalculateEnum.S:
+            return createTrainingList.distanceList
         default:
             fatalError("There is no createTrainingList for this")
         }
