@@ -19,6 +19,8 @@ class BaseVC: UIViewController {
         
         initViewEdges()
         initView()
+        
+        view.backgroundColor = Colors.colorPrimary
     }
     
     override func viewWillAppear(_ animated: Bool) {

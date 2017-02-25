@@ -19,7 +19,12 @@ let dashboardStrokeWidth: CGFloat = 1.5
 let chartLineWidth: CGFloat = 2
 
 func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
-    let navigationBarHeight = viewController.navigationController?.navigationBar.frame.height
+    var navigationBarHeight: CGFloat?
+    if let navController = viewController.navigationController {
+        navigationBarHeight = navController.navigationBar.frame.height
+    } else if let navController = viewController as? UINavigationController {
+        navigationBarHeight = navController.navigationBar.frame.height
+    }
     let statusBarHeight = UIApplication.shared.statusBarFrame.height
     var height: CGFloat = statusBarHeight
     

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06018D4E1E616B8B00F75919 /* OutdoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */; };
+		06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */; };
+		06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -162,6 +165,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdoorViewController.swift; sourceTree = "<group>"; };
+		06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerViewController.swift; sourceTree = "<group>"; };
+		06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgoComingSoonVc.swift; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -666,6 +672,9 @@
 				06DE18441E56D13600374107 /* TrainingViewController.swift */,
 				06DE18421E56D0A100374107 /* SetDashboardVc.swift */,
 				06DE18491E56D24700374107 /* DashboardVc.swift */,
+				06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */,
+				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
+				06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -886,6 +895,7 @@
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
+				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
 				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
@@ -972,6 +982,7 @@
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
+				06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */,
 				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
 				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,
 				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
@@ -987,6 +998,7 @@
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
+				06018D4E1E616B8B00F75919 /* OutdoorViewController.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,

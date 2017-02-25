@@ -12,16 +12,35 @@ class MainVc: MainTabVc {
     
     //MARK: views
     override func initView() {
-        contentView.addSubview(btnOutdoor)
-        btnOutdoor.snp.makeConstraints { make in
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+                
+        stackView.addArrangedSubview(btnErgo)
+        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
+        stackView.addArrangedSubview(btnOutdoor)
+        
+        contentView.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(contentView)
+            make.bottom.equalTo(contentView)
             make.center.equalTo(contentView)
         }
     }
     
+    private lazy var btnErgo: UIButton! = {
+        let button = UIButton()
+        
+        button.setImage(UIImage(named: "halfBulb"), for: .normal)
+        
+        button.addTarget(self, action: #selector(clickBtnErgo), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private lazy var btnOutdoor: UIButton! = {
         let button = UIButton()
         
-        button.setTitle("Outdoor", for: .normal)
+        button.setImage(UIImage(named: "halfSun"), for: .normal)
         
         button.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
         
@@ -30,8 +49,10 @@ class MainVc: MainTabVc {
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {
-        if let parent = self.navigationController as? TrainingViewController {
-            parent.showSetDashboard()
-        }
+       startOutdoorViewController(viewController: self)
+    }
+    
+    @objc private func clickBtnErgo() {
+        startErgometerViewController(viewController: self)
     }
 }

@@ -316,6 +316,6 @@ class SetDashboardVc: BaseVC {
     }
     
     @objc private func btnCloseClick() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
