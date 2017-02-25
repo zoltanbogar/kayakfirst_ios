@@ -28,6 +28,9 @@ class Colors {
     static let colorStrokes = getColor("#cd2929")
     static let colorF = getColor("#0dd278")
     static let colorV = getColor("#005cff")
+    static let colorGreen = getColor("#00b000")
+    static let colorYellow = getColor("#c4b53c")
+    static let colorRed = getColor("#cc0000")
 }
 
 func getColor(_ hex: String) -> UIColor {

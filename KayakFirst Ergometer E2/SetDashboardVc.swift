@@ -51,7 +51,6 @@ class SetDashboardVc: BaseVC {
         viewDragDrop2.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
         viewDragDrop3.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
         viewDragDrop4.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
-
         
         switch gestureRecognizer.state {
         case UIGestureRecognizerState.began:
@@ -170,30 +169,35 @@ class SetDashboardVc: BaseVC {
     
     private lazy var viewDragDrop0: DragDropLayout! = {
         let viewDragDrop = DragDropLayout()
+        viewDragDrop.viewAddedCallback = self.viewAdded
         
         return viewDragDrop
     }()
     
     private lazy var viewDragDrop1: DragDropLayout! = {
         let viewDragDrop = DragDropLayout()
+        viewDragDrop.viewAddedCallback = self.viewAdded
         
         return viewDragDrop
     }()
     
     private lazy var viewDragDrop2: DragDropLayout! = {
         let viewDragDrop = DragDropLayout()
+        viewDragDrop.viewAddedCallback = self.viewAdded
         
         return viewDragDrop
     }()
     
     private lazy var viewDragDrop3: DragDropLayout! = {
         let viewDragDrop = DragDropLayout()
+        viewDragDrop.viewAddedCallback = self.viewAdded
         
         return viewDragDrop
     }()
     
     private lazy var viewDragDrop4: DragDropLayout! = {
         let viewDragDrop = DragDropLayout()
+        viewDragDrop.viewAddedCallback = self.viewAdded
         
         return viewDragDrop
     }()
@@ -361,5 +365,28 @@ class SetDashboardVc: BaseVC {
     
     @objc private func btnCloseClick() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func viewAdded(dragDropLayout: DragDropLayout, tag: Int) {
+        if let parent = self.navigationController as? TrainingViewController {
+            
+            var key = 0
+            switch dragDropLayout {
+            case self.viewDragDrop0:
+                key = 0
+            case self.viewDragDrop1:
+                key = 1
+            case self.viewDragDrop2:
+                key = 2
+            case self.viewDragDrop3:
+                key = 3
+            case self.viewDragDrop4:
+                key = 4
+            default:
+                fatalError()
+            }
+            
+            parent.dashboardLayoutDict.updateValue(tag, forKey: key)
+        }
     }
 }

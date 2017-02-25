@@ -10,6 +10,7 @@
 		06018D4E1E616B8B00F75919 /* OutdoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */; };
 		06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */; };
 		06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */; };
+		06018D541E61B8D500F75919 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D531E61B8D500F75919 /* RoundButton.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -167,6 +168,7 @@
 		06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdoorViewController.swift; sourceTree = "<group>"; };
 		06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerViewController.swift; sourceTree = "<group>"; };
 		06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgoComingSoonVc.swift; sourceTree = "<group>"; };
+		06018D531E61B8D500F75919 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
+				06018D531E61B8D500F75919 /* RoundButton.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				060A37761E584FBA00A973BF /* Telemetry.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
+				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,

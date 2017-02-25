@@ -21,7 +21,12 @@ class DashBoardElement: UIView {
         didSet {
             labelValue.isHidden = !isValueVisible
             labelTitle.snp.makeConstraints { make in
-                make.center.equalTo(self)
+                if isValueVisible {
+                    make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+                    make.centerX.equalTo(self)
+                } else {
+                    make.center.equalTo(self)
+                }
             }
         }
     }
@@ -111,7 +116,7 @@ class DashBoardElement: UIView {
         label.textAlignment = .center
         label.textColor = Colors.colorWhite
         
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         
         return label
     }()

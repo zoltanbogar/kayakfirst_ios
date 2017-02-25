@@ -10,6 +10,9 @@ import UIKit
 
 class DragDropLayout: UIView {
     
+    //MARK: properties
+    var viewAddedCallback: ((_ dragDropLayout: DragDropLayout, _ tag: Int) ->())?
+    
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,6 +72,10 @@ class DragDropLayout: UIView {
         
         view.snp.makeConstraints { make in
             make.edges.equalTo(newView)
+        }
+        
+        if let callback = viewAddedCallback {
+            callback(self, tag)
         }
     }
     
