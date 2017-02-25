@@ -11,6 +11,7 @@
 		06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */; };
 		06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */; };
 		06018D541E61B8D500F75919 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D531E61B8D500F75919 /* RoundButton.swift */; };
+		06018D561E61D9D700F75919 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D551E61D9D700F75919 /* UIView+.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -169,6 +170,7 @@
 		06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerViewController.swift; sourceTree = "<group>"; };
 		06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgoComingSoonVc.swift; sourceTree = "<group>"; };
 		06018D531E61B8D500F75919 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		06018D551E61D9D700F75919 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				06F914621E428A240041B303 /* Alamofire+.swift */,
 				0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */,
 				060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */,
+				06018D551E61D9D700F75919 /* UIView+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
+				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
 				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
 				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,

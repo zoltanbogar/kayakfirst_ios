@@ -53,6 +53,11 @@ class DashboardVc: BaseVC {
         
         initDashboardViews()
         contentView.backgroundColor = Colors.colorDashBoardDivider
+        
+        contentView.addSubview(pauseView)
+        pauseView.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView)
+        }
     }
     
     private func initDashboardViews() {
@@ -88,6 +93,7 @@ class DashboardVc: BaseVC {
     
     override func handlePortraitLayout() {
         mainStackView.axis = .vertical
+        pauseStackView.axis = .vertical
         
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
@@ -98,6 +104,8 @@ class DashboardVc: BaseVC {
     
     override func handleLandscapeLayout() {
         mainStackView.axis = .horizontal
+        pauseStackView.axis = .horizontal
+        
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
             make.width.equalTo(100)
@@ -167,6 +175,43 @@ class DashboardVc: BaseVC {
         let button = RoundButton(radius: 75, image: UIImage(named: "ic_play_48dp")!, color: Colors.colorGreen)
         
         return button
+    }()
+    
+    private lazy var pauseView: UIView! = {
+        let view = UIView()
+        
+        let btnPlay = RoundButton(radius: 125, image: UIImage(named: "ic_play_big")!, color: Colors.colorGreen)
+        let btnStop = RoundButton(radius: 125, image: UIImage(named: "ic_stop_big")!, color: Colors.colorRed)
+        
+        let viewPlay = UIView()
+        let viewStop = UIView()
+        viewPlay.addSubview(btnPlay)
+        btnPlay.snp.makeConstraints({ (make) in
+            make.center.equalTo(viewPlay)
+        })
+        viewStop.addSubview(btnStop)
+        btnStop.snp.makeConstraints({ (make) in
+            make.center.equalTo(viewStop)
+        })
+        
+        self.pauseStackView.addArrangedSubview(viewPlay)
+        self.pauseStackView.addArrangedSubview(viewStop)
+        
+        view.addBlurEffect()
+        
+        view.addSubview(self.pauseStackView)
+        self.pauseStackView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        
+        return view
+    }()
+    
+    private lazy var pauseStackView: UIStackView! = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        
+        return stackView
     }()
     
 }
