@@ -8,13 +8,21 @@
 
 import UIKit
 
-class DashBoardElement: RoundedBorderView {
+class DashBoardElement: UIView {
     
     //MARK: properties
     internal let telemetry = Telemetry.sharedInstance
     var isSelected: Bool = false {
         didSet {
             selectedView.isHidden = !isSelected
+        }
+    }
+    var isValueVisible: Bool = true {
+        didSet {
+            labelValue.isHidden = !isValueVisible
+            labelTitle.snp.makeConstraints { make in
+                make.center.equalTo(self)
+            }
         }
     }
     
@@ -72,8 +80,6 @@ class DashBoardElement: RoundedBorderView {
     
     //MARK: views
     private func initView() {
-        borderWidth = dashboardStrokeWidth
-        
         addSubview(labelTitle)
         labelTitle.snp.makeConstraints { make in
             make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
@@ -87,6 +93,7 @@ class DashBoardElement: RoundedBorderView {
         selectedView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+        backgroundColor = Colors.colorPrimary
     }
     
     private lazy var labelTitle: UILabel! = {
@@ -94,6 +101,7 @@ class DashBoardElement: RoundedBorderView {
         label.textAlignment = .center
         label.text = self.getTitle()
         label.textColor = Colors.colorWhite
+        label.numberOfLines = 0
         
         return label
     }()
@@ -133,7 +141,7 @@ class DashBoardElement: RoundedBorderView {
         return snapshot
     }
     
-    class func getDashBoardElementByTag(tag: Int) -> DashBoardElement {
+    class func getDashBoardElementByTag(tag: Int, isValueVisible: Bool) -> DashBoardElement {
         var dashBoardelement: DashBoardElement
         
         switch tag {
@@ -168,6 +176,7 @@ class DashBoardElement: RoundedBorderView {
         default:
             fatalError("Error in dashBoardelement tag")
         }
+        dashBoardelement.isValueVisible = isValueVisible
         
         return dashBoardelement
     }

@@ -15,7 +15,6 @@
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
 		060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376B1E578F4F00A973BF /* DragDropLayout.swift */; };
-		060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376D1E579FB700A973BF /* RoundedBorderView.swift */; };
 		060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */; };
 		060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */; };
 		060A37761E584FBA00A973BF /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37751E584FBA00A973BF /* Telemetry.swift */; };
@@ -175,7 +174,6 @@
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
 		060A376B1E578F4F00A973BF /* DragDropLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropLayout.swift; sourceTree = "<group>"; };
-		060A376D1E579FB700A973BF /* RoundedBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderView.swift; sourceTree = "<group>"; };
 		060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual1000.swift; sourceTree = "<group>"; };
 		060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Duration.swift; sourceTree = "<group>"; };
 		060A37751E584FBA00A973BF /* Telemetry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
@@ -576,7 +574,6 @@
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
-				060A376D1E579FB700A973BF /* RoundedBorderView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -903,7 +900,6 @@
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
-				060A376E1E579FB700A973BF /* RoundedBorderView.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,

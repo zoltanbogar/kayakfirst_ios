@@ -26,6 +26,22 @@
 "dashboard_title_av_strokes"="Avg. Strokes/min:";
 "dashboard_title_av_pull_force"="Avg. Pull Force (N):";
 
+//DashBoardOutdoor
+"dashboard_outdoor_title_av_200"="Avg.\n200m";
+"dashboard_outdoor_title_av_500"="Avg.\n500m";
+"dashboard_outdoor_title_av_1000"="Avg.\n1000m";
+"dashboard_outdoor_title_actual_200"="Actual\n200m";
+"dashboard_outdoor_title_actual_500"="Actual\n500m";
+"dashboard_outdoor_title_actual_1000"="Actual\n1000m";
+"dashboard_outdoor_title_stroke_min"="Strokes/min.";
+"dashboard_outdoor_title_pull_force"="Pull force\n(N)";
+"dashboard_outdoor_title_distance"="Distance\n(m)";
+"dashboard_outdoor_title_duration"="Duration";
+"dashboard_outdoor_title_current_speed"="Act. speed\n(km/h)";
+"dashboard_outdoor_title_av_speed"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_av_strokes"="Avg. strokes\n/min";
+"dashboard_outdoor_title_av_pull_force"="Avg. pull force\n(N)";
+
 //Bluetooth List
 "fragment_bluetooth_title"="Connect your phone to any of the below equipments...";
 "fragment_bluetooth_subtitle"="... detect a new one";

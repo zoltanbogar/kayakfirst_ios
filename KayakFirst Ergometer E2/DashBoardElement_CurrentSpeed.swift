@@ -20,7 +20,7 @@ class DashBoardElement_CurrentSpeed: DashBoardElementBase {
     }
     
     override func getTitle() -> String {
-        return getString("dashboard_title_current_speed")
+        return getString("dashboard_outdoor_title_current_speed")
     }
     
     override func getTagInt() -> Int {

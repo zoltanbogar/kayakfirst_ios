@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DragDropLayout: RoundedBorderView {
+class DragDropLayout: UIView {
     
     //MARK: init
     override init(frame: CGRect) {
@@ -48,17 +48,22 @@ class DragDropLayout: RoundedBorderView {
         viewDragDrop.isHidden = color == nil
     }
     
-    //TODO: not correct
     private func isDragDropEnter(superView: UIView, gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let frame = self.convert(self.frame, to: self.window)
-        return frame.contains(gestureRecognizer.location(in: gestureRecognizer.view?.window))
+        var frame = self.convert(self.frame, to: superView)
+        
+        //not beauty but works
+        if frame.origin.x >= superView.frame.width {
+            frame.origin.x = self.frame.size.width
+        }
+        
+        return frame.contains(gestureRecognizer.location(in: superView))
     }
     
     private func addNewView(tag: Int) {
         newView.removeAllSubviews()
         imgAdd.isHidden = true
         
-        let view = DashBoardElement.getDashBoardElementByTag(tag: tag)
+        let view = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: false)
         
         newView.addSubview(view)
         
@@ -69,8 +74,6 @@ class DragDropLayout: RoundedBorderView {
     
     //MARK: views
     private func initView() {
-        isDashed = true
-        
         addSubview(imgAdd)
         imgAdd.snp.makeConstraints { make in
             make.center.equalTo(self)
@@ -83,6 +86,7 @@ class DragDropLayout: RoundedBorderView {
         viewDragDrop.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+        backgroundColor = Colors.colorPrimary
     }
     
     private lazy var imgAdd: UIImageView! = {

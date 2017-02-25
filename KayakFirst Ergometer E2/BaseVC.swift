@@ -17,6 +17,8 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(contentView)
+        
         initViewEdges()
         initView()
         
@@ -27,6 +29,14 @@ class BaseVC: UIViewController {
         super.viewWillAppear(animated)
         
         initTabBarItems()
+        
+        handleScreenOrientation(size: view.frame.size)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        handleScreenOrientation(size: size)
     }
     
     func initTabBarItems() {
@@ -35,14 +45,29 @@ class BaseVC: UIViewController {
     
     //MARK: views
     private func initViewEdges() {
-        view.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(view).inset(UIEdgeInsetsMake(getTopMargin(), 0, getTabBarHeight(viewController: self), 0))
         }
     }
     
+    func handleScreenOrientation(size: CGSize) {
+        if isScreenPortrait(size: size) {
+            handlePortraitLayout()
+        } else {
+            handleLandscapeLayout()
+        }
+    }
+    
     func getTopMargin() -> CGFloat {
-       return getNavigationBarHeight(viewController: self)
+        return getNavigationBarHeight(viewController: self)
+    }
+    
+    func handlePortraitLayout() {
+        //override if needed
+    }
+    
+    func handleLandscapeLayout() {
+        //override if needed
     }
     
     //MARK: abstract functions

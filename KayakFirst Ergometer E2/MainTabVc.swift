@@ -13,6 +13,5 @@ class MainTabVc: BaseVC {
     override func getTopMargin() -> CGFloat {
         return 0
     }
-    
 }
 

@@ -20,7 +20,7 @@ class DashBoardElement_Distance: DashBoardElementBase {
     }
     
     override func getTitle() -> String {
-        return getString("dashboard_title_distance")
+        return getString("dashboard_outdoor_title_distance")
     }
     
     override func getTagInt() -> Int {

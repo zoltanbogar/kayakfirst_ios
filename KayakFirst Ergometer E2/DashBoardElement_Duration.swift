@@ -20,7 +20,7 @@ class DashBoardElement_Duration: DashBoardelementTime {
     }
     
     override internal func getTitle() -> String {
-        return getString("dashboard_title_duration")
+        return getString("dashboard_outdoor_title_duration")
     }
     
     override func getTagInt() -> Int {

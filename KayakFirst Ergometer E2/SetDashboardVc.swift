@@ -46,11 +46,11 @@ class SetDashboardVc: BaseVC {
         
         let view = gestureRecognizer.view! as! DashBoardElement
         
-        viewDragDrop0.setDragEvent(superView: contentView, gestureRecognizer: gestureRecognizer)
-        viewDragDrop1.setDragEvent(superView: contentView, gestureRecognizer: gestureRecognizer)
-        viewDragDrop2.setDragEvent(superView: contentView, gestureRecognizer: gestureRecognizer)
-        viewDragDrop3.setDragEvent(superView: contentView, gestureRecognizer: gestureRecognizer)
-        viewDragDrop4.setDragEvent(superView: contentView, gestureRecognizer: gestureRecognizer)
+        viewDragDrop0.setDragEvent(superView: mainStackView, gestureRecognizer: gestureRecognizer)
+        viewDragDrop1.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
+        viewDragDrop2.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
+        viewDragDrop3.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
+        viewDragDrop4.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
 
         
         switch gestureRecognizer.state {
@@ -86,8 +86,21 @@ class SetDashboardVc: BaseVC {
         
         contentView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(margin05, margin05, margin05, margin05))
+            make.edges.equalTo(contentView)
         }
+        contentView.backgroundColor = Colors.colorDashBoardDivider
+    }
+    
+    override func handlePortraitLayout() {
+        super.handlePortraitLayout()
+        
+        mainStackView.axis = .vertical
+    }
+    
+    override func handleLandscapeLayout() {
+        super.handleLandscapeLayout()
+        
+        mainStackView.axis = .horizontal
     }
     
     override func initTabBarItems() {
@@ -101,7 +114,7 @@ class SetDashboardVc: BaseVC {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually
-        mainStackView.spacing = margin1_5
+        mainStackView.spacing = dashboardDividerWidth * 5
         
         return mainStackView
     }()
@@ -109,37 +122,50 @@ class SetDashboardVc: BaseVC {
     private lazy var viewTop: UIView! = {
         let view = UIView()
         
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = margin05
+        self.stackViewTop.addArrangedSubview(self.viewDragDrop0)
         
-        let stackViewLeft = UIStackView()
-        stackViewLeft.axis = .vertical
-        stackViewLeft.distribution = .fillEqually
-        stackViewLeft.spacing = margin05
+        self.stackViewTop1.addArrangedSubview(self.viewDragDrop1)
+        self.stackViewTop1.addArrangedSubview(self.viewDragDrop2)
         
-        stackViewLeft.addArrangedSubview(self.viewDragDrop0)
-        stackViewLeft.addArrangedSubview(self.viewDragDrop1)
+        self.stackViewTop2.addArrangedSubview(self.viewDragDrop3)
+        self.stackViewTop2.addArrangedSubview(self.viewDragDrop4)
         
-        let stackViewRight = UIStackView()
-        stackViewRight.axis = .vertical
-        stackViewRight.distribution = .fillEqually
-        stackViewRight.spacing = margin05
+        self.stackViewTop.addArrangedSubview(self.stackViewTop1)
+        self.stackViewTop.addArrangedSubview(self.stackViewTop2)
         
-        stackViewRight.addArrangedSubview(self.viewDragDrop2)
-        stackViewRight.addArrangedSubview(self.viewDragDrop3)
-        stackViewRight.addArrangedSubview(self.viewDragDrop4)
-        
-        stackView.addArrangedSubview(stackViewLeft)
-        stackView.addArrangedSubview(stackViewRight)
-        
-        view.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        view.addSubview(self.stackViewTop)
+        self.stackViewTop.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
         
         return view
+    }()
+    
+    private lazy var stackViewTop: UIStackView! = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = dashboardDividerWidth
+        
+        return stackView
+    }()
+    
+    private lazy var stackViewTop1: UIStackView! = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = dashboardDividerWidth
+        
+        return stackView
+    }()
+    
+    private lazy var stackViewTop2: UIStackView! = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = dashboardDividerWidth
+        
+        return stackView
     }()
     
     private lazy var viewDragDrop0: DragDropLayout! = {
@@ -174,43 +200,49 @@ class SetDashboardVc: BaseVC {
     
     private lazy var viewBottom: UIView! = {
         let view = UIView()
-        let scrollView = AppScrollView(view: view)
-        
+    
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = margin05
+        stackView.spacing = dashboardDividerWidth
         
         let stackViewLeft = UIStackView()
         stackViewLeft.axis = .vertical
         stackViewLeft.distribution = .fillEqually
-        stackViewLeft.spacing = margin05
+        stackViewLeft.spacing = dashboardDividerWidth
         
         stackViewLeft.addArrangedSubview(self.dashboardElementDuration)
         stackViewLeft.addArrangedSubview(self.dashboardElementActual1000)
-        stackViewLeft.addArrangedSubview(self.dashboardElementActual500)
-        stackViewLeft.addArrangedSubview(self.dashboardElementActual200)
+        stackViewLeft.addArrangedSubview(self.dashboardElementAv1000)
         stackViewLeft.addArrangedSubview(self.dashboardElementCurrentSpeed)
-        stackViewLeft.addArrangedSubview(self.dashboardElementStrokes)
+        
+        let stackViewCenter = UIStackView()
+        stackViewCenter.axis = .vertical
+        stackViewCenter.distribution = .fillEqually
+        stackViewCenter.spacing = dashboardDividerWidth
+        
+        stackViewCenter.addArrangedSubview(self.dashboardElementDistance)
+        stackViewCenter.addArrangedSubview(self.dashboardElementActual500)
+        stackViewCenter.addArrangedSubview(self.dashboardElementAv500)
+        stackViewCenter.addArrangedSubview(self.dashboardElementAvSpeed)
         
         let stackViewRight = UIStackView()
         stackViewRight.axis = .vertical
         stackViewRight.distribution = .fillEqually
-        stackViewRight.spacing = margin05
+        stackViewRight.spacing = dashboardDividerWidth
         
-        stackViewRight.addArrangedSubview(self.dashboardElementDistance)
-        stackViewRight.addArrangedSubview(self.dashboardElementAv1000)
-        stackViewRight.addArrangedSubview(self.dashboardElementAv500)
+        stackViewRight.addArrangedSubview(self.dashboardElementStrokes)
+        stackViewRight.addArrangedSubview(self.dashboardElementActual200)
         stackViewRight.addArrangedSubview(self.dashboardElementAv200)
-        stackViewRight.addArrangedSubview(self.dashboardElementAvSpeed)
         stackViewRight.addArrangedSubview(self.dashboardElementAvStrokes)
         
         stackView.addArrangedSubview(stackViewLeft)
+        stackView.addArrangedSubview(stackViewCenter)
         stackView.addArrangedSubview(stackViewRight)
         
-        scrollView.addSubview(stackView)
+        view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView.containerView)
+            make.edges.equalTo(view)
         }
         
         return view
@@ -218,36 +250,42 @@ class SetDashboardVc: BaseVC {
     
     private lazy var dashboardElementActual200: DashBoardElement_Actual200! = {
         let view = DashBoardElement_Actual200()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementActual500: DashBoardElement_Actual500! = {
         let view = DashBoardElement_Actual500()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementActual1000: DashBoardElement_Actual1000! = {
         let view = DashBoardElement_Actual1000()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementAv200: DashBoardElement_Av200! = {
         let view = DashBoardElement_Av200()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementAv500: DashBoardElement_Av500! = {
         let view = DashBoardElement_Av500()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementAv1000: DashBoardElement_Av1000! = {
         let view = DashBoardElement_Av1000()
+        view.isValueVisible = false
         
         return view
     }()
@@ -255,36 +293,42 @@ class SetDashboardVc: BaseVC {
     
     private lazy var dashboardElementAvSpeed: DashBoardElement_AvSpeed! = {
         let view = DashBoardElement_AvSpeed()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementAvStrokes: DashBoardElement_AvStrokes! = {
         let view = DashBoardElement_AvStrokes()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementCurrentSpeed: DashBoardElement_CurrentSpeed! = {
         let view = DashBoardElement_CurrentSpeed()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementDistance: DashBoardElement_Distance! = {
         let view = DashBoardElement_Distance()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementDuration: DashBoardElement_Duration! = {
         let view = DashBoardElement_Duration()
+        view.isValueVisible = false
         
         return view
     }()
     
     private lazy var dashboardElementStrokes: DashBoardElement_Strokes! = {
         let view = DashBoardElement_Strokes()
+        view.isValueVisible = false
         
         return view
     }()
@@ -292,7 +336,7 @@ class SetDashboardVc: BaseVC {
     //MARK: tabbar items
     private lazy var btnDone: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_play_arrow_white_24dp")
+        button.image = UIImage(named: "done_24dp")
         button.target = self
         button.action = #selector(btnDoneClick)
         

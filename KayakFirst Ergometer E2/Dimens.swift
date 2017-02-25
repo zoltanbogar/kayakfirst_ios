@@ -13,9 +13,7 @@ let margin: CGFloat = 20.0
 let margin1_5: CGFloat = 30
 let margin2: CGFloat = 40.0
 let buttonHeight: CGFloat = 40.0
-let dashboardRadius: CGFloat = 7
-let dashboardSetStrokeWidth: CGFloat = 0.5
-let dashboardStrokeWidth: CGFloat = 1.5
+let dashboardDividerWidth: CGFloat = 0.5
 let chartLineWidth: CGFloat = 2
 
 func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
@@ -38,4 +36,12 @@ func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
 func getTabBarHeight(viewController: UIViewController) -> CGFloat {
     let tabBarHeight = viewController.tabBarController?.tabBar.frame.size.height
     return tabBarHeight == nil ? 0 : tabBarHeight!
+}
+
+func isScreenPortrait(size: CGSize) -> Bool {
+    if (size.width / size.height > 1) {
+        return false
+    } else {
+        return true
+    }
 }
