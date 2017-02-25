@@ -51,6 +51,7 @@ class DownloadTrainings: ServerService<[Training]> {
                                 userId: userId,
                                 sessionId: sessionId,
                                 trainingType: trainingType,
+                                trainingEnvironmentType: TrainingEnvironmentType(rawValue: downloadDto.trainingEnvironmentType) == nil ? TrainingEnvironmentType.ergometer : TrainingEnvironmentType(rawValue: downloadDto.trainingEnvironmentType)!,
                                 dataType: dataType,
                                 dataValue: dataValue)
                             trainingList?.append(training)

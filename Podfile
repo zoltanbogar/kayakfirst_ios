@@ -10,4 +10,5 @@ target 'KayakFirst Ergometer E2' do
     pod 'SwiftyJSON'
     pod 'CVCalendar', '~> 1.4.1'
     pod 'Charts'
+    pod 'SQLite.swift', '~> 0.11.0'
 end

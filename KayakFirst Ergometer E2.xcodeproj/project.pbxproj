@@ -12,6 +12,9 @@
 		06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */; };
 		06018D541E61B8D500F75919 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D531E61B8D500F75919 /* RoundButton.swift */; };
 		06018D561E61D9D700F75919 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D551E61D9D700F75919 /* UIView+.swift */; };
+		06018D581E620FFC00F75919 /* AppSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D571E620FFC00F75919 /* AppSql.swift */; };
+		06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D591E6218C100F75919 /* BaseDbLoader.swift */; };
+		06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -68,6 +71,8 @@
 		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
 		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
+		060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */; };
+		060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */; };
 		061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145CD1E58C97F0058EAF4 /* ChartView.swift */; };
 		061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D01E58CF600058EAF4 /* DiagramLabel.swift */; };
 		061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D31E58D91F0058EAF4 /* LabelForce.swift */; };
@@ -171,6 +176,9 @@
 		06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgoComingSoonVc.swift; sourceTree = "<group>"; };
 		06018D531E61B8D500F75919 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		06018D551E61D9D700F75919 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		06018D571E620FFC00F75919 /* AppSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSql.swift; sourceTree = "<group>"; };
+		06018D591E6218C100F75919 /* BaseDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDbLoader.swift; sourceTree = "<group>"; };
+		06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDbLoader.swift; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -229,6 +237,8 @@
 		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
 		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
+		060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDaysDbLoader.swift; sourceTree = "<group>"; };
+		060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
 		061145CD1E58C97F0058EAF4 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		061145D01E58CF600058EAF4 /* DiagramLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramLabel.swift; sourceTree = "<group>"; };
 		061145D31E58D91F0058EAF4 /* LabelForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelForce.swift; sourceTree = "<group>"; };
@@ -454,6 +464,11 @@
 			isa = PBXGroup;
 			children = (
 				060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */,
+				06018D571E620FFC00F75919 /* AppSql.swift */,
+				06018D591E6218C100F75919 /* BaseDbLoader.swift */,
+				06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */,
+				060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */,
+				060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -902,6 +917,7 @@
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
 				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
+				06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */,
 				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
@@ -922,6 +938,7 @@
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
+				06018D581E620FFC00F75919 /* AppSql.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
 				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
@@ -962,6 +979,7 @@
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
 				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
+				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
 				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
@@ -992,6 +1010,7 @@
 				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
+				060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
@@ -1007,6 +1026,7 @@
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */,
+				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				069433F21E2843F400CE6398 /* BluetoothDisconnectiDialog.swift in Sources */,

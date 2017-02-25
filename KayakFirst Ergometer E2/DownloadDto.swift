@@ -14,12 +14,14 @@ struct DownloadDto {
     let id: Int64
     let sessionId: TimeInterval
     let traningType: String
+    let trainingEnvironmentType: String
     let data: [DownloadTrainingDto]
     
     init(json: JSON) {
         self.id = json["id"].int64Value
         self.sessionId = json["sessionId"].doubleValue
         self.traningType = json["trainingType"].stringValue
+        self.trainingEnvironmentType = json["trainingEnvironmentType"].stringValue
         
         var downloadTrainingDtos = [DownloadTrainingDto]()
         

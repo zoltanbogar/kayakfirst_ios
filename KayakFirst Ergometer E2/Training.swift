@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum TrainingEnvironmentType: String {
+    case ergometer = "ergometer"
+    case outdoor = "outdoor"
+}
+
 struct Training {
     
     //MARK: constants
@@ -22,6 +27,7 @@ struct Training {
     let userId: Int64
     let sessionId: TimeInterval
     let trainingType: String
+    let trainingEnvironmentType: TrainingEnvironmentType
     let dataType: String
     let dataValue: Double
 }
