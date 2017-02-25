@@ -9,24 +9,21 @@
 import Foundation
 import SQLite
 
-class TrainingDaysDbLoader: BaseDbLoader<Int64> {
+class TrainingDaysDbLoader: BaseDbLoader<Double> {
     
     //MARK: keys
     struct PropertyKey {
-        static let sessionIdKey = "sessionId"
         static let userIdKey = "userId"
     }
     
     //MARK: columns
-    private let trainingDaysTable = Table("training_days_table")
-    private let sessionId = Expression<Double>(PropertyKey.sessionIdKey)
     private let userId = Expression<Int64>(PropertyKey.userIdKey)
     
     //MARK: init database
     override func initDatabase() {
         do {
             if let database = db {
-                try database.run(trainingDaysTable.create(ifNotExists: true) { t in
+                try database.run(table.create(ifNotExists: true) { t in
                     t.column(sessionId, primaryKey: true)
                     t.column(userId)
                 })
@@ -34,5 +31,44 @@ class TrainingDaysDbLoader: BaseDbLoader<Int64> {
         } catch {
             log("DATABASE", error)
         }
+    }
+    
+    override class func getTableName() -> String {
+        return "training_days_table"
+    }
+    
+    //MARK: insert
+    override func addData(data: Double) {
+        let insert = table.insert(self.sessionId <- data, self.userId <- UserService.sharedInstance.getUser()!.id)
+        
+        let rowId = try? db?.run(insert)
+    }
+    
+    //MARK: query
+    override func loadData(predicate: Expression<Bool>?) -> [Double]? {
+        var trainingDaysList: [Double]?
+        
+        do {
+            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            
+            if let predicateValue = predicate {
+                queryPredicate = queryPredicate && predicateValue
+            }
+            
+            let dbList = try db!.prepare(table.filter(queryPredicate))
+            
+            trainingDaysList = [Double]()
+            
+            for trainingDaysDb in dbList {
+                let sessionId = trainingDaysDb[self.sessionId]
+                
+                trainingDaysList?.append(sessionId)
+                
+            }
+        } catch {
+            log("DATABASE", error)
+        }
+        
+        return trainingDaysList
     }
 }

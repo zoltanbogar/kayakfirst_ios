@@ -16,7 +16,6 @@ class TrainingDbLoader: BaseDbLoader<Training> {
         static let timeStampKey = "timeStamp"
         static let currentDistanceKey = "currentDistance"
         static let userIdKey = "userId"
-        static let sessionIdKey = "sessionId"
         static let trainingTypeKey = "trainingType"
         static let trainingEnvironmentTypeKey = "trainingEnvironmentType"
         static let dataTypeKey = "dataType"
@@ -24,12 +23,10 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     }
     
     //MARK: columns
-    private let trainingTable = Table("training_table")
-    private let timeStamp = Expression<Int64>(PropertyKey.timeStampKey)
+    private let timeStamp = Expression<Double>(PropertyKey.timeStampKey)
     private let currentDistance = Expression<Double>(PropertyKey.currentDistanceKey)
     private let userId = Expression<Int64>(PropertyKey.userIdKey)
-    private let sessionId = Expression<Double>(PropertyKey.sessionIdKey)
-    private let trainigType = Expression<String>(PropertyKey.trainingTypeKey)
+    private let trainingType = Expression<String>(PropertyKey.trainingTypeKey)
     private let trainingEnvironmentType = Expression<String>(PropertyKey.trainingEnvironmentTypeKey)
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)
     private let dataValue = Expression<Double>(PropertyKey.dataValueKey)
@@ -38,12 +35,12 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     override func initDatabase() {
         do {
             if let database = db {
-                try database.run(trainingTable.create(ifNotExists: true) { t in
+                try database.run(table.create(ifNotExists: true) { t in
                     t.column(timeStamp, primaryKey: true)
                     t.column(currentDistance)
                     t.column(userId)
                     t.column(sessionId)
-                    t.column(trainigType)
+                    t.column(trainingType)
                     t.column(trainingEnvironmentType)
                     t.column(dataType)
                     t.column(dataValue)
@@ -52,5 +49,61 @@ class TrainingDbLoader: BaseDbLoader<Training> {
         } catch {
             log("DATABASE", error)
         }
+    }
+    
+    override class func getTableName() -> String {
+        return "training_table"
+    }
+    
+    //MARK: insert
+    override func addData(data: Training) {
+        let insert = table.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
+        
+        let rowId = try? db?.run(insert)
+    }
+    
+    //MARK: query
+    override func loadData(predicate: Expression<Bool>?) -> [Training]? {
+        var trainingList: [Training]?
+        
+        do {
+            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            
+            if let predicateValue = predicate {
+                queryPredicate = queryPredicate && predicateValue
+            }
+            
+            let dbList = try db!.prepare(table.filter(queryPredicate))
+            
+            trainingList = [Training]()
+            
+            for trainingDb in dbList {
+                let timeStamp = trainingDb[self.timeStamp]
+                let currentDistance = trainingDb[self.currentDistance]
+                let userId = trainingDb[self.userId]
+                let sessionId = trainingDb[self.sessionId]
+                let trainingType = trainingDb[self.trainingType]
+                let trainingEnvironmentType = trainingDb[self.trainingEnvironmentType]
+                let dataType = trainingDb[self.dataType]
+                let dataValue = trainingDb[self.dataValue]
+                
+                let training = Training(
+                    timeStamp: timeStamp,
+                    currentDistance: currentDistance,
+                    userId: userId,
+                    sessionId: sessionId,
+                    trainingType: trainingType,
+                    trainingEnvironmentType: TrainingEnvironmentType(rawValue: trainingEnvironmentType)!,
+                    dataType: dataType,
+                    dataValue: dataValue)
+                
+                trainingList?.append(training)
+                
+            }
+        } catch {
+            log("DATABASE", error)
+        }
+        
+        return trainingList
     }
 }

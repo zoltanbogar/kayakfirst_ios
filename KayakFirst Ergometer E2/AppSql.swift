@@ -11,6 +11,9 @@ import SQLite
 
 class AppSql {
     
+    //MARK: constants
+    private static let oldDataDays: TimeInterval = 30
+    
     private let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
     var db: Connection?
     
@@ -26,6 +29,15 @@ class AppSql {
         } catch {
             log("DATABASE", error)
         }
+    }
+    
+    //TODO: implement this
+    static func deleteOldData() {
+        let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
+        let timeStampFrom = currentTimeMillis() - oldaDataDaysInMillis
+        TrainingDbLoader().deleteData(timeStampFrom: timeStampFrom)
+        TrainingDaysDbLoader().deleteData(timeStampFrom: timeStampFrom)
+        TrainingAvgDbLoader().deleteData(timeStampFrom: timeStampFrom)
     }
     
 }
