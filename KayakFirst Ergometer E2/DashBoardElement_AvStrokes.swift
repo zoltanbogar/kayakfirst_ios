@@ -16,7 +16,7 @@ class DashBoardElement_AvStrokes: DashBoardElementBase {
     }
     
     override func getValue() -> Double {
-        return telemetry.storkes_av
+        return telemetry.strokes_av
     }
     
     override func getTitle() -> String {

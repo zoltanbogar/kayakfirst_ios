@@ -100,6 +100,9 @@
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		06703F711E24025A0028135A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06703F701E24025A0028135A /* Colors.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
+		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
+		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
+		0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964591E63665200DFC050 /* TelemetryAvgObject.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433EB1E283F5A00CE6398 /* EmailCheck.swift */; };
@@ -266,6 +269,9 @@
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		06703F701E24025A0028135A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
+		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
+		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
+		067964591E63665200DFC050 /* TelemetryAvgObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryAvgObject.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433EB1E283F5A00CE6398 /* EmailCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
@@ -389,6 +395,7 @@
 			children = (
 				061145D21E58D6920058EAF4 /* calculate */,
 				060A37751E584FBA00A973BF /* Telemetry.swift */,
+				067964551E63633E00DFC050 /* CycleState.swift */,
 			);
 			name = training_calculate;
 			sourceTree = "<group>";
@@ -420,6 +427,8 @@
 				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
 				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
 				060DDFE11E4B01C000FE2D14 /* DailyData.swift */,
+				067964571E63661200DFC050 /* TelemetryObject.swift */,
+				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -963,12 +972,14 @@
 				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,
 				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
+				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
 				0613DAA11E47843900CAD5A6 /* TrainingService.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
+				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
 				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
@@ -1011,6 +1022,7 @@
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */,
+				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
