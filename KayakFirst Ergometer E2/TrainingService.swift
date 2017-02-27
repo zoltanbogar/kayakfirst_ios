@@ -7,12 +7,12 @@
 //
 
 import Foundation
-class TrainingService<CommandType: MeasureCommand>: CycleStateChangeListener {
+class TrainingService: CycleStateChangeListener {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
-    var commandList: [CommandType]?
-    var startCommand: StartCommand<CommandType>?
+    var commandList: [MeasureCommand]?
+    var startCommand: StartCommand<MeasureCommand>?
     
     private let pauseDiff = PauseDiff.sharedInstance
     private var cycleIndex: Int64 = 0
@@ -174,6 +174,10 @@ class TrainingService<CommandType: MeasureCommand>: CycleStateChangeListener {
     
     private func setTelemetryCycleState(cycleState: CycleState) {
         telemetry.cycleState = cycleState
+    }
+    
+    internal func setCycleIndex(cycleIndex: Int64) {
+        self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
     }
     
     func onCycleStateChanged(newCycleState: CycleState) {

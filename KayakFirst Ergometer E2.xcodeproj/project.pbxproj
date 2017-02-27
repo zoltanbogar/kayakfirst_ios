@@ -43,6 +43,9 @@
 		060B991F1E641CFF00F72404 /* AutoStopPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B991E1E641CFF00F72404 /* AutoStopPause.swift */; };
 		060B99211E641D1F00F72404 /* AutoStopResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99201E641D1F00F72404 /* AutoStopResume.swift */; };
 		060B99231E641D4300F72404 /* AutoStopStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99221E641D4300F72404 /* AutoStopStop.swift */; };
+		060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99251E64289700F72404 /* FusedLocationManager.swift */; };
+		060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99271E642AEE00F72404 /* AppSensorManager.swift */; };
+		060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99291E64313B00F72404 /* OutdoorService.swift */; };
 		060C8B771E40682C0057DD61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060C8B761E40682C0057DD61 /* User.swift */; };
 		060D9B9E1E4A5E46006DD8AB /* TableViewWithEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9B9D1E4A5E46006DD8AB /* TableViewWithEmpty.swift */; };
 		060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */; };
@@ -250,6 +253,9 @@
 		060B991E1E641CFF00F72404 /* AutoStopPause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStopPause.swift; sourceTree = "<group>"; };
 		060B99201E641D1F00F72404 /* AutoStopResume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStopResume.swift; sourceTree = "<group>"; };
 		060B99221E641D4300F72404 /* AutoStopStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStopStop.swift; sourceTree = "<group>"; };
+		060B99251E64289700F72404 /* FusedLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FusedLocationManager.swift; sourceTree = "<group>"; };
+		060B99271E642AEE00F72404 /* AppSensorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSensorManager.swift; sourceTree = "<group>"; };
+		060B99291E64313B00F72404 /* OutdoorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdoorService.swift; sourceTree = "<group>"; };
 		060C8B761E40682C0057DD61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		060D9B9D1E4A5E46006DD8AB /* TableViewWithEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewWithEmpty.swift; sourceTree = "<group>"; };
 		060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiTableViewCell.swift; sourceTree = "<group>"; };
@@ -506,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				060B99171E641A5200F72404 /* TrainingService.swift */,
+				060B99291E64313B00F72404 /* OutdoorService.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -520,6 +527,15 @@
 				060B99221E641D4300F72404 /* AutoStopStop.swift */,
 			);
 			name = auto_stop;
+			sourceTree = "<group>";
+		};
+		060B99241E64288B00F72404 /* location */ = {
+			isa = PBXGroup;
+			children = (
+				060B99251E64289700F72404 /* FusedLocationManager.swift */,
+				060B99271E642AEE00F72404 /* AppSensorManager.swift */,
+			);
+			name = location;
 			sourceTree = "<group>";
 		};
 		060C8B751E4068220057DD61 /* domain */ = {
@@ -832,6 +848,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				060B99241E64288B00F72404 /* location */,
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				06C1B9861E25961300AB4C47 /* design */,
 				069433E61E28361B00CE6398 /* dialog */,
@@ -1108,6 +1125,7 @@
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
+				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
@@ -1135,6 +1153,7 @@
 				067964721E63804500DFC050 /* CalculateT_1000_AV.swift in Sources */,
 				0679647D1E6382EC00DFC050 /* CalculateElementS_Sum.swift in Sources */,
 				067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */,
+				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
@@ -1238,6 +1257,7 @@
 				06018D4E1E616B8B00F75919 /* OutdoorViewController.swift in Sources */,
 				060B991B1E641B1600F72404 /* AutoStop.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
+				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */,
