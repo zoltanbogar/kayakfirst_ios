@@ -24,7 +24,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private var trainingDays: [TimeInterval]?
     
     //MARK: service
-    private let trainingService = TrainingService.sharedInstance
+    private let trainingService = TrainingServerService.sharedInstance
     
     //MARK: properties
     private var selectedDate: TimeInterval?
@@ -74,7 +74,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: call service
     private func getTrainingDays() {
-        TrainingService.sharedInstance.getTrainingDays(trainingDataCallback: trainingDaysCallback)
+        TrainingServerService.sharedInstance.getTrainingDays(trainingDataCallback: trainingDaysCallback)
     }
     
     private func getTrainigsList() {

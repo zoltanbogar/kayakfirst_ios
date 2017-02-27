@@ -16,7 +16,7 @@ class TrainingSumElementAverage: BaseTrainingSumElement {
     
     override func calculate() -> Double {
         if trainingList != nil && trainingList!.count > 0 {
-            let avgHash = TrainingService.sharedInstance.getTrainigAvg(
+            let avgHash = TrainingServerService.sharedInstance.getTrainigAvg(
                 hash: TrainingAvg.getAvgHash(
                     userId: UserService.sharedInstance.getUser()!.id,
                     avgType: getTrainingType(),

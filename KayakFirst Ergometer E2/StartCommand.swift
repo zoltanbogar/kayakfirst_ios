@@ -34,6 +34,10 @@ class StartCommand<E: MeasureCommand> {
         return calculateValues(measureCommands: measureCommands)
     }
     
+    func calculateAvg() -> TelemetryAvgObject {
+        return createTelemetryAvgObject()
+    }
+    
     func reset() {
         sSumElement = CalculateElementS_Sum(startCommand: getSelfStartCommand())
         t200Element = CalculateElementT_200(startCommand: getSelfStartCommand())
