@@ -14,4 +14,17 @@ class CalculateElementT: CalculateElementCurrent {
         fatalError("Must be implemented")
     }
     
+    override func run() -> Training {
+        let distance = getDistance()
+        var v = startCommand.v.dataValue
+        
+        v = v / converSationMpsKmph
+        
+        if v > 0 {
+            calculatedValue = distance / v
+            
+            calculatedValue = calculatedValue * 1000
+        }
+        return createTrainingObject()
+    }
 }

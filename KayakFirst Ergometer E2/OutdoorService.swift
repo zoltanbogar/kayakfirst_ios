@@ -43,6 +43,10 @@ class OutdoorService: TrainingService {
         stopTraining()
     }
     
+    override func handleStopTraining() {
+        //TODO
+    }
+    
     override func initCommandList() {
         commandOutdoorLatitude = CommandOutdoorLatitude()
         commandOutdoorLongitude = CommandOutdoorLongitude()

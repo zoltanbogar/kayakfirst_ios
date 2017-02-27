@@ -7,11 +7,12 @@
 //
 
 import Foundation
+
+//TODO: mo to the CalculateElement constants
+let converSationMpsKmph: Double = 3.6
+let maxSpeedKmph: Double = 30
+
 class CalculateElementV<E: StartCommand<MeasureCommand>>: CalculateElement<Training, E> {
-    
-    //MARK: constants
-    let converSationMpsKmph: Double = 3.6
-    let maxSpeedKmph: Double = 30
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.V

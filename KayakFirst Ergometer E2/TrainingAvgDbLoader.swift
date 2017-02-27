@@ -31,9 +31,10 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
     
     //MARK: init database
     override func initDatabase() {
+        table = Table("training_avg_table")
         do {
             if let database = db {
-                try database.run(table.create(ifNotExists: true) { t in
+                try database.run(table!.create(ifNotExists: true) { t in
                     t.column(averageHash, primaryKey: true)
                     t.column(userId)
                     t.column(sessionId)
@@ -46,10 +47,6 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         }
     }
     
-    override class func getTableName() -> String {
-        return "training_avg_table"
-    }
-    
     //MARK: insert
     override func addData(data: TrainingAvg) {
         if sessionIdValue != data.sessionId {
@@ -60,7 +57,7 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         if !avgHashes!.contains(data.avgHash) {
             avgHashes!.append(data.avgHash)
             
-            let insert = table.insert(self.averageHash <- data.avgHash, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
+            let insert = table!.insert(self.averageHash <- data.avgHash, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
             
             let rowId = try? db?.run(insert)
         } else {
@@ -79,7 +76,7 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
                 queryPredicate = queryPredicate && predicateValue
             }
             
-            let dbList = try db!.prepare(table.filter(queryPredicate))
+            let dbList = try db!.prepare(table!.filter(queryPredicate))
             
             trainingAvgList = [TrainingAvg]()
             
@@ -107,7 +104,7 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
     
     //MARK: update
     private func updateData(trainingAvg: TrainingAvg) {
-        let avg = table.filter(self.averageHash == trainingAvg.avgHash)
+        let avg = table!.filter(self.averageHash == trainingAvg.avgHash)
         do {
             try db!.run(avg.update(self.dataValue <- trainingAvg.avgValue))
         } catch {

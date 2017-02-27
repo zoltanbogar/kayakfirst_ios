@@ -9,13 +9,14 @@
 import Foundation
 import CoreMotion
 
+//TODO: info.plist: https://developer.apple.com/reference/coremotion
 class AppSensorManager {
     
     //MARK: properties
     private let sensorManager = CMMotionManager()
     private let operationQueue = OperationQueue()
     
-    var cycleIndex: Int64 = 0
+    var cycleIndex: Double = 0
     
     //MARK: init
     static let sharedInstance = AppSensorManager()
@@ -35,11 +36,14 @@ class AppSensorManager {
             sensorManager.startAccelerometerUpdates(to: operationQueue, withHandler: {
                 [weak self] (data: CMAccelerometerData?, error: Error?) in
                 if let acceleration = data?.acceleration {
-                    log("SENSOR", "x: \(acceleration.x), y: \(acceleration.y), z: \(acceleration.z)")
+                    
+                    self?.cycleIndex = pow(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z, 0.5)
+                    
+                    log("SENSOR", "acc: \(self?.cycleIndex)")
                 }
             })
         } else {
-            sensorManager.stopGyroUpdates()
+            sensorManager.stopAccelerometerUpdates()
         }
     }
     

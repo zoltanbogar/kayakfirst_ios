@@ -17,6 +17,26 @@ func startOutdoorViewController(viewController: UIViewController) {
 
 class OutdoorViewController: TrainingViewController {
     
-    //TODO
+    //MARK: properties
+    private let outdoorSerive = OutdoorService.sharedInstance
     
+    //MARK: lifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        outdoorSerive.startLocationMonitoring()
+        outdoorSerive.startDashboard()
+        outdoorSerive.startCycle()
+    }
+    
+    override func closeViewController() {
+        super.closeViewController()
+        outdoorSerive.stopLocationMonitoring()
+        outdoorSerive.stopCycle()
+        outdoorSerive.stopDashboard()
+    }
+    
+    override func getTrainingService() -> TrainingService {
+        return outdoorSerive
+    }
 }

@@ -40,36 +40,29 @@ class Telemetry {
     var sessionId: Double = 0
     
     //MARK telemtry objects
-    var telemetryObject: TelemetryObject {
-        set {
-            force = telemetryObject.f.dataValue
-            speed = telemetryObject.v.dataValue
-            distance = telemetryObject.s_sum.dataValue
-            strokes = telemetryObject.strokes.dataValue
-            t_200 = telemetryObject.t200.dataValue
-            t_500 = telemetryObject.t500.dataValue
-            t_1000 = telemetryObject.t1000.dataValue
+    var telemetryObject: TelemetryObject? {
+        didSet {
+            force = telemetryObject!.f.dataValue
+            speed = telemetryObject!.v.dataValue
+            distance = telemetryObject!.s_sum.dataValue
+            strokes = telemetryObject!.strokes.dataValue
+            t_200 = telemetryObject!.t200.dataValue
+            t_500 = telemetryObject!.t500.dataValue
+            t_1000 = telemetryObject!.t1000.dataValue
             
             setAverageIndex()
         }
-        get {
-            fatalError("it has no getter")
-        }
     }
     
-    var telemetryAvgObject: TelemetryAvgObject {
-        set {
-            force_av = telemetryAvgObject.f_av.avgValue
-            speed_av = telemetryAvgObject.v_av.avgValue
-            strokes_av = telemetryAvgObject.strokes_av.avgValue
-            t_200_av = telemetryAvgObject.t_200_av.avgValue
-            t_500_av = telemetryAvgObject.t_500_av.avgValue
-            t_1000_av = telemetryAvgObject.t_1000_av.avgValue
+    var telemetryAvgObject: TelemetryAvgObject? {
+        didSet {
+            force_av = telemetryAvgObject!.f_av.avgValue
+            speed_av = telemetryAvgObject!.v_av.avgValue
+            strokes_av = telemetryAvgObject!.strokes_av.avgValue
+            t_200_av = telemetryAvgObject!.t_200_av.avgValue
+            t_500_av = telemetryAvgObject!.t_500_av.avgValue
+            t_1000_av = telemetryAvgObject!.t_1000_av.avgValue
         }
-        get {
-            fatalError("it has no getter")
-        }
-        
     }
     
     //MARK: cycle state

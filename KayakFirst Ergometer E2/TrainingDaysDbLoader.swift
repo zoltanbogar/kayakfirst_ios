@@ -21,9 +21,10 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
     
     //MARK: init database
     override func initDatabase() {
+        table = Table("training_days_table")
         do {
             if let database = db {
-                try database.run(table.create(ifNotExists: true) { t in
+                try database.run(table!.create(ifNotExists: true) { t in
                     t.column(sessionId, primaryKey: true)
                     t.column(userId)
                 })
@@ -33,13 +34,9 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
         }
     }
     
-    override class func getTableName() -> String {
-        return "training_days_table"
-    }
-    
     //MARK: insert
     override func addData(data: Double) {
-        let insert = table.insert(self.sessionId <- data, self.userId <- UserService.sharedInstance.getUser()!.id)
+        let insert = table!.insert(self.sessionId <- data, self.userId <- UserService.sharedInstance.getUser()!.id)
         
         let rowId = try? db?.run(insert)
     }
@@ -55,7 +52,7 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
                 queryPredicate = queryPredicate && predicateValue
             }
             
-            let dbList = try db!.prepare(table.filter(queryPredicate))
+            let dbList = try db!.prepare(table!.filter(queryPredicate))
             
             trainingDaysList = [Double]()
             

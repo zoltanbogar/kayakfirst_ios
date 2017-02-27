@@ -13,17 +13,16 @@ class BaseDbLoader<Input> {
     
     //MARK: properties
     let db = AppSql.sharedInstance.db
-    let table: Table
     let sessionId = Expression<Double>("sessionId")
+    var table: Table?
     
     //MARK: init
     init() {
-        self.table = Table(BaseDbLoader.getTableName())
         initDatabase()
     }
     
     func deleteData(timeStampFrom: Double) {
-        let oldData = table.filter(self.sessionId < timeStampFrom)
+        let oldData = table!.filter(self.sessionId < timeStampFrom)
         
         do {
             try db?.run(oldData.delete())
@@ -32,10 +31,6 @@ class BaseDbLoader<Input> {
         }
     }
     
-    //MARK: abstract functions
-    class func getTableName() -> String {
-         fatalError("Must be implemented")
-    }
     func initDatabase() {
         fatalError("Must be implemented")
     }

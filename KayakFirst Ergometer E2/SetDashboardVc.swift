@@ -364,7 +364,9 @@ class SetDashboardVc: BaseVC {
     }
     
     @objc private func btnCloseClick() {
-        self.dismiss(animated: true, completion: nil)
+        if let parent = self.parent as? TrainingViewController {
+            parent.closeViewController()
+        }
     }
     
     private func viewAdded(dragDropLayout: DragDropLayout, tag: Int) {

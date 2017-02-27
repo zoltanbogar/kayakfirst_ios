@@ -11,6 +11,11 @@ import SQLite
 
 class TrainingDbLoader: BaseDbLoader<Training> {
     
+    //MARK: init
+    override init() {
+        super.init()
+    }
+    
     //MARK: keys
     struct PropertyKey {
         static let timeStampKey = "timeStamp"
@@ -33,9 +38,10 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     
     //MARK: init database
     override func initDatabase() {
+        table = Table("training_table")
         do {
             if let database = db {
-                try database.run(table.create(ifNotExists: true) { t in
+                try database.run(table!.create(ifNotExists: true) { t in
                     t.column(timeStamp, primaryKey: true)
                     t.column(currentDistance)
                     t.column(userId)
@@ -51,13 +57,9 @@ class TrainingDbLoader: BaseDbLoader<Training> {
         }
     }
     
-    override class func getTableName() -> String {
-        return "training_table"
-    }
-    
     //MARK: insert
     override func addData(data: Training) {
-        let insert = table.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType.rawValue, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
+        let insert = table!.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType.rawValue, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
         
         let rowId = try? db?.run(insert)
     }
@@ -73,7 +75,7 @@ class TrainingDbLoader: BaseDbLoader<Training> {
                 queryPredicate = queryPredicate && predicateValue
             }
             
-            let dbList = try db!.prepare(table.filter(queryPredicate))
+            let dbList = try db!.prepare(table!.filter(queryPredicate))
             
             trainingList = [Training]()
             
