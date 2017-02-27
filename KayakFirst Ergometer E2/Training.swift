@@ -13,21 +13,45 @@ enum TrainingEnvironmentType: String {
     case outdoor = "outdoor"
 }
 
+enum TrainingType: String {
+    case kayak = "kayak"
+    case canoe = "canoe"
+    case dragonBoat = "dragonBoat"
+}
+
 struct Training {
-    
-    //MARK: constants
-    static let typeKayak = "kayak"
-    static let typeCanoe = "canoe"
-    static let typeDragonBoat = "dragon_boat"
     
     static let defaultDistance = -1.0
     
-    let timeStamp: TimeInterval
-    let currentDistance: Double
-    let userId: Int64
-    let sessionId: TimeInterval
-    let trainingType: String
-    let trainingEnvironmentType: TrainingEnvironmentType
-    let dataType: String
-    let dataValue: Double
+    var timeStamp: TimeInterval = 0
+    var currentDistance: Double = 0
+    var userId: Int64? = nil
+    var sessionId: TimeInterval = 0
+    var trainingType: TrainingType = TrainingType.kayak
+    var trainingEnvironmentType: TrainingEnvironmentType = TrainingEnvironmentType.outdoor
+    var dataType: String = ""
+    var dataValue: Double = 0
+    
+    init() {
+        //empty constructor
+    }
+    
+    init(
+        timeStamp: TimeInterval,
+        currentDistance: Double,
+        userId: Int64?,
+        sessionId: TimeInterval,
+        trainingType: TrainingType,
+        trainingEnvironmentType: TrainingEnvironmentType,
+        dataType: String,
+        dataValue: Double) {
+        self.timeStamp = timeStamp
+        self.currentDistance = currentDistance
+        self.userId = userId
+        self.sessionId = sessionId
+        self.trainingType = trainingType
+        self.trainingEnvironmentType = trainingEnvironmentType
+        self.dataType = dataType
+        self.dataValue = dataValue
+    }
 }

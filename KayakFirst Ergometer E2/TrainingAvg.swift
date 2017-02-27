@@ -11,12 +11,12 @@ import Foundation
 struct TrainingAvg {
     
     var avgHash: String
-    var userId: Int64
+    var userId: Int64?
     var sessionId: TimeInterval
     var avgType: String
     var avgValue: Double
     
-    init(userId: Int64, sessionId: TimeInterval, avgType: String, avgValue: Double) {
+    init(userId: Int64?, sessionId: TimeInterval, avgType: String, avgValue: Double) {
         self.userId = userId
         self.sessionId = sessionId
         self.avgType = avgType
@@ -25,7 +25,7 @@ struct TrainingAvg {
         avgHash = TrainingAvg.getAvgHash(userId: userId, avgType: avgType, sessionId: sessionId)
     }
     
-    static func getAvgHash(userId: Int64, avgType: String, sessionId: TimeInterval) -> String {
+    static func getAvgHash(userId: Int64?, avgType: String, sessionId: TimeInterval) -> String {
         return "\(sessionId)" + avgType + "\(userId)"
     }
 }

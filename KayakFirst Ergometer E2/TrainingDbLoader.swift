@@ -57,7 +57,7 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     
     //MARK: insert
     override func addData(data: Training) {
-        let insert = table.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
+        let insert = table.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType.rawValue, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
         
         let rowId = try? db?.run(insert)
     }
@@ -92,7 +92,7 @@ class TrainingDbLoader: BaseDbLoader<Training> {
                     currentDistance: currentDistance,
                     userId: userId,
                     sessionId: sessionId,
-                    trainingType: trainingType,
+                    trainingType: TrainingType(rawValue: trainingType)!,
                     trainingEnvironmentType: TrainingEnvironmentType(rawValue: trainingEnvironmentType)!,
                     dataType: dataType,
                     dataValue: dataValue)

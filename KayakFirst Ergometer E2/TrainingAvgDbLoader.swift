@@ -60,7 +60,7 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         if !avgHashes!.contains(data.avgHash) {
             avgHashes!.append(data.avgHash)
             
-            let insert = table.insert(self.averageHash <- data.avgHash, self.userId <- data.userId, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
+            let insert = table.insert(self.averageHash <- data.avgHash, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
             
             let rowId = try? db?.run(insert)
         } else {

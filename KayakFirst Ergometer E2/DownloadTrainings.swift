@@ -50,7 +50,7 @@ class DownloadTrainings: ServerService<[Training]> {
                                 currentDistance: currentDistance,
                                 userId: userId,
                                 sessionId: sessionId,
-                                trainingType: trainingType,
+                                trainingType: TrainingType(rawValue: trainingType)!,
                                 trainingEnvironmentType: TrainingEnvironmentType(rawValue: downloadDto.trainingEnvironmentType) == nil ? TrainingEnvironmentType.ergometer : TrainingEnvironmentType(rawValue: downloadDto.trainingEnvironmentType)!,
                                 dataType: dataType,
                                 dataValue: dataValue)

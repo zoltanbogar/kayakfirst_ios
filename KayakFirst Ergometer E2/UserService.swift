@@ -117,6 +117,10 @@ class UserService: AppService {
         return nil
     }
     
+    func getTrainingType() -> TrainingType {
+        return TrainingType.kayak
+    }
+    
     //MARK: tokens
     internal let preferences = UserDefaults.standard
     
