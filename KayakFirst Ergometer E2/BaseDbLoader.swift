@@ -27,7 +27,7 @@ class BaseDbLoader<Input> {
         do {
             try db?.run(oldData.delete())
         } catch {
-            print(error)
+            log("DATABASE", error)
         }
     }
     
