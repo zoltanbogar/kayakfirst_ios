@@ -2,56 +2,125 @@
 //  StartDelayView.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 01. 14..
+//  Created by Balazs Vidumanszki on 2017. 03. 01..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import UIKit
 
-class StartDelayView: CustomUi {
+public protocol StartDelayDelegate {
+    func onCounterEnd()
+}
+
+class StartDelayView: UIView {
     
-    override func initUi(superview: UIView) {
-        superview.backgroundColor = Colors.startDelayBackground
+    //MARK: constants
+    private let countTime = 30
+    
+    //MARK: properties
+    private let view = UIView()
+    var delegate: StartDelayDelegate?
+    private var timer: Timer?
+    private var timeInSeconds: Int = 0
+    
+    init(superView: UIView) {
+        super.init(frame: superView.frame)
         
-        let stackView = UIStackView(frame: CGRect(x: 0, y: 0, width: superview.frame.width, height: superview.frame.height))
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        initTitleLabel(view: stackView)
-        initValueLabel(view: stackView)
-        initBtnQuickStart(view: stackView)
+        view.backgroundColor = Colors.startDelayBackground
         
-        superview.addSubview(stackView)
+        view.addSubview(labelTitle)
+        labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(view).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
+            make.centerX.equalTo(view)
+        }
+        
+        view.addSubview(labelDelay)
+        labelDelay.snp.makeConstraints { make in
+            make.center.equalTo(view)
+        }
+        
+        view.addSubview(btnQuickStart)
+        btnQuickStart.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, margin2, 0))
+        }
+        
+        superView.addSubview(view)
+        view.snp.makeConstraints { make in
+            make.edges.equalTo(superView)
+        }
+        
+        show(false)
     }
     
-    private func initTitleLabel(view: UIStackView) {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
-        titleLabel.text = getString("delay_start_seconds")
-        titleLabel.textColor = Colors.colorWhite
-        titleLabel.textAlignment = .center
-        titleLabel.font = titleLabel.font.withSize(50)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        view.addArrangedSubview(titleLabel)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func initValueLabel(view: UIStackView) {
-        let valueLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300))
-        valueLabel.text = "0"
-        valueLabel.textColor = Colors.colorWhite
-        valueLabel.textAlignment = .center
-        valueLabel.font = valueLabel.font.withSize(200)
-        valueLabel.adjustsFontSizeToFitWidth = true
-        view.addArrangedSubview(valueLabel)
+    //MARK: show view
+    func show(_ isShow: Bool) {
+        view.isHidden = !isShow
+        startCounter(isShow)
     }
     
-    private func initBtnQuickStart(view: UIStackView) {
-        let btnQuickStart = AppUIButton(
-            width: view.frame.width,
-            height: 100,
-            text: getString("delay_quick_start"),
-            backgroundColor: Colors.colorWhite,
-            textColor: Colors.colorAccent)
+    private func startCounter(_ isStart: Bool) {
+        if isStart {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        } else {
+            timer?.invalidate()
+            timeInSeconds = 0
             
-        view.addArrangedSubview(btnQuickStart)
+            if let delegateValue = delegate {
+                delegateValue.onCounterEnd()
+            }
+        }
+    }
+    
+    @objc private func timerUpdate() {
+        timeInSeconds = timeInSeconds + 1
+        
+        labelDelay.text = "\(countTime - timeInSeconds)"
+        
+        //the 0 number is has to be shown (countTime + 1)
+        if timeInSeconds == countTime + 1 {
+            show(false)
+        }
+        
+    }
+    
+    //MARK: views
+    private func initView() {
+        view.addSubview(labelTitle)
+        
+    }
+    
+    private lazy var labelTitle: UILabel! = {
+        let label = AppUILabel()
+        
+        label.text = getString("delay_start_seconds")
+        
+        return label
+    }()
+    
+    private lazy var labelDelay: UILabel! = {
+        let label = AppUILabel()
+        
+        label.text = "\(self.countTime)"
+        
+        return label
+    }()
+    
+    private lazy var btnQuickStart: UIButton! = {
+        let width = self.frame.width - margin2
+        let button = AppUIButton(width: width, height: buttonHeight, text: getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
+        button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    //MARK: button listener
+    @objc private func btnQuickStartClick() {
+        show(false)
     }
     
 }

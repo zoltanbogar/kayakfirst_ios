@@ -37,6 +37,7 @@
 		060A37901E58969300A973BF /* MainTabVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378F1E58969300A973BF /* MainTabVc.swift */; };
 		060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0A1E41B44100F6A29F /* ServerService.swift */; };
 		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
+		060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */; };
 		060B99181E641A5200F72404 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B99171E641A5200F72404 /* TrainingService.swift */; };
 		060B991B1E641B1600F72404 /* AutoStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B991A1E641B1600F72404 /* AutoStop.swift */; };
 		060B991D1E641C7A00F72404 /* AutoStopIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B991C1E641C7A00F72404 /* AutoStopIdle.swift */; };
@@ -159,7 +160,6 @@
 		06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D71E564F3C00F41652 /* ProfileVc.swift */; };
 		06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D91E564F5800F41652 /* SettingsVc.swift */; };
 		06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F31E2A36140010C8A7 /* DesignUtils.swift */; };
-		06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */; };
 		06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9871E25962800AB4C47 /* CustomUi.swift */; };
 		06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */; };
 		06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */; };
@@ -247,6 +247,7 @@
 		060A378F1E58969300A973BF /* MainTabVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabVc.swift; sourceTree = "<group>"; };
 		060A7D0A1E41B44100F6A29F /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		060B99171E641A5200F72404 /* TrainingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
 		060B991A1E641B1600F72404 /* AutoStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStop.swift; sourceTree = "<group>"; };
 		060B991C1E641C7A00F72404 /* AutoStopIdle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStopIdle.swift; sourceTree = "<group>"; };
@@ -369,7 +370,6 @@
 		06BCB0D71E564F3C00F41652 /* ProfileVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVc.swift; sourceTree = "<group>"; };
 		06BCB0D91E564F5800F41652 /* SettingsVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVc.swift; sourceTree = "<group>"; };
 		06BF94F31E2A36140010C8A7 /* DesignUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignUtils.swift; sourceTree = "<group>"; };
-		06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartDelayView.swift; sourceTree = "<group>"; };
 		06C1B9871E25962800AB4C47 /* CustomUi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUi.swift; sourceTree = "<group>"; };
 		06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement.swift; sourceTree = "<group>"; };
 		06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual200.swift; sourceTree = "<group>"; };
@@ -783,13 +783,13 @@
 				060D9BA11E4A6539006DD8AB /* table_view */,
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
 				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
-				06BF94F51E2A3B010010C8A7 /* StartDelayView.swift */,
 				06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */,
 				06F939011E3F793100920753 /* AppUILabel.swift */,
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
 				06018D531E61B8D500F75919 /* RoundButton.swift */,
+				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1108,6 +1108,7 @@
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
+				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
@@ -1185,7 +1186,6 @@
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
 				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
-				06BF94F61E2A3B010010C8A7 /* StartDelayView.swift in Sources */,
 				060B99231E641D4300F72404 /* AutoStopStop.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
