@@ -13,12 +13,9 @@ import CVCalendar
 class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: views
-    private var calendarView: CVCalendarView?
-    private var calendarMenuView: CVCalendarMenuView?
-    private var tableViewTraining: TrainingTablewView?
     private let stackView = UIStackView()
-    private let viewCalendar = UIView()
     private let viewTableView = UIView()
+    private let viewCalendar = UIView()
     
     //MARK: trainigData
     private var trainingDays: [TimeInterval]?
@@ -31,6 +28,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private var dailyDataList: [DailyData]?
     private var error: Responses?
     
+    //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getTrainingDays()
@@ -39,33 +37,68 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        calendarView?.commitCalendarViewUpdate()
-        calendarMenuView?.commitMenuViewUpdate()
+        refreshCalendarDesign()
     }
     
     internal override func initView() {
-        stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+        
+        viewCalendar.addSubview(cvCalendarView)
+        viewCalendar.addSubview(labelMonth)
+        viewCalendar.addSubview(calendarMenuView)
+        labelMonth.snp.makeConstraints { (make) in
+            make.width.equalTo(viewCalendar)
+            make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+        }
+        
+        viewTableView.addSubview(tableViewTraining)
+        tableViewTraining.snp.makeConstraints { (make) in
+            make.edges.equalTo(viewTableView)
         }
         
         stackView.addArrangedSubview(viewCalendar)
         stackView.addArrangedSubview(viewTableView)
         
-        viewCalendar.addSubview(initCalendarView())
-        viewCalendar.addSubview(labelMonth)
-        viewCalendar.addSubview(initCalendarMenuView())
-        viewTableView.addSubview(initTableViewTraining())
-        tableViewTraining!.snp.makeConstraints { make in
-            make.edges.equalTo(viewTableView)
+        contentView.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
         }
         
         viewTableView.addSubview(progressBar)
         progressBar.snp.makeConstraints { make in
             make.center.equalTo(viewTableView)
         }
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        stackView.axis = .vertical
+        
+        let width: CGFloat = size.width
+        let height: CGFloat = 200
+        
+        cvCalendarView.frame = CGRect(x: 0, y: 80, width: width, height: height)
+        calendarMenuView.frame = CGRect(x: 0, y: 55, width: width, height: 20)
+        
+        refreshCalendarDesign()
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        stackView.axis = .horizontal
+        
+        let width: CGFloat = size.width / 2
+        let height: CGFloat = 200
+        
+        log("CALENDAR", "width: \(width)")
+        
+        cvCalendarView.frame = CGRect(x: 0, y: 50, width: width, height: height)
+        calendarMenuView.frame = CGRect(x: 0, y: 25, width: width, height: 20)
+        
+        refreshCalendarDesign()
+    }
+    
+    private func refreshCalendarDesign() {
+        cvCalendarView.commitCalendarViewUpdate()
+        calendarMenuView?.commitMenuViewUpdate()
     }
     
     override func initTabBarItems() {
@@ -153,7 +186,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func trainingDaysCallback(error: Responses?, trainingData: [TimeInterval]?) {
         if let trainingDays = trainingData {
             self.trainingDays = trainingDays
-            calendarView?.contentController.refreshPresentedMonth()
+            cvCalendarView?.contentController.refreshPresentedMonth()
             getTrainigsList()
         }
         self.error = error
@@ -178,18 +211,18 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     //MARK: init views
-    private func initTableViewTraining() -> TrainingTablewView {
-        tableViewTraining = TrainingTablewView(view: self.viewTableView, frame: CGRect.zero)
+    private lazy var tableViewTraining: TrainingTablewView! = {
+        let tableViewTraining = TrainingTablewView(view: self.viewTableView)
         
-        tableViewTraining?.rowClickCallback = { sumTraining, position in
+        tableViewTraining.rowClickCallback = { sumTraining, position in
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
-            viewController.sumTrainingList = self.tableViewTraining!.dataList
+            viewController.sumTrainingList = tableViewTraining.dataList
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         
-        return tableViewTraining!
-    }
+        return tableViewTraining
+    }()
     
     private lazy var progressBar: UIActivityIndicatorView! = {
         let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
@@ -210,35 +243,37 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private lazy var labelMonth: UILabel! = {
-        let label = AppUILabel(frame: CGRect(x: 0, y: 75, width: self.view.frame.width, height: 20))
+        let label = AppUILabel()
         label.textAlignment = .center
         
         return label
     }()
     
-    private func initCalendarView() -> CVCalendarView {
-        calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: view.frame.width, height: 200))
-        calendarView?.calendarAppearanceDelegate = self
-        calendarView?.calendarDelegate = self
+    private lazy var cvCalendarView: CVCalendarView! = {
+        let calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: self.view.frame.width, height: 200))
+        calendarView.calendarAppearanceDelegate = self
+        calendarView.calendarDelegate = self
         
-        calendarView?.appearance.dayLabelWeekdayInTextColor = Colors.colorWhite
-        calendarView?.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
-        calendarView?.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
+        calendarView.appearance.dayLabelWeekdayInTextColor = Colors.colorWhite
+        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
+        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
         
-        refreshMonth(timeStamp: currentTimeMillis())
-        selectedDate = currentTimeMillis()
+        //TODO: why is that?
+        self.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: currentTimeMillis())
+        //self.refreshMonth(timeStamp: currentTimeMillis())
+        self.selectedDate = currentTimeMillis()
         
-        return calendarView!
-    }
+        return calendarView
+    }()
     
-    private func initCalendarMenuView() -> CVCalendarMenuView {
-        calendarMenuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 95, width: view.frame.width, height: 20))
-        calendarMenuView?.dayOfWeekTextColor = Colors.colorWhite
+    private lazy var calendarMenuView: CVCalendarMenuView! = {
+        let calendarMenuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 95, width: self.view.frame.width, height: 20))
+        calendarMenuView.dayOfWeekTextColor = Colors.colorWhite
         
-        calendarMenuView?.menuViewDelegate = self
+        calendarMenuView.menuViewDelegate = self
         
-        return calendarMenuView!
-    }
+        return calendarMenuView
+    }()
     
     private lazy var btnToday: UIBarButtonItem! = {
         let button = UIBarButtonItem()
@@ -250,7 +285,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }()
     
     @objc private func btnTodayClick() {
-        calendarView?.toggleCurrentDayView()
+        cvCalendarView?.toggleCurrentDayView()
     }
     
     func presentationMode() -> CalendarMode {
@@ -268,6 +303,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             }
         }
         return false
+    }
+    
+    func dotMarker(moveOffsetOnDayView dayView: DayView) -> CGFloat {
+        return 10.0
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
@@ -290,7 +329,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     //TODO: bug: if calendar swipes a little the training data will be empty for this day
     private func refreshMonth(timeStamp: TimeInterval) {
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
-        calendarView?.contentController.refreshPresentedMonth()
+        cvCalendarView.contentController.refreshPresentedMonth()
     }
     
     

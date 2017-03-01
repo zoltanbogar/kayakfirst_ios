@@ -10,8 +10,8 @@ import UIKit
 
 class TrainingTablewView: TableViewWithEmpty<SumTraining> {
     
-    override init(view: UIView, frame: CGRect) {
-        super.init(view: view, frame: frame)
+    override init(view: UIView) {
+        super.init(view: view)
         
         backgroundColor = Colors.colorTransparent
     }

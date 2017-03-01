@@ -90,15 +90,11 @@ class SetDashboardVc: BaseVC {
         contentView.backgroundColor = Colors.colorDashBoardDivider
     }
     
-    override func handlePortraitLayout() {
-        super.handlePortraitLayout()
-        
+    override func handlePortraitLayout(size: CGSize) {
         mainStackView.axis = .vertical
     }
     
-    override func handleLandscapeLayout() {
-        super.handleLandscapeLayout()
-        
+    override func handleLandscapeLayout(size: CGSize) {
         mainStackView.axis = .horizontal
     }
     

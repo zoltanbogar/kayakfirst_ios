@@ -29,8 +29,8 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     var rowClickCallback: ((E, _ position: Int) -> ())?
     
     //MARK: init
-    init(view: UIView, frame: CGRect) {
-        super.init(frame: frame, style: .plain)
+    init(view: UIView) {
+        super.init(frame: view.frame, style: .plain)
         
         view.addSubview(getEmptyView())
         getEmptyView().snp.makeConstraints { make in

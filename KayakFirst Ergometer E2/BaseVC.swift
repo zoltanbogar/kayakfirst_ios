@@ -52,9 +52,9 @@ class BaseVC: UIViewController {
     
     func handleScreenOrientation(size: CGSize) {
         if isScreenPortrait(size: size) {
-            handlePortraitLayout()
+            handlePortraitLayout(size: size)
         } else {
-            handleLandscapeLayout()
+            handleLandscapeLayout(size: size)
         }
     }
     
@@ -62,11 +62,11 @@ class BaseVC: UIViewController {
         return getNavigationBarHeight(viewController: self)
     }
     
-    func handlePortraitLayout() {
+    func handlePortraitLayout(size: CGSize) {
         //override if needed
     }
     
-    func handleLandscapeLayout() {
+    func handleLandscapeLayout(size: CGSize) {
         //override if needed
     }
     

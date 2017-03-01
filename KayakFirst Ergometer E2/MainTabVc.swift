@@ -10,8 +10,9 @@ import UIKit
 
 class MainTabVc: BaseVC {
     
-    override func getTopMargin() -> CGFloat {
+    //TODO: remove this
+    /*override func getTopMargin() -> CGFloat {
         return 0
-    }
+    }*/
 }
 

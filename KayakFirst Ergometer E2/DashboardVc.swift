@@ -193,7 +193,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
     }
     
-    override func handlePortraitLayout() {
+    override func handlePortraitLayout(size: CGSize) {
         mainStackView.axis = .vertical
         pauseStackView.axis = .vertical
         
@@ -204,7 +204,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
     }
     
-    override func handleLandscapeLayout() {
+    override func handleLandscapeLayout(size: CGSize) {
         mainStackView.axis = .horizontal
         pauseStackView.axis = .horizontal
         
