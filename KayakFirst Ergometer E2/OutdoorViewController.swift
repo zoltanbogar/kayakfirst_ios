@@ -15,7 +15,7 @@ func startOutdoorViewController(viewController: UIViewController) {
     viewController.present(outdoorController, animated: true, completion: nil)
 }
 
-class OutdoorViewController: TrainingViewController {
+class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
     
     //MARK: properties
     private let outdoorSerive = OutdoorService.sharedInstance
@@ -24,19 +24,28 @@ class OutdoorViewController: TrainingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
         outdoorSerive.startLocationMonitoring()
-        outdoorSerive.startDashboard()
-        outdoorSerive.startCycle()
     }
     
     override func closeViewController() {
         super.closeViewController()
         outdoorSerive.stopLocationMonitoring()
-        outdoorSerive.stopCycle()
-        outdoorSerive.stopDashboard()
     }
     
     override func getTrainingService() -> TrainingService {
         return outdoorSerive
+    }
+    
+    func onCycleStateChanged(newCycleState: CycleState) {
+        DispatchQueue.main.async {
+            switch newCycleState {
+            case CycleState.none:
+                self.showSetDashboard()
+            case CycleState.idle:
+                self.showDashboard()
+            default: break
+            }
+        }
     }
 }

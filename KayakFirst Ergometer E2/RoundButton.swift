@@ -11,14 +11,14 @@ import UIKit
 class RoundButton: UIButton {
     
     //MARK: properties
-    private var color: UIColor {
+    var color: UIColor {
         didSet {
             backgroundColor = color
         }
     }
-    private var image: UIImage {
+    var image: UIImage {
         didSet {
-            //setImage(image, for: .normal)
+            setImage(image, for: .normal)
         }
     }
     

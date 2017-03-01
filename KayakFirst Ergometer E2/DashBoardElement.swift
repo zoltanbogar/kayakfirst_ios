@@ -10,6 +10,9 @@ import UIKit
 
 class DashBoardElement: UIView {
     
+    //MARK: constants
+    private let refreshMillis: Double = 33
+    
     //MARK: properties
     internal let telemetry = Telemetry.sharedInstance
     var isSelected: Bool = false {
@@ -30,6 +33,7 @@ class DashBoardElement: UIView {
             }
         }
     }
+    private var timer: Timer?
     
     //MARK: init
     override init(frame: CGRect) {
@@ -50,7 +54,15 @@ class DashBoardElement: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func refresh() {
+    func startRefresh(_ isStart: Bool) {
+        if isStart {
+            timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
+        } else {
+            timer?.invalidate()
+        }
+    }
+    
+    @objc private func refresh() {
         labelValue?.text = getFormattedText()
     }
     

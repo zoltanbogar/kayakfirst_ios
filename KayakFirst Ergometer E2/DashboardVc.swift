@@ -8,7 +8,104 @@
 
 import UIKit
 
-class DashboardVc: BaseVC {
+class DashboardVc: BaseVC, CycleStateChangeListener {
+    
+    //MARK: properties
+    private let telemetry = Telemetry.sharedInstance
+    private var dashboardElement0: DashBoardElement?
+    private var dashboardElement1: DashBoardElement?
+    private var dashboardElement2: DashBoardElement?
+    private var dashboardElement3: DashBoardElement?
+    private var dashboardElement4: DashBoardElement?
+    
+    //MARK: lifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
+    }
+    
+    //MARK: button listeners
+    @objc private func btnPlayPauseClick() {
+        if let parent = self.parent as? TrainingViewController {
+            if telemetry.cycleState == CycleState.resumed {
+                parent.onPauseClicked()
+            } else {
+                parent.onPlayClicked()
+            }
+        }
+    }
+    
+    @objc private func btnPlayClick() {
+        if let parent = self.parent as? TrainingViewController {
+            if telemetry.cycleState == CycleState.paused {
+                parent.onCounterEnd()
+            } else {
+                parent.onPlayClicked()
+            }
+        }
+    }
+    
+    @objc private func btnStopClick() {
+        if let parent = self.parent as? TrainingViewController {
+            parent.onStopClicked()
+        }
+    }
+    
+    //MARK: cycle state
+    func onCycleStateChanged(newCycleState: CycleState) {
+        DispatchQueue.main.async {
+            switch newCycleState {
+            case CycleState.idle:
+                self.showPauseView(false)
+                self.initBtnPlayPause(isPlay: true, isShow: true)
+                self.showBackButton(true)
+                self.refreshDashboardElements(false)
+            case CycleState.stopped:
+                self.showPauseView(false)
+                self.initBtnPlayPause(isPlay: true, isShow: true)
+                self.showBackButton(true)
+                self.refreshDashboardElements(false)
+            case CycleState.paused:
+                self.showPauseView(true)
+                self.initBtnPlayPause(isPlay: true, isShow: false)
+                self.showBackButton(false)
+                self.refreshDashboardElements(false)
+            case CycleState.resumed:
+                self.showPauseView(false)
+                self.initBtnPlayPause(isPlay: false, isShow: true)
+                self.showBackButton(false)
+                self.refreshDashboardElements(true)
+            default: break
+            }
+        }
+    }
+    
+    private func showPauseView(_ isShow: Bool) {
+        pauseView.isHidden = !isShow
+    }
+    
+    private func initBtnPlayPause(isPlay: Bool, isShow: Bool) {
+        if isPlay {
+            btnPlayPause.image = UIImage(named: "ic_play_48dp")!
+        } else {
+            btnPlayPause.image = UIImage(named: "ic_pause_white_48pt")!
+        }
+        
+        btnPlayPause.isHidden = !isShow
+    }
+    
+    private func showBackButton(_ isShow: Bool) {
+        self.navigationItem.setHidesBackButton(!isShow, animated: true)
+    }
+    
+    private func refreshDashboardElements(_ isRefresh: Bool) {
+        dashboardElement0?.startRefresh(isRefresh)
+        dashboardElement1?.startRefresh(isRefresh)
+        dashboardElement2?.startRefresh(isRefresh)
+        dashboardElement3?.startRefresh(isRefresh)
+        dashboardElement4?.startRefresh(isRefresh)
+    }
     
     //MARK: views
     override func initView() {
@@ -68,14 +165,19 @@ class DashboardVc: BaseVC {
                 switch position {
                 case 0:
                     view = view0
+                    dashboardElement0 = dashboardElement
                 case 1:
                     view = view1
+                    dashboardElement1 = dashboardElement
                 case 2:
                     view = view2
+                    dashboardElement2 = dashboardElement
                 case 3:
                     view = view3
+                    dashboardElement3 = dashboardElement
                 case 4:
                     view = view4
+                    dashboardElement4 = dashboardElement
                 default:
                     fatalError()
                 }
@@ -171,8 +273,10 @@ class DashboardVc: BaseVC {
         return buttonView
     }()
     
-    private lazy var btnPlayPause: UIButton! = {
+    private lazy var btnPlayPause: RoundButton! = {
         let button = RoundButton(radius: 75, image: UIImage(named: "ic_play_48dp")!, color: Colors.colorGreen)
+        
+        button.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
         
         return button
     }()
@@ -181,7 +285,10 @@ class DashboardVc: BaseVC {
         let view = UIView()
         
         let btnPlay = RoundButton(radius: 125, image: UIImage(named: "ic_play_big")!, color: Colors.colorGreen)
+        btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
+        
         let btnStop = RoundButton(radius: 125, image: UIImage(named: "ic_stop_big")!, color: Colors.colorRed)
+        btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
         
         let viewPlay = UIView()
         let viewStop = UIView()
@@ -203,6 +310,8 @@ class DashboardVc: BaseVC {
         self.pauseStackView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        
+        view.isHidden = true
         
         return view
     }()
