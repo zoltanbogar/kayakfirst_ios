@@ -28,25 +28,25 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let mainVc = MainVc()
         let mainNavController = TrainingViewController()
         mainNavController.pushViewController(mainVc, animated: false)
-        let mainTab = UITabBarItem(title: getString("navigation_home"), image: nil, tag: 0)
+        let mainTab = UITabBarItem(title: getString("navigation_home"), image: UIImage(named: "navigation_home"), tag: 0)
         mainNavController.tabBarItem = mainTab
         
         let calendarVc = CalendarVc()
         let calendarNavController = UINavigationController()
         calendarNavController.pushViewController(calendarVc, animated: false)
-        let calendarTab = UITabBarItem(title: getString("navigation_calendar"), image: nil, tag: 0)
+        let calendarTab = UITabBarItem(title: getString("navigation_calendar"), image: UIImage(named: "navigation_calendar"), tag: 0)
         calendarNavController.tabBarItem = calendarTab
         
         let profileVc = ProfileVc()
         let profileNavController = UINavigationController()
         profileNavController.pushViewController(profileVc, animated: false)
-        let profileTab = UITabBarItem(title: getString("navigation_profile"), image: nil, tag: 0)
+        let profileTab = UITabBarItem(title: getString("navigation_profile"), image: UIImage(named: "navigation_profile"), tag: 0)
         profileNavController.tabBarItem = profileTab
         
         let settingsVc = SettingsVc()
         let settingsNavController = UINavigationController()
         settingsNavController.pushViewController(settingsVc, animated: false)
-        let settingsTab = UITabBarItem(title: getString("navigation_settings"), image: nil, tag: 0)
+        let settingsTab = UITabBarItem(title: getString("navigation_settings"), image: UIImage(named: "navigation_about"), tag: 0)
         settingsNavController.tabBarItem = settingsTab
     
         
