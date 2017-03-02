@@ -11,4 +11,5 @@ target 'KayakFirst Ergometer E2' do
     pod 'CVCalendar', '~> 1.4.1'
     pod 'Charts'
     pod 'SQLite.swift', '~> 0.11.0'
+    pod 'Google/SignIn'
 end

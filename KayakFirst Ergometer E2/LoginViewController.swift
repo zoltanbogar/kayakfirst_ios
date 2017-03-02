@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK: views
     private let stackView = UIStackView()
@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         initView()
+        initGoogleSignIn()
     }
     
     private func initView() {
@@ -206,7 +207,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func btnGoogleClick() {
-        log("LOGIN", "btnGoogleClick")
+        GIDSignIn.sharedInstance().signIn()
     }
     
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
@@ -216,5 +217,43 @@ class LoginViewController: UIViewController {
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }
+    }
+    
+    //MARK: google signin
+    private func initGoogleSignIn() {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            //TODO: handle this
+            log("GOOGLE", "googleSignIn: \(user.profile.name), token: \(user.authentication.idToken), uri: \(user.authentication.accessToken)")
+        } else {
+            //TODO: handle this
+            log("GOOGLE", "\(error.localizedDescription)")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        //TODO: google error
+    }
+    
+    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        // myActivityIndicator.stopAnimating()
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
