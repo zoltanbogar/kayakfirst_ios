@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
@@ -183,12 +185,24 @@ class LoginViewController: UIViewController {
         }
     }
 
+    //MARK: button callbacks
     @objc private func btnQuickStartClick() {
         log("LOGIN", "btnQuickStartClick")
     }
     
     @objc private func btnFacebookClick() {
-        log("LOGIN", "btnFacebookClick")
+        let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.loginBehavior = .web
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) -> Void in
+            if error == nil {
+                if let resultValue = result {
+                    if !resultValue.isCancelled {
+                        //TODO: handle this
+                        log("FACEBOOK", "result: \(resultValue.token.tokenString)")
+                    }
+                }
+            }
+        })
     }
     
     @objc private func btnGoogleClick() {
