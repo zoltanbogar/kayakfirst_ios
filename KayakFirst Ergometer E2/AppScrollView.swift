@@ -21,6 +21,8 @@ class AppScrollView: UIView, UIScrollViewDelegate {
         super.init(frame: view.frame)
         scrollView.delegate = self
         
+        log("SCROLL", "frame: \(view.frame)")
+        
         initView()
     }
     

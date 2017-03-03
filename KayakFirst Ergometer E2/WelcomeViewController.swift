@@ -14,7 +14,7 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     private let segmentItems = [getString("user_login"), getString("user_register")]
     
     //MARK: properties
-    private let loginRegisterView = UIView()
+    let loginRegisterView = UIView()
     var progressView: ProgressView?
     
     //MARK: lifecycle
@@ -69,7 +69,7 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     }()
     
     private lazy var registerView: RegisterView! = {
-        let view = RegisterView()
+        let view = RegisterView(viewController: self)
         
         return view
     }()

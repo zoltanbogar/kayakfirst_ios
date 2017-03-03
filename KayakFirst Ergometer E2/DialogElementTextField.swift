@@ -101,6 +101,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
     }
     
+    //MARK: init
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -120,6 +121,13 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
             make.left.equalTo(valueTextField)
             make.top.equalTo(valueTextField.snp.bottom)
             make.width.equalTo(errorLabel.superview!)
+        }
+    }
+    
+    //MARK: size
+    override var intrinsicContentSize: CGSize {
+        get {
+            return CGSize(width: 0, height: 100)
         }
     }
     
