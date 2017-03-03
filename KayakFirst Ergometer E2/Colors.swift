@@ -31,6 +31,9 @@ class Colors {
     static let colorGreen = getColor("#00b000")
     static let colorYellow = getColor("#c4b53c")
     static let colorRed = getColor("#cc0000")
+    static let colorFacebook = getColor("#3b5998")
+    static let colorGoogle = getColor("#dc4e41")
+    static let colorQuickStart = getColor("#929292")
 }
 
 func getColor(_ hex: String) -> UIColor {

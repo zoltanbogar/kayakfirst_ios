@@ -195,3 +195,6 @@
 "navigation_settings"="Settings";
 "navigation_set_dashboard"="Set Dashboard";
 "ergometer_placeholder"="COMING SOON...";
+"user_login_or"="OR";
+"user_login_facebook"="Login with facebook";
+"user_login_google"="Login with google";

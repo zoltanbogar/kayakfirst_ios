@@ -8,31 +8,20 @@
 
 import UIKit
 
-class WelcomeViewController: UITabBarController, UITabBarControllerDelegate {
+class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
+    //MARK: constants
+    private let segmentItems = [getString("user_login"), getString("user_register")]
+    
+    //MARK: properties
+    private let loginRegisterView = UIView()
+    var progressView: ProgressView?
+    
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        initViewControllers()
-    }
-    
-    private func initViewControllers() {
-        let loginController = LoginViewController()
-        let tabLogin = UITabBarItem(title: getString("user_login"), image: nil, tag: 0)
-        
-        let registerController = RegisterViewController()
-        let tabRegister = UITabBarItem(title: getString("user_register"), image: nil, tag: 1)
-        
-        loginController.tabBarItem = tabLogin
-        registerController.tabBarItem = tabRegister
-        
-        let controllers = [loginController, registerController]
-        self.viewControllers = controllers
+        initGoogleSignIn()
     }
     
     func showMainView() {
@@ -40,4 +29,103 @@ class WelcomeViewController: UITabBarController, UITabBarControllerDelegate {
         self.present(controller, animated: true, completion: nil)
     }
     
+    //MARK: init view
+    override func initView() {
+        contentView.addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+            make.width.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, margin))
+            make.centerX.equalTo(contentView)
+        }
+        loginRegisterView.addSubview(loginView)
+        loginView.snp.makeConstraints { (make) in
+            make.edges.equalTo(loginRegisterView)
+        }
+        contentView.addSubview(loginRegisterView)
+        loginRegisterView.snp.makeConstraints { (make) in
+            make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+            make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, margin))
+            make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
+        }
+        
+        progressView = ProgressView(superView: view)
+    }
+    
+    //MARK: views
+    private lazy var segmentedControl: UISegmentedControl! = {
+        let control = UISegmentedControl(items: self.segmentItems)
+        control.tintColor = Colors.colorAccent
+        control.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
+        control.selectedSegmentIndex = 0
+        
+        return control
+    }()
+    
+    private lazy var loginView: LoginView! = {
+        let view = LoginView(viewController: self)
+        
+        return view
+    }()
+    
+    private lazy var registerView: RegisterView! = {
+        let view = RegisterView()
+        
+        return view
+    }()
+    
+    //MARK: listeners
+    @objc private func setSegmentedItem(sender: UISegmentedControl) {
+        let viewSub: UIView
+        switch sender.selectedSegmentIndex {
+        case 1:
+            viewSub = registerView
+        default:
+            viewSub = loginView
+        }
+        
+        loginRegisterView.removeAllSubviews()
+        loginRegisterView.addSubview(viewSub)
+        viewSub.snp.makeConstraints { make in
+            make.edges.equalTo(loginRegisterView)
+        }
+    }
+    
+    //MARK: google signin
+    private func initGoogleSignIn() {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            //TODO: handle this
+            log("GOOGLE", "googleSignIn: \(user.profile.name), token: \(user.authentication.idToken), uri: \(user.authentication.accessToken)")
+        } else {
+            //TODO: handle this
+            log("GOOGLE", "\(error.localizedDescription)")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        //TODO: google error
+    }
+    
+    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        //TODO
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

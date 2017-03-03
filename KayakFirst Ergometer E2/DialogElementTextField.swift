@@ -15,11 +15,11 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     
     var title: String? {
         get {
-            return titleLabel.text
+            return valueTextField.placeholder
         }
         
         set {
-            titleLabel.text = newValue
+            valueTextField.placeholder = newValue
         }
     }
     
@@ -108,37 +108,24 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(titleLabel)
         addSubview(valueTextField)
         addSubview(errorLabel)
         
-        titleLabel.snp.makeConstraints{ make in
-            make.left.equalTo(titleLabel.superview!)
-            make.top.equalTo(titleLabel.superview!)
-            make.width.equalTo(titleLabel.superview!)
-        }
-        
         valueTextField.snp.makeConstraints{ make in
-            make.left.equalTo(valueTextField.superview!)
-            make.top.equalTo(titleLabel.snp.bottom)
             make.width.equalTo(valueTextField.superview!)
+            make.center.equalTo(self)
         }
         
         errorLabel.snp.makeConstraints { make in
-            make.left.equalTo(errorLabel.superview!)
+            make.left.equalTo(valueTextField)
             make.top.equalTo(valueTextField.snp.bottom)
             make.width.equalTo(errorLabel.superview!)
         }
     }
     
-    private lazy var titleLabel: UILabel! = {
-        let view = AppUILabel()
-        return view
-    }()
-    
     lazy var valueTextField: UITextField! = {
         let view = UITextField()
-        view.setBottomBorder(colorNormal)
+        view.borderStyle = .roundedRect
         view.textColor = Colors.colorAccent
         view.tintColor = Colors.colorAccent
         view.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -160,12 +147,14 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         self.error = nil
     }
     
+    //TODO: delete this
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        valueTextField.setBottomBorder(DialogElementTextField.colorHighlited)
+        //valueTextField.setBottomBorder(DialogElementTextField.colorHighlited)
     }
     
+    //TODO: delete this
     func textFieldDidEndEditing(_ textField: UITextField) {
-        valueTextField.setBottomBorder(DialogElementTextField.colorNormal)
+        //valueTextField.setBottomBorder(DialogElementTextField.colorNormal)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
