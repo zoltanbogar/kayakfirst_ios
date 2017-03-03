@@ -19,6 +19,8 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */; };
+		0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */; };
 		060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376B1E578F4F00A973BF /* DragDropLayout.swift */; };
 		060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */; };
 		060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */; };
@@ -198,7 +200,6 @@
 		06F938FE1E3F386500920753 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FD1E3F386500920753 /* UITextField+.swift */; };
 		06F939001E3F720A00920753 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FF1E3F720A00920753 /* Dimens.swift */; };
 		06F939021E3F793100920753 /* AppUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F939011E3F793100920753 /* AppUILabel.swift */; };
-		06F939041E3F858100920753 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F939031E3F858100920753 /* RegisterViewController.swift */; };
 		F2AE34EE861A1337DC55E42A /* Pods_KayakFirst_Ergometer_E2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +235,8 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginFacebook.swift; sourceTree = "<group>"; };
+		0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginGoogle.swift; sourceTree = "<group>"; };
 		060A376B1E578F4F00A973BF /* DragDropLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropLayout.swift; sourceTree = "<group>"; };
 		060A37701E57A99000A973BF /* DashBoardElement_Actual1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual1000.swift; sourceTree = "<group>"; };
 		060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Duration.swift; sourceTree = "<group>"; };
@@ -420,7 +423,6 @@
 		06F938FD1E3F386500920753 /* UITextField+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		06F938FF1E3F720A00920753 /* Dimens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimens.swift; sourceTree = "<group>"; };
 		06F939011E3F793100920753 /* AppUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUILabel.swift; sourceTree = "<group>"; };
-		06F939031E3F858100920753 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KayakFirst_Ergometer_E2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31816E028C7E966780D9DF9 /* Pods-KayakFirst Ergometer E2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.release.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.release.xcconfig"; sourceTree = "<group>"; };
 		DDFF98EF1EA2CB93E4A696A8 /* Pods-KayakFirst Ergometer E2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -519,6 +521,8 @@
 				0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */,
 				06117BD61E4999FA0066C072 /* DownloadTrainings.swift */,
 				060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */,
+				0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */,
+				0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -783,7 +787,6 @@
 				061145CB1E58A2BC0058EAF4 /* calendar */,
 				06DE18481E56D22B00374107 /* training_viewcontroller */,
 				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
-				06F939031E3F858100920753 /* RegisterViewController.swift */,
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
@@ -1221,6 +1224,7 @@
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
+				0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */,
 				06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
@@ -1261,7 +1265,6 @@
 				06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */,
 				0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */,
 				067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */,
-				06F939041E3F858100920753 /* RegisterViewController.swift in Sources */,
 				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,
 				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
@@ -1287,6 +1290,7 @@
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
 				06018D4E1E616B8B00F75919 /* OutdoorViewController.swift in Sources */,
 				060B991B1E641B1600F72404 /* AutoStop.swift in Sources */,
+				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,

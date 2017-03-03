@@ -17,14 +17,24 @@ class UserService: AppService {
     }
     
     //MARK: server endpoints
-    func register(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), userDto: UserDto) {
-        let userRegister = UserRegister(userDto: userDto)
+    func register(userDataCallBack: @escaping (_ error: Responses?, _ userData: User?) -> (), userDto: UserDto, facebookId: String?, googleId: String?) {
+        let userRegister = UserRegister(userDto: userDto, facebookId: facebookId, googleId: googleId)
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userRegister).execute()
     }
     
     func login(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), userName: String, userPassword: String) {
         let userLogin = UserLogin(userName: userName, userPassword: userPassword)
         LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLogin).execute()
+    }
+    
+    func loginFacebook(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), facebookToken: String) {
+        let userLoginFacebook = UserLoginFacebook(facebookToken: facebookToken)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLoginFacebook).execute()
+    }
+    
+    func loginGoogle(userDataCallBack: @escaping (_ error: Responses?, _ userData: LoginDto?) -> (), email: String, googleId: String) {
+        let userLoginGoogle = UserLoginGoogle(email: email, googleId: googleId)
+        LoadUserData(userService: self, userDataCallback: userDataCallBack, serverService: userLoginGoogle).execute()
     }
     
     func logout(userDataCallBack: @escaping (_ error: Responses?, _ userData: Bool?) -> ()) {

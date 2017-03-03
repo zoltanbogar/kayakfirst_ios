@@ -9,9 +9,11 @@
 import Foundation
 import Alamofire
 
+let alamofireLogTag = "alamofireLog"
+
 extension Request {
     public func debugLog() -> Self {
-        debugPrint("alamofireLog: \(self)")
+        log(alamofireLogTag, "\(self)")
         return self
     }
 }

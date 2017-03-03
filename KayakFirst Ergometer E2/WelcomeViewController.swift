@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
@@ -17,6 +18,12 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     let loginRegisterView = UIView()
     var progressView: ProgressView?
     
+    var socialFirstName: String?
+    var socialLastName: String?
+    var socialEmail: String?
+    var facebookId: String?
+    var googleId: String?
+    
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +31,37 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         initGoogleSignIn()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        resetFields()
+    }
+    
+    func resetFields() {
+        loginView.resetDataFields()
+        registerView.resetDataFields()
+        socialFirstName = nil
+        socialLastName = nil
+        socialEmail = nil
+        facebookId = nil
+        googleId = nil
+        
+        segmentedControl.selectedSegmentIndex = 0
+        setSegmentedItem(sender: segmentedControl)
+    }
+    
     func showMainView() {
         let controller = MainTabViewController()
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    func showRegistrationView() {
+        registerView.tfFirstName.text = socialFirstName
+        registerView.tfLastName.text = socialLastName
+        registerView.tfEmail.text = socialEmail
+        
+        segmentedControl.selectedSegmentIndex = 1
+        setSegmentedItem(sender: segmentedControl)
     }
     
     //MARK: init view
@@ -105,6 +140,8 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         if error == nil {
             //TODO: handle this
             log("GOOGLE", "googleSignIn: \(user.profile.name), token: \(user.authentication.idToken), uri: \(user.authentication.accessToken)")
+            
+            loginView.googleSignInResult(user: user)
         } else {
             //TODO: handle this
             log("GOOGLE", "\(error.localizedDescription)")

@@ -13,9 +13,13 @@ import SwiftyJSON
 class UserRegister: ServerService<User> {
     
     private let userDto: UserDto
+    private let facebookId: String?
+    private let googleId: String?
     
-    init(userDto: UserDto) {
+    init(userDto: UserDto, facebookId: String?, googleId: String?) {
         self.userDto = userDto
+        self.facebookId = facebookId
+        self.googleId = googleId
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> User? {
@@ -52,7 +56,9 @@ class UserRegister: ServerService<User> {
             "birthDate": userDto.birthDate ?? nil,
             "country": userDto.country ?? "",
             "password": userDto.password ?? "",
-            "username": userDto.userName ?? ""
+            "username": userDto.userName ?? "",
+            "facebookId": facebookId ?? "",
+            "googleId": googleId ?? ""
         ]
     }
     

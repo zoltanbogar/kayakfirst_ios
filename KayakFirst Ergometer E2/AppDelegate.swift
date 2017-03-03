@@ -13,6 +13,9 @@ import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    //MARK: properties
+    private var welcomeViewController: WelcomeViewController?
 
     var window: UIWindow?
 
@@ -32,8 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserService.sharedInstance.getUser() != nil {
             viewController = MainTabViewController()
+            welcomeViewController = nil
         } else {
             viewController = WelcomeViewController()
+            welcomeViewController = viewController as! WelcomeViewController
         }
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
@@ -46,6 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        if let vc = welcomeViewController {
+            vc.resetFields()
+            logoutSocial()
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -81,6 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
+    
+    func logoutSocial() {
+        FBSDKLoginManager().logOut()
+        GIDSignIn.sharedInstance().signOut()
     }
     
     private func initColors() {

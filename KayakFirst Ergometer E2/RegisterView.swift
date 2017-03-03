@@ -93,14 +93,14 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     }
     
     //MARK: views
-    private lazy var tfFirstName: DialogElementTextField! = {
+    lazy var tfFirstName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_first_name")
         
         return textField
     }()
     
-    private lazy var tfLastName: DialogElementTextField! = {
+    lazy var tfLastName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_last_name")
         
@@ -135,7 +135,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return textField
     }()
     
-    private lazy var tfEmail: DialogElementTextField! = {
+    lazy var tfEmail: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
@@ -157,7 +157,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_country")
         textField.required = true
-        textField.text = getString("user_spinner_choose")
         
         textField.valueTextField.inputView = self.countryPickerView
         
@@ -168,7 +167,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_gender")
         textField.required = true
-        textField.text = getString("user_spinner_choose")
         
         textField.valueTextField.inputView = self.genderPickerView
         
@@ -262,7 +260,9 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
                     birthDate: birthDate,
                     country: countryCode,
                     password: tfPassword.text,
-                    userName: tfUserName.text))
+                    userName: tfUserName.text),
+                facebookId: self.viewController.facebookId,
+                googleId: self.viewController.googleId)
         }
     }
     
@@ -354,14 +354,16 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
             viewToScroll = tfWeight
         }
         
-        let chooseText = getString("user_spinner_choose")
+        let chooseText = ""
         if tfCountry.text! == chooseText {
             isValid = false
+            tfCountry.error = getString("user_spinner_choose")
             viewToScroll = tfCountry
         }
         
         if tfGender.text! == chooseText {
             isValid = false
+            tfGender.error = getString("user_spinner_choose")
             viewToScroll = tfGender
         }
 
@@ -370,5 +372,17 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         }
         
         return isValid
+    }
+    
+    func resetDataFields() {
+        tfFirstName.text = ""
+        tfLastName.text = ""
+        tfUserName.text = ""
+        tfPassword.text = ""
+        tfEmail.text = ""
+        tfBirthDate.text = ""
+        tfWeight.text = ""
+        tfCountry.text = ""
+        tfGender.text = ""
     }
 }

@@ -255,17 +255,15 @@ class ProfileVc: MainTabVc {
     
     @objc private func clickLogout() {
         progressView?.show(true)
+        (UIApplication.shared.delegate as! AppDelegate).logoutSocial()
         UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
     }
     
     private func logoutCallback(error: Responses?, userData: Bool?) {
         self.progressView?.show(false)
         
-        if let user = userData {
-            showWelcomeViewController()
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self, error: userError)
-        }
+        UserService.sharedInstance.addLoginDto(loginDto: nil)
+        showWelcomeViewController()
     }
     
     private func clickPassword() {

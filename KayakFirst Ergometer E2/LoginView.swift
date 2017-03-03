@@ -139,6 +139,7 @@ class LoginView: UIView {
         resetPasswordDialog.show(viewController: self.viewController)
     }
     
+    //TODO
     @objc private func btnQuickStartClick() {
         log("LOGIN", "btnQuickStartClick")
     }
@@ -150,8 +151,32 @@ class LoginView: UIView {
             if error == nil {
                 if let resultValue = result {
                     if !resultValue.isCancelled {
-                        //TODO: handle this
-                        log("FACEBOOK", "result: \(resultValue.token.tokenString)")
+                        
+                        let facebookToken = resultValue.token.tokenString
+                        log("FACEBOOK", "result: \(facebookToken)")
+                        
+                        let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: facebookToken, version: nil, httpMethod: "GET")
+                        
+                        if let reqValue = req {
+                            reqValue.start(completionHandler: { (connection, result, error) -> Void in
+                                
+                                if ((error) != nil) {
+                                    log("FACEBOOK", "\(error)")
+                                } else {
+                                    let data:[String:AnyObject] = result as! [String : AnyObject]
+                                    
+                                    self.viewController.socialEmail = data["email"] as! String?
+                                    
+                                    let name = data["name"] as! String
+                                    let fullNameArr = name.characters.split{$0 == " "}.map(String.init)
+                                    self.viewController.socialFirstName = fullNameArr[0]
+                                    self.viewController.socialLastName = fullNameArr.count > 1 ? fullNameArr[1] : nil
+                                    self.viewController.facebookId = facebookToken
+                                }
+                            })
+                        }
+                        self.viewController.progressView?.show(true)
+                        UserService.sharedInstance.loginFacebook(userDataCallBack: self.userDataCallback, facebookToken: facebookToken!)
                     }
                 }
             }
@@ -162,13 +187,33 @@ class LoginView: UIView {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    func googleSignInResult(user: GIDGoogleUser) {
+        let email = user.profile.email
+        let googleId = user.authentication.idToken
+        
+        viewController.socialEmail = email
+        viewController.googleId = googleId
+        viewController.socialFirstName = user.profile.givenName
+        viewController.socialLastName = user.profile.familyName
+        
+        self.viewController.progressView?.show(true)
+        UserService.sharedInstance.loginGoogle(userDataCallBack: self.userDataCallback, email: email!, googleId: googleId!)
+    }
+    
     //MARK: server callbacks
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
         self.viewController.progressView?.show(false)
         if userData != nil {
             self.viewController.showMainView()
         } else if let userError = error {
+            if error == Responses.error_registration_required {
+                resetDataFields()
+                viewController.showRegistrationView()
+            }
+            
             AppService.errorHandlingWithAlert(viewController: self.viewController, error: userError)
+            
+            //TODO: handle 'registration required'
         }
     }
     
@@ -177,6 +222,11 @@ class LoginView: UIView {
         if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self.viewController, error: userError)
         }
+    }
+    
+    func resetDataFields() {
+        tfUserName.text = ""
+        tfPassword.text = ""
     }
     
 }

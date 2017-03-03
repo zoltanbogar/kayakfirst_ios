@@ -35,6 +35,8 @@ class AppService {
             textRes = "error_no_internet"
         case Responses.error_invalid_credentials:
             textRes = "error_user_invalid_credentials"
+        case Responses.error_registration_required:
+            textRes = "user_registration_required"
         default:
             textRes = "error_server"
         }

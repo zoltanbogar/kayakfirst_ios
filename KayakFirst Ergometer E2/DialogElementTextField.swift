@@ -84,6 +84,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
         set {
             valueTextField.text = newValue
+            self.error = nil
         }
     }
     
@@ -153,16 +154,6 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     
     @objc private func textFieldDidChange() {
         self.error = nil
-    }
-    
-    //TODO: delete this
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //valueTextField.setBottomBorder(DialogElementTextField.colorHighlited)
-    }
-    
-    //TODO: delete this
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        //valueTextField.setBottomBorder(DialogElementTextField.colorNormal)
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
