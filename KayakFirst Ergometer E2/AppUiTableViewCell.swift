@@ -23,7 +23,7 @@ class AppUITableViewCell<E>: UITableViewCell {
         contentView.addSubview(initView())
         initView().snp.makeConstraints { make in
             make.width.equalTo(contentView)
-            make.height.equalTo(getRowHeight())
+            make.centerY.equalTo(contentView)
         }
     }
     
@@ -40,7 +40,7 @@ class AppUITableViewCell<E>: UITableViewCell {
         fatalError("Must be implemented")
     }
     
-    func getRowHeight() -> Int {
+    func getRowHeight() -> CGFloat {
         fatalError("Must be implemented")
     }
 }

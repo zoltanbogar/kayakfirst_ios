@@ -10,16 +10,19 @@ import UIKit
 
 class TrainingTablewView: TableViewWithEmpty<SumTraining> {
     
+    //MARK: init
     override init(view: UIView) {
         super.init(view: view)
         
         backgroundColor = Colors.colorTransparent
+        separatorColor = Colors.colorDashBoardDivider
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    //MARK: override abstract functions
     override func getEmptyView() -> UIView {
         return labelEmpty
     }
@@ -35,5 +38,4 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         
         return label
     }()
-    
 }

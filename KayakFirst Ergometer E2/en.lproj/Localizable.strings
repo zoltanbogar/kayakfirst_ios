@@ -198,3 +198,5 @@
 "user_login_or"="OR";
 "user_login_facebook"="Login with facebook";
 "user_login_google"="Login with google";
+"training_type"="type";
+"training_log"="log";

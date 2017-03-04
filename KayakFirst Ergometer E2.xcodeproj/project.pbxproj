@@ -153,6 +153,7 @@
 		0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */; };
 		067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */; };
 		067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */; };
+		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433EB1E283F5A00CE6398 /* EmailCheck.swift */; };
@@ -370,6 +371,7 @@
 		0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementSOutdoor.swift; sourceTree = "<group>"; };
 		067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStrokesOutdoor.swift; sourceTree = "<group>"; };
 		067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVOutdoor.swift; sourceTree = "<group>"; };
+		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433EB1E283F5A00CE6398 /* EmailCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				060D9B9D1E4A5E46006DD8AB /* TableViewWithEmpty.swift */,
 				060D9BA21E4A654E006DD8AB /* TrainingTableView.swift */,
 				060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */,
+				067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */,
 			);
 			name = table_view;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
+				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,

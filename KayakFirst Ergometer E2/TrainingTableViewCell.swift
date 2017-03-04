@@ -10,10 +10,7 @@ import UIKit
 
 class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     
-    //MARK: constants
-    private let rowHeight = 40
-    
-    //MARK: views
+    //MARK: properties
     private let stackView = UIStackView()
     
     //MARK: init
@@ -31,30 +28,46 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
+        
+        var imageEnviromentType: UIImage?
+        
+        if let dataValue = data {
+            switch dataValue.trainingList![0].trainingEnvironmentType {
+            case TrainingEnvironmentType.ergometer:
+                imageEnviromentType = UIImage(named: "lightBulb")
+            case TrainingEnvironmentType.outdoor:
+                imageEnviromentType = UIImage(named: "sun")
+            default:
+                break
+            }
+            
+            imgErgoOutdoor.image = imageEnviromentType
+        }
     }
     
+    //MARK: init view
     override func initView() -> UIView {
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         
+        stackView.addArrangedSubview(imgErgoOutdoor)
         stackView.addArrangedSubview(labelStart)
-        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
         stackView.addArrangedSubview(labelDuration)
-        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
         stackView.addArrangedSubview(labelDistance)
-        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
         stackView.addArrangedSubview(imageViewGraph)
         
         return stackView
     }
     
-    override func getRowHeight() -> Int {
-        return rowHeight
+    override func getRowHeight() -> CGFloat {
+        return trainingRowHeight
     }
     
+    //MARK: views
     private lazy var labelStart: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.numberOfLines = 1
         
         return label
     }()
@@ -62,6 +75,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     private lazy var labelDuration: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.numberOfLines = 1
         
         return label
     }()
@@ -69,6 +83,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     private lazy var labelDistance: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.numberOfLines = 1
         
         return label
     }()
@@ -80,8 +95,16 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         imageView.image = image
         imageView.setImageTint(color: Colors.colorAccent)
         
+        imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
-
     
+    private lazy var imgErgoOutdoor: UIImageView! = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
 }

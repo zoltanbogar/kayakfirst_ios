@@ -16,6 +16,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private let stackView = UIStackView()
     private let viewTableView = UIView()
     private let viewCalendar = UIView()
+    private let trainingTableViewHeader = TrainingTableViewHeader()
     
     //MARK: trainigData
     private var trainingDays: [TimeInterval]?
@@ -42,6 +43,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     internal override func initView() {
         stackView.distribution = .fillEqually
+        stackView.spacing = margin
         
         viewCalendar.addSubview(cvCalendarView)
         viewCalendar.addSubview(labelMonth)
@@ -51,9 +53,29 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
         }
         
+        viewTableView.addSubview(trainingTableViewHeader)
+        trainingTableViewHeader.snp.makeConstraints { (make) in
+            make.top.equalTo(viewTableView)
+            make.left.equalTo(viewTableView)
+            make.right.equalTo(viewTableView)
+        }
+        let viewDivider = UIView()
+        viewDivider.backgroundColor = Colors.colorDashBoardDivider
+        viewTableView.addSubview(viewDivider)
+        viewDivider.snp.makeConstraints { (make) in
+            make.top.equalTo(trainingTableViewHeader.snp.bottom)
+            make.left.equalTo(viewTableView)
+            make.right.equalTo(viewTableView)
+            let height = 2 * dashboardDividerWidth
+            make.height.equalTo(height)
+        }
+        //TODO: dividers error on left
         viewTableView.addSubview(tableViewTraining)
         tableViewTraining.snp.makeConstraints { (make) in
-            make.edges.equalTo(viewTableView)
+            make.top.equalTo(viewDivider)
+            make.left.equalTo(viewTableView)
+            make.right.equalTo(viewTableView)
+            make.bottom.equalTo(viewTableView)
         }
         
         stackView.addArrangedSubview(viewCalendar)
@@ -133,6 +155,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             }
         } else {
             tableViewTraining?.dataList = nil
+            trainingTableViewHeader.isHidden = true
             showProgressBar(isShow: false)
         }
         errorHandling()
@@ -149,6 +172,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
                     
                     dataAvailable = sumTrainings != nil
                     tableViewTraining?.dataList = sumTrainings
+                    trainingTableViewHeader.isHidden = !dataAvailable
                 }
             }
             //TODO: delete log
