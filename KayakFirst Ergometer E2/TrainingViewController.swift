@@ -26,6 +26,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //TODO: has to be turned off
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
