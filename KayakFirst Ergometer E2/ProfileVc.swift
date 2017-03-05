@@ -19,7 +19,7 @@ class ProfileVc: MainTabVc {
     private var scrollView: AppScrollView?
     
     //MARK: properties
-    var user = UserService.sharedInstance.getUser()
+    var userService = UserService.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,135 +27,98 @@ class ProfileVc: MainTabVc {
         initView()
     }
     
+    //MARK: init view
     internal override func initView() {
         scrollView = AppScrollView(view: contentView)
         stackView.axis = .vertical
+        stackView.spacing = margin05
+        
+        scrollView!.addSubview(imgProfile)
+        imgProfile.snp.makeConstraints { (make) in
+            make.centerX.equalTo(scrollView!.containerView)
+            make.top.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+        }
         
         scrollView!.addSubview(stackView)
-        
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin2, margin2, margin2, margin2))
+            make.top.equalTo(imgProfile.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin, 0))
+            make.left.equalTo(scrollView!.containerView)
+            make.right.equalTo(scrollView!.containerView)
+            make.bottom.equalTo(scrollView!.containerView)
         }
         
-        let stackViewName = UIStackView()
-        stackViewName.axis = .horizontal
-        stackViewName.distribution = .fillProportionally
-        stackViewName.addArrangedSubview(tfFirstName)
-        stackViewName.addHorizontalSpacing(spacing: margin2)
-        stackViewName.addArrangedSubview(tfLastName)
-        
-        stackView.addArrangedSubview(stackViewName)
-        stackViewName.snp.makeConstraints { make in
-            make.height.equalTo(76)
-        }
-        
+        stackView.addArrangedSubview(tfFirstName)
+        stackView.addArrangedSubview(tfLastName)
         stackView.addArrangedSubview(tfBirthDate)
-        tfBirthDate.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfUserName)
-        tfUserName.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfPassword)
-        tfPassword.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfEmail)
-        tfEmail.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfWeight)
-        tfWeight.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfCountry)
-        tfCountry.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
-        
         stackView.addArrangedSubview(tfGender)
-        tfGender.snp.makeConstraints{ make in
-            make.height.equalTo(76)
-        }
         
-        stackView.addVerticalSpacing(spacing: viewBottomHeight)
-        
-        let viewBottom = UIView()
-        viewBottom.backgroundColor = Colors.colorPrimary
-        contentView.addSubview(viewBottom)
-        viewBottom.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.snp.bottom)
-            make.left.equalTo(stackView.snp.left)
-            make.width.equalTo(stackView.snp.width)
-            make.height.equalTo(viewBottomHeight)
-        }
-        
-        viewBottom.addSubview(btnLogout)
-        btnLogout.snp.makeConstraints { make in
-            make.width.equalTo(viewBottom.snp.width)
-            make.left.equalTo(viewBottom.snp.left)
-            make.height.equalTo(buttonHeight)
-            make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
-        }
         progressView = ProgressView(superView: contentView)
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems([btnSave], animated: true)
+        setTabbarItem(tabbarItem: btnEdit)
+        activateFields(isActive: false)
+        
+        self.navigationItem.setLeftBarButtonItems([btnLogout], animated: true)
     }
     
-    private lazy var tfFirstName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    //MARK: views
+    private lazy var imgProfile: UIImageView! = {
+        let imageView = UIImageView()
+        let image = UIImage(named: "profile_image")
+        imageView.image = image
+        
+        return imageView
+    }()
+    
+    private lazy var tfFirstName: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_first_name")
         textField.active = false
-        textField.text = self.user?.firstName
+        textField.text = self.userService.getUser()?.firstName
         
         return textField
     }()
     
-    private lazy var tfLastName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfLastName: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_last_name")
         textField.active = false
-        textField.text = self.user?.lastName
+        textField.text = self.userService.getUser()?.lastName
         
         return textField
     }()
     
-    private lazy var tfBirthDate: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfBirthDate: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_birth_date")
-        textField.isEditable = false
         textField.active = false
-        if self.user?.birthDate != 0 {
-            textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.user?.birthDate)
+        if self.userService.getUser()?.birthDate != 0 {
+            textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.userService.getUser()?.birthDate)
         }
         
         return textField
     }()
     
-    private lazy var tfUserName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfUserName: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_name")
-        textField.required = true
         textField.active = false
-        textField.text = self.user?.userName
+        textField.text = self.userService.getUser()?.userName
         
         return textField
     }()
     
-    private lazy var tfPassword: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfPassword: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_password")
         textField.secureTextEntry = true
-        textField.required = true
-        textField.isEditable = false
+        textField.active = false
         textField.clickCallback = {
             self.clickPassword()
         }
@@ -163,44 +126,43 @@ class ProfileVc: MainTabVc {
         return textField
     }()
     
-    private lazy var tfEmail: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfEmail: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
-        textField.required = true
         textField.active = false
-        textField.text = self.user?.email
+        textField.text = self.userService.getUser()?.email
         
         return textField
     }()
     
-    private lazy var tfWeight: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfWeight: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_weight")
+        textField.active = false
         textField.keyBoardType = .numberPad
-        textField.required = true
-        textField.text = "\(Int((self.user?.bodyWeight)!))"
+        textField.text = "\(Int((self.userService.getUser()?.bodyWeight)!))"
         
         return textField
     }()
     
-    private lazy var tfCountry: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    //TODO: country is editable
+    //TODO: add 'Club'
+    private lazy var tfCountry: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_country")
-        textField.required = true
         textField.active = false
-        textField.text = NSLocale.getCountryNameByCode(countryCode: self.user?.country)
+        textField.text = NSLocale.getCountryNameByCode(countryCode: self.userService.getUser()?.country)
         
         return textField
     }()
     
-    private lazy var tfGender: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+    private lazy var tfGender: ProfileElement! = {
+        let textField = ProfileElement()
         textField.title = getString("user_gender")
-        textField.required = true
         textField.active = false
         
-        if let gender = self.user?.gender {
+        if let gender = self.userService.getUser()?.gender {
             if gender == User.genderFemale {
                 textField.text = getString("user_gender_female")
             } else {
@@ -211,9 +173,11 @@ class ProfileVc: MainTabVc {
         return textField
     }()
     
-    private lazy var btnLogout: AppUIButton! = {
-        let button = AppUIButton(width: 0, height: 0, text: getString("user_log_out"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
-        button.addTarget(self, action: #selector(clickLogout), for: .touchUpInside)
+    private lazy var btnLogout: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.title = getString("user_log_out")
+        button.target = self
+        button.action = #selector(clickLogout)
         
         return button
     }()
@@ -227,6 +191,16 @@ class ProfileVc: MainTabVc {
         return button
     }()
     
+    private lazy var btnEdit: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "edit")
+        button.target = self
+        button.action = #selector(btnEditClick)
+        
+        return button
+    }()
+    
+    //MARK: callbacks
     @objc private func btnSaveClick() {
         if checkBodyWeight() {
             progressView?.show(true)
@@ -236,11 +210,31 @@ class ProfileVc: MainTabVc {
                                                     firstName: tfFirstName.text,
                                                     email: tfEmail.text,
                                                     bodyWeight: Double(tfWeight.text!),
-                                                    gender: user?.gender,
-                                                    birthDate: user?.birthDate,
-                                                    country: user?.country,
+                                                    gender: self.userService.getUser()?.gender,
+                                                    birthDate: self.userService.getUser()?.birthDate,
+                                                    country: self.userService.getUser()?.country,
                                                     password: tfPassword.text,
                                                     userName: tfUserName.text))
+        }
+    }
+    
+    @objc private func btnEditClick() {
+        activateFields(isActive: true)
+        setTabbarItem(tabbarItem: btnSave)
+    }
+    
+    private func setTabbarItem(tabbarItem: UIBarButtonItem) {
+        self.navigationItem.setRightBarButtonItems([tabbarItem], animated: true)
+    }
+    
+    private func activateFields(isActive: Bool) {
+        tfPassword.clickable = isActive
+        tfPassword.active = isActive
+        tfWeight.active = isActive
+        
+        if !isActive {
+            tfWeight.text = "\(Int((self.userService.getUser()?.bodyWeight)!))"
+            tfWeight.endEditing(true)
         }
     }
     
@@ -280,6 +274,7 @@ class ProfileVc: MainTabVc {
         
         if let user = userData {
             self.navigationController?.popViewController(animated: true)
+            initTabBarItems()
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: self, error: userError)
         }

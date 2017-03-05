@@ -16,6 +16,7 @@ let buttonHeight: CGFloat = 40.0
 let dashboardDividerWidth: CGFloat = 0.5
 let chartLineWidth: CGFloat = 2
 let trainingRowHeight: CGFloat = 56
+let profileElementHeight: CGFloat = 50
 
 func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
     var navigationBarHeight: CGFloat?

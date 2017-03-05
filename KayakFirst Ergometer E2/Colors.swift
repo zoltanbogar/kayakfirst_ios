@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//TODO: it could be struct
 class Colors {
     static let colorPrimary = getColor("#383e42")
     static let colorPrimaryTransparent = getColor("#aa383e42")
@@ -34,6 +35,7 @@ class Colors {
     static let colorFacebook = getColor("#3b5998")
     static let colorGoogle = getColor("#dc4e41")
     static let colorQuickStart = getColor("#929292")
+    static let colorProfileElement = getColor("#404447")
 }
 
 func getColor(_ hex: String) -> UIColor {

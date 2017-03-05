@@ -19,6 +19,7 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609B5371E6C06A100011CED /* ProfileElement.swift */; };
 		0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */; };
 		0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */; };
 		060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A376B1E578F4F00A973BF /* DragDropLayout.swift */; };
@@ -236,6 +237,7 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		0609B5371E6C06A100011CED /* ProfileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileElement.swift; sourceTree = "<group>"; };
 		0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginFacebook.swift; sourceTree = "<group>"; };
 		0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginGoogle.swift; sourceTree = "<group>"; };
 		060A376B1E578F4F00A973BF /* DragDropLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDropLayout.swift; sourceTree = "<group>"; };
@@ -820,6 +822,7 @@
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
 				06018D531E61B8D500F75919 /* RoundButton.swift */,
 				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
+				0609B5371E6C06A100011CED /* ProfileElement.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1299,6 +1302,7 @@
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
+				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
 				067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */,
 				060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */,
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,

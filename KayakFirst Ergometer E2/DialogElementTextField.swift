@@ -11,7 +11,7 @@ import UIKit
 class DialogElementTextField: UIView, UITextFieldDelegate {
     
     private static let colorNormal = Colors.colorWhite
-    private static let colorHighlited = Colors.colorAccent
+    static let colorHighlited = Colors.colorAccent
     
     var title: String? {
         get {
@@ -101,15 +101,28 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
             isEditable = newValue
         }
     }
+    var clickable: Bool = true
     
     //MARK: init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        initView()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    //MARK: size
+    override var intrinsicContentSize: CGSize {
+        get {
+            return CGSize(width: 0, height: 100)
+        }
+    }
+    
+    //MARK: init view
+    func initView() {
         addSubview(valueTextField)
         addSubview(errorLabel)
         
@@ -125,13 +138,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
     }
     
-    //MARK: size
-    override var intrinsicContentSize: CGSize {
-        get {
-            return CGSize(width: 0, height: 100)
-        }
-    }
-    
+    //MARK: views
     lazy var valueTextField: UITextField! = {
         let view = UITextField()
         view.borderStyle = .roundedRect
@@ -143,7 +150,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         return view
     }()
     
-    private lazy var errorLabel: UILabel! = {
+    lazy var errorLabel: UILabel! = {
         let label = UILabel()
         label.textColor = UIColor.red
         label.textAlignment = .right
@@ -157,8 +164,10 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let click = clickCallback {
-            click()
+        if clickable {
+            if let click = clickCallback {
+                click()
+            }
         }
         return _editable
     }
