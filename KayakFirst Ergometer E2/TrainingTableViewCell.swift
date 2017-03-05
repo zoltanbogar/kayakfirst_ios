@@ -29,10 +29,9 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
         
-        var imageEnviromentType: UIImage?
-        
-        if let dataValue = data {
-            switch dataValue.trainingList![0].trainingEnvironmentType {
+        if let envType = data?.trainingEnvironmentType {
+            var imageEnviromentType: UIImage?
+            switch envType {
             case TrainingEnvironmentType.ergometer:
                 imageEnviromentType = UIImage(named: "lightBulb")
             case TrainingEnvironmentType.outdoor:
