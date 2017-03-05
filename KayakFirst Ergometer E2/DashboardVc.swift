@@ -135,11 +135,13 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         stackView.addArrangedSubview(stackView1)
         stackView.addArrangedSubview(stackView2)
         
+        buttonView.removeAllSubviews()
         buttonView.addSubview(btnPlayPause)
         btnPlayPause.snp.makeConstraints { make in
             make.center.equalTo(buttonView)
         }
         
+        mainStackView.removeAllSubviews()
         mainStackView.addArrangedSubview(stackView)
         mainStackView.addArrangedSubview(buttonView)
         
@@ -229,15 +231,11 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private lazy var view0: UIView! = {
         let view = UIView()
         
-        view.backgroundColor = UIColor.red
-        
         return view
     }()
     
     private lazy var view1: UIView! = {
         let view = UIView()
-        
-        view.backgroundColor = UIColor.blue
         
         return view
     }()
@@ -245,23 +243,17 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private lazy var view2: UIView! = {
         let view = UIView()
         
-        view.backgroundColor = UIColor.yellow
-        
         return view
     }()
     
     private lazy var view3: UIView! = {
         let view = UIView()
         
-        view.backgroundColor = UIColor.green
-        
         return view
     }()
     
     private lazy var view4: UIView! = {
         let view = UIView()
-        
-        view.backgroundColor = UIColor.orange
         
         return view
     }()

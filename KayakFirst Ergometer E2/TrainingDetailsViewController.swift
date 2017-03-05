@@ -20,15 +20,25 @@ class TrainingDetailsViewController: BaseVC {
     var position: Int = 0
     var maxPosition: Int = 0
     var createTrainingList: CreateTrainingList?
-    private let stackView = UIStackView()
-    private let stackViewTitle = UIStackView()
+    private var stackView: UIStackView?
+    private var stackViewTitle: UIStackView?
+    private var _tabPosition = 0
+    private var tabPosition: Int {
+        get {
+            return _tabPosition
+        }
+        set {
+            _tabPosition = newValue
+            setTabPosition()
+        }
+    }
     
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initArrows()
-        setTabPosition(position: 0)
+        tabPosition = 0
     }
     
     private func initArrows() {
@@ -61,14 +71,16 @@ class TrainingDetailsViewController: BaseVC {
     private let viewBottom = UIView()
     
     override func initView() {
-        stackView.axis = .vertical
-        stackView.spacing = margin05
+        stackView = UIStackView()
+        stackView?.axis = .vertical
+        stackView?.spacing = margin05
         
-        stackView.addArrangedSubview(viewTop)
-        stackView.addArrangedSubview(viewBottom)
+        stackView?.addArrangedSubview(viewTop)
+        stackView?.addArrangedSubview(viewBottom)
         
-        stackViewTitle.axis = .horizontal
-        stackViewTitle.distribution = .fillEqually
+        stackViewTitle = UIStackView()
+        stackViewTitle?.axis = .horizontal
+        stackViewTitle?.distribution = .fillEqually
         
         let stackViewVertical1 = UIStackView()
         stackViewVertical1.axis = .vertical
@@ -80,8 +92,8 @@ class TrainingDetailsViewController: BaseVC {
         stackViewVertical2.addArrangedSubview(labelDistanceTitle)
         stackViewVertical2.addArrangedSubview(labelDistance)
         
-        stackViewTitle.addArrangedSubview(stackViewVertical1)
-        stackViewTitle.addArrangedSubview(stackViewVertical2)
+        stackViewTitle?.addArrangedSubview(stackViewVertical1)
+        stackViewTitle?.addArrangedSubview(stackViewVertical2)
         
         let stackViewTab = UIStackView()
         stackViewTab.axis = .horizontal
@@ -115,11 +127,13 @@ class TrainingDetailsViewController: BaseVC {
         }
         
         stackViewTop.addVerticalSpacing()
-        stackViewTop.addArrangedSubview(stackViewTitle)
+        stackViewTop.addArrangedSubview(stackViewTitle!)
         stackViewTop.addVerticalSpacing()
         stackViewTop.addArrangedSubview(divier1)
         stackViewTop.addArrangedSubview(stackViewTabBackground)
         stackViewTop.addArrangedSubview(divier2)
+        
+        viewTop.removeAllSubviews()
         
         viewTop.addSubview(stackViewTop)
         stackViewTop.snp.makeConstraints { make in
@@ -136,13 +150,8 @@ class TrainingDetailsViewController: BaseVC {
             make.right.equalTo(viewTop)
         }
         
-        viewBottom.addSubview(sumTrainingView)
-        sumTrainingView.snp.makeConstraints { make in
-            make.edges.equalTo(viewBottom)
-        }
-        
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        contentView.addSubview(stackView!)
+        stackView?.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
     }
@@ -154,8 +163,8 @@ class TrainingDetailsViewController: BaseVC {
     }
     
     override func handlePortraitLayout(size: CGSize) {
-        stackView.axis = .vertical
-        stackViewTitle.axis = .horizontal
+        stackView?.axis = .vertical
+        stackViewTitle?.axis = .horizontal
         viewTop.snp.removeConstraints()
         viewTop.snp.makeConstraints { (make) in
             make.height.equalTo(150)
@@ -163,8 +172,8 @@ class TrainingDetailsViewController: BaseVC {
     }
     
     override func handleLandscapeLayout(size: CGSize) {
-        stackView.axis = .horizontal
-        stackViewTitle.axis = .vertical
+        stackView?.axis = .horizontal
+        stackViewTitle?.axis = .vertical
         viewTop.snp.removeConstraints()
         viewTop.snp.makeConstraints { (make) in
             make.width.equalTo(250)
@@ -283,13 +292,13 @@ class TrainingDetailsViewController: BaseVC {
     }()
     
     //MARK: callbacks
-    private func setTabPosition(position: Int) {
+    private func setTabPosition() {
         btnTable.setTitleColor(Colors.colorWhite, for: .normal)
         btnTimeChart.setTitleColor(Colors.colorWhite, for: .normal)
         btnDistanceChart.setTitleColor(Colors.colorWhite, for: .normal)
         
         let viewSub: UIView
-        switch position {
+        switch tabPosition {
         case 1:
             viewSub = chartTime
             btnTimeChart.setTitleColor(Colors.colorAccent, for: .normal)
@@ -310,11 +319,11 @@ class TrainingDetailsViewController: BaseVC {
     
     @objc private func handleTabClick(sender: UIButton) {
         if sender == btnTable {
-            setTabPosition(position: 0)
+            tabPosition = 0
         } else if sender == btnTimeChart {
-            setTabPosition(position: 1)
+            tabPosition = 1
         } else if sender == btnDistanceChart {
-            setTabPosition(position: 2)
+            tabPosition = 2
         }
     }
 }

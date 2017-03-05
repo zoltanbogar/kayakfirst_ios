@@ -51,6 +51,8 @@ class BaseVC: UIViewController {
     }
     
     func handleScreenOrientation(size: CGSize) {
+        contentView.removeAllSubviews()
+        initView()
         if isScreenPortrait(size: size) {
             handlePortraitLayout(size: size)
         } else {

@@ -14,7 +14,7 @@ class ProfileVc: MainTabVc {
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
     
     //MARK: views
-    private let stackView = UIStackView()
+    private var stackView: UIStackView?
     private var progressView: ProgressView?
     private var scrollView: AppScrollView?
     
@@ -30,8 +30,9 @@ class ProfileVc: MainTabVc {
     //MARK: init view
     internal override func initView() {
         scrollView = AppScrollView(view: contentView)
-        stackView.axis = .vertical
-        stackView.spacing = margin05
+        stackView = UIStackView()
+        stackView?.axis = .vertical
+        stackView?.spacing = margin05
         
         scrollView!.addSubview(imgProfile)
         imgProfile.snp.makeConstraints { (make) in
@@ -39,23 +40,23 @@ class ProfileVc: MainTabVc {
             make.top.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
         }
         
-        scrollView!.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        scrollView!.addSubview(stackView!)
+        stackView?.snp.makeConstraints { make in
             make.top.equalTo(imgProfile.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin, 0))
             make.left.equalTo(scrollView!.containerView)
             make.right.equalTo(scrollView!.containerView)
             make.bottom.equalTo(scrollView!.containerView)
         }
         
-        stackView.addArrangedSubview(tfFirstName)
-        stackView.addArrangedSubview(tfLastName)
-        stackView.addArrangedSubview(tfBirthDate)
-        stackView.addArrangedSubview(tfUserName)
-        stackView.addArrangedSubview(tfPassword)
-        stackView.addArrangedSubview(tfEmail)
-        stackView.addArrangedSubview(tfWeight)
-        stackView.addArrangedSubview(tfCountry)
-        stackView.addArrangedSubview(tfGender)
+        stackView?.addArrangedSubview(tfFirstName)
+        stackView?.addArrangedSubview(tfLastName)
+        stackView?.addArrangedSubview(tfBirthDate)
+        stackView?.addArrangedSubview(tfUserName)
+        stackView?.addArrangedSubview(tfPassword)
+        stackView?.addArrangedSubview(tfEmail)
+        stackView?.addArrangedSubview(tfWeight)
+        stackView?.addArrangedSubview(tfCountry)
+        stackView?.addArrangedSubview(tfGender)
         
         progressView = ProgressView(superView: contentView)
     }

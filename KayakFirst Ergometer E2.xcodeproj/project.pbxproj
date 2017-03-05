@@ -175,7 +175,6 @@
 		06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */; };
 		06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
-		06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB31E2267A000562B27 /* DashboardViewController.swift */; };
 		06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB81E2267A000562B27 /* Assets.xcassets */; };
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
@@ -395,7 +394,6 @@
 		06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual500.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
-		06C6ABB31E2267A000562B27 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "KayakFirst Ergometer E2/Assets.xcassets"; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "KayakFirst Ergometer E2/Info.plist"; sourceTree = "<group>"; };
@@ -791,7 +789,6 @@
 			children = (
 				061145CB1E58A2BC0058EAF4 /* calendar */,
 				06DE18481E56D22B00374107 /* training_viewcontroller */,
-				06C6ABB31E2267A000562B27 /* DashboardViewController.swift */,
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
@@ -1236,7 +1233,6 @@
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
 				069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */,
-				06C6ABB41E2267A000562B27 /* DashboardViewController.swift in Sources */,
 				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,

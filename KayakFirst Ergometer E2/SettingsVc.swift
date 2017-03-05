@@ -60,7 +60,8 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
         
         imgLogo.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView)        }
+            make.top.equalTo(contentView)
+        }
         
         textFieldWebsite.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)

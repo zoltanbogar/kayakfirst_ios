@@ -80,6 +80,8 @@ class SetDashboardVc: BaseVC {
     
     //MARK: views
     override func initView() {
+        mainStackView.removeAllSubviews()
+        
         mainStackView.addArrangedSubview(viewTop)
         mainStackView.addArrangedSubview(viewBottom)
         

@@ -13,7 +13,7 @@ import CVCalendar
 class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: views
-    private let stackView = UIStackView()
+    private var stackView: UIStackView?
     private let viewTableView = UIView()
     private let viewCalendar = UIView()
     private let trainingTableViewHeader = TrainingTableViewHeader()
@@ -42,9 +42,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     internal override func initView() {
-        stackView.distribution = .fillEqually
-        stackView.spacing = margin
+        stackView = UIStackView()
+        stackView?.distribution = .fillEqually
+        stackView?.spacing = margin
         
+        viewCalendar.removeAllSubviews()
         viewCalendar.addSubview(cvCalendarView)
         viewCalendar.addSubview(labelMonth)
         viewCalendar.addSubview(calendarMenuView)
@@ -53,6 +55,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
         }
         
+        viewTableView.removeAllSubviews()
         viewTableView.addSubview(trainingTableViewHeader)
         trainingTableViewHeader.snp.makeConstraints { (make) in
             make.top.equalTo(viewTableView)
@@ -78,11 +81,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.bottom.equalTo(viewTableView)
         }
         
-        stackView.addArrangedSubview(viewCalendar)
-        stackView.addArrangedSubview(viewTableView)
+        stackView?.addArrangedSubview(viewCalendar)
+        stackView?.addArrangedSubview(viewTableView)
         
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        contentView.addSubview(stackView!)
+        stackView?.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
         
@@ -93,7 +96,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     override func handlePortraitLayout(size: CGSize) {
-        stackView.axis = .vertical
+        stackView?.axis = .vertical
         
         let width: CGFloat = size.width
         let height: CGFloat = 200
@@ -105,7 +108,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     override func handleLandscapeLayout(size: CGSize) {
-        stackView.axis = .horizontal
+        stackView?.axis = .horizontal
         
         let width: CGFloat = size.width / 2
         let height: CGFloat = 200
