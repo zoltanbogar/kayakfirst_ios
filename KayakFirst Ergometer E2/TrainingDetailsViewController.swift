@@ -156,6 +156,10 @@ class TrainingDetailsViewController: BaseVC {
     override func handlePortraitLayout(size: CGSize) {
         stackView.axis = .vertical
         stackViewTitle.axis = .horizontal
+        viewTop.snp.removeConstraints()
+        viewTop.snp.makeConstraints { (make) in
+            make.height.equalTo(150)
+        }
     }
     
     override func handleLandscapeLayout(size: CGSize) {

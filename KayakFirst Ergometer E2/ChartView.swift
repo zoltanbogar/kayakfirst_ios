@@ -63,6 +63,7 @@ class ChartView: UIView {
         let stackViewL = UIStackView()
         stackViewL.axis = .horizontal
         stackViewL.distribution = .fillEqually
+        stackViewL.spacing = margin
         stackViewL.addArrangedSubview(labelT200)
         stackViewL.addArrangedSubview(labelT500)
         stackViewL.addArrangedSubview(labelT1000)
@@ -70,6 +71,7 @@ class ChartView: UIView {
         let stackViewR = UIStackView()
         stackViewR.axis = .horizontal
         stackViewR.distribution = .fillEqually
+        stackViewR.spacing = margin
         stackViewR.addArrangedSubview(labelStrokes)
         stackViewR.addArrangedSubview(labelForce)
         stackViewR.addArrangedSubview(labelSpeed)
@@ -77,12 +79,19 @@ class ChartView: UIView {
         let stackViewLabels = UIStackView()
         stackViewLabels.axis = .vertical
         stackViewLabels.distribution = .fillEqually
+        stackViewLabels.spacing = margin
         stackViewLabels.addArrangedSubview(stackViewL)
         stackViewLabels.addArrangedSubview(stackViewR)
         
+        let viewLabels = UIView()
+        viewLabels.addSubview(stackViewLabels)
+        stackViewLabels.snp.makeConstraints { (make) in
+            make.edges.equalTo(viewLabels).inset(UIEdgeInsetsMake(0, margin, 0, margin))
+        }
+        
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
-        mainStackView.addArrangedSubview(stackViewLabels)
+        mainStackView.addArrangedSubview(viewLabels)
         mainStackView.addArrangedSubview(lineChart)
         
         addSubview(mainStackView)

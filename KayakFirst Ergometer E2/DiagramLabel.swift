@@ -50,11 +50,13 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     private func refreshActive() {
         isSelected = !isSelected
         if isSelected {
-            textField.textColor = color
-            textField.setBottomBorder(color!)
+            textField.textColor = Colors.colorPrimary
+            textField.borderStyle = .roundedRect
+            textField.backgroundColor = color
         } else {
             textField.textColor = defaultTextColor
-            textField.removeBorderLine()
+            textField.borderStyle = .none
+            textField.backgroundColor = UIColor.clear
         }
     }
     
@@ -82,10 +84,11 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     private lazy var textField: UITextField! = {
         let textField = UITextField()
         textField.textAlignment = .center
+        textField.font = textField.font?.withSize(12)
         textField.delegate = self
         
         textField.textColor = self.defaultTextColor
-        textField.text = self.title!
+        textField.text = self.title!.uppercased()
         
         return textField
     }()
