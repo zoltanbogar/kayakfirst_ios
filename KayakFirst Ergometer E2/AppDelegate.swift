@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: properties
     private var welcomeViewController: WelcomeViewController?
+    static var versionString: String {
+        get {
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                return version
+            } else {
+                return "1.0"
+            }
+        }
+    }
 
     var window: UIWindow?
 

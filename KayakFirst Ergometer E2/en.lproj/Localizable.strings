@@ -8,6 +8,8 @@
 
 //Info
 "app_version"="Version: ";
+"app_link"="www.kayakfirst.com";
+"app_version"="Version: ";
 
 //DashBoard
 "dashboard_title_av_200"="Avg. 200m:";
@@ -192,7 +194,7 @@
 //Translate!
 "navigation_home"="Home";
 "navigation_calendar"="Calendar";
-"navigation_settings"="Settings";
+"navigation_settings"="About";
 "navigation_set_dashboard"="Set Dashboard";
 "ergometer_placeholder"="COMING SOON...";
 "user_login_or"="OR";
