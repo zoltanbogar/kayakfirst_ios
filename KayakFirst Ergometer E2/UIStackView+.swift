@@ -45,7 +45,7 @@ extension UIStackView {
         addArrangedSubview(view)
     }
     
-    func addVerticalSeparator(color: UIColor, thickness: Int) {
+    func addVerticalSeparator(color: UIColor, thickness: CGFloat) {
         let view = UIView()
         addArrangedSubview(view)
         view.backgroundColor = color
@@ -54,7 +54,7 @@ extension UIStackView {
         }
     }
     
-    func addHorizontalSeparator(color: UIColor, thickness: Int) {
+    func addHorizontalSeparator(color: UIColor, thickness: CGFloat) {
         let view = UIView()
         addArrangedSubview(view)
         view.backgroundColor = color

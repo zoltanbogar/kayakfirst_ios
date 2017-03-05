@@ -31,6 +31,14 @@ class BaseTrainingSumElement: UIView {
         super.init(coder: aDecoder)
     }
     
+    //MARK: size
+    override var intrinsicContentSize: CGSize {
+        get {
+            let height = labelTitle.intrinsicContentSize.height + labelValue.intrinsicContentSize.height
+            return CGSize(width: 0, height: height)
+        }
+    }
+    
     //MARK: other
     func run() {
         labelTitle.text = getTitle()
@@ -65,7 +73,7 @@ class BaseTrainingSumElement: UIView {
     private lazy var labelValue: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
-        label.textColor = Colors.colorAccent
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         
         return label
     }()

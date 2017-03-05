@@ -111,10 +111,10 @@
 "training_sum_t_200"="Pace\n200";
 "training_sum_t_500"="Pace\n500";
 "training_sum_t_1000"="Pace\n1000";
-"training_diagram_time"="Time Graph";
-"training_diagram_distance"="Distance Graph";
+"training_diagram_time"="Time";
+"training_diagram_distance"="Distance";
 "training_details_sum"="Sum";
-"training_details_all"="All";
+"training_details_all"="Table";
 
 //Calculate
 "calculate_t200"="Pace 200";

@@ -9,13 +9,9 @@
 import UIKit
 class TrainingDetailsViewController: BaseVC {
     
-    //MARK: constants
-    private let segmentItems = [getString("training_details_all"), getString("training_diagram_time"), getString("training_diagram_distance")]
-    
     //MARK: properties
     var sumTraining: SumTraining? {
         didSet {
-            labelStart.text = sumTraining?.formattedStartTime
             labelDuration.text = sumTraining?.formattedDuration
             labelDistance.text = sumTraining?.formattedDistance
             initTitle()
@@ -24,12 +20,15 @@ class TrainingDetailsViewController: BaseVC {
     var position: Int = 0
     var maxPosition: Int = 0
     var createTrainingList: CreateTrainingList?
+    private let stackView = UIStackView()
+    private let stackViewTitle = UIStackView()
     
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initArrows()
+        setTabPosition(position: 0)
     }
     
     private func initArrows() {
@@ -56,57 +55,75 @@ class TrainingDetailsViewController: BaseVC {
         //TODO: not works!!
         self.parent?.navigationController?.navigationItem.title = titleString
     }
-    
-    //MARK: views
+
+    //MARK: init view
     private let viewTop = UIView()
     private let viewBottom = UIView()
     
     override func initView() {
-        let stackView = UIStackView()
         stackView.axis = .vertical
-        //stackView.distribution = .fillEqually
-        viewTop.backgroundColor = Colors.colorAccent
+        stackView.spacing = margin05
         
         stackView.addArrangedSubview(viewTop)
         stackView.addArrangedSubview(viewBottom)
         
-        let stackViewTop1 = UIStackView()
-        stackViewTop1.axis = .vertical
-        stackViewTop1.distribution = .fillEqually
-        stackViewTop1.spacing = margin05
+        stackViewTitle.axis = .horizontal
+        stackViewTitle.distribution = .fillEqually
         
-        let stackViewStart = UIStackView()
-        stackViewStart.axis = .horizontal
-        stackViewStart.addArrangedSubview(labelStartTitle)
-        stackViewStart.addArrangedSubview(labelStart)
-        stackViewStart.addHorizontalSpacing()
+        let stackViewVertical1 = UIStackView()
+        stackViewVertical1.axis = .vertical
+        stackViewVertical1.addArrangedSubview(labelDurationTitle)
+        stackViewVertical1.addArrangedSubview(labelDuration)
         
-        let stackViewDuration = UIStackView()
-        stackViewDuration.axis = .horizontal
-        stackViewDuration.addArrangedSubview(labelDurationTitle)
-        stackViewDuration.addArrangedSubview(labelDuration)
-        stackViewDuration.addHorizontalSpacing()
+        let stackViewVertical2 = UIStackView()
+        stackViewVertical2.axis = .vertical
+        stackViewVertical2.addArrangedSubview(labelDistanceTitle)
+        stackViewVertical2.addArrangedSubview(labelDistance)
         
-        let stackViewDistance = UIStackView()
-        stackViewDistance.axis = .horizontal
-        stackViewDistance.addArrangedSubview(labelDistanceTitle)
-        stackViewDistance.addArrangedSubview(labelDistance)
-        stackViewDistance.addHorizontalSpacing()
+        stackViewTitle.addArrangedSubview(stackViewVertical1)
+        stackViewTitle.addArrangedSubview(stackViewVertical2)
         
-        stackViewTop1.addArrangedSubview(stackViewStart)
-        stackViewTop1.addArrangedSubview(stackViewDuration)
-        stackViewTop1.addArrangedSubview(stackViewDistance)
+        let stackViewTab = UIStackView()
+        stackViewTab.axis = .horizontal
+        stackViewTab.distribution = .fillEqually
+        stackViewTab.spacing = dashboardDividerWidth
+        stackViewTab.addArrangedSubview(btnTable)
+        stackViewTab.addArrangedSubview(btnTimeChart)
+        stackViewTab.addArrangedSubview(btnDistanceChart)
         
-        let stackViewTop2 = UIStackView()
-        stackViewTop2.axis = .vertical
-        stackViewTop2.spacing = margin05
+        let stackViewTabBackground = UIView()
+        stackViewTabBackground.backgroundColor = Colors.colorDashBoardDivider
+        stackViewTabBackground.addSubview(stackViewTab)
+        stackViewTab.snp.makeConstraints { (make) in
+            make.edges.equalTo(stackViewTabBackground)
+        }
         
-        stackViewTop2.addArrangedSubview(stackViewTop1)
-        stackViewTop2.addArrangedSubview(segmentedControl)
+        let stackViewTop = UIStackView()
+        stackViewTop.axis = .vertical
+        stackViewTop.spacing = margin05
         
-        viewTop.addSubview(stackViewTop2)
-        stackViewTop2.snp.makeConstraints { make in
-            make.edges.equalTo(viewTop).inset(UIEdgeInsetsMake(margin, margin, margin, margin))
+        let divier1 = UIView()
+        divier1.backgroundColor = Colors.colorDashBoardDivider
+        divier1.snp.makeConstraints { (make) in
+            make.height.equalTo(dashboardDividerWidth)
+        }
+        
+        let divier2 = UIView()
+        divier2.backgroundColor = Colors.colorDashBoardDivider
+        divier2.snp.makeConstraints { (make) in
+            make.height.equalTo(dashboardDividerWidth)
+        }
+        
+        stackViewTop.addVerticalSpacing()
+        stackViewTop.addArrangedSubview(stackViewTitle)
+        stackViewTop.addVerticalSpacing()
+        stackViewTop.addArrangedSubview(divier1)
+        stackViewTop.addArrangedSubview(stackViewTabBackground)
+        stackViewTop.addArrangedSubview(divier2)
+        
+        viewTop.addSubview(stackViewTop)
+        stackViewTop.snp.makeConstraints { make in
+            make.edges.equalTo(viewTop)
         }
         
         viewTop.addSubview(imgArrowLeft)
@@ -130,50 +147,101 @@ class TrainingDetailsViewController: BaseVC {
         }
     }
     
-    private lazy var segmentedControl: UISegmentedControl! = {
-        let control = UISegmentedControl(items: self.segmentItems)
-        control.tintColor = Colors.colorPrimary
-        control.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
-        control.selectedSegmentIndex = 0
+    //TODO: title, TrainingEnvironmentType indicator
+    override func initTabBarItems() {
+        self.navigationController!.navigationItem.setRightBarButtonItems([btnType], animated: true)
+        //self.navigationItem.setRightBarButtonItems([btnType], animated: true)
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        stackView.axis = .vertical
+        stackViewTitle.axis = .horizontal
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        stackView.axis = .horizontal
+        stackViewTitle.axis = .vertical
+        viewTop.snp.removeConstraints()
+        viewTop.snp.makeConstraints { (make) in
+            make.width.equalTo(250)
+        }
+    }
+    
+    //MARK: view
+    private lazy var btnType: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "sun")
         
-        return control
+        return button
     }()
     
-    private lazy var labelStartTitle: AppUILabel! = {
-        let label = AppUILabel()
-        label.text = getString("training_start")
+    private lazy var btnTable: UIButton! = {
+        let button = UIButton()
+        button.setTitle(getString("training_details_all").uppercased(),for: .normal)
+        button.backgroundColor = Colors.colorPrimary
+        button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
         
-        return label
+        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        
+        button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var btnTimeChart: UIButton! = {
+        let button = UIButton()
+        button.setTitle(getString("training_diagram_time").uppercased(),for: .normal)
+        button.backgroundColor = Colors.colorPrimary
+        button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
+        
+        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        
+        button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var btnDistanceChart: UIButton! = {
+        let button = UIButton()
+        button.setTitle(getString("training_diagram_distance").uppercased(),for: .normal)
+        button.backgroundColor = Colors.colorPrimary
+        button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
+        
+        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        
+        button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
+        
+        return button
     }()
     
     private lazy var labelDurationTitle: AppUILabel! = {
         let label = AppUILabel()
-        label.text = getString("training_duration")
+        label.textAlignment = .center
+        label.text = getString("training_duration").uppercased()
         
         return label
     }()
     
     private lazy var labelDistanceTitle: AppUILabel! = {
         let label = AppUILabel()
-        label.text = getString("training_distance")
-        
-        return label
-    }()
-    
-    private lazy var labelStart: AppUILabel! = {
-        let label = AppUILabel()
+        label.textAlignment = .center
+        label.text = getString("training_distance").uppercased()
         
         return label
     }()
     
     private lazy var labelDuration: AppUILabel! = {
         let label = AppUILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         
         return label
     }()
     
     private lazy var labelDistance: AppUILabel! = {
         let label = AppUILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         
         return label
     }()
@@ -210,21 +278,39 @@ class TrainingDetailsViewController: BaseVC {
         return imageView
     }()
     
-    @objc private func setSegmentedItem(sender: UISegmentedControl) {
+    //MARK: callbacks
+    private func setTabPosition(position: Int) {
+        btnTable.setTitleColor(Colors.colorWhite, for: .normal)
+        btnTimeChart.setTitleColor(Colors.colorWhite, for: .normal)
+        btnDistanceChart.setTitleColor(Colors.colorWhite, for: .normal)
+        
         let viewSub: UIView
-        switch sender.selectedSegmentIndex {
+        switch position {
         case 1:
             viewSub = chartTime
+            btnTimeChart.setTitleColor(Colors.colorAccent, for: .normal)
         case 2:
             viewSub = chartDistance
+            btnDistanceChart.setTitleColor(Colors.colorAccent, for: .normal)
         default:
             viewSub = sumTrainingView
+            btnTable.setTitleColor(Colors.colorAccent, for: .normal)
         }
         
         viewBottom.removeAllSubviews()
         viewBottom.addSubview(viewSub)
         viewSub.snp.makeConstraints { make in
             make.edges.equalTo(viewBottom)
+        }
+    }
+    
+    @objc private func handleTabClick(sender: UIButton) {
+        if sender == btnTable {
+            setTabPosition(position: 0)
+        } else if sender == btnTimeChart {
+            setTabPosition(position: 1)
+        } else if sender == btnDistanceChart {
+            setTabPosition(position: 2)
         }
     }
 }

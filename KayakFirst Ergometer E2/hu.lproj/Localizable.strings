@@ -111,10 +111,10 @@
 "training_sum_t_200"="Iram\n200";
 "training_sum_t_500"="Iram\n500";
 "training_sum_t_1000"="Iram\n1000";
-"training_diagram_time"="Idő diagr.";
-"training_diagram_distance"="Táv diagr.";
+"training_diagram_time"="Idő";
+"training_diagram_distance"="Táv";
 "training_details_sum"="Össz.";
-"training_details_all"="Összes";
+"training_details_all"="Táblázat";
 
 //Calculate
 "calculate_t200"="Iram 200";

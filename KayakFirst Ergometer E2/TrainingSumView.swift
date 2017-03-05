@@ -32,9 +32,12 @@ class TrainingSumView: UIView {
     private func initView() {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
-        mainStackView.distribution = .fillEqually
+        mainStackView.spacing = margin
         
         mainStackView.addArrangedSubview(labelAverage)
+        labelAverage.snp.makeConstraints { (make) in
+            make.height.equalTo(labelAverage.intrinsicContentSize.height)
+        }
         
         let horizontalStackView1 = UIStackView()
         horizontalStackView1.axis = .horizontal
@@ -53,6 +56,9 @@ class TrainingSumView: UIView {
         mainStackView.addArrangedSubview(horizontalStackView2)
         
         mainStackView.addArrangedSubview(labelBest)
+        labelBest.snp.makeConstraints { (make) in
+            make.height.equalTo(labelBest.intrinsicContentSize.height)
+        }
         
         let horizontalStackView3 = UIStackView()
         horizontalStackView3.axis = .horizontal
@@ -78,14 +84,24 @@ class TrainingSumView: UIView {
     
     private lazy var labelAverage: AppUILabel! = {
         let label = AppUILabel()
-        label.text = getString("training_sum_average")
+        label.text = getString("training_sum_average").uppercased()
+        label.textAlignment = .center
+        label.textColor = Colors.colorPrimary
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
+        label.backgroundColor = Colors.colorQuickStart
         
         return label
     }()
     
     private lazy var labelBest: AppUILabel! = {
         let label = AppUILabel()
-        label.text = getString("training_sum_best")
+        label.text = getString("training_sum_best").uppercased()
+        label.textAlignment = .center
+        label.textColor = Colors.colorPrimary
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
+        label.backgroundColor = Colors.colorQuickStart
         
         return label
     }()
