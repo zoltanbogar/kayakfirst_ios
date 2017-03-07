@@ -64,7 +64,6 @@
 		060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */; };
 		060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */; };
 		060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */; };
-		060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */; };
 		060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF11E4BD8C800FE2D14 /* TrainingSumElementAverage.swift */; };
 		060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF31E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift */; };
 		060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFF51E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift */; };
@@ -280,7 +279,6 @@
 		060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsPagerViewController.swift; sourceTree = "<group>"; };
 		060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewController.swift; sourceTree = "<group>"; };
 		060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTrainingSumElement.swift; sourceTree = "<group>"; };
-		060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTrainingList.swift; sourceTree = "<group>"; };
 		060DDFF11E4BD8C800FE2D14 /* TrainingSumElementAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementAverage.swift; sourceTree = "<group>"; };
 		060DDFF31E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementMaximum.swift; sourceTree = "<group>"; };
 		060DDFF51E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSumElementMinimumTime.swift; sourceTree = "<group>"; };
@@ -610,7 +608,6 @@
 		060DDFEE1E4BD2BF00FE2D14 /* database */ = {
 			isa = PBXGroup;
 			children = (
-				060DDFEF1E4BD2D400FE2D14 /* CreateTrainingList.swift */,
 				06018D571E620FFC00F75919 /* AppSql.swift */,
 				06018D591E6218C100F75919 /* BaseDbLoader.swift */,
 				06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */,
@@ -1296,7 +1293,6 @@
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
 				067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */,
-				060DDFF01E4BD2D400FE2D14 /* CreateTrainingList.swift in Sources */,
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,

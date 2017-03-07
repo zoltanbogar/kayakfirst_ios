@@ -220,9 +220,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         let tableViewTraining = TrainingTablewView(view: self.viewTableView)
         
         tableViewTraining.rowClickCallback = { sumTraining, position in
+            self.trainingDataService.detailsTrainingList = tableViewTraining.dataList
+
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
-            viewController.sumTrainingList = tableViewTraining.dataList
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         

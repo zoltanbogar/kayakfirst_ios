@@ -12,14 +12,13 @@ class TrainingSumView: UIView {
     
     //MARK: properties
     private var position: Int?
-    private var createTrainingList: CreateTrainingList?
+    private var sumTraining: SumTraining?
     
     //MARK: init
-    init(frame: CGRect, position: Int, createTrainingList: CreateTrainingList) {
-        super.init(frame: frame)
-        
+    init(frame: CGRect, position: Int) {
         self.position = position
-        self.createTrainingList = createTrainingList
+        self.sumTraining = TrainingDataService.sharedInstance.detailsTrainingList![position]
+        super.init(frame: frame)
         
         initView()
     }
@@ -107,73 +106,73 @@ class TrainingSumView: UIView {
     }()
     
     private lazy var seT1000Av: TrainingSET1000Av! = {
-        let se = TrainingSET1000Av(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET1000Av(position: self.position!)
         
         return se
     }()
     
     private lazy var seT500Av: TrainingSET500Av! = {
-        let se = TrainingSET500Av(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET500Av(position: self.position!)
         
         return se
     }()
     
     private lazy var seT200Av: TrainingSET200Av! = {
-        let se = TrainingSET200Av(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET200Av(position: self.position!)
         
         return se
     }()
     
     private lazy var seSpeedAv: TrainingSESpeedAv! = {
-        let se = TrainingSESpeedAv(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSESpeedAv(position: self.position!)
         
         return se
     }()
     
     private lazy var seStrokeAv: TrainingSEStrokesAv! = {
-        let se = TrainingSEStrokesAv(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSEStrokesAv(position: self.position!)
         
         return se
     }()
     
     private lazy var seForceAv: TrainingSEForceAv! = {
-        let se = TrainingSEForceAv(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSEForceAv(position: self.position!)
         
         return se
     }()
     
     private lazy var seT1000: TrainingSET1000! = {
-        let se = TrainingSET1000(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET1000(position: self.position!)
         
         return se
     }()
     
     private lazy var seT500: TrainingSET500! = {
-        let se = TrainingSET500(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET500(position: self.position!)
         
         return se
     }()
     
     private lazy var seT200: TrainingSET200! = {
-        let se = TrainingSET200(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSET200(position: self.position!)
         
         return se
     }()
     
     private lazy var seSpeed: TrainingSESpeed! = {
-        let se = TrainingSESpeed(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSESpeed(position: self.position!)
         
         return se
     }()
     
     private lazy var seStroke: TrainingSEStroke! = {
-        let se = TrainingSEStroke(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSEStroke(position: self.position!)
         
         return se
     }()
     
     private lazy var seForce: TrainingSEForce! = {
-        let se = TrainingSEForce(position: self.position!, createTrainingList: self.createTrainingList!)
+        let se = TrainingSEForce(position: self.position!)
         
         return se
     }()

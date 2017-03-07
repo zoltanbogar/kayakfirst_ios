@@ -15,13 +15,12 @@ class LineChartTime: AppLineChartData {
     private var seqTimeStamp: TimeInterval = 0
     fileprivate let dateFormatHelper = DateFormatHelper()
     
-    override func createEntries(trainingList: [[Training]], label: CalculateEnum) -> [ChartDataEntry] {
+    override func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
         seqTimeStamp = 0
-        let trainings = trainingList[position]
-        if trainings.count > 0 {
-            entries = getTimeEntryList(trainings: trainings)
+        if trainingList.count > 0 {
+            entries = getTimeEntryList(trainings: trainingList)
         }
         
         return entries

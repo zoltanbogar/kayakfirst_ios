@@ -19,7 +19,6 @@ class TrainingDetailsViewController: BaseVC {
     }
     var position: Int = 0
     var maxPosition: Int = 0
-    var createTrainingList: CreateTrainingList?
     private var stackView: UIStackView?
     private var stackViewTitle: UIStackView?
     private var _tabPosition = 0
@@ -41,6 +40,7 @@ class TrainingDetailsViewController: BaseVC {
         tabPosition = 0
     }
     
+    //TODO: delet arrows
     private func initArrows() {
         if maxPosition == 1 {
             imgArrowLeft.isHidden = true
@@ -260,19 +260,19 @@ class TrainingDetailsViewController: BaseVC {
     }()
     
     private lazy var sumTrainingView: TrainingSumView! = {
-        let view = TrainingSumView(frame: CGRect.zero, position: self.position, createTrainingList: self.createTrainingList!)
+        let view = TrainingSumView(frame: CGRect.zero, position: self.position)
         
         return view
     }()
     
     private lazy var chartTime: ChartView! = {
-        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!, chartMode: ChartMode.chartModeTime)
+        let view = ChartView(position: self.position, chartMode: ChartMode.chartModeTime)
         
         return view
     }()
     
     private lazy var chartDistance: ChartView! = {
-        let view = ChartView(position: self.position, createTrainingList: self.createTrainingList!, chartMode: ChartMode.chartModeDistance)
+        let view = ChartView(position: self.position, chartMode: ChartMode.chartModeDistance)
         
         return view
     }()

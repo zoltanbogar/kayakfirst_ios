@@ -22,7 +22,7 @@ class TrainingSEForce: TrainingSumelementMaximum {
     }
     
     override func getTrainingList() -> [Training] {
-        return createTrainingList!.fList[position!]
+        return trainingDataService.detailsTrainingList![position!].fList
     }
     
 }

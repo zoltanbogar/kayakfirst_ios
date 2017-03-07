@@ -13,22 +13,20 @@ class LineChartDistance: AppLineChartData {
     
     //MARK: properties
     private var seqDistance: Double = 0
-    private var distanceList: [[Training]]?
+    private let distanceList: [Training]
     
     //MARK: init
-    override init(lineChart: LineChartView, position: Int, createTrainingList: CreateTrainingList) {
-        super.init(lineChart: lineChart, position: position, createTrainingList: createTrainingList)
-        
-        distanceList = CalculateEnum.getTrainingListSumByLabel(label: CalculateEnum.S, createTrainingList: createTrainingList)
+    init(lineChart: LineChartView, distanceList: [Training], position: Int) {
+        self.distanceList = distanceList
+        super.init(lineChart: lineChart, position: position)
     }
     
-    override func createEntries(trainingList: [[Training]], label: CalculateEnum) -> [ChartDataEntry] {
+    override func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
         seqDistance = 0
-        let trainings = trainingList[position]
-        if trainings.count > 0 {
-            entries = getDistanceEntryList(trainings: trainings)
+        if trainingList.count > 0 {
+            entries = getDistanceEntryList(trainings: trainingList)
         }
         return entries
     }
@@ -40,8 +38,8 @@ class LineChartDistance: AppLineChartData {
         
         for i in 0..<trainings.count {
             if trainings[i].currentDistance == 0 {
-                if i<distanceList![position].count {
-                    distance = distanceList![position][i].dataValue
+                if i<distanceList.count {
+                    distance = distanceList[i].dataValue
                     
                     entries.append(ChartDataEntry(x: seqDistance, y: trainings[i].dataValue))
                     

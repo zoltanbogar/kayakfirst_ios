@@ -13,7 +13,6 @@ class AppLineChartData {
     //MARK: properties
     private var lineChart: LineChartView
     internal var position: Int
-    internal var createTrainingList: CreateTrainingList
     private var lineDataSets: [LineChartDataSet]?
     private var label: CalculateEnum?
     private var hasLeftData = false
@@ -22,16 +21,15 @@ class AppLineChartData {
     fileprivate var leftYDateFormatHelper = DateFormatHelper()
     
     //MARK: init
-    init(lineChart: LineChartView, position: Int, createTrainingList: CreateTrainingList) {
+    init(lineChart: LineChartView, position: Int) {
         self.lineChart = lineChart
         self.position = position
-        self.createTrainingList = createTrainingList
         
         initChartDesign()
     }
     
     //MARK: abstract functions
-    func createEntries(trainingList: [[Training]], label: CalculateEnum) -> [ChartDataEntry] {
+    func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
         fatalError("Must be implemented")
     }
     func xAxisFormatter() -> IAxisValueFormatter {
@@ -47,7 +45,7 @@ class AppLineChartData {
         
         for l in diagramLabels {
             if l.isActive {
-                addData(trainingsList: CalculateEnum.getTrainingListSumByLabel(label: l.getLabel(), createTrainingList: createTrainingList), diagramLabel: l)
+                addData(trainingList: getTrainingListSumByLabel(label: l.getLabel()), diagramLabel: l)
             } else {
                 label = nil
             }
@@ -65,8 +63,8 @@ class AppLineChartData {
         lineChart.doubleTapToZoomEnabled = false
     }
     
-    private func addData(trainingsList: [[Training]], diagramLabel: DiagramLabel) {
-        lineDataSets?.append(createLineDataSet(entries: createEntries(trainingList: trainingsList, label: diagramLabel.getLabel()), diagramLabel: diagramLabel))
+    private func addData(trainingList: [Training], diagramLabel: DiagramLabel) {
+        lineDataSets?.append(createLineDataSet(entries: createEntries(trainingList: trainingList, label: diagramLabel.getLabel()), diagramLabel: diagramLabel))
     }
     
     private func refreshChart() {
@@ -145,6 +143,28 @@ class AppLineChartData {
     private func setYAxisEnabled() {
         lineChart.leftAxis.enabled = hasLeftData
         lineChart.rightAxis.enabled = hasRightData
+    }
+    
+    func getTrainingListSumByLabel(label: CalculateEnum) -> [Training] {
+        let trainingDataService = TrainingDataService.sharedInstance
+        switch label {
+        case CalculateEnum.T_200:
+            return trainingDataService.detailsTrainingList![position].t200List
+        case CalculateEnum.T_500:
+            return trainingDataService.detailsTrainingList![position].t500List
+        case CalculateEnum.T_1000:
+            return trainingDataService.detailsTrainingList![position].t1000List
+        case CalculateEnum.STROKES:
+            return trainingDataService.detailsTrainingList![position].strokesList
+        case CalculateEnum.F:
+            return trainingDataService.detailsTrainingList![position].fList
+        case CalculateEnum.V:
+            return trainingDataService.detailsTrainingList![position].vList
+        case CalculateEnum.S:
+            return trainingDataService.detailsTrainingList![position].distanceList
+        default:
+            fatalError("There is no createTrainingList for this :  \(label)")
+        }
     }
 }
 

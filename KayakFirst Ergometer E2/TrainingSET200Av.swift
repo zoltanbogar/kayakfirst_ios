@@ -22,6 +22,6 @@ class TrainingSET200Av: TrainingSumElementAvgTime {
     }
     
     override func getTrainingList() -> [Training] {
-        return createTrainingList!.t200List[position!]
+        return trainingDataService.detailsTrainingList![position!].t200List
     }
 }

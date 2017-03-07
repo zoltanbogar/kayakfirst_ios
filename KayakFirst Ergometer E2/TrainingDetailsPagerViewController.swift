@@ -11,13 +11,11 @@ import UIKit
 //TODO: all trainings and @TrainingDetailsViewController will be loaded here and this is slow!!!!
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource {
     
-    //MARK: properties
-    var sumTrainingList: [SumTraining]? {
+    var position: Int? {
         didSet {
             initViewControllers()
         }
     }
-    var position: Int?
     private var trainingViewControllers: [UIViewController]?
     
     //MARK: init
@@ -80,14 +78,13 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }
     
     private func initViewControllers() {
-        if let sumTrainings = sumTrainingList {
+        if let sumTrainings = TrainingDataService.sharedInstance.detailsTrainingList {
             trainingViewControllers = [UIViewController]()
             for i in 0..<sumTrainings.count {
                 let controller = TrainingDetailsViewController()
                 controller.sumTraining = sumTrainings[i]
                 controller.position = i
                 controller.maxPosition = sumTrainings.count
-                controller.createTrainingList = CreateTrainingList(sumTrainings: sumTrainingList!)
                 trainingViewControllers!.append(controller)
             }
         }

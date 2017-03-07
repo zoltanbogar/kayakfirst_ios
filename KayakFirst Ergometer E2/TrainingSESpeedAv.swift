@@ -26,6 +26,6 @@ class TrainingSESpeedAv: TrainingSumElementAverage {
     }
     
     override func getTrainingList() -> [Training] {
-        return createTrainingList!.vList[position!]
+        return trainingDataService.detailsTrainingList![position!].vList
     }
 }

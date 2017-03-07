@@ -20,6 +20,14 @@ class SumTraining: Equatable {
     var trainingEnvironmentType: TrainingEnvironmentType?
     var sessionId: Double?
     
+    var t200List = [Training]()
+    var t500List = [Training]()
+    var t1000List = [Training]()
+    var strokesList = [Training]()
+    var fList = [Training]()
+    var vList = [Training]()
+    var distanceList = [Training]()
+    
     private let dateFormatHelper = DateFormatHelper()
     
     var formattedStartTime: String {
@@ -51,72 +59,50 @@ class SumTraining: Equatable {
     init(trainingList: [Training]) {
         self.trainingList = trainingList
         
-        calStartTime()
-        calDuration()
-        calDistance()
         initTrainingDetails()
     }
     
     //MARK: calculation
-    private func calStartTime() {
+    private func initTrainingDetails() {
         if trainingList != nil && trainingList!.count > 0 {
-            startTime = trainingList![0].timeStamp
-        }
-    }
-    
-    private func calDuration() {
-        if trainingList != nil && trainingList!.count > 0 {
-            var trainingsBySessionId = [[Training]]()
-            var sessionId: TimeInterval = 0
-            var trainingListEqualSessionId: [Training]? = nil
-            for t in trainingList! {
-                if sessionId != t.sessionId {
-                    if trainingListEqualSessionId != nil {
-                        trainingsBySessionId.append(trainingListEqualSessionId!)
-                    }
-                    trainingListEqualSessionId = [Training]()
-                    sessionId = t.sessionId
-                }
-                if trainingListEqualSessionId != nil {
-                    trainingListEqualSessionId?.append(t)
-                }
-            }
-            trainingsBySessionId.append(trainingListEqualSessionId!)
+            self.startTime = trainingList![0].timeStamp
+            trainingEnvironmentType = trainingList![0].trainingEnvironmentType
+            sessionId = trainingList![0].sessionId
             
-            var duration: TimeInterval = 0
-            for tL in trainingsBySessionId {
-                let size = tL.count
-                let startTime = tL[0].timeStamp
-                let endTime = tL[size-1].timeStamp
-                duration = duration + (endTime - startTime)
+            var s: Double = 0
+            
+            let startTime = trainingList![0].timeStamp
+            var endTime = trainingList![0].timeStamp
+            
+            for training in trainingList! {
+                if CalculateEnum.T_200.rawValue == training.dataType {
+                    t200List.append(training)
+                } else if CalculateEnum.T_500.rawValue == training.dataType {
+                    t500List.append(training)
+                } else if CalculateEnum.T_1000.rawValue == training.dataType {
+                    t1000List.append(training)
+                } else if CalculateEnum.STROKES.rawValue == training.dataType {
+                    strokesList.append(training)
+                } else if CalculateEnum.F.rawValue == training.dataType {
+                    fList.append(training)
+                } else if CalculateEnum.V.rawValue == training.dataType {
+                    vList.append(training)
+                } else if CalculateEnum.S.rawValue == training.dataType {
+                    distanceList.append(training)
+                    s += training.dataValue
+                }
+                endTime = training.timeStamp
             }
-            self.duration = duration
-        }
-    }
-    
-    private func calDistance() {
-        if trainingList != nil && trainingList!.count > 0 {
+            
+            duration = endTime - startTime
+            
             let currentDistance: Double = trainingList![(trainingList!.count - 1)].currentDistance
             
             if currentDistance != 0 {
                 distance = currentDistance
             } else {
-                var s: Double = 0
-                for t in trainingList! {
-                    if t.dataType == CalculateEnum.S.rawValue {
-                        s = s + t.dataValue
-                    }
-                }
                 distance = s
             }
-            
-        }
-    }
-    
-    private func initTrainingDetails() {
-        if trainingList != nil && trainingList!.count > 0 {
-            trainingEnvironmentType = trainingList![0].trainingEnvironmentType
-            sessionId = trainingList![0].sessionId
         }
     }
     
