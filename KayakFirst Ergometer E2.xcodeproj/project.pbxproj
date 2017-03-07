@@ -61,7 +61,6 @@
 		060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */; };
 		060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */; };
 		060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */; };
-		060DDFE21E4B01C000FE2D14 /* DailyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE11E4B01C000FE2D14 /* DailyData.swift */; };
 		060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */; };
 		060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */; };
 		060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */; };
@@ -108,7 +107,7 @@
 		0613A91A1E67E8D900B13342 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613A9191E67E8D900B13342 /* Bolts.framework */; };
 		0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */; };
 		0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */; };
-		0613DAA11E47843900CAD5A6 /* TrainingServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA01E47843900CAD5A6 /* TrainingServerService.swift */; };
+		0613DAA11E47843900CAD5A6 /* TrainingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */; };
 		0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
@@ -278,7 +277,6 @@
 		060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvg.swift; sourceTree = "<group>"; };
 		060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingAvgs.swift; sourceTree = "<group>"; };
 		060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDtoDownload.swift; sourceTree = "<group>"; };
-		060DDFE11E4B01C000FE2D14 /* DailyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyData.swift; sourceTree = "<group>"; };
 		060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsPagerViewController.swift; sourceTree = "<group>"; };
 		060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewController.swift; sourceTree = "<group>"; };
 		060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTrainingSumElement.swift; sourceTree = "<group>"; };
@@ -326,7 +324,7 @@
 		0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0613A91F1E67EF8D00B13342 /* KayakFirst Ergometer E2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KayakFirst Ergometer E2-Bridging-Header.h"; sourceTree = "<group>"; };
 		0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVDate+.swift"; sourceTree = "<group>"; };
-		0613DAA01E47843900CAD5A6 /* TrainingServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingServerService.swift; sourceTree = "<group>"; };
+		0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataService.swift; sourceTree = "<group>"; };
 		0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDays.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -566,7 +564,6 @@
 				06117BD01E4996350066C072 /* Training.swift */,
 				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
 				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
-				060DDFE11E4B01C000FE2D14 /* DailyData.swift */,
 				067964571E63661200DFC050 /* TelemetryObject.swift */,
 				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
 			);
@@ -710,7 +707,7 @@
 				06F9145B1E427ACE0041B303 /* UserService.swift */,
 				0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */,
 				06F657B71E45C899002AA9D0 /* AppService.swift */,
-				0613DAA01E47843900CAD5A6 /* TrainingServerService.swift */,
+				0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */,
 			);
 			name = server;
 			sourceTree = "<group>";
@@ -1219,7 +1216,7 @@
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				069433F01E28437000CE6398 /* BluetoothConnectDialog.swift in Sources */,
-				0613DAA11E47843900CAD5A6 /* TrainingServerService.swift in Sources */,
+				0613DAA11E47843900CAD5A6 /* TrainingDataService.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
@@ -1246,7 +1243,6 @@
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
-				060DDFE21E4B01C000FE2D14 /* DailyData.swift in Sources */,
 				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
 				067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */,
 				060B991D1E641C7A00F72404 /* AutoStopIdle.swift in Sources */,

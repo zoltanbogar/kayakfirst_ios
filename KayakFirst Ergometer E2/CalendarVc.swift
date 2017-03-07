@@ -9,7 +9,6 @@
 import UIKit
 import CVCalendar
 
-//TODO: if one day is loaded it will not be refresh
 class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: views
@@ -22,16 +21,24 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private var trainingDays: [TimeInterval]?
     
     //MARK: service
-    private let trainingService = TrainingServerService.sharedInstance
+    private let trainingDataService = TrainingDataService.sharedInstance
     
     //MARK: properties
     private var selectedDate: TimeInterval?
-    private var dailyDataList: [DailyData]?
     private var error: Responses?
     
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trainingDataService.trainingDataCallback = trainingListTrainingDataCallback
+        trainingDataService.trainingDaysCallback = trainingDaysListTrainingDataCallback
+        trainingDataService.progressListener = progressListener
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         getTrainingDays()
     }
     
@@ -132,7 +139,21 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: call service
     private func getTrainingDays() {
-        TrainingServerService.sharedInstance.getTrainingDays(trainingDataCallback: trainingDaysCallback)
+        trainingDataService.getTrainingDays()
+    }
+    
+    private func initTrainingDays(trainingDays: [TimeInterval]?) {
+        if let trainingDaysValue = trainingDays {
+            for trainingDay in trainingDaysValue {
+                if self.trainingDays == nil {
+                    self.trainingDays = [TimeInterval]()
+                }
+                
+                if !self.trainingDays!.contains(trainingDay) {
+                    self.trainingDays!.append(trainingDay)
+                }
+            }
+        }
     }
     
     private func getTrainigsList() {
@@ -148,71 +169,25 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         }
         
         if hasData {
-            if getDailyData() {
-                refreshTableView()
-            } else {
-                let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
-                let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
-                trainingService.getTrainingList(trainingDataCallback: trainingListCallback, timeStampFrom: fromDate, timeStampTo: toDate)
-                showProgressBar(isShow: true)
-            }
+            let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
+            let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
+            trainingDataService.getTrainingList(sessionIdFrom: fromDate, sessionIdTo: toDate)
         } else {
-            tableViewTraining?.dataList = nil
-            trainingTableViewHeader.isHidden = true
-            showProgressBar(isShow: false)
+            refreshTableView(sumTrainings: nil)
         }
         errorHandling()
     }
     
-    //TODO: delete dailyData!!!
-    private func refreshTableView() {
-        if let dailyData = dailyDataList {
-            var dataAvailable = false
-            
-            for d in dailyData {
-                if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: selectedDate!) {
-                    let sumTrainings = d.sumTrainingList
-                    
-                    dataAvailable = sumTrainings != nil
-                    tableViewTraining?.dataList = sumTrainings
-                    trainingTableViewHeader.isHidden = !dataAvailable
-                }
-            }
-            //TODO: delete log
-            log("PROGRESS", "dataAvailable: \(dataAvailable)")
-            showProgressBar(isShow: !dataAvailable)
-        }
-    }
-    
-    private func getDailyData() -> Bool {
-        if dailyDataList == nil {
-            dailyDataList = [DailyData]()
-        }
-        
-        for d in dailyDataList! {
-            if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: selectedDate!) {
-                return true
-            }
-        }
-        dailyDataList!.append(DailyData(date: selectedDate!))
-        return false
-    }
-    
-    private func addDailyData(trainingList: [Training]?) {
-        if trainingList != nil && trainingList!.count > 0 {
-            for d in dailyDataList! {
-                if DateFormatHelper.isSameDay(timeStamp1: d.date, timeStamp2: trainingList![0].sessionId) {
-                    let sumTrainingList = SumTraining.createSumTrainingList(trainings: trainingList!)
-                    d.add(sumTrainings: sumTrainingList!)
-                }
-            }
-        }
+    private func refreshTableView(sumTrainings: [SumTraining]?) {
+        trainingTableViewHeader.isHidden = sumTrainings == nil
+        tableViewTraining?.dataList = sumTrainings
     }
     
     //MARK: callbacks
-    private func trainingDaysCallback(error: Responses?, trainingData: [TimeInterval]?) {
+    private func trainingDaysListTrainingDataCallback(error: Responses?, trainingData: [TimeInterval]?) {
         if let trainingDays = trainingData {
-            self.trainingDays = trainingDays
+            initTrainingDays(trainingDays: trainingDays)
+            
             cvCalendarView?.contentController.refreshPresentedMonth()
             getTrainigsList()
         }
@@ -220,10 +195,13 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         errorHandling()
     }
     
-    private func trainingListCallback(error: Responses?, trainingData: [Training]?) {
-        if let trainings = trainingData {
-            addDailyData(trainingList: trainings)
-            refreshTableView()
+    private func trainingListTrainingDataCallback(error: Responses?, trainingData: [SumTraining]?) {
+        if let sumTrainings = trainingData {
+            if sumTrainings.count > 0 {
+                if DateFormatHelper.isSameDay(timeStamp1: sumTrainings[0].sessionId!, timeStamp2: self.selectedDate!) {
+                    refreshTableView(sumTrainings: sumTrainings)
+                }
+            }
         }
         self.error = error
         errorHandling()
@@ -258,10 +236,14 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return spinner
     }()
     
+    private func progressListener(onProgress: Bool) {
+        showProgressBar(isShow: onProgress)
+    }
+    
+    //TODO: refactor this
     private func showProgressBar(isShow: Bool) {
         if isShow {
             progressBar.startAnimating()
-            tableViewTraining?.dataList = nil
         } else {
             progressBar.stopAnimating()
         }

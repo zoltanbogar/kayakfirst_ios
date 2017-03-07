@@ -18,6 +18,7 @@ class SumTraining: Equatable {
     private var distance: Double?
     var trainingList: [Training]?
     var trainingEnvironmentType: TrainingEnvironmentType?
+    var sessionId: Double?
     
     private let dateFormatHelper = DateFormatHelper()
     
@@ -53,7 +54,7 @@ class SumTraining: Equatable {
         calStartTime()
         calDuration()
         calDistance()
-        initTrainingEnvironmentType()
+        initTrainingDetails()
     }
     
     //MARK: calculation
@@ -112,9 +113,10 @@ class SumTraining: Equatable {
         }
     }
     
-    private func initTrainingEnvironmentType() {
+    private func initTrainingDetails() {
         if trainingList != nil && trainingList!.count > 0 {
             trainingEnvironmentType = trainingList![0].trainingEnvironmentType
+            sessionId = trainingList![0].sessionId
         }
     }
     

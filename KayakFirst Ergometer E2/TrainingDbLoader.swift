@@ -65,6 +65,10 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     }
     
     //MARK: query
+    func getTrainingsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
+        return self.timeStamp > sessionIdFrom && self.timeStamp <= sessionIdTo
+    }
+    
     override func loadData(predicate: Expression<Bool>?) -> [Training]? {
         var trainingList: [Training]?
         

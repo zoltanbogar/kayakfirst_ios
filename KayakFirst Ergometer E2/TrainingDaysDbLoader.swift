@@ -59,7 +59,8 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
             for trainingDaysDb in dbList {
                 let sessionId = trainingDaysDb[self.sessionId]
                 
-                trainingDaysList?.append(sessionId)
+                //it is for the calendarView
+                trainingDaysList?.append(DateFormatHelper.getZeroHour(timeStamp: sessionId))
                 
             }
         } catch {

@@ -66,6 +66,10 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
     }
     
     //MARK: query
+    func getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
+        return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
+    }
+    
     override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
         var trainingAvgList: [TrainingAvg]?
         
