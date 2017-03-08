@@ -10,6 +10,11 @@ import UIKit
 
 class DashboardVc: BaseVC, CycleStateChangeListener {
     
+    //MARK: constants
+    private let btnPlayState = 0
+    private let btnPauseState = 1
+    private let btnRestartState = 2
+    
     //MARK: properties
     private let telemetry = Telemetry.sharedInstance
     private var dashboardElement0: DashBoardElement?
@@ -58,26 +63,23 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             switch newCycleState {
             case CycleState.idle:
                 self.showPauseView(false)
-                self.initBtnPlayPause(isPlay: true, isShow: true)
-                self.showBackButton(true)
+                self.initBtnPlayPause(btnPlayPauseIcon: self.btnPlayState, isShow: true)
                 self.refreshDashboardElements(false)
             case CycleState.stopped:
                 self.showPauseView(false)
-                self.initBtnPlayPause(isPlay: true, isShow: true)
-                self.showBackButton(true)
+                self.initBtnPlayPause(btnPlayPauseIcon: self.btnRestartState, isShow: true)
                 self.refreshDashboardElements(false)
             case CycleState.paused:
                 self.showPauseView(true)
-                self.initBtnPlayPause(isPlay: true, isShow: false)
-                self.showBackButton(false)
+                self.initBtnPlayPause(btnPlayPauseIcon: self.btnRestartState, isShow: false)
                 self.refreshDashboardElements(false)
             case CycleState.resumed:
                 self.showPauseView(false)
-                self.initBtnPlayPause(isPlay: false, isShow: true)
-                self.showBackButton(false)
+                self.initBtnPlayPause(btnPlayPauseIcon: self.btnPauseState, isShow: true)
                 self.refreshDashboardElements(true)
             default: break
             }
+            self.showBackButton()
         }
     }
     
@@ -85,18 +87,44 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         pauseView.isHidden = !isShow
     }
     
-    private func initBtnPlayPause(isPlay: Bool, isShow: Bool) {
-        if isPlay {
-            btnPlayPause.image = UIImage(named: "ic_play_48dp")!
-        } else {
-            btnPlayPause.image = UIImage(named: "ic_pause_white_48pt")!
+    private func initBtnPlayPause(btnPlayPauseIcon: Int, isShow: Bool) {
+        var image: UIImage = UIImage(named: "ic_play_48dp")!
+        var color: UIColor = Colors.colorGreen
+        switch btnPlayPauseIcon {
+        case btnPlayState:
+            image = UIImage(named: "ic_play_48dp")!
+            color = Colors.colorGreen
+        case btnPauseState:
+            image = UIImage(named: "ic_pause_white_48pt")!.maskWith(color: Colors.colorPrimary)
+            color = Colors.colorYellow
+        case btnRestartState:
+            image = UIImage(named: "ic_refresh_white_48pt")!
+            color = Colors.colorGreen
+        default:
+            break
         }
         
+        btnPlayPause.image = image
+        btnPlayPause.color = color
         btnPlayPause.isHidden = !isShow
     }
     
-    private func showBackButton(_ isShow: Bool) {
-        self.navigationItem.setHidesBackButton(!isShow, animated: true)
+    private func showBackButton() {
+        switch telemetry.cycleState {
+        case CycleState.idle:
+            self.navigationItem.setHidesBackButton(false, animated: true)
+            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        case CycleState.stopped:
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+        case CycleState.paused:
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        case CycleState.resumed:
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        default: break
+        }
     }
     
     private func refreshDashboardElements(_ isRefresh: Bool) {
@@ -314,5 +342,20 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         return stackView
     }()
+    
+    private lazy var btnClose: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_clear_white_24dp")
+        button.target = self
+        button.action = #selector(btnCloseClick)
+        
+        return button
+    }()
+    
+    @objc private func btnCloseClick() {
+        if let parent = self.parent as? TrainingViewController {
+            parent.closeViewController()
+        }
+    }
     
 }

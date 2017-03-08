@@ -162,6 +162,7 @@
 		069433F41E28456A00CE6398 /* DialogOnFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F31E28456A00CE6398 /* DialogOnFinish.swift */; };
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
+		06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */; };
 		06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseVC.swift */; };
 		06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* MainVc.swift */; };
 		06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D51E564F2200F41652 /* CalendarVc.swift */; };
@@ -378,6 +379,7 @@
 		069433F31E28456A00CE6398 /* DialogOnFinish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogOnFinish.swift; sourceTree = "<group>"; };
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
+		06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		06BCB0D11E564D7D00F41652 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		06BCB0D31E564F0200F41652 /* MainVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVc.swift; sourceTree = "<group>"; };
 		06BCB0D51E564F2200F41652 /* CalendarVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVc.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */,
 				060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */,
 				06018D551E61D9D700F75919 /* UIView+.swift */,
+				06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
 				060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
+				06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */,
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,

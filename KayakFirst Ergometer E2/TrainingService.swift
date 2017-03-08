@@ -158,6 +158,7 @@ class TrainingService: CycleStateChangeListener {
         return false
     }
     
+    //TODO: not so seamless, it can 'stick'
     private func setDuration() {
         let timeDiff = pauseDiff.getAbsoluteTimeStamp() - telemetry.sessionId
         
