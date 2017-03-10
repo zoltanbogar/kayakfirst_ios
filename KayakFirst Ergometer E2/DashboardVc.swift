@@ -23,11 +23,16 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private var dashboardElement3: DashBoardElement?
     private var dashboardElement4: DashBoardElement?
     
+    private var btnPlayPauseGestureRecognizer: UIPanGestureRecognizer?
+    private var btnPlayPauseOriginalX: CGFloat = 0
+    private var btnPlayPauseOriginalY: CGFloat = 0
+    
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
+        onCycleStateChanged(newCycleState: telemetry.cycleState)
     }
     
     //MARK: button listeners
@@ -94,12 +99,23 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         case btnPlayState:
             image = UIImage(named: "ic_play_48dp")!
             color = Colors.colorGreen
+            btnPlayPause.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
+            if let gestureRecognizer = btnPlayPauseGestureRecognizer {
+                btnPlayPause.removeGestureRecognizer(gestureRecognizer)
+            }
         case btnPauseState:
             image = UIImage(named: "ic_pause_white_48pt")!.maskWith(color: Colors.colorPrimary)
             color = Colors.colorYellow
+            btnPlayPause.removeTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
+            btnPlayPauseGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(animateBtnPlayPause(pan:)))
+            btnPlayPause.addGestureRecognizer(btnPlayPauseGestureRecognizer!)
         case btnRestartState:
             image = UIImage(named: "ic_refresh_white_48pt")!
             color = Colors.colorGreen
+            btnPlayPause.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
+            if let gestureRecognizer = btnPlayPauseGestureRecognizer {
+                btnPlayPause.removeGestureRecognizer(gestureRecognizer)
+            }
         default:
             break
         }
@@ -296,8 +312,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private lazy var btnPlayPause: RoundButton! = {
         let button = RoundButton(radius: 75, image: UIImage(named: "ic_play_48dp")!, color: Colors.colorGreen)
         
-        button.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
-        
         return button
     }()
     
@@ -352,10 +366,44 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         return button
     }()
     
+    //MARK: button callbacks
     @objc private func btnCloseClick() {
         if let parent = self.parent as? TrainingViewController {
             parent.closeViewController()
         }
+    }
+    
+    //TODO: landscape
+    @objc private func animateBtnPlayPause(pan: UIPanGestureRecognizer) {
+        let translation = pan.translation(in: self.view)
+        
+        switch pan.state {
+        case .began:
+            btnPlayPauseOriginalX = pan.view!.center.x
+            btnPlayPauseOriginalY = pan.view!.center.y
+        case .changed:
+            let diff = abs(btnPlayPauseOriginalX - pan.view!.center.x + translation.x)
+            
+            log("SWIPE", "diff: \(diff)")
+            
+            if diff > 75 {
+                btnPlayPauseClick()
+                animateBtnPlayPauseToOriginal()
+            } else {
+                pan.view!.center = CGPoint(x: pan.view!.center.x + translation.x, y: pan.view!.center.y)
+                pan.setTranslation(CGPoint.zero, in: self.view)
+            }
+        case .ended:
+            animateBtnPlayPauseToOriginal()
+        default:
+            break
+        }
+    }
+    
+    private func animateBtnPlayPauseToOriginal() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.btnPlayPause.center = CGPoint(x: self.btnPlayPauseOriginalX, y: self.btnPlayPauseOriginalY)
+        })
     }
     
 }
