@@ -53,11 +53,12 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         stackView.addArrangedSubview(tfWeight)
         stackView.addArrangedSubview(tfCountry)
         stackView.addArrangedSubview(tfGender)
+        stackView.addVerticalSpacing(spacing: margin)
         stackView.addArrangedSubview(labelRequired)
         
         scrollView!.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView!.containerView)
+            make.edges.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
         }
         
         let viewBottom = UIView()
@@ -76,8 +77,8 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         }
         viewBottom.addSubview(textFieldTermsCondition)
         textFieldTermsCondition.snp.makeConstraints { make in
-            make.left.equalTo(labelAccept.snp.right).offset(margin05)
-            make.bottom.equalTo(labelAccept.snp.bottom)
+            make.left.equalTo(labelAccept.snp.left)
+            make.top.equalTo(labelAccept.snp.bottom).offset(margin05)
         }
         viewBottom.addSubview(btnRegister)
         btnRegister.snp.makeConstraints { make in
@@ -87,8 +88,9 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
             make.bottom.equalTo(viewBottom.snp.bottom).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
         viewBottom.snp.makeConstraints { (make) in
-            make.height.equalTo(100)
+            make.height.equalTo(130)
         }
+        stackView.addVerticalSpacing(spacing: margin)
         stackView.addArrangedSubview(viewBottom)
     }
     

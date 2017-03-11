@@ -117,7 +117,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     //MARK: size
     override var intrinsicContentSize: CGSize {
         get {
-            return CGSize(width: 0, height: 75)
+            return CGSize(width: 0, height: 65)
         }
     }
     
@@ -128,7 +128,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         
         valueTextField.snp.makeConstraints{ make in
             make.width.equalTo(valueTextField.superview!)
-            make.height.equalTo(50)
+            make.height.equalTo(40)
             make.center.equalTo(self)
         }
         
