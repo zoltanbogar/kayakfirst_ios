@@ -61,7 +61,7 @@ class LoginView: UIView {
         stackView.addArrangedSubview(btnFacebook)
         btnFacebook.addSubview(imgFacebook)
         imgFacebook.snp.makeConstraints { (make) in
-            make.left.equalTo(btnFacebook).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.left.equalTo(btnFacebook).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
             make.height.equalTo(socialIconHeight)
             make.width.equalTo(socialIconHeight)
             make.centerY.equalTo(btnFacebook)
@@ -69,7 +69,7 @@ class LoginView: UIView {
         stackView.addArrangedSubview(btnGoogle)
         btnGoogle.addSubview(imgGoogle)
         imgGoogle.snp.makeConstraints { (make) in
-            make.left.equalTo(btnGoogle).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.left.equalTo(btnGoogle).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
             make.height.equalTo(socialIconHeight)
             make.width.equalTo(socialIconHeight)
             make.centerY.equalTo(btnGoogle)
