@@ -64,6 +64,7 @@ class BaseTrainingSumElement: UIView {
     
     private lazy var labelTitle: AppUILabel! = {
         let label = AppUILabel()
+        label.font = label.font.withSize(12)
         label.textAlignment = .center
         
         return label
@@ -72,7 +73,7 @@ class BaseTrainingSumElement: UIView {
     private lazy var labelValue: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont(name: "BebasNeue", size: 30)
         
         return label
     }()

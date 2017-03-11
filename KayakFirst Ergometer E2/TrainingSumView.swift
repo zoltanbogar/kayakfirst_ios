@@ -29,9 +29,10 @@ class TrainingSumView: UIView {
     
     //MARK: views
     private func initView() {
+        let scrollView = AppScrollView(view: self)
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
-        mainStackView.spacing = margin
+        mainStackView.spacing = margin05
         
         mainStackView.addArrangedSubview(labelAverage)
         labelAverage.snp.makeConstraints { (make) in
@@ -75,9 +76,9 @@ class TrainingSumView: UIView {
         horizontalStackView4.addArrangedSubview(seForce)
         mainStackView.addArrangedSubview(horizontalStackView4)
         
-        addSubview(mainStackView)
+        scrollView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.edges.equalTo(scrollView.containerView)
         }
     }
     

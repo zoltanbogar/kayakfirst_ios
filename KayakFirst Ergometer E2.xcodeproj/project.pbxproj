@@ -154,6 +154,7 @@
 		067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */; };
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
 		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
+		0683EA381E74860100F39988 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0683EA371E74858A00F39988 /* BebasNeue.otf */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433EB1E283F5A00CE6398 /* EmailCheck.swift */; };
@@ -372,6 +373,7 @@
 		067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVOutdoor.swift; sourceTree = "<group>"; };
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
 		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
+		0683EA371E74858A00F39988 /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433EB1E283F5A00CE6398 /* EmailCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
@@ -768,6 +770,14 @@
 			name = outdoor;
 			sourceTree = "<group>";
 		};
+		0683EA361E74856D00F39988 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0683EA371E74858A00F39988 /* BebasNeue.otf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
 		069433E61E28361B00CE6398 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -882,6 +892,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				0683EA361E74856D00F39988 /* fonts */,
 				060B99241E64288B00F72404 /* location */,
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				06C1B9861E25961300AB4C47 /* design */,
@@ -1061,6 +1072,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0683EA381E74860100F39988 /* BebasNeue.otf in Resources */,
 				06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */,
 				0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */,
 				0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */,

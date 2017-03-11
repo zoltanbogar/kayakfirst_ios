@@ -14,7 +14,18 @@ class TrainingDetailsViewController: BaseVC {
         didSet {
             labelDuration.text = sumTraining?.formattedDuration
             labelDistance.text = sumTraining?.formattedDistance
-            initTitle()
+        }
+    }
+    var titleString: String? {
+        get {
+            let timeStamp = sumTraining!.startTime
+            let titleString = DateFormatHelper.getDate(dateFormat: getString("date_time_format"), timeIntervallSince1970: timeStamp)
+            return titleString
+        }
+    }
+    var environmentType: TrainingEnvironmentType? {
+        get {
+            return sumTraining?.trainingEnvironmentType
         }
     }
     var position: Int = 0
@@ -36,34 +47,7 @@ class TrainingDetailsViewController: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initArrows()
         tabPosition = 0
-    }
-    
-    //TODO: delet arrows
-    private func initArrows() {
-        if maxPosition == 1 {
-            imgArrowLeft.isHidden = true
-            imgArrowRight.isHidden = true
-        } else {
-            if position == 0 {
-                imgArrowLeft.isHidden = true
-                imgArrowRight.isHidden = false
-            } else if position == maxPosition - 1 {
-                imgArrowLeft.isHidden = false
-                imgArrowRight.isHidden = true
-            } else {
-                imgArrowLeft.isHidden = false
-                imgArrowRight.isHidden = false
-            }
-        }
-    }
-    
-    private func initTitle() {
-        let timeStamp = sumTraining!.startTime
-        let titleString = DateFormatHelper.getDate(dateFormat: getString("date_time_format"), timeIntervallSince1970: timeStamp)
-        //TODO: not works!!
-        self.parent?.navigationController?.navigationItem.title = titleString
     }
 
     //MARK: init view
@@ -84,11 +68,13 @@ class TrainingDetailsViewController: BaseVC {
         
         let stackViewVertical1 = UIStackView()
         stackViewVertical1.axis = .vertical
+        stackViewVertical1.spacing = margin05
         stackViewVertical1.addArrangedSubview(labelDurationTitle)
         stackViewVertical1.addArrangedSubview(labelDuration)
         
         let stackViewVertical2 = UIStackView()
         stackViewVertical2.axis = .vertical
+        stackViewVertical2.spacing = margin05
         stackViewVertical2.addArrangedSubview(labelDistanceTitle)
         stackViewVertical2.addArrangedSubview(labelDistance)
         
@@ -140,26 +126,10 @@ class TrainingDetailsViewController: BaseVC {
             make.edges.equalTo(viewTop)
         }
         
-        viewTop.addSubview(imgArrowLeft)
-        imgArrowLeft.snp.makeConstraints { make in
-            make.centerY.equalTo(viewTop)
-        }
-        viewTop.addSubview(imgArrowRight)
-        imgArrowRight.snp.makeConstraints { make in
-            make.centerY.equalTo(viewTop)
-            make.right.equalTo(viewTop)
-        }
-        
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
-    }
-    
-    //TODO: title, TrainingEnvironmentType indicator
-    override func initTabBarItems() {
-        self.navigationController!.navigationItem.setRightBarButtonItems([btnType], animated: true)
-        //self.navigationItem.setRightBarButtonItems([btnType], animated: true)
     }
     
     override func handlePortraitLayout(size: CGSize) {
@@ -176,25 +146,19 @@ class TrainingDetailsViewController: BaseVC {
         stackViewTitle?.axis = .vertical
         viewTop.snp.removeConstraints()
         viewTop.snp.makeConstraints { (make) in
+            make.height.equalTo(250)
             make.width.equalTo(250)
         }
     }
     
     //MARK: view
-    private lazy var btnType: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "sun")
-        
-        return button
-    }()
-    
     private lazy var btnTable: UIButton! = {
         let button = UIButton()
         button.setTitle(getString("training_details_all").uppercased(),for: .normal)
         button.backgroundColor = Colors.colorPrimary
         button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
         
-        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 12.0)
         
         button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
         
@@ -207,7 +171,7 @@ class TrainingDetailsViewController: BaseVC {
         button.backgroundColor = Colors.colorPrimary
         button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
         
-        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 12.0)
         
         button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
         
@@ -220,7 +184,7 @@ class TrainingDetailsViewController: BaseVC {
         button.backgroundColor = Colors.colorPrimary
         button.setTitleColor(Colors.colorWhite, for: UIControlState.normal)
         
-        button.titleLabel!.font = button.titleLabel!.font.withSize(12)
+        button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 12.0)
         
         button.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
         
@@ -229,6 +193,7 @@ class TrainingDetailsViewController: BaseVC {
     
     private lazy var labelDurationTitle: AppUILabel! = {
         let label = AppUILabel()
+        label.font = label.font.withSize(12)
         label.textAlignment = .center
         label.text = getString("training_duration").uppercased()
         
@@ -237,24 +202,27 @@ class TrainingDetailsViewController: BaseVC {
     
     private lazy var labelDistanceTitle: AppUILabel! = {
         let label = AppUILabel()
+        label.font = label.font.withSize(12)
         label.textAlignment = .center
         label.text = getString("training_distance").uppercased()
         
         return label
     }()
     
-    private lazy var labelDuration: AppUILabel! = {
-        let label = AppUILabel()
+    private lazy var labelDuration: UILabel! = {
+        let label = LabelWithAdaptiveTextHeight()
+        label.textColor = Colors.colorWhite
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.font = UIFont(name: "BebasNeue", size: 40)
         
         return label
     }()
     
-    private lazy var labelDistance: AppUILabel! = {
-        let label = AppUILabel()
+    private lazy var labelDistance: UILabel! = {
+        let label = LabelWithAdaptiveTextHeight()
+        label.textColor = Colors.colorWhite
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.font = UIFont(name: "BebasNeue", size: 40)
         
         return label
     }()
@@ -275,20 +243,6 @@ class TrainingDetailsViewController: BaseVC {
         let view = ChartView(position: self.position, chartMode: ChartMode.chartModeDistance)
         
         return view
-    }()
-    
-    private lazy var imgArrowLeft: UIImageView! = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "ic_keyboard_arrow_left_white")
-        
-        return imageView
-    }()
-    
-    private lazy var imgArrowRight: UIImageView! = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "ic_keyboard_arrow_right_white")
-        
-        return imageView
     }()
     
     //MARK: callbacks

@@ -341,6 +341,4 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
         cvCalendarView.contentController.refreshPresentedMonth()
     }
-    
-    
 }
