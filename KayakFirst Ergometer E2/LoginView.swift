@@ -11,6 +11,9 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LoginView: UIView {
+
+    //MARK: constants
+    private let socialIconHeight: CGFloat = 15
     
     //MARK: properties
     private let viewController: WelcomeViewController
@@ -29,23 +32,54 @@ class LoginView: UIView {
     
     //MARK: init view
     private func initView() {
+        let scrollView = AppScrollView(view: self)
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.spacing = 13
         
-        stackView.addArrangedSubview(imageLogo)
+        let viewLogo = UIView()
+        viewLogo.addSubview(imageLogo)
+        imageLogo.snp.makeConstraints { (make) in
+            make.center.equalTo(viewLogo)
+            make.height.equalTo(100)
+        }
+        viewLogo.snp.makeConstraints { (make) in
+            make.height.equalTo(120)
+        }
+        
+        stackView.addArrangedSubview(viewLogo)
         stackView.addArrangedSubview(tfUserName)
+        tfUserName.snp.makeConstraints { (make) in
+            make.height.equalTo(buttonHeight)
+        }
         stackView.addArrangedSubview(tfPassword)
+        tfPassword.snp.makeConstraints { (make) in
+            make.height.equalTo(buttonHeight)
+        }
         stackView.addArrangedSubview(btnForgotPassword)
         stackView.addArrangedSubview(btnLogin)
         stackView.addArrangedSubview(btnFacebook)
+        btnFacebook.addSubview(imgFacebook)
+        imgFacebook.snp.makeConstraints { (make) in
+            make.left.equalTo(btnFacebook).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.height.equalTo(socialIconHeight)
+            make.width.equalTo(socialIconHeight)
+            make.centerY.equalTo(btnFacebook)
+        }
         stackView.addArrangedSubview(btnGoogle)
+        btnGoogle.addSubview(imgGoogle)
+        imgGoogle.snp.makeConstraints { (make) in
+            make.left.equalTo(btnGoogle).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.height.equalTo(socialIconHeight)
+            make.width.equalTo(socialIconHeight)
+            make.centerY.equalTo(btnGoogle)
+        }
         stackView.addArrangedSubview(labelNoLogin)
         stackView.addArrangedSubview(btnQuickStart)
         
-        addSubview(stackView)
+        scrollView.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
+            make.edges.equalTo(scrollView.containerView)
         }
     }
     
@@ -54,6 +88,7 @@ class LoginView: UIView {
         let imageView = UIImageView()
         let logo = UIImage(named: "logo")
         imageView.image = logo
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
         
         return imageView
     }()
@@ -74,7 +109,7 @@ class LoginView: UIView {
     }()
     
     private lazy var btnLogin: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
         
         return button
@@ -84,13 +119,14 @@ class LoginView: UIView {
         let button = UIButton()
         button.backgroundColor = Colors.colorTransparent
         button.setTitle(getString("user_forgot_password"), for: .normal)
+        button.titleLabel?.font = button.titleLabel?.font.withSize(12)
         button.addTarget(self, action: #selector(btnForgotPasswordClick), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var btnFacebook: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorWhite)
         //TODO: add image
         //button.setImage(UIImage(named: "facebook"), for: .normal)
         button.addTarget(self, action: #selector(btnFacebookClick), for: .touchUpInside)
@@ -99,7 +135,7 @@ class LoginView: UIView {
     }()
     
     private lazy var btnGoogle: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorWhite)
         //TODO: add image
         //button.setImage(UIImage(named: "google"), for: .normal)
         button.addTarget(self, action: #selector(btnGoogleClick), for: .touchUpInside)
@@ -111,15 +147,36 @@ class LoginView: UIView {
         let label = AppUILabel()
         label.text = getString("user_login_or")
         label.textAlignment = .center
+        label .font = label.font.withSize(12)
         
         return label
     }()
     
     private lazy var btnQuickStart: UIButton! = {
-        let button = AppUIButton(width: 0, height: buttonHeight, text: getString("delay_quick_start"), backgroundColor: Colors.colorQuickStart, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorQuickStart, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button
+    }()
+    
+    private lazy var imgFacebook: UIImageView! = {
+        let imageView = UIImageView()
+        let image = UIImage(named: "facebook")
+        
+        imageView.image = image
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        return imageView
+    }()
+    
+    private lazy var imgGoogle: UIImageView! = {
+        let imageView = UIImageView()
+        let image = UIImage(named: "google")
+        
+        imageView.image = image
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        return imageView
     }()
     
     //MARK: button callbacks

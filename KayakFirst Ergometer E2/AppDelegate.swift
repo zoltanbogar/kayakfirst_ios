@@ -116,6 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.colorWhite], for: UIControlState.selected)
     }
 
 

@@ -212,7 +212,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     }()
     
     private lazy var btnRegister: AppUIButton! = {
-        let button = AppUIButton(width: 0, height: 0, text: getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_register"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(clickRegister), for: .touchUpInside)
         button.setDisabled(true)
         

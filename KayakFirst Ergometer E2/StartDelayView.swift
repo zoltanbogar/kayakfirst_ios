@@ -113,7 +113,7 @@ class StartDelayView: UIView {
     
     private lazy var btnQuickStart: UIButton! = {
         let width = self.frame.width - margin2
-        let button = AppUIButton(width: width, height: buttonHeight, text: getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
+        let button = AppUIButton(width: width, text: getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button

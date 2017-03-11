@@ -10,12 +10,14 @@ import UIKit
 
 class AppUIButton: UIButton {
     
+    //MARK: properties
     private var originalBackgroundColor: UIColor?
     private var text: String?
     private var textColor: UIColor?
     
-    init(width: CGFloat, height: CGFloat, text: String, backgroundColor: UIColor, textColor: UIColor) {
-        super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    //MARK: init
+    init(width: CGFloat, text: String, backgroundColor: UIColor, textColor: UIColor) {
+        super.init(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         self.textColor = textColor
         self.text = text
         self.originalBackgroundColor = backgroundColor
@@ -27,6 +29,7 @@ class AppUIButton: UIButton {
         initView()
     }
     
+    //MARK: init views
     private func initView() {
         layer.cornerRadius = 5
         backgroundColor = originalBackgroundColor
@@ -35,6 +38,7 @@ class AppUIButton: UIButton {
         setTitle(text?.uppercased(), for: .normal)
     }
     
+    //MARK: functions
     func setDisabled(_ isDisabled: Bool) {
         if isDisabled {
             backgroundColor = Colors.colorInactive
@@ -44,4 +48,10 @@ class AppUIButton: UIButton {
         isEnabled = !isDisabled
     }
     
+    //MARK: size
+    override var intrinsicContentSize: CGSize {
+        get {
+            return CGSize(width: 0, height: 50)
+        }
+    }
 }

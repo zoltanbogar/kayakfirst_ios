@@ -13,6 +13,7 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK: constants
     private let segmentItems = [getString("user_login"), getString("user_register")]
+    private let marginHorizontal: CGFloat = 30
     
     //MARK: properties
     let loginRegisterView = UIView()
@@ -68,8 +69,8 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     override func initView() {
         contentView.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
-            make.width.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, margin))
+            make.top.equalTo(contentView).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
+            make.width.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, marginHorizontal))
             make.centerX.equalTo(contentView)
         }
         loginRegisterView.addSubview(loginView)
@@ -79,8 +80,8 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         contentView.addSubview(loginRegisterView)
         loginRegisterView.snp.makeConstraints { (make) in
             make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
-            make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, 0))
-            make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, margin))
+            make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, 0))
+            make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, marginHorizontal))
             make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
         
