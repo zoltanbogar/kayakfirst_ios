@@ -26,6 +26,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private var btnPlayPauseGestureRecognizer: UIPanGestureRecognizer?
     private var btnPlayPauseOriginalX: CGFloat = 0
     private var btnPlayPauseOriginalY: CGFloat = 0
+    private var isLandscape = false
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -248,6 +249,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             make.height.equalTo(100)
             make.width.equalTo(mainStackView)
         }
+        
+        isLandscape = false
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -259,6 +262,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             make.width.equalTo(100)
             make.height.equalTo(mainStackView)
         }
+        
+        isLandscape = true
     }
     
     override func initTabBarItems() {
@@ -373,7 +378,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
     }
     
-    //TODO: landscape
     @objc private func animateBtnPlayPause(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: self.view)
         
@@ -382,15 +386,24 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             btnPlayPauseOriginalX = pan.view!.center.x
             btnPlayPauseOriginalY = pan.view!.center.y
         case .changed:
-            let diff = abs(btnPlayPauseOriginalX - pan.view!.center.x + translation.x)
+            var diffX = btnPlayPauseOriginalX
+            var diffY = btnPlayPauseOriginalY
             
-            log("SWIPE", "diff: \(diff)")
+            var swipe: CGFloat = 0
             
-            if diff > 75 {
+            if isLandscape {
+                diffY = pan.view!.center.y + translation.y
+                swipe = abs(btnPlayPauseOriginalY - diffY)
+            } else {
+                diffX = pan.view!.center.x + translation.x
+                swipe = abs(btnPlayPauseOriginalX - diffX)
+            }
+            
+            if swipe > 50 {
                 btnPlayPauseClick()
                 animateBtnPlayPauseToOriginal()
             } else {
-                pan.view!.center = CGPoint(x: pan.view!.center.x + translation.x, y: pan.view!.center.y)
+                pan.view!.center = CGPoint(x: diffX, y: diffY)
                 pan.setTranslation(CGPoint.zero, in: self.view)
             }
         case .ended:
