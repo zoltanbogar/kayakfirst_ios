@@ -32,9 +32,9 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     init(view: UIView) {
         super.init(frame: view.frame, style: .plain)
         
-        view.addSubview(getEmptyView())
+        addSubview(getEmptyView())
         getEmptyView().snp.makeConstraints { make in
-            make.center.equalTo(view)
+            make.center.equalTo(self)
         }
         
         register(getCellClass(), forCellReuseIdentifier: cellIdentifier)
@@ -55,6 +55,7 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         }
         
         getEmptyView().isHidden = itemCount > 0
+        log("EMPTY_VIEW", "isHidden: \(getEmptyView().isHidden)")
         
         return itemCount
     }
