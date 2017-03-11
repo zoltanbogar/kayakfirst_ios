@@ -24,6 +24,7 @@ class StartDelayView: UIView {
     private var timer: Timer?
     private var timeInSeconds: Int = 0
     
+    //MARK: init
     init(superView: UIView) {
         super.init(frame: superView.frame)
         
@@ -32,18 +33,23 @@ class StartDelayView: UIView {
         view.addSubview(labelTitle)
         labelTitle.snp.makeConstraints { make in
             make.top.equalTo(view).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
+            make.width.equalTo(view)
             make.centerX.equalTo(view)
-        }
-        
-        view.addSubview(labelDelay)
-        labelDelay.snp.makeConstraints { make in
-            make.center.equalTo(view)
         }
         
         view.addSubview(btnQuickStart)
         btnQuickStart.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, margin2, 0))
+            make.height.equalTo(buttonHeight)
+            make.width.equalTo(view).inset(UIEdgeInsetsMake(0, margin2, 0, margin2))
+        }
+        
+        view.addSubview(labelDelay)
+        labelDelay.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.top.equalTo(labelTitle.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin, 0))
+            make.bottom.equalTo(btnQuickStart.snp.top).inset(UIEdgeInsetsMake(-margin, 0, 0, 0))
         }
         
         superView.addSubview(view)
@@ -60,8 +66,8 @@ class StartDelayView: UIView {
     
     //MARK: show view
     func show(_ isShow: Bool) {
-        view.isHidden = !isShow
         startCounter(isShow)
+        view.isHidden = !isShow
     }
     
     private func startCounter(_ isStart: Bool) {
@@ -70,6 +76,7 @@ class StartDelayView: UIView {
         } else {
             timer?.invalidate()
             timeInSeconds = 0
+            labelDelay.text = "\(countTime)"
             
             if let delegateValue = delegate {
                 delegateValue.onCounterEnd()
@@ -89,22 +96,25 @@ class StartDelayView: UIView {
         
     }
     
-    //MARK: views
+    //MARK: init view
     private func initView() {
         view.addSubview(labelTitle)
-        
     }
     
+    //MARK: views
     private lazy var labelTitle: UILabel! = {
         let label = AppUILabel()
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         
-        label.text = getString("delay_start_seconds")
+        label.text = getString("delay_start_seconds").uppercased()
         
         return label
     }()
     
     private lazy var labelDelay: UILabel! = {
-        let label = AppUILabel()
+        let label = LabelWithAdaptiveTextHeight()
+        label.textColor = Colors.colorWhite
         
         label.text = "\(self.countTime)"
         

@@ -153,6 +153,7 @@
 		067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */; };
 		067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */; };
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
+		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EC1E283F5A00CE6398 /* EmailCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433EB1E283F5A00CE6398 /* EmailCheck.swift */; };
@@ -370,6 +371,7 @@
 		067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStrokesOutdoor.swift; sourceTree = "<group>"; };
 		067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVOutdoor.swift; sourceTree = "<group>"; };
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
+		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433EB1E283F5A00CE6398 /* EmailCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailCheck.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				06018D531E61B8D500F75919 /* RoundButton.swift */,
 				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 				0609B5371E6C06A100011CED /* ProfileElement.swift */,
+				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1241,6 +1244,7 @@
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
+				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
