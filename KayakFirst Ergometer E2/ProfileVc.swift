@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVc: MainTabVc {
+class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
@@ -17,14 +17,17 @@ class ProfileVc: MainTabVc {
     private var stackView: UIStackView?
     private var progressView: ProgressView?
     private var scrollView: AppScrollView?
+    private let countryPickerView = UIPickerView()
     
     //MARK: properties
     var userService = UserService.sharedInstance
+    private var countryCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initView()
+        countryPickerView.delegate = self
     }
     
     //MARK: init view
@@ -51,12 +54,14 @@ class ProfileVc: MainTabVc {
         stackView?.addArrangedSubview(tfFirstName)
         stackView?.addArrangedSubview(tfLastName)
         stackView?.addArrangedSubview(tfBirthDate)
+        stackView?.addArrangedSubview(tfClub)
         stackView?.addArrangedSubview(tfUserName)
         stackView?.addArrangedSubview(tfPassword)
         stackView?.addArrangedSubview(tfEmail)
         stackView?.addArrangedSubview(tfWeight)
         stackView?.addArrangedSubview(tfCountry)
         stackView?.addArrangedSubview(tfGender)
+        stackView?.addArrangedSubview(tfArtOfPaddling)
         
         progressView = ProgressView(superView: contentView)
     }
@@ -95,6 +100,7 @@ class ProfileVc: MainTabVc {
         return textField
     }()
     
+    //TODO: bug: not correct the birthdate!!
     private lazy var tfBirthDate: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("user_birth_date")
@@ -102,6 +108,15 @@ class ProfileVc: MainTabVc {
         if self.userService.getUser()?.birthDate != 0 {
             textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.userService.getUser()?.birthDate)
         }
+        
+        return textField
+    }()
+    
+    private lazy var tfClub: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("user_club")
+        textField.active = false
+        textField.text = self.userService.getUser()?.club
         
         return textField
     }()
@@ -148,12 +163,13 @@ class ProfileVc: MainTabVc {
     }()
     
     //TODO: country is editable
-    //TODO: add 'Club'
     private lazy var tfCountry: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("user_country")
         textField.active = false
         textField.text = NSLocale.getCountryNameByCode(countryCode: self.userService.getUser()?.country)
+        
+        textField.valueTextField.inputView = self.countryPickerView
         
         return textField
     }()
@@ -168,6 +184,35 @@ class ProfileVc: MainTabVc {
                 textField.text = getString("user_gender_female")
             } else {
                 textField.text = getString("user_gender_male")
+            }
+        }
+        
+        return textField
+    }()
+    
+    private lazy var tfArtOfPaddling: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("user_art_of_paddling")
+        textField.active = false
+        
+        if let artOfPaddling = self.userService.getUser()?.artOfPaddling {
+            switch artOfPaddling {
+            case User.artOfPaddlingRacingKayaking:
+                textField.text = getString("user_art_of_paddling_racing_kayaking")
+            case User.artOfPaddlingRacingCanoeing:
+                textField.text = getString("user_art_of_paddling_racing_canoeing")
+            case  User.artOfPaddlingRecreationalKayaking:
+                textField.text = getString("user_art_of_paddling_recreational_kayaking")
+            case User.artOfPaddlingRecreationalCanoeing:
+                textField.text = getString("user_art_of_paddling_recreational_canoeing")
+            case User.artOfPaddlingSup:
+                textField.text = getString("user_art_of_paddling_sup")
+            case User.artOfPaddlingDragon:
+                textField.text = getString("user_art_of_paddling_dragon")
+            case User.artOfPaddlingRowing:
+                textField.text = getString("user_art_of_paddling_rowing")
+            default:
+                break
             }
         }
         
@@ -206,16 +251,18 @@ class ProfileVc: MainTabVc {
         if checkBodyWeight() {
             progressView?.show(true)
             UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
-                                                  userDto: UserDto(
-                                                    lastName: tfLastName.text,
-                                                    firstName: tfFirstName.text,
-                                                    email: tfEmail.text,
-                                                    bodyWeight: Double(tfWeight.text!),
-                                                    gender: self.userService.getUser()?.gender,
-                                                    birthDate: self.userService.getUser()?.birthDate,
-                                                    country: self.userService.getUser()?.country,
-                                                    password: tfPassword.text,
-                                                    userName: tfUserName.text))
+                userDto: UserDto(
+                                lastName: tfLastName.text,
+                                firstName: tfFirstName.text,
+                                email: tfEmail.text,
+                                bodyWeight: Double(tfWeight.text!),
+                                gender: self.userService.getUser()?.gender,
+                                birthDate: self.userService.getUser()?.birthDate,
+                                club: tfClub.text,
+                                country: countryCode,
+                                artOfPaddling: self.userService.getUser()?.artOfPaddling,
+                                password: tfPassword.text,
+                                userName: tfUserName.text))
         }
     }
     
@@ -232,6 +279,8 @@ class ProfileVc: MainTabVc {
         tfPassword.clickable = isActive
         tfPassword.active = isActive
         tfWeight.active = isActive
+        tfClub.active = isActive
+        tfCountry.active = isActive
         
         if !isActive {
             tfWeight.text = "\(Int((self.userService.getUser()?.bodyWeight)!))"
@@ -246,6 +295,24 @@ class ProfileVc: MainTabVc {
             return false
         }
         return true
+    }
+    
+    //MARK: artOfPaddling pickerView
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return NSLocale.locales().count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return NSLocale.locales()[row].countryName
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        countryCode = NSLocale.locales()[row].countryCode
+        tfCountry.text = NSLocale.locales()[row].countryName
     }
     
     @objc private func clickLogout() {

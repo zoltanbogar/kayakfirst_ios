@@ -38,6 +38,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     //MARK: button listeners
     @objc private func btnPlayPauseClick() {
+        //TODO: after swipe sometimes the StartDealyView is visible
         if let parent = self.parent as? TrainingViewController {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()

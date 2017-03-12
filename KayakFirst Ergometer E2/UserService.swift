@@ -65,9 +65,11 @@ class UserService: AppService {
         var firstName: String? = nil
         var lastName: String? = nil
         var birthDate: TimeInterval? = 0
+        var club: String? = nil
         var bodyWeight: Double? = 0
         var country: String? = nil
         var gender: String? = nil
+        var artOfPaddling: String? = nil
         
         if let newUser = user {
             userId = newUser.id
@@ -76,9 +78,11 @@ class UserService: AppService {
             firstName = newUser.firstName
             lastName = newUser.lastName
             birthDate = newUser.birthDate
+            club = newUser.club
             bodyWeight = newUser.bodyWeight
             country = newUser.country
             gender = newUser.gender
+            artOfPaddling = newUser.artOfPaddling
         }
         
         preferences.set(userId, forKey: User.keyUserId)
@@ -87,9 +91,11 @@ class UserService: AppService {
         preferences.set(firstName, forKey: User.keyUserFirstName)
         preferences.set(lastName, forKey: User.keyUserLastName)
         preferences.set(birthDate, forKey: User.keyUserBirthDate)
+        preferences.set(club, forKey: User.keyUserClub)
         preferences.set(bodyWeight, forKey: User.keyUserBodyWeight)
         preferences.set(country, forKey: User.keyUserCountry)
         preferences.set(gender, forKey: User.keyUserGender)
+        preferences.set(artOfPaddling, forKey: User.keyUserArtOfPaddling)
         preferences.synchronize()
     }
     
@@ -120,9 +126,11 @@ class UserService: AppService {
                 firstName: preferences.string(forKey: User.keyUserFirstName),
                 lastName: preferences.string(forKey: User.keyUserLastName),
                 birthDate: preferences.double(forKey: User.keyUserBirthDate),
+                club: preferences.string(forKey: User.keyUserClub),
                 bodyWeight: preferences.double(forKey: User.keyUserBodyWeight),
                 country: preferences.string(forKey: User.keyUserCountry),
-                gender: preferences.string(forKey: User.keyUserGender))
+                gender: preferences.string(forKey: User.keyUserGender),
+                artOfPaddling: preferences.string(forKey: User.keyUserArtOfPaddling))
         }
         return nil
     }

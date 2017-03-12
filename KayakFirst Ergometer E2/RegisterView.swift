@@ -18,10 +18,12 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     private var birthDate: TimeInterval?
     private var gender: String?
     private var countryCode: String?
+    private var artOfPaddling: String?
     
     private let stackView = UIStackView()
     private let genderPickerView = UIPickerView()
     private let countryPickerView = UIPickerView()
+    private let artOfPaddlingPickerView = UIPickerView()
     private var scrollView: AppScrollView?
     
     //MARK: init
@@ -33,6 +35,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         
         genderPickerView.delegate = self
         countryPickerView.delegate = self
+        artOfPaddlingPickerView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,12 +50,14 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         stackView.addArrangedSubview(tfFirstName)
         stackView.addArrangedSubview(tfLastName)
         stackView.addArrangedSubview(tfBirthDate)
+        stackView.addArrangedSubview(tfClub)
         stackView.addArrangedSubview(tfUserName)
         stackView.addArrangedSubview(tfPassword)
         stackView.addArrangedSubview(tfEmail)
         stackView.addArrangedSubview(tfWeight)
         stackView.addArrangedSubview(tfCountry)
         stackView.addArrangedSubview(tfGender)
+        stackView.addArrangedSubview(tfArtOfPaddling)
         stackView.addVerticalSpacing(spacing: margin)
         stackView.addArrangedSubview(labelRequired)
         
@@ -120,6 +125,13 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return textField
     }()
     
+    private lazy var tfClub: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("user_club")
+        
+        return textField
+    }()
+    
     private lazy var tfUserName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_name")
@@ -171,6 +183,16 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         textField.required = true
         
         textField.valueTextField.inputView = self.genderPickerView
+        
+        return textField
+    }()
+    
+    private lazy var tfArtOfPaddling: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("user_art_of_paddling")
+        textField.required = true
+        
+        textField.valueTextField.inputView = self.artOfPaddlingPickerView
         
         return textField
     }()
@@ -260,7 +282,9 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
                     bodyWeight: Double(tfWeight.text!),
                     gender: gender,
                     birthDate: birthDate,
+                    club: tfClub.text,
                     country: countryCode,
+                    artOfPaddling: self.artOfPaddling,
                     password: tfPassword.text,
                     userName: tfUserName.text),
                 facebookId: self.viewController.facebookId,
@@ -294,16 +318,20 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == genderPickerView {
             return User.genderOptions.count
-        } else {
+        } else if pickerView == countryPickerView {
             return NSLocale.locales().count
+        } else {
+            return User.artOfPaddlingOptions.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == genderPickerView {
             return User.genderOptions[row]
-        } else {
+        } else if pickerView == countryPickerView {
             return NSLocale.locales()[row].countryName
+        } else {
+            return User.artOfPaddlingOptions[row]
         }
     }
     
@@ -319,10 +347,33 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
             }
             
             tfGender.text = selectedGender
-        } else {
+        } else if pickerView == countryPickerView {
             countryCode = NSLocale.locales()[row].countryCode
             
             tfCountry.text = NSLocale.locales()[row].countryName
+        } else if pickerView == artOfPaddlingPickerView {
+            let selectedArtOfPaddling = User.artOfPaddlingOptions[row]
+            
+            switch selectedArtOfPaddling {
+            case getString("user_art_of_paddling_racing_kayaking"):
+                self.artOfPaddling = User.artOfPaddlingRacingKayaking
+            case getString("user_art_of_paddling_racing_canoeing"):
+                self.artOfPaddling = User.artOfPaddlingRacingCanoeing
+            case getString("user_art_of_paddling_recreational_kayaking"):
+                self.artOfPaddling = User.artOfPaddlingRecreationalKayaking
+            case getString("user_art_of_paddling_recreational_canoeing"):
+                self.artOfPaddling = User.artOfPaddlingRecreationalCanoeing
+            case getString("user_art_of_paddling_sup"):
+                self.artOfPaddling = User.artOfPaddlingSup
+            case getString("user_art_of_paddling_dragon"):
+                self.artOfPaddling = User.artOfPaddlingDragon
+            case getString("user_art_of_paddling_rowing"):
+                self.artOfPaddling = User.artOfPaddlingRowing
+            default:
+                break
+            }
+            
+            tfArtOfPaddling.text = selectedArtOfPaddling
         }
     }
     
@@ -368,6 +419,12 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
             tfGender.error = getString("user_spinner_choose")
             viewToScroll = tfGender
         }
+        
+        if tfArtOfPaddling.text! == chooseText {
+            isValid = false
+            tfArtOfPaddling.error = getString("user_spinner_choose")
+            viewToScroll = tfArtOfPaddling
+        }
 
         if let scroll = viewToScroll {
             scrollView!.scrollToView(view: scroll, animated: true)
@@ -383,8 +440,10 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         tfPassword.text = ""
         tfEmail.text = ""
         tfBirthDate.text = ""
+        tfClub.text = ""
         tfWeight.text = ""
         tfCountry.text = ""
         tfGender.text = ""
+        tfArtOfPaddling.text = ""
     }
 }

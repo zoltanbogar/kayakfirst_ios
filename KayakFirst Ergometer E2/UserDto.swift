@@ -16,7 +16,9 @@ struct UserDto {
     let bodyWeight: Double?
     let gender: String?
     let birthDate: TimeInterval?
+    let club: String?
     let country: String?
+    let artOfPaddling: String?
     let password: String?
     let userName: String?
     
