@@ -73,7 +73,7 @@ class DashBoardElement: UIView {
             return CGSize(width: 0, height: height)
         }
     }
-    
+
     //MARK: abstract functions
     internal func getStringFormatter() -> String {
         fatalError("Must be implemented")

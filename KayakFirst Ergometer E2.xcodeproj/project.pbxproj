@@ -81,6 +81,7 @@
 		060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */; };
 		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
 		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
+		060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060EE3911E7538E700203DB6 /* HalfDivider.swift */; };
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
 		060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */; };
 		060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */; };
@@ -299,6 +300,7 @@
 		060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET1000Av.swift; sourceTree = "<group>"; };
 		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
 		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
+		060EE3911E7538E700203DB6 /* HalfDivider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfDivider.swift; sourceTree = "<group>"; };
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
 		060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDaysDbLoader.swift; sourceTree = "<group>"; };
 		060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 				0609B5371E6C06A100011CED /* ProfileElement.swift */,
 				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
+				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
+				060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */,
 				060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
 				060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */,

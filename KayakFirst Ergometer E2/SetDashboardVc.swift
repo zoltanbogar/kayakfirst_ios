@@ -204,43 +204,115 @@ class SetDashboardVc: BaseVC {
         let view = UIView()
     
         let stackView = UIStackView()
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = dashboardDividerWidth
         
-        let stackViewLeft = UIStackView()
-        stackViewLeft.axis = .vertical
-        stackViewLeft.distribution = .fillEqually
-        stackViewLeft.spacing = dashboardDividerWidth
+        let stackView1 = UIStackView()
+        stackView1.axis = .horizontal
+        stackView1.addArrangedSubview(self.dashboardElementActual1000)
+        let halfDivider1 = HalfDivider()
+        stackView1.addArrangedSubview(halfDivider1)
+        stackView1.addArrangedSubview(self.dashboardElementActual500)
+        let halfDivider2 = HalfDivider()
+        stackView1.addArrangedSubview(halfDivider2)
+        stackView1.addArrangedSubview(self.dashboardElementActual200)
+        self.dashboardElementActual1000.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementActual500)
+        })
+        self.dashboardElementActual500.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementActual200)
+        })
+        self.dashboardElementActual200.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementActual1000)
+        })
+        halfDivider2.snp.makeConstraints({ (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        })
+        halfDivider1.snp.makeConstraints({ (make) in
+            make.width.equalTo(halfDivider2)
+        })
         
-        stackViewLeft.addArrangedSubview(self.dashboardElementDuration)
-        stackViewLeft.addArrangedSubview(self.dashboardElementActual1000)
-        stackViewLeft.addArrangedSubview(self.dashboardElementAv1000)
-        stackViewLeft.addArrangedSubview(self.dashboardElementCurrentSpeed)
         
-        let stackViewCenter = UIStackView()
-        stackViewCenter.axis = .vertical
-        stackViewCenter.distribution = .fillEqually
-        stackViewCenter.spacing = dashboardDividerWidth
+        let stackView2 = UIStackView()
+        stackView2.axis = .horizontal
+        stackView2.addArrangedSubview(self.dashboardElementAv1000)
+        let halfDivider3 = HalfDivider()
+        stackView2.addArrangedSubview(halfDivider3)
+        stackView2.addArrangedSubview(self.dashboardElementAv500)
+        let halfDivider4 = HalfDivider()
+        stackView2.addArrangedSubview(halfDivider4)
+        stackView2.addArrangedSubview(self.dashboardElementAv200)
+        self.dashboardElementAv1000.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAv500)
+        })
+        self.dashboardElementAv500.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAv200)
+        })
+        self.dashboardElementAv200.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAv1000)
+        })
+        halfDivider4.snp.makeConstraints({ (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        })
+        halfDivider3.snp.makeConstraints({ (make) in
+            make.width.equalTo(halfDivider4)
+        })
         
-        stackViewCenter.addArrangedSubview(self.dashboardElementDistance)
-        stackViewCenter.addArrangedSubview(self.dashboardElementActual500)
-        stackViewCenter.addArrangedSubview(self.dashboardElementAv500)
-        stackViewCenter.addArrangedSubview(self.dashboardElementAvSpeed)
+        let stackView3 = UIStackView()
+        stackView3.axis = .horizontal
+        stackView3.addArrangedSubview(self.dashboardElementDuration)
+        let halfDivider5 = HalfDivider()
+        stackView3.addArrangedSubview(halfDivider5)
+        stackView3.addArrangedSubview(self.dashboardElementCurrentSpeed)
+        let halfDivider6 = HalfDivider()
+        stackView3.addArrangedSubview(halfDivider6)
+        stackView3.addArrangedSubview(self.dashboardElementStrokes)
+        self.dashboardElementDuration.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementCurrentSpeed)
+        })
+        self.dashboardElementCurrentSpeed.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementStrokes)
+        })
+        self.dashboardElementStrokes.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementDuration)
+        })
+        halfDivider6.snp.makeConstraints({ (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        })
+        halfDivider5.snp.makeConstraints({ (make) in
+            make.width.equalTo(halfDivider6)
+        })
         
-        let stackViewRight = UIStackView()
-        stackViewRight.axis = .vertical
-        stackViewRight.distribution = .fillEqually
-        stackViewRight.spacing = dashboardDividerWidth
+        let stackView4 = UIStackView()
+        stackView4.axis = .horizontal
+        stackView4.addArrangedSubview(self.dashboardElementDistance)
+        let halfDivider7 = HalfDivider()
+        stackView4.addArrangedSubview(halfDivider7)
+        stackView4.addArrangedSubview(self.dashboardElementAvSpeed)
+        let halfDivider8 = HalfDivider()
+        stackView4.addArrangedSubview(halfDivider8)
+        stackView4.addArrangedSubview(self.dashboardElementAvStrokes)
+        self.dashboardElementDistance.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAvSpeed)
+        })
+        self.dashboardElementAvSpeed.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAvStrokes)
+        })
+        self.dashboardElementAvStrokes.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementDistance)
+        })
+        halfDivider8.snp.makeConstraints({ (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        })
+        halfDivider7.snp.makeConstraints({ (make) in
+            make.width.equalTo(halfDivider8)
+        })
         
-        stackViewRight.addArrangedSubview(self.dashboardElementStrokes)
-        stackViewRight.addArrangedSubview(self.dashboardElementActual200)
-        stackViewRight.addArrangedSubview(self.dashboardElementAv200)
-        stackViewRight.addArrangedSubview(self.dashboardElementAvStrokes)
-        
-        stackView.addArrangedSubview(stackViewLeft)
-        stackView.addArrangedSubview(stackViewCenter)
-        stackView.addArrangedSubview(stackViewRight)
+        stackView.addArrangedSubview(stackView1)
+        stackView.addArrangedSubview(stackView2)
+        stackView.addArrangedSubview(stackView3)
+        stackView.addArrangedSubview(stackView4)
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
