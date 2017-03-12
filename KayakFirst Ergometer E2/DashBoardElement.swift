@@ -33,6 +33,15 @@ class DashBoardElement: UIView {
             }
         }
     }
+    var isLandscape: Bool = false {
+        didSet {
+            if isLandscape {
+                initLandscape()
+            } else {
+                initPortrait()
+            }
+        }
+    }
     private var timer: Timer?
     
     //MARK: init
@@ -98,19 +107,45 @@ class DashBoardElement: UIView {
     //MARK: views
     private func initView() {
         addSubview(labelTitle)
-        labelTitle.snp.makeConstraints { make in
-            make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
-            make.centerX.equalTo(self)
-        }
         addSubview(labelValue)
-        labelValue.snp.makeConstraints { make in
-            make.center.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
-        }
         addSubview(selectedView)
         selectedView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
         backgroundColor = Colors.colorPrimary
+        initPortrait()
+    }
+    
+    private func initLandscape() {
+        labelTitle.snp.removeConstraints()
+        labelValue.snp.removeConstraints()
+        labelTitle.snp.makeConstraints { make in
+            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
+            make.centerY.equalTo(self)
+            make.height.equalTo(self)
+        }
+        
+        labelValue.snp.makeConstraints { make in
+            make.left.equalTo(labelTitle.snp.right)
+            make.center.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.height.equalTo(self)
+        }
+    }
+    
+    private func initPortrait() {
+        labelTitle.snp.removeConstraints()
+        labelValue.snp.removeConstraints()
+        labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+            make.centerX.equalTo(self)
+            make.height.equalTo(60)
+        }
+        
+        labelValue.snp.makeConstraints { make in
+            make.top.equalTo(labelTitle.snp.bottom)
+            make.bottom.equalTo(self)
+            make.centerX.equalTo(self)
+        }
     }
     
     private lazy var labelTitle: UILabel! = {
@@ -124,11 +159,11 @@ class DashBoardElement: UIView {
     }()
     
     private lazy var labelValue: UILabel! = {
-        let label = UILabel()
+        let label = LabelWithAdaptiveTextHeight()
         label.textAlignment = .center
         label.textColor = Colors.colorWhite
         
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.font = UIFont(name: "BebasNeue", size: 94)
         
         return label
     }()

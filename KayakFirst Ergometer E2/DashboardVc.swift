@@ -163,19 +163,29 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         let stackView1 = UIStackView()
         stackView1.axis = .horizontal
-        stackView1.distribution = .fillEqually
-        stackView1.spacing = dashboardDividerWidth
-        
         stackView1.addArrangedSubview(view1)
+        let halfDivider1 = HalfDivider()
+        stackView1.addArrangedSubview(halfDivider1)
         stackView1.addArrangedSubview(view2)
+        view1.snp.makeConstraints { (make) in
+            make.width.equalTo(view2)
+        }
+        halfDivider1.snp.makeConstraints { (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        }
         
         let stackView2 = UIStackView()
         stackView2.axis = .horizontal
-        stackView2.distribution = .fillEqually
-        stackView2.spacing = dashboardDividerWidth
-        
         stackView2.addArrangedSubview(view3)
+        let halfDivider2 = HalfDivider()
+        stackView2.addArrangedSubview(halfDivider2)
         stackView2.addArrangedSubview(view4)
+        view3.snp.makeConstraints { (make) in
+            make.width.equalTo(view4)
+        }
+        halfDivider2.snp.makeConstraints { (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        }
         
         stackView.addArrangedSubview(stackView1)
         stackView.addArrangedSubview(stackView2)
@@ -251,6 +261,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
         
         isLandscape = false
+        
+        (view0.subviews[0] as! DashBoardElement).isLandscape = false
+        (view1.subviews[0] as! DashBoardElement).isLandscape = false
+        (view2.subviews[0] as! DashBoardElement).isLandscape = false
+        (view3.subviews[0] as! DashBoardElement).isLandscape = false
+        (view4.subviews[0] as! DashBoardElement).isLandscape = false
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -264,6 +280,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
         
         isLandscape = true
+        
+        (view0.subviews[0] as! DashBoardElement).isLandscape = true
+        (view1.subviews[0] as! DashBoardElement).isLandscape = true
+        (view2.subviews[0] as! DashBoardElement).isLandscape = true
+        (view3.subviews[0] as! DashBoardElement).isLandscape = true
+        (view4.subviews[0] as! DashBoardElement).isLandscape = true
     }
     
     override func initTabBarItems() {
