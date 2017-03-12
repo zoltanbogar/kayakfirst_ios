@@ -25,26 +25,14 @@ class OutdoorService: TrainingService {
     }
     
     //MARK: start/stop monitoring
-    func startLocationMonitoring() {
+    private func startLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: true)
         sensorManager.startSensorMonitoring(start: true)
     }
     
-    func stopLocationMonitoring() {
+    private func stopLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: false)
         sensorManager.startSensorMonitoring(start: false)
-    }
-    
-    func startDashboard() {
-        startTrainig()
-    }
-    
-    func stopDashboard() {
-        stopTraining()
-    }
-    
-    override func handleStopTraining() {
-        //TODO
     }
     
     override func initCommandList() {
@@ -73,6 +61,14 @@ class OutdoorService: TrainingService {
             
             setCycleIndex(cycleIndex: commandOutdoorStroke!.getCycleIndex())
         }
+    }
+    
+    override func handleStartTraining() {
+        startLocationMonitoring()
+    }
+    
+    override func handleStopTraining() {
+        stopLocationMonitoring()
     }
     
     override func isNewCycle() -> Bool {

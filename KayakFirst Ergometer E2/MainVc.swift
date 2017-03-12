@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainVc: MainTabVc {
+    
+    //MARK: properteis
+    private let locationManager = CLLocationManager()
     
     //MARK: views
     override func initView() {
@@ -49,10 +53,23 @@ class MainVc: MainTabVc {
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {
-       startOutdoorViewController(viewController: self)
+        checkLocationSettings()
     }
     
     @objc private func clickBtnErgo() {
         startErgometerViewController(viewController: self)
+    }
+    
+    private func checkLocationSettings() {
+        if CLLocationManager.locationServicesEnabled() {
+            startOutdoorViewController(viewController: self)
+        } else {
+            //TODO: sofisticate the method!
+            locationManager.requestAlwaysAuthorization()
+            
+            LocationSettingsDialog().show(viewController: self)
+            
+            //UIApplication.shared.openURL(NSURL(string: "App-Prefs:root=LOCATION_SERVICES")! as URL)
+        }
     }
 }

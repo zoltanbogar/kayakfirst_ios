@@ -24,7 +24,6 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     //MARK: start/stop monitoring
     func startLocationMonitoring(start: Bool) {
         if start {
-            locationManager.requestWhenInUseAuthorization()
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest

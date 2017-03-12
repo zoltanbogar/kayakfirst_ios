@@ -116,6 +116,8 @@
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
 		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
+		064766461E75885D007936B5 /* LocationPermittionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermittionVc.swift */; };
+		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
 		06703F711E24025A0028135A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06703F701E24025A0028135A /* Colors.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
@@ -336,6 +338,8 @@
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
 		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
+		064766451E75885D007936B5 /* LocationPermittionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermittionVc.swift; sourceTree = "<group>"; };
+		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
 		06703F701E24025A0028135A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
@@ -791,6 +795,7 @@
 				069433F31E28456A00CE6398 /* DialogOnFinish.swift */,
 				069433F51E28462D00CE6398 /* NewPasswordDialog.swift */,
 				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
+				064766471E759ACE007936B5 /* LocationSettingsDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -937,6 +942,7 @@
 				06018D4D1E616B8B00F75919 /* OutdoorViewController.swift */,
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
 				06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */,
+				064766451E75885D007936B5 /* LocationPermittionVc.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -1190,6 +1196,7 @@
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
+				064766461E75885D007936B5 /* LocationPermittionVc.swift in Sources */,
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
@@ -1304,6 +1311,7 @@
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
+				064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */,
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,

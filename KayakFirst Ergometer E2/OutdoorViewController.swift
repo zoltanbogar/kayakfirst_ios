@@ -10,8 +10,6 @@ import UIKit
 
 func startOutdoorViewController(viewController: UIViewController) {
     let outdoorController = OutdoorViewController()
-    let setDashboardController = SetDashboardVc()
-    outdoorController.pushViewController(setDashboardController, animated: false)
     viewController.present(outdoorController, animated: true, completion: nil)
 }
 
@@ -25,12 +23,11 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
         super.viewDidLoad()
         
         telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
-        outdoorSerive.startLocationMonitoring()
+        getTrainingService().startService()
     }
     
     override func closeViewController() {
         super.closeViewController()
-        outdoorSerive.stopLocationMonitoring()
     }
     
     override func getTrainingService() -> TrainingService {
@@ -44,6 +41,8 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
                 self.showSetDashboard()
             case CycleState.idle:
                 self.showDashboard()
+            case CycleState.permittionDenied:
+                self.showPermittion()
             default: break
             }
         }

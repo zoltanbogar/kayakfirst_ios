@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 class TrainingService: CycleStateChangeListener {
     
     //MARK: properties
@@ -44,8 +46,18 @@ class TrainingService: CycleStateChangeListener {
         fatalError("Must be implemented")
     }
     
+    internal func handleStartTraining() {
+        fatalError("Must be implemented")
+    }
+    
     internal func handleStopTraining() {
         fatalError("Must be implemented")
+    }
+    
+    func startService() {
+        if isCycleState(cycleState: CycleState.quit) || isCycleState(cycleState: CycleState.permittionDenied) {
+            setTelemetryCycleState(cycleState: CycleState.none)
+        }
     }
     
     //MARK: lifecycle
@@ -67,12 +79,8 @@ class TrainingService: CycleStateChangeListener {
         setTelemetryCycleState(cycleState: CycleState.stopped)
     }
     
-    internal func startTrainig() {
+    func startDashboard() {
         setTelemetryCycleState(cycleState: CycleState.idle)
-    }
-    
-    internal func stopTraining() {
-        setTelemetryCycleState(cycleState: CycleState.none)
     }
     
     internal func reset() {
@@ -97,45 +105,51 @@ class TrainingService: CycleStateChangeListener {
     
     private func startLoop() {
         DispatchQueue.global().async {
-            while !self.isCycleState(cycleState: CycleState.none) {
+            while !self.isCycleState(cycleState: CycleState.quit) && !self.isCycleState(cycleState: CycleState.permittionDenied) {
                 var shouldWait = true
-                if !self.isCycleState(cycleState: CycleState.idle) {
-                    self.autoStopIdle.reset()
-                    if !self.isCycleState(cycleState: CycleState.stopped) {
-                        self.autoStopStop.reset()
-                        if !self.isCycleState(cycleState: CycleState.paused) {
-                            self.autoStopPause.reset()
-                            self.setDuration()
-                            
-                            if self.isNewCycle() {
-                                self.autoStopResume.reset()
-                                
-                                let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
-                                let telemetryAvgObject = self.startCommand!.calculateAvg()
-                                
-                                self.telemetry.telemetryObject = telemetryObject
-                                self.telemetry.telemetryAvgObject = telemetryAvgObject
-                                
-                                self.saveValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
-                                
-                                self.realDuration = self.telemetry.duration
-                                
-                                shouldWait = false
+                if CLLocationManager.authorizationStatus() == .authorizedAlways {
+                    if !self.isCycleState(cycleState: CycleState.none) {
+                        if !self.isCycleState(cycleState: CycleState.idle) {
+                            self.autoStopIdle.reset()
+                            if !self.isCycleState(cycleState: CycleState.stopped) {
+                                self.autoStopStop.reset()
+                                if !self.isCycleState(cycleState: CycleState.paused) {
+                                    self.autoStopPause.reset()
+                                    self.setDuration()
+                                    
+                                    if self.isNewCycle() {
+                                        self.autoStopResume.reset()
+                                        
+                                        let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
+                                        let telemetryAvgObject = self.startCommand!.calculateAvg()
+                                        
+                                        self.telemetry.telemetryObject = telemetryObject
+                                        self.telemetry.telemetryAvgObject = telemetryAvgObject
+                                        
+                                        self.saveValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+                                        
+                                        self.realDuration = self.telemetry.duration
+                                        
+                                        shouldWait = false
+                                    } else {
+                                        self.autoStopResume.checkAutoStop()
+                                    }
+                                } else {
+                                    self.autoStopResume.reset()
+                                    self.autoStopPause.checkAutoStop()
+                                }
                             } else {
-                                self.autoStopResume.checkAutoStop()
+                                self.setDurationBack()
+                                self.autoStopPause.reset()
+                                self.autoStopStop.checkAutoStop()
                             }
                         } else {
-                            self.autoStopResume.reset()
-                            self.autoStopPause.checkAutoStop()
+                            self.autoStopStop.reset()
+                            self.autoStopIdle.checkAutoStop()
                         }
-                    } else {
-                        self.setDurationBack()
-                        self.autoStopPause.reset()
-                        self.autoStopStop.checkAutoStop()
                     }
                 } else {
-                    self.autoStopStop.reset()
-                    self.autoStopIdle.checkAutoStop()
+                    self.setTelemetryCycleState(cycleState: CycleState.permittionDenied)
                 }
                 if shouldWait {
                     usleep(200000)
@@ -183,13 +197,16 @@ class TrainingService: CycleStateChangeListener {
     
     func onCycleStateChanged(newCycleState: CycleState) {
         switch newCycleState {
-        case CycleState.idle:
+        case CycleState.none:
             reset()
             startLoop()
-        case CycleState.none:
+            handleStartTraining()
+        case CycleState.permittionDenied:
             handleStopTraining()
         case CycleState.stopped:
             telemetry.resetCurrent()
+        case CycleState.quit:
+            handleStopTraining()
         default:
             log("CYCLE_STATE", "newCycleState: \(newCycleState)")
         }

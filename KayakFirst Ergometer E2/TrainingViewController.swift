@@ -26,7 +26,6 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //TODO: has to be turned off
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
@@ -38,13 +37,20 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
     //TODO: handle the instances: SetDashboard has to remember its state
     //MARK: training
     func showSetDashboard() {
+        //viewControllers.removeAll()
         pushViewController(SetDashboardVc(), animated: true)
-        startDelayView?.show(false)
     }
     func showDashboard() {
         pushViewController(DashboardVc(), animated: true)
     }
+    func showPermittion() {
+        //viewControllers.removeAll()
+        pushViewController(LocationPermittionVc(), animated: true)
+    }
+    
     func closeViewController() {
+        UIApplication.shared.isIdleTimerDisabled = false
+        telemetry.cycleState = CycleState.quit
         self.dismiss(animated: true, completion: nil)
     }
     

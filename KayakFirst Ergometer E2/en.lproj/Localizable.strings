@@ -203,6 +203,8 @@
 "training_type"="type";
 "training_log"="log";
 "permission_location"="To use Outdoor, allow the Location Permission. \n In KayakFirst app tap Settings > Permissions, and turn Location on.";
+"permission_location_ios"="To use Outdoor, allow the Location Permission. \n In KayakFirst app tap Settings and set location acces to 'Always'";
+"settings_location_ios"="To use Outdoor, enable Location Services.";
 "user_club"="Club";
 "user_art_of_paddling"="Art of paddling";
 "user_art_of_paddling_racing_kayaking"="Racing kayaking";

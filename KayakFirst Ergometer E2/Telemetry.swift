@@ -66,7 +66,7 @@ class Telemetry {
     }
     
     //MARK: cycle state
-    var cycleState: CycleState = CycleState.none {
+    var cycleState: CycleState = CycleState.quit {
         didSet {
             if cycleState == CycleState.resumed {
                 if sessionId == 0 {
