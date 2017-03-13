@@ -153,7 +153,7 @@ class LoginView: UIView {
     }()
     
     private lazy var btnQuickStart: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorQuickStart, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorGreen, textColor: Colors.colorWhite)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button

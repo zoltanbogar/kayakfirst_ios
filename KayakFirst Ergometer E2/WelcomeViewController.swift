@@ -65,6 +65,7 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         setSegmentedItem(sender: segmentedControl)
     }
     
+    //TODO: bug: orientation change when on the 'RegisterView'
     //MARK: init view
     override func initView() {
         contentView.addSubview(segmentedControl)

@@ -29,6 +29,7 @@ class DownloadTrainings: ServerService<[Training]> {
             
             if let jsonArray = jsonValue.array {
                 
+                //TODO: it can be nil
                 let userId = UserService.sharedInstance.getUser()!.id
                 trainingList = [Training]()
                 

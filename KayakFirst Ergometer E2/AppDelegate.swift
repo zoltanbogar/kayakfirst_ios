@@ -108,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initColors() {
+        //TODO: colorize unselected items
         UITabBar.appearance().tintColor = Colors.colorAccent
         UITabBar.appearance().barTintColor = Colors.colorPrimary
         

@@ -20,7 +20,7 @@ class MainVc: MainTabVc {
         stackView.axis = .horizontal
                 
         stackView.addArrangedSubview(btnErgo)
-        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
+        stackView.addHorizontalSeparator(color: Colors.colorInactive, thickness: 1)
         stackView.addArrangedSubview(btnOutdoor)
         
         contentView.addSubview(stackView)

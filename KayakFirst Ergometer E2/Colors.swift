@@ -11,30 +11,38 @@ import UIKit
 
 //TODO: it could be struct
 class Colors {
-    static let colorPrimary = getColor("#383e42")
-    static let colorPrimaryTransparent = getColor("#aa383e42")
+    static let colorPrimary = getColor("#333c41")
+    static let colorPrimaryTransparent = getColor("#aa333c41")
     static let colorPrimaryDark = getColor("#000000")
-    static let colorAccent = getColor("#e25303")
-    static let colorAccentDark = getColor("#cb4a02")
+    static let colorAccent = getColor("#ff541c")
+    static let colorAccentDark = getColor("#ff4102")
+    
     static let colorWhite = getColor("#f2f2f2")
     static let colorWhiteDark = getColor("#d9d9d9")
+    static let colorQrey = getColor("#929292")
+    static let colorTransparent = getColor("#00000000")
+    
     static let colorInactive = getColor("#4d4d4d")
+    
+    static let colorDashBoardDivider = getColor("#929292")
+    
+    static let colorBluetooth = getColor("#2196F3")
+    
     static let dragDropStart = getColor("#77e25303")
     static let dragDropEnter = getColor("#bbe25303")
     static let startDelayBackground = getColor("#eedf5626")
-    static let colorDashBoardDivider = getColor("#4d4d4d")
-    static let colorBluetooth = getColor("#2196F3")
-    static let colorTransparent = getColor("#00000000")
+    
     static let colorT = getColor("#FFFF00")
     static let colorStrokes = getColor("#cd2929")
     static let colorF = getColor("#0dd278")
     static let colorV = getColor("#005cff")
+    
     static let colorGreen = getColor("#00b000")
     static let colorYellow = getColor("#c4b53c")
     static let colorRed = getColor("#cc0000")
+    
     static let colorFacebook = getColor("#3b5998")
     static let colorGoogle = getColor("#dc4e41")
-    static let colorQuickStart = getColor("#929292")
     static let colorProfileElement = getColor("#404447")
     static let colorSun = getColor("#ffed00")
 }

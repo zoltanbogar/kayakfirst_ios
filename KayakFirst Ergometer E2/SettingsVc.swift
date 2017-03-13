@@ -116,7 +116,7 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
     private lazy var labelVersion: UILabel! = {
         let label = UILabel()
         label.text = getString("app_version") + AppDelegate.versionString
-        label.textColor = Colors.colorQuickStart
+        label.textColor = Colors.colorQrey
         
         return label
     }()

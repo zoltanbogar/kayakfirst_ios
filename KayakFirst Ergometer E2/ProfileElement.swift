@@ -11,7 +11,7 @@ import UIKit
 class ProfileElement: DialogElementTextField {
     
     //MARK: constants
-    private let textColorNormalValue = Colors.colorQuickStart
+    private let textColorNormalValue = Colors.colorDashBoardDivider
     private let textColorNormalTitle = Colors.colorWhite
 
     
