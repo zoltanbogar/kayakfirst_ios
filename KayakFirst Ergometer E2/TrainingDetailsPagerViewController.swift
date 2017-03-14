@@ -35,6 +35,13 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         
         self.automaticallyAdjustsScrollViewInsets = false
         setFirstViewController()
+        
+        initActionbar()
+    }
+    
+    private func initActionbar() {
+        self.navigationItem.setLeftBarButtonItems([btnBack], animated: true)
+        showLogoLeft(viewController: self)
     }
     
     private func setFirstViewController() {
@@ -125,4 +132,17 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         self.navigationItem.setRightBarButtonItems([btnType], animated: true)
     }
     
+    //MARK: tabbaritem
+    private lazy var btnBack: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "arrowBack")
+        button.target = self
+        button.action = #selector(btnBackClick)
+        
+        return button
+    }()
+    
+    @objc private func btnBackClick() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

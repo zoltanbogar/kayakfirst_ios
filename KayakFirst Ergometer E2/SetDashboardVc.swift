@@ -103,6 +103,7 @@ class SetDashboardVc: BaseVC {
     override func initTabBarItems() {
         self.navigationItem.setRightBarButtonItems([btnDone], animated: true)
         self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+        showLogoOnLeft()
         
         self.title = getString("navigation_set_dashboard")
     }

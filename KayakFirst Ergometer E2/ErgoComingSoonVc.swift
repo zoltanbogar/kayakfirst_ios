@@ -43,6 +43,7 @@ class ErgoComingSoonVc: BaseVC {
     
     override func initTabBarItems() {
         self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+        showLogoOnRight()
     }
     
     //MARK: views

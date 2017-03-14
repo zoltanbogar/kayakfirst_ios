@@ -47,6 +47,10 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         scrollView = AppScrollView(view: self)
         stackView.axis = .vertical
         
+        stackView.addArrangedSubview(imgLogo)
+        imgLogo.snp.makeConstraints { (make) in
+            make.centerX.equalTo(stackView)
+        }
         stackView.addArrangedSubview(tfFirstName)
         stackView.addArrangedSubview(tfLastName)
         stackView.addArrangedSubview(tfBirthDate)
@@ -100,6 +104,14 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     }
     
     //MARK: views
+    private lazy var imgLogo: UIImageView! = {
+        let imageView = UIImageView()
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.image = logoHeader
+        
+        return imageView
+    }()
+    
     lazy var tfFirstName: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_first_name")

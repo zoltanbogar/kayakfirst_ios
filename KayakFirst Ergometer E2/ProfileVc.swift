@@ -71,6 +71,8 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         activateFields(isActive: false)
         
         self.navigationItem.setLeftBarButtonItems([btnLogout], animated: true)
+        
+        showLogoCenter(viewController: self)
     }
     
     //MARK: views

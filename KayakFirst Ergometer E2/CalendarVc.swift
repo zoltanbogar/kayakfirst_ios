@@ -140,6 +140,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     override func initTabBarItems() {
         self.navigationItem.setRightBarButtonItems([btnToday], animated: true)
+        showLogoOnLeft()
     }
     
     //MARK: call service

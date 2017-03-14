@@ -8,6 +8,44 @@
 
 import UIKit
 
+func showLogoLeft(viewController: UIViewController) {
+    var navItems = viewController.navigationItem.leftBarButtonItems
+    if navItems != nil {
+        if !(navItems?.contains(logoBarItem))! {
+            navItems!.append(logoBarItem)
+        }
+    } else {
+        navItems = [logoBarItem]
+    }
+    viewController.navigationItem.setLeftBarButtonItems(navItems, animated: true)
+}
+
+func showLogoRight(viewController: UIViewController) {
+    var navItems = viewController.navigationItem.rightBarButtonItems
+    if navItems != nil {
+        if !(navItems?.contains(logoBarItem))! {
+            navItems!.insert(logoBarItem, at: 0)
+        }
+    } else {
+        navItems = [logoBarItem]
+    }
+    viewController.navigationItem.setRightBarButtonItems(navItems, animated: true)
+}
+
+func showLogoCenter(viewController: UIViewController) {
+    let imageView = UIImageView(image: logoHeader)
+    viewController.navigationItem.titleView = imageView
+}
+
+let logoBarItem: UIBarButtonItem! = {
+    let button = UIBarButtonItem()
+    button.image = logoHeader
+    
+    return button
+}()
+
+let logoHeader = UIImage(named: "logo_header")
+
 class BaseVC: UIViewController {
     
     //MARK: properties
@@ -44,6 +82,21 @@ class BaseVC: UIViewController {
     }
     
     //MARK: views
+    func showLogoOnLeft() {
+        showLogoLeft(viewController: self)
+    }
+    
+    func showLogoOnRight() {
+        showLogoRight(viewController: self)
+    }
+    
+    private lazy var logoBarItem: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "logo_header")
+        
+        return button
+    }()
+    
     private func initViewEdges() {
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(view).inset(UIEdgeInsetsMake(getTopMargin(), 0, getTabBarHeight(viewController: self), 0))

@@ -153,6 +153,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         dashboardElement4?.startRefresh(isRefresh)
     }
     
+    //TODO: after orientation change the timer stops
     //MARK: views
     override func initView() {
         let stackView = UIStackView()
@@ -290,7 +291,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems(nil, animated: true)
+        showLogoOnRight()
     }
     
     private lazy var mainStackView: UIStackView! = {
