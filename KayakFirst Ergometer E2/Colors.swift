@@ -19,7 +19,7 @@ class Colors {
     
     static let colorWhite = getColor("#f2f2f2")
     static let colorWhiteDark = getColor("#d9d9d9")
-    static let colorQrey = getColor("#929292")
+    static let colorGrey = getColor("#929292")
     static let colorTransparent = getColor("#00000000")
     
     static let colorInactive = getColor("#4d4d4d")

@@ -55,6 +55,8 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         stackView.addArrangedSubview(labelDistance)
         stackView.addArrangedSubview(imageViewGraph)
         
+        selectionColor = Colors.colorGrey
+        
         return stackView
     }
     
@@ -106,4 +108,17 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         
         return imageView
     }()
+    
+    //MARK: selection design
+    @IBInspectable var selectionColor: UIColor = UIColor.clear {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    private func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
+    }
 }

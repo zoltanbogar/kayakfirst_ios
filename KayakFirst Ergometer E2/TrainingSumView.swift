@@ -89,7 +89,7 @@ class TrainingSumView: UIView {
         label.textColor = Colors.colorPrimary
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         
-        label.backgroundColor = Colors.colorQrey
+        label.backgroundColor = Colors.colorGrey
         
         return label
     }()
@@ -101,7 +101,7 @@ class TrainingSumView: UIView {
         label.textColor = Colors.colorPrimary
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         
-        label.backgroundColor = Colors.colorQrey
+        label.backgroundColor = Colors.colorGrey
         
         return label
     }()
