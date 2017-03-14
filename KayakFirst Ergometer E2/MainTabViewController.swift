@@ -57,5 +57,4 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         
         return viewControllers
     }()
-    
 }

@@ -120,7 +120,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.colorWhite], for: UIControlState.selected)
     }
-
-
 }
 

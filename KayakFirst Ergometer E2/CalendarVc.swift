@@ -26,6 +26,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     //MARK: properties
     private var selectedDate: TimeInterval?
     private var error: Responses?
+    private var shouldRefresh = true
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -39,7 +40,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getTrainingDays()
+        if shouldRefresh {
+            getTrainingDays()
+        } else {
+            shouldRefresh = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -138,7 +143,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     //MARK: call service
-    private func getTrainingDays() {
+    func getTrainingDays() {
         trainingDataService.getTrainingDays()
     }
     
@@ -225,6 +230,8 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
             self.navigationController?.pushViewController(viewController, animated: true)
+            
+            self.shouldRefresh = false
         }
         
         return tableViewTraining
