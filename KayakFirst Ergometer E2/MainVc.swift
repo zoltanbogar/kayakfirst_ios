@@ -31,6 +31,10 @@ class MainVc: MainTabVc {
         }
     }
     
+    override func initTabBarItems() {
+        showLogoCenter(viewController: self)
+    }
+    
     private lazy var btnErgo: UIButton! = {
         let button = UIButton()
         
