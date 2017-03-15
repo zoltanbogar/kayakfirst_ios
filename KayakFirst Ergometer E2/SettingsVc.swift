@@ -107,7 +107,7 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
         textField.setBottomBorder(Colors.colorWhite)
         textField.textColor = Colors.colorWhite
         //TODO: hungarian string not correct
-        textField.text = getString("user_terms_conditions")
+        textField.text = getString("user_terms_conditions_short")
         textField.delegate = self
         
         return textField

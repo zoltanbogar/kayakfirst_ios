@@ -7,7 +7,7 @@
 */
 
 //Info
-"app_version"="Version: ";
+"app_name"="KayakFirst Ergometer";
 "app_link"="www.kayakfirst.com";
 "app_version"="Version: ";
 
@@ -23,10 +23,10 @@
 "dashboard_title_distance"="Distance (m):";
 "dashboard_title_duration"="Duration:";
 "dashboard_title_current_speed"="Act. speed (km/h):";
-"dashboard_title_av_speed"="Avg. Speed (km/h):";
+"dashboard_title_av_speed"="Avg. speed (km/h):";
 "dashboard_title_drag_drop"="Drag &amp; Drop here";
-"dashboard_title_av_strokes"="Avg. Strokes/min:";
-"dashboard_title_av_pull_force"="Avg. Pull Force (N):";
+"dashboard_title_av_strokes"="Avg. strokes/min:";
+"dashboard_title_av_pull_force"="Avg. pull force (N):";
 
 //DashBoardOutdoor
 "dashboard_outdoor_title_av_200"="Avg.\n200m";
@@ -47,23 +47,28 @@
 //Bluetooth List
 "fragment_bluetooth_title"="Connect your phone to any of the below equipments...";
 "fragment_bluetooth_subtitle"="... detect a new one";
-"fragment_bluetooth_button_refresh"="Search Bluetooth";
+"fragment_bluetooth_button_refresh"="Search Bluetooth tools";
 "fragment_bluetooth_button_turn_on"="Turn Bluetooth on";
 "fragment_bluetooth_not_supported"="Your phone does not support Bluetooth BLE...";
-"fragment_bluetooth_off"="Bluetooth is off...";
-"fragment_bluetooth_list_empty"="No nearby Bluetooth devices were found...\n\n(If you don\'t find the ID of this machine on the screen, please, make a short stroke, that wakes up the driver, then try again with the connection!)";
-"fragment_bluetooth_location_permission"="To use Bluetooth, allow the Location Permission. \nTap Settings > Permissions, and turn Location on.";
+"fragment_bluetooth_off"="Bluetooth is off.";
+"fragment_bluetooth_list_empty"="No active Bluetooth devices were found.\n\n If you don\'t find the ID of this machine on the screen, please, make a short stroke, that wakes up the signaler, then try again with the connection!";
+"fragment_bluetooth_location_permission"="To use Bluetooth, click Settings below and turn Location ON in Permissions. ";
 "fragment_bluetooth_app_details_settings"="Settings";
 
 //Bluetotoh
 "bluetooth_connect"="Bluetooth connected";
 "bluetooth_disconnect"="Bluetooth disconnected";
 
+//Outdoor
+"permission_location"="To use Outdoor, click Settings below and turn Location ON in Permissions. ";
+"permission_location_ios"="To use Outdoor, click Settings below and turn Location ALWAYS. ";
+"settings_location_ios"="To use Outdoor, enable Location Services.";
+
 //Dialog
 "dialog_title_finish"="Do you want to quit?";
-"dialog_message_finish"="Measure will be end...";
+"dialog_message_finish"="If you continue, measure will be end...";
 "dialog_title_bluetooth_connecting"="Bluetooth connecting";
-"dialog_message_bluetooth_connecting"="Connecting to device ";
+"dialog_message_bluetooth_connecting"="Connecting to device...";
 "dialog_title_bluetooth_discovery"="Discovery Bluetooth ";
 "dialog_message_bluetooth_discovery"="Discover Bluetooth devices... ";
 "dialog_title_bluetooth_disconnect"="Bluetooth is active";
@@ -77,23 +82,27 @@
 "delay_start_seconds"="Your session will start in";
 "delay_quick_start"="Start now";
 
-//Other
+//Base Language
 "other_yes"="yes";
 "other_no"="no";
-"other_ok"="ok";
+"other_ok"="OK";
 "other_cancel"="Cancel";
-
-//Menu
-"menu_profile"="Profile";
-"menu_log"="History";
-"menu_about"="About";
 
 //Navigation
 "navigation_profile"="Profile";
+"navigation_log"="History";
+"navigation_about"="About";
+"navigation_home"="Home";
+"navigation_calendar"="Training log";
+"navigation_settings"="Info";
+"navigation_set_dashboard"="Set display";
+"ergometer_placeholder"="COMING SOON...";
 
 //Calendar
 "calendar_jump_today"="Jump to today";
 "calendar_empty_list"="There is no Training Data";
+"training_type"=" ";
+"training_log"="log";
 
 //Chart
 "chart_training_no_value_selected"="In order to see chart please choose at least one value";
@@ -107,7 +116,7 @@
 "training_sum"="Total";
 "training_sum_average"="Average";
 "training_sum_best"="Best";
-"training_sum_speed"="Speed\nKm/h";
+"training_sum_speed"="Speed\nkm/h";
 "training_sum_stroke"="Stroke rate\n\\min.";
 "training_sum_pull_force"="Pull force\nN";
 "training_sum_t_200"="Pace\n200";
@@ -157,54 +166,22 @@
 "user_password_old"="Current Password";
 "user_password_new"="New Password";
 "user_password_confirm"="Confirm Password";
-"user_progress_log_in"="Login...";
-"user_progress_log_out"="Logout...";
+"user_progress_log_in"="Login";
+"user_progress_log_out"="Logout";
 "user_reset_password"="Reset password";
-"user_reseting_password"="Reset password...";
+"user_reseting_password"="Reseting password...";
 "user_reseted_password"="Email was sent";
 "user_registering"="Registering..";
 "user_updating"="Updating profile...";
 "user_updated"="Profile updated";
 "user_updating_password"="Password updating...";
-"user_registration_required"="Please fill the register form";
-"user_spinner_choose"="Choose";
+"user_registration_required"="Please, fill the register form!";
+"user_spinner_choose"="Choose...";
 "user_required_field"="* Required field";
-
-//Unit
-"unit_speed"="km/h";
-"unit_force"="n";
-
-//Error
-"error_no_internet"="No internet connection";
-"error_user_invalid_credentials"="Invalid credentials";
-"error_server"="Server error";
-"error_field_not_blank"="This field cannot be blank";
-"error_email"="Not valid email address";
-"error_user_name"="At least 2 characters";
-"error_password"="At least 4 characters";
-"error_weight"="Weight should be 30 or more";
-"error_birth_date"="Birth date cannot be in the future";
-"error_google_sign_out"="Google Signout problem";
-
-//Date
-"date_format"="dd.MM.yyyy";
-"date_time_format"="dd.MM.yyyy kk:mm";
-"date_format_month"="MMMM yyyy";
-
-//Translate!
-"navigation_home"="Home";
-"navigation_calendar"="Calendar";
-"navigation_settings"="About";
-"navigation_set_dashboard"="Set Dashboard";
-"ergometer_placeholder"="COMING SOON...";
 "user_login_or"="OR";
-"user_login_facebook"="Login with facebook";
-"user_login_google"="Login with google";
-"training_type"="type";
-"training_log"="log";
-"permission_location"="To use Outdoor, allow the Location Permission. \n In KayakFirst app tap Settings > Permissions, and turn Location on.";
-"permission_location_ios"="To use Outdoor, allow the Location Permission. \n In KayakFirst app tap Settings and set location acces to 'Always'";
-"settings_location_ios"="To use Outdoor, enable Location Services.";
+"user_login_facebook"="Login with Facebook";
+"user_login_google"="Login with Google";
+"user_edit"="Edit";
 "user_club"="Club";
 "user_art_of_paddling"="Art of paddling";
 "user_art_of_paddling_racing_kayaking"="Racing kayaking";
@@ -214,3 +191,25 @@
 "user_art_of_paddling_sup"="SUP";
 "user_art_of_paddling_dragon"="Dragon";
 "user_art_of_paddling_rowing"="Rowing";
+"user_terms_conditions_short"="Terms & Conditions";
+
+//Unit
+"unit_speed"="km/h";
+"unit_force"="n";
+
+//Error
+"error_no_internet"="No internet connection!";
+"error_user_invalid_credentials"="Invalid credentials!";
+"error_server"="Server error";
+"error_field_not_blank"="This field cannot be blank";
+"error_email"="Not valid email address";
+"error_user_name"="At least 2 characters!";
+"error_password"="At least 4 characters!";
+"error_weight"="Weight should be 30 at least!";
+"error_birth_date"="Birth date cannot be in the future!";
+"error_google_sign_out"="Google Signout problem!";
+
+//Date
+"date_format"="dd.MM.yyyy";
+"date_time_format"="dd.MM.yyyy kk:mm";
+"date_format_month"="MMMM yyyy";
