@@ -19,6 +19,17 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         
         self.viewControllers = mainViewControllers
+        
+        initQuickStart()
+    }
+    
+    private func initQuickStart() {
+        if UserService.sharedInstance.isQuickStart {
+            let viewControllers = self.viewControllers
+            if let vcs = viewControllers {
+                vcs[1].tabBarItem.isEnabled = false
+            }
+        }
     }
     
     //MARK: views

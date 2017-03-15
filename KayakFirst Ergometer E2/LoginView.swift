@@ -198,7 +198,7 @@ class LoginView: UIView {
     
     //TODO
     @objc private func btnQuickStartClick() {
-        log("LOGIN", "btnQuickStartClick")
+        self.viewController.showMainView(isQuickStart: true)
     }
     
     @objc private func btnFacebookClick() {
@@ -261,7 +261,7 @@ class LoginView: UIView {
     private func userDataCallback(error: Responses?, userData: LoginDto?) {
         self.viewController.progressView?.show(false)
         if userData != nil {
-            self.viewController.showMainView()
+            self.viewController.showMainView(isQuickStart: false)
         } else if let userError = error {
             if error == Responses.error_registration_required {
                 resetDataFields()

@@ -10,6 +10,9 @@ import Foundation
 
 class UserService: AppService {
     
+    //MARK: properties
+    var isQuickStart = false
+    
     //MARK: init
     static let sharedInstance: UserService = UserService()
     private override init() {

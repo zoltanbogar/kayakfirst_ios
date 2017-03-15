@@ -308,7 +308,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     private func registerCallback(error: Responses?, userData: User?) {
         viewController.progressView?.show(false)
         if userData != nil {
-            viewController.showMainView()
+            viewController.showMainView(isQuickStart: false)
         } else if let userError = error {
             AppService.errorHandlingWithAlert(viewController: viewController, error: userError)
         }

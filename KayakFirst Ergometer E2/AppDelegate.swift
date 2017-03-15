@@ -36,13 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    private func initMainWindow() {
+    func initMainWindow() {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = Colors.colorPrimary
         
         var viewController: UIViewController
         
         if UserService.sharedInstance.getUser() != nil {
+            UserService.sharedInstance.isQuickStart = false
+            
             viewController = MainTabViewController()
             welcomeViewController = nil
         } else {
@@ -108,9 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initColors() {
-        //TODO: colorize unselected items
         UITabBar.appearance().tintColor = Colors.colorAccent
         UITabBar.appearance().barTintColor = Colors.colorPrimary
+        if #available(iOS 10.0, *) {
+            UITabBar.appearance().unselectedItemTintColor = Colors.colorWhite
+        }
         
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = Colors.colorPrimary

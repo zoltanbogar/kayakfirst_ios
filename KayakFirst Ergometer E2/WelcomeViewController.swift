@@ -51,7 +51,9 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         setSegmentedItem(sender: segmentedControl)
     }
     
-    func showMainView() {
+    func showMainView(isQuickStart: Bool) {
+        UserService.sharedInstance.isQuickStart = isQuickStart
+        
         let controller = MainTabViewController()
         self.present(controller, animated: true, completion: nil)
     }

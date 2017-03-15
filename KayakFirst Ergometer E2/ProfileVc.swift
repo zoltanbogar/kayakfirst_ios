@@ -32,38 +32,50 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: init view
     internal override func initView() {
-        scrollView = AppScrollView(view: contentView)
-        stackView = UIStackView()
-        stackView?.axis = .vertical
-        stackView?.spacing = margin05
-        
-        scrollView!.addSubview(imgProfile)
-        imgProfile.snp.makeConstraints { (make) in
-            make.centerX.equalTo(scrollView!.containerView)
-            make.top.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+        if checkUser() {
+            scrollView = AppScrollView(view: contentView)
+            stackView = UIStackView()
+            stackView?.axis = .vertical
+            stackView?.spacing = margin05
+            
+            scrollView!.addSubview(imgProfile)
+            imgProfile.snp.makeConstraints { (make) in
+                make.centerX.equalTo(scrollView!.containerView)
+                make.top.equalTo(scrollView!.containerView).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+            }
+            
+            scrollView!.addSubview(stackView!)
+            stackView?.snp.makeConstraints { make in
+                make.top.equalTo(imgProfile.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin, 0))
+                make.left.equalTo(scrollView!.containerView)
+                make.right.equalTo(scrollView!.containerView)
+                make.bottom.equalTo(scrollView!.containerView)
+            }
+            
+            stackView?.addArrangedSubview(tfFirstName)
+            stackView?.addArrangedSubview(tfLastName)
+            stackView?.addArrangedSubview(tfBirthDate)
+            stackView?.addArrangedSubview(tfClub)
+            stackView?.addArrangedSubview(tfUserName)
+            stackView?.addArrangedSubview(tfPassword)
+            stackView?.addArrangedSubview(tfEmail)
+            stackView?.addArrangedSubview(tfWeight)
+            stackView?.addArrangedSubview(tfCountry)
+            stackView?.addArrangedSubview(tfGender)
+            stackView?.addArrangedSubview(tfArtOfPaddling)
+            
+            progressView = ProgressView(superView: contentView)
         }
-        
-        scrollView!.addSubview(stackView!)
-        stackView?.snp.makeConstraints { make in
-            make.top.equalTo(imgProfile.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin, 0))
-            make.left.equalTo(scrollView!.containerView)
-            make.right.equalTo(scrollView!.containerView)
-            make.bottom.equalTo(scrollView!.containerView)
+    }
+    
+    //TODO: Android!
+    private func checkUser() -> Bool {
+        if userService.getUser() == nil {
+            (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
+            self.dismiss(animated: false, completion: nil)
+            return false
         }
-        
-        stackView?.addArrangedSubview(tfFirstName)
-        stackView?.addArrangedSubview(tfLastName)
-        stackView?.addArrangedSubview(tfBirthDate)
-        stackView?.addArrangedSubview(tfClub)
-        stackView?.addArrangedSubview(tfUserName)
-        stackView?.addArrangedSubview(tfPassword)
-        stackView?.addArrangedSubview(tfEmail)
-        stackView?.addArrangedSubview(tfWeight)
-        stackView?.addArrangedSubview(tfCountry)
-        stackView?.addArrangedSubview(tfGender)
-        stackView?.addArrangedSubview(tfArtOfPaddling)
-        
-        progressView = ProgressView(superView: contentView)
+        return true
     }
     
     override func initTabBarItems() {
@@ -159,7 +171,12 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_weight")
         textField.active = false
         textField.keyBoardType = .numberPad
-        textField.text = "\(Int((self.userService.getUser()?.bodyWeight)!))"
+        
+        let weight = self.userService.getUser()?.bodyWeight
+        
+        if let weightValue = weight {
+            textField.text = "\(Int(weightValue))"
+        }
         
         return textField
     }()
@@ -285,7 +302,11 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         tfCountry.active = isActive
         
         if !isActive {
-            tfWeight.text = "\(Int((self.userService.getUser()?.bodyWeight)!))"
+            let weight = self.userService.getUser()?.bodyWeight
+            
+            if let weightValue = weight {
+                tfWeight.text = "\(Int(weightValue))"
+            }
             tfWeight.endEditing(true)
         }
     }
