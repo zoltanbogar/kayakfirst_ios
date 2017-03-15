@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//abstract class
 class CalculateStrokes_AV: CalculateElementAvg {
     
     override func getAvgType() -> CalculateEnum {
@@ -22,13 +23,6 @@ class CalculateStrokes_AV: CalculateElementAvg {
     }
     
     override func calculate() -> Double {
-        let duration = telemetry.duration
-        let cycleIndex = telemetry.cycleIndex
-        
-        if duration != 0 {
-            calculatedValue = (Double(cycleIndex) / (duration / Double(oneMinuteInMillisec)))
-        }
-        return calculatedValue
+        fatalError("must be implemented")
     }
-    
 }

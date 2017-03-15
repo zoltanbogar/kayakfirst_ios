@@ -57,9 +57,7 @@ class OutdoorService: TrainingService {
             commandOutdoorLongitude!.value = locationValue.coordinate.longitude
             //TODO: it can be negative
             commandOutdoorSpeed!.value = locationValue.speed
-            commandOutdoorStroke!.value = Double(sensorManager.cycleIndex)
-            
-            setCycleIndex(cycleIndex: commandOutdoorStroke!.getCycleIndex())
+            commandOutdoorStroke!.value = Double(sensorManager.strokesPerMin)
         }
     }
     
@@ -71,8 +69,12 @@ class OutdoorService: TrainingService {
         stopLocationMonitoring()
     }
     
-    override func isNewCycle() -> Bool {
+    override func runCalculate() -> Bool {
         runCommandList()
+        return true
+    }
+    
+    override func shouldWaitAfterCalculate() -> Bool {
         return true
     }
 }

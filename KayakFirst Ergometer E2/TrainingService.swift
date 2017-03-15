@@ -54,6 +54,14 @@ class TrainingService: CycleStateChangeListener {
         fatalError("Must be implemented")
     }
     
+    internal func runCalculate() -> Bool {
+        fatalError("Must be implemented")
+    }
+    
+    internal func shouldWaitAfterCalculate() -> Bool {
+        fatalError("Must be implemented")
+    }
+    
     func startService() {
         if isCycleState(cycleState: CycleState.quit) || isCycleState(cycleState: CycleState.permittionDenied) {
             setTelemetryCycleState(cycleState: CycleState.none)
@@ -117,7 +125,7 @@ class TrainingService: CycleStateChangeListener {
                                     self.autoStopPause.reset()
                                     self.setDuration()
                                     
-                                    if self.isNewCycle() {
+                                    if self.runCalculate() {
                                         self.autoStopResume.reset()
                                         
                                         let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
@@ -130,7 +138,7 @@ class TrainingService: CycleStateChangeListener {
                                         
                                         self.realDuration = self.telemetry.duration
                                         
-                                        shouldWait = false
+                                        shouldWait = self.shouldWaitAfterCalculate()
                                     } else {
                                         self.autoStopResume.checkAutoStop()
                                     }
@@ -156,20 +164,6 @@ class TrainingService: CycleStateChangeListener {
                 }
             }
         }
-    }
-    
-    internal func isNewCycle() -> Bool {
-        let telemetryCycleIndex = telemetry.cycleIndex
-        
-        runCommandList()
-        
-        if cycleIndex > telemetryCycleIndex {
-            telemetry.cycleIndex = self.cycleIndex
-            return true
-        } else if telemetryCycleIndex == 0 {
-            return true
-        }
-        return false
     }
     
     //TODO: not so seamless, it can 'stick'

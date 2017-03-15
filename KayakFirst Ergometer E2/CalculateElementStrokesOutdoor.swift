@@ -9,24 +9,18 @@
 import Foundation
 class CalculateElementStrokesOutdoor: CalculateElementStroke<StartCommandOutdoor> {
     
-    private var cycleIndex: Int64 = 0
-    private var timeStamp: Double = 0
-    
     override func run() -> Training {
-        let diffCycleIndex = telemetry.cycleIndex - cycleIndex
-        cycleIndex = telemetry.cycleIndex
+        let currentSpeed = telemetry.speed
         
-        var timeDiff: Double = 0
-        
-        if timeStamp != 0 {
-            timeDiff = startCommand.getCalculatedTimeStamp() - timeStamp
+        //TODO: speed can be negative
+        if currentSpeed < Double(minSpeedKmh) {
+            calculatedValue = 0
+        } else {
+            calculatedValue = startCommand.strokesValue
         }
         
-        timeStamp = startCommand.getCalculatedTimeStamp()
-        
-        if timeDiff != 0 {
-            calculatedValue = (Double(diffCycleIndex) / (timeDiff / Double(oneMinuteInMillisec)))
-        }
+        //TODO: delete this
+        calculatedValue = startCommand.strokesValue
         
         return createTrainingObject()
     }
