@@ -51,6 +51,8 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         super.viewDidLayoutSubviews()
         
         refreshCalendarDesign()
+        
+        log("ORIENTATION", "viewDidLayoutSubViews: size: \(view.frame.size)")
     }
     
     internal override func initView() {
@@ -58,7 +60,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.distribution = .fillEqually
         stackView?.spacing = margin
         
-        viewCalendar.removeAllSubviews()
         viewCalendar.addSubview(cvCalendarView)
         viewCalendar.addSubview(labelMonth)
         viewCalendar.addSubview(calendarMenuView)
@@ -67,7 +68,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
         }
         
-        viewTableView.removeAllSubviews()
         viewTableView.addSubview(trainingTableViewHeader)
         trainingTableViewHeader.snp.makeConstraints { (make) in
             make.top.equalTo(viewTableView)
@@ -124,8 +124,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         
         let width: CGFloat = size.width / 2
         let height: CGFloat = 200
-        
-        log("CALENDAR", "width: \(width)")
         
         cvCalendarView.frame = CGRect(x: 0, y: 50, width: width, height: height)
         calendarMenuView.frame = CGRect(x: 0, y: 25, width: width, height: 20)

@@ -50,6 +50,7 @@ class BaseVC: UIViewController {
     
     //MARK: properties
     let contentView = UIView()
+    private var viewInited = false
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -59,6 +60,7 @@ class BaseVC: UIViewController {
         
         initViewEdges()
         initView()
+        viewInited = true
         
         view.backgroundColor = Colors.colorPrimary
     }
@@ -67,6 +69,10 @@ class BaseVC: UIViewController {
         super.viewWillAppear(animated)
         
         initTabBarItems()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         handleScreenOrientation(size: view.frame.size)
     }
@@ -99,17 +105,20 @@ class BaseVC: UIViewController {
     
     private func initViewEdges() {
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(view).inset(UIEdgeInsetsMake(getTopMargin(), 0, getTabBarHeight(viewController: self), 0))
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
+            make.top.equalTo(self.topLayoutGuide.snp.bottom)
         }
     }
     
     func handleScreenOrientation(size: CGSize) {
-        contentView.removeAllSubviews()
-        initView()
-        if isScreenPortrait(size: size) {
-            handlePortraitLayout(size: size)
-        } else {
-            handleLandscapeLayout(size: size)
+        if viewInited {
+            if isScreenPortrait(size: size) {
+                handlePortraitLayout(size: size)
+            } else {
+                handleLandscapeLayout(size: size)
+            }
         }
     }
     

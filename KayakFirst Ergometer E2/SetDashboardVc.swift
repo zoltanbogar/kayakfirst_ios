@@ -117,6 +117,7 @@ class SetDashboardVc: BaseVC {
         return mainStackView
     }()
     
+    //TODO: handle the divider correctly, without spacing (if there is time for this)
     private lazy var viewTop: UIView! = {
         let view = UIView()
         

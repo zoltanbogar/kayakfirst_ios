@@ -264,11 +264,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         isLandscape = false
         
-        (view0.subviews[0] as! DashBoardElement).isLandscape = false
-        (view1.subviews[0] as! DashBoardElement).isLandscape = false
-        (view2.subviews[0] as! DashBoardElement).isLandscape = false
-        (view3.subviews[0] as! DashBoardElement).isLandscape = false
-        (view4.subviews[0] as! DashBoardElement).isLandscape = false
+        setDashboardElementsOrientation()
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -283,11 +279,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         isLandscape = true
         
-        (view0.subviews[0] as! DashBoardElement).isLandscape = true
-        (view1.subviews[0] as! DashBoardElement).isLandscape = true
-        (view2.subviews[0] as! DashBoardElement).isLandscape = true
-        (view3.subviews[0] as! DashBoardElement).isLandscape = true
-        (view4.subviews[0] as! DashBoardElement).isLandscape = true
+        setDashboardElementsOrientation()
+    }
+    
+    private func setDashboardElementsOrientation() {
+        (view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
     }
     
     override func initTabBarItems() {

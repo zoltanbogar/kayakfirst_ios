@@ -37,7 +37,7 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
         }
         
         textFieldWebsite.snp.makeConstraints { (make) in
-            make.centerX.equalTo(contentView)
+            make.centerX.equalTo(view)
             make.top.equalTo(imgLogo.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin2 * 2, 0))
         }
         
