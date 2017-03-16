@@ -42,7 +42,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         if let parent = self.parent as? TrainingViewController {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()
-            } else {
+            } else if telemetry.cycleState != CycleState.paused {
                 parent.onPlayClicked()
             }
         }
@@ -424,8 +424,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             }
             
             if swipe > 50 {
-                btnPlayPauseClick()
                 animateBtnPlayPauseToOriginal()
+                btnPlayPauseClick()
             } else {
                 pan.view!.center = CGPoint(x: diffX, y: diffY)
                 pan.setTranslation(CGPoint.zero, in: self.view)
