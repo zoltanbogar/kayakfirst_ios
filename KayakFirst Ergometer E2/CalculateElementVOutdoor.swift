@@ -14,7 +14,7 @@ class CalculateElementVOutdoor: CalculateElementV<StartCommandOutdoor> {
     override func run() -> Training {
         let speed = startCommand.speed * converSationMpsKmph
         
-        if speed == 0 {
+        if speed <= 0{
             if currentTimeStamp == 0 {
                 currentTimeStamp = startCommand.getCalculatedTimeStamp()
             }

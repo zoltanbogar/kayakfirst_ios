@@ -10,8 +10,7 @@ import Foundation
 class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     
     //MARK constants
-    //TODO: it should be '2'
-    let minSpeedKmh = 0
+    let minSpeedKmh = 2
     let oneMinuteInMillisec = 60 * 1000
     let j = 0.02527962
     let q = 1

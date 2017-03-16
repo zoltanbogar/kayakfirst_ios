@@ -20,7 +20,7 @@ class CalculateElementT: CalculateElementCurrent {
         
         v = v / converSationMpsKmph
         
-        if v > 0 {
+        if v > Double(minSpeedKmh) {
             calculatedValue = distance / v
             
             calculatedValue = calculatedValue * 1000
