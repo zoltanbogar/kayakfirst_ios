@@ -102,6 +102,10 @@
 		06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */; };
 		06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD41E4998AE0066C072 /* DownloadDto.swift */; };
 		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
+		061369861E7BD63500896282 /* UploadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369851E7BD63500896282 /* UploadUtils.swift */; };
+		061369881E7BD78700896282 /* UploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369871E7BD78700896282 /* UploadTrainings.swift */; };
+		0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369891E7C2D8C00896282 /* UploadTimer.swift */; };
+		0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */; };
 		0613A9121E67E54000B13342 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613A9101E67E54000B13342 /* FBSDKCoreKit.framework */; };
 		0613A9131E67E54000B13342 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613A9111E67E54000B13342 /* FBSDKLoginKit.framework */; };
 		0613A91A1E67E8D900B13342 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613A9191E67E8D900B13342 /* Bolts.framework */; };
@@ -324,6 +328,10 @@
 		06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDto.swift; sourceTree = "<group>"; };
 		06117BD41E4998AE0066C072 /* DownloadDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadDto.swift; sourceTree = "<group>"; };
 		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
+		061369851E7BD63500896282 /* UploadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUtils.swift; sourceTree = "<group>"; };
+		061369871E7BD78700896282 /* UploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainings.swift; sourceTree = "<group>"; };
+		061369891E7C2D8C00896282 /* UploadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTimer.swift; sourceTree = "<group>"; };
+		0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainingAvgs.swift; sourceTree = "<group>"; };
 		0613A9101E67E54000B13342 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0613A9111E67E54000B13342 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0613A9191E67E8D900B13342 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -515,6 +523,7 @@
 				067964601E636E7800DFC050 /* MovingAverage.swift */,
 				067964621E6370F500DFC050 /* SaveValues.swift */,
 				067964641E63756E00DFC050 /* PauseDiff.swift */,
+				061369891E7C2D8C00896282 /* UploadTimer.swift */,
 			);
 			name = training_calculate;
 			sourceTree = "<group>";
@@ -523,19 +532,22 @@
 			isa = PBXGroup;
 			children = (
 				06F9145F1E42801C0041B303 /* backend */,
-				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
-				06F9145D1E427FFC0041B303 /* UserLogin.swift */,
-				06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */,
-				06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */,
-				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
-				06F657C71E4628C7002AA9D0 /* UserLogout.swift */,
-				06F657CB1E463DB6002AA9D0 /* UserRegister.swift */,
-				061148821E468121003A8FE6 /* UserUpdate.swift */,
+				060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */,
 				0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */,
 				06117BD61E4999FA0066C072 /* DownloadTrainings.swift */,
-				060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */,
+				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
+				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
+				06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */,
+				06F9145D1E427FFC0041B303 /* UserLogin.swift */,
 				0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */,
 				0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */,
+				06F657C71E4628C7002AA9D0 /* UserLogout.swift */,
+				06F657CB1E463DB6002AA9D0 /* UserRegister.swift */,
+				06F657BF1E4618E4002AA9D0 /* UserResetPassword.swift */,
+				061148821E468121003A8FE6 /* UserUpdate.swift */,
+				061369851E7BD63500896282 /* UploadUtils.swift */,
+				061369871E7BD78700896282 /* UploadTrainings.swift */,
+				0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -1202,6 +1214,7 @@
 				064766461E75885D007936B5 /* LocationPermittionVc.swift in Sources */,
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
+				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				067964971E638A1100DFC050 /* CommandOutdoorLongitude.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
@@ -1283,6 +1296,7 @@
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
 				060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */,
 				060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */,
+				061369861E7BD63500896282 /* UploadUtils.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
@@ -1301,10 +1315,12 @@
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */,
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
+				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */,
+				0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				060B99211E641D1F00F72404 /* AutoStopResume.swift in Sources */,

@@ -30,20 +30,24 @@ class ServerService<E> {
     
     func run() -> E? {
         var result: E?
-        if Reachability.isConnectedToNetwork() {
-            let response = initAlamofire()
-            
-            let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
-            
-            if statusCode! >= 200 && statusCode! < 300 {
-                result = handleServiceCommunication(alamofireRequest: response)
+        if preCheck() {
+            if Reachability.isConnectedToNetwork() {
+                let response = initAlamofire()
+                
+                let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
+                
+                log(alamofireLogTag, response.responseString())
+                
+                if statusCode! >= 200 && statusCode! < 300 {
+                    result = handleServiceCommunication(alamofireRequest: response)
+                } else {
+                    error = initError(alamofireRequest: response)
+                }
+                
             } else {
-                error = initError(alamofireRequest: response)
+                error = Responses.error_no_internet
+                return nil
             }
-            
-        } else {
-            error = Responses.error_no_internet
-            return nil
         }
         
         return result
@@ -67,6 +71,11 @@ class ServerService<E> {
     
     internal func initEncoding() -> ParameterEncoding {
         fatalError("Must be implemented")
+    }
+    
+    //override if needed
+    internal func preCheck() -> Bool {
+        return true
     }
     
     internal func initHeader() -> HTTPHeaders? {

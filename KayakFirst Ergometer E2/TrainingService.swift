@@ -72,7 +72,7 @@ class TrainingService: CycleStateChangeListener {
     func startCycle() {
         if !isCycleState(cycleState: CycleState.paused) {
             reset()
-            //TODO: alarm
+            UploadTimer.startTimer()
         }
         pauseDiff.resume()
         setTelemetryCycleState(cycleState: CycleState.resumed)

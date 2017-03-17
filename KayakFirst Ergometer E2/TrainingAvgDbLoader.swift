@@ -70,6 +70,10 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
     }
     
+    func getTrainingAvgsfromTimeStampPredicate(timeStampFrom: Double) -> Expression<Bool> {
+        return self.sessionId > timeStampFrom
+    }
+    
     override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
         var trainingAvgList: [TrainingAvg]?
         
