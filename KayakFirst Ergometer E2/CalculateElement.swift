@@ -7,9 +7,13 @@
 //
 
 import Foundation
+
+let converSationMpsKmph: Double = 3.6
+
 class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     
     //MARK constants
+    let maxSpeedKmph: Double = 30
     let minSpeedKmh = 2
     let oneMinuteInMillisec = 60 * 1000
     let j = 0.02527962

@@ -10,7 +10,6 @@ import Foundation
 struct TelemetryObject {
     var f: Training
     var v: Training
-    var s: Training
     var s_sum: Training
     var strokes: Training
     var t200: Training

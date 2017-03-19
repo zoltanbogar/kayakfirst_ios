@@ -13,7 +13,6 @@ class StartCommand<E: MeasureCommand> {
     let telemetry = Telemetry.sharedInstance
     let pauseDiff = PauseDiff.sharedInstance
     
-    private var sSumElement: CalculateElementS_Sum?
     private var t200Element: CalculateElementT_200?
     private var t500Element: CalculateElementT_500?
     private var t1000Element: CalculateElementT_1000?
@@ -40,7 +39,6 @@ class StartCommand<E: MeasureCommand> {
     }
     
     func reset() {
-        sSumElement = CalculateElementS_Sum(startCommand: getSelfStartCommand())
         t200Element = CalculateElementT_200(startCommand: getSelfStartCommand())
         t500Element = CalculateElementT_500(startCommand: getSelfStartCommand())
         t1000Element = CalculateElementT_1000(startCommand: getSelfStartCommand())
@@ -75,8 +73,7 @@ class StartCommand<E: MeasureCommand> {
         return TelemetryObject(
             f: f,
             v: v,
-            s: s,
-            s_sum: sSumElement!.run(),
+            s_sum: s,
             strokes: strokes,
             t200: t200Element!.run(),
             t500: t500Element!.run(),

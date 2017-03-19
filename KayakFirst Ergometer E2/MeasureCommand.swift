@@ -9,8 +9,7 @@
 import Foundation
 
 enum CommandOutdoorEnum: String {
-    case latitude = "latitude"
-    case longitude = "longitude"
+    case distance = "distance"
     case speed = "speed"
     case stroke = "stroke"
 }

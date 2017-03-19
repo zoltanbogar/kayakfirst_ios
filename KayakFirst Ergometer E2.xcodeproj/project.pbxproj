@@ -118,6 +118,7 @@
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
+		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
@@ -143,7 +144,6 @@
 		067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964761E6381C600DFC050 /* CalculateElementCurrent.swift */; };
 		067964791E63820500DFC050 /* CalculateElementF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964781E63820500DFC050 /* CalculateElementF.swift */; };
 		0679647B1E6382CE00DFC050 /* CalculateElementS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679647A1E6382CE00DFC050 /* CalculateElementS.swift */; };
-		0679647D1E6382EC00DFC050 /* CalculateElementS_Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679647C1E6382EC00DFC050 /* CalculateElementS_Sum.swift */; };
 		0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */; };
 		067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964801E63851A00DFC050 /* CalculateElementT.swift */; };
 		067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964821E6385AC00DFC050 /* CalculateElementT_200.swift */; };
@@ -152,8 +152,6 @@
 		067964891E63861300DFC050 /* CalculateElementV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964881E63861300DFC050 /* CalculateElementV.swift */; };
 		0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */; };
 		067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648F1E6387A000DFC050 /* MeasureCommand.swift */; };
-		067964951E6389D900DFC050 /* CommandOutdoorLatitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964941E6389D900DFC050 /* CommandOutdoorLatitude.swift */; };
-		067964971E638A1100DFC050 /* CommandOutdoorLongitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964961E638A1100DFC050 /* CommandOutdoorLongitude.swift */; };
 		067964991E638A2C00DFC050 /* CommandOutdoorSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964981E638A2C00DFC050 /* CommandOutdoorSpeed.swift */; };
 		0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */; };
 		0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */; };
@@ -345,6 +343,7 @@
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
+		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
@@ -370,7 +369,6 @@
 		067964761E6381C600DFC050 /* CalculateElementCurrent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementCurrent.swift; sourceTree = "<group>"; };
 		067964781E63820500DFC050 /* CalculateElementF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementF.swift; sourceTree = "<group>"; };
 		0679647A1E6382CE00DFC050 /* CalculateElementS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementS.swift; sourceTree = "<group>"; };
-		0679647C1E6382EC00DFC050 /* CalculateElementS_Sum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementS_Sum.swift; sourceTree = "<group>"; };
 		0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStroke.swift; sourceTree = "<group>"; };
 		067964801E63851A00DFC050 /* CalculateElementT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT.swift; sourceTree = "<group>"; };
 		067964821E6385AC00DFC050 /* CalculateElementT_200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT_200.swift; sourceTree = "<group>"; };
@@ -379,8 +377,6 @@
 		067964881E63861300DFC050 /* CalculateElementV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementV.swift; sourceTree = "<group>"; };
 		0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementFOutdoor.swift; sourceTree = "<group>"; };
 		0679648F1E6387A000DFC050 /* MeasureCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureCommand.swift; sourceTree = "<group>"; };
-		067964941E6389D900DFC050 /* CommandOutdoorLatitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorLatitude.swift; sourceTree = "<group>"; };
-		067964961E638A1100DFC050 /* CommandOutdoorLongitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorLongitude.swift; sourceTree = "<group>"; };
 		067964981E638A2C00DFC050 /* CommandOutdoorSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorSpeed.swift; sourceTree = "<group>"; };
 		0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorStroke.swift; sourceTree = "<group>"; };
 		0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommandOutdoor.swift; sourceTree = "<group>"; };
@@ -688,7 +684,6 @@
 				067964761E6381C600DFC050 /* CalculateElementCurrent.swift */,
 				067964781E63820500DFC050 /* CalculateElementF.swift */,
 				0679647A1E6382CE00DFC050 /* CalculateElementS.swift */,
-				0679647C1E6382EC00DFC050 /* CalculateElementS_Sum.swift */,
 				0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */,
 				067964801E63851A00DFC050 /* CalculateElementT.swift */,
 				067964821E6385AC00DFC050 /* CalculateElementT_200.swift */,
@@ -783,10 +778,9 @@
 		067964911E63881200DFC050 /* outdoor */ = {
 			isa = PBXGroup;
 			children = (
-				067964941E6389D900DFC050 /* CommandOutdoorLatitude.swift */,
-				067964961E638A1100DFC050 /* CommandOutdoorLongitude.swift */,
 				067964981E638A2C00DFC050 /* CommandOutdoorSpeed.swift */,
 				0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */,
+				064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */,
 			);
 			name = outdoor;
 			sourceTree = "<group>";
@@ -1186,6 +1180,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
+				064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
 				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
 				06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */,
@@ -1216,7 +1211,6 @@
 				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
 				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
-				067964971E638A1100DFC050 /* CommandOutdoorLongitude.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
@@ -1229,7 +1223,6 @@
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				067964721E63804500DFC050 /* CalculateT_1000_AV.swift in Sources */,
-				0679647D1E6382EC00DFC050 /* CalculateElementS_Sum.swift in Sources */,
 				067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
@@ -1357,7 +1350,6 @@
 				061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */,
 				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,
 				060B99181E641A5200F72404 /* TrainingService.swift in Sources */,
-				067964951E6389D900DFC050 /* CommandOutdoorLatitude.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,

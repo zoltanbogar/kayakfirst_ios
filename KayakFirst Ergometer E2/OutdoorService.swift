@@ -13,8 +13,7 @@ class OutdoorService: TrainingService {
     private let fusedLocationManager = FusedLocationManager.sharedInstance
     private let sensorManager = AppSensorManager.sharedInstance
     
-    private var commandOutdoorLatitude: CommandOutdoorLatitude?
-    private var commandOutdoorLongitude: CommandOutdoorLongitude?
+    private var commandOutdoorDistance: CommandOutdoorDistance?
     private var commandOutdoorSpeed: CommandOutdoorSpeed?
     private var commandOutdoorStroke: CommandOutdoorStroke?
     
@@ -36,14 +35,14 @@ class OutdoorService: TrainingService {
     }
     
     override func initCommandList() {
-        commandOutdoorLatitude = CommandOutdoorLatitude()
-        commandOutdoorLongitude = CommandOutdoorLongitude()
+        commandOutdoorDistance = CommandOutdoorDistance()
         commandOutdoorSpeed = CommandOutdoorSpeed()
         commandOutdoorStroke = CommandOutdoorStroke()
         
         sensorManager.reset()
+        fusedLocationManager.reset()
         
-        commandList = [commandOutdoorLatitude!, commandOutdoorLongitude!, commandOutdoorSpeed!, commandOutdoorStroke!]
+        commandList = [commandOutdoorDistance!, commandOutdoorSpeed!, commandOutdoorStroke!]
     }
     
     override func initStartCommand() {
@@ -51,14 +50,9 @@ class OutdoorService: TrainingService {
     }
     
     override func runCommandList() {
-        let location = fusedLocationManager.currentLocation
-        if let locationValue = location {
-            commandOutdoorLatitude!.value = locationValue.coordinate.latitude
-            commandOutdoorLongitude!.value = locationValue.coordinate.longitude
-            //TODO: it can be negative
-            commandOutdoorSpeed!.value = locationValue.speed
-            commandOutdoorStroke!.value = Double(sensorManager.strokesPerMin)
-        }
+        commandOutdoorDistance!.value = fusedLocationManager.distanceSum
+        commandOutdoorSpeed!.value = fusedLocationManager.speed
+        commandOutdoorStroke!.value = Double(sensorManager.strokesPerMin)
     }
     
     override func handleStartTraining() {

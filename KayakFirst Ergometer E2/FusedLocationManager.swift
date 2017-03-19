@@ -13,7 +13,10 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
     //MARK: properteis
     private let locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
+    private var currentLocation: CLLocation?
+    private var currentTime: Double = 0
+    var distanceSum: Double = 0
+    var speed: Double = 0
     
     //MARK: init
     static let sharedInstance = FusedLocationManager()
@@ -34,12 +37,55 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func reset() {
+        currentLocation = nil
+        currentTime = 0
+        speed = 0
+        distanceSum = 0
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
         
-        currentLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        
+        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         log("LOCATION", "update: \(locValue.latitude)")
+        
+        if currentLocation == nil {
+            currentLocation = location
+        }
+        
+        calculateDistance(location: location)
+        calculateSpeed(location: location)
+        currentLocation = location
+    }
+    
+    private func calculateDistance(location: CLLocation) {
+        distanceSum += getDistance(loc1: location, loc2: currentLocation!)
+    }
+    
+    private func calculateSpeed(location: CLLocation) {
+        var speed: Double = 0
+        
+        if currentTime == 0 {
+            currentTime = currentTimeMillis()
+        }
+        
+        if location.speed >= 0 {
+            speed = location.speed
+        } else {
+            let timeDiff = currentTimeMillis() - currentTime
+            if timeDiff > 0 {
+                let distance = getDistance(loc1: location, loc2: currentLocation!)
+                speed = (distance / timeDiff) * 1000
+            }
+        }
+        
+        currentTime = currentTimeMillis()
+        self.speed = speed * converSationMpsKmph
+    }
+    
+    private func getDistance(loc1: CLLocation, loc2: CLLocation) -> Double {
+        return loc1.distance(from: loc2)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

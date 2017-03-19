@@ -10,8 +10,7 @@ import Foundation
 class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     //MARK: properties
-    var latitude: Double = 0
-    var longitude: Double = 0
+    var distanceSum: Double = 0
     var speed: Double = 0
     var strokesValue: Double = 0
     
@@ -31,8 +30,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     override func reset() {
         super.reset()
         
-        latitude = 0
-        longitude = 0
+        distanceSum = 0
         speed = 0
         strokesValue = 0
         
@@ -62,10 +60,8 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     private func fillCommands(commands: [MeasureCommand]) {
         for measureCommandOutdoor in commands {
             switch measureCommandOutdoor.getCommand() {
-            case CommandOutdoorEnum.latitude.rawValue:
-                self.latitude = measureCommandOutdoor.value
-            case CommandOutdoorEnum.longitude.rawValue:
-                self.longitude = measureCommandOutdoor.value
+            case CommandOutdoorEnum.distance.rawValue:
+                self.distanceSum = measureCommandOutdoor.value
             case CommandOutdoorEnum.speed.rawValue:
                 self.speed = measureCommandOutdoor.value
             case CommandOutdoorEnum.stroke.rawValue:
