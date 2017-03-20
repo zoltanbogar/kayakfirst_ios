@@ -23,12 +23,6 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
         interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
     //MARK: abstract functions
     func getTrainingService() -> TrainingService {
         fatalError("Must be implemented")

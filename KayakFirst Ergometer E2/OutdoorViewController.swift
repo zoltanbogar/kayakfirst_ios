@@ -26,6 +26,13 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
         getTrainingService().startService()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keepScreenOn()
+        setBrightnessFull()
+    }
+    
     override func closeViewController() {
         super.closeViewController()
     }
@@ -46,5 +53,13 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
             default: break
             }
         }
+    }
+    
+    private func keepScreenOn() {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    private func setBrightnessFull() {
+        UIScreen.main.brightness = CGFloat(1)
     }
 }
