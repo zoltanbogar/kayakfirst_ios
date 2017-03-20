@@ -31,6 +31,7 @@ class ChartView: UIView {
         self.position = position
         
         initView()
+        disableLabelIfNeeded()
         initLabelList()
         initChart()
     }
@@ -54,6 +55,14 @@ class ChartView: UIView {
     
     private func refreshChart() {
         lineChartData?.createTrainingListByLabel(diagramLabels: diagramLabelList!)
+    }
+    
+    private func disableLabelIfNeeded() {
+        let isOutdoor = TrainingDataService.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        
+        if isOutdoor {
+            labelForce.isDisabled = true
+        }
     }
     
     //MARK: views

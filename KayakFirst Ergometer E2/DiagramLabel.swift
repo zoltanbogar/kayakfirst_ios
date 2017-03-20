@@ -12,6 +12,7 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     
     //MARK: constants
     private let defaultTextColor = Colors.colorWhite
+    private let disabledTextColor = Colors.colorGrey
     private let defaultLabels: [CalculateEnum] = [CalculateEnum.STROKES, CalculateEnum.V, CalculateEnum.F, CalculateEnum.T_200]
     
     //MARK: properties
@@ -28,6 +29,14 @@ class DiagramLabel: UIView, UITextFieldDelegate {
         }
     }
     var labelSelectedListener: ((_ label: DiagramLabel) -> ())?
+    var isDisabled: Bool = false {
+        didSet {
+            if isDisabled {
+                isSelected = false
+            }
+            refreshActive()
+        }
+    }
     
     //MARK: init
     init() {
@@ -48,13 +57,19 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     
     //MARK: others
     private func refreshActive() {
-        isSelected = !isSelected
-        if isSelected {
-            textField.textColor = Colors.colorPrimary
-            textField.borderStyle = .roundedRect
-            textField.backgroundColor = color
+        if !isDisabled {
+            isSelected = !isSelected
+            if isSelected {
+                textField.textColor = Colors.colorPrimary
+                textField.borderStyle = .roundedRect
+                textField.backgroundColor = color
+            } else {
+                textField.textColor = defaultTextColor
+                textField.borderStyle = .none
+                textField.backgroundColor = UIColor.clear
+            }
         } else {
-            textField.textColor = defaultTextColor
+            textField.textColor = disabledTextColor
             textField.borderStyle = .none
             textField.backgroundColor = UIColor.clear
         }
@@ -100,9 +115,11 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     }
     
     private func click() {
-        refreshActive()
-        if let listener = labelSelectedListener {
-            listener(self)
+        if !isDisabled {
+            refreshActive()
+            if let listener = labelSelectedListener {
+                listener(self)
+            }
         }
     }
     
