@@ -111,7 +111,7 @@
 
 //Trainig
 "training_start"="Kezdés";
-"training_duration"="Időtartam";
+"training_duration"="Tartam";
 "training_distance"="Táv";
 "training_sum"="Össz.";
 "training_sum_average"="Átlag";
