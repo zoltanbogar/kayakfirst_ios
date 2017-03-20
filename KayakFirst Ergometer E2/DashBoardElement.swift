@@ -151,7 +151,7 @@ class DashBoardElement: UIView {
     private lazy var labelTitle: UILabel! = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = self.getTitle()
+        label.text = self.getTitle().uppercased()
         label.textColor = Colors.colorWhite
         label.numberOfLines = 0
         
