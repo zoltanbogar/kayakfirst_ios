@@ -181,7 +181,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         return textField
     }()
     
-    //TODO: country is editable
     private lazy var tfCountry: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("user_country")

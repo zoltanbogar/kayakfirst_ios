@@ -85,8 +85,6 @@ class TrainingDataService: AppService {
     
     private func putTrainingAvgsToMap(avgs: [TrainingAvg]?) {
         if let trainingAvgs = avgs {
-            //TODO: hashmap
-            
             if self.avgTrainingDictionary == nil {
                 self.avgTrainingDictionary = [String : Double]()
             }

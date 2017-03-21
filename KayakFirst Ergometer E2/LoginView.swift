@@ -127,8 +127,6 @@ class LoginView: UIView {
     
     private lazy var btnFacebook: UIButton! = {
         let button = AppUIButton(width: 0, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorWhite)
-        //TODO: add image
-        //button.setImage(UIImage(named: "facebook"), for: .normal)
         button.addTarget(self, action: #selector(btnFacebookClick), for: .touchUpInside)
         
         return button
@@ -136,8 +134,6 @@ class LoginView: UIView {
     
     private lazy var btnGoogle: UIButton! = {
         let button = AppUIButton(width: 0, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorWhite)
-        //TODO: add image
-        //button.setImage(UIImage(named: "google"), for: .normal)
         button.addTarget(self, action: #selector(btnGoogleClick), for: .touchUpInside)
         
         return button
@@ -196,7 +192,6 @@ class LoginView: UIView {
         resetPasswordDialog.show(viewController: self.viewController)
     }
     
-    //TODO
     @objc private func btnQuickStartClick() {
         self.viewController.showMainView(isQuickStart: true)
     }
@@ -269,8 +264,6 @@ class LoginView: UIView {
             }
             
             AppService.errorHandlingWithAlert(viewController: self.viewController, error: userError)
-            
-            //TODO: handle 'registration required'
         }
     }
     

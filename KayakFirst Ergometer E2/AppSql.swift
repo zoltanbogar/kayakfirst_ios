@@ -39,5 +39,4 @@ class AppSql {
         TrainingDaysDbLoader().deleteData(timeStampFrom: timeStampFrom)
         TrainingAvgDbLoader().deleteData(timeStampFrom: timeStampFrom)
     }
-    
 }

@@ -12,7 +12,6 @@ public protocol StartDelayDelegate {
     func onCounterEnd()
 }
 
-//TODO: design
 class StartDelayView: UIView {
     
     //MARK: constants

@@ -111,6 +111,7 @@ class TrainingService: CycleStateChangeListener {
         telemetry.resetOthers()
     }
     
+    //TODO: loop from Android
     private func startLoop() {
         DispatchQueue.global().async {
             while !self.isCycleState(cycleState: CycleState.quit) && !self.isCycleState(cycleState: CycleState.permittionDenied) {

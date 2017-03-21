@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-//TODO: it could be struct
-class Colors {
+struct Colors {
     static let colorPrimary = getColor("#333c41")
     static let colorPrimaryTransparent = getColor("#aa333c41")
     static let colorPrimaryDark = getColor("#000000")

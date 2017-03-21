@@ -12,15 +12,11 @@ class CalculateElementStrokesOutdoor: CalculateElementStroke<StartCommandOutdoor
     override func run() -> Training {
         let currentSpeed = telemetry.speed
         
-        //TODO: speed can be negative
         if currentSpeed < Double(minSpeedKmh) {
             calculatedValue = 0
         } else {
             calculatedValue = startCommand.strokesValue
         }
-        
-        //TODO: delete this
-        calculatedValue = startCommand.strokesValue
         
         return createTrainingObject()
     }

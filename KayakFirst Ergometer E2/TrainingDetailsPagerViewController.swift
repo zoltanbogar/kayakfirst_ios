@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: all trainings and @TrainingDetailsViewController will be loaded here and this is slow!!!!
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var position: Int? {
