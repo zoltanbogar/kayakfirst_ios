@@ -1,30 +1,32 @@
 //
-//  CalculateElementT.swift
+//  CalculateT_AV.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 26..
+//  Created by Balazs Vidumanszki on 2017. 03. 22..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
-class CalculateElementT: CalculateElementCurrent {
+class CalculateT_AV: CalculateElementAvg {
     
     //MARK: abstract method
-    internal func getDistance() -> Double {
+    func getDistance() -> Double {
         fatalError("Must be implemented")
     }
     
-    override func run() -> Training {
+    override func calculate() -> Double {
         let distance = getDistance()
-        var v = startCommand.v.dataValue
+        var v = startCommand.v_av
         
-        if v > Double(minSpeedKmh) {
+        if v > 0 {
             v = v / converSationMpsKmph
             
             calculatedValue = distance / v
             
             calculatedValue = calculatedValue * 1000
         }
-        return createTrainingObject()
+        
+        return calculatedValue
     }
+    
 }

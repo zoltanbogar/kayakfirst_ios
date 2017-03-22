@@ -29,6 +29,8 @@ class CalculateV_AV: CalculateElementAvg {
             calculatedValue = (distance / duration) * 1000 * converSationMpsKmph
         }
         
+        startCommand.v_av = calculatedValue
+        
         return calculatedValue
     }
     

@@ -7,18 +7,14 @@
 //
 
 import Foundation
-class CalculateT_1000_AV: CalculateElementAvg {
+class CalculateT_1000_AV: CalculateT_AV {
     
     override func getAvgType() -> CalculateEnum {
         return CalculateEnum.T_1000_AV
     }
     
-    override func getActValue() -> Double {
-        return telemetry.t_1000
-    }
-    
-    override func getAvValue() -> Double {
-        return telemetry.t_1000_av
+    override func getDistance() -> Double {
+        return 1000
     }
     
 }

@@ -102,6 +102,7 @@
 		06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */; };
 		06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD41E4998AE0066C072 /* DownloadDto.swift */; };
 		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
+		0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613590E1E8325C80085578E /* CalculateT_AV.swift */; };
 		061369861E7BD63500896282 /* UploadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369851E7BD63500896282 /* UploadUtils.swift */; };
 		061369881E7BD78700896282 /* UploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369871E7BD78700896282 /* UploadTrainings.swift */; };
 		0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369891E7C2D8C00896282 /* UploadTimer.swift */; };
@@ -326,6 +327,7 @@
 		06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDto.swift; sourceTree = "<group>"; };
 		06117BD41E4998AE0066C072 /* DownloadDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadDto.swift; sourceTree = "<group>"; };
 		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
+		0613590E1E8325C80085578E /* CalculateT_AV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateT_AV.swift; sourceTree = "<group>"; };
 		061369851E7BD63500896282 /* UploadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUtils.swift; sourceTree = "<group>"; };
 		061369871E7BD78700896282 /* UploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainings.swift; sourceTree = "<group>"; };
 		061369891E7C2D8C00896282 /* UploadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTimer.swift; sourceTree = "<group>"; };
@@ -751,6 +753,7 @@
 				0679646F1E63800E00DFC050 /* CalculateT_500_AV.swift */,
 				067964711E63804500DFC050 /* CalculateT_1000_AV.swift */,
 				067964731E63808100DFC050 /* CalculateV_AV.swift */,
+				0613590E1E8325C80085578E /* CalculateT_AV.swift */,
 			);
 			name = average;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */,
+				0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */,
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
