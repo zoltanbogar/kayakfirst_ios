@@ -21,4 +21,15 @@ class CalculateV_AV: CalculateElementAvg {
         return telemetry.speed_av
     }
     
+    override func calculate() -> Double {
+        let distance = telemetry.distance
+        let duration = telemetry.duration
+        
+        if duration > 0 {
+            calculatedValue = (distance / duration) * 1000 * converSationMpsKmph
+        }
+        
+        return calculatedValue
+    }
+    
 }
