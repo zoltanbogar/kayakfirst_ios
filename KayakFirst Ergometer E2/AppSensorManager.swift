@@ -224,10 +224,6 @@ class AppSensorManager {
             spmTotal = maxSpm
         }
         
-        strokesPerMin = spmTotal
-        
-        log("CALCULATE_SPM", "spmTotal: \(spmTotal)")
-        
         return spmTotal
     }
     
@@ -368,6 +364,10 @@ class AppSensorManager {
                 }
                 ultSPM = size
             }
+            
+            strokesPerMin = ultSPM
+            
+            log("CALCULATE_SPM", "spmTotal: \(strokesPerMin)")
             
             restartStuff(max: f, time: j)
         }

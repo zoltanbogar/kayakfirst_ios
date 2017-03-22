@@ -41,9 +41,12 @@ class TrainingDataService: AppService {
     func uploadTrainingData() {
         let uploadTrainingAvgs = UploadTrainingAvgs()
         let uploadTrainings = UploadTrainings()
-        DispatchQueue.global().async {
-            self.runWithTokenCheck(serverService: uploadTrainingAvgs)
-            self.runWithTokenCheck(serverService: uploadTrainings)
+        
+        if UserService.sharedInstance.getUser() != nil {
+            DispatchQueue.global().async {
+                self.runWithTokenCheck(serverService: uploadTrainingAvgs)
+                self.runWithTokenCheck(serverService: uploadTrainings)
+            }
         }
     }
     
