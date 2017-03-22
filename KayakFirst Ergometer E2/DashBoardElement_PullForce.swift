@@ -23,6 +23,10 @@ class DashBoardElement_PullForce: DashBoardElementBase {
         return getString("dashboard_outdoor_title_pull_force")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_pull_force")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_PullForce.tagInt
     }

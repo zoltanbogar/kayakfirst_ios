@@ -27,8 +27,12 @@ class DashBoardElement: UIView {
                 if isValueVisible {
                     make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
                     make.centerX.equalTo(self)
+                    
+                    labelTitle.text = self.getTitleOneLine().uppercased()
                 } else {
                     make.center.equalTo(self)
+                    
+                    labelTitle.text = self.getTitle().uppercased()
                 }
             }
         }
@@ -97,6 +101,10 @@ class DashBoardElement: UIView {
     }
     
     internal func getTitle() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTitleOneLine() -> String {
         fatalError("Must be implemented")
     }
     

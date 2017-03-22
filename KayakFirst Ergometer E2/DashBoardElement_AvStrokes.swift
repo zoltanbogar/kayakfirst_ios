@@ -23,6 +23,10 @@ class DashBoardElement_AvStrokes: DashBoardElementBase {
         return getString("dashboard_outdoor_title_av_strokes")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_av_strokes")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_AvStrokes.tagInt
     }

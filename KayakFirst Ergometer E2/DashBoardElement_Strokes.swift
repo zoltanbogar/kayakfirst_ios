@@ -23,6 +23,10 @@ class DashBoardElement_Strokes: DashBoardElementBase {
         return getString("dashboard_outdoor_title_stroke_min")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_stroke_min")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_Strokes.tagInt
     }

@@ -12,21 +12,21 @@
 "app_version"="Verzió: ";
 
 //DashBoard
-"dashboard_title_av_200"="Átlag 200m:";
-"dashboard_title_av_500"="Átlag 500m:";
-"dashboard_title_av_1000"="Átlag 1000m:";
-"dashboard_title_actual_200"="Most 200m:";
-"dashboard_title_actual_500"="Most 500m:";
-"dashboard_title_actual_1000"="Most 1000m:";
-"dashboard_title_stroke_min"="Csapás/perc:";
-"dashboard_title_pull_force"="Húzáserő (N):";
-"dashboard_title_distance"="Távolság (m):";
-"dashboard_title_duration"="Időtartam:";
-"dashboard_title_current_speed"="Seb. most (km/h):";
-"dashboard_title_av_speed"="Átlagseb. (km/h):";
+"dashboard_title_av_200"="Átlag 200m";
+"dashboard_title_av_500"="Átlag 500m";
+"dashboard_title_av_1000"="Átlag 1000m";
+"dashboard_title_actual_200"="Most 200m";
+"dashboard_title_actual_500"="Most 500m";
+"dashboard_title_actual_1000"="Most 1000m";
+"dashboard_title_stroke_min"="Csapás/perc";
+"dashboard_title_pull_force"="Húzáserő (N)";
+"dashboard_title_distance"="Távolság (m)";
+"dashboard_title_duration"="Tartam";
+"dashboard_title_current_speed"="Seb. most (km/h)";
+"dashboard_title_av_speed"="Átlagseb. (km/h)";
 "dashboard_title_drag_drop"="Húzz ide egyet!";
-"dashboard_title_av_strokes"="Átl. csapás/perc:";
-"dashboard_title_av_pull_force"="Átl. húzáserő (N):";
+"dashboard_title_av_strokes"="Átl. csapás/perc";
+"dashboard_title_av_pull_force"="Átl. húzáserő (N)";
 
 //DashboardOutdoor
 "dashboard_outdoor_title_av_200"="Átlag\n200m";

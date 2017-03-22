@@ -23,6 +23,10 @@ class DashBoardElement_Av1000: DashBoardelementTime {
         return getString("dashboard_outdoor_title_av_1000")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_av_1000")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_Av1000.tagInt
     }

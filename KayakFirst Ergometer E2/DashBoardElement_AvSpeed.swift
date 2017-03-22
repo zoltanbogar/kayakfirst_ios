@@ -23,6 +23,10 @@ class DashBoardElement_AvSpeed: DashBoardElementBase {
         return getString("dashboard_outdoor_title_av_speed")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_av_speed")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_AvSpeed.tagInt
     }

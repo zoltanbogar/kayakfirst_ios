@@ -23,6 +23,10 @@ class DashBoardElement_Distance: DashBoardElementBase {
         return getString("dashboard_outdoor_title_distance")
     }
     
+    override func getTitleOneLine() -> String {
+        return getString("dashboard_title_distance")
+    }
+    
     override func getTagInt() -> Int {
         return DashBoardElement_Distance.tagInt
     }
