@@ -18,6 +18,8 @@ enum Responses: String {
     case error_server_error = "server_error"
     case error_expired_token = "Expired JWT Token"
     case error_registration_required = "Registration required"
+    case error_used_username = "The username is already used."
+    case error_used_email = "The email is already used."
 }
 
 class ServerService<E> {
@@ -114,13 +116,23 @@ class ServerService<E> {
             if let json = response.result.value {
                 let jsonValue = JSON(json)
                 
-                errorString = jsonValue["error"].stringValue
+                if jsonValue["error"].stringValue != "" {
+                    errorString = jsonValue["error"].stringValue
+                } else if jsonValue["username"].stringValue != "" {
+                    errorString = jsonValue["username"].stringValue
+                } else if jsonValue["email"].stringValue != "" {
+                    errorString = jsonValue["email"].stringValue
+                }
                 
                 switch errorString {
                 case Responses.error_invalid_credentials.rawValue:
                     return Responses.error_invalid_credentials
                 case Responses.error_expired_token.rawValue:
                     return Responses.error_expired_token
+                case Responses.error_used_username.rawValue:
+                    return Responses.error_used_username
+                case Responses.error_used_email.rawValue:
+                    return Responses.error_used_email
                 default:
                     return Responses.error_server_error
                 }

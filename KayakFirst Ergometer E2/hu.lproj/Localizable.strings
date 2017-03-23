@@ -208,6 +208,8 @@
 "error_weight"="Testsúly legalább 30!";
 "error_birth_date"="A születési dátum nem lehet a jövőben!";
 "error_google_sign_out"="Google kijelentkezési probléma!";
+"error_user_username_used"="A felhasználónév már foglalt";
+"error_user_email_used"="Az email már foglalt";
 
 //Date
 "date_format"="yyyy.MM.dd";

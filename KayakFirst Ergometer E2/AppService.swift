@@ -37,6 +37,10 @@ class AppService {
             textRes = "error_user_invalid_credentials"
         case Responses.error_registration_required:
             textRes = "user_registration_required"
+        case Responses.error_used_username:
+            textRes = "error_user_username_used"
+        case Responses.error_used_email:
+            textRes = "error_user_email_used"
         default:
             textRes = "error_server"
         }
