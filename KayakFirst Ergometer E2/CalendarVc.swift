@@ -184,6 +184,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     private func refreshTableView(sumTrainings: [SumTraining]?) {
         trainingTableViewHeader.isHidden = sumTrainings == nil
+        //TODO: sometimes same session can appear twice (once from server and once from cache)
         tableViewTraining?.dataList = sumTrainings
     }
     

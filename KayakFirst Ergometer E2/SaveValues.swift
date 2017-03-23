@@ -53,12 +53,13 @@ class SaveValues {
     }
     
     private func saveSessionId() {
-        let sessionId = telemetry.sessionId
-        
-        if localeSessionId != sessionId {
-            trainingDaysDbLoader.addData(data: sessionId)
-            localeSessionId = sessionId
+        if userService.getUser() != nil {
+            let sessionId = telemetry.sessionId
+            
+            if localeSessionId != sessionId {
+                trainingDaysDbLoader.addData(data: sessionId)
+                localeSessionId = sessionId
+            }
         }
     }
-    
 }

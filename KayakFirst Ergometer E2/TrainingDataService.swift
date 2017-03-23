@@ -24,15 +24,10 @@ class TrainingDataService: AppService {
     
     var detailsTrainingList: [SumTraining]?
     
-    private var _progressIndex: Int = 0
-    var progressIndex: Int {
-        get {
-            return _progressIndex
-        }
-        set {
-            _progressIndex = newValue
+    var progressIndex: Int = 0 {
+        didSet {
             if let listener = progressListener {
-                listener(_progressIndex != 0)
+                listener(progressIndex != 0)
             }
         }
     }
