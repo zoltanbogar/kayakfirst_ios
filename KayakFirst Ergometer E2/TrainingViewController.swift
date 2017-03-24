@@ -28,17 +28,18 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
         fatalError("Must be implemented")
     }
     
-    //TODO: handle the instances: SetDashboard has to remember its state
     //MARK: training
     func showSetDashboard() {
-        //viewControllers.removeAll()
-        pushViewController(SetDashboardVc(), animated: true)
+        if viewControllers.count > 0 {
+            popViewController(animated: true)
+        } else {
+            pushViewController(SetDashboardVc(), animated: true)
+        }
     }
     func showDashboard() {
         pushViewController(DashboardVc(), animated: true)
     }
     func showPermittion() {
-        //viewControllers.removeAll()
         pushViewController(LocationPermittionVc(), animated: true)
     }
     

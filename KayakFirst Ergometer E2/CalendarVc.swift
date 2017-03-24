@@ -184,7 +184,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     private func refreshTableView(sumTrainings: [SumTraining]?) {
         trainingTableViewHeader.isHidden = sumTrainings == nil
-        //TODO: sometimes same session can appear twice (once from server and once from cache)
         tableViewTraining?.dataList = sumTrainings
     }
     
@@ -336,6 +335,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     func presentedDateUpdated(_ date: CVDate) {
         refreshMonth(timeStamp: date.getTimeMillis())
+        log("DATE", DateFormatHelper.getDate(dateFormat: "yyyy.mm.dd", timeIntervallSince1970: date.getTimeMillis()))
         
         if selectedDate != date.getTimeMillis() {
             selectedDate = date.getTimeMillis()

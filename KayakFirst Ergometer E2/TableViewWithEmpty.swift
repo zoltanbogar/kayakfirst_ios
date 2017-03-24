@@ -14,13 +14,8 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     private let cellIdentifier = "cell"
     
     //MARK: data
-    private var _dataList: [E]?
     var dataList: [E]? {
-        get {
-            return _dataList
-        }
-        set {
-            _dataList = newValue
+        didSet {
             reloadData()
         }
     }
@@ -50,8 +45,8 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var itemCount = 0
         
-        if _dataList != nil && _dataList!.count > 0 {
-            itemCount = _dataList!.count
+        if dataList != nil && dataList!.count > 0 {
+            itemCount = dataList!.count
         }
         
         getEmptyView().isHidden = itemCount > 0

@@ -31,7 +31,6 @@ class AppSql {
         }
     }
     
-    //TODO: implement this
     static func deleteOldData() {
         let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
         let timeStampFrom = currentTimeMillis() - oldaDataDaysInMillis

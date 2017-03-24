@@ -102,7 +102,7 @@ class TrainingDbLoader: BaseDbLoader<Training> {
                     currentDistance: currentDistance,
                     userId: userId,
                     sessionId: sessionId,
-                    trainingType: TrainingType(rawValue: trainingType)!,
+                    trainingType: TrainingType(rawValue: trainingType) == nil ? TrainingType.kayak : TrainingType(rawValue: trainingType)!,
                     trainingEnvironmentType: TrainingEnvironmentType(rawValue: trainingEnvironmentType)!,
                     dataType: dataType,
                     dataValue: dataValue)

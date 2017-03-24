@@ -128,7 +128,7 @@ class SumTraining: Equatable {
     }
     
     static func == (lhs: SumTraining, rhs: SumTraining) -> Bool {
-        return lhs.duration == rhs.duration && lhs.startTime == rhs.startTime
+        return Int64(lhs.sessionId!) == Int64(rhs.sessionId!)
     }
     
 }

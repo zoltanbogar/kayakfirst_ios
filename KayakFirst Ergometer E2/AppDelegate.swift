@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initColors()
         initMainWindow()
         initKeyboardManager()
+        deleteOldData()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -57,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initKeyboardManager() {
         IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    private func deleteOldData() {
+        DispatchQueue.global().async {
+            AppSql.deleteOldData()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

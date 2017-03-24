@@ -68,7 +68,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
-    //TODO: Android!
     private func checkUser() -> Bool {
         if userService.getUser() == nil {
             (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
