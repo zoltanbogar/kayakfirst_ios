@@ -29,10 +29,13 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        checkLocationPermission()
+        
         keepScreenOn()
         setBrightnessFull()
     }
     
+    //TODO: why?
     override func closeViewController() {
         super.closeViewController()
     }
@@ -48,10 +51,16 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
                 self.showSetDashboard()
             case CycleState.idle:
                 self.showDashboard()
-            case CycleState.permittionDenied:
+            case CycleState.permissionDenied:
                 self.showPermittion()
             default: break
             }
+        }
+    }
+    
+    private func checkLocationPermission() {
+        if !PermissionCheck.hasLocationPermission() {
+            telemetry.cycleState = CycleState.permissionDenied
         }
     }
     

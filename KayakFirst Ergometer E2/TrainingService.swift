@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 class TrainingService: CycleStateChangeListener {
     
@@ -17,7 +16,6 @@ class TrainingService: CycleStateChangeListener {
     var startCommand: StartCommand<MeasureCommand>?
     
     private let pauseDiff = PauseDiff.sharedInstance
-    private var cycleIndex: Int64 = 0
     
     private let autoStopIdle = AutoStopIdle.sharedInstance
     private let autoStopStop = AutoStopStop.sharedInstance
@@ -63,7 +61,7 @@ class TrainingService: CycleStateChangeListener {
     }
     
     func startService() {
-        if isCycleState(cycleState: CycleState.quit) || isCycleState(cycleState: CycleState.permittionDenied) {
+        if isCycleState(cycleState: CycleState.quit) || isCycleState(cycleState: CycleState.permissionDenied) {
             setTelemetryCycleState(cycleState: CycleState.none)
         }
     }
@@ -105,18 +103,16 @@ class TrainingService: CycleStateChangeListener {
         pauseDiff.reset()
         
         realDuration = 0
-        cycleIndex = 0
         
         telemetry.resetCurrent()
         telemetry.resetOthers()
     }
     
-    //TODO: loop from Android
     private func startLoop() {
         DispatchQueue.global().async {
-            while !self.isCycleState(cycleState: CycleState.quit) && !self.isCycleState(cycleState: CycleState.permittionDenied) {
+            while !self.isCycleState(cycleState: CycleState.quit) && !self.isCycleState(cycleState: CycleState.permissionDenied) {
                 var shouldWait = true
-                if CLLocationManager.authorizationStatus() == .authorizedAlways {
+                if PermissionCheck.hasLocationPermission() {
                     if !self.isCycleState(cycleState: CycleState.none) {
                         if !self.isCycleState(cycleState: CycleState.idle) {
                             self.autoStopIdle.reset()
@@ -158,7 +154,7 @@ class TrainingService: CycleStateChangeListener {
                         }
                     }
                 } else {
-                    self.setTelemetryCycleState(cycleState: CycleState.permittionDenied)
+                    self.setTelemetryCycleState(cycleState: CycleState.permissionDenied)
                 }
                 if shouldWait {
                     usleep(200000)
@@ -186,17 +182,15 @@ class TrainingService: CycleStateChangeListener {
         telemetry.cycleState = cycleState
     }
     
-    internal func setCycleIndex(cycleIndex: Int64) {
-        self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
-    }
-    
     func onCycleStateChanged(newCycleState: CycleState) {
         switch newCycleState {
         case CycleState.none:
             reset()
+            handleStopTraining()
+        case CycleState.idle:
             startLoop()
             handleStartTraining()
-        case CycleState.permittionDenied:
+        case CycleState.permissionDenied:
             handleStopTraining()
         case CycleState.stopped:
             telemetry.resetCurrent()

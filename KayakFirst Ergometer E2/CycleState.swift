@@ -8,7 +8,7 @@
 
 import Foundation
 public enum CycleState: String {
-    case permittionDenied = "permittion_denied"
+    case permissionDenied = "permission_denied"
     case quit = "quit"
     case none = "none"
     case idle = "idle"

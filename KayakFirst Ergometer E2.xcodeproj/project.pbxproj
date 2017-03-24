@@ -102,6 +102,7 @@
 		06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */; };
 		06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD41E4998AE0066C072 /* DownloadDto.swift */; };
 		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
+		0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */; };
 		0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613590E1E8325C80085578E /* CalculateT_AV.swift */; };
 		061369861E7BD63500896282 /* UploadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369851E7BD63500896282 /* UploadUtils.swift */; };
 		061369881E7BD78700896282 /* UploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369871E7BD78700896282 /* UploadTrainings.swift */; };
@@ -327,6 +328,7 @@
 		06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDto.swift; sourceTree = "<group>"; };
 		06117BD41E4998AE0066C072 /* DownloadDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadDto.swift; sourceTree = "<group>"; };
 		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
+		0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionCheck.swift; sourceTree = "<group>"; };
 		0613590E1E8325C80085578E /* CalculateT_AV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateT_AV.swift; sourceTree = "<group>"; };
 		061369851E7BD63500896282 /* UploadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUtils.swift; sourceTree = "<group>"; };
 		061369871E7BD78700896282 /* UploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainings.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 				06BF94F31E2A36140010C8A7 /* DesignUtils.swift */,
 				06F938FF1E3F720A00920753 /* Dimens.swift */,
 				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
+				0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1312,6 +1315,7 @@
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */,
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
+				0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */,
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
