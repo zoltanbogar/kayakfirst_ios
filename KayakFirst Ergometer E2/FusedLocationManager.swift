@@ -50,15 +50,15 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         log("LOCATION", "update: \(locValue.latitude)")
         
-        if Telemetry.sharedInstance.cycleState == CycleState.resumed {
-            if currentLocation == nil {
-                currentLocation = location
-            }
-            
-            calculateDistance(location: location)
-            calculateSpeed(location: location)
+        if currentLocation == nil {
             currentLocation = location
         }
+        
+        if Telemetry.sharedInstance.cycleState == CycleState.resumed {
+            calculateDistance(location: location)
+            calculateSpeed(location: location)
+        }
+        currentLocation = location
     }
     
     private func calculateDistance(location: CLLocation) {
