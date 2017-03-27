@@ -70,6 +70,8 @@ class AppSensorManager {
     private var thresholdGZ: Double = 0
     private var ultSPM: Double = 0
     
+    private let pauseDiff = PauseDiff.sharedInstance
+    
     var strokesPerMin: Double = 0
     
     //MARK: init
@@ -130,20 +132,20 @@ class AppSensorManager {
     private func onSensorChanged(acceleration: CMAcceleration) {
         if !initCycle {
             if initAccelerometerTime == 0 {
-                initAccelerometerTime = currentTimeMillis()
+                initAccelerometerTime = pauseDiff.getAbsoluteTimeStamp()
             }
             
-            if ((currentTimeMillis() - initAccelerometerTime) < analyzeTime) {
+            if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) < analyzeTime) {
                 valores.append([acceleration.x, acceleration.y, acceleration.z])
             }
             
-            if ((currentTimeMillis() - initAccelerometerTime) > analyzeTime) {
+            if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) > analyzeTime) {
                 calDefault()
                 initCycle = true
                 startStuff(angleZ: angleZ, removeY: removeY, removeZ: removeZ)
             }
         } else {
-            let time = currentTimeMillis()
+            let time = pauseDiff.getAbsoluteTimeStamp()
             if (time - lastSPM > 2500 && accelInit) {
                 lastSPM = time
             }
@@ -237,7 +239,7 @@ class AppSensorManager {
     
     private func defAccelState(time: Double, val: Double) {
         if dynamicTime > 0 {
-            if ((currentTimeMillis() - dynamicTime) > 2500) {
+            if ((pauseDiff.getAbsoluteTimeStamp() - dynamicTime) > 2500) {
                 if countDyn > 14 {
                     countDyn = 0
                 }
@@ -253,7 +255,7 @@ class AppSensorManager {
                 }
                 accelThresholdN = -0.5 * med
                 accelThresholdP = 0.5 * med
-                dynamicTime = currentTimeMillis()
+                dynamicTime = pauseDiff.getAbsoluteTimeStamp()
             }
         }
         if !accelInit {
@@ -300,11 +302,11 @@ class AppSensorManager {
     private func checkThresholds(f: Double, j: Double) {
         var obj: Int? = nil
         if initTime == 0 {
-            initTime = currentTimeMillis()
+            initTime = pauseDiff.getAbsoluteTimeStamp()
             prevGZ = GZ
             prevGY = GY
         }
-        if (currentTimeMillis() - lastSpmTime < 300) {
+        if (pauseDiff.getAbsoluteTimeStamp() - lastSpmTime < 300) {
             obj = nil
             var obj2: Int? = nil
             var obj3: Int? = nil
@@ -347,8 +349,8 @@ class AppSensorManager {
             }
             accelThresholdN = -0.5 * size
             accelThresholdP = size * 0.5
-            lastSpmTime = currentTimeMillis()
-            dynamicTime = currentTimeMillis()
+            lastSpmTime = pauseDiff.getAbsoluteTimeStamp()
+            dynamicTime = pauseDiff.getAbsoluteTimeStamp()
             lastSPM = j
             size = calcSPM(timeA: j, timeP: previousrow)
             if ((ultSPM - size) > (ultSPM * 0.2)) {

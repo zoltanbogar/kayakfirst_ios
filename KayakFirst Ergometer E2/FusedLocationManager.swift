@@ -12,6 +12,7 @@ import CoreLocation
 class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
     //MARK: properteis
+    private let pauseDiff = PauseDiff.sharedInstance
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
     private var currentTime: Double = 0
@@ -66,19 +67,19 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         let distance = getDistance(loc1: location, loc2: currentLocation!)
         
         if currentTime == 0 {
-            currentTime = currentTimeMillis()
+            currentTime = pauseDiff.getAbsoluteTimeStamp()
         }
         
         if location.speed >= 0 {
             speed = location.speed
         } else {
-            let timeDiff = currentTimeMillis() - currentTime
+            let timeDiff = pauseDiff.getAbsoluteTimeStamp() - currentTime
             if timeDiff > 0 {
                 speed = (distance / timeDiff) * 1000
             }
         }
         
-        currentTime = currentTimeMillis()
+        currentTime = pauseDiff.getAbsoluteTimeStamp()
         
         speed = speed * converSationMpsKmph
         
