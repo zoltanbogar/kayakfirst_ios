@@ -55,18 +55,15 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         }
         
         if Telemetry.sharedInstance.cycleState == CycleState.resumed {
-            calculateDistance(location: location)
-            calculateSpeed(location: location)
+            calculate(location: location)
         }
         currentLocation = location
     }
     
-    private func calculateDistance(location: CLLocation) {
-        distanceSum += getDistance(loc1: location, loc2: currentLocation!)
-    }
-    
-    private func calculateSpeed(location: CLLocation) {
+    private func calculate(location: CLLocation) {
         var speed: Double = 0
+        
+        let distance = getDistance(loc1: location, loc2: currentLocation!)
         
         if currentTime == 0 {
             currentTime = currentTimeMillis()
@@ -77,13 +74,18 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         } else {
             let timeDiff = currentTimeMillis() - currentTime
             if timeDiff > 0 {
-                let distance = getDistance(loc1: location, loc2: currentLocation!)
                 speed = (distance / timeDiff) * 1000
             }
         }
         
         currentTime = currentTimeMillis()
-        self.speed = speed * converSationMpsKmph
+        
+        speed = speed * converSationMpsKmph
+        
+        if speed <= maxSpeedKmph {
+            self.speed = speed
+            distanceSum += distance
+        }
     }
     
     private func getDistance(loc1: CLLocation, loc2: CLLocation) -> Double {
