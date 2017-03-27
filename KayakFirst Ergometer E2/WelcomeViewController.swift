@@ -141,22 +141,18 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
-            //TODO: handle this
-            log("GOOGLE", "googleSignIn: \(user.profile.name), token: \(user.authentication.idToken), uri: \(user.authentication.accessToken)")
-            
             loginView.googleSignInResult(user: user)
         } else {
-            //TODO: handle this
-            log("GOOGLE", "\(error.localizedDescription)")
+            //nothing here
         }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        //TODO: google error
+        //nothing here
     }
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        //TODO
+        //nothing here
     }
     
     func sign(_ signIn: GIDSignIn!,

@@ -68,7 +68,6 @@ class DateFormatHelper {
         return getMilliSeconds(date: calendar.date(from: dateComponents)!)
     }
     
-    //TODO: not so good solution
     class func get23Hour(timeStamp: TimeInterval) -> TimeInterval {
         return getZeroHour(timeStamp: timeStamp) + 86399000
     }

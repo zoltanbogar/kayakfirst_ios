@@ -35,11 +35,6 @@ class OutdoorViewController: TrainingViewController, CycleStateChangeListener {
         setBrightnessFull()
     }
     
-    //TODO: why?
-    override func closeViewController() {
-        super.closeViewController()
-    }
-    
     override func getTrainingService() -> TrainingService {
         return outdoorSerive
     }

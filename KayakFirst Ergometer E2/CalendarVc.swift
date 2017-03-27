@@ -84,7 +84,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             let height = 2 * dashboardDividerWidth
             make.height.equalTo(height)
         }
-        //TODO: dividers error on left
+        
         viewTableView.addSubview(tableViewTraining)
         tableViewTraining.snp.makeConstraints { (make) in
             make.top.equalTo(viewDivider)
