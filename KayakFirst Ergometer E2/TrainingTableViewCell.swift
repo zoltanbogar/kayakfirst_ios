@@ -33,9 +33,9 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
             var imageEnviromentType: UIImage?
             switch envType {
             case TrainingEnvironmentType.ergometer:
-                imageEnviromentType = UIImage(named: "lightBulb")
+                imageEnviromentType = UIImage(named: "lightBulbCopy")
             case TrainingEnvironmentType.outdoor:
-                imageEnviromentType = UIImage(named: "sun")
+                imageEnviromentType = UIImage(named: "sunCopy")
             default:
                 break
             }

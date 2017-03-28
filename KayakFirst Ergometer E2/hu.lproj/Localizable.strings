@@ -79,7 +79,7 @@
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
 
 //StartDelay
-"delay_start_seconds"="Kezdési hátralévő idő";
+"delay_start_seconds"="Kezdésig hátralévő idő";
 "delay_quick_start"="Gyorsindítás";
 
 //Base Language

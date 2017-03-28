@@ -105,6 +105,7 @@ class StartDelayView: UIView {
         let label = AppUILabel()
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
+        label.textColor = Colors.colorPrimary
         
         label.text = getString("delay_start_seconds").uppercased()
         
@@ -113,7 +114,7 @@ class StartDelayView: UIView {
     
     private lazy var labelDelay: UILabel! = {
         let label = LabelWithAdaptiveTextHeight()
-        label.textColor = Colors.colorWhite
+        label.textColor = Colors.colorPrimary
         
         label.text = "\(self.countTime)"
         
@@ -122,7 +123,7 @@ class StartDelayView: UIView {
     
     private lazy var btnQuickStart: UIButton! = {
         let width = self.frame.width - margin2
-        let button = AppUIButton(width: width, text: getString("delay_quick_start"), backgroundColor: Colors.colorWhite, textColor: Colors.colorAccent)
+        let button = AppUIButton(width: width, text: getString("delay_quick_start"), backgroundColor: Colors.colorPrimary, textColor: Colors.colorAccent)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button

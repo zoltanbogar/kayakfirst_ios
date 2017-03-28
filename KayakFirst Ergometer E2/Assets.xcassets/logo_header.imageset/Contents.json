@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "kfHeaderLogoCopy10.png"
+      "filename" : "kfHeaderLogo.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "kfHeaderLogoCopy10@2x.png"
+      "filename" : "kfHeaderLogo@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "kfHeaderLogoCopy10@3x.png"
+      "filename" : "kfHeaderLogo@3x.png"
     }
   ],
   "info" : {

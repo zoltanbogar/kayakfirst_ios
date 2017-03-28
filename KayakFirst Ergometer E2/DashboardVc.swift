@@ -361,7 +361,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         view.addSubview(self.btnPause)
         
-        view.backgroundColor = Colors.colorGrey
+        view.backgroundColor = Colors.colorPauseBackground
         
         return view
     }()

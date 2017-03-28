@@ -15,6 +15,7 @@ class ProgressView: UIView {
     init(superView: UIView) {
         super.init(frame: superView.frame)
         view.backgroundColor = Colors.colorPrimaryTransparent
+        spinner.color = Colors.colorWhite
         
         view.addSubview(spinner)
         spinner.snp.makeConstraints { make in

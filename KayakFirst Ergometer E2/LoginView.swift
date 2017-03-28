@@ -109,7 +109,7 @@ class LoginView: UIView {
     }()
     
     private lazy var btnLogin: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorPrimary)
         button.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
         
         return button
@@ -118,6 +118,7 @@ class LoginView: UIView {
     private lazy var btnForgotPassword: UIButton! = {
         let button = UIButton()
         button.backgroundColor = Colors.colorTransparent
+        button.setTitleColor(Colors.colorWhite, for: .normal)
         button.setTitle(getString("user_forgot_password"), for: .normal)
         button.titleLabel?.font = button.titleLabel?.font.withSize(12)
         button.addTarget(self, action: #selector(btnForgotPasswordClick), for: .touchUpInside)
@@ -126,14 +127,14 @@ class LoginView: UIView {
     }()
     
     private lazy var btnFacebook: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorPrimary)
         button.addTarget(self, action: #selector(btnFacebookClick), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var btnGoogle: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorPrimary)
         button.addTarget(self, action: #selector(btnGoogleClick), for: .touchUpInside)
         
         return button
@@ -149,7 +150,7 @@ class LoginView: UIView {
     }()
     
     private lazy var btnQuickStart: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorGreen, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorGreen, textColor: Colors.colorPrimary)
         button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
         
         return button

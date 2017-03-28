@@ -28,13 +28,13 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jKP-Rq-LCS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KVf-Uf-b5Y"/>
                             <constraint firstItem="jKP-Rq-LCS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qYU-3b-hiO"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

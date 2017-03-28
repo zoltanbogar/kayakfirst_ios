@@ -119,13 +119,11 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     private func initEnvType(viewController: TrainingDetailsViewController) {
         switch viewController.environmentType! {
         case TrainingEnvironmentType.ergometer:
-            btnType.image = UIImage(named: "lightBulb")
-            btnType.tintColor = Colors.colorWhite
+            btnType.image = UIImage(named: "lightBulbCopy")
         case TrainingEnvironmentType.outdoor:
-            btnType.image = UIImage(named: "sun")
-            btnType.tintColor = Colors.colorSun
+            btnType.image = UIImage(named: "sunCopy")
         default:
-            btnType.image = UIImage(named: "lightBulb")
+            btnType.image = UIImage(named: "lightBulbCopy")
         }
         
         self.navigationItem.setRightBarButtonItems([btnType], animated: true)

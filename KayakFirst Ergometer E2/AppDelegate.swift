@@ -123,13 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().unselectedItemTintColor = Colors.colorWhite
         }
         
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = Colors.colorPrimary
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        UINavigationBar.appearance().tintColor = Colors.colorWhite
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Colors.colorWhite]
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.colorWhite], for: UIControlState.selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.colorPrimary], for: UIControlState.selected)
     }
 }
 

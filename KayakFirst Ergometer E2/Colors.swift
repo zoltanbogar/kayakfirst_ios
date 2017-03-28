@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 struct Colors {
-    static let colorPrimary = getColor("#333c41")
-    static let colorPrimaryTransparent = getColor("#aa333c41")
+    static let colorPrimary = getColor("#f2f2f2")
+    static let colorPrimaryTransparent = getColor("#aaf2f2f2")
     static let colorPrimaryDark = getColor("#000000")
     static let colorAccent = getColor("#ff541c")
     static let colorAccentDark = getColor("#ff4102")
     
-    static let colorWhite = getColor("#f2f2f2")
-    static let colorWhiteDark = getColor("#d9d9d9")
+    static let colorWhite = getColor("#333c41")
+    static let colorWhiteDark = getColor("#293034")
     static let colorGrey = getColor("#929292")
     static let colorTransparent = getColor("#00000000")
     
@@ -31,7 +31,7 @@ struct Colors {
     static let dragDropEnter = getColor("#bbe25303")
     static let startDelayBackground = getColor("#eedf5626")
     
-    static let colorT = getColor("#FFFF00")
+    static let colorT = getColor("#333c41")
     static let colorStrokes = getColor("#cd2929")
     static let colorF = getColor("#0dd278")
     static let colorV = getColor("#005cff")
@@ -39,11 +39,11 @@ struct Colors {
     static let colorGreen = getColor("#00b000")
     static let colorYellow = getColor("#c4b53c")
     static let colorRed = getColor("#cc0000")
+    static let colorPauseBackground = getColor("#cccccc")
     
     static let colorFacebook = getColor("#3b5998")
     static let colorGoogle = getColor("#dc4e41")
-    static let colorProfileElement = getColor("#404447")
-    static let colorSun = getColor("#ffed00")
+    static let colorProfileElement = getColor("#ffffff")
 }
 
 func getColor(_ hex: String) -> UIColor {

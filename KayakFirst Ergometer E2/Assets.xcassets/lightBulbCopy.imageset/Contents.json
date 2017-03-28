@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "blurredBulb.png"
+      "filename" : "lightBulbCopy.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "blurredBulb@2x.png"
+      "filename" : "lightBulbCopy@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "blurredBulb@3x.png"
+      "filename" : "lightBulbCopy@3x.png"
     }
   ],
   "info" : {
