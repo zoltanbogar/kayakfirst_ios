@@ -56,72 +56,119 @@ class SumTraining: Equatable {
     }
     
     //MARK: init
-    init(trainingList: [Training]) {
-        self.trainingList = trainingList
-        
-        initTrainingDetails()
-    }
-    
-    //MARK: calculation
-    private func initTrainingDetails() {
-        if trainingList != nil && trainingList!.count > 0 {
-            self.startTime = trainingList![0].timeStamp
-            trainingEnvironmentType = trainingList![0].trainingEnvironmentType
-            sessionId = trainingList![0].sessionId
-            
-            var s: Double = 0
-            
-            let startTime = trainingList![0].timeStamp
-            var endTime = trainingList![0].timeStamp
-            
-            for training in trainingList! {
-                if CalculateEnum.T_200.rawValue == training.dataType {
-                    t200List.append(training)
-                } else if CalculateEnum.T_500.rawValue == training.dataType {
-                    t500List.append(training)
-                } else if CalculateEnum.T_1000.rawValue == training.dataType {
-                    t1000List.append(training)
-                } else if CalculateEnum.STROKES.rawValue == training.dataType {
-                    strokesList.append(training)
-                } else if CalculateEnum.F.rawValue == training.dataType {
-                    fList.append(training)
-                } else if CalculateEnum.V.rawValue == training.dataType {
-                    vList.append(training)
-                } else if CalculateEnum.S.rawValue == training.dataType {
-                    distanceList.append(training)
-                    s += training.dataValue
-                }
-                endTime = training.timeStamp
-            }
-            
-            duration = endTime - startTime
-            
-            let currentDistance: Double = trainingList![(trainingList!.count - 1)].currentDistance
-            
-            if currentDistance != 0 {
-                distance = currentDistance
-            } else {
-                distance = s
-            }
-        }
-    }
-    
     public class func createSumTrainingList(trainings: [Training]) -> [SumTraining]? {
         if trainings.count > 0 {
             var sumTrainingList = [SumTraining]()
             
             var uniqueTrainings = [Training]()
-            var sessionId: TimeInterval = trainings[0].sessionId
+            var sessionIdTest: TimeInterval = trainings[0].sessionId
+            
+            var sessionId: TimeInterval = 0
+            var trainingEnvironmentType: TrainingEnvironmentType?
+            var startTime: Double = 0
+            var endTime: Double = 0
+            var distance: Double = 0
+            var t200List = [Training]()
+            var t500List = [Training]()
+            var t1000List = [Training]()
+            var strokesList = [Training]()
+            var fList = [Training]()
+            var vList = [Training]()
+            var distanceList = [Training]()
+            
+            var sumTraining: SumTraining = SumTraining()
             
             for t in trainings {
-                if t.sessionId != sessionId {
-                    sumTrainingList.append(SumTraining(trainingList: uniqueTrainings))
+                if t.sessionId != sessionIdTest {
+                    sumTraining = SumTraining()
+                    sumTraining.sessionId = sessionId
+                    sumTraining.trainingList = uniqueTrainings
+                    sumTraining.trainingEnvironmentType = trainingEnvironmentType
+                    sumTraining.startTime = startTime
+                    sumTraining.duration = (endTime - startTime)
+                    let currentDistance = uniqueTrainings[(uniqueTrainings.count - 1)].currentDistance
+                    if currentDistance != 0 {
+                        sumTraining.distance = currentDistance
+                    } else {
+                        sumTraining.distance = distance
+                    }
+                    sumTraining.t200List = t200List
+                    sumTraining.t500List = t500List
+                    sumTraining.t1000List = t1000List
+                    sumTraining.strokesList = strokesList
+                    sumTraining.fList = fList
+                    sumTraining.vList = vList
+                    sumTraining.distanceList = distanceList
+                    
+                    sumTrainingList.append(sumTraining)
                     uniqueTrainings = [Training]()
+                    sessionIdTest = t.sessionId
+                    
+                    sessionId = 0
+                    trainingEnvironmentType = nil
+                    startTime = 0
+                    distance = 0
+                    t200List = [Training]()
+                    t500List = [Training]()
+                    t1000List = [Training]()
+                    strokesList = [Training]()
+                    fList = [Training]()
+                    vList = [Training]()
+                    distanceList = [Training]()
+                }
+                
+                if sessionId == 0 {
                     sessionId = t.sessionId
                 }
+                if trainingEnvironmentType == nil {
+                    trainingEnvironmentType = t.trainingEnvironmentType
+                }
+                if startTime == 0 {
+                    startTime = t.timeStamp
+                }
+                endTime = t.timeStamp
+                
+                if CalculateEnum.T_200.rawValue == t.dataType {
+                    t200List.append(t)
+                } else if CalculateEnum.T_500.rawValue == t.dataType {
+                    t500List.append(t)
+                } else if CalculateEnum.T_1000.rawValue == t.dataType {
+                    t1000List.append(t)
+                } else if CalculateEnum.STROKES.rawValue == t.dataType {
+                    strokesList.append(t)
+                } else if CalculateEnum.F.rawValue == t.dataType {
+                    fList.append(t)
+                } else if CalculateEnum.V.rawValue == t.dataType {
+                    vList.append(t)
+                } else if CalculateEnum.S.rawValue == t.dataType {
+                    distanceList.append(t)
+                    distance += t.dataValue
+                }
+                
                 uniqueTrainings.append(t)
             }
-            sumTrainingList.append(SumTraining(trainingList: uniqueTrainings))
+            sumTraining = SumTraining()
+            sumTraining.sessionId = sessionId
+            sumTraining.trainingList = uniqueTrainings
+            sumTraining.trainingEnvironmentType = trainingEnvironmentType
+            sumTraining.startTime = startTime
+            sumTraining.duration = (endTime - startTime)
+            let currentDistance = uniqueTrainings[(uniqueTrainings.count - 1)].currentDistance
+            if currentDistance != 0 {
+                sumTraining.distance = currentDistance
+            } else {
+                sumTraining.distance = distance
+            }
+            sumTraining.t200List = t200List
+            sumTraining.t500List = t500List
+            sumTraining.t1000List = t1000List
+            sumTraining.strokesList = strokesList
+            sumTraining.fList = fList
+            sumTraining.vList = vList
+            sumTraining.distanceList = distanceList
+            
+            sumTrainingList.append(sumTraining)
+            
             return sumTrainingList
         }
         return nil
