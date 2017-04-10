@@ -32,7 +32,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         super.viewDidLoad()
         
         telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
-        onCycleStateChanged(newCycleState: telemetry.cycleState)
+        onCycleStateChanged(newCycleState: telemetry.cycleState!)
     }
     
     //MARK: button listeners
@@ -41,7 +41,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()
             } else if telemetry.cycleState != CycleState.paused {
-                parent.onPlayClicked()
+                parent.outdoorService.startLocationMonitoring()
+                parent.calibrationView?.showView()
             }
         }
     }
@@ -50,8 +51,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         if let parent = self.parent as? TrainingViewController {
             if telemetry.cycleState == CycleState.paused {
                 parent.onCounterEnd()
-            } else {
-                parent.onPlayClicked()
             }
         }
     }
@@ -59,6 +58,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     @objc private func btnStopClick() {
         if let parent = self.parent as? TrainingViewController {
             parent.onStopClicked()
+        }
+    }
+    
+    @objc private func btnCloseClick() {
+        if let parent = self.parent as? TrainingViewController {
+            parent.closeViewController()
         }
     }
     
@@ -112,7 +117,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func showBackButton() {
-        switch telemetry.cycleState {
+        switch telemetry.cycleState! {
         case CycleState.idle:
             self.navigationItem.setHidesBackButton(false, animated: true)
             self.navigationItem.setLeftBarButtonItems(nil, animated: true)
@@ -424,13 +429,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         return button
     }()
-    
-    //MARK: button callbacks
-    @objc private func btnCloseClick() {
-        if let parent = self.parent as? TrainingViewController {
-            parent.closeViewController()
-        }
-    }
     
     @objc private func animateBtnPause(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: self.view)

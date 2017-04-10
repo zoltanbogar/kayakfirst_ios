@@ -39,7 +39,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         var viewControllers = [UIViewController]()
         
         let mainVc = MainVc()
-        let mainNavController = TrainingViewController()
+        let mainNavController = UINavigationController()
         mainNavController.pushViewController(mainVc, animated: false)
         let mainTab = UITabBarItem(title: getString("navigation_home"), image: UIImage(named: "navigation_home"), tag: 0)
         mainNavController.tabBarItem = mainTab

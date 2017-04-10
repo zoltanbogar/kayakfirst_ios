@@ -429,8 +429,8 @@ class SetDashboardVc: BaseVC {
     
     //MARK: button listeners
     @objc private func btnDoneClick() {
-        if let parent = self.parent as? OutdoorViewController {
-            (parent.getTrainingService() as! OutdoorService).startDashboard()
+        if let parent = self.parent as? TrainingViewController {
+            parent.showDashboard()
         }
     }
     

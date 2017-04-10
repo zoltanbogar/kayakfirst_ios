@@ -65,14 +65,15 @@ class MainVc: MainTabVc {
     }
     
     private func checkLocationSettings() {
+        locationManager.requestAlwaysAuthorization()
+        
         if CLLocationManager.locationServicesEnabled() {
-            startOutdoorViewController(viewController: self)
+            startTrainingViewController(viewController: self)
         } else {
             //TODO: sofisticate the method!
-            locationManager.requestAlwaysAuthorization()
-            
             LocationSettingsDialog().show(viewController: self)
             
+            //TODO?
             //UIApplication.shared.openURL(NSURL(string: "App-Prefs:root=LOCATION_SERVICES")! as URL)
         }
     }

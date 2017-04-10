@@ -66,7 +66,7 @@ class Telemetry {
     }
     
     //MARK: cycle state
-    var cycleState: CycleState = CycleState.quit {
+    var cycleState: CycleState? {
         didSet {
             if cycleState == CycleState.resumed {
                 if sessionId == 0 {
@@ -75,8 +75,10 @@ class Telemetry {
             }
             
             if let cycleStateListeners = cycleStateChangeListenerList {
-                for listener in cycleStateListeners {
-                    listener.onCycleStateChanged(newCycleState: cycleState)
+                if cycleState != nil {
+                    for listener in cycleStateListeners {
+                        listener.onCycleStateChanged(newCycleState: cycleState!)
+                    }
                 }
             }
         }
@@ -125,6 +127,15 @@ class Telemetry {
         averageIndex = 0
         sessionId = 0
         cycleIndex = 0
+    }
+    
+    //MARK other functions
+    func checkCycleState(cycleState: CycleState) -> Bool {
+        var isSame = false
+        if let selfCycleState = self.cycleState {
+            isSame = selfCycleState == cycleState
+        }
+        return isSame
     }
 }
 

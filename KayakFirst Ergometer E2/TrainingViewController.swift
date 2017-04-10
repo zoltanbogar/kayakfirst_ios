@@ -8,11 +8,21 @@
 
 import UIKit
 
-class TrainingViewController: UINavigationController, StartDelayDelegate {
+func startTrainingViewController(viewController: UIViewController) {
+    if !PermissionCheck.hasLocationPermission() {
+        startLocationPermissionVc(viewController: viewController)
+    } else {
+        viewController.present(TrainingViewController(), animated: true, completion: nil)
+    }
+}
+
+class TrainingViewController: UINavigationController, StartDelayDelegate, CalibrationDelegate {
     
     //MARK: properties
     private var startDelayView: StartDelayView?
+    var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance
+    let outdoorService = OutdoorService.sharedInstance
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -21,11 +31,19 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
         initView()
         
         interactivePopGestureRecognizer?.isEnabled = false
+        
+        showSetDashboard()
     }
     
-    //MARK: abstract functions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keepScreenOn()
+        setBrightnessFull()
+    }
+    
     func getTrainingService() -> TrainingService {
-        fatalError("Must be implemented")
+        return outdoorService
     }
     
     //MARK: training
@@ -37,15 +55,14 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
         }
     }
     func showDashboard() {
+        telemetry.cycleState = CycleState.idle
         pushViewController(DashboardVc(), animated: true)
-    }
-    func showPermittion() {
-        pushViewController(LocationPermittionVc(), animated: true)
     }
     
     func closeViewController() {
+        outdoorService.stopLocationMonitoring()
         UIApplication.shared.isIdleTimerDisabled = false
-        telemetry.cycleState = CycleState.quit
+        telemetry.cycleState = nil
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -53,6 +70,13 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
     private func initView() {
         startDelayView = StartDelayView(superView: view)
         startDelayView!.delegate = self
+        
+        calibrationView = CalibrationView(superView: view)
+        calibrationView!.delegate = self
+    }
+    
+    func onCalibrationEnd() {
+        onPlayClicked()
     }
     
     func onCounterEnd() {
@@ -60,7 +84,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
     }
     
     //MARK: dashboard elements
-    var dashboardLayoutDict: [Int:Int] = [0: DashBoardElement_Duration.tagInt, 1: DashBoardElement_Distance.tagInt, 2: DashBoardElement_Av1000.tagInt, 3: DashBoardElement_Actual1000.tagInt, 4: DashBoardElement_Strokes.tagInt]
+    var dashboardLayoutDict: [Int:Int] = [0: DashBoardElement_Strokes.tagInt, 1: DashBoardElement_Actual1000.tagInt, 2: DashBoardElement_Av1000.tagInt, 3: DashBoardElement_Duration.tagInt, 4: DashBoardElement_Distance.tagInt]
     
     
     //MARK: cycle state handling
@@ -82,5 +106,14 @@ class TrainingViewController: UINavigationController, StartDelayDelegate {
         } else {
             getTrainingService().stopCycle()
         }
+    }
+    
+    //MARK: other
+    private func keepScreenOn() {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    private func setBrightnessFull() {
+        UIScreen.main.brightness = CGFloat(1)
     }
 }

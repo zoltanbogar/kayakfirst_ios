@@ -9,11 +9,11 @@
 import Foundation
 import CoreMotion
 
+let analyzeTime: Double = 3000
+
 //TODO: info.plist: https://developer.apple.com/reference/coremotion
 class AppSensorManager {
     
-    //MARK: constants
-    private let analyzeTime: Double = 3000
     private let maxSpm: Double = 200;
     
     //MARK: properties
@@ -87,6 +87,7 @@ class AppSensorManager {
     //MARK: start/stop
     func startSensorMonitoring(start: Bool) {
         if start {
+            reset()
             sensorManager.startAccelerometerUpdates(to: operationQueue, withHandler: {
                 [weak self] (data: CMAccelerometerData?, error: Error?) in
                 if let acceleration = data?.acceleration {
@@ -109,7 +110,7 @@ class AppSensorManager {
     }
     
     //MARK: reset
-    func reset() {
+    private func reset() {
         dynamicMed = [Double]()
         for _ in 0..<15 {
             dynamicMed.append(1)

@@ -8,7 +8,27 @@
 
 import UIKit
 
-class LocationPermittionVc: BaseVC {
+func startLocationPermissionVc(viewController: UIViewController) {
+    let navController = UINavigationController()
+    navController.pushViewController(LocationPermissionVc(), animated: false)
+    viewController.present(navController, animated: true, completion: nil)
+}
+
+class LocationPermissionVc: BaseVC {
+    
+    //MARK: lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkLocationPermission()
+    }
+    
+    //MARK: check permission
+    private func checkLocationPermission() {
+        if PermissionCheck.hasLocationPermission() {
+            btnCloseClick()
+        }
+    }
     
     //MARK: init view
     override func initView() {
@@ -33,6 +53,7 @@ class LocationPermittionVc: BaseVC {
     
     override func initTabBarItems() {
         self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+        showLogoOnRight()
     }
     
     //MARK: views
@@ -52,7 +73,7 @@ class LocationPermittionVc: BaseVC {
     }()
     
     private lazy var btnSetting: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("fragment_bluetooth_app_details_settings"), backgroundColor: Colors.colorAccent, textColor: Colors.colorWhite)
+        let button = AppUIButton(width: 0, text: getString("fragment_bluetooth_app_details_settings"), backgroundColor: Colors.colorAccent, textColor: Colors.colorPrimary)
         
         button.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)
         
@@ -71,7 +92,6 @@ class LocationPermittionVc: BaseVC {
     
     //MARK: button callbacks
     @objc private func clickBtnSettings() {
-        //TODO: Settings app crash
         if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
             UIApplication.shared.openURL(url as URL)
             btnCloseClick()
@@ -79,8 +99,6 @@ class LocationPermittionVc: BaseVC {
     }
     
     @objc private func btnCloseClick() {
-        if let parent = self.parent as? TrainingViewController {
-            parent.closeViewController()
-        }
+        dismiss(animated: true, completion: nil)
     }
 }

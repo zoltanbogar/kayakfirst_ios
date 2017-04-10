@@ -24,12 +24,12 @@ class OutdoorService: TrainingService {
     }
     
     //MARK: start/stop monitoring
-    private func startLocationMonitoring() {
+    public func startLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: true)
         sensorManager.startSensorMonitoring(start: true)
     }
     
-    private func stopLocationMonitoring() {
+    public func stopLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: false)
         sensorManager.startSensorMonitoring(start: false)
     }
@@ -39,7 +39,6 @@ class OutdoorService: TrainingService {
         commandOutdoorSpeed = CommandOutdoorSpeed()
         commandOutdoorStroke = CommandOutdoorStroke()
         
-        sensorManager.reset()
         fusedLocationManager.reset()
         
         commandList = [commandOutdoorDistance!, commandOutdoorSpeed!, commandOutdoorStroke!]
@@ -55,20 +54,16 @@ class OutdoorService: TrainingService {
         commandOutdoorStroke!.value = Double(sensorManager.strokesPerMin)
     }
     
-    override func handleStartTraining() {
-        startLocationMonitoring()
-    }
-    
     override func handleStopTraining() {
         stopLocationMonitoring()
     }
     
-    override func runCalculate() -> Bool {
-        runCommandList()
-        return true
+    override func getTimeWaitAfterCalculate() -> useconds_t {
+        return 200000
     }
     
-    override func shouldWaitAfterCalculate() -> Bool {
+    override func runCalculate() -> Bool {
+        runCommandList()
         return true
     }
 }
