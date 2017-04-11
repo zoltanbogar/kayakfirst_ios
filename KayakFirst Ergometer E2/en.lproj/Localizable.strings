@@ -74,6 +74,7 @@
 "dialog_title_bluetooth_disconnect"="Bluetooth is active";
 "dialog_message_bluetooth_disconnect"="Do you want to disconnect it?";
 "dialog_title_reset_password"="Add your email address";
+"dialog_calibrating_sensor"="Stop paddling while calibrating GPS!";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";

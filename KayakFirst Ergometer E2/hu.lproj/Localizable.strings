@@ -74,6 +74,7 @@
 "dialog_title_bluetooth_disconnect"="A Bluetooth kapcsolat aktív";
 "dialog_message_bluetooth_disconnect"="Szeretnéd bontani a kapcsolatot?";
 "dialog_title_reset_password"="Add meg az e-mail címed";
+"dialog_calibrating_sensor"="Ne evezz, GPS kalibráció folyamatban!";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";

@@ -22,11 +22,38 @@ class CalibrationView: UIView {
     init(superView: UIView) {
         super.init(frame: superView.frame)
         
-        view.backgroundColor = Colors.startDelayBackground
+        view.backgroundColor = Colors.colorPrimary
+        
+        view.addSubview(imageLogo)
+        imageLogo.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).offset(margin2)
+        }
+        
+        view.addSubview(imageStop)
+        imageStop.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(imageLogo.snp.bottom).offset(margin2)
+        }
         
         view.addSubview(labelTitle)
-        labelTitle.snp.makeConstraints { make in
-            make.center.equalTo(view)
+        labelTitle.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(imageStop.snp.bottom).offset(margin2)
+        }
+        
+        view.addSubview(imageSatelite)
+        imageSatelite.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(labelTitle.snp.bottom).offset(margin2)
+        }
+        
+        view.addSubview(progressView)
+        progressView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(imageSatelite.snp.bottom).offset(margin2)
+            make.left.equalTo(view).offset(margin2)
+            make.right.equalTo(view).offset(-margin2)
         }
         
         superView.addSubview(view)
@@ -54,7 +81,8 @@ class CalibrationView: UIView {
                 usleep(10000)
                 timeDiff = currentTimeMillis() - startTime
                 DispatchQueue.main.async {
-                    //TODO: update progressBar
+                    let percent = timeDiff / analyzeTime
+                    self.progressView.progress = Float(percent)
                 }
             }
             DispatchQueue.main.async {
@@ -77,21 +105,50 @@ class CalibrationView: UIView {
         view.isHidden = !isShow
     }
     
-    //MARK: init view
-    private func initView() {
-        view.addSubview(labelTitle)
-    }
-    
     //MARK: views
     private lazy var labelTitle: UILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = Colors.colorPrimary
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         
-        label.text = "Calibrating..."
+        label.text = getString("dialog_calibrating_sensor")
         
         return label
+    }()
+    
+    private lazy var imageLogo: UIImageView! = {
+        let imageView = UIImageView()
+        
+        let image = UIImage(named: "logo_header")
+        imageView.image = image
+        
+        return imageView
+    }()
+    
+    private lazy var imageStop: UIImageView! = {
+        let imageView = UIImageView()
+        
+        let image = UIImage(named: "stopTable")
+        imageView.image = image
+        
+        return imageView
+    }()
+    
+    private lazy var imageSatelite: UIImageView! = {
+        let imageView = UIImageView()
+        
+        let image = UIImage(named: "satelliteIcon")
+        imageView.image = image
+        
+        return imageView
+    }()
+    
+    private lazy var progressView: UIProgressView! = {
+        let progressView = UIProgressView()
+        
+        progressView.tintColor = Colors.colorWhite
+        
+        return progressView
     }()
     
 }
