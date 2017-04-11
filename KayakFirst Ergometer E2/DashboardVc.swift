@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TODO: landscape orientation
 class DashboardVc: BaseVC, CycleStateChangeListener {
     
     //MARK: constants

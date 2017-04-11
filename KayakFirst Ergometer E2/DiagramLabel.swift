@@ -12,7 +12,7 @@ class DiagramLabel: UIView, UITextFieldDelegate {
     
     //MARK: constants
     private let defaultTextColor = Colors.colorWhite
-    private let disabledTextColor = Colors.colorGrey
+    private let disabledTextColor = Colors.colorTransparent
     private let defaultLabels: [CalculateEnum] = [CalculateEnum.STROKES, CalculateEnum.V, CalculateEnum.F, CalculateEnum.T_200]
     
     //MARK: properties
