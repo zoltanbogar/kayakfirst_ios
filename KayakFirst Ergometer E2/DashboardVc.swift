@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: landscape orientation
 class DashboardVc: BaseVC, CycleStateChangeListener {
     
     //MARK: constants
@@ -242,7 +241,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             }
         }
     }
-    
+
+    //MARK: screen orieantation
     override func handlePortraitLayout(size: CGSize) {
         mainStackView.axis = .vertical
         pauseStackView.axis = .vertical
@@ -373,7 +373,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }()
     
     private lazy var btnPause: RoundButton! = {
-        let button = RoundButton(radius: 75, image: UIImage(named: "ic_pause_white_48pt")!, color: Colors.colorYellow)
+        let button = RoundButton(radius: 75, image: UIImage(named: "ic_pause_white_48pt")!, color: Colors.colorAccent)
         button.layer.cornerRadius = 75 / 2
         button.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
         
@@ -431,6 +431,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         return button
     }()
     
+    //MARK: animation
     @objc private func animateBtnPause(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: self.view)
         

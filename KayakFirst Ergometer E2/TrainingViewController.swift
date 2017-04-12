@@ -40,6 +40,20 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
         
         keepScreenOn()
         setBrightnessFull()
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+    }
+    
+    //MARK: screen orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIInterfaceOrientation.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
     }
     
     func getTrainingService() -> TrainingService {
