@@ -56,7 +56,6 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
         
         if originalList != nil && originalList!.count > 0 {
             for trainingAvg in originalList! {
-                //TODO: check this if uploaded correctly!!
                 if trainingAvg.sessionId != Telemetry.sharedInstance.sessionId {
                     self.timeStamp = trainingAvg.sessionId
                     

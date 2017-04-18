@@ -8,10 +8,12 @@
 
 import UIKit
 
-func startLocationPermissionVc(viewController: UIViewController) {
+func startLocationPermissionVc(viewController: UIViewController) -> UIViewController {
     let navController = UINavigationController()
     navController.pushViewController(LocationPermissionVc(), animated: false)
     viewController.present(navController, animated: true, completion: nil)
+    
+    return navController
 }
 
 class LocationPermissionVc: BaseVC {

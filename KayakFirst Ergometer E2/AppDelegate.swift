@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import FBSDKLoginKit
 import Google
 
+//TODO: crashLitics
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

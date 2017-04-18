@@ -248,7 +248,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         showProgressBar(isShow: onProgress)
     }
     
-    //TODO: refactor this
     private func showProgressBar(isShow: Bool) {
         if isShow {
             progressBar.startAnimating()
@@ -275,7 +274,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
         calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
         
-        //TODO: why is that?
         self.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: currentTimeMillis())
         //self.refreshMonth(timeStamp: currentTimeMillis())
         self.selectedDate = currentTimeMillis()

@@ -9,10 +9,11 @@
 import UIKit
 import CoreLocation
 
-class MainVc: MainTabVc {
+class MainVc: MainTabVc, CLLocationManagerDelegate {
     
     //MARK: properteis
     private let locationManager = CLLocationManager()
+    private var permissionViewController: UIViewController? = nil
     
     //MARK: views
     override func initView() {
@@ -66,15 +67,20 @@ class MainVc: MainTabVc {
     
     private func checkLocationSettings() {
         locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-            startTrainingViewController(viewController: self)
+            permissionViewController = startTrainingViewController(viewController: self)
         } else {
-            //TODO: sofisticate the method!
             LocationSettingsDialog().show(viewController: self)
-            
-            //TODO?
-            //UIApplication.shared.openURL(NSURL(string: "App-Prefs:root=LOCATION_SERVICES")! as URL)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.authorizedAlways) {
+            if let permissionVc = permissionViewController {
+                permissionVc.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

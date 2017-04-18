@@ -8,12 +8,14 @@
 
 import UIKit
 
-func startTrainingViewController(viewController: UIViewController) {
+func startTrainingViewController(viewController: UIViewController) -> UIViewController? {
+    var permissionViewController: UIViewController? = nil
     if !PermissionCheck.hasLocationPermission() {
-        startLocationPermissionVc(viewController: viewController)
+        permissionViewController = startLocationPermissionVc(viewController: viewController)
     } else {
         viewController.present(TrainingViewController(), animated: true, completion: nil)
     }
+    return permissionViewController
 }
 
 class TrainingViewController: UINavigationController, StartDelayDelegate, CalibrationDelegate {
