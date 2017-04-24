@@ -10,7 +10,7 @@ import Foundation
 class MovingAverage {
     
     //MARK: properties
-    var numAverage: Double = 3
+    private var numAverage: Double = 3
     private var values: [Double]
     
     //MARK: init
@@ -18,6 +18,12 @@ class MovingAverage {
         values = [Double]()
     }
     
+    init(numAverage: Int) {
+        values = [Double]()
+        self.numAverage = Double(numAverage)
+    }
+    
+    //MARK: functions
     func calAverage(newValue: Double) -> Double {
         var size: Double = Double(values.count)
         if size > numAverage {

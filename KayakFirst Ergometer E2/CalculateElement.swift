@@ -10,11 +10,11 @@ import Foundation
 
 let converSationMpsKmph: Double = 3.6
 let maxSpeedKmph: Double = 30
+let minSpeedKmh: Double = 2
 
 class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     
     //MARK constants
-    let minSpeedKmh = 2
     let oneMinuteInMillisec = 60 * 1000
     let j = 0.02527962
     let q = 1
@@ -58,8 +58,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     private func reset() {
         maF = MovingAverage()
         maV = MovingAverage()
-        maStrokes = MovingAverage()
-        maStrokes.numAverage = 5
+        maStrokes = MovingAverage(numAverage: 5)
         maT_200 = MovingAverage()
         maT_500 = MovingAverage()
         maT_1000 = MovingAverage()

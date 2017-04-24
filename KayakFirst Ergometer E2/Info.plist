@@ -66,6 +66,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To use Outdoor, allow the Location Permission.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>$(PRODUCT_NAME) motion use.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BebasNeue.otf</string>

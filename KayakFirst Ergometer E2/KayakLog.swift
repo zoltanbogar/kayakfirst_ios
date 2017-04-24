@@ -18,3 +18,7 @@ func log (_ key: String, _ message: Any) {
         print("\(date) - \(key): \(message)")
     }
 }
+
+func logUserData(_: String) {
+    //TODO
+}
