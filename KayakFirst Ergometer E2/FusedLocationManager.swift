@@ -22,7 +22,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     //MARK: init
     static let sharedInstance = FusedLocationManager()
     private override init() {
-        //private empty constructor
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     //MARK: start/stop monitoring
