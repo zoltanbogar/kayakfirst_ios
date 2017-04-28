@@ -12,4 +12,6 @@ target 'KayakFirst Ergometer E2' do
     pod 'Charts'
     pod 'SQLite.swift', '~> 0.11.0'
     pod 'Google/SignIn'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end

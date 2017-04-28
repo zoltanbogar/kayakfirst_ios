@@ -9,6 +9,9 @@
 import UIKit
 import FBSDKLoginKit
 
+import Crashlytics
+import Fabric
+
 class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK: constants

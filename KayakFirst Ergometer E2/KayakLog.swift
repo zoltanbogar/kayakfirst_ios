@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Fabric
+import Crashlytics
 
-private let logNeeded = true
+//TODO
+private let logNeeded = false
 
 private let logDateFormat = "HH.mm.ss.SSS"
 
@@ -21,4 +24,10 @@ func log (_ key: String, _ message: Any) {
 
 func logUserData(_: String) {
     //TODO
+}
+
+func initCrashlytics(appdelegate: AppDelegate) {
+    if (!logNeeded) {
+        Fabric.with([Crashlytics.self])
+    }
 }

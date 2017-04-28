@@ -5,8 +5,11 @@ PODS:
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
   - CVCalendar (1.4.1)
   - DatePickerDialog (1.1.7)
+  - Fabric (1.6.11)
   - FirebaseAnalytics (3.7.0):
     - FirebaseCore (~> 3.5)
     - FirebaseInstanceID (~> 1.0)
@@ -52,8 +55,10 @@ PODS:
 DEPENDENCIES:
   - Alamofire-Synchronous (~> 4.0)
   - Charts
+  - Crashlytics
   - CVCalendar (~> 1.4.1)
   - DatePickerDialog
+  - Fabric
   - Google/SignIn
   - IQKeyboardManagerSwift
   - M13Checkbox
@@ -65,8 +70,10 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   CVCalendar: 61912eb5dc39c3bcfe22a731147a559a696fbc15
   DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
@@ -81,6 +88,6 @@ SPEC CHECKSUMS:
   SQLite.swift: 670c3e9e0a806bbfd56a3de5d530768dc0e6fe7c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d8e936cb03e0acced9c045aa6728479c7589697a
+PODFILE CHECKSUM: cd664b6379a92ef5c68c52dcda4cff901db27b47
 
 COCOAPODS: 1.2.0

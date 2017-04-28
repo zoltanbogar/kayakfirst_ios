@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initMainWindow()
         initKeyboardManager()
         deleteOldData()
+        initCrashlytics(appdelegate: self)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
