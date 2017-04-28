@@ -109,10 +109,7 @@ class AppSensorManager {
     
     //MARK: reset
     private func reset() {
-        dynamicMed = [Double]()
-        for _ in 0..<15 {
-            dynamicMed.append(1)
-        }
+        createDynamicMed()
         
         arraySPM = [Double]()
         for _ in 0..<nRows {
@@ -156,7 +153,7 @@ class AppSensorManager {
                     lastSPM = time
                 }
                 
-                defCurrentAccel(time: time, y: acceleration.y, z: acceleration.z)
+                defCurrentAccel(time: time, y: (acceleration.y) * 9.81 , z: (acceleration.z) * 9.81)
             }
         }
     }
@@ -255,7 +252,7 @@ class AppSensorManager {
     private func defAccelState(time: Double, val: Double, realVal: Double) {
         if dynamicTime > 0 {
             if ((pauseDiff.getAbsoluteTimeStamp() - dynamicTime) > getMaxTimeBetweenStrokes()) {
-                if countDyn > 14 {
+                if countDyn > (dynamicMed.count - 1) {
                     countDyn = 0
                 }
                 dynamicMed.insert(0, at: countDyn)
@@ -264,9 +261,9 @@ class AppSensorManager {
                 for x in 0..<dynamicMed.count {
                     sum += dynamicMed[x]
                 }
-                var med = sum / Double(dynamicMed.count)
+                var med = movingAvgMed.calAverage(newValue: sum / Double(dynamicMed.count))
                 if 0.5 * med > 0.2 {
-                    med = 0.4
+                    med = movingAvgMed.calAverage(newValue: 0.4)
                 }
                 accelThresholdN = -0.8 * med
                 accelThresholdP = 0.5 * med
@@ -328,7 +325,7 @@ class AppSensorManager {
     }
     
     private func checkThresholds(maxAccelS: Double, maxAccelTime: Double) {
-        if countDyn > 14 {
+        if countDyn > (dynamicMed.count - 1) {
             countDyn = 0
         }
         dynamicMed.insert(maxAccelS, at: countDyn)
@@ -337,16 +334,16 @@ class AppSensorManager {
         for i in 0..<dynamicMed.count {
             f3 += dynamicMed[i]
         }
-        var size = f3 / Double(dynamicMed.count)
+        var size = f3 / movingAvgMed.calAverage(newValue: Double(dynamicMed.count))
         if 0.5 * size < 0.2 {
-            size = 0.4
+            size = movingAvgMed.calAverage(newValue: 0.4)
         }
         accelThresholdN = -0.8 * size
         accelThresholdP = size * 0.5
         lastSpmTime = pauseDiff.getAbsoluteTimeStamp()
         dynamicTime = pauseDiff.getAbsoluteTimeStamp()
         lastSPM = maxAccelTime
-        size = calcSPM(timeA: maxAccelS)
+        size = calcSPM(timeA: maxAccelTime)
         if ((ultSPM - size) > (ultSPM * 0.2)) {
             spms.append(size)
             if testSPMArray(array: spms) {
@@ -396,16 +393,21 @@ class AppSensorManager {
     }
     
     private func stopStuff() {
-        dynamicMed = [Double]()
-        for _ in 0..<30 {
-            dynamicMed.append(1)
-        }
+        createDynamicMed()
+        
         countDyn = 0
-        dynamicTime = 0
+        dynamicTime = -1
         accelThresholdN = -1
         accelThresholdP = 1
         lastSpmTime = 0
         initTime = 0
+    }
+    
+    private func createDynamicMed() {
+        dynamicMed = [Double]()
+        for _ in 0..<(getMovingAverageNum() * 2){
+            dynamicMed.append(1)
+        }
     }
     
     private func getFormattedLogValue(value: Double) -> String {
@@ -426,7 +428,8 @@ class AppSensorManager {
     
     private func shouldSensorRead() -> Bool {
         let telemetry = Telemetry.sharedInstance
-        return telemetry.checkCycleState(cycleState: CycleState.resumed) && telemetry.speed > minSpeedKmh
+        return telemetry.checkCycleState(cycleState: CycleState.resumed)
+        //return telemetry.checkCycleState(cycleState: CycleState.resumed) && telemetry.speed > minSpeedKmh
     }
     
 }
