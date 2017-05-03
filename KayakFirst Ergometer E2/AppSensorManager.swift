@@ -18,7 +18,8 @@ class AppSensorManager {
     private let sampleRate: Double = 50
     private let axisY = 1
     private let axisZ = 2
-    private let defaultThreshold: Double = -0.25
+    private let defaultThreshold: Double = 0.25
+    private let thresholdCheckUnit: Double = 0.5
     
     //MARK: properties
     private let sensorManager = CMMotionManager()
@@ -75,6 +76,7 @@ class AppSensorManager {
     //MARK: init
     static let sharedInstance = AppSensorManager()
     private init() {
+        
         if sensorManager.isAccelerometerAvailable {
             // ~50Hz
             sensorManager.accelerometerUpdateInterval = (1 / sampleRate)
@@ -116,8 +118,8 @@ class AppSensorManager {
             arraySPM.append(-1)
         }
         
-        accelThresholdN = -1
-        accelThresholdP = 1
+        accelThresholdN = -defaultThreshold
+        accelThresholdP = defaultThreshold
         
         strokesPerMin = 0
         initAccelerometerTime = 0
@@ -140,7 +142,7 @@ class AppSensorManager {
                 }
                 
                 if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) < analyzeTime) {
-                    initValues.append([acceleration.x, acceleration.y, acceleration.z])
+                    initValues.append([acceleration.x * 9.81, acceleration.y * 9.81, acceleration.z * 9.81])
                 }
                 
                 if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) > analyzeTime) {
@@ -174,24 +176,27 @@ class AppSensorManager {
             f2 += initValues[i][1]
             f3 += initValues[i][2]
         }
-        let Vy = f2 / Double(initValues.count)
-        let Vz = f3 / Double(initValues.count)
+        let ay = f2 / Double(initValues.count)
+        let az = f3 / Double(initValues.count)
         
-        if Vz < 9.81 {
-            angleZ = asin((Vz / 9.81))
+        if abs(az) < 9.81 {
+            angleZ = asin((abs(az) / 9.81))
         } else {
             angleZ = asin(1)
         }
-        if angleZ < 45 {
+        
+        log("SPM_TEST", "angleZ: \(angleZ * 180 / Double.pi)")
+        
+        if (angleZ * 180 / Double.pi) < 45 {
             axis = axisZ
         } else {
             axis = axisY
         }
-        removeZ = Vz
-        removeY = Vy
+        removeZ = az
+        removeY = ay
         
         factorComp2 = cos(angleZ)
-        factorComp = cos((90 / 180 * M_PI) - angleZ)
+        factorComp = cos((90 / 180 * Double.pi) - angleZ)
         
         arraySPM = [Double]()
         spms = [Double]()
@@ -265,8 +270,8 @@ class AppSensorManager {
                 if 0.5 * med > 0.2 {
                     med = movingAvgMed.calAverage(newValue: 0.4)
                 }
-                accelThresholdN = -0.8 * med
-                accelThresholdP = 0.5 * med
+                accelThresholdN = -thresholdCheckUnit * med
+                accelThresholdP = thresholdCheckUnit * med
                 dynamicTime = pauseDiff.getAbsoluteTimeStamp()
             }
         }
@@ -338,8 +343,8 @@ class AppSensorManager {
         if 0.5 * size < 0.2 {
             size = movingAvgMed.calAverage(newValue: 0.4)
         }
-        accelThresholdN = -0.8 * size
-        accelThresholdP = size * 0.5
+        accelThresholdN = -thresholdCheckUnit * size
+        accelThresholdP = size * thresholdCheckUnit
         lastSpmTime = pauseDiff.getAbsoluteTimeStamp()
         dynamicTime = pauseDiff.getAbsoluteTimeStamp()
         lastSPM = maxAccelTime
@@ -397,8 +402,8 @@ class AppSensorManager {
         
         countDyn = 0
         dynamicTime = -1
-        accelThresholdN = -1
-        accelThresholdP = 1
+        accelThresholdN = -defaultThreshold
+        accelThresholdP = defaultThreshold
         lastSpmTime = 0
         initTime = 0
     }
