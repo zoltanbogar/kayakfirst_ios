@@ -16,6 +16,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
     private var currentTime: Double = 0
+    
     var distanceSum: Double = 0
     var speed: Double = 0
     
@@ -46,19 +47,26 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        //let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
         
-        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        log("LOCATION", "update: \(locValue.latitude)")
+        //let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         
-        if currentLocation == nil {
-            currentLocation = location
+        if locations.count > 0 {
+            let accuracy = locations[0].horizontalAccuracy
+            
+            if accuracy <= 10 {
+                if currentLocation == nil {
+                    currentLocation = locations[0]
+                }
+                
+                if Telemetry.sharedInstance.cycleState == CycleState.resumed {
+                    calculate(location: locations[0])
+                }
+                currentLocation = locations[0]
+                
+                log("SPEED_TEST", "speed: \(self.speed), accuracy: \(locations[0].horizontalAccuracy)")
+            }
         }
-        
-        if Telemetry.sharedInstance.cycleState == CycleState.resumed {
-            calculate(location: location)
-        }
-        currentLocation = location
     }
     
     private func calculate(location: CLLocation) {
