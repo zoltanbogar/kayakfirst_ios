@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 //TODO
-private let logNeeded = false
+private let logNeeded = true
 
 private let logDateFormat = "HH.mm.ss.SSS"
 
@@ -22,12 +22,52 @@ func log (_ key: String, _ message: Any) {
     }
 }
 
-func logUserData(_: String) {
-    //TODO
-}
-
 func initCrashlytics(appdelegate: AppDelegate) {
     if (!logNeeded) {
         Fabric.with([Crashlytics.self])
+    }
+}
+
+class KayakLog {
+    
+    private static var sessionId: Double = 0
+    private static var file: URL?
+    
+    
+    class func logUserData(_ logLine: String) {
+        if logNeeded {
+            log("LOG", logLine)
+            
+            createLogFile()
+            
+            do {
+                try logLine.appendLineToURL(fileURL: file!)
+                _ = try String(contentsOf: file!, encoding: String.Encoding.utf8)
+            }
+            catch {
+                log("EXCEPTION", error)
+            }
+            
+            /*do {
+                try logLine.write(to: file!, atomically: true, encoding: String.Encoding.utf8)
+                //try "\n".write(to: file!, atomically: true, encoding: String.Encoding.utf8)
+            } catch {
+                log("EXCEPTION", error)
+            }*/
+        }
+    }
+    
+    private class func createLogFile() {
+        if sessionId != Telemetry.sharedInstance.sessionId {
+            file = getDocumentsDirectory().appendingPathComponent("M_\(DateFormatHelper.getDate(dateFormat: "yyyyMMddkkmmss", timeIntervallSince1970: currentTimeMillis())).txt")
+            
+            sessionId = Telemetry.sharedInstance.sessionId
+        }
+    }
+    
+    private class func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
 }

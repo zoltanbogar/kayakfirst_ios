@@ -260,21 +260,26 @@ class AppSensorManager {
                 if countDyn > (dynamicMed.count - 1) {
                     countDyn = 0
                 }
-                dynamicMed.insert(0, at: countDyn)
+                dynamicMed[countDyn] = 0
                 countDyn += 1
                 var sum: Double = 0
                 for x in 0..<dynamicMed.count {
                     sum += dynamicMed[x]
                 }
+                
                 var med = movingAvgMed.calAverage(newValue: sum / Double(dynamicMed.count))
+                
                 if 0.5 * med > 0.2 {
                     med = movingAvgMed.calAverage(newValue: 0.4)
                 }
+                
                 accelThresholdN = -thresholdCheckUnit * med
                 accelThresholdP = thresholdCheckUnit * med
+                
                 dynamicTime = pauseDiff.getAbsoluteTimeStamp()
             }
         }
+        
         if !accelInit {
             if val > accelThresholdP {
                 maxAccel = val
@@ -314,17 +319,19 @@ class AppSensorManager {
             negativeA = true
         }
         
-        var logString: String = "\(time);"
-        logString.append("\(getFormattedLogValue(value: val));")
-        logString.append("\(realVal);")
+        var logString: String = "\(Int64(time));"
+        logString.append("\(getFormattedLogValue(val));")
+        logString.append("\(getFormattedLogValue(realVal));")
         logString.append("\((strokes - lastStrokes));")
-        logString.append("\(accelThresholdN);")
-        logString.append("\(accelThresholdP);")
-        logString.append("\(gyroY);")
-        logString.append("\(gyroZ);")
-        logString.append("\(Telemetry.sharedInstance.speed)")
+        logString.append("\((strokesPerMin));")
+        logString.append("\((strokes));")
+        logString.append("\(getFormattedLogValue(accelThresholdN));")
+        logString.append("\(getFormattedLogValue(accelThresholdP));")
+        logString.append("\(getFormattedLogValue(gyroY));")
+        logString.append("\(getFormattedLogValue(gyroZ));")
+        logString.append("\(getFormattedLogValue(Telemetry.sharedInstance.speed));")
         
-        logUserData(logString)
+        KayakLog.logUserData(logString)
         
         lastStrokes = strokes
     }
@@ -333,18 +340,21 @@ class AppSensorManager {
         if countDyn > (dynamicMed.count - 1) {
             countDyn = 0
         }
-        dynamicMed.insert(maxAccelS, at: countDyn)
+        
+        dynamicMed[countDyn] = maxAccelS
         countDyn += 1
         var f3: Double = 0
         for i in 0..<dynamicMed.count {
             f3 += dynamicMed[i]
         }
-        var size = f3 / movingAvgMed.calAverage(newValue: Double(dynamicMed.count))
+        var size = movingAvgMed.calAverage(newValue: (f3 / Double(dynamicMed.count)))
         if 0.5 * size < 0.2 {
             size = movingAvgMed.calAverage(newValue: 0.4)
         }
+        
         accelThresholdN = -thresholdCheckUnit * size
         accelThresholdP = size * thresholdCheckUnit
+        
         lastSpmTime = pauseDiff.getAbsoluteTimeStamp()
         dynamicTime = pauseDiff.getAbsoluteTimeStamp()
         lastSPM = maxAccelTime
@@ -415,7 +425,7 @@ class AppSensorManager {
         }
     }
     
-    private func getFormattedLogValue(value: Double) -> String {
+    private func getFormattedLogValue(_ value: Double) -> String {
         return String(format: "%.4f", value)
     }
     
@@ -436,5 +446,4 @@ class AppSensorManager {
         return telemetry.checkCycleState(cycleState: CycleState.resumed)
         //return telemetry.checkCycleState(cycleState: CycleState.resumed) && telemetry.speed > minSpeedKmh
     }
-    
 }
