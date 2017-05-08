@@ -32,6 +32,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.activityType = .fitness
                 locationManager.startUpdatingLocation()
             }
         } else {
