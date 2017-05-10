@@ -20,5 +20,4 @@ class CalculateElementStrokesOutdoor: CalculateElementStroke<StartCommandOutdoor
         
         return createTrainingObject()
     }
-    
 }

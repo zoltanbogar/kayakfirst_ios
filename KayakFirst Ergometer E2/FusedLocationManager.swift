@@ -65,7 +65,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
                 }
                 currentLocation = locations[0]
                 
-                log("SPEED_TEST", "speed: \(self.speed), accuracy: \(locations[0].horizontalAccuracy)")
+                log("SPEED_TEST", "speed: \(locations[0].speed * 3.6), accuracy: \(locations[0].horizontalAccuracy)")
             }
         }
     }

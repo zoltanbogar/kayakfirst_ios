@@ -57,7 +57,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     
     private func reset() {
         maF = MovingAverage()
-        maV = MovingAverage()
+        maV = MovingAverage(numAverage: 5)
         maStrokes = MovingAverage(numAverage: 5)
         maT_200 = MovingAverage()
         maT_500 = MovingAverage()

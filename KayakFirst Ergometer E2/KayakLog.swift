@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 //TODO
-private let logNeeded = true
+private let logNeeded = false
 
 private let logDateFormat = "HH.mm.ss.SSS"
 
@@ -47,13 +47,6 @@ class KayakLog {
             catch {
                 log("EXCEPTION", error)
             }
-            
-            /*do {
-                try logLine.write(to: file!, atomically: true, encoding: String.Encoding.utf8)
-                //try "\n".write(to: file!, atomically: true, encoding: String.Encoding.utf8)
-            } catch {
-                log("EXCEPTION", error)
-            }*/
         }
     }
     
