@@ -113,7 +113,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         return textField
     }()
     
-    //TODO: bug: not correct the birthdate!!
     private lazy var tfBirthDate: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("user_birth_date")
