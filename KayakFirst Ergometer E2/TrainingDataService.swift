@@ -47,7 +47,7 @@ class TrainingDataService: AppService {
     
     //MARK: server endpoints
     func getTrainingDays() {
-        let trainingDaysDbLoader = TrainingDaysDbLoader()
+        let trainingDaysDbLoader = TrainingDaysDbLoader.sharedInstance
         let downloadTrainingDays = DownloadTrainingDays()
         LoadTrainingDaysData(
             trainingService: self,
@@ -56,7 +56,7 @@ class TrainingDataService: AppService {
     }
     
     func getTrainingList(sessionIdFrom: Double, sessionIdTo: Double) {
-        let trainingDbLoader = TrainingDbLoader()
+        let trainingDbLoader = TrainingDbLoader.sharedInstance
         let downloadTrainings = DownloadTrainings(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
         LoadTrainingData(
             trainingService: self,
@@ -74,7 +74,7 @@ class TrainingDataService: AppService {
     }
     
     func getTrainingAvgList(sessionIdFrom: Double, sessionIdTo: Double) {
-        let trainingAvgDbLoader = TrainingAvgDbLoader()
+        let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
         putTrainingAvgsToMap(avgs: trainingAvgDbLoader.loadData(predicate: trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)))
         
         let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)

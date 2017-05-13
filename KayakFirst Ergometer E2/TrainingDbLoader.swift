@@ -11,8 +11,12 @@ import SQLite
 
 class TrainingDbLoader: BaseDbLoader<Training> {
     
+    //MARK: constants
+    static let tableName = "training_table"
+    
     //MARK: init
-    override init() {
+    static let sharedInstance = TrainingDbLoader()
+    private override init() {
         super.init()
     }
     
@@ -36,25 +40,22 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)
     private let dataValue = Expression<Double>(PropertyKey.dataValueKey)
     
+    override func getTableName() -> String {
+        return TrainingDbLoader.tableName
+    }
+    
     //MARK: init database
-    override func initDatabase() {
-        table = Table("training_table")
-        do {
-            if let database = db {
-                try database.run(table!.create(ifNotExists: true) { t in
-                    t.column(timeStamp, primaryKey: true)
-                    t.column(currentDistance)
-                    t.column(userId)
-                    t.column(sessionId)
-                    t.column(trainingType)
-                    t.column(trainingEnvironmentType)
-                    t.column(dataType)
-                    t.column(dataValue)
-                })
-            }
-        } catch {
-            log("DATABASE", error)
-        }
+    override func initDatabase(database: Connection) throws {
+        try database.run(table!.create(ifNotExists: true) { t in
+            t.column(timeStamp, primaryKey: true)
+            t.column(currentDistance)
+            t.column(userId)
+            t.column(sessionId)
+            t.column(trainingType)
+            t.column(trainingEnvironmentType)
+            t.column(dataType)
+            t.column(dataValue)
+        })
     }
     
     //MARK: insert
@@ -111,7 +112,7 @@ class TrainingDbLoader: BaseDbLoader<Training> {
                 
             }
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
         
         return trainingList

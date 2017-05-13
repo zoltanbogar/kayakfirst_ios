@@ -31,11 +31,12 @@ class AppSql {
         }
     }
     
+    //TODO: delete plan table as well
     static func deleteOldData() {
         let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
         let timeStampFrom = currentTimeMillis() - oldaDataDaysInMillis
-        TrainingDbLoader().deleteData(timeStampFrom: timeStampFrom)
-        TrainingDaysDbLoader().deleteData(timeStampFrom: timeStampFrom)
-        TrainingAvgDbLoader().deleteData(timeStampFrom: timeStampFrom)
+        TrainingDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
+        TrainingDaysDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
+        TrainingAvgDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
     }
 }

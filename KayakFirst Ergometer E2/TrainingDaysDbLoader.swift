@@ -11,6 +11,15 @@ import SQLite
 
 class TrainingDaysDbLoader: BaseDbLoader<Double> {
     
+    //MARK: constants
+    static let tableName = "training_days_table"
+    
+    //MARK: init
+    static let sharedInstance = TrainingDaysDbLoader()
+    private override init() {
+        super.init()
+    }
+    
     //MARK: keys
     struct PropertyKey {
         static let userIdKey = "userId"
@@ -19,19 +28,16 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
     //MARK: columns
     private let userId = Expression<Int64>(PropertyKey.userIdKey)
     
+    override func getTableName() -> String {
+        return TrainingDaysDbLoader.tableName
+    }
+    
     //MARK: init database
-    override func initDatabase() {
-        table = Table("training_days_table")
-        do {
-            if let database = db {
-                try database.run(table!.create(ifNotExists: true) { t in
-                    t.column(sessionId, primaryKey: true)
-                    t.column(userId)
-                })
-            }
-        } catch {
-            log("DATABASE", error)
-        }
+    override func initDatabase(database: Connection) throws {
+        try database.run(table!.create(ifNotExists: true) { t in
+            t.column(sessionId, primaryKey: true)
+            t.column(userId)
+        })
     }
     
     //MARK: insert
@@ -64,7 +70,7 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
                 
             }
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
         
         return trainingDaysList

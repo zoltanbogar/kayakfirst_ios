@@ -17,7 +17,7 @@ class UploadTrainings: UploadUtils<Bool> {
     private let keyTimeStamp = "db.upload_trainings_timestamp"
     
     //MARK: properties
-    private let trainingDbLoader = TrainingDbLoader()
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {

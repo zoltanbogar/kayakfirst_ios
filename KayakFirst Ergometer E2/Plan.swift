@@ -38,7 +38,7 @@ class Plan {
         planId = Plan.createPlanId(createValue: "\(userId)")
     }
     
-    init(planId: String, name: String, notes: String, timestamp: TimeInterval, userId: Int64, length: Int64, type: PlanType, sessionId: TimeInterval) {
+    init(planId: String, name: String?, notes: String?, timestamp: TimeInterval?, userId: Int64, length: Int64, type: PlanType, sessionId: TimeInterval?) {
         self.planId = planId
         self.name = name
         self.notes = notes

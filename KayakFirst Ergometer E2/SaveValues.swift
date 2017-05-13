@@ -10,9 +10,9 @@ import Foundation
 class SaveValues {
     
     //MARK: properties
-    private let trainingDbLoader = TrainingDbLoader()
-    private let trainingAvgDbLoader = TrainingAvgDbLoader()
-    private let trainingDaysDbLoader = TrainingDaysDbLoader()
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+    private let trainingDaysDbLoader = TrainingDaysDbLoader.sharedInstance
     private let userService = UserService.sharedInstance
     private let telemetry = Telemetry.sharedInstance
     

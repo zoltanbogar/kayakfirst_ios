@@ -11,6 +11,9 @@ import SQLite
 
 class BaseDbLoader<Input> {
     
+    //MARK: constants
+    let databaseLogTag = "DATABASE"
+    
     //MARK: properties
     let db = AppSql.sharedInstance.db
     let sessionId = Expression<Double>("sessionId")
@@ -18,7 +21,18 @@ class BaseDbLoader<Input> {
     
     //MARK: init
     init() {
-        initDatabase()
+        initBaseDatabase()
+    }
+    
+    private func initBaseDatabase() {
+        table = Table(getTableName())
+        do {
+            if let database = db {
+                try initDatabase(database: database)
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
     }
     
     func deleteData(timeStampFrom: Double) {
@@ -31,13 +45,20 @@ class BaseDbLoader<Input> {
         }
     }
     
-    func initDatabase() {
+    //MARK: abstract functions
+    func getTableName() -> String {
+        fatalError("Must be implemented")
+    }
+    func initDatabase(database: Connection) throws {
         fatalError("Must be implemented")
     }
     func addData(data: Input) {
         fatalError("Must be implemented")
     }
     func loadData(predicate: Expression<Bool>?) -> [Input]? {
+        fatalError("Must be implemented")
+    }
+    func updateData(data: Input) {
         fatalError("Must be implemented")
     }
 }

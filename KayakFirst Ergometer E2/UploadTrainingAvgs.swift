@@ -16,7 +16,7 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
     private let keyTimeStamp = "db.upload_training_avgs_timestamp"
     
     //MARK: properties
-    private let trainingAvgDbLoader = TrainingAvgDbLoader()
+    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     private var trainingAvgArrayList: Array<[String:Any]>?
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
