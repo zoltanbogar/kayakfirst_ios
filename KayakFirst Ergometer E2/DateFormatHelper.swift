@@ -22,6 +22,9 @@ class DateFormatHelper {
     
     //MARK: constants
     static let timeFormat = "kk:mm"
+    static let dateFormat = getString("date_format")
+    static let dateTimeFormat = getString("date_time_format")
+    static let minSecFormat = "mm:ss"
     
     //MARK: Properties
     var format: TimeEnum?

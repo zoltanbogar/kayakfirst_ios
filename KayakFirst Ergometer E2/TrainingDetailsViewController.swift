@@ -19,7 +19,7 @@ class TrainingDetailsViewController: BaseVC {
     var titleString: String? {
         get {
             let timeStamp = sumTraining!.startTime
-            let titleString = DateFormatHelper.getDate(dateFormat: getString("date_time_format"), timeIntervallSince1970: timeStamp)
+            let titleString = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateTimeFormat, timeIntervallSince1970: timeStamp)
             return titleString
         }
     }

@@ -270,7 +270,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
                     } else {
                         self.birthDate = selectedBirthDate
                         
-                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.birthDate)
+                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.birthDate)
                         self.tfBirthDate.error = nil
                     }
                 }

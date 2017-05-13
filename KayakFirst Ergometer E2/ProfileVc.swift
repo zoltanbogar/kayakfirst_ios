@@ -118,7 +118,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_birth_date")
         textField.active = false
         if self.userService.getUser()?.birthDate != 0 {
-            textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.userService.getUser()?.birthDate)
+            textField.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userService.getUser()?.birthDate)
         }
         
         return textField
