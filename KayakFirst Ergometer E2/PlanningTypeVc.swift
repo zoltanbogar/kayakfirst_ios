@@ -67,6 +67,8 @@ class PlanningTypeVc: BaseVC {
         mainstackView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
         }
+        
+        showLogoCenter(viewController: self)
     }
     
     //MARK: views
@@ -139,7 +141,15 @@ class PlanningTypeVc: BaseVC {
     
     //MARK: button listeners
     @objc private func clickRun() {
-        log("CLICK_TEST", "clickRun")
+        switch trainingEnvironmentType! {
+        case TrainingEnvironmentType.outdoor:
+            startTrainingViewController(viewController: self)
+        case TrainingEnvironmentType.ergometer:
+            //TODO
+            break
+        default:
+            fatalError("there is no other type")
+        }
     }
     
     @objc private func clickTime() {
