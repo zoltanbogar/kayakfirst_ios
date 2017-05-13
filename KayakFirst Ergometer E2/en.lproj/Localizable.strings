@@ -104,6 +104,7 @@
 "calendar_empty_list"="There is no Training Data";
 "training_type"=" ";
 "training_log"="log";
+"calendar_empty_plan"="There is no Plan Data";
 
 //Chart
 "chart_training_no_value_selected"="In order to see chart please choose at least one value";

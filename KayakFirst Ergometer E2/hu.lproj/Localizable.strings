@@ -104,6 +104,7 @@
 "calendar_empty_list"="Nincs tárolt adat";
 "training_type"=" ";
 "training_log"="napló";
+"calendar_empty_plan"="There is no Plan Data";
 
 //Chart
 "chart_training_no_value_selected"="A diagram megtekintéséhez válassz legalább egy értéket";

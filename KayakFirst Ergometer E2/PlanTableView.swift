@@ -1,14 +1,14 @@
 //
-//  TrainingTableView.swift
+//  PlanTableView.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 07..
+//  Created by Balazs Vidumanszki on 2017. 05. 13..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class TrainingTablewView: TableViewWithEmpty<SumTraining> {
+class PlanTableView: TableViewWithEmpty<Plan> {
     
     //MARK: init
     override init(view: UIView) {
@@ -22,30 +22,32 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         super.init(coder: aDecoder)
     }
     
-    //MARK: override abstract functions
+    //MARK: functions
     override func getEmptyView() -> UIView {
         return labelEmpty
     }
     
     override func getCellClass() -> AnyClass {
-        return TrainingTablewViewCell.self
+        return PlanTabLeViewCell.self
     }
     
-    override func getHeaderView() -> UIView? {
+    /*override func getHeaderView() -> UIView? {
         return headerView
-    }
+    }*/
     
+    //MARK: views
     private lazy var labelEmpty: UILabel! = {
         let label = AppUILabel()
-        label.text = getString("calendar_empty_list")
+        label.text = getString("calendar_empty_plan")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
         
         return label
     }()
     
-    private lazy var headerView: UIView! = {
-        let view = TrainingTableViewHeader()
+    private lazy var headerView: PlanTableViewHeader! = {
+        let header = PlanTableViewHeader()
         
-        return view
+        return header
     }()
+    
 }

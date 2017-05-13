@@ -66,4 +66,37 @@ class Plan {
         return "\(Int64(currentTimeMillis()))_\(createValue)"
     }
     
+    //TODO: delete this
+    public static func getExamplePlans() -> [Plan] {
+        var plans = [Plan]()
+        
+        for i in 0...15 {
+            var type = PlanType.distance
+            
+            if i % 2 == 0 {
+                type = PlanType.time
+            }
+            
+            var plan = Plan(type: type)
+            plan.name = "Nametest\(i)"
+            plan.notes = "Notestest\(i)"
+            
+            var planElements = [PlanElement]()
+            for i in 0...10 {
+                let planElement = PlanElement(
+                    planId: plan.planId,
+                    intensity: i * 10,
+                    type: plan.type,
+                    value: Int64(i * 100))
+                
+                planElements.append(planElement)
+            }
+            
+            plan.planElements = planElements
+            
+            plans.append(plan)
+        }
+        return plans
+    }
+    
 }

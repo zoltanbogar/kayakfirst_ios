@@ -36,10 +36,23 @@ class TrainingTableViewHeader: UIView {
         stackView.addArrangedSubview(labelDistance)
         stackView.addArrangedSubview(labelLog)
         
+        let divider = DividerView()
+        addSubview(divider)
+        divider.snp.makeConstraints { (make) in
+            make.width.equalTo(self)
+            make.height.equalTo(dashboardDividerWidth)
+            make.top.equalTo(self.snp.bottom)
+        }
+        
         addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
+            make.left.equalTo(self)
+            make.right.equalTo(self)
+            make.top.equalTo(self)
+            make.bottom.equalTo(divider)
         }
+        
+        backgroundColor = Colors.colorPrimary
     }
     
     //MARK: views

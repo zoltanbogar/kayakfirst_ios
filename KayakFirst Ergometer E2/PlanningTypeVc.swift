@@ -153,10 +153,10 @@ class PlanningTypeVc: BaseVC {
     }
     
     @objc private func clickTime() {
-        log("CLICK_TEST", "clickTime")
+        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.time)
     }
     
     @objc private func clickDistance() {
-        log("CLICK_TEST", "clickDistance")
+        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.time)
     }
 }

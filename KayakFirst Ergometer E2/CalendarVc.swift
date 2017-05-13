@@ -15,7 +15,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private var stackView: UIStackView?
     private let viewTableView = UIView()
     private let viewCalendar = UIView()
-    private let trainingTableViewHeader = TrainingTableViewHeader()
     
     //MARK: trainigData
     private var trainingDays: [TimeInterval]?
@@ -68,26 +67,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
         }
         
-        viewTableView.addSubview(trainingTableViewHeader)
-        trainingTableViewHeader.snp.makeConstraints { (make) in
-            make.top.equalTo(viewTableView)
-            make.left.equalTo(viewTableView)
-            make.right.equalTo(viewTableView)
-        }
-        let viewDivider = UIView()
-        viewDivider.backgroundColor = Colors.colorDashBoardDivider
-        viewTableView.addSubview(viewDivider)
-        viewDivider.snp.makeConstraints { (make) in
-            make.top.equalTo(trainingTableViewHeader.snp.bottom)
-            make.left.equalTo(viewTableView)
-            make.right.equalTo(viewTableView)
-            let height = 2 * dashboardDividerWidth
-            make.height.equalTo(height)
-        }
-        
         viewTableView.addSubview(tableViewTraining)
         tableViewTraining.snp.makeConstraints { (make) in
-            make.top.equalTo(viewDivider)
+            make.top.equalTo(viewTableView)
             make.left.equalTo(viewTableView)
             make.right.equalTo(viewTableView)
             make.bottom.equalTo(viewTableView)
@@ -183,7 +165,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func refreshTableView(sumTrainings: [SumTraining]?) {
-        trainingTableViewHeader.isHidden = sumTrainings == nil
         tableViewTraining?.dataList = sumTrainings
     }
     

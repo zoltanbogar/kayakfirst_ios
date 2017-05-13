@@ -27,6 +27,8 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     init(view: UIView) {
         super.init(frame: view.frame, style: .plain)
         
+        sectionHeaderHeight = 40
+        
         addSubview(getEmptyView())
         getEmptyView().snp.makeConstraints { make in
             make.center.equalTo(self)
@@ -50,7 +52,7 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         }
         
         getEmptyView().isHidden = itemCount > 0
-        log("EMPTY_VIEW", "isHidden: \(getEmptyView().isHidden)")
+        getHeaderView()?.isHidden = !getEmptyView().isHidden
         
         return itemCount
     }
@@ -72,6 +74,10 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return getHeaderView()
+    }
+    
     //MARK: abstract functions
     func getEmptyView() -> UIView {
         fatalError("Must be implemented")
@@ -79,6 +85,11 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     
     func getCellClass() -> AnyClass {
         fatalError("Must be implemented")
+    }
+    
+    func getHeaderView() -> UIView? {
+        //override if needed
+        return nil
     }
     
 }
