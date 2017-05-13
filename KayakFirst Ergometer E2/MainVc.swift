@@ -70,7 +70,7 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
         locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-            permissionViewController = startTrainingViewController(viewController: self)
+            permissionViewController = startPlanningTypeVc(navigationController: self.navigationController!, envType: TrainingEnvironmentType.outdoor)
         } else {
             LocationSettingsDialog().show(viewController: self)
         }
