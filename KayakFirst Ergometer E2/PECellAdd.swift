@@ -1,5 +1,5 @@
 //
-//  PECellNormal.swift
+//  PECellAdd.swift
 //  KayakFirst Ergometer E2
 //
 //  Created by Balazs Vidumanszki on 2017. 05. 14..
@@ -8,11 +8,16 @@
 
 import Foundation
 
-class PECellNormal: AppUITableViewCell<PlanElement> {
+class PECellAdd: AppUITableViewCell<PlanElement> {
+    
+    //MARK: properties
+    private let view = UIView()
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,15 +26,17 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     
     //MARK: init data
     override func initData(data: PlanElement?) {
-        label.text = data?.getFormattedValue()
-        backgroundColor = getPlanElementColor(planElement: data)
-        
-        selectionColor = backgroundColor!
+        //nothing here
     }
     
-    //MARK: init view
+    //MARK: initView
     override func initView() -> UIView {
-        return planElementView
+        view.addSubview(self.labelAdd)
+        self.labelAdd.snp.makeConstraints { make in
+            make.center.equalTo(view)
+        }
+        
+        return view
     }
     
     override func getRowHeight() -> CGFloat {
@@ -37,20 +44,12 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     }
     
     //MARK: views
-    private lazy var planElementView: UIView! = {
-        let view = UIView()
-        
-        view.addSubview(self.label)
-        self.label.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
-        }
-        
-        return view
-    }()
-    
-    private lazy var label: UILabel! = {
+    private lazy var labelAdd: UILabel! = {
         let label = UILabel()
+        
+        label.text = "+"
         
         return label
     }()
+    
 }

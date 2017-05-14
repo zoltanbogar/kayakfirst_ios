@@ -201,6 +201,7 @@
 //Unit
 "unit_speed"="km/h";
 "unit_force"="n";
+"unit_distance"="m";
 
 //Error
 "error_no_internet"="Nincs internetkapcsolat!";
