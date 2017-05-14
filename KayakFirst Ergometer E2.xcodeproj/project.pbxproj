@@ -143,6 +143,7 @@
 		0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295C1EC8981A00362C39 /* PlanElementTableView.swift */; };
 		0671295F1EC8E37100362C39 /* PECellSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295E1EC8E37100362C39 /* PECellSpace.swift */; };
 		067129611EC8E6A700362C39 /* PECellAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129601EC8E6A700362C39 /* PECellAdd.swift */; };
+		067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129621EC9030800362C39 /* PlanDetailsViewController.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
 		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
@@ -383,6 +384,7 @@
 		0671295C1EC8981A00362C39 /* PlanElementTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementTableView.swift; sourceTree = "<group>"; };
 		0671295E1EC8E37100362C39 /* PECellSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellSpace.swift; sourceTree = "<group>"; };
 		067129601EC8E6A700362C39 /* PECellAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellAdd.swift; sourceTree = "<group>"; };
+		067129621EC9030800362C39 /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
 		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				066B00401EC7406F00BE0E1F /* PlanningTypeVc.swift */,
 				066B00481EC7554400BE0E1F /* PlanListVc.swift */,
 				067129501EC86FAD00362C39 /* CreatePlanViewController.swift */,
+				067129621EC9030800362C39 /* PlanDetailsViewController.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
+				067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */,
 				060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,
 				06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */,

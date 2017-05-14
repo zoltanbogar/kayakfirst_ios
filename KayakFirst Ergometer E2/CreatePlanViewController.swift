@@ -241,7 +241,9 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     //MARK: button listeners
     @objc func btnSaveClick() {
         plan?.planElements = planElementTableView.dataList
-        //TODO: start viewController
+        startPlanDetailsViewController(viewController: self, plan: plan!, isEdit: true)
+        //TODO
+        //self.dismiss(animated: false, completion: nil)
     }
     
     @objc func clickPlay() {
