@@ -186,21 +186,6 @@ class DashBoardElement: UIView {
         return view
     }()
     
-    func getSnapshotView() -> UIView {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
-        UIGraphicsEndImageContext()
-        
-        let snapshot : UIView = UIImageView(image: image)
-        snapshot.layer.masksToBounds = false
-        snapshot.layer.cornerRadius = 0.0
-        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-        snapshot.layer.shadowRadius = 5.0
-        snapshot.layer.shadowOpacity = 0.4
-        return snapshot
-    }
-    
     class func getDashBoardElementByTag(tag: Int, isValueVisible: Bool) -> DashBoardElement {
         var dashBoardelement: DashBoardElement
         

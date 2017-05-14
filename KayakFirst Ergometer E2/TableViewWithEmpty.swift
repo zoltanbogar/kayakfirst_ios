@@ -27,7 +27,9 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     init(view: UIView) {
         super.init(frame: view.frame, style: .plain)
         
-        sectionHeaderHeight = 40
+        if getHeaderView() != nil {
+            sectionHeaderHeight = 40
+        }
         
         addSubview(getEmptyView())
         getEmptyView().snp.makeConstraints { make in

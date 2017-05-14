@@ -87,7 +87,7 @@ class Plan {
                     planId: plan.planId,
                     intensity: i * 10,
                     type: plan.type,
-                    value: Int64(i * 100))
+                    value: Int64(i * 10000))
                 
                 planElements.append(planElement)
             }

@@ -20,6 +20,11 @@ func startCreatePlanViewController(viewController: UIViewController, planType: P
 class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedListener {
     //MARK: properties
     var planType: PlanType?
+    private var snapShot: UIView?
+    private var draggedView: UIView?
+    private var indexPath: IndexPath?
+    private var isDragEnded = true
+    private var shouldDelete = false
     
     var activeTextView: UITextView?
     
@@ -32,6 +37,14 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     //MARK: init view
     override func initView() {
+        contentView.addSubview(planElementTableView)
+        planElementTableView.snp.makeConstraints { (make) in
+            make.left.equalTo(contentView)
+            make.top.equalTo(contentView)
+            make.bottom.equalTo(contentView)
+            make.width.equalTo(100)
+        }
+        
         let stackViewDistance = UIStackView()
         stackViewDistance.axis = .horizontal
         stackViewDistance.spacing = 20
@@ -42,7 +55,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         
         contentView.addSubview(stackViewDistance)
         stackViewDistance.snp.makeConstraints { (make) in
-            make.left.equalTo(contentView).offset(20)
+            make.left.equalTo(planElementTableView.snp.right).offset(20)
             make.right.equalTo(contentView).offset(-20)
             make.top.equalTo(contentView).offset(20)
             make.height.equalTo(70)
@@ -53,7 +66,11 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
             make.top.equalTo(stackViewDistance.snp.bottom).offset(20)
             make.right.equalTo(contentView)
             make.bottom.equalTo(contentView)
-            make.left.equalTo(contentView)
+            make.left.equalTo(stackViewDistance)
+        }
+        contentView.addSubview(imgDelete)
+        imgDelete.snp.makeConstraints { (make) in
+            make.center.equalTo(contentView)
         }
     }
     
@@ -88,6 +105,26 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         return et
     }()
     
+    private lazy var planElementTableView: PlanElementTableView! = {
+        let view = PlanElementTableView(view: self.contentView)
+        
+        view.dataList = Plan.getExamplePlans()[0].planElements
+        
+        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(onLongPress)))
+        
+        return view
+    }()
+    
+    private lazy var imgDelete: UIImageView! = {
+        let view = UIImageView()
+        
+        view.image = UIImage(named: "ic_delete")
+        
+        view.isHidden = true
+        
+        return view
+    }()
+    
     //MARK: tabbarItems
     private lazy var btnSave: UIBarButtonItem! = {
         let button = UIBarButtonItem()
@@ -114,5 +151,50 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         }
     }
     
+    //MARK: drag drop
+    //MARK: listeners
+    @objc private func onLongPress(gestureRecognizer: UIGestureRecognizer) {
+        let locationInView = gestureRecognizer.location(in: contentView)
+        
+        switch gestureRecognizer.state {
+        case UIGestureRecognizerState.began:
+            if isDragEnded {
+                if self.snapShot == nil {
+                    imgDelete.isHidden = false
+                    
+                    let tableLocation = gestureRecognizer.location(in: planElementTableView)
+                    indexPath = planElementTableView.indexPathForRow(at: tableLocation)
+                    draggedView = planElementTableView.cellForRow(at: indexPath!) as! UITableViewCell
+                    
+                    self.snapShot = draggedView!.getSnapshotView()
+                    self.contentView.addSubview(self.snapShot!)
+                    self.snapShot!.snp.makeConstraints { make in
+                        make.center.equalTo(locationInView)
+                    }
+                    draggedView?.isHidden = true
+                    //view.isSelected = true
+                }
+                isDragEnded = false
+            }
+        case UIGestureRecognizerState.changed:
+            if let dragView = self.snapShot {
+                dragView.center = locationInView
+                
+                shouldDelete = imgDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
+            }
+        default:
+            self.snapShot?.removeFromSuperview()
+            self.draggedView?.isHidden = false
+            self.snapShot = nil
+            self.draggedView = nil
+            isDragEnded = true
+            imgDelete.isHidden = true
+            
+            if shouldDelete {
+                planElementTableView.deletePlanElement(position: (indexPath?.row)!)
+            }
+            shouldDelete = false
+        }
+    }
     
 }

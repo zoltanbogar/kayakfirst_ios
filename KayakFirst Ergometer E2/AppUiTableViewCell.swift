@@ -43,4 +43,17 @@ class AppUITableViewCell<E>: UITableViewCell {
     func getRowHeight() -> CGFloat {
         fatalError("Must be implemented")
     }
+    
+    //MARK: selection design
+    @IBInspectable var selectionColor: UIColor = UIColor.clear {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    private func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
+    }
 }

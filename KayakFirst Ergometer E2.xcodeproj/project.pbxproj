@@ -138,6 +138,9 @@
 		067129511EC86FAD00362C39 /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129501EC86FAD00362C39 /* CreatePlanViewController.swift */; };
 		067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129521EC8775600362C39 /* KeyboardNumView.swift */; };
 		067129551EC8828200362C39 /* NoImeEditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129541EC8828200362C39 /* NoImeEditText.swift */; };
+		067129581EC8958600362C39 /* PECellNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129571EC8958600362C39 /* PECellNormal.swift */; };
+		0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295A1EC896FE00362C39 /* PlanUtils.swift */; };
+		0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295C1EC8981A00362C39 /* PlanElementTableView.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
 		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
@@ -373,6 +376,9 @@
 		067129501EC86FAD00362C39 /* CreatePlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
 		067129521EC8775600362C39 /* KeyboardNumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNumView.swift; sourceTree = "<group>"; };
 		067129541EC8828200362C39 /* NoImeEditText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoImeEditText.swift; sourceTree = "<group>"; };
+		067129571EC8958600362C39 /* PECellNormal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellNormal.swift; sourceTree = "<group>"; };
+		0671295A1EC896FE00362C39 /* PlanUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanUtils.swift; sourceTree = "<group>"; };
+		0671295C1EC8981A00362C39 /* PlanElementTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementTableView.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
 		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
@@ -604,6 +610,7 @@
 		060D9BA11E4A6539006DD8AB /* table_view */ = {
 			isa = PBXGroup;
 			children = (
+				067129561EC8953700362C39 /* plan_element */,
 				066B004B1EC758EA00BE0E1F /* plan */,
 				066B004A1EC758DF00BE0E1F /* training */,
 				060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */,
@@ -779,6 +786,23 @@
 			name = plan;
 			sourceTree = "<group>";
 		};
+		067129561EC8953700362C39 /* plan_element */ = {
+			isa = PBXGroup;
+			children = (
+				067129571EC8958600362C39 /* PECellNormal.swift */,
+				0671295C1EC8981A00362C39 /* PlanElementTableView.swift */,
+			);
+			name = plan_element;
+			sourceTree = "<group>";
+		};
+		067129591EC896EF00362C39 /* plan */ = {
+			isa = PBXGroup;
+			children = (
+				0671295A1EC896FE00362C39 /* PlanUtils.swift */,
+			);
+			name = plan;
+			sourceTree = "<group>";
+		};
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +912,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				067129591EC896EF00362C39 /* plan */,
 				066B00421EC749A700BE0E1F /* label */,
 				061C80151E693F3100BCE509 /* login_register */,
 				061145CF1E58CF540058EAF4 /* diagram_label */,
@@ -1298,7 +1323,9 @@
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
+				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
+				067129581EC8958600362C39 /* PECellNormal.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06018D581E620FFC00F75919 /* AppSql.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
@@ -1423,6 +1450,7 @@
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
+				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
