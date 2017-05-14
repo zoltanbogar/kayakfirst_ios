@@ -65,6 +65,6 @@ class PlanListVc: BaseVC {
     
     //MARK: clicklisteners
     @objc private func addClick() {
-        //TODO
+        startCreatePlanViewController(viewController: self, planType: planType!)
     }
 }

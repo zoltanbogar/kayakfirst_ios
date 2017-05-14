@@ -88,6 +88,9 @@
 "other_no"="nem";
 "other_ok"="OK";
 "other_cancel"="Mégsem";
+"other_add"="Add";
+"other_save"="Save";
+"other_next"="Next";
 
 //Navigation
 "navigation_profile"="Profil";

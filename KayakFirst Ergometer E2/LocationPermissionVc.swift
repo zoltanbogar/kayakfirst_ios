@@ -54,8 +54,8 @@ class LocationPermissionVc: BaseVC {
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
         showLogoOnRight()
+        showCloseButton()
     }
     
     //MARK: views
@@ -82,25 +82,11 @@ class LocationPermissionVc: BaseVC {
         return button
     }()
     
-    //MARK: tabbarItems
-    private lazy var btnClose: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_clear_white_24dp")
-        button.target = self
-        button.action = #selector(btnCloseClick)
-        
-        return button
-    }()
-    
     //MARK: button callbacks
     @objc private func clickBtnSettings() {
         if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
             UIApplication.shared.openURL(url as URL)
             btnCloseClick()
         }
-    }
-    
-    @objc private func btnCloseClick() {
-        dismiss(animated: true, completion: nil)
     }
 }

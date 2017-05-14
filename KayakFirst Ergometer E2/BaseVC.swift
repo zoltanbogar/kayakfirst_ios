@@ -96,12 +96,31 @@ class BaseVC: UIViewController {
         showLogoRight(viewController: self)
     }
     
+    func showCloseButton() {
+        self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+    }
+    
     private lazy var logoBarItem: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "logo_header")
         
         return button
     }()
+    
+    //MARK: tabbarItems
+    private lazy var btnClose: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_clear_white_24dp")
+        button.target = self
+        button.action = #selector(btnCloseClick)
+        
+        return button
+    }()
+    
+    //MARK: button listeners
+    @objc func btnCloseClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     private func initViewEdges() {
         contentView.snp.makeConstraints { make in

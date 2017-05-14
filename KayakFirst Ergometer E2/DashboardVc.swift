@@ -61,7 +61,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
     }
     
-    @objc private func btnCloseClick() {
+    @objc internal override func btnCloseClick() {
         if let parent = self.parent as? TrainingViewController {
             parent.closeViewController()
         }

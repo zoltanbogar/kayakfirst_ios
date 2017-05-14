@@ -102,8 +102,8 @@ class SetDashboardVc: BaseVC {
     
     override func initTabBarItems() {
         self.navigationItem.setRightBarButtonItems([btnDone], animated: true)
-        self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
         showLogoOnLeft()
+        showCloseButton()
         
         self.title = getString("navigation_set_dashboard")
     }
@@ -418,25 +418,10 @@ class SetDashboardVc: BaseVC {
         return button
     }()
     
-    private lazy var btnClose: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_clear_white_24dp")
-        button.target = self
-        button.action = #selector(btnCloseClick)
-        
-        return button
-    }()
-    
     //MARK: button listeners
     @objc private func btnDoneClick() {
         if let parent = self.parent as? TrainingViewController {
             parent.showDashboard()
-        }
-    }
-    
-    @objc private func btnCloseClick() {
-        if let parent = self.parent as? TrainingViewController {
-            parent.closeViewController()
         }
     }
     

@@ -88,6 +88,9 @@
 "other_no"="no";
 "other_ok"="OK";
 "other_cancel"="Cancel";
+"other_add"="Add";
+"other_save"="Save";
+"other_next"="Next";
 
 //Navigation
 "navigation_profile"="Profile";
