@@ -31,9 +31,9 @@ class PlanTableView: TableViewWithEmpty<Plan> {
         return PlanTabLeViewCell.self
     }
     
-    /*override func getHeaderView() -> UIView? {
+    override func getHeaderView() -> UIView? {
         return headerView
-    }*/
+    }
     
     //MARK: views
     private lazy var labelEmpty: UILabel! = {

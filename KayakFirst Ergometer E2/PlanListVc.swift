@@ -29,12 +29,9 @@ class PlanListVc: BaseVC {
     override func initView() {
         showLogoCenter(viewController: self)
         
-        self.contentView.addSubview(tableViewPlan)
+        contentView.addSubview(tableViewPlan)
         tableViewPlan.snp.makeConstraints { (make) in
-            make.height.equalTo(200)
-            make.width.equalTo(200)
-            make.center.equalTo(self.contentView)
-            //make.edges.equalTo(self.contentView)
+            make.edges.equalTo(contentView)
         }
         
         setPlanList()
@@ -63,6 +60,8 @@ class PlanListVc: BaseVC {
         
         return tableViewPlan
     }()
+    
+    
     
     //MARK: clicklisteners
     @objc private func addClick() {

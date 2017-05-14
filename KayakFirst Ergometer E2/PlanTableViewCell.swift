@@ -10,6 +10,14 @@ import Foundation
 
 class PlanTabLeViewCell: AppUITableViewCell<Plan> {
     
+    //MARK: constants
+    static let playWidth = 80
+    static let doneWidth = 150
+    var hasDone: Bool = false
+    
+    //MARK: properties
+    private let stackView = UIStackView()
+    
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,12 +36,15 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
     
     //MARK: init view
     override func initView() -> UIView {
-        let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         
-        stackView.addArrangedSubview(btnPlay)
+        stackView.addArrangedSubview(playView)
         stackView.addArrangedSubview(labelName)
+        
+        if hasDone {
+            stackView.addArrangedSubview(doneView)
+        }
         
         return stackView
     }
@@ -43,6 +54,22 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
     }
     
     //MARK: views
+    private lazy var playView: UIView! = {
+        let view = UIView()
+        
+        view.addSubview(self.btnPlay)
+        self.btnPlay.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
+        }
+        view.snp.makeConstraints({ (make) in
+            make.width.equalTo(PlanTabLeViewCell.playWidth)
+        })
+        
+        return view
+    }()
+    
     private lazy var btnPlay: RoundButton! = {
         let button = RoundButton(radius: 75, image: UIImage(named: "ic_play_48dp")!, color: Colors.colorGreen)
         button.backgroundColor = Colors.colorGreen
@@ -55,6 +82,25 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
         let label = UILabel()
         
         return label
+    }()
+    
+    private lazy var doneView: UIView! = {
+        let view = UIView()
+        
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "doneTrue")
+        
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
+        }
+        view.snp.makeConstraints({ (make) in
+            make.width.equalTo(PlanTabLeViewCell.doneWidth)
+        })
+        
+        return view
     }()
     
     //MARK: button listeners

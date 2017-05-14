@@ -12,12 +12,15 @@ class PlanTableViewHeader: UIView {
     
     //MARK: contstants
     private let fontSize: CGFloat = 12
+    var hasDone: Bool = false
     
     //MARK: init
     init() {
         super.init(frame: CGRect.zero)
         
         initView()
+        
+        backgroundColor = Colors.colorPrimary
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,9 +31,14 @@ class PlanTableViewHeader: UIView {
     private func initView() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         
+        stackView.addArrangedSubview(playView)
         stackView.addArrangedSubview(labelName)
+        
+        if hasDone {
+            stackView.addArrangedSubview(labelDone)
+        }
         
         let divider = DividerView()
         addSubview(divider)
@@ -47,8 +55,6 @@ class PlanTableViewHeader: UIView {
             make.top.equalTo(self)
             make.bottom.equalTo(divider)
         }
-        
-        backgroundColor = Colors.colorPrimary
     }
     
     //MARK: views
@@ -61,5 +67,30 @@ class PlanTableViewHeader: UIView {
         label.text = getString("plan_name").uppercased()
         
         return label
+    }()
+    
+    private lazy var labelDone: AppUILabel! = {
+        let label = AppUILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.font = label.font.withSize(self.fontSize)
+        
+        label.text = getString("plan_done").uppercased()
+        
+        label.snp.makeConstraints({ (make) in
+            make.width.equalTo(PlanTabLeViewCell.doneWidth)
+        })
+        
+        return label
+    }()
+    
+    private lazy var playView: UIView! = {
+        let view = UIView()
+        
+        view.snp.makeConstraints({ (make) in
+            make.width.equalTo(PlanTabLeViewCell.playWidth)
+        })
+        
+        return view
     }()
 }
