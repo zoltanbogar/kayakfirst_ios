@@ -27,6 +27,11 @@ class PlanDetailsViewController: BaseVC {
     //MARK: init view
     override func initView() {
         setEditLayout(isEdit: isEdit)
+        
+        contentView.addSubview(planDetailsTableView)
+        planDetailsTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView)
+        }
     }
     
     override func initTabBarItems() {
@@ -53,6 +58,14 @@ class PlanDetailsViewController: BaseVC {
         return button
     }()
     
+    private lazy var planDetailsTableView: PlanDetailsTableView! = {
+        let view = PlanDetailsTableView(view: self.contentView)
+        
+        view.plan = self.plan
+        
+        return view
+    }()
+    
     //MARK: button listeners
     @objc private func btnSaveClick() {
         //TODO
@@ -76,6 +89,7 @@ class PlanDetailsViewController: BaseVC {
     }
     
     private func activateFields(isActive: Bool) {
+        planDetailsTableView.isEdit = isActive
         //TODO
     }
     

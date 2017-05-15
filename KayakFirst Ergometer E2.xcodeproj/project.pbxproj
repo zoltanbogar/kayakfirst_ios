@@ -18,6 +18,10 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */; };
+		06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */; };
+		06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */; };
+		06071D451ECA4E59004CB736 /* PlanEditIntervallsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */; };
 		0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609B5371E6C06A100011CED /* ProfileElement.swift */; };
 		0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */; };
 		0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */; };
@@ -258,6 +262,10 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsTableView.swift; sourceTree = "<group>"; };
+		06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDetailsCell.swift; sourceTree = "<group>"; };
+		06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsCell.swift; sourceTree = "<group>"; };
+		06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanEditIntervallsCell.swift; sourceTree = "<group>"; };
 		0609B5371E6C06A100011CED /* ProfileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileElement.swift; sourceTree = "<group>"; };
 		0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginFacebook.swift; sourceTree = "<group>"; };
 		0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginGoogle.swift; sourceTree = "<group>"; };
@@ -789,6 +797,10 @@
 				066B004C1EC759F800BE0E1F /* PlanTableView.swift */,
 				066B004E1EC75ABB00BE0E1F /* PlanTableViewCell.swift */,
 				066B00501EC769DA00BE0E1F /* PlanTablewViewHeader.swift */,
+				06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */,
+				06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */,
+				06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */,
+				06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1303,6 +1315,7 @@
 				06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */,
 				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
+				06071D451ECA4E59004CB736 /* PlanEditIntervallsCell.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
 				0679647B1E6382CE00DFC050 /* CalculateElementS.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
@@ -1363,6 +1376,7 @@
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
 				067129611EC8E6A700362C39 /* PECellAdd.swift in Sources */,
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,
+				06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				067964991E638A2C00DFC050 /* CommandOutdoorSpeed.swift in Sources */,
 				061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */,
@@ -1380,6 +1394,7 @@
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
 				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
+				06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
@@ -1451,6 +1466,7 @@
 				060EE8D21EC2E3CD0060FD6F /* String+.swift in Sources */,
 				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
 				061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */,
+				06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,

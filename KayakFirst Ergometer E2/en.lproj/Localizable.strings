@@ -221,6 +221,7 @@
 "date_format"="dd.MM.yyyy";
 "date_time_format"="dd.MM.yyyy kk:mm";
 "date_format_month"="MMMM yyyy";
+"date_date"="Date";
 
 //Plan
 "plan_run"="Run";
