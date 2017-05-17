@@ -27,6 +27,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private var btnPauseOriginalY: CGFloat = 0
     private var isLandscape = false
     
+    var plan: Plan?
+    
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,16 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         if let parent = self.parent as? TrainingViewController {
             parent.closeViewController()
         }
+    }
+    
+    @objc internal func clickPowerSaveOn() {
+        //TODO
+        showPowerSaveOn(isShow: true)
+    }
+    
+    @objc internal func clickPowerSaveOff() {
+        //TODO
+        showPowerSaveOn(isShow: false)
     }
     
     //MARK: cycle state
@@ -120,16 +132,18 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         switch telemetry.cycleState! {
         case CycleState.idle:
             self.navigationItem.setHidesBackButton(false, animated: true)
-            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+            if plan == nil {
+                removeCloseButton()
+            }
         case CycleState.stopped:
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+            showCloseButton()
         case CycleState.paused:
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+            removeCloseButton()
         case CycleState.resumed:
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+            removeCloseButton()
         default: break
         }
     }
@@ -144,42 +158,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     //MARK: views
     override func initView() {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = dashboardDividerWidth
-        
-        stackView.addArrangedSubview(view0)
-        
-        let stackView1 = UIStackView()
-        stackView1.axis = .horizontal
-        stackView1.addArrangedSubview(view1)
-        let halfDivider1 = HalfDivider()
-        stackView1.addArrangedSubview(halfDivider1)
-        stackView1.addArrangedSubview(view2)
-        view1.snp.makeConstraints { (make) in
-            make.width.equalTo(view2)
-        }
-        halfDivider1.snp.makeConstraints { (make) in
-            make.width.equalTo(dashboardDividerWidth)
-        }
-        
-        let stackView2 = UIStackView()
-        stackView2.axis = .horizontal
-        stackView2.addArrangedSubview(view3)
-        let halfDivider2 = HalfDivider()
-        stackView2.addArrangedSubview(halfDivider2)
-        stackView2.addArrangedSubview(view4)
-        view3.snp.makeConstraints { (make) in
-            make.width.equalTo(view4)
-        }
-        halfDivider2.snp.makeConstraints { (make) in
-            make.width.equalTo(dashboardDividerWidth)
-        }
-        
-        stackView.addArrangedSubview(stackView1)
-        stackView.addArrangedSubview(stackView2)
-        
         buttonView.addSubview(viewSwipePause)
         
         buttonView.addSubview(btnPlaySmall)
@@ -188,7 +166,9 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
         
         mainStackView.removeAllSubviews()
-        mainStackView.addArrangedSubview(stackView)
+        
+        initDashboardViews()
+        
         mainStackView.addArrangedSubview(buttonView)
         
         contentView.addSubview(mainStackView)
@@ -196,7 +176,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             make.edges.equalTo(contentView)
         }
         
-        initDashboardViews()
         contentView.backgroundColor = Colors.colorDashBoardDivider
         
         contentView.addSubview(pauseView)
@@ -206,25 +185,27 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func initDashboardViews() {
+        var viewToShow: UIView = viewDashboard
+        
         if let parent = self.navigationController as? TrainingViewController {
             for (position, tag) in parent.dashboardLayoutDict {
                 let dashboardElement = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: true)
                 var view: UIView?
                 switch position {
                 case 0:
-                    view = view0
+                    view = viewDashboard.view0
                     dashboardElement0 = dashboardElement
                 case 1:
-                    view = view1
+                    view = viewDashboard.view1
                     dashboardElement1 = dashboardElement
                 case 2:
-                    view = view2
+                    view = viewDashboard.view2
                     dashboardElement2 = dashboardElement
                 case 3:
-                    view = view3
+                    view = viewDashboard.view3
                     dashboardElement3 = dashboardElement
                 case 4:
-                    view = view4
+                    view = viewDashboard.view4
                     dashboardElement4 = dashboardElement
                 default:
                     fatalError()
@@ -239,6 +220,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
                 }
             }
         }
+        
+        if plan != nil {
+            viewToShow = viewDashboardPlan
+            viewDashboardPlan.plan = plan
+        }
+        mainStackView.addArrangedSubview(viewToShow)
     }
 
     //MARK: screen orieantation
@@ -297,15 +284,27 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func setDashboardElementsOrientation() {
-        (view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
     }
     
     override func initTabBarItems() {
-        showLogoOnRight()
+        showLogoCenter(viewController: self)
+        if plan != nil {
+            showCloseButton()
+        }
+        showPowerSaveOn(isShow: false)
+    }
+    
+    private func showPowerSaveOn(isShow: Bool) {
+        var menuItem: [UIBarButtonItem] = [btnPowerSaveOff]
+        if isShow {
+            menuItem = [btnPowerSaveOn]
+        }
+        self.navigationItem.setRightBarButtonItems(menuItem, animated: true)
     }
     
     private lazy var mainStackView: UIStackView! = {
@@ -315,32 +314,14 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         return stackView
     }()
     
-    private lazy var view0: UIView! = {
-        let view = UIView()
+    private lazy var viewDashboard: DashboardView! = {
+        let view = DashboardView()
         
         return view
     }()
     
-    private lazy var view1: UIView! = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    private lazy var view2: UIView! = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    private lazy var view3: UIView! = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    private lazy var view4: UIView! = {
-        let view = UIView()
+    private lazy var viewDashboardPlan: DashboardPlanView! = {
+        let view = DashboardPlanView()
         
         return view
     }()
@@ -421,11 +402,22 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         return stackView
     }()
     
-    private lazy var btnClose: UIBarButtonItem! = {
+    private lazy var btnPowerSaveOn: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_clear_white_24dp")
+        button.image = UIImage(named: "powerSavingMode")
         button.target = self
-        button.action = #selector(btnCloseClick)
+        button.action = #selector(clickPowerSaveOff)
+        
+        return button
+    }()
+    
+    private lazy var btnPowerSaveOff: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "powerSavingModeActive")
+        //TODO: it has no color
+        button.image?.withRenderingMode(.alwaysOriginal)
+        button.target = self
+        button.action = #selector(clickPowerSaveOn)
         
         return button
     }()

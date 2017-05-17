@@ -12,6 +12,12 @@ func startTrainingViewController(viewController: UIViewController) {
     viewController.present(TrainingViewController(), animated: true, completion: nil)
 }
 
+func startTrainingViewController(viewController: UIViewController, plan: Plan) {
+    let trainingVc = TrainingViewController()
+    trainingVc.plan = plan
+    viewController.present(trainingVc, animated: true, completion: nil)
+}
+
 class TrainingViewController: UINavigationController, StartDelayDelegate, CalibrationDelegate {
     
     //MARK: properties
@@ -19,6 +25,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance
     let outdoorService = OutdoorService.sharedInstance
+    var plan: Plan?
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -58,15 +65,21 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     
     //MARK: training
     func showSetDashboard() {
-        if viewControllers.count > 0 {
-            popViewController(animated: true)
+        if plan == nil {
+            if viewControllers.count > 0 {
+                popViewController(animated: true)
+            } else {
+                pushViewController(SetDashboardVc(), animated: true)
+            }
         } else {
-            pushViewController(SetDashboardVc(), animated: true)
+            showDashboard()
         }
     }
     func showDashboard() {
         telemetry.cycleState = CycleState.idle
-        pushViewController(DashboardVc(), animated: true)
+        let dashobardVc = DashboardVc()
+        dashobardVc.plan = plan
+        pushViewController(dashobardVc, animated: true)
     }
     
     func closeViewController() {

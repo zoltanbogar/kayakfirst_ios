@@ -209,6 +209,8 @@
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
+		06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */; };
+		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
 		06F657B81E45C899002AA9D0 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B71E45C899002AA9D0 /* AppService.swift */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
@@ -460,6 +462,8 @@
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
+		06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
 		06F657B71E45C899002AA9D0 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -963,6 +967,7 @@
 		06C1B9891E259C1000AB4C47 /* dashboard_elements */ = {
 			isa = PBXGroup;
 			children = (
+				06E03B841ECCE55D00AC7CA0 /* dashboard */,
 				06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */,
 				0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */,
 				06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */,
@@ -1062,6 +1067,15 @@
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
 			);
 			name = training_viewcontroller;
+			sourceTree = "<group>";
+		};
+		06E03B841ECCE55D00AC7CA0 /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */,
+				06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */,
+			);
+			name = dashboard;
 			sourceTree = "<group>";
 		};
 		06F9145F1E42801C0041B303 /* backend */ = {
@@ -1307,6 +1321,7 @@
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
+				06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */,
@@ -1353,6 +1368,7 @@
 				06018D581E620FFC00F75919 /* AppSql.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,
 				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
+				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,

@@ -292,7 +292,8 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     }
     
     @objc func clickPlay() {
-        //TODO
+        plan?.planElements = planElementTableView.dataList
+        startTrainingViewController(viewController: self, plan: plan!)
     }
     
     //MARK: delegate

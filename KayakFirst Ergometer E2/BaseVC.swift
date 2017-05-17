@@ -100,6 +100,10 @@ class BaseVC: UIViewController {
         self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
     }
     
+    func removeCloseButton() {
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+    }
+    
     private lazy var logoBarItem: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "logo_header")
