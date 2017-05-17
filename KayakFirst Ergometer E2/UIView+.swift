@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIView {
+    //MARK: blur
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -19,6 +20,7 @@ extension UIView {
         self.addSubview(blurEffectView)
     }
     
+    //MARK: drag drop
     func getSnapshotView() -> UIView {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         self.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -28,13 +30,59 @@ extension UIView {
         let snapshot : UIView = UIImageView(image: image)
         snapshot.layer.masksToBounds = false
         snapshot.layer.cornerRadius = 0.0
-        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-        snapshot.layer.shadowRadius = 5.0
-        snapshot.layer.shadowOpacity = 0.4
+        snapshot.setAppShadow()
         return snapshot
     }
     
     func isDragDropEnter(superView: UIView, gestureRecognizer: UIGestureRecognizer) -> Bool {
         return self.frame.contains(gestureRecognizer.location(in: superView))
+    }
+    
+    //MARK: gradient
+    func applyGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation) -> Void {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.startPoint = orientation.startPoint
+        gradient.endPoint = orientation.endPoint
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func setAppShadow() {
+        layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        layer.shadowRadius = 5.0
+        layer.shadowOpacity = 0.4
+    }
+}
+
+typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+
+enum GradientOrientation {
+    case topRightBottomLeft
+    case topLeftBottomRight
+    case horizontal
+    case vertical
+    
+    var startPoint : CGPoint {
+        get { return points.startPoint }
+    }
+    
+    var endPoint : CGPoint {
+        get { return points.endPoint }
+    }
+    
+    var points : GradientPoints {
+        get {
+            switch(self) {
+            case .topRightBottomLeft:
+                return (CGPoint.init(x: 0.0,y: 1.0), CGPoint.init(x: 1.0,y: 0.0))
+            case .topLeftBottomRight:
+                return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 1,y: 1))
+            case .horizontal:
+                return (CGPoint.init(x: 0.0,y: 0.5), CGPoint.init(x: 1.0,y: 0.5))
+            case .vertical:
+                return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 0.0,y: 1.0))
+            }
+        }
     }
 }

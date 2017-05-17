@@ -798,7 +798,6 @@
 				066B004E1EC75ABB00BE0E1F /* PlanTableViewCell.swift */,
 				066B00501EC769DA00BE0E1F /* PlanTablewViewHeader.swift */,
 				06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */,
-				06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */,
 				06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */,
 				06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */,
 			);
@@ -808,6 +807,7 @@
 		067129561EC8953700362C39 /* plan_element */ = {
 			isa = PBXGroup;
 			children = (
+				06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */,
 				067129571EC8958600362C39 /* PECellNormal.swift */,
 				0671295C1EC8981A00362C39 /* PlanElementTableView.swift */,
 				0671295E1EC8E37100362C39 /* PECellSpace.swift */,

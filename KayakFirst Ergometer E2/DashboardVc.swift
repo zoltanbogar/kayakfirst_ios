@@ -180,7 +180,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         stackView.addArrangedSubview(stackView1)
         stackView.addArrangedSubview(stackView2)
         
-        
         buttonView.addSubview(viewSwipePause)
         
         buttonView.addSubview(btnPlaySmall)

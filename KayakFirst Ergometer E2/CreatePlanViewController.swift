@@ -20,6 +20,11 @@ func startCreatePlanViewController(viewController: UIViewController, planType: P
 
 class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedListener {
     
+    //MARK: constants
+    private let btnDeleteRadius: CGFloat = 400
+    private let fontSize: CGFloat = 28
+    private let fontSizeEdit: CGFloat = 32
+    
     //MARK: properties
     var plan: Plan?
     private var snapShot: UIView?
@@ -41,7 +46,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     override func initView() {
         contentView.addSubview(planElementTableView)
         planElementTableView.snp.makeConstraints { (make) in
-            make.left.equalTo(contentView)
+            make.left.equalTo(contentView).offset(margin05)
             make.top.equalTo(contentView)
             make.bottom.equalTo(contentView)
             make.width.equalTo(100)
@@ -50,38 +55,35 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         contentView.addSubview(intensityView)
         intensityView.snp.makeConstraints { (make) in
             make.width.equalTo(100)
-            make.right.equalTo(contentView).offset(-20)
-            make.top.equalTo(contentView).offset(20)
+            make.right.equalTo(contentView).offset(-margin05)
+            make.top.equalTo(contentView).offset(margin05)
             make.height.equalTo(70)
-        }
-        
-        contentView.addSubview(btnPlay)
-        btnPlay.snp.makeConstraints { (make) in
-            make.centerX.equalTo(contentView)
-            make.width.equalTo(92)
-            make.height.equalTo(92)
-            make.bottom.equalTo(contentView).offset(-20)
         }
         
         contentView.addSubview(keyboardView)
         keyboardView.snp.makeConstraints { (make) in
-            make.top.equalTo(intensityView.snp.bottom).offset(20)
+            make.top.equalTo(intensityView.snp.bottom).offset(margin)
             make.right.equalTo(intensityView)
-            make.bottom.equalTo(btnPlay.snp.top).offset(-20)
-            make.left.equalTo(planElementTableView.snp.right).offset(20)
-        }
-        contentView.addSubview(imgDelete)
-        imgDelete.snp.makeConstraints { (make) in
-            make.center.equalTo(contentView)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-128)
+            make.left.equalTo(planElementTableView.snp.right).offset(margin)
         }
         
         setUIForType()
+        
+        contentView.addSubview(viewDelete)
+        viewDelete.snp.makeConstraints { (make) in
+            let offset = (btnDeleteRadius / 2)
+            make.right.equalTo(contentView).offset(offset)
+            make.top.equalTo(contentView).offset(-offset)
+            make.height.equalTo(self.btnDeleteRadius)
+            make.width.equalTo(self.btnDeleteRadius)
+        }
     }
     
     override func initTabBarItems() {
         showCloseButton()
         showLogoCenter(viewController: self)
-        self.navigationItem.setRightBarButtonItems([btnSave], animated: true)
+        self.navigationItem.setRightBarButtonItems([btnSave, btnPlay], animated: true)
     }
     
     private func setUIForType() {
@@ -106,7 +108,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
             make.left.equalTo(keyboardView)
             make.top.equalTo(intensityView)
             make.bottom.equalTo(intensityView)
-            make.right.equalTo(intensityView.snp.left).offset(-20)
+            make.right.equalTo(intensityView.snp.left).offset(-margin)
         })
     }
     
@@ -126,8 +128,13 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         
         stackView.addArrangedSubview(self.etDistance)
         
-        let labelUnit = UILabel()
+        let labelUnit = BebasUILabel()
         labelUnit.text = getString("unit_distance")
+        labelUnit.font = labelUnit.font.withSize(self.fontSize)
+        labelUnit.textAlignment = .center
+        labelUnit.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.fontSize)
+        })
         
         stackView.addArrangedSubview(labelUnit)
         
@@ -137,12 +144,14 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     private lazy var timeView: UIView! = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.spacing = 5
         
         stackView.addArrangedSubview(self.etMinute)
         
         let label = UILabel()
         label.text = ":"
         label.textAlignment = .center
+        label.font = label.font.withSize(self.fontSize)
         
         stackView.addArrangedSubview(label)
         
@@ -161,9 +170,18 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         
         stackView.addArrangedSubview(self.etIntensity)
         
-        let labelPercent = UILabel()
+        self.etIntensity.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.fontSizeEdit)
+        })
+        
+        let labelPercent = BebasUILabel()
         labelPercent.text = "%"
         labelPercent.textAlignment = .center
+        labelPercent.font = labelPercent.font.withSize(self.fontSize)
+        
+        labelPercent.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.fontSize)
+        })
         
         stackView.addArrangedSubview(labelPercent)
 
@@ -172,6 +190,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     private lazy var etMinute: NoImeEditText! = {
         let et = NoImeEditText()
+        et.font = et.font?.withSize(self.fontSizeEdit)
         
         et.delegate = self
         
@@ -180,6 +199,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     private lazy var etSec: NoImeEditText! = {
         let et = NoImeEditText()
+        et.font = et.font?.withSize(self.fontSizeEdit)
         
         et.delegate = self
         
@@ -188,6 +208,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     private lazy var etIntensity: NoImeEditText! = {
         let et = NoImeEditText()
+        et.font = et.font?.withSize(self.fontSizeEdit)
         
         et.delegate = self
         
@@ -196,6 +217,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     private lazy var etDistance: NoImeEditText! = {
         let et = NoImeEditText()
+        et.font = et.font?.withSize(self.fontSizeEdit)
         
         et.delegate = self
         
@@ -210,20 +232,34 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         return view
     }()
     
-    private lazy var imgDelete: UIImageView! = {
-        let view = UIImageView()
+    private lazy var viewDelete: UIView! = {
+        let view = UIView()
         
-        view.image = UIImage(named: "ic_delete")
+        view.addSubview(self.backgroundDelete)
+        self.backgroundDelete.snp.makeConstraints({ (make) in
+            make.center.equalTo(view)
+        })
+        view.addSubview(self.imgDelete)
+        self.imgDelete.snp.makeConstraints({ (make) in
+            make.center.equalTo(view).inset(UIEdgeInsetsMake(40, -40, 0, 0))
+        })
         
         view.isHidden = true
         
         return view
     }()
     
-    private lazy var btnPlay: RoundButton! = {
-        let button = RoundButton(radius: 75, image: UIImage(named: "ic_play_48dp")!, color: Colors.colorGreen)
-        button.backgroundColor = Colors.colorGreen
-        button.addTarget(self, action: #selector(clickPlay), for: .touchUpInside)
+    private lazy var imgDelete: UIImageView! = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "trashDropShadow")
+        
+        return imageView
+    }()
+    
+    private lazy var backgroundDelete: RoundButton! = {
+        let button = RoundButton(radius: self.btnDeleteRadius, image: UIImage(named: ""), color: Colors.colorTransparent)
+        button.applyGradient(withColours: [Colors.colorDeleteStart, Colors.colorDeleteEnd], gradientOrientation: GradientOrientation.topRightBottomLeft)
+        //button.backgroundColor = Colors.colorDeleteStart
         
         return button
     }()
@@ -231,9 +267,18 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     //MARK: tabbarItems
     private lazy var btnSave: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.title = getString("other_save")
+        button.image = UIImage(named: "save")
         button.target = self
         button.action = #selector(btnSaveClick)
+        
+        return button
+    }()
+    
+    private lazy var btnPlay: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "playSmall")
+        button.target = self
+        button.action = #selector(clickPlay)
         
         return button
     }()
@@ -296,7 +341,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
             if draggedView is PECellNormal {
                 if isDragEnded {
                     if self.snapShot == nil {
-                        imgDelete.isHidden = false
+                        viewDelete.isHidden = false
                         
                         self.snapShot = draggedView!.getSnapshotView()
                         self.contentView.addSubview(self.snapShot!)
@@ -313,7 +358,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
             if let dragView = self.snapShot {
                 dragView.center = locationInView
                 
-                shouldDelete = imgDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
+                shouldDelete = viewDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
             }
         default:
             self.snapShot?.removeFromSuperview()
@@ -321,7 +366,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
             self.snapShot = nil
             self.draggedView = nil
             isDragEnded = true
-            imgDelete.isHidden = true
+            viewDelete.isHidden = true
             
             if shouldDelete {
                 planElementTableView.deletePlanElement(position: (indexPath?.row)!)

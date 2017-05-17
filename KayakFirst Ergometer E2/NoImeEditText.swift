@@ -15,6 +15,10 @@ class NoImeEditText: UITextView {
         super.init(frame: CGRect.zero, textContainer: nil)
         
         initView()
+        
+        font = UIFont(name: "BebasNeue", size: 16)
+        textAlignment = .center
+        textContainer.maximumNumberOfLines = 1
     }
     
     required init?(coder aDecoder: NSCoder) {

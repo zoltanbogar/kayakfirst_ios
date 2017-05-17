@@ -16,14 +16,14 @@ class RoundButton: UIButton {
             backgroundColor = color
         }
     }
-    var image: UIImage {
+    var image: UIImage? {
         didSet {
             setImage(image, for: .normal)
         }
     }
     
     //MARK: init
-    init(radius: CGFloat, image: UIImage, color: UIColor) {
+    init(radius: CGFloat, image: UIImage?, color: UIColor) {
         self.color = color
         self.image = image
         

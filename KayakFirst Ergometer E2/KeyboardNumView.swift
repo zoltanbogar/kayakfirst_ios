@@ -145,6 +145,8 @@ class KeyboardNumView: UIView {
         button.setTitleColor(Colors.colorWhite, for: .normal)
         button.backgroundColor = UIColor.white
         
+        button.titleLabel?.font = UIFont(name: "BebasNeue", size: 40)
+        
         return button
     }
     

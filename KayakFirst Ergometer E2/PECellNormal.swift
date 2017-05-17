@@ -25,6 +25,7 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
         backgroundColor = getPlanElementColor(planElement: data)
         
         selectionColor = backgroundColor!
+        setAppShadow()
     }
     
     //MARK: init view
@@ -49,7 +50,10 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     }()
     
     private lazy var label: UILabel! = {
-        let label = UILabel()
+        let label = BebasUILabel()
+        label.textColor = UIColor.white
+        
+        label.font = label.font.withSize(16)
         
         return label
     }()
