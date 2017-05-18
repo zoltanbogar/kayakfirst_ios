@@ -49,6 +49,10 @@ class DashboardPlanView: UIView {
         
         mainStackView.addArrangedSubview(progressViewPlanElement)
         
+        let spaceView = UIView()
+        spaceView.backgroundColor = Colors.colorTransparent
+        mainStackView.addArrangedSubview(spaceView)
+        
         mainStackView.addArrangedSubview(tableView)
         
         let horizontalDivider = DividerView()
@@ -79,6 +83,9 @@ class DashboardPlanView: UIView {
         }
         valuesStackView.snp.makeConstraints { (make) in
             make.height.equalTo(deElementStackView)
+        }
+        spaceView.snp.makeConstraints { (make) in
+            make.height.equalTo(margin)
         }
         deActual1000.snp.makeConstraints { (make) in
             make.width.equalTo(deSpm)

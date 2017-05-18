@@ -12,6 +12,7 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
     
     //MARK: constants
     private let rowHeight: CGFloat = 50
+    private let spaceHeight = margin05
     private let textSize: CGFloat = 35
     
     //MARK: properties
@@ -38,24 +39,43 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
     
     //MARK: init view
     override func initView() -> UIView {
-        stackView.axis = .horizontal
-        stackView.spacing = margin05
-        
-        stackView.addArrangedSubview(valueView)
-        stackView.addArrangedSubview(percentView)
-        
+        baseView.addSubview(valueView)
         valueView.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.top.equalTo(baseView)
+            make.height.equalTo(rowHeight)
             make.width.equalTo(270)
         }
+        
+        baseView.addSubview(percentView)
         percentView.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
+            make.top.equalTo(baseView)
+            make.height.equalTo(rowHeight)
+            make.right.equalTo(baseView)
+            make.left.equalTo(valueView.snp.right).offset(margin05)
+            make.width.equalTo(80)
+        }
+        percentView.addSubview(labelPercent)
+        labelPercent.snp.makeConstraints { (make) in
+            make.left.equalTo(percentView).offset(margin05)
+            make.centerY.equalTo(percentView)
         }
         
-        return stackView
+        let spaceView = UIView()
+        spaceView.backgroundColor = Colors.colorTransparent
+        baseView.addSubview(spaceView)
+        spaceView.snp.makeConstraints { (make) in
+            make.top.equalTo(valueView.snp.bottom)
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.height.equalTo(self.spaceHeight)
+        }
+        
+        return baseView
     }
     
     override func getRowHeight() -> CGFloat {
-        return rowHeight
+        return rowHeight + spaceHeight
     }
     
     //MARK: views
@@ -65,9 +85,10 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
         view.addSubview(self.colorView)
         self.colorView.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(margin)
-            make.top.equalTo(view).offset(margin05)
-            make.bottom.equalTo(view).offset(-margin05)
-            make.width.equalTo(self.rowHeight).inset(UIEdgeInsetsMake(0, 0, 0, -margin))
+            make.centerY.equalTo(view)
+            let size = self.rowHeight - margin
+            make.height.equalTo(size)
+            make.width.equalTo(size)
         }
         
         view.addSubview(self.labelValue)
@@ -94,15 +115,6 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
     
     private lazy var percentView: UIView! = {
         let percentV = UIView()
-        
-        //TODO: why this not work?
-        /*percentV.addSubview(self.labelPercent)
-        self.labelPercent.snp.makeConstraints { (make) in
-            make.top.equalTo(percentV)
-            make.bottom.equalTo(percentV)
-            //make.left.equalTo(self.valueView.snp.right)
-            //make.centerX.equalTo(view)
-        }*/
         
         percentV.backgroundColor = UIColor.white
         
