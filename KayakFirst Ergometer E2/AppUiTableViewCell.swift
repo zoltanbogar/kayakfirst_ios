@@ -24,6 +24,8 @@ class AppUITableViewCell<E>: UITableViewCell {
         initView().snp.makeConstraints { make in
             make.width.equalTo(contentView)
             make.centerY.equalTo(contentView)
+            //TODO: check all list again
+            make.height.equalTo(contentView)
         }
     }
     
