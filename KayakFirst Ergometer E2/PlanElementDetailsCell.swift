@@ -18,6 +18,11 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
     //MARK: properties
     private let baseView = UIView()
     private let stackView = UIStackView()
+    var isEdit: Bool = false {
+        didSet {
+            editView.isHidden = !isEdit
+        }
+    }
  
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -69,6 +74,11 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
             make.height.equalTo(self.spaceHeight)
+        }
+        
+        baseView.addSubview(editView)
+        editView.snp.makeConstraints { (make) in
+            make.edges.equalTo(baseView)
         }
         
         return baseView
@@ -131,6 +141,16 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
     
     private lazy var colorView: UIView! = {
         let view = UIView()
+        
+        return view
+    }()
+    
+    private lazy var editView: UIView! = {
+        let view = UIView()
+        
+        view.backgroundColor = Colors.dragDropEnter
+        
+        view.isHidden = true
         
         return view
     }()

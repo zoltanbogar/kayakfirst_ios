@@ -80,17 +80,23 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
         
         switch getViewType(indexPath: indexPath) {
         case cellBase:
-            cell = tableView.dequeueReusableCell(withIdentifier: cellBase, for: indexPath) as! PlanDetailsCell
+            let cellDetails = tableView.dequeueReusableCell(withIdentifier: cellBase, for: indexPath) as! PlanDetailsCell
             
-            //TODO
-            rowHeight = 300
+            (cellDetails as! PlanDetailsCell).isEdit = isEdit
+            
+            cellDetails.data = plan
+            
+            cell = cellDetails
+            
+            rowHeight = (cell as! PlanDetailsCell).getRowHeight()
         case cellEdit:
             cell = tableView.dequeueReusableCell(withIdentifier: cellEdit, for: indexPath) as! PlanEditIntervallsCell
             
-            //TODO
-            rowHeight = 100
+            rowHeight = (cell as! PlanEditIntervallsCell).getRowHeight()
         case cellPlanElement:
             let cellNormal = tableView.dequeueReusableCell(withIdentifier: self.cellPlanElement, for: indexPath) as! PlanElementDetailsCell
+            
+            (cellNormal as! PlanElementDetailsCell).isEdit = isEdit
             
             let dataPosition = isEdit ? (position - 2) : (position - 1)
             
@@ -98,13 +104,10 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             
             cell = cellNormal
             
-            //TODO
-            rowHeight = 50
+            rowHeight = (cell as! PlanElementDetailsCell).getRowHeight()
         default:
             fatalError("no other types")
         }
-        
-        //rowHeight = cell!.getRowHeight()
         
         return cell!
     }

@@ -73,7 +73,7 @@ class PlanListVc: BaseVC {
         let tableViewPlan = PlanTableView(view: self.contentView)
         
         tableViewPlan.rowClickCallback = { plan, position in
-            //TODO
+            startPlanDetailsViewController(viewController: self, plan: plan, isEdit: false)
         }
         
         return tableViewPlan

@@ -11,7 +11,15 @@ import Foundation
 class PlanDetailsCell: AppUITableViewCell<Plan> {
     
     //MARK: properties
-    private let stackView = UIStackView()
+    private let baseView = UIView()
+    var isEdit: Bool = false {
+        didSet {
+            etName.active = isEdit
+            etDate.active = isEdit
+            etStart.active = isEdit
+            etNotes.active = isEdit
+        }
+    }
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -27,29 +35,51 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     //MARK: init data
     override func initData(data: Plan?) {
         //TODO
+        etName.text = data?.name
+        etNotes.text = data?.notes
     }
     
     //MARK: init view
     override func initView() -> UIView {
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = margin
         
-        stackView.addArrangedSubview(tfName)
+        stackView.addArrangedSubview(etName)
         stackView.addArrangedSubview(etDate)
         stackView.addArrangedSubview(etDuration)
         stackView.addArrangedSubview(etStart)
         stackView.addArrangedSubview(etNotes)
         
-        return stackView
+        baseView.addSubview(stackView)
+        stackView.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.top.equalTo(baseView)
+            let height = (etName.intrinsicContentSize.height) * 5
+            make.height.equalTo(height)
+        }
+        
+        let marginView = UIView()
+        marginView.backgroundColor = Colors.colorTransparent
+        baseView.addSubview(marginView)
+        marginView.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.top.equalTo(stackView.snp.bottom)
+            make.height.equalTo(margin)
+        }
+        
+        return baseView
     }
     
     override func getRowHeight() -> CGFloat {
-        return trainingRowHeight
+        return (etName.intrinsicContentSize.height) * 5 + margin
     }
     
     //MARK: views
-    private lazy var tfName: ProfileElement! = {
+    private lazy var etName: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("plan_name")
         textField.active = false

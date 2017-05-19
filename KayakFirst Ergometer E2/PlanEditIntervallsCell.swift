@@ -34,7 +34,7 @@ class PlanEditIntervallsCell: AppUITableViewCell<Any> {
         
         view.addSubview(viewEdit)
         viewEdit.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
+            make.center.equalTo(view)
         }
         
         return view
@@ -48,6 +48,7 @@ class PlanEditIntervallsCell: AppUITableViewCell<Any> {
     private lazy var viewEdit: UIView! = {
         let view = UIStackView()
         view.axis = .horizontal
+        view.spacing = margin05
         
         view.addArrangedSubview(self.imgEdit)
         view.addArrangedSubview(self.labelEdit)
@@ -58,6 +59,7 @@ class PlanEditIntervallsCell: AppUITableViewCell<Any> {
     private lazy var labelEdit: UILabel! = {
         let label = UILabel()
         label.text = getString("plan_edit_intervals")
+        label.textColor = Colors.colorAccent
         
         return label
     }()
@@ -65,8 +67,10 @@ class PlanEditIntervallsCell: AppUITableViewCell<Any> {
     private lazy var imgEdit: UIImageView! = {
         let imageView = UIImageView()
         let image = UIImage(named: "edit")
-        
         imageView.image = image
+        
+        imageView.image = imageView.image!.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = Colors.colorAccent
         
         return imageView
     }()

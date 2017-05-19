@@ -24,6 +24,13 @@ class PlanDetailsViewController: BaseVC {
     var plan: Plan?
     var isEdit: Bool = false
     
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        automaticallyAdjustsScrollViewInsets = false
+    }
+    
     //MARK: init view
     override func initView() {
         setEditLayout(isEdit: isEdit)
@@ -42,9 +49,18 @@ class PlanDetailsViewController: BaseVC {
     //MARK: views
     private lazy var btnSave: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "done_24dp")
+        button.image = UIImage(named: "save")
         button.target = self
         button.action = #selector(btnSaveClick)
+        
+        return button
+    }()
+    
+    private lazy var btnDelete: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "trash")
+        button.target = self
+        button.action = #selector(btnDeleteClick)
         
         return button
     }()
@@ -68,6 +84,11 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: button listeners
     @objc private func btnSaveClick() {
+        setEditLayout(isEdit: false)
+        //TODO: save
+    }
+    
+    @objc private func btnDeleteClick() {
         //TODO
     }
     
@@ -77,15 +98,16 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: functions
     private func setEditLayout(isEdit: Bool) {
+        planDetailsTableView.isEdit = isEdit
         if isEdit {
-            setTabbarItem(tabbarItem: btnSave)
+            setTabbarItem(tabbarItems: [btnSave, btnDelete])
         } else {
-            setTabbarItem(tabbarItem: btnSave)
+            setTabbarItem(tabbarItems: [btnEdit])
         }
     }
     
-    private func setTabbarItem(tabbarItem: UIBarButtonItem) {
-        self.navigationItem.setRightBarButtonItems([tabbarItem], animated: true)
+    private func setTabbarItem(tabbarItems: [UIBarButtonItem]) {
+        self.navigationItem.setRightBarButtonItems(tabbarItems, animated: true)
     }
     
     private func activateFields(isActive: Bool) {
