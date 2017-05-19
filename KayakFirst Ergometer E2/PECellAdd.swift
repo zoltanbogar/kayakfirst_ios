@@ -18,7 +18,9 @@ class PECellAdd: AppUITableViewCell<PlanElement> {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = UIColor.white
-        setAppShadow()
+        showAppBorder()
+        
+        //setAppShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -49,7 +49,7 @@ struct Colors {
     static let colorPlanMedium = getColor("#ffed00")
     static let colorPlanHard = getColor("#cc0000")
     static let colorDeleteStart = getColor("#cc0000")
-    static let colorDeleteEnd = getColor("99cc0000")
+    static let colorDeleteEnd = getColor("bbcc0000")
 }
 
 func getColor(_ hex: String) -> UIColor {

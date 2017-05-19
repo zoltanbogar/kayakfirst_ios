@@ -32,6 +32,8 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     private var indexPath: IndexPath?
     private var isDragEnded = true
     private var shouldDelete = false
+    private var draggedViewOriginalX: CGFloat = 0
+    private var draggedViewOriginalY: CGFloat = 0
     
     var activeTextView: UITextView?
     
@@ -40,6 +42,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         super.viewDidLoad()
         
         IQKeyboardManager.sharedManager().disabledToolbarClasses = [CreatePlanViewController.self]
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     //MARK: init view
@@ -47,16 +50,16 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         contentView.addSubview(planElementTableView)
         planElementTableView.snp.makeConstraints { (make) in
             make.left.equalTo(contentView).offset(margin05)
-            make.top.equalTo(contentView)
+            make.top.equalTo(contentView).offset(margin05)
             make.bottom.equalTo(contentView)
             make.width.equalTo(100)
         }
         
         contentView.addSubview(intensityView)
         intensityView.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
+            make.width.equalTo(80)
             make.right.equalTo(contentView).offset(-margin05)
-            make.top.equalTo(contentView).offset(margin05)
+            make.top.equalTo(planElementTableView)
             make.height.equalTo(70)
         }
         
@@ -258,8 +261,7 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     
     private lazy var backgroundDelete: RoundButton! = {
         let button = RoundButton(radius: self.btnDeleteRadius, image: UIImage(named: ""), color: Colors.colorTransparent)
-        button.applyGradient(withColours: [Colors.colorDeleteStart, Colors.colorDeleteEnd], gradientOrientation: GradientOrientation.topRightBottomLeft)
-        //button.backgroundColor = Colors.colorDeleteStart
+        button.applyGradient(withColours: [Colors.colorDeleteEnd, Colors.colorDeleteStart], gradientOrientation: GradientOrientation.topRightBottomLeft)
         
         return button
     }()
@@ -344,13 +346,15 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
                     if self.snapShot == nil {
                         viewDelete.isHidden = false
                         
+                        self.draggedViewOriginalX = draggedView!.center.x + margin05
+                        self.draggedViewOriginalY = draggedView!.center.y + margin05
+                        
                         self.snapShot = draggedView!.getSnapshotView()
                         self.contentView.addSubview(self.snapShot!)
                         self.snapShot!.snp.makeConstraints { make in
                             make.center.equalTo(locationInView)
                         }
                         draggedView?.isHidden = true
-                        //view.isSelected = true
                     }
                     isDragEnded = false
                 }
@@ -362,18 +366,31 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
                 shouldDelete = viewDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
             }
         default:
-            self.snapShot?.removeFromSuperview()
-            self.draggedView?.isHidden = false
-            self.snapShot = nil
-            self.draggedView = nil
-            isDragEnded = true
-            viewDelete.isHidden = true
-            
             if shouldDelete {
+                resetDrag()
                 planElementTableView.deletePlanElement(position: (indexPath?.row)!)
+            } else {
+                animateDraggedViewToOriginal()
             }
             shouldDelete = false
         }
+    }
+    
+    private func animateDraggedViewToOriginal() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.snapShot?.center = CGPoint(x: self.draggedViewOriginalX, y: self.draggedViewOriginalY)
+        }, completion: { ended in
+            self.resetDrag()
+        })
+    }
+    
+    private func resetDrag() {
+        self.snapShot?.removeFromSuperview()
+        self.draggedView?.isHidden = false
+        self.snapShot = nil
+        self.draggedView = nil
+        self.isDragEnded = true
+        self.viewDelete.isHidden = true
     }
     
 }

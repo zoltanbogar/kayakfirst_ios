@@ -93,6 +93,9 @@ class DashboardPlanView: UIView {
         deDivider.snp.makeConstraints { (make) in
             make.width.equalTo(dashboardDividerWidth)
         }
+        deElementStackView.snp.makeConstraints { (make) in
+            make.height.equalTo(115)
+        }
         
         
         backgroundColor = Colors.colorPrimary

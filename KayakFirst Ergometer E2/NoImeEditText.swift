@@ -14,6 +14,8 @@ class NoImeEditText: UITextView {
     init() {
         super.init(frame: CGRect.zero, textContainer: nil)
         
+        addContentSizeObserver()
+        
         initView()
         
         font = UIFont(name: "BebasNeue", size: 16)
@@ -28,9 +30,28 @@ class NoImeEditText: UITextView {
     //MARK: init view
     private func initView() {
         backgroundColor = UIColor.white
-        layer.borderWidth = dashboardDividerWidth
-        layer.borderColor = Colors.colorDashBoardDivider.cgColor
+        
+        showAppBorder()
         
         inputView = UIView()
+    }
+    
+    //TODO: not vertically centered the text
+    private func addContentSizeObserver() {
+        self.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    private func removeContentSizeObserver() {
+        self.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        var top = (bounds.size.height - contentSize.height * zoomScale) / 2.0
+        top = top < 0.0 ? 0.0 : top
+        contentOffset = CGPoint(x: contentOffset.x, y: -top)
+    }
+    
+    deinit {
+        removeContentSizeObserver()
     }
 }

@@ -814,8 +814,8 @@
 			isa = PBXGroup;
 			children = (
 				06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */,
-				067129571EC8958600362C39 /* PECellNormal.swift */,
 				0671295C1EC8981A00362C39 /* PlanElementTableView.swift */,
+				067129571EC8958600362C39 /* PECellNormal.swift */,
 				0671295E1EC8E37100362C39 /* PECellSpace.swift */,
 				067129601EC8E6A700362C39 /* PECellAdd.swift */,
 				0602DEB51ECD635A000E4793 /* PEDashboardTableView.swift */,

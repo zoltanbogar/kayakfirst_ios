@@ -80,8 +80,9 @@ class KeyboardNumView: UIView {
         
         addSubview(verticalStackView)
         verticalStackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self).offset(dashboardDividerWidth)
+            make.edges.equalTo(self)
         }
+        showAppBorder()
     }
     
     //MARK: views

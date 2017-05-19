@@ -13,6 +13,8 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        //setAppShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,7 +27,6 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
         backgroundColor = getPlanElementColor(planElement: data)
         
         selectionColor = backgroundColor!
-        setAppShadow()
     }
     
     //MARK: init view

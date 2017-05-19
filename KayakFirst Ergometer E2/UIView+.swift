@@ -52,6 +52,13 @@ extension UIView {
         layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
         layer.shadowRadius = 5.0
         layer.shadowOpacity = 0.4
+        layer.masksToBounds = false
+        clipsToBounds = false
+    }
+    
+    func showAppBorder() {
+        layer.borderWidth = dashboardDividerWidth
+        layer.borderColor = Colors.colorDashBoardDivider.cgColor
     }
 }
 
