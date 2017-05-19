@@ -20,6 +20,13 @@ class PlanListVc: BaseVC {
     //MARK: properties
     var planType: PlanType?
     
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        automaticallyAdjustsScrollViewInsets = false
+    }
+    
     //MARK: functions
     private func setPlanList() {
         tableViewPlan.dataList = Plan.getExamplePlans()
@@ -29,9 +36,20 @@ class PlanListVc: BaseVC {
     override func initView() {
         showLogoCenter(viewController: self)
         
+        contentView.addSubview(etSearch)
+        etSearch.snp.makeConstraints { (make) in
+            make.left.equalTo(contentView).offset(margin2)
+            make.right.equalTo(contentView).offset(-margin2)
+            make.top.equalTo(contentView).offset(margin)
+            make.height.equalTo(30)
+        }
+        
         contentView.addSubview(tableViewPlan)
         tableViewPlan.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+            make.bottom.equalTo(contentView)
+            make.top.equalTo(etSearch.snp.bottom).offset(margin)
         }
         
         setPlanList()
@@ -61,7 +79,17 @@ class PlanListVc: BaseVC {
         return tableViewPlan
     }()
     
-    
+    private lazy var etSearch: UITextView! = {
+        let view = SearchTextView()
+        view.layer.cornerRadius = 5
+        view.backgroundColor = UIColor.white
+        
+        view.searchListener = { text in
+            //TODO
+        }
+        
+        return view
+    }()
     
     //MARK: clicklisteners
     @objc private func addClick() {

@@ -185,10 +185,10 @@ class DashboardPlanView: UIView {
     private lazy var viewGrad: UIView! = {
         let view = UIView()
         
-        view.backgroundColor = getColor("#99ffffff")
+        view.backgroundColor = Colors.colorTransparent
         
         //TODO: gradient
-        view.applyGradient(withColours: [Colors.colorAccent, Colors.colorGreen], gradientOrientation: GradientOrientation.vertical)
+        view.applyGradient(withColours: [Colors.colorAccent, Colors.colorGreen], gradientOrientation: GradientOrientation.topRightBottomLeft)
         
         return view
     }()
