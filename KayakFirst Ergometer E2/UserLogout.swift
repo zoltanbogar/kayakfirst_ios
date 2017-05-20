@@ -34,4 +34,12 @@ class UserLogout: ServerService<Bool> {
         return URLEncoding.default
     }
     
+    override func isEqual(anotherServerService: ServerService<Bool>) -> Bool {
+        return true
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.logout
+    }
+    
 }

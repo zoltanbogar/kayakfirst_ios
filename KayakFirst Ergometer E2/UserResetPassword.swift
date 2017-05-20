@@ -44,4 +44,11 @@ class UserResetPassword: ServerService<Bool> {
         return nil
     }
     
+    override func isEqual(anotherServerService: ServerService<Bool>) -> Bool {
+        return true
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.reset_pw
+    }
 }

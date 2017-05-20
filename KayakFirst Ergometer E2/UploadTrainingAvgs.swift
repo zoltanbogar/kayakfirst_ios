@@ -78,4 +78,12 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
     override func getKeyTimeStamp() -> String {
         return keyTimeStamp
     }
+    
+    override func isEqual(anotherServerService: ServerService<Bool>) -> Bool {
+        return true
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return TrainingManagerType.upload_training_avg
+    }
 }

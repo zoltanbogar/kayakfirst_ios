@@ -12,8 +12,8 @@ import SwiftyJSON
 
 class DownloadTrainings: ServerService<[Training]> {
     
-    private let sessionIdFrom: TimeInterval
-    private let sessionIdTo: TimeInterval
+    let sessionIdFrom: TimeInterval
+    let sessionIdTo: TimeInterval
     
     init(sessionIdFrom: TimeInterval, sessionIdTo: TimeInterval) {
         self.sessionIdFrom = sessionIdFrom
@@ -80,6 +80,18 @@ class DownloadTrainings: ServerService<[Training]> {
     
     override func initEncoding() -> ParameterEncoding {
         return URLEncoding.default
+    }
+    
+    override func isEqual(anotherServerService: ServerService<[Training]>) -> Bool {
+        if let service = anotherServerService as? DownloadTrainings {
+            return (service.sessionIdFrom == self.sessionIdFrom) && (service.sessionIdTo == self.sessionIdTo)
+        } else {
+            return false
+        }
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return TrainingManagerType.download_training
     }
     
 }

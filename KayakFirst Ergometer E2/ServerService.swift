@@ -53,6 +53,7 @@ class ServerService<E> {
         return result
     }
     
+    //MARK: abstract methods
     internal func handleServiceCommunication(alamofireRequest: DataRequest) -> E? {
         fatalError("Must be implemented")
     }
@@ -65,12 +66,20 @@ class ServerService<E> {
         fatalError("Must be implemented")
     }
     
-    internal func initParameters() -> Parameters? {
-        return nil
-    }
-    
     internal func initEncoding() -> ParameterEncoding {
         fatalError("Must be implemented")
+    }
+    
+    internal func isEqual(anotherServerService: ServerService<E>) -> Bool {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getManagerType() -> BaseManagerType {
+        fatalError("Must be implemented")
+    }
+    
+    internal func initParameters() -> Parameters? {
+        return nil
     }
     
     //override if needed

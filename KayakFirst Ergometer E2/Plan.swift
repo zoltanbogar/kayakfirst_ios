@@ -79,7 +79,7 @@ class Plan {
             
             var plan = Plan(type: type)
             plan.name = "Nametest\(i)"
-            plan.notes = "Notestest\(i)"
+            plan.notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\(i)"
             
             var planElements = [PlanElement]()
             for i in 0...10 {
