@@ -82,7 +82,7 @@ class Plan {
             plan.notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\(i)"
             
             var planElements = [PlanElement]()
-            for i in 0...10 {
+            for i in 0...9 {
                 let planElement = PlanElement(
                     planId: plan.planId,
                     intensity: i * 10,
@@ -91,6 +91,28 @@ class Plan {
                 
                 planElements.append(planElement)
             }
+            
+            planElements[0].value = 20
+            planElements[1].value = 20
+            planElements[2].value = 40
+            planElements[3].value = 60
+            planElements[4].value = 20
+            planElements[5].value = 80
+            planElements[6].value = 30
+            planElements[7].value = 50
+            planElements[8].value = 20
+            planElements[9].value = 50
+            
+            planElements[0].intensity = 20
+            planElements[1].intensity = 80
+            planElements[2].intensity = 20
+            planElements[3].intensity = 50
+            planElements[4].intensity = 90
+            planElements[5].intensity = 20
+            planElements[6].intensity = 90
+            planElements[7].intensity = 50
+            planElements[8].intensity = 10
+            planElements[9].intensity = 50
             
             plan.planElements = planElements
             

@@ -155,6 +155,8 @@
 		0671295F1EC8E37100362C39 /* PECellSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295E1EC8E37100362C39 /* PECellSpace.swift */; };
 		067129611EC8E6A700362C39 /* PECellAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129601EC8E6A700362C39 /* PECellAdd.swift */; };
 		067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129621EC9030800362C39 /* PlanDetailsViewController.swift */; };
+		067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */; };
+		067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
 		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
@@ -409,6 +411,8 @@
 		0671295E1EC8E37100362C39 /* PECellSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellSpace.swift; sourceTree = "<group>"; };
 		067129601EC8E6A700362C39 /* PECellAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellAdd.swift; sourceTree = "<group>"; };
 		067129621EC9030800362C39 /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
+		067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTimeLineView.swift; sourceTree = "<group>"; };
+		067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementTimelineView.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
 		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
@@ -883,6 +887,8 @@
 			isa = PBXGroup;
 			children = (
 				0671295A1EC896FE00362C39 /* PlanUtils.swift */,
+				067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */,
+				067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1456,6 +1462,7 @@
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,
 				06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
+				067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */,
 				067964991E638A2C00DFC050 /* CommandOutdoorSpeed.swift in Sources */,
 				061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
@@ -1493,6 +1500,7 @@
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
+				067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */,
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,

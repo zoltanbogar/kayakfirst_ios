@@ -18,6 +18,7 @@ let chartLineWidth: CGFloat = 2
 let trainingRowHeight: CGFloat = 56
 let profileElementHeight: CGFloat = 50
 let planElementHeight: CGFloat = 40
+let timeLineHeight: CGFloat = 30.5
 
 func getNavigationBarHeight(viewController: UIViewController) -> CGFloat {
     var navigationBarHeight: CGFloat?

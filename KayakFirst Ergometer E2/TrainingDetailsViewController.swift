@@ -128,7 +128,7 @@ class TrainingDetailsViewController: BaseVC {
         
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin05, 0))
         }
     }
     

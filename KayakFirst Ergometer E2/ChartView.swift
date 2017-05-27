@@ -34,6 +34,7 @@ class ChartView: UIView {
         disableLabelIfNeeded()
         initLabelList()
         initChart()
+        initPlanTimeLine()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,6 +64,13 @@ class ChartView: UIView {
         if isOutdoor {
             labelForce.isDisabled = true
         }
+    }
+    
+    //TODO
+    private func initPlanTimeLine() {
+        let plan = Plan.getExamplePlans()[0]
+        
+        planView.setData(plan: plan, lineChart: lineChart)
     }
     
     //MARK: views
@@ -98,14 +106,26 @@ class ChartView: UIView {
         
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
+        mainStackView.spacing = margin05
         mainStackView.addArrangedSubview(viewLabels)
         mainStackView.addArrangedSubview(lineChart)
+        mainStackView.addArrangedSubview(planView)
         
         addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+        planView.snp.makeConstraints { (make) in
+            make.left.equalTo(lineChart).offset(margin2)
+            make.right.equalTo(lineChart).offset(-margin)
+        }
     }
+    
+    private lazy var planView: PlanTimeLineView! = {
+        let view = PlanTimeLineView()
+        
+        return view
+    }()
     
     private lazy var lineChart: LineChartView! = {
         let chart = LineChartView()
