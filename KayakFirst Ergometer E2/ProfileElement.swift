@@ -11,8 +11,8 @@ import UIKit
 class ProfileElement: DialogElementTextField {
     
     //MARK: constants
-    private let textColorNormalValue = Colors.colorDashBoardDivider
-    private let textColorNormalTitle = Colors.colorWhite
+    let textColorNormalValue = Colors.colorDashBoardDivider
+    let textColorNormalTitle = Colors.colorWhite
 
     
     //MARK: properties
@@ -70,7 +70,7 @@ class ProfileElement: DialogElementTextField {
         }
     }
     
-    private func designValueTextField() {
+    func designValueTextField() {
         valueTextField.textAlignment = .right
         valueTextField.borderStyle = .none
         valueTextField.textColor = textColorNormalValue
@@ -84,7 +84,7 @@ class ProfileElement: DialogElementTextField {
     }
     
     //MARK: views
-    private lazy var labelTitle: AppUILabel! = {
+    internal lazy var labelTitle: AppUILabel! = {
         let label = AppUILabel()
         
         return label

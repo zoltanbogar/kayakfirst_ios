@@ -43,7 +43,6 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     override func initView() -> UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
         stackView.spacing = margin
         
         stackView.addArrangedSubview(etName)
@@ -57,7 +56,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
             make.top.equalTo(baseView)
-            let height = (etName.intrinsicContentSize.height) * 5
+            let height = (etName.intrinsicContentSize.height) * 4 + etNotes.intrinsicContentSize.height
             make.height.equalTo(height)
         }
         
@@ -75,7 +74,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     }
     
     override func getRowHeight() -> CGFloat {
-        return (etName.intrinsicContentSize.height) * 5 + margin
+        return (etName.intrinsicContentSize.height) * 4 + margin + etNotes.intrinsicContentSize.height
     }
     
     //MARK: views
@@ -111,8 +110,8 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         return textField
     }()
     
-    private lazy var etNotes: ProfileElement! = {
-        let textField = ProfileElement()
+    private lazy var etNotes: ProfileElementExpendable! = {
+        let textField = ProfileElementExpendable()
         textField.title = getString("plan_notes")
         textField.active = false
         

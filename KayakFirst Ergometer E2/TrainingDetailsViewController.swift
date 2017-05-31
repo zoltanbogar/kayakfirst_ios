@@ -271,6 +271,7 @@ class TrainingDetailsViewController: BaseVC {
         }
     }
     
+    //TODO: click time / or distance crash the app (maybe because of the PlanTimeLine?)
     @objc private func handleTabClick(sender: UIButton) {
         if sender == btnTable {
             tabPosition = 0

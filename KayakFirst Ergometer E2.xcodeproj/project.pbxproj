@@ -24,6 +24,7 @@
 		06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */; };
 		06071D451ECA4E59004CB736 /* PlanEditIntervallsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */; };
 		060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060958E41EDDFA74009A824C /* BatterySaveHelper.swift */; };
+		060958E81EDE9758009A824C /* ProfileElementExpendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060958E71EDE9758009A824C /* ProfileElementExpendable.swift */; };
 		0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609B5371E6C06A100011CED /* ProfileElement.swift */; };
 		0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */; };
 		0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */; };
@@ -280,6 +281,7 @@
 		06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsCell.swift; sourceTree = "<group>"; };
 		06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanEditIntervallsCell.swift; sourceTree = "<group>"; };
 		060958E41EDDFA74009A824C /* BatterySaveHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySaveHelper.swift; sourceTree = "<group>"; };
+		060958E71EDE9758009A824C /* ProfileElementExpendable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileElementExpendable.swift; sourceTree = "<group>"; };
 		0609B5371E6C06A100011CED /* ProfileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileElement.swift; sourceTree = "<group>"; };
 		0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginFacebook.swift; sourceTree = "<group>"; };
 		0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginGoogle.swift; sourceTree = "<group>"; };
@@ -561,6 +563,16 @@
 				06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		060958E61EDE973A009A824C /* dialog_element */ = {
+			isa = PBXGroup;
+			children = (
+				06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */,
+				0609B5371E6C06A100011CED /* ProfileElement.swift */,
+				060958E71EDE9758009A824C /* ProfileElementExpendable.swift */,
+			);
+			name = dialog_element;
 			sourceTree = "<group>";
 		};
 		060A376A1E578F4000A973BF /* drag_drop */ = {
@@ -1006,6 +1018,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				060958E61EDE973A009A824C /* dialog_element */,
 				067129591EC896EF00362C39 /* plan */,
 				066B00421EC749A700BE0E1F /* label */,
 				061C80151E693F3100BCE509 /* login_register */,
@@ -1016,13 +1029,11 @@
 				060D9BA11E4A6539006DD8AB /* table_view */,
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
 				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
-				06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */,
 				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
 				06018D531E61B8D500F75919 /* RoundButton.swift */,
 				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
-				0609B5371E6C06A100011CED /* ProfileElement.swift */,
 				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
 				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
 				062369651E9BF44100578017 /* CalibrationView.swift */,
@@ -1422,6 +1433,7 @@
 				060D9B9E1E4A5E46006DD8AB /* TableViewWithEmpty.swift in Sources */,
 				067964611E636E7800DFC050 /* MovingAverage.swift in Sources */,
 				06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */,
+				060958E81EDE9758009A824C /* ProfileElementExpendable.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
