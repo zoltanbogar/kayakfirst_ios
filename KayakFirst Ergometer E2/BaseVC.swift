@@ -44,7 +44,7 @@ let logoBarItem: UIBarButtonItem! = {
     return button
 }()
 
-let logoHeader = UIImage(named: "logo_header")
+let logoHeader = UIImage(named: "logo_header")?.withRenderingMode(.alwaysOriginal)
 
 class BaseVC: UIViewController {
     
