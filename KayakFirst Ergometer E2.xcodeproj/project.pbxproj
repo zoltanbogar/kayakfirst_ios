@@ -23,6 +23,7 @@
 		06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */; };
 		06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */; };
 		06071D451ECA4E59004CB736 /* PlanEditIntervallsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */; };
+		060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060958E41EDDFA74009A824C /* BatterySaveHelper.swift */; };
 		0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609B5371E6C06A100011CED /* ProfileElement.swift */; };
 		0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */; };
 		0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */; };
@@ -278,6 +279,7 @@
 		06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDetailsCell.swift; sourceTree = "<group>"; };
 		06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsCell.swift; sourceTree = "<group>"; };
 		06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanEditIntervallsCell.swift; sourceTree = "<group>"; };
+		060958E41EDDFA74009A824C /* BatterySaveHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatterySaveHelper.swift; sourceTree = "<group>"; };
 		0609B5371E6C06A100011CED /* ProfileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileElement.swift; sourceTree = "<group>"; };
 		0609EAE11E69FA99006094EC /* UserLoginFacebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginFacebook.swift; sourceTree = "<group>"; };
 		0609EAE31E69FF42006094EC /* UserLoginGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginGoogle.swift; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				06F938FF1E3F720A00920753 /* Dimens.swift */,
 				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
 				0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */,
+				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1432,6 +1435,7 @@
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
 				067129581EC8958600362C39 /* PECellNormal.swift in Sources */,
+				060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
 				06018D581E620FFC00F75919 /* AppSql.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,

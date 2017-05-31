@@ -42,7 +42,6 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
         super.viewWillAppear(animated)
         
         keepScreenOn()
-        setBrightnessFull()
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     }
     
@@ -134,9 +133,5 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     //MARK: other
     private func keepScreenOn() {
         UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
-    private func setBrightnessFull() {
-        UIScreen.main.brightness = CGFloat(1)
     }
 }

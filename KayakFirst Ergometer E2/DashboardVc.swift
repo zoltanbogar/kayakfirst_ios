@@ -27,6 +27,9 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private var btnPauseOriginalY: CGFloat = 0
     private var isLandscape = false
     
+    private let batterySaveHelper = BatterySaveHelper()
+    private var isBatterySaveShouldActive = false
+    
     var plan: Plan?
     
     //MARK: lifeCycle
@@ -35,6 +38,18 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         
         telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
         onCycleStateChanged(newCycleState: telemetry.cycleState!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        batterySaveHelper.activate(isActivate: isBatterySaveShouldActive)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        batterySaveHelper.activate(isActivate: false)
     }
     
     //MARK: button listeners
@@ -70,13 +85,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     @objc internal func clickPowerSaveOn() {
-        //TODO
+        isBatterySaveShouldActive = true
         showPowerSaveOn(isShow: true)
+        batterySaveHelper.activate(isActivate: true)
     }
     
     @objc internal func clickPowerSaveOff() {
-        //TODO
+        isBatterySaveShouldActive = false
         showPowerSaveOn(isShow: false)
+        batterySaveHelper.activate(isActivate: false)
     }
     
     //MARK: cycle state
@@ -91,14 +108,17 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             case CycleState.stopped:
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: true)
                 self.refreshDashboardElements(false)
+                self.batterySaveHelper.activate(isActivate: false)
             case CycleState.paused:
                 self.showPauseView(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: false)
                 self.refreshDashboardElements(false)
+                self.batterySaveHelper.activate(isActivate: false)
             case CycleState.resumed:
                 self.showViewSwipePause(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnPlayState, isShow: false)
                 self.refreshDashboardElements(true)
+                self.batterySaveHelper.activate(isActivate: self.isBatterySaveShouldActive)
             default: break
             }
             self.showBackButton()
@@ -404,7 +424,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     private lazy var btnPowerSaveOn: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "powerSavingMode")
+        button.image = UIImage(named: "powerSavingModeActive")?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(clickPowerSaveOff)
         
@@ -413,8 +433,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     private lazy var btnPowerSaveOff: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "powerSavingModeActive")
-        //TODO: it has no color
+        button.image = UIImage(named: "powerSavingMode")?.withRenderingMode(.alwaysOriginal)
         button.image?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(clickPowerSaveOn)
