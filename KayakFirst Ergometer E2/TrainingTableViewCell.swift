@@ -49,10 +49,11 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
-        stackView.addArrangedSubview(imgErgoOutdoor)
+        stackView.addArrangedSubview(viewErgoOutdoor)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
+        //TODO: it should be #viewGraph
         stackView.addArrangedSubview(imageViewGraph)
         
         selectionColor = Colors.colorGrey
@@ -89,6 +90,17 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         return label
     }()
     
+    private lazy var viewGraph: UIView! = {
+        let view = UIView()
+        
+        /*view.addSubview(self.imageViewGraph)
+        self.imageViewGraph.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }*/
+        
+        return view
+    }()
+    
     private lazy var imageViewGraph: UIImageView! = {
         let imageView = UIImageView()
         let image = UIImage(named: "chart_dia")
@@ -97,8 +109,20 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         imageView.setImageTint(color: Colors.colorAccent)
         
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         
         return imageView
+    }()
+    
+    private lazy var viewErgoOutdoor: UIView! = {
+        let view = UIView()
+        
+        view.addSubview(self.imgErgoOutdoor)
+        self.imgErgoOutdoor.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+        }
+        
+        return view
     }()
     
     private lazy var imgErgoOutdoor: UIImageView! = {

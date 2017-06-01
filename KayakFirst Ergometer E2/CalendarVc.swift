@@ -11,6 +11,10 @@ import CVCalendar
 
 class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
+    //MARK: constants
+    private let segmentItems = [getString("plan_plan"), getString("training_log").capitalized]
+    private let calendarHeight: CGFloat = 190
+    
     //MARK: views
     private var stackView: UIStackView?
     private let viewTableView = UIView()
@@ -34,6 +38,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         trainingDataService.trainingDataCallback = trainingListTrainingDataCallback
         trainingDataService.trainingDaysCallback = trainingDaysListTrainingDataCallback
         trainingDataService.progressListener = progressListener
+        
+        segmentedControl.selectedSegmentIndex = 0
+        setSegmentedItem(sender: segmentedControl)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,8 +57,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         super.viewDidLayoutSubviews()
         
         refreshCalendarDesign()
-        
-        log("ORIENTATION", "viewDidLayoutSubViews: size: \(view.frame.size)")
     }
     
     internal override func initView() {
@@ -62,9 +67,15 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         viewCalendar.addSubview(cvCalendarView)
         viewCalendar.addSubview(labelMonth)
         viewCalendar.addSubview(calendarMenuView)
+        viewCalendar.addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { (make) in
+            make.width.equalTo(viewCalendar).offset(-2 * margin2)
+            make.centerX.equalTo(viewCalendar)
+            make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+        }
         labelMonth.snp.makeConstraints { (make) in
             make.width.equalTo(viewCalendar)
-            make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+            make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
         }
         
         viewTableView.addSubview(tableViewTraining)
@@ -83,9 +94,13 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.edges.equalTo(contentView)
         }
         
-        viewTableView.addSubview(progressBar)
-        progressBar.snp.makeConstraints { make in
-            make.center.equalTo(viewTableView)
+        tableViewTraining.addSubview(progressBarTraining)
+        progressBarTraining.snp.makeConstraints { make in
+            make.center.equalTo(tableViewTraining)
+        }
+        tableViewPlan.addSubview(progressBarPlan)
+        progressBarPlan.snp.makeConstraints { (make) in
+            make.center.equalTo(tableViewPlan)
         }
     }
     
@@ -93,10 +108,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.axis = .vertical
         
         let width: CGFloat = size.width
-        let height: CGFloat = 200
+        let height: CGFloat = calendarHeight
         
-        cvCalendarView.frame = CGRect(x: 0, y: 80, width: width, height: height)
-        calendarMenuView.frame = CGRect(x: 0, y: 55, width: width, height: 20)
+        cvCalendarView.frame = CGRect(x: 0, y: 100, width: width, height: height)
+        calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
         
         refreshCalendarDesign()
     }
@@ -105,10 +120,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.axis = .horizontal
         
         let width: CGFloat = size.width / 2
-        let height: CGFloat = 200
+        let height: CGFloat = calendarHeight
         
-        cvCalendarView.frame = CGRect(x: 0, y: 50, width: width, height: height)
-        calendarMenuView.frame = CGRect(x: 0, y: 25, width: width, height: 20)
+        cvCalendarView.frame = CGRect(x: 0, y: 90, width: width, height: height)
+        calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
         
         refreshCalendarDesign()
     }
@@ -195,7 +210,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     //MARK: error
     private func errorHandling() {
         if let globalError = self.error {
-            showProgressBar(isShow: false)
+            showProgressBarTraining(isShow: false)
             AppService.errorHandlingWithAlert(viewController: self, error: globalError)
         }
     }
@@ -217,7 +232,22 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return tableViewTraining
     }()
     
-    private lazy var progressBar: UIActivityIndicatorView! = {
+    private lazy var progressBarTraining: UIActivityIndicatorView! = {
+        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
+        spinner.activityIndicatorViewStyle = .whiteLarge
+        spinner.color = Colors.colorWhite
+        
+        return spinner
+    }()
+    
+    //TODO
+    private lazy var tableViewPlan: PlanTableView! = {
+        let tableViewPlan = PlanTableView(view: self.viewTableView)
+        
+        return tableViewPlan
+    }()
+    
+    private lazy var progressBarPlan: UIActivityIndicatorView! = {
         let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
         spinner.activityIndicatorViewStyle = .whiteLarge
         spinner.color = Colors.colorWhite
@@ -226,10 +256,18 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }()
     
     private func progressListener(onProgress: Bool) {
-        showProgressBar(isShow: onProgress)
+        showProgressBarTraining(isShow: onProgress)
     }
     
-    private func showProgressBar(isShow: Bool) {
+    private func showProgressBarTraining(isShow: Bool) {
+        showProgressBar(progressBar: progressBarTraining, isShow: isShow)
+    }
+    
+    private func showProgressBarPlan(isShow: Bool) {
+        showProgressBar(progressBar: progressBarPlan, isShow: isShow)
+    }
+    
+    private func showProgressBar(progressBar: UIActivityIndicatorView, isShow: Bool) {
         if isShow {
             progressBar.startAnimating()
         } else {
@@ -327,5 +365,30 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func refreshMonth(timeStamp: TimeInterval) {
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
         cvCalendarView.contentController.refreshPresentedMonth()
+    }
+    
+    private lazy var segmentedControl: UISegmentedControl! = {
+        let control = UISegmentedControl(items: self.segmentItems)
+        control.tintColor = Colors.colorAccent
+        control.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
+        control.selectedSegmentIndex = 0
+        
+        return control
+    }()
+    
+    @objc private func setSegmentedItem(sender: UISegmentedControl) {
+        let viewSub: UIView
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewSub = tableViewPlan
+        default:
+            viewSub = tableViewTraining
+        }
+        
+        viewTableView.removeAllSubviews()
+        viewTableView.addSubview(viewSub)
+        viewSub.snp.makeConstraints { make in
+            make.edges.equalTo(viewTableView)
+        }
     }
 }
