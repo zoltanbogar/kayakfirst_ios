@@ -18,16 +18,19 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     private var progressView: ProgressView?
     private var scrollView: AppScrollView?
     private let countryPickerView = UIPickerView()
+    private let artOfPaddlingPickerView = UIPickerView()
     
     //MARK: properties
     var userService = UserService.sharedInstance
     private var countryCode: String?
+    private var artOfPaddling: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initView()
         countryPickerView.delegate = self
+        artOfPaddlingPickerView.delegate = self
     }
     
     //MARK: init view
@@ -211,6 +214,9 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_art_of_paddling")
         textField.active = false
         
+        textField.valueTextField.inputView = self.artOfPaddlingPickerView
+        
+        //TODO: refactor this
         if let artOfPaddling = self.userService.getUser()?.artOfPaddling {
             switch artOfPaddling {
             case User.artOfPaddlingRacingKayaking:
@@ -276,7 +282,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
                                 birthDate: self.userService.getUser()?.birthDate,
                                 club: tfClub.text,
                                 country: countryCode,
-                                artOfPaddling: self.userService.getUser()?.artOfPaddling,
+                                artOfPaddling: self.artOfPaddling,
                                 password: tfPassword.text,
                                 userName: tfUserName.text))
         }
@@ -297,6 +303,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         tfWeight.active = isActive
         tfClub.active = isActive
         tfCountry.active = isActive
+        tfArtOfPaddling.active = isActive
         
         if !isActive {
             let weight = self.userService.getUser()?.bodyWeight
@@ -317,22 +324,56 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         return true
     }
     
-    //MARK: artOfPaddling pickerView
+    //MARK: pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return NSLocale.locales().count
+        if pickerView == countryPickerView {
+            return NSLocale.locales().count
+        } else {
+            return User.artOfPaddlingOptions.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return NSLocale.locales()[row].countryName
+        if pickerView == countryPickerView {
+            return NSLocale.locales()[row].countryName
+        } else {
+            return User.artOfPaddlingOptions[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryCode = NSLocale.locales()[row].countryCode
-        tfCountry.text = NSLocale.locales()[row].countryName
+        if pickerView == countryPickerView {
+            countryCode = NSLocale.locales()[row].countryCode
+            
+            tfCountry.text = NSLocale.locales()[row].countryName
+        } else if pickerView == artOfPaddlingPickerView {
+            let selectedArtOfPaddling = User.artOfPaddlingOptions[row]
+            
+            switch selectedArtOfPaddling {
+            case getString("user_art_of_paddling_racing_kayaking"):
+                self.artOfPaddling = User.artOfPaddlingRacingKayaking
+            case getString("user_art_of_paddling_racing_canoeing"):
+                self.artOfPaddling = User.artOfPaddlingRacingCanoeing
+            case getString("user_art_of_paddling_recreational_kayaking"):
+                self.artOfPaddling = User.artOfPaddlingRecreationalKayaking
+            case getString("user_art_of_paddling_recreational_canoeing"):
+                self.artOfPaddling = User.artOfPaddlingRecreationalCanoeing
+            case getString("user_art_of_paddling_sup"):
+                self.artOfPaddling = User.artOfPaddlingSup
+            case getString("user_art_of_paddling_dragon"):
+                self.artOfPaddling = User.artOfPaddlingDragon
+            case getString("user_art_of_paddling_rowing"):
+                self.artOfPaddling = User.artOfPaddlingRowing
+            default:
+                break
+            }
+            
+            tfArtOfPaddling.text = selectedArtOfPaddling
+        }
     }
     
     @objc private func clickLogout() {

@@ -51,8 +51,8 @@ class UserUpdate: ServerService<User> {
             "gender": userDto.gender ?? "",
             "birthDate": userDto.birthDate ?? nil,
             "country": userDto.country ?? "",
-            "password": userDto.password ?? "",
-            "username": userDto.userName ?? ""
+            "username": userDto.userName ?? "",
+            "artOfPaddling": userDto.artOfPaddling ?? ""
         ]
     }
     
