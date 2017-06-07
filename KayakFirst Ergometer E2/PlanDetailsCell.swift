@@ -20,12 +20,18 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             etNotes.active = isEdit
         }
     }
+    var textHeightChangeListener: (() -> ())? {
+        didSet {
+            etNotes.textHeightChangeListener = self.textHeightChangeListener
+        }
+    }
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = Colors.colorTransparent
+        selectionStyle = UITableViewCellSelectionStyle.none
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,8 +62,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
             make.top.equalTo(baseView)
-            let height = (etName.intrinsicContentSize.height) * 4 + etNotes.intrinsicContentSize.height
-            make.height.equalTo(height)
+            make.height.equalTo(self.getHeight())
         }
         
         let marginView = UIView()
@@ -74,7 +79,11 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     }
     
     override func getRowHeight() -> CGFloat {
-        return (etName.intrinsicContentSize.height) * 4 + margin + etNotes.intrinsicContentSize.height
+        return getHeight() + margin
+    }
+    
+    private func getHeight() -> CGFloat {
+        return (etName.intrinsicContentSize.height) * 4 + etNotes.intrinsicContentSize.height
     }
     
     //MARK: views

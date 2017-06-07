@@ -84,8 +84,12 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             
             (cellDetails as! PlanDetailsCell).isEdit = isEdit
             
-            cellDetails.data = plan
+            (cellDetails as! PlanDetailsCell).textHeightChangeListener = {
+                self.reloadData()
+            }
             
+            cellDetails.data = plan
+
             cell = cellDetails
             
             rowHeight = (cell as! PlanDetailsCell).getRowHeight()

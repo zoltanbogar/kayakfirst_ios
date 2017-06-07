@@ -8,7 +8,12 @@
 
 import Foundation
 
+//TODO: https://www.raywenderlich.com/129059/self-sizing-table-view-cells
 class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
+    
+    private var size: CGFloat = 0
+    
+    var textHeightChangeListener: (() -> ())?
     
     override var active: Bool {
         get {
@@ -42,8 +47,10 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
         }
         set {
             valueTextView.text = newValue
-            self.error = nil
+            
             layoutIfNeeded()
+            
+            self.error = nil
         }
     }
     
@@ -76,7 +83,20 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     //MARK: size
     override var intrinsicContentSize: CGSize {
         get {
-            return CGSize(width: 0, height:  300)
+            let newTextViewHeight = ceil(valueTextView.sizeThatFits(valueTextView.frame.size).height)
+            
+            log("NOTES_TEST", "getIntrinsicSize: \(newTextViewHeight)")
+            
+            if let listener = textHeightChangeListener {
+                if self.size != newTextViewHeight {
+                    listener()
+                }
+                self.size = newTextViewHeight
+            }
+            
+            self.textViewDidChange(valueTextView)
+            
+            return CGSize(width: 0, height:  self.frame.size.height)
         }
     }
     
@@ -94,7 +114,7 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     //TODO: not correct yet
     func textViewDidChange(_ textView: UITextView) {
         var frame : CGRect = self.bounds
-        frame.size.height = 50 + textView.contentSize.height
+        frame.size.height = 150 + textView.contentSize.height
         self.bounds = frame
     }
     
