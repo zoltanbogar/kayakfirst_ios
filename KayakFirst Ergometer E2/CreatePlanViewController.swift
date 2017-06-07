@@ -18,7 +18,7 @@ func startCreatePlanViewController(viewController: UIViewController, planType: P
     viewController.present(navigationVc, animated: true, completion: nil)
 }
 
-class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedListener {
+class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedListener {
     
     //MARK: constants
     private let btnDeleteRadius: CGFloat = 400
@@ -191,38 +191,46 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
         return stackView
     }()
     
-    private lazy var etMinute: NoImeEditText! = {
-        let et = NoImeEditText()
+    private lazy var etMinute: PlanEtMinute! = {
+        let et = PlanEtMinute()
         et.font = et.font?.withSize(self.fontSizeEdit)
         
-        et.delegate = self
+        et.hint = getString("plan_hint_minute")
+        
+        et.onFocusedListener = self
         
         return et
     }()
     
-    private lazy var etSec: NoImeEditText! = {
-        let et = NoImeEditText()
+    private lazy var etSec: PlanEtSec! = {
+        let et = PlanEtSec()
         et.font = et.font?.withSize(self.fontSizeEdit)
         
-        et.delegate = self
+        et.hint = getString("plan_hint_sec")
+        
+        et.onFocusedListener = self
         
         return et
     }()
     
-    private lazy var etIntensity: NoImeEditText! = {
-        let et = NoImeEditText()
+    private lazy var etIntensity: PlanEtIntensity! = {
+        let et = PlanEtIntensity()
         et.font = et.font?.withSize(self.fontSizeEdit)
         
-        et.delegate = self
+        et.hint = getString("plan_hint_percent")
+        
+        et.onFocusedListener = self
         
         return et
     }()
     
-    private lazy var etDistance: NoImeEditText! = {
-        let et = NoImeEditText()
+    private lazy var etDistance: PlanEtDistance! = {
+        let et = PlanEtDistance()
         et.font = et.font?.withSize(self.fontSizeEdit)
         
-        et.delegate = self
+        et.hint = getString("plan_hint_meter")
+        
+        et.onFocusedListener = self
         
         return et
     }()
@@ -299,8 +307,8 @@ class CreatePlanViewController: BaseVC, UITextViewDelegate, OnKeyboardClickedLis
     }
     
     //MARK: delegate
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        activeTextView = textView
+    func hasFocus(planEditText: PlanEditText) {
+        activeTextView = planEditText
     }
     
     func onClicked(value: Int) {

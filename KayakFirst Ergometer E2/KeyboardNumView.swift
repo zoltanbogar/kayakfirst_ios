@@ -134,7 +134,7 @@ class KeyboardNumView: UIView {
     }()
     
     private lazy var btnNext: UIButton! = {
-        return self.getButton(title: getString("other_next").capitalized, listener: "btnNextClick")
+        return self.getButton(title: getString("other_ok").capitalized, listener: "btnNextClick")
     }()
     
     private func getButton(title: String, listener: String) -> UIButton {
@@ -154,7 +154,7 @@ class KeyboardNumView: UIView {
     //MARK: button listeners
     private func onClicked(value: Int) {
         if let vc = createPlanViewController {
-            let focusedEt = vc.activeTextView
+            let focusedEt: PlanEditText? = vc.activeTextView as! PlanEditText?
             
             if let focusedEditText = focusedEt {
                 let previousText = focusedEditText.text
@@ -168,7 +168,7 @@ class KeyboardNumView: UIView {
                         newText = previousText?.substring(to: endIndex)
                     }
                 }
-                focusedEditText.text = newText
+                focusedEditText.setTextValidate(newText: newText!)
             }
         }
         if let listener = keyboardClickListener {

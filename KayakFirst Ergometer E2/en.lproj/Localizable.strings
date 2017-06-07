@@ -232,3 +232,9 @@
 "plan_notes"="Notes";
 "plan_edit_intervals"="Edit intervals";
 "plan_saved"="Plan saved";
+"plan_hint_minute"="mm";
+"plan_hint_sec"="ss";
+"plan_hint_meter"="m";
+"plan_hint_percent"="%";
+"plan_hint_name"="Type name...";
+"plan_hint_notes"="Type notes...";
