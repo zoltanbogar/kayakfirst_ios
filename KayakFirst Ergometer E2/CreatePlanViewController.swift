@@ -18,7 +18,7 @@ func startCreatePlanViewController(viewController: UIViewController, planType: P
     viewController.present(navigationVc, animated: true, completion: nil)
 }
 
-class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedListener {
+class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedListener, OnTextChangedListener {
     
     //MARK: constants
     private let btnDeleteRadius: CGFloat = 400
@@ -91,7 +91,6 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     
     private func setUIForType() {
         planElementTableView.type = plan?.type
-        planElementTableView.planId = plan?.planId
         
         var viewToAdd: UIView? = nil
         
@@ -198,6 +197,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         et.hint = getString("plan_hint_minute")
         
         et.onFocusedListener = self
+        et.onTextChangedListener = self
         
         return et
     }()
@@ -209,6 +209,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         et.hint = getString("plan_hint_sec")
         
         et.onFocusedListener = self
+        et.onTextChangedListener = self
         
         return et
     }()
@@ -220,6 +221,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         et.hint = getString("plan_hint_percent")
         
         et.onFocusedListener = self
+        et.onTextChangedListener = self
         
         return et
     }()
@@ -231,6 +233,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         et.hint = getString("plan_hint_meter")
         
         et.onFocusedListener = self
+        et.onTextChangedListener = self
         
         return et
     }()
@@ -306,11 +309,6 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         startTrainingViewController(viewController: self, plan: plan!)
     }
     
-    //MARK: delegate
-    func hasFocus(planEditText: PlanEditText) {
-        activeTextView = planEditText
-    }
-    
     func onClicked(value: Int) {
         if value == KeyboardNumView.valueNext {
             let intensity = Int(etIntensity.text) ?? 0
@@ -318,7 +316,20 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             let planElement = PlanElement(planId: plan!.planId, intensity: intensity, type: plan!.type, value: value)
             
             planElementTableView.addPlanElement(planElement: planElement)
+            
+            //TODO: scroll not perfect
+            let indexPath = IndexPath(row: planElementTableView.dataList!.count-1, section: 0)
+            planElementTableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
+    }
+    
+    //MARK: delegate
+    func hasFocus(planEditText: PlanEditText) {
+        activeTextView = planEditText
+    }
+    
+    func onTextChanged(etType: PlanTextType, hasText: Bool) {
+        checkEnterEnable()
     }
     
     //MARK: functions
@@ -337,8 +348,19 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         }
     }
     
+    private func checkEnterEnable() {
+        var enable = planElementTableView.positionToAdd >= 0
+        
+        if PlanType.distance == plan?.type {
+            enable = enable && etDistance.hasText && etIntensity.hasText
+        } else {
+            enable = enable && etMinute.isHasText && etSec.isHasText && etIntensity.isHasText
+        }
+        
+        keyboardView.enableEnter(isEnable: enable)
+    }
+    
     //MARK: drag drop
-    //MARK: listeners
     @objc private func onLongPress(gestureRecognizer: UIGestureRecognizer) {
         let locationInView = gestureRecognizer.location(in: contentView)
         

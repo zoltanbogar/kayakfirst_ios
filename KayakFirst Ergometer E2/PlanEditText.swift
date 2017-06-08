@@ -70,8 +70,8 @@ class PlanEditText: UITextView, UITextViewDelegate {
     }
     
     //MARK: delegate
-    func textViewDidChange(_ textView: UITextView) {
-        isHasText = "" != textView.text
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        isHasText = "" != textView.text && hint != textView.text
         
         if let listener = onTextChangedListener {
             listener.onTextChanged(etType: getType(), hasText: isHasText)

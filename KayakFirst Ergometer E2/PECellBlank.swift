@@ -8,17 +8,25 @@
 
 import Foundation
 
-class PECellAdd: AppUITableViewCell<PlanElement> {
+class PECellBlank: AppUITableViewCell<PlanElement> {
     
     //MARK: properties
     private let view = UIView()
+    
+    var title: String? {
+        didSet {
+            labelAdd.text = title
+        }
+    }
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor.white
+        backgroundColor = Colors.colorGrey
         showAppBorder()
+        
+        selectionStyle = .none
         
         //setAppShadow()
     }
@@ -48,9 +56,11 @@ class PECellAdd: AppUITableViewCell<PlanElement> {
     
     //MARK: views
     private lazy var labelAdd: UILabel! = {
-        let label = UILabel()
+        let label = BebasUILabel()
         
-        label.text = "+"
+        label.textColor = UIColor.white
+        
+        label.text = "0"
         
         return label
     }()

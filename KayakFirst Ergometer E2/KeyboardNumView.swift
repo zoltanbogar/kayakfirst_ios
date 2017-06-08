@@ -26,10 +26,19 @@ class KeyboardNumView: UIView {
     init() {
         super.init(frame: CGRect.zero)
         initView()
+        
+        enableEnter(isEnable: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: functions
+    func enableEnter(isEnable: Bool) {
+        btnNext.isEnabled = isEnable
+        
+        btnNext.setTitleColor(Colors.colorGrey, for: .disabled)
     }
     
     //MARK: init view

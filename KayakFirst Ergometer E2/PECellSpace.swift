@@ -18,6 +18,8 @@ class PECellSpace: AppUITableViewCell<PlanElement> {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = Colors.colorTransparent
+        
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {

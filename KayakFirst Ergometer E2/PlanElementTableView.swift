@@ -12,16 +12,15 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
     
     //MARK: constants
     private let cellNormal = "cell_normal"
-    private let cellAdd = "cell_add"
+    private let cellBlank = "cell_blank"
     private let cellSpace = "cell_space"
     
     //MARK: properties
     private let emptyView = UIView()
     
     var type: PlanType?
-    var planId: String?
     
-    var positionToAdd = -1
+    var positionToAdd = 0
     
     //MARK: init
     override init(view: UIView) {
@@ -31,7 +30,7 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         separatorColor = Colors.colorTransparent
         
         register(PECellNormal.self, forCellReuseIdentifier: cellNormal)
-        register(PECellAdd.self, forCellReuseIdentifier: cellAdd)
+        register(PECellBlank.self, forCellReuseIdentifier: cellBlank)
         register(PECellSpace.self, forCellReuseIdentifier: cellSpace)
     }
     
@@ -43,11 +42,16 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
     func addPlanElementsAll(planElements: [PlanElement]?) {
         dataList = planElements
         positionToAdd = getPlanElementCount()
+        
+        reloadData()
     }
     
     func addPlanElement(planElement: PlanElement) {
-        dataList?.remove(at: positionToAdd)
+        if dataList == nil {
+            dataList = [PlanElement]()
+        }
         dataList?.insert(planElement, at: positionToAdd)
+        positionToAdd = getPlanElementCount()
         
         reloadData()
     }
@@ -56,6 +60,8 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         let deletePosition = position / 2
         
         dataList?.remove(at: deletePosition)
+        positionToAdd = getPlanElementCount()
+        
         reloadData()
     }
     
@@ -75,17 +81,7 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
     private func getItemCount() -> Int {
         let planElementCount = getPlanElementCount()
         
-        return planElementCount + planElementCount + 1
-    }
-    
-    private func addNewPlanElement() {
-        if dataList == nil {
-            dataList = [PlanElement]()
-        }
-        let planElement = PlanElement(planId: planId!, type: type!)
-        dataList?.insert(planElement, at: positionToAdd)
-        
-        reloadData()
+        return (planElementCount * 2) + 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,12 +92,22 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         switch getViewType(indexPath: indexPath) {
         case cellSpace:
             cell = tableView.dequeueReusableCell(withIdentifier: cellSpace, for: indexPath) as! PECellSpace
-        case cellAdd:
-            cell = tableView.dequeueReusableCell(withIdentifier: cellAdd, for: indexPath) as! PECellAdd
+        case cellBlank:
+            cell = tableView.dequeueReusableCell(withIdentifier: cellBlank, for: indexPath) as! PECellBlank
+            
+            switch type! {
+            case PlanType.distance:
+                (cell as! PECellBlank).title = "0"
+            default:
+                (cell as! PECellBlank).title = "00:00"
+            }
+            
         case cellNormal:
             let cellNormal = tableView.dequeueReusableCell(withIdentifier: self.cellNormal, for: indexPath) as! PECellNormal
             
-            cellNormal.data = dataList?[position / 2]
+            let planPosition = (position / 2 >= positionToAdd) ? ((position / 2) - 1) : (position / 2)
+            
+            cellNormal.data = dataList?[planPosition]
             
             cell = cellNormal
         default:
@@ -117,12 +123,13 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         
         switch getViewType(indexPath: indexPath) {
         case cellSpace:
-            positionToAdd = ((indexPath.row + 1) / 2)
-            addNewPlanElement()
+            if indexPath.row / 2 != positionToAdd {
+                positionToAdd = ((indexPath.row + 1) / 2)
+                reloadData()
+            }
             break
-        case cellAdd:
-            positionToAdd = getPlanElementCount()
-            addNewPlanElement()
+        case cellBlank:
+            //nothing here
             break
         case cellNormal:
             //TODO
@@ -142,13 +149,13 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         if getPlanElementCount() > 0 {
             if position % 2 == 1 && position != 0 {
                 return cellSpace
-            } else if position == (getItemCount() - 1) {
-                return cellAdd
+            } else if position == (positionToAdd * 2) {
+                return cellBlank
             } else {
                 return cellNormal
             }
         } else {
-            return cellAdd
+            return cellBlank
         }
     }
 }
