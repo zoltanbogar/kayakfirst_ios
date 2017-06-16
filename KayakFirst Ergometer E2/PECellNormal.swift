@@ -14,6 +14,8 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        layer.cornerRadius = planRadius
+        
         //setAppShadow()
     }
     
@@ -26,7 +28,7 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
         label.text = data?.getFormattedValue()
         backgroundColor = getPlanElementColor(planElement: data)
         
-        selectionColor = backgroundColor!
+        selectionStyle = .none
     }
     
     //MARK: init view
@@ -54,7 +56,7 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
         let label = BebasUILabel()
         label.textColor = UIColor.white
         
-        label.font = label.font.withSize(16)
+        label.font = label.font.withSize(planElementCellTextSize)
         
         return label
     }()

@@ -50,6 +50,7 @@ struct Colors {
     static let colorPlanHard = getColor("#cc0000")
     static let colorDeleteStart = getColor("#cc0000")
     static let colorDeleteEnd = getColor("bbcc0000")
+    static let colorKeyPressed = getColor("#e5e5e5")
 }
 
 func getColor(_ hex: String) -> UIColor {

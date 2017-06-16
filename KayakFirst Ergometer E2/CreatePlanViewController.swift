@@ -374,6 +374,9 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             if draggedView is PECellNormal {
                 if isDragEnded {
                     if self.snapShot == nil {
+                        
+                        self.snapShot?.layer.cornerRadius = draggedView?.layer.cornerRadius ?? 0
+                        
                         viewDelete.isHidden = false
                         
                         self.draggedViewOriginalX = draggedView!.center.x + margin05

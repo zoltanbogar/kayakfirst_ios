@@ -24,7 +24,8 @@ class PECellBlank: AppUITableViewCell<PlanElement> {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = Colors.colorGrey
-        showAppBorder()
+        
+        layer.cornerRadius = planRadius
         
         selectionStyle = .none
         
@@ -61,6 +62,8 @@ class PECellBlank: AppUITableViewCell<PlanElement> {
         label.textColor = UIColor.white
         
         label.text = "0"
+        
+        label.font = label.font.withSize(planElementCellTextSize)
         
         return label
     }()

@@ -128,6 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Colors.colorWhite]
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.colorPrimary], for: UIControlState.selected)
+        UITextField.appearance().tintColor = Colors.colorAccent
+        UITextView.appearance().tintColor = Colors.colorAccent
     }
 }
 

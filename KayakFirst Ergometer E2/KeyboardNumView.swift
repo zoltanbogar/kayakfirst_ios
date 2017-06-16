@@ -17,6 +17,8 @@ class KeyboardNumView: UIView {
     //MARK: constants
     static let valueBackSpace = -1
     static let valueNext = -2
+    private let horizontalMargin: CGFloat = 11
+    private let verticalMargin: CGFloat = 23
     
     //MARK: properties
     var createPlanViewController: CreatePlanViewController?
@@ -43,17 +45,15 @@ class KeyboardNumView: UIView {
     
     //MARK: init view
     private func initView() {
-        backgroundColor = Colors.colorDashBoardDivider
-        
         let verticalStackView = UIStackView()
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillEqually
-        verticalStackView.spacing = dashboardDividerWidth
+        verticalStackView.spacing = verticalMargin
         
         let horizontalSv1 = UIStackView()
         horizontalSv1.axis = .horizontal
         horizontalSv1.distribution = .fillEqually
-        horizontalSv1.spacing = dashboardDividerWidth
+        horizontalSv1.spacing = horizontalMargin
         horizontalSv1.addArrangedSubview(btn1)
         horizontalSv1.addArrangedSubview(btn2)
         horizontalSv1.addArrangedSubview(btn3)
@@ -61,7 +61,7 @@ class KeyboardNumView: UIView {
         let horizontalSv2 = UIStackView()
         horizontalSv2.axis = .horizontal
         horizontalSv2.distribution = .fillEqually
-        horizontalSv2.spacing = dashboardDividerWidth
+        horizontalSv2.spacing = horizontalMargin
         horizontalSv2.addArrangedSubview(btn4)
         horizontalSv2.addArrangedSubview(btn5)
         horizontalSv2.addArrangedSubview(btn6)
@@ -69,7 +69,7 @@ class KeyboardNumView: UIView {
         let horizontalSv3 = UIStackView()
         horizontalSv3.axis = .horizontal
         horizontalSv3.distribution = .fillEqually
-        horizontalSv3.spacing = dashboardDividerWidth
+        horizontalSv3.spacing = horizontalMargin
         horizontalSv3.addArrangedSubview(btn7)
         horizontalSv3.addArrangedSubview(btn8)
         horizontalSv3.addArrangedSubview(btn9)
@@ -77,7 +77,7 @@ class KeyboardNumView: UIView {
         let horizontalSv4 = UIStackView()
         horizontalSv4.axis = .horizontal
         horizontalSv4.distribution = .fillEqually
-        horizontalSv4.spacing = dashboardDividerWidth
+        horizontalSv4.spacing = horizontalMargin
         horizontalSv4.addArrangedSubview(btnBackSpace)
         horizontalSv4.addArrangedSubview(btn0)
         horizontalSv4.addArrangedSubview(btnNext)
@@ -91,7 +91,6 @@ class KeyboardNumView: UIView {
         verticalStackView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
-        showAppBorder()
     }
     
     //MARK: views
@@ -147,7 +146,7 @@ class KeyboardNumView: UIView {
     }()
     
     private func getButton(title: String, listener: String) -> UIButton {
-        let button = UIButton()
+        let button = ColorizedButton()
         
         button.setTitle(title, for: .normal)
         button.addTarget(self, action: Selector(listener), for: .touchUpInside)
@@ -155,7 +154,9 @@ class KeyboardNumView: UIView {
         button.setTitleColor(Colors.colorWhite, for: .normal)
         button.backgroundColor = UIColor.white
         
-        button.titleLabel?.font = UIFont(name: "BebasNeue", size: 40)
+        button.layer.cornerRadius = planRadius
+        
+        button.titleLabel?.font = UIFont(name: "BebasNeue", size: 50)
         
         return button
     }

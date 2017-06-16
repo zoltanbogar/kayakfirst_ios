@@ -129,6 +129,7 @@
 		062369661E9BF44100578017 /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062369651E9BF44100578017 /* CalibrationView.swift */; };
 		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
+		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
 		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
@@ -391,6 +392,7 @@
 		062369651E9BF44100578017 /* CalibrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
 		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
+		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
 		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
@@ -926,6 +928,7 @@
 				067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */,
 				067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */,
 				067129521EC8775600362C39 /* KeyboardNumView.swift */,
+				0646A4AB1EF3A9000074101E /* ColorizedButton.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1494,6 +1497,7 @@
 				060A37781E5851D400A973BF /* DashBoardElement_Av200.swift in Sources */,
 				060A37761E584FBA00A973BF /* Telemetry.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
+				0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */,
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
 				067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */,
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,

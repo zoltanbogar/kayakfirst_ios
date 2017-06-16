@@ -28,7 +28,7 @@ class PlanEditText: UITextView, UITextViewDelegate {
     //MARK: properties
     var hint: String? {
         didSet {
-            text = hint
+            setHintText(isHint: true, textShow: hint)
         }
     }
     var isHasText = false
@@ -65,7 +65,17 @@ class PlanEditText: UITextView, UITextViewDelegate {
     //MARK: functions
     func setTextValidate(newText: String) {
         if isTextValid(text: newText) {
-            text = newText
+            setHintText(isHint: false, textShow: newText)
+        }
+    }
+    
+    private func setHintText(isHint: Bool, textShow: String?) {
+        if isHint {
+            text = hint
+            textColor = Colors.colorGrey
+        } else {
+            text = textShow
+            textColor = UIColor.black
         }
     }
     
@@ -83,16 +93,16 @@ class PlanEditText: UITextView, UITextViewDelegate {
             listener.hasFocus(planEditText: self)
         }
         
-        text = ""
+        setHintText(isHint: false, textShow: "")
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         let oldText = textView.text
         
         if oldText == "" {
-            text = hint
+            setHintText(isHint: true, textShow: hint)
         } else {
-            text = oldText
+            setHintText(isHint: false, textShow: oldText)
         }
     }
     
@@ -101,6 +111,8 @@ class PlanEditText: UITextView, UITextViewDelegate {
         backgroundColor = UIColor.white
         
         showAppBorder()
+        
+        layer.cornerRadius = planRadius
         
         inputView = UIView()
     }
