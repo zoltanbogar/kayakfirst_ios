@@ -25,7 +25,9 @@ class DragDropLayout: UIView {
     }
     
     //MARK: dragdrop
-    func setDragEvent(superView: UIView, gestureRecognizer: UIGestureRecognizer) {
+    func setDragEvent(superView: UIView, gestureRecognizer: UIGestureRecognizer) -> Bool {
+        var didEnter = false
+        
         var color: UIColor?
         
         switch gestureRecognizer.state {
@@ -40,6 +42,8 @@ class DragDropLayout: UIView {
         case UIGestureRecognizerState.ended:
             if self.isDragDropEnter(superView: superView, gestureRecognizer: gestureRecognizer) {
                 addNewView(tag: gestureRecognizer.view!.tag)
+                
+                didEnter = true
             } else {
                 color = nil
             }
@@ -49,6 +53,8 @@ class DragDropLayout: UIView {
         
         viewDragDrop.backgroundColor = color
         viewDragDrop.isHidden = color == nil
+        
+        return didEnter
     }
     
     private func addNewView(tag: Int) {

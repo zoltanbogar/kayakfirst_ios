@@ -13,6 +13,8 @@ class SetDashboardVc: BaseVC {
     //MARK: properties
     private var snapShot: UIView?
     private var isDragEnded = true
+    private var draggedViewOriginalX: CGFloat = 0
+    private var draggedViewOriginalY: CGFloat = 0
     
     //MARK: lífecycle
     override func viewDidLoad() {
@@ -46,11 +48,11 @@ class SetDashboardVc: BaseVC {
         
         let view = gestureRecognizer.view! as! DashBoardElement
         
-        viewDragDrop0.setDragEvent(superView: mainStackView, gestureRecognizer: gestureRecognizer)
-        viewDragDrop1.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
-        viewDragDrop2.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
-        viewDragDrop3.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
-        viewDragDrop4.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
+        let didEnter0 = viewDragDrop0.setDragEvent(superView: mainStackView, gestureRecognizer: gestureRecognizer)
+        let didEnter1 = viewDragDrop1.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
+        let didEnter2 = viewDragDrop2.setDragEvent(superView: stackViewTop1, gestureRecognizer: gestureRecognizer)
+        let didEnter3 = viewDragDrop3.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
+        let didEnter4 = viewDragDrop4.setDragEvent(superView: stackViewTop2, gestureRecognizer: gestureRecognizer)
         
         switch gestureRecognizer.state {
         case UIGestureRecognizerState.began:
@@ -62,6 +64,9 @@ class SetDashboardVc: BaseVC {
                         make.center.equalTo(locationInView)
                     }
                     view.isSelected = true
+                    
+                    self.draggedViewOriginalX = locationInView.x
+                    self.draggedViewOriginalY = locationInView.y
                 }
                 isDragEnded = false
             }
@@ -71,11 +76,27 @@ class SetDashboardVc: BaseVC {
                 dragView.center = locationInView
             }
         default:
+            if !didEnter0 && !didEnter1 && !didEnter2 && !didEnter3 && !didEnter4 {
+                animateDraggedViewToOriginal()
+            } else {
+                resetDrag()
+            }
             view.isSelected = false
-            self.snapShot?.removeFromSuperview()
-            self.snapShot = nil
-            isDragEnded = true
         }
+    }
+    
+    private func animateDraggedViewToOriginal() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.snapShot?.center = CGPoint(x: self.draggedViewOriginalX, y: self.draggedViewOriginalY)
+        }, completion: { ended in
+            self.resetDrag()
+        })
+    }
+    
+    private func resetDrag() {
+        self.snapShot?.removeFromSuperview()
+        self.snapShot = nil
+        isDragEnded = true
     }
     
     //MARK: views
