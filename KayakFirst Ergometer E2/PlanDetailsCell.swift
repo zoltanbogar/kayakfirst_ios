@@ -25,6 +25,8 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             etNotes.textHeightChangeListener = self.textHeightChangeListener
         }
     }
+    private var datePickerView = UIDatePicker()
+    private var timePickerView = UIDatePicker()
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -75,6 +77,10 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             make.height.equalTo(margin)
         }
         
+        datePickerView.datePickerMode = .date
+        datePickerView.minimumDate = Date()
+        timePickerView.datePickerMode = .time
+        
         return baseView
     }
     
@@ -100,6 +106,9 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         textField.title = getString("date_date")
         textField.active = false
         
+        textField.valueTextField.inputView = self.datePickerView
+        self.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
         return textField
     }()
     
@@ -116,6 +125,9 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         textField.title = getString("training_start")
         textField.active = false
         
+        textField.valueTextField.inputView = self.timePickerView
+        self.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
+        
         return textField
     }()
     
@@ -127,4 +139,16 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         return textField
     }()
     
+    //MARK: listener
+    func datePickerValueChanged(sender: UIDatePicker) {
+        
+        log("DATE_TEST", "\(DateFormatHelper.getTimestampFromDatePicker(datePicker: sender))")
+    }
+    
+    func timePickerValueChanged(sender: UIDatePicker) {
+        
+        let timestamp = DateFormatHelper.getMilliSeconds(date: sender.date)
+        
+        log("DATE_TEST", "\(timestamp)")
+    }
 }

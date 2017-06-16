@@ -71,6 +71,10 @@ class DateFormatHelper {
         return getMilliSeconds(date: calendar.date(from: dateComponents)!)
     }
     
+    class func getTimestampFromDatePicker(datePicker: UIDatePicker) -> TimeInterval {
+        return DateFormatHelper.get23Hour(timeStamp: DateFormatHelper.getMilliSeconds(date: datePicker.date))
+    }
+    
     class func get23Hour(timeStamp: TimeInterval) -> TimeInterval {
         return getZeroHour(timeStamp: timeStamp) + 86399000
     }

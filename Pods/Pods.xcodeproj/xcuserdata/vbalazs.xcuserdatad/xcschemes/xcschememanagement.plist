@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DatePickerDialog.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,32 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>184A1650DC0B648BD756068E60BF2C59</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>20A9DD9ABBF08BC57372A26C35327BF1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2D8D0403949EAE9ED8ACA27291F21362</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5FA511337881B43CC606789FC6153433</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6789431F2890A2221E4951EB4625316C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,7 +87,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>77C6EA481D76087C65D7C52F96D5DED9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A55492D3954FD1717A4F6D4D0DEF424</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2EF0A874A01FFC4D77FBAEED4802A12</key>
+		<key>C235F77E101E742652CCF98FFDFA5182</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5DE081776F05970E4DC4F8B88F2BCBC</key>
+		<key>CBAA0EE91A686BDEEA9E8A0BFFC48C2A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2EF0A874A01FFC4D77FBAEED4802A12</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,6 +128,11 @@
 			<true/>
 		</dict>
 		<key>F307B842FF76B2DE6C55DB67C0885325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEDB8DB8EA2C5D055DAD75E29130AA9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

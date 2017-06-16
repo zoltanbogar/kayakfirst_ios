@@ -113,9 +113,9 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     
     //TODO: not correct yet
     func textViewDidChange(_ textView: UITextView) {
-        var frame : CGRect = self.bounds
+        /*var frame : CGRect = self.bounds
         frame.size.height = 150 + textView.contentSize.height
-        self.bounds = frame
+        self.bounds = frame*/
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {

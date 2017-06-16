@@ -13,7 +13,6 @@ class ProfileElement: DialogElementTextField {
     //MARK: constants
     let textColorNormalValue = Colors.colorDashBoardDivider
     let textColorNormalTitle = Colors.colorWhite
-
     
     //MARK: properties
     override var title: String? {

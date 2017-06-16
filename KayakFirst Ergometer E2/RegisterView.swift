@@ -8,7 +8,6 @@
 
 import Foundation
 import M13Checkbox
-import DatePickerDialog
 
 class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -24,6 +23,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     private let genderPickerView = UIPickerView()
     private let countryPickerView = UIPickerView()
     private let artOfPaddlingPickerView = UIPickerView()
+    private let datePickerView = UIDatePicker()
     private var scrollView: AppScrollView?
     
     //MARK: init
@@ -129,10 +129,12 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     private lazy var tfBirthDate: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_birth_date")
-        textField.isEditable = false
-        textField.clickCallback = {
-            self.clickBithDate()
-        }
+        
+        self.datePickerView.datePickerMode = .date
+        self.datePickerView.maximumDate = Date()
+        
+        textField.valueTextField.inputView = self.datePickerView
+        self.datePickerView.addTarget(self, action: #selector(self.birthDatePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
     }()
@@ -255,28 +257,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return button
     }()
     
-    //MARK: button callbacks
-    private func clickBithDate() {
-        DatePickerDialog().show(
-            title: getString("user_birth_date"),
-            doneButtonTitle: getString("other_ok"),
-            cancelButtonTitle: getString("other_cancel"),
-            datePickerMode: .date) { date in
-                if let selectedDate = date {
-                    let selectedBirthDate = DateFormatHelper.getMilliSeconds(date: selectedDate)
-                    
-                    if selectedBirthDate >= currentTimeMillis() {
-                        self.tfBirthDate.error = getString("error_birth_date")
-                    } else {
-                        self.birthDate = selectedBirthDate
-                        
-                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.birthDate)
-                        self.tfBirthDate.error = nil
-                    }
-                }
-        }
-    }
-    
     @objc private func checkBoxTarget() {
         let isChecked = checkBox.checkState == M13Checkbox.CheckState.checked
         btnRegister.setDisabled(!isChecked)
@@ -327,6 +307,7 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return 1
     }
     
+    //MARK: pcikerview listener
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == genderPickerView {
             return User.genderOptions.count
@@ -386,6 +367,20 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
             }
             
             tfArtOfPaddling.text = selectedArtOfPaddling
+        }
+    }
+    
+    func birthDatePickerValueChanged(sender: UIDatePicker) {
+        
+        let selectedBirthDate = DateFormatHelper.getTimestampFromDatePicker(datePicker: sender)
+        
+        if selectedBirthDate >= currentTimeMillis() {
+            self.tfBirthDate.error = getString("error_birth_date")
+        } else {
+            self.birthDate = selectedBirthDate
+            
+            self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.birthDate)
+            self.tfBirthDate.error = nil
         }
     }
     
