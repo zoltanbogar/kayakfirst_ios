@@ -38,6 +38,9 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
         register(PlanDetailsCell.self, forCellReuseIdentifier: cellBase)
         register(PlanEditIntervallsCell.self, forCellReuseIdentifier: cellEdit)
         register(PlanElementDetailsCell.self, forCellReuseIdentifier: cellPlanElement)
+        
+        rowHeight = UITableViewAutomaticDimension
+        estimatedRowHeight = 50
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,19 +87,18 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             
             (cellDetails as! PlanDetailsCell).isEdit = isEdit
             
-            (cellDetails as! PlanDetailsCell).textHeightChangeListener = {
-                self.reloadData()
-            }
-            
             cellDetails.data = plan
 
             cell = cellDetails
             
-            rowHeight = (cell as! PlanDetailsCell).getRowHeight()
+            (cellDetails as! PlanDetailsCell).textHeightChangeListener = {
+                self.beginUpdates()
+                self.endUpdates()
+                let contentOffSetOriginal = self.contentOffset
+                self.setContentOffset(contentOffSetOriginal, animated: false)
+            }
         case cellEdit:
             cell = tableView.dequeueReusableCell(withIdentifier: cellEdit, for: indexPath) as! PlanEditIntervallsCell
-            
-            rowHeight = (cell as! PlanEditIntervallsCell).getRowHeight()
         case cellPlanElement:
             let cellNormal = tableView.dequeueReusableCell(withIdentifier: self.cellPlanElement, for: indexPath) as! PlanElementDetailsCell
             
@@ -107,8 +109,6 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             cellNormal.data = plan?.planElements?[dataPosition]
             
             cell = cellNormal
-            
-            rowHeight = (cell as! PlanElementDetailsCell).getRowHeight()
         default:
             fatalError("no other types")
         }

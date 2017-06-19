@@ -11,7 +11,8 @@ import Foundation
 //TODO: https://www.raywenderlich.com/129059/self-sizing-table-view-cells
 class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     
-    private var size: CGFloat = 0
+    //MARK: constants
+    private let defaultHeight: CGFloat = 70
     
     var textHeightChangeListener: (() -> ())?
     
@@ -83,20 +84,13 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     //MARK: size
     override var intrinsicContentSize: CGSize {
         get {
-            let newTextViewHeight = ceil(valueTextView.sizeThatFits(valueTextView.frame.size).height)
+            var newTextViewHeight = ceil(valueTextView.sizeThatFits(valueTextView.frame.size).height)
             
-            log("NOTES_TEST", "getIntrinsicSize: \(newTextViewHeight)")
-            
-            if let listener = textHeightChangeListener {
-                if self.size != newTextViewHeight {
-                    listener()
-                }
-                self.size = newTextViewHeight
+            if newTextViewHeight < defaultHeight {
+                newTextViewHeight = defaultHeight
             }
             
-            self.textViewDidChange(valueTextView)
-            
-            return CGSize(width: 0, height:  self.frame.size.height)
+            return CGSize(width: 0, height:  newTextViewHeight)
         }
     }
     
@@ -107,16 +101,10 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
         view.textColor = self.textColorNormalValue
         view.font = .systemFont(ofSize: 17)
         view.delegate = self
+        view.isScrollEnabled = false
         
         return view
     }()
-    
-    //TODO: not correct yet
-    func textViewDidChange(_ textView: UITextView) {
-        /*var frame : CGRect = self.bounds
-        frame.size.height = 150 + textView.contentSize.height
-        self.bounds = frame*/
-    }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if clickable {
@@ -125,5 +113,18 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
             }
         }
         return isEditable
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        /*let fixedWidth = self.frame.size.width
+        textView.sizeThatFits(valueTextView.frame.size)
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        var newFrame = self.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        self.frame = newFrame*/
+        
+        if let listener = textHeightChangeListener {
+            listener()
+        }
     }
 }

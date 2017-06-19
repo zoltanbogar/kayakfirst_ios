@@ -25,6 +25,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             etNotes.textHeightChangeListener = self.textHeightChangeListener
         }
     }
+    
     private var datePickerView = UIDatePicker()
     private var timePickerView = UIDatePicker()
     
@@ -49,32 +50,37 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     
     //MARK: init view
     override func initView() -> UIView {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = margin
+        baseView.addSubview(etName)
+        baseView.addSubview(etDate)
+        baseView.addSubview(etDuration)
+        baseView.addSubview(etStart)
+        baseView.addSubview(etNotes)
         
-        stackView.addArrangedSubview(etName)
-        stackView.addArrangedSubview(etDate)
-        stackView.addArrangedSubview(etDuration)
-        stackView.addArrangedSubview(etStart)
-        stackView.addArrangedSubview(etNotes)
-        
-        baseView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
+        etName.snp.makeConstraints { (make) in
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
             make.top.equalTo(baseView)
-            make.height.equalTo(self.getHeight())
         }
-        
-        let marginView = UIView()
-        marginView.backgroundColor = Colors.colorTransparent
-        baseView.addSubview(marginView)
-        marginView.snp.makeConstraints { (make) in
+        etDate.snp.makeConstraints { (make) in
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
-            make.top.equalTo(stackView.snp.bottom)
-            make.height.equalTo(margin)
+            make.top.equalTo(etName.snp.bottom).offset(margin)
+        }
+        etDuration.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.top.equalTo(etDate.snp.bottom).offset(margin)
+        }
+        etStart.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.top.equalTo(etDuration.snp.bottom).offset(margin)
+        }
+        etNotes.snp.makeConstraints { (make) in
+            make.left.equalTo(baseView)
+            make.right.equalTo(baseView)
+            make.top.equalTo(etStart.snp.bottom).offset(margin)
+            make.bottom.equalTo(baseView).offset(-margin)
         }
         
         datePickerView.datePickerMode = .date
