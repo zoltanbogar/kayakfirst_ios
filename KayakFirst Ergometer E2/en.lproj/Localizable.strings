@@ -12,37 +12,59 @@
 "app_version"="Version: ";
 
 //DashBoard
-"dashboard_title_av_200"="Avg. 200m";
-"dashboard_title_av_500"="Avg. 500m";
-"dashboard_title_av_1000"="Avg. 1000m";
-"dashboard_title_actual_200"="Actual 200m";
-"dashboard_title_actual_500"="Actual 500m";
-"dashboard_title_actual_1000"="Actual 1000m";
+"dashboard_title_av_200_metric"="Avg. 200m";
+"dashboard_title_av_500_metric"="Avg. 500m";
+"dashboard_title_av_1000_metric"="Avg. 1000m";
+"dashboard_title_av_200_imperial"="Avg. 1/4 mile/min";
+"dashboard_title_av_500_imperial"="Avg. 1/2 mile/min";
+"dashboard_title_av_1000_imperial"="Avg. 1 mile/min";
+"dashboard_title_actual_200_metric"="Actual 200m";
+"dashboard_title_actual_500_metric"="Actual 500m";
+"dashboard_title_actual_1000_metric"="Actual 1000m";
+"dashboard_title_actual_200_imperial"="Actual 1/4 mile/min";
+"dashboard_title_actual_500_imperial"="Actual 1/2 mile/min";
+"dashboard_title_actual_1000_imperial"="Actual 1 mile/min";
 "dashboard_title_stroke_min"="Strokes/min.";
-"dashboard_title_pull_force"="Pull force (N)";
-"dashboard_title_distance"="Distance (m)";
+"dashboard_title_pull_force_metric"="Pull force (N)";
+"dashboard_title_pull_force_imperial"="Pull force (lbs)";
+"dashboard_title_distance_metric"="Distance (m)";
+"dashboard_title_distance_imperial"="Distance (ft)";
 "dashboard_title_duration"="Duration";
-"dashboard_title_current_speed"="Act. speed (km/h)";
-"dashboard_title_av_speed"="Avg. speed (km/h)";
+"dashboard_title_current_speed_metric"="Act. speed (km/h)";
+"dashboard_title_current_speed_imperial"="Act. speed (mph)";
+"dashboard_title_av_speed_metric"="Avg. speed (km/h)";
+"dashboard_title_av_speed_imperial"="Avg. speed (mph)";
 "dashboard_title_drag_drop"="Drag &amp; Drop here";
 "dashboard_title_av_strokes"="Avg. strokes/min";
-"dashboard_title_av_pull_force"="Avg. pull force (N)";
+"dashboard_title_av_pull_force_metric"="Avg. pull force (N)";
+"dashboard_title_av_pull_force_imperial"="Avg. pull force (lbs)";
 
 //DashBoardOutdoor
-"dashboard_outdoor_title_av_200"="Avg.\n200m";
-"dashboard_outdoor_title_av_500"="Avg.\n500m";
-"dashboard_outdoor_title_av_1000"="Avg.\n1000m";
-"dashboard_outdoor_title_actual_200"="Actual\n200m";
-"dashboard_outdoor_title_actual_500"="Actual\n500m";
-"dashboard_outdoor_title_actual_1000"="Actual\n1000m";
+"dashboard_outdoor_title_av_200_metric"="Avg.\n200m";
+"dashboard_outdoor_title_av_500_metric"="Avg.\n500m";
+"dashboard_outdoor_title_av_1000_metric"="Avg.\n1000m";
+"dashboard_outdoor_title_av_200_imperial"="Avg.\n1/4mile";
+"dashboard_outdoor_title_av_500_imperial"="Avg.\n1/2mile";
+"dashboard_outdoor_title_av_1000_imperial"="Avg.\n1mile";
+"dashboard_outdoor_title_actual_200_metric"="Actual\n200m";
+"dashboard_outdoor_title_actual_500_metric"="Actual\n500m";
+"dashboard_outdoor_title_actual_1000_metric"="Actual\n1000m";
+"dashboard_outdoor_title_actual_200_imperial"="Actual\n1/4mile";
+"dashboard_outdoor_title_actual_500_imperial"="Actual\n1/2mile";
+"dashboard_outdoor_title_actual_1000_imperial"="Actual\n1mile";
 "dashboard_outdoor_title_stroke_min"="Strokes/min.";
-"dashboard_outdoor_title_pull_force"="Pull force\n(N)";
-"dashboard_outdoor_title_distance"="Distance\n(m)";
+"dashboard_outdoor_title_pull_force_metric"="Pull force\n(N)";
+"dashboard_outdoor_title_pull_force_imperial"="Pull force\n(lbs)";
+"dashboard_outdoor_title_distance_metric"="Distance\n(m)";
+"dashboard_outdoor_title_distance_imperial"="Distance\n(ft)";
 "dashboard_outdoor_title_duration"="Duration";
-"dashboard_outdoor_title_current_speed"="Act. speed\n(km/h)";
-"dashboard_outdoor_title_av_speed"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_current_speed_metric"="Act. speed\n(km/h)";
+"dashboard_outdoor_title_current_speed_imperial"="Act. speed\n(mph)";
+"dashboard_outdoor_title_av_speed_metric"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_av_speed_imperial"="Avg. speed\n(mph)";
 "dashboard_outdoor_title_av_strokes"="Avg. strokes\n/min";
-"dashboard_outdoor_title_av_pull_force"="Avg. pull force\n(N)";
+"dashboard_outdoor_title_av_pull_force_metric"="Avg. pull force\n(N)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Avg. pull force\n(lbs)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Connect your phone to any of the below equipments...";
@@ -122,21 +144,29 @@
 "training_sum"="Total";
 "training_sum_average"="Average";
 "training_sum_best"="Best";
-"training_sum_speed"="Speed\nkm/h";
+"training_sum_speed_metric"="Speed\nkm/h";
+"training_sum_speed_imperial"="Speed\nmph";
 "training_sum_stroke"="Stroke rate\n\\min.";
-"training_sum_pull_force"="Pull force\nN";
-"training_sum_t_200"="Pace\n200";
-"training_sum_t_500"="Pace\n500";
-"training_sum_t_1000"="Pace\n1000";
+"training_sum_pull_force_metric"="Pull force\nN";
+"training_sum_pull_force_imperial"="Pull force\nlbs";
+"training_sum_t_200_metric"="Pace\n200";
+"training_sum_t_500_metric"="Pace\n500";
+"training_sum_t_1000_metric"="Pace\n1000";
+"training_sum_t_200_imperial"="Pace\n1/4";
+"training_sum_t_500_imperial"="Pace\n1/2";
+"training_sum_t_1000_imperial"="Pace\n1";
 "training_diagram_time"="Time";
 "training_diagram_distance"="Distance";
 "training_details_sum"="Sum";
 "training_details_all"="Table";
 
 //Calculate
-"calculate_t200"="Pace 200";
-"calculate_t500"="Pace 500";
-"calculate_t1000"="Pace 1000";
+"calculate_t200_metric"="Pace 200";
+"calculate_t500_metric"="Pace 500";
+"calculate_t1000_metric"="Pace 1000";
+"calculate_t200_imperial"="Pace 1/4";
+"calculate_t500_imperial"="Pace 1/2";
+"calculate_t1000_imperial"="Pace 1";
 "calculate_strokes"="Strokes";
 "calculate_f"="Pull Force";
 "calculate_s"="Distance";
@@ -200,9 +230,19 @@
 "user_terms_conditions_short"="Terms & Conditions";
 
 //Unit
-"unit_speed"="km/h";
-"unit_force"="n";
+"unit_weight"="Unit of weight";
+"unit_distance"="Unit of speed and distance";
+"unit_pace"="Unit of Pace";
+"unit_metric"="Metric";
+"unit_imperial"="Imperial";
+"unit_speed_metric"="km/h";
+"unit_speed_imperial"="mph";
+"unit_force_metric"="n";
+"unit_force_imperial"="lbs";
 "unit_distance"="m";
+"unit_distance_imperial"="ft";
+"unit_weight_metric"="kg";
+"unit_weight_imperial"="lbs";
 
 //Error
 "error_no_internet"="No internet connection!";

@@ -9,20 +9,20 @@
 import Foundation
 import M13Checkbox
 
-class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class RegisterView: UIView, UITextFieldDelegate {
     
     //MARK: properties
     private let viewController: WelcomeViewController
     
     private var birthDate: TimeInterval?
-    private var gender: String?
-    private var countryCode: String?
-    private var artOfPaddling: String?
     
     private let stackView = UIStackView()
     private let genderPickerView = UIPickerView()
+    private var pickerHelperGender: PickerHelperGender?
     private let countryPickerView = UIPickerView()
+    private var pickerHelperLocale: PickerHelperLocale?
     private let artOfPaddlingPickerView = UIPickerView()
+    private var pickerHelperArtOfPaddling: PickerHelperArtOfPaddling?
     private let datePickerView = UIDatePicker()
     private var scrollView: AppScrollView?
     
@@ -33,9 +33,9 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         
         initView()
         
-        genderPickerView.delegate = self
-        countryPickerView.delegate = self
-        artOfPaddlingPickerView.delegate = self
+        pickerHelperGender = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
+        pickerHelperLocale = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
+        pickerHelperArtOfPaddling = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -196,8 +196,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         textField.title = getString("user_gender")
         textField.required = true
         
-        textField.valueTextField.inputView = self.genderPickerView
-        
         return textField
     }()
     
@@ -272,11 +270,11 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
                     firstName: tfFirstName.text,
                     email: tfEmail.text,
                     bodyWeight: Double(tfWeight.text!),
-                    gender: gender,
+                    gender: pickerHelperGender!.getValue(),
                     birthDate: birthDate,
                     club: tfClub.text,
-                    country: countryCode,
-                    artOfPaddling: self.artOfPaddling,
+                    country: pickerHelperLocale!.getValue(),
+                    artOfPaddling: pickerHelperArtOfPaddling!.getValue(),
                     password: tfPassword.text,
                     userName: tfUserName.text),
                 facebookId: self.viewController.facebookId,
@@ -308,68 +306,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     }
     
     //MARK: pcikerview listener
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == genderPickerView {
-            return User.genderOptions.count
-        } else if pickerView == countryPickerView {
-            return NSLocale.locales().count
-        } else {
-            return User.artOfPaddlingOptions.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == genderPickerView {
-            return User.genderOptions[row]
-        } else if pickerView == countryPickerView {
-            return NSLocale.locales()[row].countryName
-        } else {
-            return User.artOfPaddlingOptions[row]
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == genderPickerView {
-            let selectedGender = User.genderOptions[row]
-            let genderFemaleLocalized = getString("user_gender_female")
-            
-            if selectedGender == genderFemaleLocalized {
-                gender = User.genderFemale
-            } else {
-                gender = User.genderMale
-            }
-            
-            tfGender.text = selectedGender
-        } else if pickerView == countryPickerView {
-            countryCode = NSLocale.locales()[row].countryCode
-            
-            tfCountry.text = NSLocale.locales()[row].countryName
-        } else if pickerView == artOfPaddlingPickerView {
-            let selectedArtOfPaddling = User.artOfPaddlingOptions[row]
-            
-            switch selectedArtOfPaddling {
-            case getString("user_art_of_paddling_racing_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRacingKayaking
-            case getString("user_art_of_paddling_racing_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRacingCanoeing
-            case getString("user_art_of_paddling_recreational_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalKayaking
-            case getString("user_art_of_paddling_recreational_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalCanoeing
-            case getString("user_art_of_paddling_sup"):
-                self.artOfPaddling = User.artOfPaddlingSup
-            case getString("user_art_of_paddling_dragon"):
-                self.artOfPaddling = User.artOfPaddlingDragon
-            case getString("user_art_of_paddling_rowing"):
-                self.artOfPaddling = User.artOfPaddlingRowing
-            default:
-                break
-            }
-            
-            tfArtOfPaddling.text = selectedArtOfPaddling
-        }
-    }
-    
     func birthDatePickerValueChanged(sender: UIDatePicker) {
         
         let selectedBirthDate = DateFormatHelper.getTimestampFromDatePicker(datePicker: sender)

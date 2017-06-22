@@ -48,10 +48,11 @@ class UserUpdate: ServerService<User> {
             "firstName": userDto.firstName ?? "",
             "email": userDto.email ?? "",
             "bodyWeight": userDto.bodyWeight ?? 0,
+            "club": userDto.club ?? "",
             "gender": userDto.gender ?? "",
             "birthDate": userDto.birthDate ?? nil,
             "country": userDto.country ?? "",
-            "password": userDto.password ?? "",
+            "artOfPaddling": userDto.artOfPaddling ?? "",
             "username": userDto.userName ?? ""
         ]
     }

@@ -12,37 +12,59 @@
 "app_version"="Verzió: ";
 
 //DashBoard
-"dashboard_title_av_200"="Átlag 200m";
-"dashboard_title_av_500"="Átlag 500m";
-"dashboard_title_av_1000"="Átlag 1000m";
-"dashboard_title_actual_200"="Most 200m";
-"dashboard_title_actual_500"="Most 500m";
-"dashboard_title_actual_1000"="Most 1000m";
-"dashboard_title_stroke_min"="Csapás/perc";
-"dashboard_title_pull_force"="Húzáserő (N)";
-"dashboard_title_distance"="Távolság (m)";
-"dashboard_title_duration"="Tartam";
-"dashboard_title_current_speed"="Seb. most (km/h)";
-"dashboard_title_av_speed"="Átlagseb. (km/h)";
-"dashboard_title_drag_drop"="Húzz ide egyet!";
-"dashboard_title_av_strokes"="Átl. csapás/perc";
-"dashboard_title_av_pull_force"="Átl. húzáserő (N)";
+"dashboard_title_av_200_metric"="Avg. 200m";
+"dashboard_title_av_500_metric"="Avg. 500m";
+"dashboard_title_av_1000_metric"="Avg. 1000m";
+"dashboard_title_av_200_imperial"="Avg. 1/4 mile/min";
+"dashboard_title_av_500_imperial"="Avg. 1/2 mile/min";
+"dashboard_title_av_1000_imperial"="Avg. 1 mile/min";
+"dashboard_title_actual_200_metric"="Actual 200m";
+"dashboard_title_actual_500_metric"="Actual 500m";
+"dashboard_title_actual_1000_metric"="Actual 1000m";
+"dashboard_title_actual_200_imperial"="Actual 1/4 mile/min";
+"dashboard_title_actual_500_imperial"="Actual 1/2 mile/min";
+"dashboard_title_actual_1000_imperial"="Actual 1 mile/min";
+"dashboard_title_stroke_min"="Strokes/min.";
+"dashboard_title_pull_force_metric"="Pull force (N)";
+"dashboard_title_pull_force_imperial"="Pull force (lbs)";
+"dashboard_title_distance_metric"="Distance (m)";
+"dashboard_title_distance_imperial"="Distance (ft)";
+"dashboard_title_duration"="Duration";
+"dashboard_title_current_speed_metric"="Act. speed (km/h)";
+"dashboard_title_current_speed_imperial"="Act. speed (mph)";
+"dashboard_title_av_speed_metric"="Avg. speed (km/h)";
+"dashboard_title_av_speed_imperial"="Avg. speed (mph)";
+"dashboard_title_drag_drop"="Drag &amp; Drop here";
+"dashboard_title_av_strokes"="Avg. strokes/min";
+"dashboard_title_av_pull_force_metric"="Avg. pull force (N)";
+"dashboard_title_av_pull_force_imperial"="Avg. pull force (lbs)";
 
 //DashboardOutdoor
-"dashboard_outdoor_title_av_200"="Átlag\n200m";
-"dashboard_outdoor_title_av_500"="Átlag\n500m";
-"dashboard_outdoor_title_av_1000"="Átlag\n1000m";
-"dashboard_outdoor_title_actual_200"="Most\n200m";
-"dashboard_outdoor_title_actual_500"="Most\n500m";
-"dashboard_outdoor_title_actual_1000"="Most\n1000m";
-"dashboard_outdoor_title_stroke_min"="Csapás/perc";
-"dashboard_outdoor_title_pull_force"="Húzáserő\n(N)";
-"dashboard_outdoor_title_distance"="Távolság\n(m)";
-"dashboard_outdoor_title_duration"="Időtartam";
-"dashboard_outdoor_title_current_speed"="Seb. most\n(km/h)";
-"dashboard_outdoor_title_av_speed"="Átlagseb.\n(km/h)";
-"dashboard_outdoor_title_av_strokes"="Átl. csapás/\nperc";
-"dashboard_outdoor_title_av_pull_force"="Átl. húzáserő\n(N)";
+"dashboard_outdoor_title_av_200_metric"="Avg.\n200m";
+"dashboard_outdoor_title_av_500_metric"="Avg.\n500m";
+"dashboard_outdoor_title_av_1000_metric"="Avg.\n1000m";
+"dashboard_outdoor_title_av_200_imperial"="Avg.\n1/4mile";
+"dashboard_outdoor_title_av_500_imperial"="Avg.\n1/2mile";
+"dashboard_outdoor_title_av_1000_imperial"="Avg.\n1mile";
+"dashboard_outdoor_title_actual_200_metric"="Actual\n200m";
+"dashboard_outdoor_title_actual_500_metric"="Actual\n500m";
+"dashboard_outdoor_title_actual_1000_metric"="Actual\n1000m";
+"dashboard_outdoor_title_actual_200_imperial"="Actual\n1/4mile";
+"dashboard_outdoor_title_actual_500_imperial"="Actual\n1/2mile";
+"dashboard_outdoor_title_actual_1000_imperial"="Actual\n1mile";
+"dashboard_outdoor_title_stroke_min"="Strokes/min.";
+"dashboard_outdoor_title_pull_force_metric"="Pull force\n(N)";
+"dashboard_outdoor_title_pull_force_imperial"="Pull force\n(lbs)";
+"dashboard_outdoor_title_distance_metric"="Distance\n(m)";
+"dashboard_outdoor_title_distance_imperial"="Distance\n(ft)";
+"dashboard_outdoor_title_duration"="Duration";
+"dashboard_outdoor_title_current_speed_metric"="Act. speed\n(km/h)";
+"dashboard_outdoor_title_current_speed_imperial"="Act. speed\n(mph)";
+"dashboard_outdoor_title_av_speed_metric"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_av_speed_imperial"="Avg. speed\n(mph)";
+"dashboard_outdoor_title_av_strokes"="Avg. strokes\n/min";
+"dashboard_outdoor_title_av_pull_force_metric"="Avg. pull force\n(N)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Avg. pull force\n(lbs)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Csatlakoztasd az készüléket az alábbi ergométerek egyikéhez...";
@@ -116,32 +138,40 @@
 "chart_y_right"="J";
 
 //Trainig
-"training_start"="Kezdés";
-"training_duration"="Tartam";
-"training_distance"="Táv";
-"training_sum"="Össz.";
-"training_sum_average"="Átlag";
-"training_sum_best"="Max.";
-"training_sum_speed"="Sebesség\nkm/h";
-"training_sum_stroke"="Csapásszám\n\\perc";
-"training_sum_pull_force"="Húzóerő\nN";
-"training_sum_t_200"="Iram\n200";
-"training_sum_t_500"="Iram\n500";
-"training_sum_t_1000"="Iram\n1000";
-"training_diagram_time"="Idő";
-"training_diagram_distance"="Táv";
-"training_details_sum"="Össz.";
-"training_details_all"="Adatok";
+"training_start"="Start";
+"training_duration"="Duration";
+"training_distance"="Distance";
+"training_sum"="Total";
+"training_sum_average"="Average";
+"training_sum_best"="Best";
+"training_sum_speed_metric"="Speed\nkm/h";
+"training_sum_speed_imperial"="Speed\nmph";
+"training_sum_stroke"="Stroke rate\n\\min.";
+"training_sum_pull_force_metric"="Pull force\nN";
+"training_sum_pull_force_imperial"="Pull force\nlbs";
+"training_sum_t_200_metric"="Pace\n200";
+"training_sum_t_500_metric"="Pace\n500";
+"training_sum_t_1000_metric"="Pace\n1000";
+"training_sum_t_200_imperial"="Pace\n1/4";
+"training_sum_t_500_imperial"="Pace\n1/2";
+"training_sum_t_1000_imperial"="Pace\n1";
+"training_diagram_time"="Time";
+"training_diagram_distance"="Distance";
+"training_details_sum"="Sum";
+"training_details_all"="Table";
 
 //Calculate
-"calculate_t200"="Iram 200";
-"calculate_t500"="Iram 500";
-"calculate_t1000"="Iram 1000";
-"calculate_strokes"="Csapásszám";
-"calculate_f"="Húzóerő";
-"calculate_s"="Táv";
-"calculate_v"="Sebesség";
-"calculate_t"="Idő";
+"calculate_t200_metric"="Pace 200";
+"calculate_t500_metric"="Pace 500";
+"calculate_t1000_metric"="Pace 1000";
+"calculate_t200_imperial"="Pace 1/4";
+"calculate_t500_imperial"="Pace 1/2";
+"calculate_t1000_imperial"="Pace 1";
+"calculate_strokes"="Strokes";
+"calculate_f"="Pull Force";
+"calculate_s"="Distance";
+"calculate_v"="Speed";
+"calculate_t"="Time";
 
 //User
 "user_login"="Bejelentkezés";
@@ -200,9 +230,19 @@
 "user_terms_conditions_short"="Felhasználási feltételek";
 
 //Unit
-"unit_speed"="km/h";
-"unit_force"="n";
+"unit_weight"="Unit of weight";
+"unit_distance"="Unit of speed and distance";
+"unit_pace"="Unit of Pace";
+"unit_metric"="Metric";
+"unit_imperial"="Imperial";
+"unit_speed_metric"="km/h";
+"unit_speed_imperial"="mph";
+"unit_force_metric"="n";
+"unit_force_imperial"="lbs";
 "unit_distance"="m";
+"unit_distance_imperial"="ft";
+"unit_weight_metric"="kg";
+"unit_weight_imperial"="lbs";
 
 //Error
 "error_no_internet"="Nincs internetkapcsolat!";

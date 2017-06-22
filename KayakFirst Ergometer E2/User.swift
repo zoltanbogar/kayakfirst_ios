@@ -27,18 +27,6 @@ struct User {
     static let keyUserName = "user_name"
     
     //MARK: constants
-    static let genderOptions = [getString("user_gender_female"), getString("user_gender_male")]
-    static let genderFemale = "female"
-    static let genderMale = "male"
-    static let artOfPaddlingOptions = [getString("user_art_of_paddling_racing_kayaking"), getString("user_art_of_paddling_racing_canoeing"), getString("user_art_of_paddling_recreational_kayaking"), getString("user_art_of_paddling_recreational_canoeing"), getString("user_art_of_paddling_sup"), getString("user_art_of_paddling_dragon"), getString("user_art_of_paddling_rowing")]
-    static let artOfPaddlingRacingKayaking = "racing_kayaking"
-    static let artOfPaddlingRacingCanoeing = "racing_canoeing"
-    static let artOfPaddlingRecreationalKayaking = "recreational_kayaking"
-    static let artOfPaddlingRecreationalCanoeing = "recreational_canoeing"
-    static let artOfPaddlingSup = "sup"
-    static let artOfPaddlingDragon = "dragon"
-    static let artOfPaddlingRowing = "rowing"
-    
     static let minCharacterUserName = 2
     static let minCharacterPassword = 4
     static let minBodyWeight = 30
