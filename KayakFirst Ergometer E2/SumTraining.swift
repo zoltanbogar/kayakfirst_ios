@@ -51,7 +51,7 @@ class SumTraining: Equatable {
     
     var formattedDistance: String {
         get {
-            return String(format: "%.0f", distance!) + UnitHelper.getDistanceUnit()
+            return String(format: "%.0f", UnitHelper.getDistanceValue(metricValue: distance!)) + UnitHelper.getDistanceUnit()
         }
     }
     

@@ -35,7 +35,7 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     let planId = Expression<String>(PropertyKey.planIdKey)
     let type = Expression<String>(PropertyKey.typeKey)
     let intensity = Expression<Int>(PropertyKey.intensityKey)
-    let value = Expression<Int64>(PropertyKey.valueKey)
+    let value = Expression<Double>(PropertyKey.valueKey)
     
     override func getTableName() -> String {
         return PlanElementDbLoader.tableName

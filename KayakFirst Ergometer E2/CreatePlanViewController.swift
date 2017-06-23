@@ -333,16 +333,16 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     }
     
     //MARK: functions
-    private func createValue() -> Int64 {
+    private func createValue() -> Double {
         switch plan!.type {
         case PlanType.distance:
-            return Int64(etDistance.text) ?? 0
+            return UnitHelper.getMetricDistanceValue(value: Double(etDistance.text) ?? 0)
         case PlanType.time:
             let minutes = Int(etMinute.text) ?? 0
             let sec = Int(etSec.text) ?? 0
             
             let value = (minutes * 60 + sec) * 1000
-            return Int64(value)
+            return Double(value)
         default:
             fatalError("no other types")
         }

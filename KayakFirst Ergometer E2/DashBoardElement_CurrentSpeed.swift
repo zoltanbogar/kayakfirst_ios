@@ -16,7 +16,7 @@ class DashBoardElement_CurrentSpeed: DashBoardElementBase {
     }
     
     override func getValue() -> Double {
-        return telemetry.speed
+        return UnitHelper.getSpeedValue(metricValue: telemetry.speed)
     }
     
     override func getTitleMetric() -> String {

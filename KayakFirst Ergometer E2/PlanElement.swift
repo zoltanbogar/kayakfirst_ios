@@ -26,7 +26,7 @@ struct PlanElement {
             }
         }
     }
-    var value: Int64 = 0
+    var value: Double = 0
     
     //MARK: helper properties
     private var _intensity: Int = 0
@@ -39,7 +39,7 @@ struct PlanElement {
         id = Plan.createPlanId(createValue: planId)
     }
     
-    init(planId: String, intensity: Int, type: PlanType, value: Int64) {
+    init(planId: String, intensity: Int, type: PlanType, value: Double) {
         self.planId = planId
         self._intensity = intensity
         self.type = type
@@ -48,7 +48,7 @@ struct PlanElement {
         id = Plan.createPlanId(createValue: planId)
     }
     
-    init(id: String, planId: String, intensity: Int, type: PlanType, value: Int64) {
+    init(id: String, planId: String, intensity: Int, type: PlanType, value: Double) {
         self.id = id;
         self.planId = planId
         self._intensity = intensity
@@ -58,16 +58,6 @@ struct PlanElement {
     
     //MARK: functions
     func getFormattedValue() -> String {
-        switch type {
-        case PlanType.distance:
-            let formattedValue = String.init(format: "%.1f", value)
-            let unit = UnitHelper.getDistanceUnit()
-            
-            return "\(formattedValue) \(unit)"
-        case PlanType.time:
-            return DateFormatHelper.getDate(dateFormat: DateFormatHelper.minSecFormat, timeIntervallSince1970: Double(value))
-        default:
-            fatalError("there is no other type")
-        }
+        return Plan.getFormattedValue(planType: type, value: value)
     }
 }

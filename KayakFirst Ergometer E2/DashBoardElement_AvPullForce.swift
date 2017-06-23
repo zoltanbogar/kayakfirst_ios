@@ -16,7 +16,7 @@ class DashBoardElement_AvPullForce: DashBoardElementBase {
     }
     
     override func getValue() -> Double {
-        return telemetry.force_av
+        return UnitHelper.getForceValue(metricValue: telemetry.force_av)
     }
     
     override func getTitleMetric() -> String {

@@ -39,18 +39,18 @@ class LineChartDistance: AppLineChartData {
         for i in 0..<trainings.count {
             if trainings[i].currentDistance == 0 {
                 if i<distanceList.count {
-                    distance = distanceList[i].dataValue
+                    distance = UnitHelper.getTrainingValue(training: distanceList[i])
                     
-                    entries.append(ChartDataEntry(x: seqDistance, y: trainings[i].dataValue))
+                    entries.append(ChartDataEntry(x: seqDistance, y: UnitHelper.getTrainingValue(training: trainings[i])))
                     
                     seqDistance = seqDistance + distance
                 } else {
                     break
                 }
             } else {
-                distance = trainings[i].currentDistance
+                distance = UnitHelper.getDistanceValue(metricValue: trainings[i].currentDistance)
                 
-                entries.append(ChartDataEntry(x: distance, y: trainings[i].dataValue))
+                entries.append(ChartDataEntry(x: distance, y: UnitHelper.getTrainingValue(training: trainings[i])))
                 
                 seqDistance = distance
             }

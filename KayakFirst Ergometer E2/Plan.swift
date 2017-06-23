@@ -22,7 +22,7 @@ class Plan {
     var name: String?
     var notes: String?
     var timestamp: TimeInterval?
-    var length: Int64 = 0
+    var length: Double = 0
     var sessionId: TimeInterval?
     var planElements: [PlanElement]? {
         didSet {
@@ -38,7 +38,7 @@ class Plan {
         planId = Plan.createPlanId(createValue: "\(userId)")
     }
     
-    init(planId: String, name: String?, notes: String?, timestamp: TimeInterval?, userId: Int64, length: Int64, type: PlanType, sessionId: TimeInterval?) {
+    init(planId: String, name: String?, notes: String?, timestamp: TimeInterval?, userId: Int64, length: Double, type: PlanType, sessionId: TimeInterval?) {
         self.planId = planId
         self.name = name
         self.notes = notes
@@ -50,8 +50,8 @@ class Plan {
     }
     
     //MARK: functions
-    private func calculatePlanLength() -> Int64 {
-        var sum: Int64 = 0
+    private func calculatePlanLength() -> Double {
+        var sum: Double = 0
         if let planElementList = planElements {
             for planElement in planElementList {
                 sum += planElement.value
@@ -64,6 +64,21 @@ class Plan {
     //MARK: static functions
     static func createPlanId(createValue: String) -> String {
         return "\(Int64(currentTimeMillis()))_\(createValue)"
+    }
+    
+    //MARK: functions
+    static func getFormattedValue(planType: PlanType, value: Double) -> String {
+        switch planType {
+        case PlanType.distance:
+            let formattedValue = String.init(format: "%.1f", UnitHelper.getDistanceValue(metricValue: value))
+            let unit = UnitHelper.getDistanceUnit()
+            
+            return "\(formattedValue) \(unit)"
+        case PlanType.time:
+            return DateFormatHelper.getDate(dateFormat: DateFormatHelper.minSecFormat, timeIntervallSince1970: Double(value))
+        default:
+            fatalError("there is no other type")
+        }
     }
     
     //TODO: delete this
@@ -87,7 +102,7 @@ class Plan {
                     planId: plan.planId,
                     intensity: i * 10,
                     type: plan.type,
-                    value: Int64(i * 10000))
+                    value: Double(i * 10000))
                 
                 planElements.append(planElement)
             }

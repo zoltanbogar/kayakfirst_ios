@@ -16,7 +16,7 @@ class DashBoardElement_Distance: DashBoardElementBase {
     }
     
     override func getValue() -> Double {
-        return telemetry.distance
+        return UnitHelper.getDistanceValue(metricValue: telemetry.distance)
     }
     
     override func getTitleMetric() -> String {

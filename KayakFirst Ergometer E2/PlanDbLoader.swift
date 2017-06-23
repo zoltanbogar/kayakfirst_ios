@@ -44,7 +44,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     private let name = Expression<String?>(PropertyKey.nameKey)
     private let notes = Expression<String?>(PropertyKey.notesKey)
     private let timestamp = Expression<Double?>(PropertyKey.timestampKey)
-    private let length = Expression<Int64>(PropertyKey.lengthKey)
+    private let length = Expression<Double>(PropertyKey.lengthKey)
     private let sessionIdPlan = Expression<Double?>(PropertyKey.sessionIdKey)
     
     override func getTableName() -> String {
