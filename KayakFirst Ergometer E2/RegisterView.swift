@@ -23,6 +23,12 @@ class RegisterView: UIView, UITextFieldDelegate {
     private var pickerHelperLocale: PickerHelperLocale?
     private let artOfPaddlingPickerView = UIPickerView()
     private var pickerHelperArtOfPaddling: PickerHelperArtOfPaddling?
+    private let unitWeightPickerView = UIPickerView()
+    private var pickerHelperUnitWeight: PickerHelperUnit?
+    private let unitDistancePickerView = UIPickerView()
+    private var pickerHelperUnitDistance: PickerHelperUnit?
+    private let unitPacePickerView = UIPickerView()
+    private var pickerHelperUnitPace: PickerHelperUnit?
     private let datePickerView = UIDatePicker()
     private var scrollView: AppScrollView?
     
@@ -36,6 +42,9 @@ class RegisterView: UIView, UITextFieldDelegate {
         pickerHelperGender = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
         pickerHelperLocale = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
         pickerHelperArtOfPaddling = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
+        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
+        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
+        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,6 +71,9 @@ class RegisterView: UIView, UITextFieldDelegate {
         stackView.addArrangedSubview(tfCountry)
         stackView.addArrangedSubview(tfGender)
         stackView.addArrangedSubview(tfArtOfPaddling)
+        stackView.addArrangedSubview(tfUnitWeight)
+        stackView.addArrangedSubview(tfUnitDistance)
+        stackView.addArrangedSubview(tfUnitPace)
         stackView.addVerticalSpacing(spacing: margin)
         stackView.addArrangedSubview(labelRequired)
         
@@ -199,6 +211,30 @@ class RegisterView: UIView, UITextFieldDelegate {
         return textField
     }()
     
+    private lazy var tfUnitWeight: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_weight")
+        textField.required = true
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitDistance: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_distance")
+        textField.required = true
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitPace: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_pace")
+        textField.required = true
+        
+        return textField
+    }()
+    
     private lazy var tfArtOfPaddling: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_art_of_paddling")
@@ -269,14 +305,17 @@ class RegisterView: UIView, UITextFieldDelegate {
                     lastName: tfLastName.text,
                     firstName: tfFirstName.text,
                     email: tfEmail.text,
-                    bodyWeight: Double(tfWeight.text!),
+                    bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())),
                     gender: pickerHelperGender!.getValue(),
                     birthDate: birthDate,
                     club: tfClub.text,
                     country: pickerHelperLocale!.getValue(),
                     artOfPaddling: pickerHelperArtOfPaddling!.getValue(),
                     password: tfPassword.text,
-                    userName: tfUserName.text),
+                    userName: tfUserName.text,
+                    unitWeight: pickerHelperUnitWeight?.getValue(),
+                    unitDistance: pickerHelperUnitDistance?.getValue(),
+                    unitPace: pickerHelperUnitPace?.getValue()),
                 facebookId: self.viewController.facebookId,
                 googleId: self.viewController.googleId)
         }
@@ -324,49 +363,46 @@ class RegisterView: UIView, UITextFieldDelegate {
         var isValid = true;
         var viewToScroll: UIView? = nil
         
-        let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
-        if userNameCharacters < User.minCharacterUserName {
-            tfUserName.error = getString("error_user_name")
+        if !Validate.isUserNameValid(tfUserName: tfUserName) {
             isValid = false
             viewToScroll = tfUserName
         }
-        
-        let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
-        if passwordCharacters < User.minCharacterPassword {
-            tfPassword.error = getString("error_password")
+        if !Validate.isPasswordValid(tfPassword: tfPassword) {
             isValid = false
             viewToScroll = tfPassword
         }
-        if !isValidEmail(email: tfEmail.text) {
+        if !Validate.isValidEmail(email: tfEmail.text) {
             tfEmail.error = getString("error_email")
             isValid = false
             viewToScroll = tfEmail
         }
-        
-        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < User.minBodyWeight {
-            tfWeight.error = getString("error_weight")
+        if !Validate.isValidBodyWeight(tfWeight: tfWeight) {
             isValid = false
             viewToScroll = tfWeight
         }
-        
-        let chooseText = ""
-        if tfCountry.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfCountry) {
             isValid = false
-            tfCountry.error = getString("user_spinner_choose")
             viewToScroll = tfCountry
         }
-        
-        if tfGender.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfGender) {
             isValid = false
-            tfGender.error = getString("user_spinner_choose")
             viewToScroll = tfGender
         }
-        
-        if tfArtOfPaddling.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfArtOfPaddling) {
             isValid = false
-            tfArtOfPaddling.error = getString("user_spinner_choose")
             viewToScroll = tfArtOfPaddling
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitWeight) {
+            isValid = false
+            viewToScroll = tfUnitWeight
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitDistance) {
+            isValid = false
+            viewToScroll = tfUnitDistance
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitPace) {
+            isValid = false
+            viewToScroll = tfUnitPace
         }
 
         if let scroll = viewToScroll {
@@ -388,5 +424,8 @@ class RegisterView: UIView, UITextFieldDelegate {
         tfCountry.text = ""
         tfGender.text = ""
         tfArtOfPaddling.text = ""
+        tfUnitWeight.text = ""
+        tfUnitDistance.text = ""
+        tfUnitPace.text = ""
     }
 }

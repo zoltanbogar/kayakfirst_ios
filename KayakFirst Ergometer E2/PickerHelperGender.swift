@@ -15,11 +15,6 @@ class PickerHelperGender: PickerHelper {
     static let genderFemale = "female"
     static let genderMale = "male"
     
-    //MARK: init
-    override init(pickerView: UIPickerView, textField: UITextField) {
-        super.init(pickerView: pickerView, textField: textField)
-    }
-    
     //MARK: functions
     override func getOptions() -> [String] {
         return PickerHelperGender.genderOptions
@@ -42,11 +37,5 @@ class PickerHelperGender: PickerHelper {
             return PickerHelperGender.genderMale
         }
         return nil
-    }
-    
-    override func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedGender = PickerHelperGender.genderOptions[row]
-        
-        textField.text = selectedGender
     }
 }

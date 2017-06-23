@@ -25,11 +25,13 @@ struct User {
     static let keyUserGender = "user_gender"
     static let keyUserArtOfPaddling = "user_art_of_paddling"
     static let keyUserName = "user_name"
+    static let keyUnitWeight = "unit_weight"
+    static let keyUnitDistance = "unit_distance"
+    static let keyUnitPace = "unit_pace"
     
     //MARK: constants
-    static let minCharacterUserName = 2
-    static let minCharacterPassword = 4
-    static let minBodyWeight = 30
+    static let unitMetric = "metric"
+    static let unitImperial = "imperial"
     
     let id: Int64
     let userName: String?
@@ -42,6 +44,9 @@ struct User {
     let country: String?
     let gender: String?
     let artOfPaddling: String?
+    let unitWeight: String?
+    let unitDistance: String?
+    let unitPace: String?
     
     init(id: Int64,
          userName: String?,
@@ -53,7 +58,10 @@ struct User {
          bodyWeight: Double?,
          country: String?,
          gender: String?,
-         artOfPaddling: String?
+         artOfPaddling: String?,
+         unitWeight: String?,
+         unitDistance: String?,
+         unitPace: String?
         ) {
         self.id = id
         self.userName = userName
@@ -66,6 +74,9 @@ struct User {
         self.country = country
         self.gender = gender
         self.artOfPaddling = artOfPaddling
+        self.unitWeight = unitWeight
+        self.unitDistance = unitDistance
+        self.unitPace = unitPace
     }
     
     init(json: JSON) {
@@ -80,5 +91,8 @@ struct User {
         self.country = json["country"].stringValue
         self.gender = json["gender"].stringValue
         self.artOfPaddling = json["artOfPaddling"].stringValue
+        self.unitWeight = json["unitWeight"].stringValue
+        self.unitDistance = json["unitDistance"].stringValue
+        self.unitPace = json["unitPace"].stringValue
     }
 }

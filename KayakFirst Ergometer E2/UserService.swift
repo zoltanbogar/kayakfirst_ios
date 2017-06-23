@@ -73,6 +73,9 @@ class UserService: AppService {
         var country: String? = nil
         var gender: String? = nil
         var artOfPaddling: String? = nil
+        var unitWeight: String? = nil
+        var unitDistance: String? = nil
+        var unitPace: String? = nil
         
         if let newUser = user {
             userId = newUser.id
@@ -86,6 +89,9 @@ class UserService: AppService {
             country = newUser.country
             gender = newUser.gender
             artOfPaddling = newUser.artOfPaddling
+            unitWeight = newUser.unitWeight
+            unitDistance = newUser.unitDistance
+            unitPace = newUser.unitPace
         }
         
         preferences.set(userId, forKey: User.keyUserId)
@@ -99,6 +105,9 @@ class UserService: AppService {
         preferences.set(country, forKey: User.keyUserCountry)
         preferences.set(gender, forKey: User.keyUserGender)
         preferences.set(artOfPaddling, forKey: User.keyUserArtOfPaddling)
+        preferences.set(unitWeight, forKey: User.keyUnitWeight)
+        preferences.set(unitDistance, forKey: User.keyUnitDistance)
+        preferences.set(unitPace, forKey: User.keyUnitPace)
         preferences.synchronize()
     }
     
@@ -133,7 +142,10 @@ class UserService: AppService {
                 bodyWeight: preferences.double(forKey: User.keyUserBodyWeight),
                 country: preferences.string(forKey: User.keyUserCountry),
                 gender: preferences.string(forKey: User.keyUserGender),
-                artOfPaddling: preferences.string(forKey: User.keyUserArtOfPaddling))
+                artOfPaddling: preferences.string(forKey: User.keyUserArtOfPaddling),
+                unitWeight: preferences.string(forKey: User.keyUnitWeight),
+                unitDistance: preferences.string(forKey: User.keyUnitDistance),
+                unitPace: preferences.string(forKey: User.keyUnitPace))
         }
         return nil
     }

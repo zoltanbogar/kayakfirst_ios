@@ -20,11 +20,6 @@ class PickerHelperArtOfPaddling: PickerHelper {
     private static let artOfPaddlingDragon = "dragon"
     private static let artOfPaddlingRowing = "rowing"
     
-    //MARK: init
-    override init(pickerView: UIPickerView, textField: UITextField) {
-        super.init(pickerView: pickerView, textField: textField)
-    }
-    
     //MARK: functions
     override func getOptions() -> [String] {
         return PickerHelperArtOfPaddling.artOfPaddlingOptions
@@ -76,11 +71,4 @@ class PickerHelperArtOfPaddling: PickerHelper {
         }
         return value
     }
-    
-    override func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedArtOfPaddling = getOptions()[row]
-        
-        textField.text = selectedArtOfPaddling
-    }
-    
 }

@@ -24,6 +24,12 @@ class ProfileVc: MainTabVc {
     private var genderPickerHelper: PickerHelperGender?
     private let artOfPaddlingPickerView = UIPickerView()
     private var artOfPaddlingPickerHelper: PickerHelperArtOfPaddling?
+    private let unitWeightPickerView = UIPickerView()
+    private var pickerHelperUnitWeight: PickerHelperUnit?
+    private let unitDistancePickerView = UIPickerView()
+    private var pickerHelperUnitDistance: PickerHelperUnit?
+    private let unitPacePickerView = UIPickerView()
+    private var pickerHelperUnitPace: PickerHelperUnit?
     
     //MARK: properties
     var userService = UserService.sharedInstance
@@ -32,6 +38,9 @@ class ProfileVc: MainTabVc {
         countryPickerHelper = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
         genderPickerHelper = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
         artOfPaddlingPickerHelper = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
+        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
+        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
+        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
         
         super.viewDidLoad()
         
@@ -71,6 +80,9 @@ class ProfileVc: MainTabVc {
             stackView?.addArrangedSubview(tfCountry)
             stackView?.addArrangedSubview(tfGender)
             stackView?.addArrangedSubview(tfArtOfPaddling)
+            stackView?.addArrangedSubview(tfUnitWeight)
+            stackView?.addArrangedSubview(tfUnitDistance)
+            stackView?.addArrangedSubview(tfUnitPace)
             
             progressView = ProgressView(superView: contentView)
             
@@ -106,10 +118,7 @@ class ProfileVc: MainTabVc {
         tfUserName.text = self.userService.getUser()?.userName
         tfEmail.text = self.userService.getUser()?.email
         
-        let weight = self.userService.getUser()?.bodyWeight
-        if let weightValue = weight {
-            tfWeight.text = "\(Int(weightValue))"
-        }
+        initBodyWeight(user: self.userService.getUser())
         
         tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userService.getUser()?.country)
         
@@ -120,7 +129,40 @@ class ProfileVc: MainTabVc {
         if let artOfPaddling = self.userService.getUser()?.artOfPaddling {
             tfArtOfPaddling.text = self.artOfPaddlingPickerHelper!.getTitle(value: artOfPaddling)
         }
+        if let unitWeight = self.userService.getUser()?.unitWeight {
+            tfUnitWeight.text = self.pickerHelperUnitWeight!.getTitle(value: unitWeight)
+        }
+        if let unitDistance = self.userService.getUser()?.unitDistance {
+            tfUnitDistance.text = self.pickerHelperUnitDistance!.getTitle(value: unitDistance)
+        }
+        if let unitPace = self.userService.getUser()?.unitPace {
+            tfUnitPace.text = self.pickerHelperUnitPace!.getTitle(value: unitPace)
+        }
+    }
+    
+    private func initBodyWeight(user: User?) {
+        let weight = user?.bodyWeight
+        if let weightValue = weight {
+            tfWeight.text = "\(Int(weightValue))"
+        }
+        pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
         
+        initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
+    }
+    
+    private func initBodyWeightUnit(isMetric: Bool) {
+        let title = tfWeight.title!
+        let splitText = title.components(separatedBy: "(")
+        var originalTitle: String = splitText[0]
+        
+        let endWithSpace = originalTitle.hasSuffix(" ")
+        
+        originalTitle = originalTitle + (endWithSpace ? "" : " ") + "(" + UnitHelper.getWeightUnit(isMetric: isMetric) + ")"
+        tfWeight.title = originalTitle
+    }
+    
+    private func pickerUnitWeightListener() {
+        initBodyWeightUnit(isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue()))
     }
     
     //MARK: views
@@ -226,6 +268,30 @@ class ProfileVc: MainTabVc {
         return textField
     }()
     
+    private lazy var tfUnitWeight: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_weight")
+        textField.active = false
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitDistance: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_distance")
+        textField.active = false
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitPace: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_pace")
+        textField.active = false
+        
+        return textField
+    }()
+    
     private lazy var btnLogout: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.title = getString("user_log_out")
@@ -255,21 +321,24 @@ class ProfileVc: MainTabVc {
     
     //MARK: callbacks
     @objc private func btnSaveClick() {
-        if checkBodyWeight() {
+        if checkRequiredElements() {
             progressView?.show(true)
             UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
                 userDto: UserDto(
                                 lastName: tfLastName.text,
                                 firstName: tfFirstName.text,
                                 email: tfEmail.text,
-                                bodyWeight: Double(tfWeight.text!),
+                                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
                                 gender: self.userService.getUser()?.gender,
                                 birthDate: self.userService.getUser()?.birthDate,
                                 club: tfClub.text,
                                 country: self.countryPickerHelper!.getValue() ?? userService.getUser()?.country,
                                 artOfPaddling: self.artOfPaddlingPickerHelper!.getValue(),
                                 password: tfPassword.text,
-                                userName: tfUserName.text))
+                                userName: tfUserName.text,
+                                unitWeight: pickerHelperUnitWeight?.getValue(),
+                                unitDistance: pickerHelperUnitDistance?.getValue(),
+                                unitPace: pickerHelperUnitPace?.getValue()))
         }
     }
     
@@ -289,6 +358,9 @@ class ProfileVc: MainTabVc {
         tfClub.active = isActive
         tfCountry.active = isActive
         tfArtOfPaddling.active = isActive
+        tfUnitWeight.active = isActive
+        tfUnitDistance.active = isActive
+        tfUnitPace.active = isActive
         
         if !isActive {
             let weight = self.userService.getUser()?.bodyWeight
@@ -300,13 +372,14 @@ class ProfileVc: MainTabVc {
         }
     }
     
-    private func checkBodyWeight() -> Bool {
-        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < User.minBodyWeight {
-            tfWeight.error = getString("error_weight")
-            return false
-        }
-        return true
+    private func checkRequiredElements() -> Bool {
+        let isValidArtOfPaddling = Validate.isValidPicker(tfPicker: tfArtOfPaddling)
+        let isValidUnitWeight = Validate.isValidPicker(tfPicker: tfUnitWeight)
+        let isValidUnitDistance = Validate.isValidPicker(tfPicker: tfUnitDistance)
+        let isValidUnitPace = Validate.isValidPicker(tfPicker: tfUnitPace)
+        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: tfWeight)
+        
+        return isValidArtOfPaddling && isValidUnitWeight && isValidUnitDistance && isValidUnitPace && isValidBodyWeight
     }
     
     @objc private func clickLogout() {

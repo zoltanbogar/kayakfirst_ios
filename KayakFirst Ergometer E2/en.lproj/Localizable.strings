@@ -239,7 +239,7 @@
 "unit_speed_imperial"="mph";
 "unit_force_metric"="n";
 "unit_force_imperial"="lbs";
-"unit_distance"="m";
+"unit_distance_metric"="m";
 "unit_distance_imperial"="ft";
 "unit_weight_metric"="kg";
 "unit_weight_imperial"="lbs";

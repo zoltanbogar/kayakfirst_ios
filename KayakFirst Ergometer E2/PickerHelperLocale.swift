@@ -12,11 +12,6 @@ class PickerHelperLocale: PickerHelper {
     
     //MARK: properties
     private var value: String?
-
-    //MARK: init
-    override init(pickerView: UIPickerView, textField: UITextField) {
-        super.init(pickerView: pickerView, textField: textField)
-    }
     
     //MARK: functions
     override func getOptions() -> [String] {
@@ -44,5 +39,4 @@ class PickerHelperLocale: PickerHelper {
         
         textField.text = NSLocale.locales()[row].countryName
     }
-    
 }

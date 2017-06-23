@@ -13,6 +13,7 @@ class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: properties
     private let pickerView: UIPickerView
     let textField: UITextField
+    var pickerChangedListener: (() -> ())?
 
     //MARK: init
     init(pickerView: UIPickerView, textField: UITextField) {
@@ -54,6 +55,12 @@ class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        fatalError("must be implemented")
+        let selectedOption = getOptions()[row]
+        
+        textField.text = selectedOption
+        
+        if let listener = pickerChangedListener {
+            listener()
+        }
     }
 }
