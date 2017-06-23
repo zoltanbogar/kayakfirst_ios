@@ -28,11 +28,19 @@ class DashBoardElement: UIView {
                     make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
                     make.centerX.equalTo(self)
                     
-                    labelTitle.text = self.getTitleOneLine().uppercased()
+                    if isMetric() {
+                        labelTitle.text = self.getTitleOneLineMetric().uppercased()
+                    } else {
+                        labelTitle.text = self.getTitleOneLineImperial().uppercased()
+                    }
                 } else {
                     make.center.equalTo(self)
                     
-                    labelTitle.text = self.getTitle().uppercased()
+                    if isMetric() {
+                        labelTitle.text = self.getTitleMetric().uppercased()
+                    } else {
+                        labelTitle.text = self.getTitleImperial().uppercased()
+                    }
                 }
             }
         }
@@ -100,11 +108,23 @@ class DashBoardElement: UIView {
         fatalError("Must be implemented")
     }
     
-    internal func getTitle() -> String {
+    internal func getTitleMetric() -> String {
         fatalError("Must be implemented")
     }
     
-    internal func getTitleOneLine() -> String {
+    internal func getTitleImperial() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTitleOneLineMetric() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTitleOneLineImperial() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func isMetric() -> Bool {
         fatalError("Must be implemented")
     }
     
@@ -159,7 +179,11 @@ class DashBoardElement: UIView {
     private lazy var labelTitle: UILabel! = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = self.getTitle().uppercased()
+        if self.isMetric() {
+            label.text = self.getTitleMetric().uppercased()
+        } else {
+            label.text = self.getTitleImperial().uppercased()
+        }
         label.textColor = Colors.colorWhite
         label.numberOfLines = 0
         

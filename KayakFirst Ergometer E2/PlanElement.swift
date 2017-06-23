@@ -60,8 +60,8 @@ struct PlanElement {
     func getFormattedValue() -> String {
         switch type {
         case PlanType.distance:
-            let formattedValue = "\(value)"
-            let unit = getString("unit_distance").uppercased()
+            let formattedValue = String.init(format: "%.1f", value)
+            let unit = UnitHelper.getDistanceUnit()
             
             return "\(formattedValue) \(unit)"
         case PlanType.time:

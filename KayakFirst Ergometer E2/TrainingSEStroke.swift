@@ -13,12 +13,16 @@ class TrainingSEStroke: TrainingSumelementMaximum {
         return "%.0f"
     }
     
-    override func getTitle() -> String {
+    override func getTitleMetric() -> String {
         return getString("training_sum_stroke")
     }
     
-    override func getUnit() -> String {
-        return ""
+    override func getTitleImperial() -> String {
+        return getString("training_sum_stroke")
+    }
+    
+    override func isMetric() -> Bool {
+        return true
     }
     
     override func getTrainingList() -> [Training] {

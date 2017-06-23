@@ -19,15 +19,27 @@ class DashBoardElement_Actual200: DashBoardelementTime {
         return telemetry.t_200
     }
     
-    override internal func getTitle() -> String {
-        return getString("dashboard_outdoor_title_actual_200")
+    override func getTitleMetric() -> String {
+        return getString("dashboard_outdoor_title_actual_200_metric")
     }
     
-    override func getTitleOneLine() -> String {
-        return getString("dashboard_title_actual_200")
+    override func getTitleImperial() -> String {
+        return getString("dashboard_outdoor_title_actual_200_imperial")
+    }
+    
+    override func getTitleOneLineMetric() -> String {
+         return getString("dashboard_title_actual_200_metric")
+    }
+    
+    override func getTitleOneLineImperial() -> String {
+         return getString("dashboard_title_actual_200_imperial")
     }
     
     override func getTagInt() -> Int {
         return DashBoardElement_Actual200.tagInt
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricPace()
     }
 }

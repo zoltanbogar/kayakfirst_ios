@@ -13,12 +13,16 @@ class TrainingSET1000Av: TrainingSumElementAvgTime {
         return CalculateEnum.T_1000_AV.rawValue
     }
     
-    override func getTitle() -> String {
-        return getString("training_sum_t_1000")
+    override func getTitleMetric() -> String {
+        return getString("training_sum_t_1000_metric")
     }
     
-    override func getUnit() -> String {
-        return ""
+    override func getTitleImperial() -> String {
+        return getString("training_sum_t_1000_imperial")
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricPace()
     }
     
     override func getTrainingList() -> [Training] {

@@ -117,13 +117,39 @@ class UnitHelper {
         return value
     }
     
+    class func getCalculatePaceTitle(pace: Int) -> String {
+        switch pace {
+        case 200:
+            if isMetricPace() {
+                return getString("calculate_t200_metric")
+            } else {
+                return getString("calculate_t200_imperial")
+            }
+        case 500:
+            if isMetricPace() {
+                return getString("calculate_t500_metric")
+            } else {
+                return getString("calculate_t500_imperial")
+            }
+        case 1000:
+            if isMetricPace() {
+                return getString("calculate_t1000_metric")
+            } else {
+                return getString("calculate_t1000_imperial")
+            }
+        default:
+            fatalError("there is no other pace")
+        }
+    }
+    
     class func isMetricWeight() -> Bool {
         var isImperial = false
         
         if let user = userManager.getUser() {
             isImperial = user.unitWeight == User.unitImperial
         }
-        return !isImperial
+        //return !isImperial
+        return false
     }
     
     class func isMetricDistance() -> Bool {
@@ -132,7 +158,8 @@ class UnitHelper {
         if let user = userManager.getUser() {
             isImperial = user.unitDistance == User.unitImperial
         }
-        return !isImperial
+        //return !isImperial
+        return false
     }
     
     class func isMetricPace() -> Bool {
@@ -141,7 +168,8 @@ class UnitHelper {
         if let user = userManager.getUser() {
             isImperial = user.unitPace == User.unitImperial
         }
-        return !isImperial
+        //return !isImperial
+        return false
     }
     
     class func isMetric(keyUnit: String?) -> Bool {

@@ -13,12 +13,16 @@ class TrainingSESpeed: TrainingSumelementMaximum {
         return "%.1f"
     }
     
-    override func getTitle() -> String {
-        return getString("training_sum_speed")
+    override func getTitleMetric() -> String {
+        return getString("training_sum_speed_metric")
     }
     
-    override func getUnit() -> String {
-        return getString("unit_speed")
+    override func getTitleImperial() -> String {
+        return getString("training_sum_speed_imperial")
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricDistance()
     }
     
     override func getTrainingList() -> [Training] {

@@ -131,7 +131,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         stackView.addArrangedSubview(self.etDistance)
         
         let labelUnit = BebasUILabel()
-        labelUnit.text = getString("unit_distance")
+        labelUnit.text = UnitHelper.getDistanceUnit()
         labelUnit.font = labelUnit.font.withSize(self.fontSize)
         labelUnit.textAlignment = .center
         labelUnit.snp.makeConstraints({ (make) in
@@ -230,7 +230,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         let et = PlanEtDistance()
         et.font = et.font?.withSize(self.fontSizeEdit)
         
-        et.hint = getString("plan_hint_meter")
+        et.hint = UnitHelper.getDistanceUnit()
         
         et.onFocusedListener = self
         et.onTextChangedListener = self
@@ -348,6 +348,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         }
     }
     
+    //TODO: returns true even the intensity has no text
     private func checkEnterEnable() {
         var enable = planElementTableView.positionToAdd >= 0
         
