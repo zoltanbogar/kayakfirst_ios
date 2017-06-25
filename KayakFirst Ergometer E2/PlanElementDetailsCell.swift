@@ -29,6 +29,7 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = Colors.colorTransparent
+        selectionStyle = UITableViewCellSelectionStyle.none
     }
     
     required init?(coder aDecoder: NSCoder) {

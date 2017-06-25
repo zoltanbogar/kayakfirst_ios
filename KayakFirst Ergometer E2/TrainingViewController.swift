@@ -26,6 +26,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     let telemetry = Telemetry.sharedInstance
     let outdoorService = OutdoorService.sharedInstance
     var plan: Plan?
+    private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -76,9 +77,9 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     }
     func showDashboard() {
         telemetry.cycleState = CycleState.idle
-        let dashobardVc = DashboardVc()
-        dashobardVc.plan = plan
-        pushViewController(dashobardVc, animated: true)
+        dashboardVc = DashboardVc()
+        dashboardVc!.plan = plan
+        pushViewController(dashboardVc!, animated: true)
     }
     
     func closeViewController() {
@@ -103,6 +104,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     
     func onCounterEnd() {
         startServiceLoop(true)
+        dashboardVc!.setPlantoPlanView()
     }
     
     //MARK: dashboard elements

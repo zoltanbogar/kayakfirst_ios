@@ -209,6 +209,7 @@
 		069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433ED1E28419600CE6398 /* ProgressDialog.swift */; };
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
+		0698BC4B1F004F3100FC7A0E /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698BC4A1F004F3100FC7A0E /* RefreshView.swift */; };
 		069ADD951EFB861800F24427 /* PickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD941EFB861800F24427 /* PickerHelper.swift */; };
 		069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD961EFB897400F24427 /* PickerHelperGender.swift */; };
 		069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */; };
@@ -479,6 +480,7 @@
 		069433ED1E28419600CE6398 /* ProgressDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDialog.swift; sourceTree = "<group>"; };
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
+		0698BC4A1F004F3100FC7A0E /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		069ADD941EFB861800F24427 /* PickerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelper.swift; sourceTree = "<group>"; };
 		069ADD961EFB897400F24427 /* PickerHelperGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperGender.swift; sourceTree = "<group>"; };
 		069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperLocale.swift; sourceTree = "<group>"; };
@@ -1118,6 +1120,7 @@
 				060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */,
 				060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */,
 				060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */,
+				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
 			);
 			name = dashboard_elements;
 			sourceTree = "<group>";
@@ -1444,6 +1447,7 @@
 				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
+				0698BC4B1F004F3100FC7A0E /* RefreshView.swift in Sources */,
 				067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */,
 				060A37841E58547600A973BF /* DashBoardElement_AvStrokes.swift in Sources */,
 				06F914631E428A240041B303 /* Alamofire+.swift in Sources */,

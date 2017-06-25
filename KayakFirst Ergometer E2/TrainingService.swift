@@ -86,9 +86,10 @@ class TrainingService: CycleStateChangeListener {
     }
     
     private func startLoop() {
+        startDuration()
+        
         DispatchQueue.global().async {
             while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
-                self.setDuration()
                 
                 if self.runCalculate() {
                     let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
@@ -103,6 +104,14 @@ class TrainingService: CycleStateChangeListener {
                 }
                 
                 usleep(self.getTimeWaitAfterCalculate())
+            }
+        }
+    }
+    
+    private func startDuration() {
+        DispatchQueue.global().async {
+            while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
+                self.setDuration()
             }
         }
     }

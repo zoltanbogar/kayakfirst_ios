@@ -27,6 +27,14 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     }
     
     //MARK: functions
+    func removePlanElement(position: Int) {
+        if dataList != nil && dataList!.count > position {
+            dataList?.remove(at: position)
+            
+            reloadData()
+        }
+    }
+    
     override func getEmptyView() -> UIView {
         return emptyView
     }

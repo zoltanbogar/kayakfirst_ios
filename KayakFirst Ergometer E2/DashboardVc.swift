@@ -174,6 +174,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         dashboardElement2?.startRefresh(isRefresh)
         dashboardElement3?.startRefresh(isRefresh)
         dashboardElement4?.startRefresh(isRefresh)
+        
+        viewDashboardPlan.startRefresh(isRefresh)
     }
     
     //MARK: views
@@ -240,12 +242,18 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
                 }
             }
         }
-        
         if plan != nil {
             viewToShow = viewDashboardPlan
+            setPlantoPlanView()
+        }
+        
+        mainStackView.addArrangedSubview(viewToShow)
+    }
+    
+    func setPlantoPlanView() {
+        if plan != nil {
             viewDashboardPlan.plan = plan
         }
-        mainStackView.addArrangedSubview(viewToShow)
     }
 
     //MARK: screen orieantation
