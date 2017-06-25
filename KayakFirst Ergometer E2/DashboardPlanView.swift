@@ -29,6 +29,7 @@ class DashboardPlanView: RefreshView {
     }
     private var localeValue: Double = 0
     private var planElementPosition: Int = 0
+    private let planSoundHelper = PlanSoundHelper.sharedInstance
     
     //MARK: init
     override init(frame: CGRect) {
@@ -49,6 +50,8 @@ class DashboardPlanView: RefreshView {
         
         deActual1000.startRefresh(isStart)
         deSpm.startRefresh(isStart)
+        
+        planSoundHelper.shouldPlay = isStart
     }
     
     override func refreshUi() {
@@ -65,6 +68,7 @@ class DashboardPlanView: RefreshView {
                 setTextsByPercent(percent: currentPercent)
             } else {
                 planElementPosition = plan!.planElements!.count
+                planSoundHelper.stopSound()
                 reset()
             }
         }
@@ -139,6 +143,8 @@ class DashboardPlanView: RefreshView {
                 valueText = getFormattedDistanceText(value: value)
                 valueAccentText = getFormattedTimeText(value: (telemetry.duration - localeValue))
             }
+            
+            planSoundHelper.playSoundIfNeeded(value: value, planType: plan!.type)
         }
         setTexts(valueText: valueText, valueAccentText: valueAccentText)
     }

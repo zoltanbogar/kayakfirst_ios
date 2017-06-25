@@ -210,6 +210,8 @@
 		069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F51E28462D00CE6398 /* NewPasswordDialog.swift */; };
 		069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433F71E28487800CE6398 /* PasswordCheck.swift */; };
 		0698BC4B1F004F3100FC7A0E /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698BC4A1F004F3100FC7A0E /* RefreshView.swift */; };
+		0698BC4D1F005E9200FC7A0E /* plan_tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0698BC4C1F005E9200FC7A0E /* plan_tick.mp3 */; };
+		0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */; };
 		069ADD951EFB861800F24427 /* PickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD941EFB861800F24427 /* PickerHelper.swift */; };
 		069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD961EFB897400F24427 /* PickerHelperGender.swift */; };
 		069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */; };
@@ -481,6 +483,8 @@
 		069433F51E28462D00CE6398 /* NewPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPasswordDialog.swift; sourceTree = "<group>"; };
 		069433F71E28487800CE6398 /* PasswordCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCheck.swift; sourceTree = "<group>"; };
 		0698BC4A1F004F3100FC7A0E /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		0698BC4C1F005E9200FC7A0E /* plan_tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plan_tick.mp3; sourceTree = "<group>"; };
+		0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanSoundHelper.swift; sourceTree = "<group>"; };
 		069ADD941EFB861800F24427 /* PickerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelper.swift; sourceTree = "<group>"; };
 		069ADD961EFB897400F24427 /* PickerHelperGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperGender.swift; sourceTree = "<group>"; };
 		069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperLocale.swift; sourceTree = "<group>"; };
@@ -813,6 +817,7 @@
 				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
 				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
+				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1130,6 +1135,7 @@
 			children = (
 				06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */,
 				06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */,
+				0698BC4C1F005E9200FC7A0E /* plan_tick.mp3 */,
 				0602B44B1E23C9B400ABA70F /* Localizable.strings */,
 				06C6ABBD1E2267A000562B27 /* Info.plist */,
 				0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */,
@@ -1356,6 +1362,7 @@
 			files = (
 				0683EA381E74860100F39988 /* BebasNeue.otf in Resources */,
 				06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */,
+				0698BC4D1F005E9200FC7A0E /* plan_tick.mp3 in Resources */,
 				0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */,
 				0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */,
 				06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */,
@@ -1606,6 +1613,7 @@
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
+				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				066B00411EC7406F00BE0E1F /* PlanningTypeVc.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
