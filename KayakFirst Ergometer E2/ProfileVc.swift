@@ -143,7 +143,7 @@ class ProfileVc: MainTabVc {
     private func initBodyWeight(user: User?) {
         let weight = user?.bodyWeight
         if let weightValue = weight {
-            tfWeight.text = "\(Int(weightValue))"
+            tfWeight.text = String.init(format: "%.1f", weightValue)
         }
         pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
         
@@ -363,11 +363,8 @@ class ProfileVc: MainTabVc {
         tfUnitPace.active = isActive
         
         if !isActive {
-            let weight = self.userService.getUser()?.bodyWeight
+            initBodyWeight(user: self.userService.getUser())
             
-            if let weightValue = weight {
-                tfWeight.text = "\(Int(weightValue))"
-            }
             tfWeight.endEditing(true)
         }
     }
