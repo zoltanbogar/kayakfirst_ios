@@ -49,12 +49,8 @@ class PlanningTypeVc: BaseVC {
         
         planStackView.addArrangedSubview(viewTime)
         
-        let dividerView1 = DividerView()
-        planStackView.addArrangedSubview(dividerView1)
-        dividerView1.snp.makeConstraints { (make) in
-            make.width.equalTo(dashboardDividerWidth)
-            make.height.equalTo(planStackView)
-        }
+        let halfDivider = HalfDivider()
+        planStackView.addArrangedSubview(halfDivider)
         
         planStackView.addArrangedSubview(viewDistance)
         mainstackView.addArrangedSubview(planStackView)

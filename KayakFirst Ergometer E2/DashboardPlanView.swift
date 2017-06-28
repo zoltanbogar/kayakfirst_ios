@@ -11,8 +11,8 @@ import Foundation
 class DashboardPlanView: RefreshView {
     
     //MARK: constants
-    private let progressHeight: CGFloat = 10
-    private let valueFontSize: CGFloat = 60
+    private let progressHeight: CGFloat = 12
+    private let valueFontSize: CGFloat = 75
     
     private let telemetry = Telemetry.sharedInstance
     
@@ -224,7 +224,7 @@ class DashboardPlanView: RefreshView {
         let deElementStackView = UIStackView()
         deElementStackView.axis = .horizontal
         deElementStackView.addArrangedSubview(deActual1000)
-        let deDivider = DividerView()
+        let deDivider = HalfDivider()
         deElementStackView.addArrangedSubview(deDivider)
         deElementStackView.addArrangedSubview(deSpm)
         
@@ -300,12 +300,14 @@ class DashboardPlanView: RefreshView {
     
     private lazy var deActual1000: DashBoardElement_Actual1000! = {
         let de = DashBoardElement_Actual1000()
+        de.isValueVisible = true
         
         return de
     }()
     
     private lazy var deSpm: DashBoardElement_Strokes! = {
         let de = DashBoardElement_Strokes()
+        de.isValueVisible = true
         
         return de
     }()

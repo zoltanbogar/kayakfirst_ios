@@ -68,14 +68,6 @@ class DashBoardElement: RefreshView {
     override func refreshUi() {
         labelValue?.text = getFormattedText()
     }
-    
-    //MARK: size
-    override var intrinsicContentSize: CGSize {
-        get {
-            let height: CGFloat = 100
-            return CGSize(width: 0, height: height)
-        }
-    }
 
     //MARK: abstract functions
     internal func getStringFormatter() -> String {
@@ -148,7 +140,11 @@ class DashBoardElement: RefreshView {
         labelTitle.snp.makeConstraints { make in
             make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
             make.centerX.equalTo(self)
-            make.height.equalTo(60)
+            var height = self.frame.height / 3
+            if height == 0 {
+                height = 30
+            }
+            make.height.equalTo(height)
         }
         
         labelValue.snp.makeConstraints { make in

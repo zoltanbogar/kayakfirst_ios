@@ -64,8 +64,7 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         
         cell.data = dataList?[indexPath.row]
         
-        //TODO: not necessary?
-        //rowHeight = cell.getRowHeight()
+        rowHeight = cell.getRowHeight()
         
         return cell
     }
