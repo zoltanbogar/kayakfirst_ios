@@ -17,6 +17,13 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
     
     private var stackView = UIStackView()
     
+    private var originalWidth: CGFloat = 0
+    private var lowestVisibleX: Double = 0
+    private var highestVisibleX: Double = 0
+    
+    private var widthConstant: CGFloat = 0
+    private var leftConstant: CGFloat = 0
+    
     //MARK: init
     init() {
         super.init(frame: CGRect.zero)
@@ -35,12 +42,6 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
         }
     }
     
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        
-        measureOriginalWidth()
-    }
-    
     //MARK: functions
     func setData(plan: Plan, lineChart: LineChartView) {
         self.plan = plan
@@ -55,7 +56,15 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
     }
     
     func measureOriginalWidth() {
+        originalWidth = frame.width
         
+        zoomTimeLine()
+    }
+    
+    override func layoutSubviews() {
+        if originalWidth == 0 {
+            measureOriginalWidth()
+        }
     }
     
     private func initPlanElements() {
@@ -70,15 +79,9 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
                 let weight = CGFloat(planElement.value) / CGFloat(length!)
                 
                 stackView.addArrangedSubview(getPlanElementView(planElement: planElement, weight: weight))
-                
             }
         }
         addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        measureOriginalWidth()
     }
     
     private func getPlanElementView(planElement: PlanElement, weight: CGFloat) -> PlanElementTimelineView {
@@ -86,5 +89,58 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
         view.backgroundColor = getPlanElementColor(planElement: planElement)
         
         return view
+    }
+    
+    //MARK: chart delegate
+    func chartScaled(_ chartView: ChartViewBase, scaleX: CGFloat, scaleY: CGFloat) {
+        zoomTimeLine()
+    }
+    
+    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
+        moveTimeLine()
+    }
+    
+    //MARK: zoom timeline
+    private func moveTimeLine() {
+        if let chart = lineChart {
+            if lowestVisibleX == 0 && highestVisibleX == 0 {
+                lowestVisibleX = chart.lowestVisibleX
+                highestVisibleX = chart.highestVisibleX
+            }
+            
+            if lowestVisibleX != chart.lowestVisibleX && highestVisibleX != chart.highestVisibleX {
+                zoomTimeLine()
+                
+                lowestVisibleX = chart.lowestVisibleX
+                highestVisibleX = chart.highestVisibleX
+            }
+        }
+    }
+    
+    private func zoomTimeLine() {
+        if let chart = lineChart {
+            let diffZoomX = chart.highestVisibleX - chart.lowestVisibleX
+            let scaleX: CGFloat = (CGFloat(plan!.length / diffZoomX))
+            
+            widthConstant = originalWidth * scaleX
+            
+            let moveXBase: CGFloat = (originalWidth * scaleX - originalWidth) / 2
+            let scaleLayoutX: CGFloat = CGFloat(chart.lineData!.xMax / diffZoomX)
+            let leftPercent: CGFloat = CGFloat(chart.lowestVisibleX / chart.lineData!.xMax)
+            let moveX = -(leftPercent * originalWidth * scaleLayoutX)
+            
+            leftConstant = moveXBase + moveX
+            
+            initConstraints()
+        }
+    }
+    
+    private func initConstraints() {
+        stackView.snp.remakeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview().offset(leftConstant)
+            make.width.equalTo(widthConstant)
+        }
     }
 }
