@@ -20,14 +20,7 @@ class TrainingDaysDbLoader: BaseDbLoader<Double> {
         super.init()
     }
     
-    //MARK: keys
-    struct PropertyKey {
-        static let userIdKey = "userId"
-    }
-    
     //MARK: columns
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
-    
     override func getTableName() -> String {
         return TrainingDaysDbLoader.tableName
     }

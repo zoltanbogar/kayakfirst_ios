@@ -28,7 +28,6 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     //MARK: keys
     struct PropertyKey {
         static let idKey = planIdKey
-        static let userIdKey = "userIdKey"
         static let typeKey = "type"
         static let nameKey = "name"
         static let notesKey = "notes"
@@ -39,7 +38,6 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     
     //MARK: columns
     private let id = Expression<String>(PropertyKey.idKey)
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
     private let type = Expression<String>(PropertyKey.typeKey)
     private let name = Expression<String?>(PropertyKey.nameKey)
     private let notes = Expression<String?>(PropertyKey.notesKey)

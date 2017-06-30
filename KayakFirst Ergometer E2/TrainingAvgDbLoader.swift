@@ -27,14 +27,12 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
     //MARK: keys
     struct PropertyKey {
         static let averageHashKey = "averageHash"
-        static let userIdKey = "userId"
         static let dataTypeKey = "dataType"
         static let dataValueKey = "dataValue"
     }
     
     //MARK: columns
     private let averageHash = Expression<String>(PropertyKey.averageHashKey)
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)
     private let dataValue = Expression<Double>(PropertyKey.dataValueKey)
     

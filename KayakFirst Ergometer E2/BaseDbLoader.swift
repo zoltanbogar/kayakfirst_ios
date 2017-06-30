@@ -17,6 +17,7 @@ class BaseDbLoader<Input> {
     //MARK: properties
     let db = AppSql.sharedInstance.db
     let sessionId = Expression<Double>("sessionId")
+    let userId = Expression<Int64>("userId")
     var table: Table?
     
     //MARK: init
@@ -24,6 +25,7 @@ class BaseDbLoader<Input> {
         initBaseDatabase()
     }
     
+    //MARK: functions
     private func initBaseDatabase() {
         table = Table(getTableName())
         do {
@@ -34,7 +36,8 @@ class BaseDbLoader<Input> {
             log(databaseLogTag, error)
         }
     }
-    
+
+    //TODO: is it sure?
     func deleteData(timeStampFrom: Double) {
         let oldData = table!.filter(self.sessionId < timeStampFrom)
         
@@ -43,6 +46,29 @@ class BaseDbLoader<Input> {
         } catch {
             log("DATABASE", error)
         }
+    }
+    
+    func loadData(predicate: Expression<Bool>?) -> [Input]? {
+        return queryData(predicate: BaseDbLoader.getSumPredicate(predicates: getUserQuery(), predicate))
+    }
+    
+    func getUserQuery() -> Expression<Bool> {
+        return self.userId == UserService.sharedInstance.getUser()!.id
+    }
+    
+    //MARK: static functions
+    class func getSumPredicate(predicates: Expression<Bool>?...) -> Expression<Bool>? {
+        var sumPredicate: Expression<Bool>? = predicates[0]
+        for predicate in predicates {
+            if let predicateValue = predicate {
+                if sumPredicate == nil {
+                    sumPredicate = predicateValue
+                } else {
+                    sumPredicate = sumPredicate! && predicateValue
+                }
+            }
+        }
+        return sumPredicate
     }
     
     //MARK: abstract functions
@@ -55,7 +81,7 @@ class BaseDbLoader<Input> {
     func addData(data: Input) {
         fatalError("Must be implemented")
     }
-    func loadData(predicate: Expression<Bool>?) -> [Input]? {
+    func queryData(predicate: Expression<Bool>?) -> [Input]? {
         fatalError("Must be implemented")
     }
     func updateData(data: Input) {

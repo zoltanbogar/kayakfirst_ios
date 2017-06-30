@@ -24,7 +24,6 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     struct PropertyKey {
         static let timeStampKey = "timeStamp"
         static let currentDistanceKey = "currentDistance"
-        static let userIdKey = "userId"
         static let trainingTypeKey = "trainingType"
         static let trainingEnvironmentTypeKey = "trainingEnvironmentType"
         static let dataTypeKey = "dataType"
@@ -34,7 +33,6 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     //MARK: columns
     private let timeStamp = Expression<Double>(PropertyKey.timeStampKey)
     private let currentDistance = Expression<Double>(PropertyKey.currentDistanceKey)
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
     private let trainingType = Expression<String>(PropertyKey.trainingTypeKey)
     private let trainingEnvironmentType = Expression<String>(PropertyKey.trainingEnvironmentTypeKey)
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)

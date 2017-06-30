@@ -969,6 +969,7 @@
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
+				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				064FE5A31ED09DCE004A9F35 /* manager */,
 				060A7D091E41B43500F6A29F /* service */,
 				06F9145B1E427ACE0041B303 /* UserService.swift */,
@@ -1201,7 +1202,6 @@
 			children = (
 				0683EA361E74856D00F39988 /* fonts */,
 				060B99241E64288B00F72404 /* location */,
-				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				06C1B9861E25961300AB4C47 /* design */,
 				069433E61E28361B00CE6398 /* dialog */,
 				060C8B751E4068220057DD61 /* domain */,
