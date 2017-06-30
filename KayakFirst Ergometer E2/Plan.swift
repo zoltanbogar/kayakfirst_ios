@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum PlanType: String {
     case time = "time"
@@ -46,6 +47,15 @@ class Plan: PlanObject, ModifyAble {
         self.userId = userId
         self.length = length
         self.type = type
+    }
+    
+    init(json: JSON) {
+        self.planId = json["planId"].stringValue
+        self.name = json["name"].stringValue
+        self.notes = json["notes"].stringValue
+        self.userId = json["userId"].int64Value
+        self.length = json["length"].doubleValue
+        self.type = PlanType(rawValue: json["type"].stringValue)!
     }
     
     //MARK: functions

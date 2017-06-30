@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Event: PlanObject, ModifyAble {
     
@@ -43,6 +44,16 @@ struct Event: PlanObject, ModifyAble {
         self.name = name
         self.planType = planType
         self.planId = planId
+    }
+    
+    init(json: JSON) {
+        self.eventId = json["eventId"].stringValue
+        self.userId = json["userId"].int64Value
+        self.sessionId = json["sessionId"].doubleValue
+        self.timestamp = json["timestamp"].doubleValue
+        self.name = json["name"].stringValue
+        self.planType = PlanType(rawValue: json["planType"].stringValue)!
+        self.planId = json["planId"].stringValue
     }
     
     //MARK: protocol

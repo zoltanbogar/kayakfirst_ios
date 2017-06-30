@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class PlanTraining: Plan {
     
@@ -49,6 +50,11 @@ class PlanTraining: Plan {
     init(planId: String, userId: Int64, planType: PlanType, name: String?, notes: String?, length: Double, sessionId: Double) {
         super.init(planId: planId, userId: userId, type: planType, name: name, notes: notes, length: length)
         self.sessionId = sessionId
+    }
+    
+    override init(json: JSON) {
+        super.init(json: json)
+        self.sessionId = json["sessionId"].doubleValue
     }
     
     //MARK: protocol
