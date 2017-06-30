@@ -8,12 +8,15 @@
 
 import Foundation
 
-struct PlanElement {
+struct PlanElement: PlanObject {
+    
+    //MARK: constants
+    private let planElementName = "plan_element"
     
     //MARK: properties
-    var id: String
-    var planId: String
+    var planElementId: String = ""
     var type: PlanType
+    var position: Int = 0
     var intensity: Int {
         get {
             return _intensity
@@ -33,24 +36,23 @@ struct PlanElement {
     
     //MARK: init
     init(planId: String, type: PlanType) {
-        self.planId = planId
         self.type = type
         
-        id = Plan.createPlanId(createValue: planId)
+        planElementId = Plan.createPlanId(name: getPlanObjectName(), createValue: planId)
     }
     
     init(planId: String, intensity: Int, type: PlanType, value: Double) {
-        self.planId = planId
-        self._intensity = intensity
         self.type = type
         self.value = value
         
-        id = Plan.createPlanId(createValue: planId)
+        planElementId = Plan.createPlanId(name: getPlanObjectName(), createValue: planId)
+        
+        self._intensity = intensity
     }
     
-    init(id: String, planId: String, intensity: Int, type: PlanType, value: Double) {
-        self.id = id;
-        self.planId = planId
+    init(planElementId: String, position: Int, intensity: Int, type: PlanType, value: Double) {
+        self.planElementId = planElementId
+        self.position = position
         self._intensity = intensity
         self.type = type
         self.value = value
@@ -59,5 +61,22 @@ struct PlanElement {
     //MARK: functions
     func getFormattedValue() -> String {
         return Plan.getFormattedValue(planType: type, value: value)
+    }
+    
+    //MARK: protocol
+    func getPlanObjectName() -> String {
+        return planElementName
+    }
+    
+    //MARK: static functions
+    static func createNewPlanElement(planId: String, planElement: PlanElement) -> PlanElement {
+        var newPlanElement = PlanElement(
+            planId: planId,
+            intensity: planElement.intensity,
+            type: planElement.type,
+            value: planElement.value)
+        newPlanElement.position = planElement.position
+        
+        return newPlanElement
     }
 }

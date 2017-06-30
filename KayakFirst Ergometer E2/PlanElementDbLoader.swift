@@ -54,9 +54,9 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     
     //MARK: insert
     override func addData(data: PlanElement) {
-        let insert = table!.insert(self.id <- data.id, self.planId <- data.planId, self.type <- data.type.rawValue, self.intensity <- data.intensity, self.value <- data.value)
+        /*let insert = table!.insert(self.id <- data.id, self.planId <- data.planId, self.type <- data.type.rawValue, self.intensity <- data.intensity, self.value <- data.value)*/
         
-        let rowId = try? db?.run(insert)
+        //let rowId = try? db?.run(insert)
     }
     
     //MARK: query
@@ -82,14 +82,14 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
                     let intesity = planElementDb[self.intensity]
                     let value = planElementDb[self.value]
                     
-                    let planElement = PlanElement(
-                        id: id,
+                    /*let planElement = PlanElement(
+                        planElementId: id,
                         planId: planId,
                         intensity: intesity,
                         type: type!,
                         value: value)
                     
-                    planElementList!.append(planElement)
+                    planElementList!.append(planElement)*/
                 }
             }
         } catch {

@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct TrainingAvg {
+struct TrainingAvg: UploadAble {
+    typealias E = String
     
     var avgHash: String
     var userId: Int64?
@@ -26,6 +27,10 @@ struct TrainingAvg {
     }
     
     static func getAvgHash(userId: Int64?, avgType: String, sessionId: TimeInterval) -> String {
-        return "\(sessionId)" + avgType + "\(userId)"
+        return "\(sessionId)" + avgType + "\(userId ?? 0)"
+    }
+    
+    func getUploadPointer() -> String {
+        return avgHash
     }
 }

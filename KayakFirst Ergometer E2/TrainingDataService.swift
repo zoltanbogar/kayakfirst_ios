@@ -158,7 +158,8 @@ private class LoadTrainingData: AsyncTask<Any, [SumTraining], [SumTraining]> {
         let trainings = trainingDbLoader.loadData(predicate: trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo))
         
         if let trainingsValue = trainings {
-            data = SumTraining.createSumTrainingList(trainings: trainingsValue)
+            //TODO
+            //data = SumTraining.createSumTrainingList(trainings: trainingsValue)
         }
         
         publishProgress(progress: data)
@@ -166,7 +167,9 @@ private class LoadTrainingData: AsyncTask<Any, [SumTraining], [SumTraining]> {
         let downloadedTrainings = trainingService.runWithTokenCheck(serverService: downloadTrainings)
         
         if let downloadedTrainingsValue = downloadedTrainings {
-            let downloadedData = SumTraining.createSumTrainingList(trainings: downloadedTrainingsValue)
+            //TODO
+            let downloadedData: [SumTraining]? = nil
+            // let downloadedData = SumTraining.createSumTrainingList(trainings: downloadedTrainingsValue)
             
             if data != nil && downloadedData != nil {
                 for s in downloadedData! {

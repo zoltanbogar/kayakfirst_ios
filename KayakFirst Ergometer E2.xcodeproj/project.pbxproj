@@ -216,6 +216,12 @@
 		069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD961EFB897400F24427 /* PickerHelperGender.swift */; };
 		069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */; };
 		069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */; };
+		06AF232D1F0624D1008805A2 /* PlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232C1F0624D1008805A2 /* PlanObject.swift */; };
+		06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232E1F06251B008805A2 /* ModifyAble.swift */; };
+		06AF23311F06253B008805A2 /* UploadAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23301F06253B008805A2 /* UploadAble.swift */; };
+		06AF23331F0625FA008805A2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23321F0625FA008805A2 /* Event.swift */; };
+		06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23341F0627CF008805A2 /* PlanEvent.swift */; };
+		06AF23371F062812008805A2 /* PlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23361F062812008805A2 /* PlanTraining.swift */; };
 		06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */; };
 		06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseVC.swift */; };
 		06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* MainVc.swift */; };
@@ -489,6 +495,12 @@
 		069ADD961EFB897400F24427 /* PickerHelperGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperGender.swift; sourceTree = "<group>"; };
 		069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperLocale.swift; sourceTree = "<group>"; };
 		069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperArtOfPaddling.swift; sourceTree = "<group>"; };
+		06AF232C1F0624D1008805A2 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
+		06AF232E1F06251B008805A2 /* ModifyAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyAble.swift; sourceTree = "<group>"; };
+		06AF23301F06253B008805A2 /* UploadAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAble.swift; sourceTree = "<group>"; };
+		06AF23321F0625FA008805A2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		06AF23341F0627CF008805A2 /* PlanEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanEvent.swift; sourceTree = "<group>"; };
+		06AF23361F062812008805A2 /* PlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTraining.swift; sourceTree = "<group>"; };
 		06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		06BCB0D11E564D7D00F41652 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		06BCB0D31E564F0200F41652 /* MainVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVc.swift; sourceTree = "<group>"; };
@@ -677,14 +689,11 @@
 		060C8B751E4068220057DD61 /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				06AF232B1F062278008805A2 /* training */,
+				06AF232A1F06226C008805A2 /* plan */,
 				060C8B761E40682C0057DD61 /* User.swift */,
-				06117BD01E4996350066C072 /* Training.swift */,
-				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
-				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
-				067964571E63661200DFC050 /* TelemetryObject.swift */,
-				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
-				066B00351EC7016700BE0E1F /* PlanElement.swift */,
-				066B00371EC701B900BE0E1F /* Plan.swift */,
+				06AF232E1F06251B008805A2 /* ModifyAble.swift */,
+				06AF23301F06253B008805A2 /* UploadAble.swift */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -1056,6 +1065,31 @@
 				0626FBC81EFCE19400DCBB33 /* PickerHelperUnit.swift */,
 			);
 			name = picker_helper;
+			sourceTree = "<group>";
+		};
+		06AF232A1F06226C008805A2 /* plan */ = {
+			isa = PBXGroup;
+			children = (
+				066B00351EC7016700BE0E1F /* PlanElement.swift */,
+				066B00371EC701B900BE0E1F /* Plan.swift */,
+				06AF232C1F0624D1008805A2 /* PlanObject.swift */,
+				06AF23321F0625FA008805A2 /* Event.swift */,
+				06AF23341F0627CF008805A2 /* PlanEvent.swift */,
+				06AF23361F062812008805A2 /* PlanTraining.swift */,
+			);
+			name = plan;
+			sourceTree = "<group>";
+		};
+		06AF232B1F062278008805A2 /* training */ = {
+			isa = PBXGroup;
+			children = (
+				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
+				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
+				067964571E63661200DFC050 /* TelemetryObject.swift */,
+				06117BD01E4996350066C072 /* Training.swift */,
+				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
+			);
+			name = training;
 			sourceTree = "<group>";
 		};
 		06BF94F01E2A30E20010C8A7 /* view_controller */ = {
@@ -1463,6 +1497,7 @@
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
+				06AF23331F0625FA008805A2 /* Event.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */,
@@ -1483,12 +1518,14 @@
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
 				067964651E63756E00DFC050 /* PauseDiff.swift in Sources */,
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
+				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
+				06AF23371F062812008805A2 /* PlanTraining.swift in Sources */,
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
@@ -1522,6 +1559,7 @@
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
+				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				066B00441EC749BD00BE0E1F /* BebasUILabel.swift in Sources */,
@@ -1576,6 +1614,7 @@
 				06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
+				06AF23311F06253B008805A2 /* UploadAble.swift in Sources */,
 				067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */,
 				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
@@ -1659,6 +1698,7 @@
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
+				06AF232D1F0624D1008805A2 /* PlanObject.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,

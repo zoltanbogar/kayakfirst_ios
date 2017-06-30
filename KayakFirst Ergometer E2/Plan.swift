@@ -13,17 +13,18 @@ enum PlanType: String {
     case distance = "distance"
 }
 
-class Plan {
+class Plan: PlanObject, ModifyAble {
+    
+    //MARK: constants
+    private let planName = "plan"
     
     //MARK: properties
-    var planId: String
-    var userId: Int64
+    var planId: String = ""
+    var userId: Int64 = 0
     var type: PlanType
     var name: String?
     var notes: String?
-    var timestamp: TimeInterval?
     var length: Double = 0
-    var sessionId: TimeInterval?
     var planElements: [PlanElement]? {
         didSet {
             length = calculatePlanLength()
@@ -35,21 +36,23 @@ class Plan {
         self.type = type
         
         userId = UserService.sharedInstance.getUser()!.id
-        planId = Plan.createPlanId(createValue: "\(userId)")
+        planId = Plan.createPlanId(name: getPlanObjectName(), createValue: "\(userId)")
     }
     
-    init(planId: String, name: String?, notes: String?, timestamp: TimeInterval?, userId: Int64, length: Double, type: PlanType, sessionId: TimeInterval?) {
+    init(planId: String, userId: Int64, type: PlanType, name: String?, notes: String?, length: Double) {
         self.planId = planId
         self.name = name
         self.notes = notes
-        self.timestamp = timestamp
         self.userId = userId
         self.length = length
         self.type = type
-        self.sessionId = sessionId
     }
     
     //MARK: functions
+    func getFormattedDuration() -> String {
+        return Plan.getFormattedValue(planType: type, value: length)
+    }
+    
     private func calculatePlanLength() -> Double {
         var sum: Double = 0
         if let planElementList = planElements {
@@ -60,13 +63,16 @@ class Plan {
         return sum
     }
     
-    
-    //MARK: static functions
-    static func createPlanId(createValue: String) -> String {
-        return "\(Int64(currentTimeMillis()))_\(createValue)"
+    //MARK: protocol
+    func getPlanObjectName() -> String {
+        return planName
     }
     
-    //MARK: functions
+    func getPointer() -> String {
+        return planId
+    }
+    
+    //MARK: static functions
     static func getFormattedValue(planType: PlanType, value: Double) -> String {
         switch planType {
         case PlanType.distance:
@@ -79,6 +85,44 @@ class Plan {
         default:
             fatalError("there is no other type")
         }
+    }
+    
+    static func createCopy(plan: Plan) -> Plan {
+        let newPlan = Plan(
+            planId: plan.planId,
+            userId: plan.userId,
+            type: plan.type,
+            name: plan.name,
+            notes: plan.notes,
+            length: plan.length)
+        newPlan.planElements = plan.planElements
+        return newPlan
+    }
+    
+    static func createPlanId(name: String, createValue: String) -> String {
+        return "\(name)_\(Int64(currentTimeMillis()))_\(createValue)"
+    }
+    
+    class func setTypeIcon(plan: Plan?, imageView: UIImageView) {
+        if let planValue = plan {
+            imageView.isHidden = false
+            imageView.image = getTypeIcon(plan: planValue)
+        } else {
+            imageView.isHidden = true
+        }
+    }
+    
+    class func getTypeIcon(plan: Plan?) -> UIImage? {
+        if let planValue = plan {
+            switch planValue.type {
+            case PlanType.distance:
+                return UIImage(named: "distanceIcon")
+            case PlanType.time:
+                return UIImage(named: "durationIcon")
+            default: break
+            }
+        }
+        return nil
     }
     
     //TODO: delete this

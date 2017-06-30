@@ -67,7 +67,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     
     //MARK: insert
     override func addData(data: Plan) {
-        let insert = table!.insert(self.id <- data.planId, self.userId <- data.userId, self.type <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.timestamp <- data.timestamp, self.length <- data.length, self.sessionIdPlan <- data.sessionId)
+        let insert = table!.insert(self.id <- data.planId, self.userId <- data.userId, self.type <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.length <- data.length)
         
         let rowId = try? db?.run(insert)
         
@@ -78,7 +78,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
         if let planElements = plan.planElements {
             for planElement in planElements {
                 planElementDbLoader.addData(data: planElement)
-                joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: plan.planId, planElementId: planElement.id))
+                joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: plan.planId, planElementId: planElement.planElementId))
             }
         }
     }
@@ -108,7 +108,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
                 let length = planDb[self.length]
                 let sessionId = planDb[self.sessionIdPlan]
                 
-                let plan = Plan(
+                /*let plan = Plan(
                     planId: id,
                     name: name,
                     notes: notes,
@@ -118,7 +118,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
                     type: type!,
                     sessionId: sessionId)
                 
-                planList!.append(plan)
+                planList!.append(plan)*/
             }
         } catch {
             log(databaseLogTag, error)
@@ -134,15 +134,15 @@ class PlanDbLoader: BaseDbLoader<Plan> {
         
         let dbList = try db!.prepare(query!)
         
-        for planElementDb in dbList {
+        /*for planElementDb in dbList {
             planElementList.append(
                 PlanElement(
-                    id: planElementDb[planElementDbLoader.id],
+                    planElementIdpositionid: planElementDb[planElementDbLoader.id],
                     planId: planElementDb[planElementDbLoader.planId],
                     intensity: planElementDb[planElementDbLoader.intensity],
                     type: PlanType(rawValue: planElementDb[planElementDbLoader.type])!,
                     value: planElementDb[planElementDbLoader.value]))
-        }
+        }*/
         
         return planElementList
     }
