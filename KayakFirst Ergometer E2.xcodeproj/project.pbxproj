@@ -258,6 +258,8 @@
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
 		06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */; };
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
+		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
+		06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */; };
 		06F657B81E45C899002AA9D0 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B71E45C899002AA9D0 /* AppService.swift */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
@@ -558,6 +560,8 @@
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
 		06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
+		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
+		06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTrainingDbLoader.swift; sourceTree = "<group>"; };
 		06F657B71E45C899002AA9D0 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -936,6 +940,8 @@
 				066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */,
 				066B003C1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift */,
 				066B003E1EC7253B00BE0E1F /* PlanDbLoader.swift */,
+				06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */,
+				06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1743,6 +1749,7 @@
 				064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */,
 				064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */,
 				062369661E9BF44100578017 /* CalibrationView.swift in Sources */,
+				06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */,
 				0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
@@ -1760,6 +1767,7 @@
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,
 				06C2F3EE1F0A41CF0077EE21 /* DeletePlan.swift in Sources */,
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
+				06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */,
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */,

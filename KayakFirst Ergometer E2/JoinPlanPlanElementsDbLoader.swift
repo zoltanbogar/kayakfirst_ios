@@ -32,7 +32,7 @@ class JoinPlanPlanElements: BaseDbLoader<PlanPlanElements> {
     }
     
     //MARK: columns
-    let planId = Expression<String>(PropertyKey.planIdKey)
+    let planIdValue = Expression<String>(PropertyKey.planIdKey)
     let planElementId = Expression<String>(PropertyKey.planElementIdKey)
     
     override func getTableName() -> String {
@@ -43,18 +43,17 @@ class JoinPlanPlanElements: BaseDbLoader<PlanPlanElements> {
     override func initDatabase(database: Connection) throws {
         let tablePlan = Table(PlanDbLoader.tableName)
         let tablePlanElement = Table(PlanElementDbLoader.tableName)
-        let planId = Expression<String>(PlanDbLoader.planIdKey)
+        let planId = self.planId
         let planElementId = Expression<String>(PlanElementDbLoader.planElementIdKey)
         
         try database.run(table!.create(ifNotExists: true) { t in
             t.column(self.planId)
             t.column(self.planElementId)
-            t.foreignKey(self.planId, references: tablePlan, planId)
+            t.foreignKey(self.planId, references: tablePlan, planIdValue)
             t.foreignKey(self.planElementId, references: tablePlanElement, planElementId)
         })
     }
     
-    //MARK: insert
     //MARK: insert
     override func addData(data: PlanPlanElements) {
         let insert = table?.insert(self.planId <- data.planId, self.planElementId <- data.planElementId)

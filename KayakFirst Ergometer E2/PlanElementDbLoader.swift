@@ -23,17 +23,14 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     
     //MARK: keys
     struct PropertyKey {
-        static let idKey = planElementIdKey
-        static let planIdKey = "planId"
-        static let typeKey = "type"
+        static let positionKey = "position"
         static let intensityKey = "intensity"
         static let valueKey = "value"
     }
     
     //MARK: columns
-    let id = Expression<String>(PropertyKey.idKey)
-    let planId = Expression<String>(PropertyKey.planIdKey)
-    let type = Expression<String>(PropertyKey.typeKey)
+    let id = Expression<String>(PlanElementDbLoader.planElementIdKey)
+    let position = Expression<Int>(PropertyKey.positionKey)
     let intensity = Expression<Int>(PropertyKey.intensityKey)
     let value = Expression<Double>(PropertyKey.valueKey)
     
@@ -45,8 +42,8 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     override func initDatabase(database: Connection) throws {
         try database.run(table!.create(ifNotExists: true) { t in
             t.column(id, primaryKey: true)
-            t.column(planId)
-            t.column(type)
+            t.column(planType)
+            t.column(position)
             t.column(intensity)
             t.column(value)
         })
@@ -54,9 +51,14 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     
     //MARK: insert
     override func addData(data: PlanElement) {
-        /*let insert = table!.insert(self.id <- data.id, self.planId <- data.planId, self.type <- data.type.rawValue, self.intensity <- data.intensity, self.value <- data.value)*/
+        let insert = table!.insert(self.id <- data.planElementId, self.position <- data.position, self.intensity <- data.intensity, self.planType <- data.type.rawValue, self.value <- data.value)
         
-        //let rowId = try? db?.run(insert)
+        let rowId = try? db?.run(insert)
+    }
+    
+    //MARK: update
+    override func updateData(data: PlanElement) {
+        //TODO
     }
     
     //MARK: query
@@ -77,19 +79,19 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
             if let dbListValue = dbList {
                 for planElementDb in dbListValue {
                     let id = planElementDb[self.id]
-                    let planId = planElementDb[self.planId]
-                    let type = PlanType(rawValue: planElementDb[self.type])
+                    let type = PlanType(rawValue: planElementDb[self.planType])
+                    let position = planElementDb[self.position]
                     let intesity = planElementDb[self.intensity]
                     let value = planElementDb[self.value]
                     
-                    /*let planElement = PlanElement(
+                    let planElement = PlanElement(
                         planElementId: id,
-                        planId: planId,
+                        position: position,
                         intensity: intesity,
                         type: type!,
                         value: value)
                     
-                    planElementList!.append(planElement)*/
+                    planElementList!.append(planElement)
                 }
             }
         } catch {
@@ -99,4 +101,7 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
         return planElementList
     }
     
+    func getExpressionDelete(planId: String) -> Expression<Bool> {
+        return self.id.like(planId)
+    }
 }

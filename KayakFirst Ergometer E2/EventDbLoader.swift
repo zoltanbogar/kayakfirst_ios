@@ -1,0 +1,147 @@
+//
+//  EventDbLoader.swift
+//  KayakFirst Ergometer E2
+//
+//  Created by Balazs Vidumanszki on 2017. 07. 03..
+//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//
+
+import Foundation
+import SQLite
+
+class EventDbLoader: BaseDbLoader<Event> {
+    
+    //MARK: constants
+    static let tableName = "event_table"
+    
+    //MARK: init
+    static let sharedInstance = EventDbLoader()
+    private override init() {
+        super.init()
+    }
+    
+    //MARK: keys
+    struct PropertyKey {
+        static let idKey = "id"
+    }
+    
+    //MARK: columns
+    let id = Expression<String>(PropertyKey.idKey)
+    
+    override func getTableName() -> String {
+        return EventDbLoader.tableName
+    }
+    
+    //MARK: init database
+    override func initDatabase(database: Connection) throws {
+        try database.run(table!.create(ifNotExists: true) { t in
+            t.column(id, primaryKey: true)
+            t.column(userId)
+            t.column(sessionId)
+            t.column(timestamp)
+            t.column(name)
+            t.column(planType)
+            t.column(planId)
+        })
+    }
+    
+    //MARK: insert
+    override func addData(data: Event) {
+        let insert = table!.insert(self.id <- data.eventId, self.userId <- data.userId, self.sessionId <- data.sessionId, self.timestamp <- data.timestamp, self.name <- data.name, self.planType <- data.planType.rawValue, self.planId <- data.planId)
+        
+        let rowId = try? db!.run(insert)
+    }
+    
+    //MARK: update
+    override func updateData(data: Event) {
+        //TODO
+    }
+    
+    //MARK: query
+    override func queryData(predicate: Expression<Bool>?) -> [Event]? {
+        var eventList: [Event]?
+        
+        do {
+            let dbList = try db!.prepare(table!.filter(predicate!))
+            
+            eventList = [Event]()
+            
+            for eventDb in dbList {
+                let event = Event(
+                    eventId: eventDb[self.id],
+                    userId: eventDb[self.userId],
+                    sessionId: eventDb[self.sessionId],
+                    timestamp: eventDb[self.timestamp],
+                    name: eventDb[self.name] ?? "",
+                    planType: PlanType(rawValue: eventDb[self.planType])!,
+                    planId: eventDb[self.planId])
+                
+                eventList!.append(event)
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+        
+        return eventList
+    }
+    
+    func getEventDays() -> [Double] {
+        var eventDays = [Double]()
+        
+        do {
+            let query = table?.select(self.sessionId).order(self.timestamp)
+            
+            let dbList = try db!.prepare(query!)
+            
+            for days in dbList {
+                eventDays.append(days[self.timestamp])
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+        
+        return eventDays
+    }
+    
+    func getEventsByPlanId(planId: String) -> [Event]? {
+        var events = [Event]()
+        
+        do {
+            let query = table?.filter(self.planId == planId)
+            
+            let dbList = try db!.prepare(query!)
+            
+            for eventDb in dbList {
+                let event = Event(
+                    eventId: eventDb[self.id],
+                    userId: eventDb[self.userId],
+                    sessionId: eventDb[self.sessionId],
+                    timestamp: eventDb[self.timestamp],
+                    name: eventDb[self.name] ?? "",
+                    planType: PlanType(rawValue: eventDb[self.planType])!,
+                    planId: eventDb[self.planId])
+                
+                    events.append(event)
+            }
+            
+        } catch {
+            log(databaseLogTag, error)
+        }
+        
+        return events
+    }
+    
+    //MARK: delete
+    override func deleteData(predicate: Expression<Bool>?) -> Int {
+        var deletedRows = 0
+        
+        let deleteData = table!.filter(predicate!)
+        
+        do {
+            deletedRows = try db!.run(deleteData.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
+    }
+}

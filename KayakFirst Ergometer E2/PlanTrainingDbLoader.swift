@@ -1,41 +1,44 @@
 //
-//  PlanDbLoader.swift
+//  PlanTrainingDbLoader.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 05. 13..
+//  Created by Balazs Vidumanszki on 2017. 07. 03..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 import SQLite
 
-class PlanDbLoader: BaseDbLoader<Plan> {
+//TODO: refactor this class (it is a copy of PlanDbLoader)
+class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     //MARK: constants
-    static let tableName = "plan_table"
+    static let tableName = "plan_training_table"
     
     //MARK: properties
     let planElementDbLoader = PlanElementDbLoader.sharedInstance
     let joinPlanElementDbLoader = JoinPlanPlanElements.sharedInstance
     
     //MARK: init
-    static let sharedInstance = PlanDbLoader()
+    static let sharedInstance = PlanTrainingDbLoader()
     private override init() {
         super.init()
     }
     
     //MARK: keys
     struct PropertyKey {
+        static let idKey = "planTrainingId"
         static let notesKey = "notes"
         static let lengthKey = "length"
     }
     
     //MARK: columns
+    private let planTrainingId = Expression<String> (PropertyKey.idKey)
     private let notes = Expression<String?>(PropertyKey.notesKey)
     private let length = Expression<Double>(PropertyKey.lengthKey)
     
     override func getTableName() -> String {
-        return PlanDbLoader.tableName
+        return PlanTrainingDbLoader.tableName
     }
     
     //MARK: init database
@@ -47,35 +50,36 @@ class PlanDbLoader: BaseDbLoader<Plan> {
             t.column(name)
             t.column(notes)
             t.column(length)
+            t.column(sessionId)
         })
     }
     
     //MARK: insert
-    override func addData(data: Plan) {
-        let insert = table!.insert(self.planId <- data.planId, self.userId <- data.userId, self.planType <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.length <- data.length)
+    override func addData(data: PlanTraining) {
+        let insert = table!.insert(self.planId <- data.planId, self.userId <- data.userId, self.planType <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.length <- data.length, self.sessionId <- data.sessionId)
         
         let rowId = try? db?.run(insert)
         
-        addPlanWithChildren(plan: data)
+        addPlanWithChildren(planTraining: data)
     }
     
-    private func addPlanWithChildren(plan: Plan) {
-        if let planElements = plan.planElements {
+    private func addPlanWithChildren(planTraining: PlanTraining) {
+        if let planElements = planTraining.planElements {
             for planElement in planElements {
                 planElementDbLoader.addData(data: planElement)
-                joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: plan.planId, planElementId: planElement.planElementId))
+                joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: planTraining.planId, planElementId: planElement.planElementId))
             }
         }
     }
     
     //MARK: query
-    override func queryData(predicate: Expression<Bool>?) -> [Plan]? {
-        var planList: [Plan]?
+    override func queryData(predicate: Expression<Bool>?) -> [PlanTraining]? {
+        var planList: [PlanTraining]?
         
         do {
             let dbList = try db!.prepare(table!.filter(predicate!))
             
-            planList = [Plan]()
+            planList = [PlanTraining]()
             
             for planDb in dbList {
                 let id = planDb[self.planId]
@@ -85,17 +89,19 @@ class PlanDbLoader: BaseDbLoader<Plan> {
                 let notes = planDb[self.notes]
                 let length = planDb[self.length]
                 let planElements: [PlanElement]?  = try! getPlanElementList(planId: id)
+                let sessionId = planDb[self.sessionId]
                 
-                let plan = Plan(
-                 planId: id,
-                 userId: userId,
-                 type: type!,
-                 name: name,
-                 notes: notes,
-                 length: length)
-                plan.planElements = planElements
-                 
-                 planList!.append(plan)
+                let planTraining = PlanTraining(
+                    planId: id,
+                    userId: userId,
+                    planType: type!,
+                    name: name,
+                    notes: notes,
+                    length: length,
+                    sessionId: sessionId)
+                planTraining.planElements = planElements
+                
+                planList!.append(planTraining)
             }
         } catch {
             log(databaseLogTag, error)
@@ -122,6 +128,14 @@ class PlanDbLoader: BaseDbLoader<Plan> {
         }
         
         return planElementList
+    }
+    
+    func getExpressionSessionId(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool>? {
+        return getSumPredicate(predicates: self.sessionId > sessionIdFrom, self.sessionId <= sessionIdTo)
+    }
+    
+    func getExpressionById(planTrainingId: String) -> Expression<Bool> {
+        return self.planTrainingId == planTrainingId
     }
     
     //MARK: update
