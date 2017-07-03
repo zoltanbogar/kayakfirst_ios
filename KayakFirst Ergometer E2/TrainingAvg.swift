@@ -33,4 +33,13 @@ struct TrainingAvg: UploadAble {
     func getUploadPointer() -> String {
         return avgHash
     }
+    
+    func getParameters() -> [String : Any] {
+        return [
+            "userId":"\(userId))",
+            "sessionId":"\(Int64(sessionId))",
+            "avgType":"\(avgType)",
+            "avgValue":"\(avgValue)"
+        ]
+    }
 }

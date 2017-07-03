@@ -45,10 +45,6 @@ class DownloadTrainingDays: ServerService<[TimeInterval]> {
         return URLEncoding.default
     }
     
-    override func isEqual(anotherServerService: ServerService<[TimeInterval]>) -> Bool {
-        return true
-    }
-    
     override func getManagerType() -> BaseManagerType {
         return TrainingManagerType.download_training_days
     }

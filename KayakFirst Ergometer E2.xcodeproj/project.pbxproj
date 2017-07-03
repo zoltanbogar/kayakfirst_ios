@@ -110,7 +110,6 @@
 		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
 		0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */; };
 		0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613590E1E8325C80085578E /* CalculateT_AV.swift */; };
-		061369861E7BD63500896282 /* UploadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369851E7BD63500896282 /* UploadUtils.swift */; };
 		061369881E7BD78700896282 /* UploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369871E7BD78700896282 /* UploadTrainings.swift */; };
 		0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369891E7C2D8C00896282 /* UploadTimer.swift */; };
 		0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */; };
@@ -144,6 +143,9 @@
 		064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A91ED09F5A004A9F35 /* UserManagerType.swift */; };
 		064FE5AC1ED0A002004A9F35 /* TrainingManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5AB1ED0A002004A9F35 /* TrainingManagerType.swift */; };
 		064FE5AE1ED0A0A5004A9F35 /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5AD1ED0A0A5004A9F35 /* BaseManager.swift */; };
+		065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */; };
+		065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187211F0A506D00B434B0 /* UploadPlan.swift */; };
+		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
 		066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00351EC7016700BE0E1F /* PlanElement.swift */; };
 		066B00381EC701B900BE0E1F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00371EC701B900BE0E1F /* Plan.swift */; };
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
@@ -216,7 +218,6 @@
 		069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD961EFB897400F24427 /* PickerHelperGender.swift */; };
 		069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */; };
 		069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */; };
-		06AF232D1F0624D1008805A2 /* PlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232C1F0624D1008805A2 /* PlanObject.swift */; };
 		06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232E1F06251B008805A2 /* ModifyAble.swift */; };
 		06AF23311F06253B008805A2 /* UploadAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23301F06253B008805A2 /* UploadAble.swift */; };
 		06AF23331F0625FA008805A2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23321F0625FA008805A2 /* Event.swift */; };
@@ -240,6 +241,13 @@
 		06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */; };
 		06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */; };
 		06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */; };
+		06C2F3EC1F0A3F5D0077EE21 /* DeleteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3EB1F0A3F5D0077EE21 /* DeleteEvent.swift */; };
+		06C2F3EE1F0A41CF0077EE21 /* DeletePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3ED1F0A41CF0077EE21 /* DeletePlan.swift */; };
+		06C2F3F01F0A42360077EE21 /* DeleteTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3EF1F0A42360077EE21 /* DeleteTraining.swift */; };
+		06C2F3F21F0A42A10077EE21 /* DeleteTrainingAvg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F11F0A42A10077EE21 /* DeleteTrainingAvg.swift */; };
+		06C2F3F41F0A43850077EE21 /* EditEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F31F0A43850077EE21 /* EditEvent.swift */; };
+		06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F51F0A44B40077EE21 /* EditPlan.swift */; };
+		06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F71F0A48F00077EE21 /* PlanObject.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
 		06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB81E2267A000562B27 /* Assets.xcassets */; };
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
@@ -395,7 +403,6 @@
 		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
 		0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionCheck.swift; sourceTree = "<group>"; };
 		0613590E1E8325C80085578E /* CalculateT_AV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateT_AV.swift; sourceTree = "<group>"; };
-		061369851E7BD63500896282 /* UploadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadUtils.swift; sourceTree = "<group>"; };
 		061369871E7BD78700896282 /* UploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainings.swift; sourceTree = "<group>"; };
 		061369891E7C2D8C00896282 /* UploadTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTimer.swift; sourceTree = "<group>"; };
 		0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainingAvgs.swift; sourceTree = "<group>"; };
@@ -430,6 +437,9 @@
 		064FE5A91ED09F5A004A9F35 /* UserManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagerType.swift; sourceTree = "<group>"; };
 		064FE5AB1ED0A002004A9F35 /* TrainingManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManagerType.swift; sourceTree = "<group>"; };
 		064FE5AD1ED0A0A5004A9F35 /* BaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
+		0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEvent.swift; sourceTree = "<group>"; };
+		065187211F0A506D00B434B0 /* UploadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlan.swift; sourceTree = "<group>"; };
+		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
 		066B00351EC7016700BE0E1F /* PlanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElement.swift; sourceTree = "<group>"; };
 		066B00371EC701B900BE0E1F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
@@ -502,7 +512,6 @@
 		069ADD961EFB897400F24427 /* PickerHelperGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperGender.swift; sourceTree = "<group>"; };
 		069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperLocale.swift; sourceTree = "<group>"; };
 		069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperArtOfPaddling.swift; sourceTree = "<group>"; };
-		06AF232C1F0624D1008805A2 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
 		06AF232E1F06251B008805A2 /* ModifyAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyAble.swift; sourceTree = "<group>"; };
 		06AF23301F06253B008805A2 /* UploadAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAble.swift; sourceTree = "<group>"; };
 		06AF23321F0625FA008805A2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -526,6 +535,13 @@
 		06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement.swift; sourceTree = "<group>"; };
 		06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual200.swift; sourceTree = "<group>"; };
 		06C1B9901E259DB200AB4C47 /* DashBoardElement_Actual500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Actual500.swift; sourceTree = "<group>"; };
+		06C2F3EB1F0A3F5D0077EE21 /* DeleteEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteEvent.swift; sourceTree = "<group>"; };
+		06C2F3ED1F0A41CF0077EE21 /* DeletePlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePlan.swift; sourceTree = "<group>"; };
+		06C2F3EF1F0A42360077EE21 /* DeleteTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTraining.swift; sourceTree = "<group>"; };
+		06C2F3F11F0A42A10077EE21 /* DeleteTrainingAvg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTrainingAvg.swift; sourceTree = "<group>"; };
+		06C2F3F31F0A43850077EE21 /* EditEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEvent.swift; sourceTree = "<group>"; };
+		06C2F3F51F0A44B40077EE21 /* EditPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlan.swift; sourceTree = "<group>"; };
+		06C2F3F71F0A48F00077EE21 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
 		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "KayakFirst Ergometer E2/Assets.xcassets"; sourceTree = "<group>"; };
@@ -884,9 +900,17 @@
 		064FE5B01ED0A340004A9F35 /* upload */ = {
 			isa = PBXGroup;
 			children = (
-				061369851E7BD63500896282 /* UploadUtils.swift */,
 				061369871E7BD78700896282 /* UploadTrainings.swift */,
 				0613698B1E7C4B7200896282 /* UploadTrainingAvgs.swift */,
+				06C2F3EB1F0A3F5D0077EE21 /* DeleteEvent.swift */,
+				06C2F3ED1F0A41CF0077EE21 /* DeletePlan.swift */,
+				06C2F3EF1F0A42360077EE21 /* DeleteTraining.swift */,
+				06C2F3F11F0A42A10077EE21 /* DeleteTrainingAvg.swift */,
+				06C2F3F31F0A43850077EE21 /* EditEvent.swift */,
+				06C2F3F51F0A44B40077EE21 /* EditPlan.swift */,
+				0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */,
+				065187211F0A506D00B434B0 /* UploadPlan.swift */,
+				065187231F0A50D000B434B0 /* UploadPlanTraining.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1092,10 +1116,10 @@
 			children = (
 				066B00351EC7016700BE0E1F /* PlanElement.swift */,
 				066B00371EC701B900BE0E1F /* Plan.swift */,
-				06AF232C1F0624D1008805A2 /* PlanObject.swift */,
 				06AF23321F0625FA008805A2 /* Event.swift */,
 				06AF23341F0627CF008805A2 /* PlanEvent.swift */,
 				06AF23361F062812008805A2 /* PlanTraining.swift */,
+				06C2F3F71F0A48F00077EE21 /* PlanObject.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1551,6 +1575,7 @@
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
+				06C2F3EC1F0A3F5D0077EE21 /* DeleteEvent.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
@@ -1558,6 +1583,7 @@
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
+				06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
 				060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */,
@@ -1567,6 +1593,7 @@
 				06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */,
 				060958E81EDE9758009A824C /* ProfileElementExpendable.swift in Sources */,
 				0626FBCB1EFCE98B00DCBB33 /* UnitHelper.swift in Sources */,
+				065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
@@ -1645,6 +1672,7 @@
 				0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */,
 				06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
+				06C2F3F21F0A42A10077EE21 /* DeleteTrainingAvg.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
 				06AF23311F06253B008805A2 /* UploadAble.swift in Sources */,
 				067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */,
@@ -1672,6 +1700,7 @@
 				060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */,
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				066B00491EC7554400BE0E1F /* PlanListVc.swift in Sources */,
+				06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */,
 				066B004F1EC75ABB00BE0E1F /* PlanTableViewCell.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */,
 				069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */,
@@ -1679,7 +1708,6 @@
 				060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */,
 				060B3DC41EE85EEB00AF43DE /* PlanEtSec.swift in Sources */,
 				066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */,
-				061369861E7BD63500896282 /* UploadUtils.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
@@ -1692,6 +1720,7 @@
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,
 				06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */,
+				065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */,
 				066B004D1EC759F800BE0E1F /* PlanTableView.swift in Sources */,
 				0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */,
 				067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */,
@@ -1725,16 +1754,18 @@
 				061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */,
 				060B3DC21EE85EC100AF43DE /* PlanEtMinute.swift in Sources */,
 				06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */,
+				06C2F3F01F0A42360077EE21 /* DeleteTraining.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,
+				06C2F3EE1F0A41CF0077EE21 /* DeletePlan.swift in Sources */,
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
+				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */,
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
-				06AF232D1F0624D1008805A2 /* PlanObject.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
@@ -1752,6 +1783,7 @@
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */,
 				0679646E1E637FCC00DFC050 /* CalculateT_200_AV.swift in Sources */,
+				06C2F3F41F0A43850077EE21 /* EditEvent.swift in Sources */,
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */,
 				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,

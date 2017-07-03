@@ -1,8 +1,8 @@
 //
-//  UserResetPassword.swift
+//  UploadPlanTraining.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 04..
+//  Created by Balazs Vidumanszki on 2017. 07. 03..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
@@ -10,12 +10,15 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserResetPassword: ServerService<Bool> {
+class UploadPlanTraining: ServerService<Bool> {
     
-    private let email: String
+    private var planTrainingParameters: Array<[String:Any]>
     
-    init(email: String) {
-        self.email = email
+    init(planTrainingList: [PlanTraining]) {
+        planTrainingParameters = Array<[String:Any]>()
+        for planTraining in planTrainingList {
+            planTrainingParameters.append(planTraining.getParameters())
+        }
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
@@ -23,7 +26,7 @@ class UserResetPassword: ServerService<Bool> {
     }
     
     override func initUrlTag() -> String {
-        return "users/pwreset"
+        return "planTraining/upload"
     }
     
     override func initMethod() -> HTTPMethod {
@@ -31,20 +34,14 @@ class UserResetPassword: ServerService<Bool> {
     }
     
     override func initParameters() -> Parameters? {
-        return [
-            "email": email,
-        ]
+        return planTrainingParameters.asParameters()
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
-    }
-    
-    override func initHeader() -> HTTPHeaders? {
-        return nil
+        return ArrayEncoding()
     }
     
     override func getManagerType() -> BaseManagerType {
-        return UserManagerType.reset_pw
+        return PlanManagerType.upload
     }
 }

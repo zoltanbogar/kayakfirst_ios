@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct PlanElement: PlanObject {
+struct PlanElement: PlanObject, UploadAble {
+    typealias E = String
     
     //MARK: constants
     private let planElementName = "plan_element"
@@ -64,8 +65,22 @@ struct PlanElement: PlanObject {
     }
     
     //MARK: protocol
+    func getUploadPointer() -> String {
+        return planElementId
+    }
+    
     func getPlanObjectName() -> String {
         return planElementName
+    }
+    
+    func getParameters() -> [String : Any] {
+        return [
+            "planElementId": planElementId,
+            "type": type.rawValue,
+            "position": position,
+            "intensity": intensity,
+            "value": value
+        ]
     }
     
     //MARK: static functions

@@ -59,4 +59,17 @@ struct Training: UploadAble {
     func getUploadPointer() -> Double {
         return timeStamp
     }
+    
+    func getParameters() -> [String : Any] {
+        return [
+            "timestamp":"\(Int64(timeStamp))",
+            "currentDistance":"\(currentDistance)",
+            "userId":"\(userId!)",
+            "sessionId":"\(Int64(sessionId))",
+            "trainingType":"\(trainingType)",
+            "trainingEnvironmentType":"\(trainingEnvironmentType)",
+            "dataType":"\(dataType)",
+            "dataValue":"\(dataValue)"
+        ]
+    }
 }

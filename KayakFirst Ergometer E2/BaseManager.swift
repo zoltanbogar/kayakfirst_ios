@@ -18,9 +18,10 @@ class BaseManager {
         
     }
     
+    //TODO
     private func shouldRun(serverService: ServerService<AnyObject>) -> Bool {
         if self.serverService != nil {
-            return self.serverService!.isEqual(anotherServerService: serverService)
+            return true
         } else {
             return true
         }

@@ -78,8 +78,30 @@ class Plan: PlanObject, ModifyAble {
         return planName
     }
     
-    func getPointer() -> String {
+    func getUploadPointer() -> String {
         return planId
+    }
+    
+    func getParameters() -> [String : Any] {
+        var planElementParameters: [[String : Any]]?
+        
+        if planElements != nil && planElements!.count > 0 {
+            planElementParameters = [[String : Any]]()
+            
+            for planElement in planElements! {
+                planElementParameters?.append(planElement.getParameters())
+            }
+        }
+        
+        return [
+            "planId": planId,
+            "userId": userId,
+            "type": type.rawValue,
+            "name": name ?? "",
+            "notes": notes ?? "",
+            "length": length,
+            "planElements": planElementParameters ?? ""
+        ]
     }
     
     //MARK: static functions

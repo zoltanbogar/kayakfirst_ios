@@ -10,18 +10,18 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UploadTrainings: UploadUtils<Bool> {
+
+//TODO
+class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
     private let maxUploadTrainings = 10000
-    private let keyTimeStamp = "db.upload_trainings_timestamp"
     
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        setTimestamp(timestamp: self.timeStamp)
         
         return true
     }
@@ -49,7 +49,7 @@ class UploadTrainings: UploadUtils<Bool> {
     }
     
     private func initTrainingList() {
-        var arrayList: [String:Any]
+        /*var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
@@ -60,17 +60,7 @@ class UploadTrainings: UploadUtils<Bool> {
                 self.timeStamp = training.timeStamp
                 
                 if list.count <= maxUploadTrainings {
-                    arrayList = [
-                        "timestamp":"\(Int64(training.timeStamp))",
-                        "currentDistance":"\(training.currentDistance)",
-                        "userId":"\(training.userId!)",
-                        "sessionId":"\(Int64(training.sessionId))",
-                        "trainingType":"\(training.trainingType)",
-                        "trainingEnvironmentType":"\(training.trainingEnvironmentType)",
-                        "dataType":"\(training.dataType)",
-                        "dataValue":"\(training.dataValue)"
-                    ]
-                    
+                    arrayList = training.getParameters()
                     list.append(arrayList)
                     
                 } else {
@@ -80,15 +70,7 @@ class UploadTrainings: UploadUtils<Bool> {
         } else {
             UploadTimer.stopTimer()
         }
-        self.trainingArrayList = list
-    }
-    
-    override func getKeyTimeStamp() -> String {
-        return keyTimeStamp
-    }
-    
-    override func isEqual(anotherServerService: ServerService<Bool>) -> Bool {
-        return true
+        self.trainingArrayList = list*/
     }
     
     override func getManagerType() -> BaseManagerType {

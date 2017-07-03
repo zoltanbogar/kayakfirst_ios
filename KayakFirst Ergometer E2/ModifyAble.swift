@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ModifyAble {
-    func getPointer() -> String
+protocol ModifyAble: UploadAble {
+    typealias E = String
 }

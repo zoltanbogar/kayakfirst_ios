@@ -22,6 +22,7 @@ enum Responses: String {
     case error_used_email = "The email is already used."
 }
 
+//TODO: tokenChecnk
 class ServerService<E> {
     
     //MARK: constants
@@ -67,10 +68,6 @@ class ServerService<E> {
     }
     
     internal func initEncoding() -> ParameterEncoding {
-        fatalError("Must be implemented")
-    }
-    
-    internal func isEqual(anotherServerService: ServerService<E>) -> Bool {
         fatalError("Must be implemented")
     }
     

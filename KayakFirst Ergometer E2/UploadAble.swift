@@ -11,4 +11,5 @@ import Foundation
 protocol UploadAble {
     associatedtype E
     func getUploadPointer() -> E
+    func getParameters() -> [String:Any]
 }

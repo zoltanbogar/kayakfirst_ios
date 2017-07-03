@@ -10,17 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UploadTrainingAvgs: UploadUtils<Bool> {
-    
-    //MARK: constants
-    private let keyTimeStamp = "db.upload_training_avgs_timestamp"
+//TODO
+class UploadTrainingAvgs: ServerService<Bool> {
     
     //MARK: properties
     private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     private var trainingAvgArrayList: Array<[String:Any]>?
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        setTimestamp(timestamp: self.timeStamp)
         
         return true
     }
@@ -48,7 +45,7 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
     }
     
     private func initTrainingList() {
-        var arrayList: [String:Any]
+        /*var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
@@ -59,12 +56,7 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
                 if !Telemetry.sharedInstance.checkCycleState(cycleState: CycleState.resumed) {
                     self.timeStamp = trainingAvg.sessionId
                     
-                    arrayList = [
-                        "userId":"\(trainingAvg.userId))",
-                        "sessionId":"\(Int64(trainingAvg.sessionId))",
-                        "avgType":"\(trainingAvg.avgType)",
-                        "avgValue":"\(trainingAvg.avgValue)"
-                    ]
+                    arrayList = trainingAvg.getParameters()
                     
                     list.append(arrayList)
                 }
@@ -72,15 +64,7 @@ class UploadTrainingAvgs: UploadUtils<Bool> {
         } else {
             UploadTimer.stopTimer()
         }
-        self.trainingAvgArrayList = list
-    }
-    
-    override func getKeyTimeStamp() -> String {
-        return keyTimeStamp
-    }
-    
-    override func isEqual(anotherServerService: ServerService<Bool>) -> Bool {
-        return true
+        self.trainingAvgArrayList = list*/
     }
     
     override func getManagerType() -> BaseManagerType {

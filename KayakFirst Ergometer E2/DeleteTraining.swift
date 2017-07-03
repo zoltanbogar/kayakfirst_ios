@@ -1,8 +1,8 @@
 //
-//  UserLogout.swift
+//  DeleteTraining.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 04..
+//  Created by Balazs Vidumanszki on 2017. 07. 03..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
@@ -10,32 +10,35 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserLogout: ServerService<Bool> {
+class DeleteTraining: ServerService<Bool> {
+    
+    private let sessionIds: Array<String>?
+    
+    init(sessionIds: [String]) {
+        self.sessionIds = sessionIds
+    }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        UserService.sharedInstance.addLoginDto(loginDto: nil)
-        
         return true
     }
     
     override func initUrlTag() -> String {
-        return "logout"
+        return "training/delete"
     }
     
     override func initMethod() -> HTTPMethod {
-        return .get
+        return .post
     }
     
     override func initParameters() -> Parameters? {
-        return nil
+        return sessionIds?.asParameters()
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return ArrayEncoding()
     }
     
     override func getManagerType() -> BaseManagerType {
-        return UserManagerType.logout
+        return TrainingManagerType.delete_training
     }
-    
 }

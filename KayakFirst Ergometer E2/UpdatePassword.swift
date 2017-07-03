@@ -53,10 +53,6 @@ class UpdatePassword: ServerService<User> {
         return URLEncoding.default
     }
     
-    override func isEqual(anotherServerService: ServerService<User>) -> Bool {
-        return true
-    }
-    
     override func getManagerType() -> BaseManagerType {
         return UserManagerType.update_pw
     }

@@ -83,8 +83,13 @@ class SumTraining: Equatable, ModifyAble {
         return Int64(lhs.sessionId!) == Int64(rhs.sessionId!)
     }
     
-    func getPointer() -> String {
+    func getUploadPointer() -> String {
         return "\(sessionId ?? 0)"
+    }
+    
+    func getParameters() -> [String : Any] {
+        //nothing here
+        return ["":""]
     }
     
     public class Builder {

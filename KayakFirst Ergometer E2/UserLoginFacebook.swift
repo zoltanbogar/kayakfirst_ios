@@ -53,10 +53,6 @@ class UserLoginFacebook: ServerService<LoginDto> {
         return URLEncoding.default
     }
     
-    override func isEqual(anotherServerService: ServerService<LoginDto>) -> Bool {
-        return true
-    }
-    
     override func getManagerType() -> BaseManagerType {
         return UserManagerType.login_facebook
     }

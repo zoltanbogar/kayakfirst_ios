@@ -66,14 +66,6 @@ class DownloadTrainingAvgs: ServerService<[TrainingAvg]> {
         return URLEncoding.default
     }
     
-    override func isEqual(anotherServerService: ServerService<[TrainingAvg]>) -> Bool {
-        if let service = anotherServerService as? DownloadTrainingAvgs {
-            return (service.sessionIdTo == self.sessionIdTo) && (service.sessionIdFrom == self.sessionIdFrom)
-        } else {
-            return false
-        }
-    }
-    
     override func getManagerType() -> BaseManagerType {
         return TrainingManagerType.download_training_avg
     }

@@ -61,7 +61,19 @@ struct Event: PlanObject, ModifyAble {
         return eventName
     }
     
-    func getPointer() -> String {
+    func getUploadPointer() -> String {
         return eventId
+    }
+    
+    func getParameters() -> [String : Any] {
+        return [
+            "eventId": eventId,
+            "userId": userId,
+            "sessionId": sessionId,
+            "timestamp": timestamp,
+            "name": name,
+            "planType": planType.rawValue,
+            "planId": planId
+        ]
     }
 }

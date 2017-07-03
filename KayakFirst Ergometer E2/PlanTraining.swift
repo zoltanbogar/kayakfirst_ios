@@ -61,4 +61,27 @@ class PlanTraining: Plan {
     override func getPlanObjectName() -> String {
         return planTrainingName
     }
+    
+    override func getParameters() -> [String : Any] {
+        var planElementParameters: [[String : Any]]?
+        
+        if planElements != nil && planElements!.count > 0 {
+            planElementParameters = [[String : Any]]()
+            
+            for planElement in planElements! {
+                planElementParameters?.append(planElement.getParameters())
+            }
+        }
+        
+        return [
+            "planId": planId,
+            "userId": userId,
+            "type": type.rawValue,
+            "name": name ?? "",
+            "notes": notes ?? "",
+            "length": length,
+            "sessionId": Int64(sessionId),
+            "planElements": planElementParameters ?? ""
+        ]
+    }
 }
