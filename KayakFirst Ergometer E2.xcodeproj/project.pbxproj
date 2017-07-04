@@ -121,6 +121,7 @@
 		0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
+		061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -416,6 +417,7 @@
 		0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDays.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -841,6 +843,30 @@
 			name = login_register;
 			sourceTree = "<group>";
 		};
+		061FF0B51F0BE2820068E6E6 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				061FF0BB1F0BE93B0068E6E6 /* upload */,
+				061FF0B81F0BE29B0068E6E6 /* download */,
+			);
+			name = helper;
+			sourceTree = "<group>";
+		};
+		061FF0B81F0BE29B0068E6E6 /* download */ = {
+			isa = PBXGroup;
+			children = (
+				061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */,
+			);
+			name = download;
+			sourceTree = "<group>";
+		};
+		061FF0BB1F0BE93B0068E6E6 /* upload */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = upload;
+			sourceTree = "<group>";
+		};
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +890,7 @@
 		064FE5A31ED09DCE004A9F35 /* manager */ = {
 			isa = PBXGroup;
 			children = (
+				061FF0B51F0BE2820068E6E6 /* helper */,
 				064FE5A61ED09E8A004A9F35 /* manager_type */,
 				067964621E6370F500DFC050 /* SaveTrainingValues.swift */,
 				064FE5AD1ED0A0A5004A9F35 /* BaseManager.swift */,
@@ -1770,6 +1797,7 @@
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
+				061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,

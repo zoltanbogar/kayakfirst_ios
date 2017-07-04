@@ -11,8 +11,8 @@ import Foundation
 class BaseManager {
     
     //MARK: properties
-    var stack: BaseManager?
-    var serverService: ServerService<AnyObject>?
+    var userStack: BaseManager?
+    var userServer: ServerService<AnyObject>?
     
     func runUser<E>(serverService: ServerService<E>, managerCallBack: @escaping (_ error: Responses?, _ userData: E?) -> ()) {
         
@@ -20,11 +20,8 @@ class BaseManager {
     
     //TODO
     private func shouldRun(serverService: ServerService<AnyObject>) -> Bool {
-        if self.serverService != nil {
-            return true
-        } else {
-            return true
-        }
+        //TODO
+        return true
     }
     
 }

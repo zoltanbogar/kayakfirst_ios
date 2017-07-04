@@ -56,5 +56,4 @@ class UpdatePassword: ServerService<User> {
     override func getManagerType() -> BaseManagerType {
         return UserManagerType.update_pw
     }
-    
 }

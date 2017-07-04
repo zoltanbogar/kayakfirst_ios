@@ -13,6 +13,8 @@ class UserService: AppService {
     //MARK: properties
     var isQuickStart = false
     
+    internal let preferences = UserDefaults.standard
+    
     //MARK: init
     static let sharedInstance: UserService = UserService()
     private override init() {
@@ -155,8 +157,6 @@ class UserService: AppService {
     }
     
     //MARK: tokens
-    internal let preferences = UserDefaults.standard
-    
     var token: String? {
         get {
             if preferences.object(forKey: User.keyUserToken) == nil {
