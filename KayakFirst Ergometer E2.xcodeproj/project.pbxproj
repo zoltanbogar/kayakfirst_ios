@@ -122,6 +122,9 @@
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
 		061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */; };
+		061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */; };
+		061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C01F0BED4F0068E6E6 /* UploadType.swift */; };
+		061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -418,6 +421,9 @@
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
+		061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUpload.swift; sourceTree = "<group>"; };
+		061FF0C01F0BED4F0068E6E6 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
+		061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModify.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -846,6 +852,7 @@
 		061FF0B51F0BE2820068E6E6 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				061FF0C41F0BF19E0068E6E6 /* modify */,
 				061FF0BB1F0BE93B0068E6E6 /* upload */,
 				061FF0B81F0BE29B0068E6E6 /* download */,
 			);
@@ -863,8 +870,18 @@
 		061FF0BB1F0BE93B0068E6E6 /* upload */ = {
 			isa = PBXGroup;
 			children = (
+				061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */,
+				061FF0C01F0BED4F0068E6E6 /* UploadType.swift */,
 			);
 			name = upload;
+			sourceTree = "<group>";
+		};
+		061FF0C41F0BF19E0068E6E6 /* modify */ = {
+			isa = PBXGroup;
+			children = (
+				061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */,
+			);
+			name = modify;
 			sourceTree = "<group>";
 		};
 		064764C51E237022004B9ED3 /* utils */ = {
@@ -1599,6 +1616,7 @@
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
 				0679647B1E6382CE00DFC050 /* CalculateElementS.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
+				061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */,
 				067964651E63756E00DFC050 /* PauseDiff.swift in Sources */,
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
@@ -1661,6 +1679,7 @@
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				060A37901E58969300A973BF /* MainTabVc.swift in Sources */,
+				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
 				069ADD951EFB861800F24427 /* PickerHelper.swift in Sources */,
 				067964891E63861300DFC050 /* CalculateElementV.swift in Sources */,
@@ -1758,6 +1777,7 @@
 				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */,
+				061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */,
 				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* PlanTablewViewHeader.swift in Sources */,

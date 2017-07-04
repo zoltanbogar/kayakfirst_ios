@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO: copy from Android
 class UploadTimer {
     
     //MARK: constants
