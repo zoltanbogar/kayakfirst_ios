@@ -34,7 +34,7 @@ class TrainingDataService: AppService {
     
     //MARK: upload
     func uploadTrainingData() {
-        let uploadTrainingAvgs = UploadTrainingAvgs()
+        /*let uploadTrainingAvgs = UploadTrainingAvgs()
         let uploadTrainings = UploadTrainings()
         
         if UserService.sharedInstance.getUser() != nil {
@@ -42,7 +42,7 @@ class TrainingDataService: AppService {
                 self.runWithTokenCheck(serverService: uploadTrainingAvgs)
                 self.runWithTokenCheck(serverService: uploadTrainings)
             }
-        }
+        }*/
     }
     
     //MARK: server endpoints

@@ -17,15 +17,20 @@ class UploadTrainingAvgs: ServerService<Bool> {
     private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     private var trainingAvgArrayList: Array<[String:Any]>?
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        
-        return true
+    var isUploadReady = false
+    
+    //MARK: init
+    init(sessionId: Double) {
+        super.init()
+        initTrainingList(sessionId: sessionId)
     }
     
     override func preCheck() -> Bool {
-        initTrainingList()
-        
-        return trainingAvgArrayList != nil && trainingAvgArrayList!.count > 0
+        return isUploadReady
+    }
+    
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
+        return true
     }
     
     override func initUrlTag() -> String {
@@ -44,27 +49,22 @@ class UploadTrainingAvgs: ServerService<Bool> {
         return ArrayEncoding()
     }
     
-    private func initTrainingList() {
-        /*var arrayList: [String:Any]
+    private func initTrainingList(sessionId: Double) {
+        var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
-        let originalList = trainingAvgDbLoader.loadData(predicate: trainingAvgDbLoader.getTrainingAvgsfromTimeStampPredicate(timeStampFrom: self.getTimestamp()))
+        let originalList = trainingAvgDbLoader.loadUploadAbleData(pointer: sessionId)
         
         if originalList != nil && originalList!.count > 0 {
             for trainingAvg in originalList! {
-                if !Telemetry.sharedInstance.checkCycleState(cycleState: CycleState.resumed) {
-                    self.timeStamp = trainingAvg.sessionId
-                    
-                    arrayList = trainingAvg.getParameters()
-                    
-                    list.append(arrayList)
-                }
+                arrayList = trainingAvg.getParameters()
+                
+                list.append(arrayList)
             }
-        } else {
-            UploadTimer.stopTimer()
         }
-        self.trainingAvgArrayList = list*/
+        
+        isUploadReady = list.count > 0
     }
     
     override func getManagerType() -> BaseManagerType {

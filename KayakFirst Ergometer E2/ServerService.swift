@@ -49,6 +49,8 @@ class ServerService<E> {
                 error = Responses.error_no_internet
                 return nil
             }
+        } else {
+            result = getResultFromCache()
         }
         
         return result
@@ -82,6 +84,11 @@ class ServerService<E> {
     //override if needed
     internal func preCheck() -> Bool {
         return true
+    }
+    
+    //override if needed
+    internal func getResultFromCache() -> E? {
+        return nil
     }
     
     internal func initHeader() -> HTTPHeaders? {

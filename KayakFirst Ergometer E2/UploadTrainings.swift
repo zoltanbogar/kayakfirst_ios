@@ -21,15 +21,31 @@ class UploadTrainings: ServerService<Bool> {
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        
-        return true
+    private var timestamp: Double
+    private var pointerLocale: Double = 0
+    var isUploadReady = false
+    var pointer: Double = 0
+    
+    init(timestamp: String?) {
+        if timestamp == nil {
+            self.timestamp = 0
+        } else {
+            self.timestamp = Double(timestamp!)!
+        }
     }
     
     override func preCheck() -> Bool {
-        initTrainingList()
+        return initTrainingList()
+    }
+    
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
+        pointer = pointerLocale
         
-        return trainingArrayList != nil && trainingArrayList!.count > 0
+        return isUploadReady
+    }
+    
+    override func getResultFromCache() -> Bool? {
+        return isUploadReady
     }
     
     override func initUrlTag() -> String {
@@ -48,33 +64,31 @@ class UploadTrainings: ServerService<Bool> {
         return ArrayEncoding()
     }
     
-    private func initTrainingList() {
-        /*var arrayList: [String:Any]
+    private func initTrainingList() -> Bool {
+        var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
-        let originalTrainingList = trainingDbLoader.loadData(predicate: trainingDbLoader.getTrainingsFromTimeStampPredicate(timeStampFrom: self.getTimestamp()))
+        let originalTrainingList = trainingDbLoader.loadUploadAbleData(pointer: timestamp)
         
         if originalTrainingList != nil && originalTrainingList!.count > 0 {
-            for training in originalTrainingList! {
-                self.timeStamp = training.timeStamp
+            
+            for i in 0...maxUploadTrainings {
+                arrayList = originalTrainingList![i].getParameters()
+                list.append(arrayList)
                 
-                if list.count <= maxUploadTrainings {
-                    arrayList = training.getParameters()
-                    list.append(arrayList)
-                    
-                } else {
-                    break
-                }
+                pointerLocale = originalTrainingList![i].getUploadPointer()
             }
-        } else {
-            UploadTimer.stopTimer()
         }
-        self.trainingArrayList = list*/
+        
+        if originalTrainingList == nil || originalTrainingList?.count == 0 {
+            isUploadReady = true
+        }
+        
+        return list.count > 0
     }
     
     override func getManagerType() -> BaseManagerType {
         return TrainingManagerType.upload_training
     }
-    
 }
