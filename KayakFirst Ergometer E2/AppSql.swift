@@ -36,7 +36,6 @@ class AppSql {
         let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
         let timeStampFrom = currentTimeMillis() - oldaDataDaysInMillis
         TrainingDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
-        TrainingDaysDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
         TrainingAvgDbLoader.sharedInstance.deleteData(timeStampFrom: timeStampFrom)
     }
 }

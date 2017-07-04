@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class DownloadPlanById: ServerService<[Plan]> {
+class DownloadPlanById: ServerService<Plan> {
     
     let planId: String
     
@@ -18,17 +18,16 @@ class DownloadPlanById: ServerService<[Plan]> {
         self.planId = planId
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> [Plan]? {
-        var plans: [Plan]?
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Plan? {
+        var plan: Plan?
         let response = alamofireRequest.responseJSON()
         
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
-            plans = [Plan]()
-            plans?.append(Plan(json: jsonValue))
+            plan = Plan(json: jsonValue)
         }
-        return plans
+        return plan
     }
     
     override func initUrlTag() -> String {

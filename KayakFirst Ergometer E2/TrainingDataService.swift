@@ -47,11 +47,9 @@ class TrainingDataService: AppService {
     
     //MARK: server endpoints
     func getTrainingDays() {
-        let trainingDaysDbLoader = TrainingDaysDbLoader.sharedInstance
         let downloadTrainingDays = DownloadTrainingDays()
         LoadTrainingDaysData(
             trainingService: self,
-            trainingDaysDbLoader: trainingDaysDbLoader,
             downloadTrainingDays: downloadTrainingDays).execute()
     }
     
@@ -98,19 +96,18 @@ class TrainingDataService: AppService {
 private class LoadTrainingDaysData: AsyncTask<Any, [TimeInterval], [TimeInterval]> {
     
     private let trainingService: TrainingDataService
-    private let trainingDaysDbLoader: TrainingDaysDbLoader
     private let downloadTrainingDays: DownloadTrainingDays
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
     
-    init(trainingService: TrainingDataService, trainingDaysDbLoader: TrainingDaysDbLoader, downloadTrainingDays: DownloadTrainingDays) {
+    init(trainingService: TrainingDataService, downloadTrainingDays: DownloadTrainingDays) {
         self.trainingService = trainingService
-        self.trainingDaysDbLoader = trainingDaysDbLoader
         self.downloadTrainingDays = downloadTrainingDays
     }
     
     fileprivate override func doInBackground(param: Any?) -> [TimeInterval]? {
         var trainingDaysList: [TimeInterval]?
         
-        trainingDaysList = trainingDaysDbLoader.loadData(predicate: nil)
+        trainingDaysList = trainingDbLoader.getTrainingDays()
         
         publishProgress(progress: trainingDaysList)
         

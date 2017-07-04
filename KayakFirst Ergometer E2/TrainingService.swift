@@ -17,7 +17,7 @@ class TrainingService: CycleStateChangeListener {
     
     private let pauseDiff = PauseDiff.sharedInstance
     
-    private let saveValues = SaveValues.sharedInstance
+    private let saveValues = SaveTrainingValues.sharedInstance
     
     private var realDuration: Double = 0
     

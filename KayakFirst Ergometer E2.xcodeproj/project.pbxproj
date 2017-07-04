@@ -89,7 +89,6 @@
 		060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060EE3911E7538E700203DB6 /* HalfDivider.swift */; };
 		060EE8D21EC2E3CD0060FD6F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060EE8D11EC2E3CD0060FD6F /* String+.swift */; };
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
-		060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */; };
 		060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */; };
 		061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145CD1E58C97F0058EAF4 /* ChartView.swift */; };
 		061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D01E58CF600058EAF4 /* DiagramLabel.swift */; };
@@ -177,7 +176,7 @@
 		0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645B1E636C9400DFC050 /* CalculateElement.swift */; };
 		0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645E1E636CCE00DFC050 /* StartCommand.swift */; };
 		067964611E636E7800DFC050 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964601E636E7800DFC050 /* MovingAverage.swift */; };
-		067964631E6370F500DFC050 /* SaveValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964621E6370F500DFC050 /* SaveValues.swift */; };
+		067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964621E6370F500DFC050 /* SaveTrainingValues.swift */; };
 		067964651E63756E00DFC050 /* PauseDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964641E63756E00DFC050 /* PauseDiff.swift */; };
 		067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964671E637C4600DFC050 /* CalculateElementAvg.swift */; };
 		0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964691E637EB100DFC050 /* CalculateF_AV.swift */; };
@@ -384,7 +383,6 @@
 		060EE3911E7538E700203DB6 /* HalfDivider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfDivider.swift; sourceTree = "<group>"; };
 		060EE8D11EC2E3CD0060FD6F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
-		060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDaysDbLoader.swift; sourceTree = "<group>"; };
 		060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
 		061145CD1E58C97F0058EAF4 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		061145D01E58CF600058EAF4 /* DiagramLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramLabel.swift; sourceTree = "<group>"; };
@@ -473,7 +471,7 @@
 		0679645B1E636C9400DFC050 /* CalculateElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElement.swift; sourceTree = "<group>"; };
 		0679645E1E636CCE00DFC050 /* StartCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommand.swift; sourceTree = "<group>"; };
 		067964601E636E7800DFC050 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
-		067964621E6370F500DFC050 /* SaveValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveValues.swift; sourceTree = "<group>"; };
+		067964621E6370F500DFC050 /* SaveTrainingValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTrainingValues.swift; sourceTree = "<group>"; };
 		067964641E63756E00DFC050 /* PauseDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseDiff.swift; sourceTree = "<group>"; };
 		067964671E637C4600DFC050 /* CalculateElementAvg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementAvg.swift; sourceTree = "<group>"; };
 		067964691E637EB100DFC050 /* CalculateF_AV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateF_AV.swift; sourceTree = "<group>"; };
@@ -670,7 +668,6 @@
 				060A37751E584FBA00A973BF /* Telemetry.swift */,
 				067964551E63633E00DFC050 /* CycleState.swift */,
 				067964601E636E7800DFC050 /* MovingAverage.swift */,
-				067964621E6370F500DFC050 /* SaveValues.swift */,
 				067964641E63756E00DFC050 /* PauseDiff.swift */,
 				061369891E7C2D8C00896282 /* UploadTimer.swift */,
 			);
@@ -868,6 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				064FE5A61ED09E8A004A9F35 /* manager_type */,
+				067964621E6370F500DFC050 /* SaveTrainingValues.swift */,
 				064FE5AD1ED0A0A5004A9F35 /* BaseManager.swift */,
 				0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */,
 			);
@@ -1147,7 +1145,6 @@
 			children = (
 				060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */,
 				06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */,
-				060FE55C1E622107002529B7 /* TrainingDaysDbLoader.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -1620,7 +1617,7 @@
 				06AF23461F06801B008805A2 /* DownloadPlanByName.swift in Sources */,
 				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
-				067964631E6370F500DFC050 /* SaveValues.swift in Sources */,
+				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
@@ -1736,7 +1733,6 @@
 				064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */,
 				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
-				060FE55D1E622107002529B7 /* TrainingDaysDbLoader.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* PlanTablewViewHeader.swift in Sources */,
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
 				0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
+class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     
     //MARK: constants
     static let tableName = "training_avg_table"
@@ -74,10 +74,6 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
     }
     
-    func getTrainingAvgsfromTimeStampPredicate(timeStampFrom: Double) -> Expression<Bool> {
-        return self.sessionId > timeStampFrom
-    }
-    
     override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
         var trainingAvgList: [TrainingAvg]?
         
@@ -114,6 +110,13 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         return trainingAvgList
     }
     
+    //MARK: protocol
+    override func loadUploadAbleData(pointer: Double) -> [TrainingAvg]? {
+        let telemetry = Telemetry.sharedInstance
+        let predicate = self.sessionId == pointer && self.sessionId != telemetry.sessionId
+        return loadData(predicate: predicate)
+    }
+    
     //MARK: update
     private func updateData(trainingAvg: TrainingAvg) {
         let avg = table!.filter(self.averageHash == trainingAvg.avgHash)
@@ -122,6 +125,20 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         } catch {
             log(databaseLogTag, error)
         }
+    }
+    
+    //MARK: delete
+    override func deleteData(predicate: Expression<Bool>?) -> Int {
+        var deletedRows = 0
+        
+        let deleteData = table!.filter(predicate!)
+        
+        do {
+            deletedRows = try db!.run(deleteData.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
     }
     
 }

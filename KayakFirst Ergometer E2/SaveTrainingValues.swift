@@ -7,19 +7,17 @@
 //
 
 import Foundation
-class SaveValues {
+class SaveTrainingValues {
     
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
-    private let trainingDaysDbLoader = TrainingDaysDbLoader.sharedInstance
     private let userService = UserService.sharedInstance
-    private let telemetry = Telemetry.sharedInstance
     
     private var localeSessionId: Double = 0
     
     //MARK: init
-    static let sharedInstance: SaveValues = SaveValues()
+    static let sharedInstance: SaveTrainingValues = SaveTrainingValues()
     private init() {
         //private constructor
     }
@@ -27,8 +25,6 @@ class SaveValues {
     func addValue(training: Training) {
         if CalculateEnum.savingTypes.contains(CalculateEnum(rawValue: training.dataType)!) && userService.getUser() != nil {
             trainingDbLoader.addData(data: training)
-            
-            saveSessionId()
         }
     }
     
@@ -50,16 +46,5 @@ class SaveValues {
             sessionId: training.sessionId,
             avgType: training.dataType,
             avgValue: training.dataValue)
-    }
-    
-    private func saveSessionId() {
-        if userService.getUser() != nil {
-            let sessionId = telemetry.sessionId
-            
-            if localeSessionId != sessionId {
-                trainingDaysDbLoader.addData(data: sessionId)
-                localeSessionId = sessionId
-            }
-        }
     }
 }
