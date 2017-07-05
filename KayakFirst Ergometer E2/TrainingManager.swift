@@ -1,0 +1,68 @@
+//
+//  TrainingManager.swift
+//  KayakFirst Ergometer E2
+//
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
+//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//
+
+import Foundation
+
+class TrainingManager: BaseManager {
+    
+    //MARK: init
+    static let sharedInstance = TrainingManager()
+    private override init() {
+        //private constructor
+    }
+    
+    //MARK: properties
+    private let saveTrainingValues = SaveTrainingValues.sharedInstance
+    
+    var detailsTrainingList: [SumTraining]?
+    
+    //MARK: callbacks
+    var trainingCallback: ((_ data: [SumTraining]?, _ error: Responses?) -> ())?
+    var trainingDaysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
+    
+    //MARK: functions
+    func getTrainingDays() -> BaseManagerType {
+        let managerDownloadTrainingDays = ManagerDownloadTrainingDays()
+        runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: trainingDaysCallback)
+        return TrainingManagerType.download_training_days
+    }
+    
+    func downloadTrainings(sessionIdFrom: Double, sessionIdTo: Double) -> BaseManagerType {
+        let manager = ManagerDownloadTrainingBySessionId(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
+        runDownload(managerDownload: manager, managerCallBack: { data, error in
+            if error == nil {
+                self.detailsTrainingList = data
+                
+                if let callback = self.trainingCallback {
+                    callback(data, error)
+                }
+            }
+        })
+        
+        return TrainingManagerType.download_training
+    }
+    
+    func addTrainingUploadPointer() {
+        ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: nil)
+        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: "\(Telemetry.sharedInstance.sessionId)")
+    }
+    
+    func saveTraining(training: Training) {
+        saveTrainingValues.addValue(training: training)
+    }
+    
+    func saveTrainingAvg(telemetryObject: TelemetryObject, telemetryAvgObject: TelemetryAvgObject) {
+        saveTrainingValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+    }
+    
+    func deleteTraining(sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
+        let manager = ManagerModifyTrainingDelete(data: sumTraining)
+        runModify(managerModify: manager, managerCallBack: managerCallback)
+        return TrainingManagerType.delete_training
+    }
+}

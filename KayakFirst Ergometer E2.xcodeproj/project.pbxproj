@@ -120,6 +120,7 @@
 		0613DAA11E47843900CAD5A6 /* TrainingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */; };
 		0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */; };
 		0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD281F0D990E00AC1903 /* PlanManager.swift */; };
+		0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
 		061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */; };
@@ -438,6 +439,7 @@
 		0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataService.swift; sourceTree = "<group>"; };
 		0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDays.swift; sourceTree = "<group>"; };
 		0618AD281F0D990E00AC1903 /* PlanManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
+		0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
@@ -969,6 +971,7 @@
 				0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */,
 				06CAFF4C1F0D304D00D2EA14 /* EventManager.swift */,
 				0618AD281F0D990E00AC1903 /* PlanManager.swift */,
+				0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -1809,6 +1812,7 @@
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
 				06CAFF4B1F0D2EDE00D2EA14 /* ManagerModifyPlanDelete.swift in Sources */,
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,
+				0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
 				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
