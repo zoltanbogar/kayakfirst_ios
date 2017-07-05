@@ -11,10 +11,10 @@ import Foundation
 class ManagerUpload {
     
     //MARK: constants
-    private let dbUpload = "manager_upload_db"
+    private static let dbUpload = "manager_upload_db"
     
     //MARK: properties
-    private let preferences = UserDefaults.standard
+    private static let preferences = UserDefaults.standard
     
     //MARK: functions
     func callServer() -> String? {
@@ -27,7 +27,7 @@ class ManagerUpload {
         return error
     }
     
-    func getStack() -> [String]? {
+    class func getStack() -> [String]? {
         let dictionary = preferences.persistentDomain(forName: dbUpload)
         
         return [String]()
@@ -35,7 +35,7 @@ class ManagerUpload {
         //return dictionary?.keys
     }
     
-    func addToStack(uploadType: UploadType, pointer: String?) {
+    class func addToStack(uploadType: UploadType, pointer: String?) {
         /*UploadTimer.startTimer()
         
         var values = preferences.persistentDomain(forName: dbUpload)?.values[uploadType.rawValue]
@@ -44,7 +44,7 @@ class ManagerUpload {
     }
     
     //TODO
-    func getManagerUploadByType(uploadType: String) -> [ManagerUpload] {
+    class func getManagerUploadByType(uploadType: String) -> [ManagerUpload] {
         var managerUploads = [ManagerUpload]()
         
         return managerUploads

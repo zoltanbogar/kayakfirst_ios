@@ -13,6 +13,7 @@ class UserManager: BaseManager {
     //MARK: init
     static let sharedInstance = UserManager()
     private override init() {
+        super.init()
         //private constructor
     }
     

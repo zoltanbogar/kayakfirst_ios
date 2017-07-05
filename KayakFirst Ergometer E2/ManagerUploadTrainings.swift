@@ -23,7 +23,7 @@ class ManagerUploadTrainings: ManagerUpload {
             
             if !isUploadReady {
                 if pointerTimestamp != 0 {
-                    addToStack(uploadType: getUploadType(), pointer: "\(pointerTimestamp)")
+                    ManagerUpload.addToStack(uploadType: getUploadType(), pointer: "\(pointerTimestamp)")
                 }
             }
         }
