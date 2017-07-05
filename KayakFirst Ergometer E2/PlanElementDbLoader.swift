@@ -50,10 +50,12 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     }
     
     //MARK: insert
-    override func addData(data: PlanElement) {
-        let insert = table!.insert(self.id <- data.planElementId, self.position <- data.position, self.intensity <- data.intensity, self.planType <- data.type.rawValue, self.value <- data.value)
-        
-        let rowId = try? db?.run(insert)
+    override func addData(data: PlanElement?) {
+        if let planElement = data {
+            let insert = table!.insert(self.id <- planElement.planElementId, self.position <- planElement.position, self.intensity <- planElement.intensity, self.planType <- planElement.type.rawValue, self.value <- planElement.value)
+            
+            let rowId = try? db?.run(insert)
+        }
     }
     
     //MARK: update

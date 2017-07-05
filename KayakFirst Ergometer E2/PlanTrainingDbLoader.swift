@@ -55,12 +55,14 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     }
     
     //MARK: insert
-    override func addData(data: PlanTraining) {
-        let insert = table!.insert(self.planId <- data.planId, self.userId <- data.userId, self.planType <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.length <- data.length, self.sessionId <- data.sessionId)
-        
-        let rowId = try? db?.run(insert)
-        
-        addPlanWithChildren(planTraining: data)
+    override func addData(data: PlanTraining?) {
+        if let planTraining = data {
+            let insert = table!.insert(self.planId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- planTraining.sessionId)
+            
+            let rowId = try? db?.run(insert)
+            
+            addPlanWithChildren(planTraining: planTraining)
+        }
     }
     
     private func addPlanWithChildren(planTraining: PlanTraining) {

@@ -70,10 +70,12 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         
     }
     
-    override func addData(data: Training) {
-        let insert = table!.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType.rawValue, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
-        
-        let rowId = try? db?.run(insert)
+    override func addData(data: Training?) {
+        if let training = data {
+            let insert = table!.insert(self.timeStamp <- training.timeStamp, self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- training.sessionId, self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
+            
+            let rowId = try? db?.run(insert)
+        }
     }
     
     //MARK: update

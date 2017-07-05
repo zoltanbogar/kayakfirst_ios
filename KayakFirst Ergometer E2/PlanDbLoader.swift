@@ -51,12 +51,28 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     }
     
     //MARK: insert
-    override func addData(data: Plan) {
-        let insert = table!.insert(self.planId <- data.planId, self.userId <- data.userId, self.planType <- data.type.rawValue, self.name <- data.name, self.notes <- data.notes, self.length <- data.length)
-        
-        let rowId = try? db?.run(insert)
-        
-        addPlanWithChildren(plan: data)
+    func addPlanList(planList: [Plan]?) {
+        if let planListValue = planList {
+            do {
+                try db!.transaction {
+                    for plan in planListValue {
+                        self.addData(data: plan)
+                    }
+                }
+            } catch {
+                log(databaseLogTag, error)
+            }
+        }
+    }
+    
+    override func addData(data: Plan?) {
+        if let plan = data {
+            let insert = table!.insert(self.planId <- plan.planId, self.userId <- plan.userId, self.planType <- plan.type.rawValue, self.name <- plan.name!, self.notes <- plan.notes, self.length <- plan.length)
+            
+            let rowId = try? db?.run(insert)
+            
+            addPlanWithChildren(plan: plan)
+        }
     }
     
     private func addPlanWithChildren(plan: Plan) {
@@ -122,6 +138,14 @@ class PlanDbLoader: BaseDbLoader<Plan> {
         }
         
         return planElementList
+    }
+    
+    func getIdPredicate(planId: String) -> Expression<Bool> {
+        return self.planId == planId
+    }
+    
+    func getNamePredicate(name: String) -> Expression<Bool> {
+        return self.name.like(name)
     }
     
     //MARK: update

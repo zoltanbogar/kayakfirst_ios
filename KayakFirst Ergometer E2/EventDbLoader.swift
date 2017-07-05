@@ -46,10 +46,12 @@ class EventDbLoader: BaseDbLoader<Event> {
     }
     
     //MARK: insert
-    override func addData(data: Event) {
-        let insert = table!.insert(self.id <- data.eventId, self.userId <- data.userId, self.sessionId <- data.sessionId, self.timestamp <- data.timestamp, self.name <- data.name, self.planType <- data.planType.rawValue, self.planId <- data.planId)
-        
-        let rowId = try? db!.run(insert)
+    override func addData(data: Event?) {
+        if let event = data {
+            let insert = table!.insert(self.id <- event.eventId, self.userId <- event.userId, self.sessionId <- event.sessionId, self.timestamp <- event.timestamp, self.name <- event.name, self.planType <- event.planType.rawValue, self.planId <- event.planId)
+            
+            let rowId = try? db!.run(insert)
+        }
     }
     
     //MARK: update
@@ -129,6 +131,10 @@ class EventDbLoader: BaseDbLoader<Event> {
         }
         
         return events
+    }
+    
+    func getEventBetweenTimestampIdPredicate(timestampFrom: Double, timestampTo: Double) -> Expression<Bool> {
+        return self.timestamp > timestampFrom && self.timestamp <= timestampTo
     }
     
     //MARK: delete

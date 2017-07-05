@@ -256,6 +256,11 @@
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
+		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
+		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
+		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
+		06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */; };
+		06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
@@ -561,6 +566,11 @@
 		06C6ABCD1E2267A100562B27 /* KayakFirst Ergometer E2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayakFirst_Ergometer_E2UITests.swift; sourceTree = "<group>"; };
 		06C6ABD31E2267A100562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
+		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
+		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
+		06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlanByName.swift; sourceTree = "<group>"; };
+		06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingBySessionId.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -863,6 +873,11 @@
 			isa = PBXGroup;
 			children = (
 				061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */,
+				06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */,
+				06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */,
+				06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */,
+				06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */,
+				06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -1620,6 +1635,7 @@
 				067964651E63756E00DFC050 /* PauseDiff.swift in Sources */,
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
+				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
@@ -1685,6 +1701,7 @@
 				067964891E63861300DFC050 /* CalculateElementV.swift in Sources */,
 				060A37781E5851D400A973BF /* DashBoardElement_Av200.swift in Sources */,
 				060A37761E584FBA00A973BF /* Telemetry.swift in Sources */,
+				06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */,
 				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
@@ -1756,6 +1773,7 @@
 				060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */,
 				060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */,
 				060B3DC41EE85EEB00AF43DE /* PlanEtSec.swift in Sources */,
+				06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */,
 				066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
@@ -1822,6 +1840,7 @@
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
+				06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
@@ -1842,6 +1861,7 @@
 				060B99181E641A5200F72404 /* TrainingService.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
+				06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
 				060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */,

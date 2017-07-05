@@ -16,7 +16,7 @@ class ManagerDownload<E> {
     //MARK: properties
     private let preferences = UserDefaults.standard
     
-    internal var serverError: String?
+    internal var serverError: Responses?
     
     //MARK: functions
     func callServer() -> String? {
@@ -32,7 +32,7 @@ class ManagerDownload<E> {
             }
         }
         
-        return serverError
+        return serverError?.rawValue
     }
     
     func getDataFromServer() -> E? {
@@ -68,11 +68,11 @@ class ManagerDownload<E> {
         fatalError("must be implemented")
     }
     
-    internal func addDataToLocale(data: E) {
+    internal func addDataToLocale(data: E?) {
         fatalError("must be implemented")
     }
     
-    internal func isEqual(anotherManagerDownload: ManagerDownload<E>) {
+    internal func isEqual(anotherManagerDownload: ManagerDownload<E>) -> Bool {
         fatalError("must be implemented")
     }
     

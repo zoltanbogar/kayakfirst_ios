@@ -52,20 +52,22 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     }
     
     //MARK: insert
-    override func addData(data: TrainingAvg) {
-        if sessionIdValue != data.sessionId {
-            avgHashes = [String]()
-            sessionIdValue = data.sessionId
-        }
-        
-        if !avgHashes!.contains(data.avgHash) {
-            avgHashes!.append(data.avgHash)
+    override func addData(data: TrainingAvg?) {
+        if let trainingAvg = data {
+            if sessionIdValue != trainingAvg.sessionId {
+                avgHashes = [String]()
+                sessionIdValue = trainingAvg.sessionId
+            }
             
-            let insert = table!.insert(self.averageHash <- data.avgHash, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
-            
-            let rowId = try? db?.run(insert)
-        } else {
-            updateData(trainingAvg: data)
+            if !avgHashes!.contains(trainingAvg.avgHash) {
+                avgHashes!.append(trainingAvg.avgHash)
+                
+                let insert = table!.insert(self.averageHash <- trainingAvg.avgHash, self.userId <- trainingAvg.userId!, self.sessionId <- trainingAvg.sessionId, self.dataType <- trainingAvg.avgType, self.dataValue <- trainingAvg.avgValue)
+                
+                let rowId = try? db?.run(insert)
+            } else {
+                updateData(trainingAvg: trainingAvg)
+            }
         }
     }
     

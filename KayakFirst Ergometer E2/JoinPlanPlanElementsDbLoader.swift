@@ -55,13 +55,15 @@ class JoinPlanPlanElements: BaseDbLoader<PlanPlanElements> {
     }
     
     //MARK: insert
-    override func addData(data: PlanPlanElements) {
-        let insert = table?.insert(self.planId <- data.planId, self.planElementId <- data.planElementId)
-        
-        do {
-            let rowId = try db?.run(insert!)
-        } catch {
-            log(databaseLogTag, error)
+    override func addData(data: PlanPlanElements?) {
+        if let planPlanElements = data {
+            let insert = table?.insert(self.planId <- planPlanElements.planId, self.planElementId <- planPlanElements.planElementId)
+            
+            do {
+                let rowId = try db?.run(insert!)
+            } catch {
+                log(databaseLogTag, error)
+            }
         }
     }
     

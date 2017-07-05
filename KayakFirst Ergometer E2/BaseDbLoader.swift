@@ -20,7 +20,7 @@ class BaseDbLoader<Input> {
     let userId = Expression<Int64>("userId")
     let planType = Expression<String>("planType")
     let planId = Expression<String>("planId")
-    let name = Expression<String?>("name")
+    let name = Expression<String>("name")
     let timestamp = Expression<Double>("timestamp")
     
     var table: Table?
@@ -83,7 +83,7 @@ class BaseDbLoader<Input> {
     func initDatabase(database: Connection) throws {
         fatalError("Must be implemented")
     }
-    func addData(data: Input) {
+    func addData(data: Input?) {
         fatalError("Must be implemented")
     }
     func queryData(predicate: Expression<Bool>?) -> [Input]? {
