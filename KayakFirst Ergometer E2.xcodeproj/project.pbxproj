@@ -272,6 +272,8 @@
 		06CAFF511F0D369300D2EA14 /* ManagerModifyPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF501F0D369300D2EA14 /* ManagerModifyPlanTraining.swift */; };
 		06CAFF531F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF521F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift */; };
 		06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */; };
+		06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */; };
+		06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
@@ -593,6 +595,8 @@
 		06CAFF501F0D369300D2EA14 /* ManagerModifyPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyPlanTraining.swift; sourceTree = "<group>"; };
 		06CAFF521F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyPlanTrainingSave.swift; sourceTree = "<group>"; };
 		06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyTrainingDelete.swift; sourceTree = "<group>"; };
+		06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainingAvgs.swift; sourceTree = "<group>"; };
+		06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainings.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -909,6 +913,8 @@
 			children = (
 				061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */,
 				061FF0C01F0BED4F0068E6E6 /* UploadType.swift */,
+				06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */,
+				06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1727,6 +1733,7 @@
 				06CAFF411F0D2A5000D2EA14 /* ManagerModifyEvent.swift in Sources */,
 				067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */,
 				069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */,
+				06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
@@ -1847,6 +1854,7 @@
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
 				06AF23401F067D2D008805A2 /* DownloadEventDays.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
+				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,
 				0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */,
 				064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */,
 				064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */,
