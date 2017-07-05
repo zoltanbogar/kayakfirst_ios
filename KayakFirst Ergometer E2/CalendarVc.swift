@@ -198,7 +198,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func trainingListTrainingDataCallback(error: Responses?, trainingData: [SumTraining]?) {
         if let sumTrainings = trainingData {
             if sumTrainings.count > 0 {
-                if DateFormatHelper.isSameDay(timeStamp1: sumTrainings[0].sessionId!, timeStamp2: self.selectedDate!) {
+                if DateFormatHelper.isSameDay(timeStamp1: sumTrainings[0].sessionId, timeStamp2: self.selectedDate!) {
                     refreshTableView(sumTrainings: sumTrainings)
                 }
             }

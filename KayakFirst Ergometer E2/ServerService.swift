@@ -32,6 +32,17 @@ class ServerService<E> {
     var error: Responses?
     
     func run() -> E? {
+        var data = runBase()
+        
+        if data == nil && error == Responses.error_expired_token {
+            refreshToken()
+            
+            return runBase()
+        }
+        return data
+    }
+    
+    private func runBase() -> E? {
         var result: E?
         if preCheck() {
             if Reachability.isConnectedToNetwork() {
@@ -79,6 +90,13 @@ class ServerService<E> {
     
     internal func initParameters() -> Parameters? {
         return nil
+    }
+    
+    private func refreshToken() {
+        let refreshTokenDto = RefreshToken().run()
+        if refreshTokenDto != nil {
+            UserManager.sharedInstance.setTokens(token: refreshTokenDto!.token, refreshToken: refreshTokenDto!.refreshToken)
+        }
     }
     
     //override if needed

@@ -76,6 +76,10 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
         return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
     }
     
+    func getSessionIdPredicate(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
+    }
+    
     override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
         var trainingAvgList: [TrainingAvg]?
         

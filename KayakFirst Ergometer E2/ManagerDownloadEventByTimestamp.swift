@@ -102,7 +102,7 @@ class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]> {
     
     //MARK: helper
     private func getQueryEventTimestamp() -> Expression<Bool> {
-        return eventDbLoader.getEventBetweenTimestampIdPredicate(timestampFrom: timestampFrom, timestampTo: timestampTo)
+        return eventDbLoader.getEventBetweenTimestampPredicate(timestampFrom: timestampFrom, timestampTo: timestampTo)
     }
     
     private func getQueryPlanId(planId: String) -> Expression<Bool> {

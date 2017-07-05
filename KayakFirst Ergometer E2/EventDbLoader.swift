@@ -133,8 +133,15 @@ class EventDbLoader: BaseDbLoader<Event> {
         return events
     }
     
-    func getEventBetweenTimestampIdPredicate(timestampFrom: Double, timestampTo: Double) -> Expression<Bool> {
+    func getEventBetweenTimestampPredicate(timestampFrom: Double, timestampTo: Double) -> Expression<Bool> {
         return self.timestamp > timestampFrom && self.timestamp <= timestampTo
+    }
+    
+    func getIdPredicate(eventId: String?) -> Expression<Bool>? {
+        if let eventIdValue = eventId {
+            return self.id == eventId!
+        }
+        return nil
     }
     
     //MARK: delete

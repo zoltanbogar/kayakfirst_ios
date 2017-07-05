@@ -21,4 +21,19 @@ class UserManager: BaseManager {
         return UserService.sharedInstance.getUser()
     }
     
+    func setTokens(token: String, refreshToken: String) {
+        //TODO: implement the correct method
+    }
+    
+    var refreshToken: String? {
+        //TODO: implement the correct method
+        /*get {
+            if preferences.object(forKey: User.keyRefreshToken) == nil {
+                return nil
+            } else {
+                return preferences.string(forKey: User.keyRefreshToken)
+            }
+        }*/
+        return nil
+    }
 }

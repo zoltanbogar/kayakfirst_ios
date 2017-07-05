@@ -18,7 +18,7 @@ class SumTraining: Equatable, ModifyAble {
     private var distance: Double?
     var trainingList: [Training]?
     var trainingEnvironmentType: TrainingEnvironmentType?
-    var sessionId: Double?
+    var sessionId: Double = 0
     
     var t200List = [Training]()
     var t500List = [Training]()
@@ -80,7 +80,7 @@ class SumTraining: Equatable, ModifyAble {
     
     //MARK: protocol
     static func == (lhs: SumTraining, rhs: SumTraining) -> Bool {
-        return Int64(lhs.sessionId!) == Int64(rhs.sessionId!)
+        return Int64(lhs.sessionId) == Int64(rhs.sessionId)
     }
     
     func getUploadPointer() -> String {
