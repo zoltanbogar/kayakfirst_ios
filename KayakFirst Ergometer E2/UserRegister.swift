@@ -10,19 +10,15 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserRegister: ServerService<User> {
+class UserRegister: ServerService<Bool> {
     
     private let userDto: UserDto
-    private let facebookId: String?
-    private let googleId: String?
     
-    init(userDto: UserDto, facebookId: String?, googleId: String?) {
+    init(userDto: UserDto) {
         self.userDto = userDto
-        self.facebookId = facebookId
-        self.googleId = googleId
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> User? {
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
         var user: User?
         let response = alamofireRequest.responseJSON()
         
@@ -33,9 +29,10 @@ class UserRegister: ServerService<User> {
             
             if user != nil {
                 UserLogin(userName: userDto.userName!, userPassword: userDto.password!).run()
+                return true
             }
         }
-        return user
+        return false
     }
     
     override func initUrlTag() -> String {
@@ -59,8 +56,11 @@ class UserRegister: ServerService<User> {
             "artOfPaddling": userDto.artOfPaddling ?? "",
             "password": userDto.password ?? "",
             "username": userDto.userName ?? "",
-            "facebookId": facebookId ?? "",
-            "googleId": googleId ?? ""
+            "unitWeight": userDto.unitWeight ?? "",
+            "unitDistance": userDto.unitDistance ?? "",
+            "unitPace": userDto.unitPace ?? "",
+            "facebookId": userDto.facebookId ?? "",
+            "googleId": userDto.googleId ?? ""
         ]
     }
     

@@ -338,7 +338,9 @@ class ProfileVc: MainTabVc {
                                 userName: tfUserName.text,
                                 unitWeight: pickerHelperUnitWeight?.getValue(),
                                 unitDistance: pickerHelperUnitDistance?.getValue(),
-                                unitPace: pickerHelperUnitPace?.getValue()))
+                                unitPace: pickerHelperUnitPace?.getValue(),
+                                googleId: nil,
+                                facebookId: nil))
         }
     }
     

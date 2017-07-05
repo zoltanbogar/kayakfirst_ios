@@ -315,9 +315,9 @@ class RegisterView: UIView, UITextFieldDelegate {
                     userName: tfUserName.text,
                     unitWeight: pickerHelperUnitWeight?.getValue(),
                     unitDistance: pickerHelperUnitDistance?.getValue(),
-                    unitPace: pickerHelperUnitPace?.getValue()),
-                facebookId: self.viewController.facebookId,
-                googleId: self.viewController.googleId)
+                    unitPace: pickerHelperUnitPace?.getValue(),
+                    googleId: self.viewController.googleId,
+                    facebookId: self.viewController.facebookId))
         }
     }
     

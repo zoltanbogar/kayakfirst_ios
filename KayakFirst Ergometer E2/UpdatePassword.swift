@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UpdatePassword: ServerService<User> {
+class UpdatePassword: ServerService<Bool> {
     
     private let currentPassword: String
     private let newPassword: String
@@ -20,18 +20,8 @@ class UpdatePassword: ServerService<User> {
         self.newPassword = newPassword
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> User? {
-        var user: User?
-        
-        let response = alamofireRequest.responseJSON()
-        
-        if let json = response.result.value {
-            let jsonValue = JSON(json)
-            
-            user = User(json: jsonValue)
-        }
-        
-        return user
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
+        return true
     }
     
     override func initUrlTag() -> String {
