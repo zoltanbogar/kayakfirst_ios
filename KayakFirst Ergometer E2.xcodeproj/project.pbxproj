@@ -296,6 +296,8 @@
 		06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CB1E463DB6002AA9D0 /* UserRegister.swift */; };
 		06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CD1E463DD5002AA9D0 /* UserDto.swift */; };
 		06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */; };
+		06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */; };
+		06F8A0921F0E8357006CE6FB /* DeleteEventDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
 		06F914631E428A240041B303 /* Alamofire+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914621E428A240041B303 /* Alamofire+.swift */; };
@@ -622,6 +624,8 @@
 		06F657CB1E463DB6002AA9D0 /* UserRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		06F657CD1E463DD5002AA9D0 /* UserDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePlanDialog.swift; sourceTree = "<group>"; };
+		06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTrainingDialog.swift; sourceTree = "<group>"; };
+		06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteEventDialog.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
 		06F914621E428A240041B303 /* Alamofire+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+.swift"; sourceTree = "<group>"; };
@@ -1206,6 +1210,8 @@
 				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
 				064766471E759ACE007936B5 /* LocationSettingsDialog.swift */,
 				06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */,
+				06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */,
+				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1750,6 +1756,7 @@
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
 				06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */,
+				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				060A37901E58969300A973BF /* MainTabVc.swift in Sources */,
@@ -1766,6 +1773,7 @@
 				069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */,
 				067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */,
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,
+				06F8A0921F0E8357006CE6FB /* DeleteEventDialog.swift in Sources */,
 				06AF23391F06760C008805A2 /* UploadAbleDbLoader.swift in Sources */,
 				06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
