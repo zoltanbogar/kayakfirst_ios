@@ -18,6 +18,7 @@ func startPlanListVc(navigationController: UINavigationController, planType: Pla
 class PlanListVc: BaseVC {
     
     //MARK: properties
+    private let planManager = PlanManager.sharedInstance
     var planType: PlanType?
     
     //MARK: lifecycle
@@ -27,9 +28,33 @@ class PlanListVc: BaseVC {
         automaticallyAdjustsScrollViewInsets = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setPlanList()
+    }
+    
     //MARK: functions
     private func setPlanList() {
-        tableViewPlan.dataList = Plan.getExamplePlans()
+        search()
+    }
+    
+    private func search() {
+        let manager = planManager.getPlanByName(name: etSearch.text, managerCallBack: planCallback)
+        showProgress(baseManagerType: manager)
+    }
+    
+    //MARK: callbacks
+    private func planCallback(data: [Plan]?, error: Responses?) {
+        dismissProgress()
+        
+        tableViewPlan.dataList = data
+    }
+    
+    private func deleteCallback(data: Bool?, error: Responses?) {
+        if data != nil && data! {
+            setPlanList()
+        }
     }
     
     //MARK: initView
@@ -85,7 +110,7 @@ class PlanListVc: BaseVC {
         view.backgroundColor = UIColor.white
         
         view.searchListener = { text in
-            //TODO
+            self.search()
         }
         
         return view

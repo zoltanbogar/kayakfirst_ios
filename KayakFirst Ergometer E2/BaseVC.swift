@@ -144,7 +144,9 @@ class BaseVC: UIViewController {
     
     func showProgress(baseManagerType: BaseManagerType?) {
         if let managerType = baseManagerType {
-            progressView!.show(managerType.isProgressShown())
+            if let view = progressView {
+                view.show(managerType.isProgressShown())
+            }
         }
     }
     

@@ -70,7 +70,7 @@ class BaseManager {
     private func shouldRunDownload<E>(managerDownload: ManagerDownload<[E]>) -> Bool {
         var contains = false
         if managerDownloadList != nil {
-            contains = managerDownloadList?.contains(where: { ($0 as! ManagerDownload<Any>).getKeyCache() == managerDownload.getKeyCache()}) ?? false
+            contains = managerDownloadList?.contains(where: { ($0 as! ManagerDownload<[E]>).getKeyCache() == managerDownload.getKeyCache()}) ?? false
         }
         return !contains
     }
@@ -253,7 +253,7 @@ class BaseManager {
         override func onProgressUpdate(progress: [E]?) {
             super.onProgressUpdate(progress: progress)
             
-            baseManager.handlePreExecuteDownload(managerDownload: managerDownload)
+            baseManager.handlePostExecuteDownload(managerDownload: managerDownload)
             
             if let callback = managerCallback {
                 callback(progress, managerDownload.serverError)

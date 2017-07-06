@@ -156,46 +156,4 @@ class Plan: PlanObject, ModifyAble {
         }
         return nil
     }
-    
-    //TODO: delete this
-    public static func getExamplePlans() -> [Plan] {
-        var plans = [Plan]()
-        
-        for i in 0...15 {
-            var type = PlanType.distance
-            
-            if i % 2 == 0 {
-                type = PlanType.time
-            }
-            
-            var plan = Plan(type: type)
-            plan.name = "Nametest\(i)"
-            plan.notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\(i)"
-            
-            var planElements = [PlanElement]()
-            for i in 0...2 {
-                let planElement = PlanElement(
-                    planId: plan.planId,
-                    intensity: i * 10,
-                    type: plan.type,
-                    value: Double(i * 10000))
-                
-                planElements.append(planElement)
-            }
-            
-            planElements[0].value = 20
-            planElements[1].value = 40
-            planElements[2].value = 80
-            
-            planElements[0].intensity = 20
-            planElements[1].intensity = 80
-            planElements[2].intensity = 79
-            
-            plan.planElements = planElements
-            
-            plans.append(plan)
-        }
-        return plans
-    }
-    
 }

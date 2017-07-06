@@ -68,9 +68,21 @@ class ChartView: UIView {
     
     //TODO
     private func initPlanTimeLine() {
-        let plan = Plan.getExamplePlans()[0]
+        let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList
         
-        planView.setData(plan: plan, lineChart: lineChart)
+        let plan = sumTrainings?[position!].planTraining
+        
+        planView.isHidden = true
+        
+        if plan != nil && isModeCorrect(plan: plan!) {
+            planView.isHidden = false
+            planView.setData(plan: plan!, lineChart: lineChart)
+        }
+    }
+    
+    private func isModeCorrect(plan: Plan) -> Bool {
+        return (plan.type == PlanType.time && chartMode == ChartMode.chartModeTime) ||
+        (plan.type == PlanType.distance && chartMode == ChartMode.chartModeDistance)
     }
     
     //MARK: views
