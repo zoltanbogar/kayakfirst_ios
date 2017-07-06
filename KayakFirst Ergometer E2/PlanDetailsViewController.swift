@@ -24,6 +24,8 @@ class PlanDetailsViewController: BaseVC {
     var plan: Plan?
     var isEdit: Bool = false
     
+    private var planManager = PlanManager.sharedInstance
+    
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +87,13 @@ class PlanDetailsViewController: BaseVC {
     //MARK: button listeners
     @objc private func btnSaveClick() {
         setEditLayout(isEdit: false)
-        //TODO: save
+        
+        initPlanFromAdapter()
+        
+        if plan != nil {
+            let manager = planManager.savePlan(plan: plan!, managerCallBack: planCallback)
+            showProgress(baseManagerType: manager)
+        }
     }
     
     @objc private func btnDeleteClick() {
@@ -112,6 +120,19 @@ class PlanDetailsViewController: BaseVC {
     
     private func activateFields(isActive: Bool) {
         planDetailsTableView.isEdit = isActive
+        //TODO
+    }
+    
+    private func initPlanFromAdapter() {
+        plan = planDetailsTableView.plan
+    }
+    
+    //MARK: plan callbacks
+    private func planCallback(data: Bool?, error: Responses?) {
+        dismissProgress()
+    }
+    
+    private func deletePlanCallback(data: Bool?, error: Responses?) {
         //TODO
     }
     

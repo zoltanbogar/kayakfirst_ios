@@ -67,4 +67,17 @@ class JoinPlanPlanElements: BaseDbLoader<PlanPlanElements> {
         }
     }
     
+    //MARK: delete
+    override func deleteData(predicate: Expression<Bool>?) -> Int {
+        var deletedRows = 0
+        
+        let deleteData = table!.filter(predicate!)
+        
+        do {
+            deletedRows = try db!.run(deleteData.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
+    }
 }
