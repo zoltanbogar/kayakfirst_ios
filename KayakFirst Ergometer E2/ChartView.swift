@@ -47,7 +47,7 @@ class ChartView: UIView {
     
     private func initChart() {
         if chartMode! == ChartMode.chartModeDistance {
-            lineChartData = LineChartDistance(lineChart: lineChart, distanceList: TrainingDataService.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
+            lineChartData = LineChartDistance(lineChart: lineChart, distanceList: TrainingManager.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
         } else {
             lineChartData = LineChartTime(lineChart: lineChart, position: position!)
         }
@@ -59,7 +59,7 @@ class ChartView: UIView {
     }
     
     private func disableLabelIfNeeded() {
-        let isOutdoor = TrainingDataService.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        let isOutdoor = TrainingManager.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
         
         if isOutdoor {
             labelForce.isDisabled = true

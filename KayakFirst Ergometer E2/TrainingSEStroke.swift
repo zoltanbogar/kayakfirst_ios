@@ -26,6 +26,6 @@ class TrainingSEStroke: TrainingSumelementMaximum {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].strokesList
+        return trainingManager.detailsTrainingList![position!].strokesList
     }
 }

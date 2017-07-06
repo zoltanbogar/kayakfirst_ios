@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlanTableView: TableViewWithEmpty<Plan> {
+class EventTableView: TableViewWithEmpty<PlanEvent> {
     
     //MARK: init
     override init(view: UIView) {
@@ -28,7 +28,7 @@ class PlanTableView: TableViewWithEmpty<Plan> {
     }
     
     override func getCellClass() -> AnyClass {
-        return PlanTabLeViewCell.self
+        return EventTabLeViewCell.self
     }
     
     override func getHeaderView() -> UIView? {
@@ -44,8 +44,8 @@ class PlanTableView: TableViewWithEmpty<Plan> {
         return label
     }()
     
-    private lazy var headerView: PlanTableViewHeader! = {
-        let header = PlanTableViewHeader()
+    private lazy var headerView: EventTableViewHeader! = {
+        let header = EventTableViewHeader()
         
         return header
     }()

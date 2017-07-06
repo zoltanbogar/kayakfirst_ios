@@ -14,30 +14,36 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     //MARK: constants
     private let segmentItems = [getString("plan_plan"), getString("training_log").capitalized]
     private let calendarHeight: CGFloat = 190
+    private static let modeEvent = "mode_event"
+    private static let modeTraining = "mode_training"
     
     //MARK: views
     private var stackView: UIStackView?
     private let viewTableView = UIView()
     private let viewCalendar = UIView()
     
-    //MARK: trainigData
-    private var trainingDays: [TimeInterval]?
+    //MARK: daysList
+    private var trainingDaysList: [TimeInterval]?
+    private var eventDaysList: [TimeInterval]?
     
-    //MARK: service
-    private let trainingDataService = TrainingDataService.sharedInstance
+    //MARK: manager
+    private let trainingManager = TrainingManager.sharedInstance
+    private let eventManager = EventManager.sharedInstance
     
     //MARK: properties
     private var selectedDate: TimeInterval?
     private var error: Responses?
-    private var shouldRefresh = true
+    private var mode = CalendarVc.modeEvent
     
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trainingDataService.trainingDataCallback = trainingListTrainingDataCallback
-        trainingDataService.trainingDaysCallback = trainingDaysListTrainingDataCallback
-        trainingDataService.progressListener = progressListener
+        trainingManager.trainingCallback = trainigCallback
+        trainingManager.trainingDaysCallback = trainingDaysCallback
+        
+        eventManager.planEventCallback = eventCallback
+        eventManager.eventDaysCallback = eventDaysCallback
         
         segmentedControl.selectedSegmentIndex = 0
         setSegmentedItem(sender: segmentedControl)
@@ -46,11 +52,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if shouldRefresh {
-            getTrainingDays()
-        } else {
-            shouldRefresh = true
-        }
+        refreshContentWithMode()
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,9 +100,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         progressBarTraining.snp.makeConstraints { make in
             make.center.equalTo(tableViewTraining)
         }
-        tableViewPlan.addSubview(progressBarPlan)
-        progressBarPlan.snp.makeConstraints { (make) in
-            make.center.equalTo(tableViewPlan)
+        tableViewEvent.addSubview(progressBarEvent)
+        progressBarEvent.snp.makeConstraints { (make) in
+            make.center.equalTo(tableViewEvent)
         }
     }
     
@@ -138,52 +140,151 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         showLogoOnLeft()
     }
     
-    //MARK: call service
+    //MARK: call manager
+    private func setMode(mode: String) {
+        self.mode = mode
+        refreshContentWithMode()
+    }
+    
+    private func refreshContentWithMode() {
+        cvCalendarView?.contentController.refreshPresentedMonth()
+        switch mode {
+        case CalendarVc.modeEvent:
+            getEventDays()
+        case CalendarVc.modeTraining:
+            getTrainingDays()
+        default:
+            break
+        }
+    }
+    
     func getTrainingDays() {
-        trainingDataService.getTrainingDays()
+        trainingManager.getTrainingDays()
+    }
+    
+    func getEventDays() {
+        eventManager.getEventDays()
     }
     
     private func initTrainingDays(trainingDays: [TimeInterval]?) {
-        if let trainingDaysValue = trainingDays {
-            for trainingDay in trainingDaysValue {
-                if self.trainingDays == nil {
-                    self.trainingDays = [TimeInterval]()
-                }
-                
-                if !self.trainingDays!.contains(trainingDay) {
-                    self.trainingDays!.append(trainingDay)
-                }
-            }
+        self.trainingDaysList = trainingDays
+        if self.mode == CalendarVc.modeTraining {
+            cvCalendarView?.contentController.refreshPresentedMonth()
+        }
+    }
+    
+    private func initEventDays(eventDays: [TimeInterval]?) {
+        self.eventDaysList = eventDays
+        if self.mode == CalendarVc.modeEvent {
+            cvCalendarView?.contentController.refreshPresentedMonth()
         }
     }
     
     private func getTrainigsList() {
+        tableViewTraining.dataList = nil
+        
+        if hasData(listToCheck: trainingDaysList) {
+            let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
+            let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
+            
+            showProgressBarTraining(isShow: true)
+            trainingManager.downloadTrainings(sessionIdFrom: fromDate, sessionIdTo: toDate)
+        }
+        errorHandling()
+    }
+    
+    private func getEventList() {
+        tableViewEvent.dataList = nil
+        
+        if hasData(listToCheck: eventDaysList) {
+            let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
+            let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
+            
+            showProgressBarEvent(isShow: true)
+            eventManager.getEventByTimestamp(timestampFrom: fromDate, timestampTo: toDate)
+        }
+        errorHandling()
+    }
+    
+    private func hasData(listToCheck: [Double]?) -> Bool {
         var hasData = false
-        if let trainingDaysList = trainingDays {
-            for trainingDay in trainingDaysList {
-                hasData = DateFormatHelper.isSameDay(timeStamp1: trainingDay, timeStamp2: selectedDate!)
+        
+        if let list = listToCheck {
+            for d in list {
+                hasData = DateFormatHelper.isSameDay(timeStamp1: d, timeStamp2: selectedDate!)
                 
                 if hasData {
                     break
                 }
             }
         }
-        
-        if hasData {
-            let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
-            let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
-            trainingDataService.getTrainingList(sessionIdFrom: fromDate, sessionIdTo: toDate)
-        } else {
-            refreshTableView(sumTrainings: nil)
-        }
-        errorHandling()
+        return hasData
     }
     
-    private func refreshTableView(sumTrainings: [SumTraining]?) {
+    private func refreshTableViewTraining(sumTrainings: [SumTraining]?) {
         tableViewTraining?.dataList = sumTrainings
     }
     
+    private func refreshTableViewEvent(planEvents: [PlanEvent]?) {
+        tableViewEvent.dataList = planEvents
+    }
+    
     //MARK: callbacks
+    private func trainingDaysCallback(data: [Double]?, error: Responses?) {
+        initTrainingDays(trainingDays: data)
+        
+        initError(error: error)
+    }
+    
+    private func trainigCallback(data: [SumTraining]?, error: Responses?) {
+        showProgressBarTraining(isShow: false)
+        
+        if let sumTrainings = data {
+            if sumTrainings.count > 0 {
+                if isDataCorrectDay(timestamp: sumTrainings[0].sessionId) {
+                    refreshTableViewTraining(sumTrainings: sumTrainings)
+                }
+            }
+        }
+        
+        initError(error: error)
+    }
+    
+    private func eventDaysCallback(data: [Double]?, error: Responses?) {
+        initEventDays(eventDays: data)
+        
+        initError(error: error)
+    }
+    
+    private func eventCallback(data: [PlanEvent]?, error: Responses?) {
+        showProgressBarEvent(isShow: false)
+        
+        if let events = data {
+            if events.count > 0 {
+                if isDataCorrectDay(timestamp: events[0].event.timestamp) {
+                    refreshTableViewEvent(planEvents: events)
+                }
+            }
+        }
+        
+        initError(error: error)
+    }
+    
+    //TODO
+    private func deleteDataCallback(data: Bool?, error: Responses?) {
+        initError(error: error)
+    }
+    
+    private func isDataCorrectDay(timestamp: Double) -> Bool {
+        return DateFormatHelper.isSameDay(timeStamp1: timestamp, timeStamp2: self.selectedDate!)
+    }
+    
+    private func initError(error: Responses?) {
+        self.error = error
+        errorHandling()
+    }
+    
+    
     private func trainingDaysListTrainingDataCallback(error: Responses?, trainingData: [TimeInterval]?) {
         if let trainingDays = trainingData {
             initTrainingDays(trainingDays: trainingDays)
@@ -196,13 +297,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func trainingListTrainingDataCallback(error: Responses?, trainingData: [SumTraining]?) {
-        if let sumTrainings = trainingData {
-            if sumTrainings.count > 0 {
-                if DateFormatHelper.isSameDay(timeStamp1: sumTrainings[0].sessionId, timeStamp2: self.selectedDate!) {
-                    refreshTableView(sumTrainings: sumTrainings)
-                }
-            }
-        }
+        
         self.error = error
         errorHandling()
     }
@@ -210,8 +305,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     //MARK: error
     private func errorHandling() {
         if let globalError = self.error {
-            showProgressBarTraining(isShow: false)
-            AppService.errorHandlingWithAlert(viewController: self, error: globalError)
+            errorHandlingWithAlert(viewController: self, error: globalError)
         }
     }
     
@@ -220,13 +314,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         let tableViewTraining = TrainingTablewView(view: self.viewTableView)
         
         tableViewTraining.rowClickCallback = { sumTraining, position in
-            self.trainingDataService.detailsTrainingList = tableViewTraining.dataList
+            self.trainingManager.detailsTrainingList = tableViewTraining.dataList
 
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
             self.navigationController?.pushViewController(viewController, animated: true)
-            
-            self.shouldRefresh = false
         }
         
         return tableViewTraining
@@ -241,13 +333,13 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }()
     
     //TODO
-    private lazy var tableViewPlan: PlanTableView! = {
-        let tableViewPlan = PlanTableView(view: self.viewTableView)
+    private lazy var tableViewEvent: EventTableView! = {
+        let tableViewEvent = EventTableView(view: self.viewTableView)
         
-        return tableViewPlan
+        return tableViewEvent
     }()
     
-    private lazy var progressBarPlan: UIActivityIndicatorView! = {
+    private lazy var progressBarEvent: UIActivityIndicatorView! = {
         let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
         spinner.activityIndicatorViewStyle = .whiteLarge
         spinner.color = Colors.colorWhite
@@ -255,16 +347,12 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return spinner
     }()
     
-    private func progressListener(onProgress: Bool) {
-        showProgressBarTraining(isShow: onProgress)
-    }
-    
     private func showProgressBarTraining(isShow: Bool) {
         showProgressBar(progressBar: progressBarTraining, isShow: isShow)
     }
     
-    private func showProgressBarPlan(isShow: Bool) {
-        showProgressBar(progressBar: progressBarPlan, isShow: isShow)
+    private func showProgressBarEvent(isShow: Bool) {
+        showProgressBar(progressBar: progressBarEvent, isShow: isShow)
     }
     
     private func showProgressBar(progressBar: UIActivityIndicatorView, isShow: Bool) {
@@ -331,10 +419,26 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-        if let trainingDayList = trainingDays {
-            if trainingDayList.contains(dayView.date.getTimeMillis()) {
-                return true
+        switch mode {
+        case CalendarVc.modeEvent:
+            //TODO: it wont works, eventDays must be at the same time
+            if let eventDayList = eventDaysList {
+                if eventDayList.contains(dayView.date.getTimeMillis()) {
+                    return true
+                }
+            } else {
+                return false
             }
+        case CalendarVc.modeTraining:
+            if let trainingDayList = trainingDaysList {
+                if trainingDayList.contains(dayView.date.getTimeMillis()) {
+                    return true
+                }
+            } else {
+                return false
+            }
+        default:
+            return false
         }
         return false
     }
@@ -357,7 +461,15 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         
         if selectedDate != date.getTimeMillis() {
             selectedDate = date.getTimeMillis()
-            getTrainigsList()
+            
+            switch mode {
+            case CalendarVc.modeEvent:
+                getEventList()
+            case CalendarVc.modeTraining:
+                getTrainigsList()
+            default:
+                break
+            }
         }
     }
     
@@ -380,7 +492,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         let viewSub: UIView
         switch sender.selectedSegmentIndex {
         case 0:
-            viewSub = tableViewPlan
+            viewSub = tableViewEvent
         default:
             viewSub = tableViewTraining
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlanTableViewHeader: UIView {
+class EventTableViewHeader: UIView {
     
     //MARK: contstants
     private let fontSize: CGFloat = 12
@@ -78,7 +78,7 @@ class PlanTableViewHeader: UIView {
         label.text = getString("plan_done").uppercased()
         
         label.snp.makeConstraints({ (make) in
-            make.width.equalTo(PlanTabLeViewCell.doneWidth)
+            make.width.equalTo(EventTabLeViewCell.doneWidth)
         })
         
         return label
@@ -88,7 +88,7 @@ class PlanTableViewHeader: UIView {
         let view = UIView()
         
         view.snp.makeConstraints({ (make) in
-            make.width.equalTo(PlanTabLeViewCell.playWidth)
+            make.width.equalTo(EventTabLeViewCell.playWidth)
         })
         
         return view

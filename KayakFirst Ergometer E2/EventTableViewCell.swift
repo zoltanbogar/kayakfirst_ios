@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlanTabLeViewCell: AppUITableViewCell<Plan> {
+class EventTabLeViewCell: AppUITableViewCell<Event> {
     
     //MARK: constants
     static let playWidth = 80
@@ -30,7 +30,7 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
     }
     
     //MARK: init data
-    override func initData(data: Plan?) {
+    override func initData(data: Event?) {
         labelName.text = data?.name
     }
     
@@ -64,7 +64,7 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
             make.height.equalTo(25)
         }
         view.snp.makeConstraints({ (make) in
-            make.width.equalTo(PlanTabLeViewCell.playWidth)
+            make.width.equalTo(EventTabLeViewCell.playWidth)
         })
         
         return view
@@ -97,7 +97,7 @@ class PlanTabLeViewCell: AppUITableViewCell<Plan> {
             make.height.equalTo(25)
         }
         view.snp.makeConstraints({ (make) in
-            make.width.equalTo(PlanTabLeViewCell.doneWidth)
+            make.width.equalTo(EventTabLeViewCell.doneWidth)
         })
         
         return view

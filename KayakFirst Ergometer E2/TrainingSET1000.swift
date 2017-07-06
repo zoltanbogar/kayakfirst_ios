@@ -22,6 +22,6 @@ class TrainingSET1000: TrainingSumElementMinimumTime {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].t1000List
+        return trainingManager.detailsTrainingList![position!].t1000List
     }
 }

@@ -27,7 +27,7 @@ class UploadTimer {
     }
     
     @objc private class func timerUpdate() {
-        TrainingDataService.sharedInstance.uploadTrainingData()
+        TrainingManager.sharedInstance.runUpload()
     }
     
 }

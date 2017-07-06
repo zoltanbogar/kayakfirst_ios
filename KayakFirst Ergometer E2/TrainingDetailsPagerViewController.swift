@@ -96,7 +96,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }
     
     private func initViewControllers() {
-        if let sumTrainings = TrainingDataService.sharedInstance.detailsTrainingList {
+        if let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList {
             trainingViewControllers = [TrainingDetailsViewController]()
             for i in 0..<sumTrainings.count {
                 let controller = TrainingDetailsViewController()

@@ -17,7 +17,7 @@ class TrainingSumView: UIView {
     //MARK: init
     init(frame: CGRect, position: Int) {
         self.position = position
-        self.sumTraining = TrainingDataService.sharedInstance.detailsTrainingList![position]
+        self.sumTraining = TrainingManager.sharedInstance.detailsTrainingList![position]
         super.init(frame: frame)
         
         initView()

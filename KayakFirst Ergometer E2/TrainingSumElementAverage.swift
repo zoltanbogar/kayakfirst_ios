@@ -14,30 +14,6 @@ class TrainingSumElementAverage: BaseTrainingSumElement {
         return String(format: getFormatter(), value)
     }
     
-    override func calculate() -> Double {
-        if trainingList != nil && trainingList!.count > 0 {
-            let avgHash = TrainingDataService.sharedInstance.getTrainigAvg(
-                hash: TrainingAvg.getAvgHash(
-                    userId: UserManager.sharedInstance.getUser()!.id,
-                    avgType: getTrainingType(),
-                    sessionId: trainingList![0].sessionId))
-            
-            if let averageHash = avgHash {
-                return averageHash
-            } else {
-                var sumValue: Double = 0
-                for trainig in trainingList! {
-                    sumValue = sumValue + trainig.dataValue
-                }
-                
-                let averageValue = sumValue / Double(trainingList!.count)
-                
-                return averageValue
-            }
-        }
-        return 0
-    }
-    
     //MARK: abstract functions
     func getFormatter() -> String {
         fatalError("Must be implemented")

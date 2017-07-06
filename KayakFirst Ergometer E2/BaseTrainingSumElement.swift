@@ -11,7 +11,7 @@ import UIKit
 class BaseTrainingSumElement: UIView {
     
     //MARK: properties
-    let trainingDataService = TrainingDataService.sharedInstance
+    let trainingManager = TrainingManager.sharedInstance
     var trainingList: [Training]?
     var position: Int?
     
