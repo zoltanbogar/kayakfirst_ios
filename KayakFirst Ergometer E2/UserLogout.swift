@@ -13,7 +13,7 @@ import SwiftyJSON
 class UserLogout: ServerService<Bool> {
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        UserService.sharedInstance.addLoginDto(loginDto: nil)
+        UserManager.sharedInstance.addLoginDto(loginDto: nil)
         
         return true
     }

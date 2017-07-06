@@ -26,7 +26,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func initQuickStart() {
-        if UserService.sharedInstance.isQuickStart {
+        if UserManager.sharedInstance.isQuickStart {
             let viewControllers = self.viewControllers
             if let vcs = viewControllers {
                 vcs[1].tabBarItem.isEnabled = false

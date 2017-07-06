@@ -1,8 +1,8 @@
 //
-//  TrainingService.swift
+//  TrainingDataService.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 05..
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
@@ -35,14 +35,14 @@ class TrainingDataService: AppService {
     //MARK: upload
     func uploadTrainingData() {
         /*let uploadTrainingAvgs = UploadTrainingAvgs()
-        let uploadTrainings = UploadTrainings()
-        
-        if UserService.sharedInstance.getUser() != nil {
-            DispatchQueue.global().async {
-                self.runWithTokenCheck(serverService: uploadTrainingAvgs)
-                self.runWithTokenCheck(serverService: uploadTrainings)
-            }
-        }*/
+         let uploadTrainings = UploadTrainings()
+         
+         if UserService.sharedInstance.getUser() != nil {
+         DispatchQueue.global().async {
+         self.runWithTokenCheck(serverService: uploadTrainingAvgs)
+         self.runWithTokenCheck(serverService: uploadTrainings)
+         }
+         }*/
     }
     
     //MARK: server endpoints

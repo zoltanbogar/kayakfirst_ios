@@ -117,7 +117,6 @@
 		0613A91A1E67E8D900B13342 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613A9191E67E8D900B13342 /* Bolts.framework */; };
 		0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */; };
 		0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */; };
-		0613DAA11E47843900CAD5A6 /* TrainingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */; };
 		0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */; };
 		0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD281F0D990E00AC1903 /* PlanManager.swift */; };
 		0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */; };
@@ -151,6 +150,8 @@
 		065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */; };
 		065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187211F0A506D00B434B0 /* UploadPlan.swift */; };
 		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
+		065B3C571F0E25220029C7DF /* TrainingDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C561F0E25220029C7DF /* TrainingDataService.swift */; };
+		065B3C591F0E25540029C7DF /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C581F0E25540029C7DF /* AppService.swift */; };
 		066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00351EC7016700BE0E1F /* PlanElement.swift */; };
 		066B00381EC701B900BE0E1F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00371EC701B900BE0E1F /* Plan.swift */; };
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
@@ -283,7 +284,6 @@
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
 		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
 		06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */; };
-		06F657B81E45C899002AA9D0 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B71E45C899002AA9D0 /* AppService.swift */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
 		06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */; };
@@ -294,7 +294,6 @@
 		06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */; };
 		06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CB1E463DB6002AA9D0 /* UserRegister.swift */; };
 		06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CD1E463DD5002AA9D0 /* UserDto.swift */; };
-		06F9145C1E427ACE0041B303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145B1E427ACE0041B303 /* UserService.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
 		06F914631E428A240041B303 /* Alamofire+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914621E428A240041B303 /* Alamofire+.swift */; };
@@ -436,7 +435,6 @@
 		0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0613A91F1E67EF8D00B13342 /* KayakFirst Ergometer E2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KayakFirst Ergometer E2-Bridging-Header.h"; sourceTree = "<group>"; };
 		0613DA9E1E47741C00CAD5A6 /* CVDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVDate+.swift"; sourceTree = "<group>"; };
-		0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataService.swift; sourceTree = "<group>"; };
 		0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDays.swift; sourceTree = "<group>"; };
 		0618AD281F0D990E00AC1903 /* PlanManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
 		0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
@@ -470,6 +468,8 @@
 		0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEvent.swift; sourceTree = "<group>"; };
 		065187211F0A506D00B434B0 /* UploadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlan.swift; sourceTree = "<group>"; };
 		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
+		065B3C561F0E25220029C7DF /* TrainingDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDataService.swift; sourceTree = "<group>"; };
+		065B3C581F0E25540029C7DF /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		066B00351EC7016700BE0E1F /* PlanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElement.swift; sourceTree = "<group>"; };
 		066B00371EC701B900BE0E1F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
@@ -608,7 +608,6 @@
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
 		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
 		06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTrainingDbLoader.swift; sourceTree = "<group>"; };
-		06F657B71E45C899002AA9D0 /* AppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -619,7 +618,6 @@
 		06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		06F657CB1E463DB6002AA9D0 /* UserRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		06F657CD1E463DD5002AA9D0 /* UserDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
-		06F9145B1E427ACE0041B303 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
 		06F914621E428A240041B303 /* Alamofire+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+.swift"; sourceTree = "<group>"; };
@@ -728,7 +726,6 @@
 				064FE5AF1ED0A32B004A9F35 /* download */,
 				064FE5B01ED0A340004A9F35 /* upload */,
 				064FE5B11ED0A351004A9F35 /* user */,
-				06F9145F1E42801C0041B303 /* backend */,
 				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
 			);
@@ -972,6 +969,8 @@
 				06CAFF4C1F0D304D00D2EA14 /* EventManager.swift */,
 				0618AD281F0D990E00AC1903 /* PlanManager.swift */,
 				0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */,
+				065B3C561F0E25220029C7DF /* TrainingDataService.swift */,
+				065B3C581F0E25540029C7DF /* AppService.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -1120,13 +1119,11 @@
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
+				06F9145F1E42801C0041B303 /* backend */,
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				064FE5A31ED09DCE004A9F35 /* manager */,
 				060A7D091E41B43500F6A29F /* service */,
-				06F9145B1E427ACE0041B303 /* UserService.swift */,
 				0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */,
-				06F657B71E45C899002AA9D0 /* AppService.swift */,
-				0613DAA01E47843900CAD5A6 /* TrainingDataService.swift */,
 			);
 			name = server;
 			sourceTree = "<group>";
@@ -1778,7 +1775,6 @@
 				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
-				0613DAA11E47843900CAD5A6 /* TrainingDataService.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */,
 				066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */,
@@ -1835,7 +1831,7 @@
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
-				06F657B81E45C899002AA9D0 /* AppService.swift in Sources */,
+				065B3C591F0E25540029C7DF /* AppService.swift in Sources */,
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				066B00411EC7406F00BE0E1F /* PlanningTypeVc.swift in Sources */,
@@ -1856,6 +1852,7 @@
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* PlanTablewViewHeader.swift in Sources */,
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
+				065B3C571F0E25220029C7DF /* TrainingDataService.swift in Sources */,
 				0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */,
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
@@ -1906,7 +1903,6 @@
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
-				06F9145C1E427ACE0041B303 /* UserService.swift in Sources */,
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,

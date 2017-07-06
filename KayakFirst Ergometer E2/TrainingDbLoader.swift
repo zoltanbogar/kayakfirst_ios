@@ -124,7 +124,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         var trainingList: [Training]?
         
         do {
-            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            var queryPredicate = self.userId == UserManager.sharedInstance.getUser()!.id
             
             if let predicateValue = predicate {
                 queryPredicate = queryPredicate && predicateValue

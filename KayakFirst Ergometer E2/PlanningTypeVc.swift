@@ -17,7 +17,7 @@ func startPlanningTypeVc(navigationController: UINavigationController, envType: 
     if !PermissionCheck.hasLocationPermission() {
         permissionViewController = startLocationPermissionVc(viewController: navigationController)
     } else {
-        if UserService.sharedInstance.getUser() == nil {
+        if UserManager.sharedInstance.getUser() == nil {
             planningTypeVc.startSetDashboard(viewController: navigationController)
         } else {
             navigationController.pushViewController(planningTypeVc, animated: true)

@@ -110,7 +110,7 @@ class ServerService<E> {
     }
     
     internal func initHeader() -> HTTPHeaders? {
-        let token = UserService.sharedInstance.token
+        let token = UserManager.sharedInstance.token
         
         if let userToken = token {
             return [
@@ -168,5 +168,4 @@ class ServerService<E> {
         }
         return nil
     }
-    
 }

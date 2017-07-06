@@ -32,7 +32,7 @@ class ProfileVc: MainTabVc {
     private var pickerHelperUnitPace: PickerHelperUnit?
     
     //MARK: properties
-    var userService = UserService.sharedInstance
+    var userManager = UserManager.sharedInstance
     
     override func viewDidLoad() {
         countryPickerHelper = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
@@ -45,6 +45,10 @@ class ProfileVc: MainTabVc {
         super.viewDidLoad()
         
         initView()
+        
+        userManager.logoutCallback = logoutCallback
+        userManager.updatePwCallback = updatePasswordCallback
+        userManager.updateUserCallback = updateUserCallback
     }
     
     //MARK: init view
@@ -91,7 +95,7 @@ class ProfileVc: MainTabVc {
     }
     
     private func checkUser() -> Bool {
-        if userService.getUser() == nil {
+        if userManager.getUser() == nil {
             (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
             self.dismiss(animated: false, completion: nil)
             return false
@@ -109,33 +113,33 @@ class ProfileVc: MainTabVc {
     }
     
     private func initUser() {
-        tfFirstName.text = self.userService.getUser()?.firstName
-        tfLastName.text = self.userService.getUser()?.lastName
-        if self.userService.getUser()?.birthDate != 0 {
-            tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userService.getUser()?.birthDate)
+        tfFirstName.text = self.userManager.getUser()?.firstName
+        tfLastName.text = self.userManager.getUser()?.lastName
+        if self.userManager.getUser()?.birthDate != 0 {
+            tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userManager.getUser()?.birthDate)
         }
-        tfClub.text = self.userService.getUser()?.club
-        tfUserName.text = self.userService.getUser()?.userName
-        tfEmail.text = self.userService.getUser()?.email
+        tfClub.text = self.userManager.getUser()?.club
+        tfUserName.text = self.userManager.getUser()?.userName
+        tfEmail.text = self.userManager.getUser()?.email
         
-        initBodyWeight(user: self.userService.getUser())
+        initBodyWeight(user: self.userManager.getUser())
         
-        tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userService.getUser()?.country)
+        tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userManager.getUser()?.country)
         
-        if let gender = self.userService.getUser()?.gender {
+        if let gender = self.userManager.getUser()?.gender {
             tfGender.text = self.genderPickerHelper!.getTitle(value: gender)
         }
         
-        if let artOfPaddling = self.userService.getUser()?.artOfPaddling {
+        if let artOfPaddling = self.userManager.getUser()?.artOfPaddling {
             tfArtOfPaddling.text = self.artOfPaddlingPickerHelper!.getTitle(value: artOfPaddling)
         }
-        if let unitWeight = self.userService.getUser()?.unitWeight {
+        if let unitWeight = self.userManager.getUser()?.unitWeight {
             tfUnitWeight.text = self.pickerHelperUnitWeight!.getTitle(value: unitWeight)
         }
-        if let unitDistance = self.userService.getUser()?.unitDistance {
+        if let unitDistance = self.userManager.getUser()?.unitDistance {
             tfUnitDistance.text = self.pickerHelperUnitDistance!.getTitle(value: unitDistance)
         }
-        if let unitPace = self.userService.getUser()?.unitPace {
+        if let unitPace = self.userManager.getUser()?.unitPace {
             tfUnitPace.text = self.pickerHelperUnitPace!.getTitle(value: unitPace)
         }
     }
@@ -322,25 +326,25 @@ class ProfileVc: MainTabVc {
     //MARK: callbacks
     @objc private func btnSaveClick() {
         if checkRequiredElements() {
-            progressView?.show(true)
-            UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
-                userDto: UserDto(
-                                lastName: tfLastName.text,
-                                firstName: tfFirstName.text,
-                                email: tfEmail.text,
-                                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
-                                gender: self.userService.getUser()?.gender,
-                                birthDate: self.userService.getUser()?.birthDate,
-                                club: tfClub.text,
-                                country: self.countryPickerHelper!.getValue() ?? userService.getUser()?.country,
-                                artOfPaddling: self.artOfPaddlingPickerHelper!.getValue(),
-                                password: tfPassword.text,
-                                userName: tfUserName.text,
-                                unitWeight: pickerHelperUnitWeight?.getValue(),
-                                unitDistance: pickerHelperUnitDistance?.getValue(),
-                                unitPace: pickerHelperUnitPace?.getValue(),
-                                googleId: nil,
-                                facebookId: nil))
+            
+            let managerType = userManager.update(userDto: UserDto(
+                lastName: tfLastName.text,
+                firstName: tfFirstName.text,
+                email: tfEmail.text,
+                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
+                gender: self.userManager.getUser()?.gender,
+                birthDate: self.userManager.getUser()?.birthDate,
+                club: tfClub.text,
+                country: self.countryPickerHelper!.getValue() ?? userManager.getUser()?.country,
+                artOfPaddling: self.artOfPaddlingPickerHelper!.getValue(),
+                password: tfPassword.text,
+                userName: tfUserName.text,
+                unitWeight: pickerHelperUnitWeight?.getValue(),
+                unitDistance: pickerHelperUnitDistance?.getValue(),
+                unitPace: pickerHelperUnitPace?.getValue(),
+                googleId: nil,
+                facebookId: nil))
+            showProgress(baseManagerType: managerType)
         }
     }
     
@@ -365,7 +369,7 @@ class ProfileVc: MainTabVc {
         tfUnitPace.active = isActive
         
         if !isActive {
-            initBodyWeight(user: self.userService.getUser())
+            initBodyWeight(user: self.userManager.getUser())
             
             tfWeight.endEditing(true)
         }
@@ -382,35 +386,42 @@ class ProfileVc: MainTabVc {
     }
     
     @objc private func clickLogout() {
-        progressView?.show(true)
-        (UIApplication.shared.delegate as! AppDelegate).logoutSocial()
-        UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
-    }
-    
-    private func logoutCallback(error: Responses?, userData: Bool?) {
-        self.progressView?.show(false)
-        
-        UserService.sharedInstance.addLoginDto(loginDto: nil)
-        showWelcomeViewController()
+        let manager = userManager.logout()
+        showProgress(baseManagerType: manager)
     }
     
     private func clickPassword() {
         let passworDialog = NewPasswordDialog()
         passworDialog.handler = { currentPassword, newPassword in
-            self.progressView?.show(true)
-            UserService.sharedInstance.updatePassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
+            let manager = self.userManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword)
+            self.showProgress(baseManagerType: manager)
         }
         passworDialog.show(viewController: self)
     }
     
-    private func userDataCallback(error: Responses?, userData: User?) {
-        self.progressView?.show(false)
+    //MARK: manager callbacks
+    private func logoutCallback(data: Bool?, error: Responses?) {
+        dismissProgress()
         
-        if let user = userData {
-            self.navigationController?.popViewController(animated: true)
+        userManager.addLoginDto(loginDto: nil)
+        showWelcomeViewController()
+    }
+    
+    private func updateUserCallback(data: User?, error: Responses?) {
+        handleUpdate(error: error)
+    }
+    
+    private func updatePasswordCallback(data: Bool?, error: Responses?) {
+        handleUpdate(error: error)
+    }
+    
+    private func handleUpdate(error: Responses?) {
+        dismissProgress()
+        
+        if error == nil {
             initTabBarItems()
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        } else {
+            errorHandlingWithAlert(viewController: self, error: error!)
         }
     }
     

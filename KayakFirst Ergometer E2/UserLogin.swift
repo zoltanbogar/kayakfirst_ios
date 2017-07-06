@@ -31,7 +31,7 @@ class UserLogin: ServerService<Bool> {
             loginDto = LoginDto(json: jsonVlaue)
             loginDto!.user = user
             
-            UserService.sharedInstance.addLoginDto(loginDto: loginDto)
+            UserManager.sharedInstance.addLoginDto(loginDto: loginDto)
             
             return true
         }
@@ -61,5 +61,4 @@ class UserLogin: ServerService<Bool> {
     override func getManagerType() -> BaseManagerType {
         return UserManagerType.login_normal
     }
-    
 }

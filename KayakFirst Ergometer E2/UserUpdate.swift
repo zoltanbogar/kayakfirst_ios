@@ -28,7 +28,7 @@ class UserUpdate: ServerService<User> {
             user = User(json: jsonValue)
             
             if user != nil {
-                UserService.sharedInstance.addUser(user: user)
+                UserManager.sharedInstance.addUser(user: user)
             }
         }
         return user

@@ -13,6 +13,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     
     //MARK: properties
     private let viewController: WelcomeViewController
+    private let userManager = UserManager.sharedInstance
     
     private var birthDate: TimeInterval?
     
@@ -45,6 +46,8 @@ class RegisterView: UIView, UITextFieldDelegate {
         pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
         pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
         pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
+        
+        userManager.registerCallback = registerCallback
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -298,36 +301,37 @@ class RegisterView: UIView, UITextFieldDelegate {
     
     @objc private func clickRegister() {
         if checkFields() {
-            viewController.progressView?.show(true)
-            UserService.sharedInstance.register(
-                userDataCallBack: registerCallback,
-                userDto: UserDto(
-                    lastName: tfLastName.text,
-                    firstName: tfFirstName.text,
-                    email: tfEmail.text,
-                    bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())),
-                    gender: pickerHelperGender!.getValue(),
-                    birthDate: birthDate,
-                    club: tfClub.text,
-                    country: pickerHelperLocale!.getValue(),
-                    artOfPaddling: pickerHelperArtOfPaddling!.getValue(),
-                    password: tfPassword.text,
-                    userName: tfUserName.text,
-                    unitWeight: pickerHelperUnitWeight?.getValue(),
-                    unitDistance: pickerHelperUnitDistance?.getValue(),
-                    unitPace: pickerHelperUnitPace?.getValue(),
-                    googleId: self.viewController.googleId,
-                    facebookId: self.viewController.facebookId))
+            let userDto = UserDto(
+                lastName: tfLastName.text,
+                firstName: tfFirstName.text,
+                email: tfEmail.text,
+                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())),
+                gender: pickerHelperGender!.getValue(),
+                birthDate: birthDate,
+                club: tfClub.text,
+                country: pickerHelperLocale!.getValue(),
+                artOfPaddling: pickerHelperArtOfPaddling!.getValue(),
+                password: tfPassword.text,
+                userName: tfUserName.text,
+                unitWeight: pickerHelperUnitWeight?.getValue(),
+                unitDistance: pickerHelperUnitDistance?.getValue(),
+                unitPace: pickerHelperUnitPace?.getValue(),
+                googleId: self.viewController.googleId,
+                facebookId: self.viewController.facebookId)
+            
+            let managerType = userManager.register(userDto: userDto)
+            viewController.showProgress(baseManagerType: managerType)
         }
     }
     
     //MARK: server callbacks
-    private func registerCallback(error: Responses?, userData: User?) {
-        viewController.progressView?.show(false)
-        if userData != nil {
+    private func registerCallback(data: Bool?, error: Responses?) {
+        self.viewController.dismissProgress()
+        
+        if error == nil {
             viewController.showMainView(isQuickStart: false)
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: viewController, error: userError)
+        } else {
+            errorHandlingWithAlert(viewController: viewController, error: error!)
         }
     }
     

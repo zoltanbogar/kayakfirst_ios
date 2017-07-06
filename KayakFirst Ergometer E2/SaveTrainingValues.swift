@@ -12,7 +12,7 @@ class SaveTrainingValues {
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
-    private let userService = UserService.sharedInstance
+    private let userManager = UserManager.sharedInstance
     
     private var localeSessionId: Double = 0
     
@@ -23,13 +23,13 @@ class SaveTrainingValues {
     }
     
     func addValue(training: Training) {
-        if CalculateEnum.savingTypes.contains(CalculateEnum(rawValue: training.dataType)!) && userService.getUser() != nil {
+        if CalculateEnum.savingTypes.contains(CalculateEnum(rawValue: training.dataType)!) && userManager.getUser() != nil {
             trainingDbLoader.addData(data: training)
         }
     }
     
     func saveTrainingAvgData(telemetryObject: TelemetryObject, telemetryAvgObject: TelemetryAvgObject) {
-        if userService.getUser() != nil {
+        if userManager.getUser() != nil {
             trainingAvgDbLoader.addData(data: telemetryAvgObject.f_av)
             trainingAvgDbLoader.addData(data: telemetryAvgObject.v_av)
             trainingAvgDbLoader.addData(data: createTrainingAvgObject(training: telemetryObject.s_sum))

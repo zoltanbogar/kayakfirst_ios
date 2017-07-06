@@ -83,6 +83,8 @@ class UserManager: BaseManager {
     }
     
     func logout() -> BaseManagerType {
+        (UIApplication.shared.delegate as! AppDelegate).logoutSocial()
+        
         let userLogout = UserLogout()
        
         runUser(serverService: userLogout, managerCallBack: logoutCallback)

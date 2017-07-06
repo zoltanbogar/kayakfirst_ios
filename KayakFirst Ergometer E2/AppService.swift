@@ -2,7 +2,7 @@
 //  AppService.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 04..
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
@@ -25,7 +25,7 @@ class AppService {
     
     private func refreshUserToken() {
         let refreshTokenDto = RefreshToken().run()
-        UserService.sharedInstance.setTokens(token: refreshTokenDto?.token, refreshToken: refreshTokenDto?.refreshToken)
+        UserManager.sharedInstance.setTokens(token: refreshTokenDto?.token, refreshToken: refreshTokenDto?.refreshToken)
     }
     
     static func errorHandlingWithAlert(viewController: UIViewController, error: Responses) {

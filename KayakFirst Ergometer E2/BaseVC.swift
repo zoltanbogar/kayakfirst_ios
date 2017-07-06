@@ -51,6 +51,7 @@ class BaseVC: UIViewController {
     //MARK: properties
     let contentView = UIView()
     private var viewInited = false
+    private var progressView: ProgressView?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -63,6 +64,8 @@ class BaseVC: UIViewController {
         viewInited = true
         
         view.backgroundColor = Colors.colorPrimary
+        
+        initProgressView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,6 +136,20 @@ class BaseVC: UIViewController {
             make.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
             make.top.equalTo(self.topLayoutGuide.snp.bottom)
         }
+    }
+    
+    private func initProgressView() {
+        progressView = ProgressView(superView: view)
+    }
+    
+    func showProgress(baseManagerType: BaseManagerType?) {
+        if let managerType = baseManagerType {
+            progressView!.show(managerType.isProgressShown())
+        }
+    }
+    
+    func dismissProgress() {
+        progressView?.show(false)
     }
     
     func handleScreenOrientation(size: CGSize) {

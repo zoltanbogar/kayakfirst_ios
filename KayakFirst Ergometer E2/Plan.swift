@@ -36,7 +36,7 @@ class Plan: PlanObject, ModifyAble {
     init(type: PlanType) {
         self.type = type
         
-        userId = UserService.sharedInstance.getUser()!.id
+        userId = UserManager.sharedInstance.getUser()!.id
         planId = Plan.createPlanId(name: getPlanObjectName(), createValue: "\(userId)")
     }
     

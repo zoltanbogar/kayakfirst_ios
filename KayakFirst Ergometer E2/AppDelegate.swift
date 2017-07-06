@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var viewController: UIViewController
         
-        if UserService.sharedInstance.getUser() != nil {
-            UserService.sharedInstance.isQuickStart = false
+        if UserManager.sharedInstance.getUser() != nil {
+            UserManager.sharedInstance.isQuickStart = false
             
             viewController = MainTabViewController()
             welcomeViewController = nil

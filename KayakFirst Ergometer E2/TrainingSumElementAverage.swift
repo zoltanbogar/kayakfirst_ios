@@ -18,7 +18,7 @@ class TrainingSumElementAverage: BaseTrainingSumElement {
         if trainingList != nil && trainingList!.count > 0 {
             let avgHash = TrainingDataService.sharedInstance.getTrainigAvg(
                 hash: TrainingAvg.getAvgHash(
-                    userId: UserService.sharedInstance.getUser()!.id,
+                    userId: UserManager.sharedInstance.getUser()!.id,
                     avgType: getTrainingType(),
                     sessionId: trainingList![0].sessionId))
             

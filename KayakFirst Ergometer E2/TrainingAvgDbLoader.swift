@@ -84,7 +84,7 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
         var trainingAvgList: [TrainingAvg]?
         
         do {
-            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            var queryPredicate = self.userId == UserManager.sharedInstance.getUser()!.id
             
             if let predicateValue = predicate {
                 queryPredicate = queryPredicate && predicateValue
