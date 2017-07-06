@@ -97,7 +97,7 @@ class PlanDetailsViewController: BaseVC {
     }
     
     @objc private func btnDeleteClick() {
-        //TODO
+        DeletePlanDialog.showDeletePlanDialog(viewController: self, plan: plan!, managerCallback: deletePlanCallback)
     }
     
     @objc private func btnEditClick() {
@@ -133,7 +133,9 @@ class PlanDetailsViewController: BaseVC {
     }
     
     private func deletePlanCallback(data: Bool?, error: Responses?) {
-        //TODO
+        if data != nil && data! {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }

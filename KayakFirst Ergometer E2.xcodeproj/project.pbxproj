@@ -295,6 +295,7 @@
 		06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */; };
 		06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CB1E463DB6002AA9D0 /* UserRegister.swift */; };
 		06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CD1E463DD5002AA9D0 /* UserDto.swift */; };
+		06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */; };
 		06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9145D1E427FFC0041B303 /* UserLogin.swift */; };
 		06F914611E42802B0041B303 /* LoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914601E42802B0041B303 /* LoginDto.swift */; };
 		06F914631E428A240041B303 /* Alamofire+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F914621E428A240041B303 /* Alamofire+.swift */; };
@@ -620,6 +621,7 @@
 		06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		06F657CB1E463DB6002AA9D0 /* UserRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		06F657CD1E463DD5002AA9D0 /* UserDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
+		06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePlanDialog.swift; sourceTree = "<group>"; };
 		06F9145D1E427FFC0041B303 /* UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		06F914601E42802B0041B303 /* LoginDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDto.swift; sourceTree = "<group>"; };
 		06F914621E428A240041B303 /* Alamofire+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+.swift"; sourceTree = "<group>"; };
@@ -1203,6 +1205,7 @@
 				069433F51E28462D00CE6398 /* NewPasswordDialog.swift */,
 				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
 				064766471E759ACE007936B5 /* LocationSettingsDialog.swift */,
+				06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1807,6 +1810,7 @@
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
+				06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */,
 				067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */,
 				069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */,
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,

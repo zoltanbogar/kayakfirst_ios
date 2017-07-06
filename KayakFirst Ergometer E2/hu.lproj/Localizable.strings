@@ -87,16 +87,21 @@
 "settings_location_ios"="Kültéri használathoz engedélyezd a Helymeghatározást.";
 
 //Dialog
-"dialog_title_finish"="Biztosan ki szeretnél lépni?";
-"dialog_message_finish"="Ha továbblép a mérés be fog fejeződni...";
-"dialog_title_bluetooth_connecting"="Bluetooth csatlakozás";
-"dialog_message_bluetooth_connecting"="Csatlakozás az eszközhöz...";
-"dialog_title_bluetooth_discovery"="Bluetooth keresés";
-"dialog_message_bluetooth_discovery"="Bluetooth eszközök keresése...";
-"dialog_title_bluetooth_disconnect"="A Bluetooth kapcsolat aktív";
-"dialog_message_bluetooth_disconnect"="Szeretnéd bontani a kapcsolatot?";
-"dialog_title_reset_password"="Add meg az e-mail címed";
-"dialog_calibrating_sensor"="Ne evezz, amíg kalibrálunk!";
+"dialog_title_finish"="Do you want to quit?";
+"dialog_message_finish"="If you continue, measure will be end...";
+"dialog_title_bluetooth_connecting"="Bluetooth connecting";
+"dialog_message_bluetooth_connecting"="Connecting to device...";
+"dialog_title_bluetooth_discovery"="Discovery Bluetooth ";
+"dialog_message_bluetooth_discovery"="Discover Bluetooth devices... ";
+"dialog_title_bluetooth_disconnect"="Bluetooth is active";
+"dialog_message_bluetooth_disconnect"="Do you want to disconnect it?";
+"dialog_title_reset_password"="Add your email address";
+"dialog_calibrating_sensor"="Stop paddling while calibrating!";
+"dialog_sync"="Synchronization...";
+"dialog_plan_no_elements"="This plan does not have any plan-elements";
+"dialog_event_add_message"="Add to calendar?";
+"dialog_event_delete_title"="Do you really want to delete";
+"dialog_event_delete_message"="This Event will be lost, but you can find it in Plans for add to another day";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
@@ -106,13 +111,15 @@
 "delay_quick_start"="Gyorsindítás";
 
 //Base Language
-"other_yes"="igen";
-"other_no"="nem";
+"other_yes"="yes";
+"other_no"="no";
 "other_ok"="OK";
-"other_cancel"="Mégsem";
+"other_cancel"="Cancel";
 "other_add"="Add";
 "other_save"="Save";
 "other_next"="Next";
+"other_delete"="Delete";
+"other_power_save"="Power Save";
 "other_search"="Search";
 
 //Navigation

@@ -12,6 +12,8 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     
     //MARK: properties
     private let stackView = UIStackView()
+    private var plan: Plan?
+    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -26,6 +28,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     
     //MARK: init data
     override func initData(data: Plan?) {
+        self.plan = data
         labelName.text = data?.name
         Plan.setTypeIcon(plan: data, imageView: imgType)
     }
@@ -97,6 +100,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         let button = UIButton()
         let image = UIImage(named: "trashSmall")
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(clickDelete), for: .touchUpInside)
         
         return button
     }()
@@ -104,5 +108,9 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     //MARK: button listeners
     @objc private func clickPlay() {
         log("PLAN_TEST", "clickPlayInList")
+    }
+    
+    @objc private func clickDelete() {
+        DeletePlanDialog.showDeletePlanDialog(viewController: viewController()!, plan: plan!, managerCallback: deleteCallback)
     }
 }

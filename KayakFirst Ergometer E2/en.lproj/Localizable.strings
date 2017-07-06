@@ -97,6 +97,11 @@
 "dialog_message_bluetooth_disconnect"="Do you want to disconnect it?";
 "dialog_title_reset_password"="Add your email address";
 "dialog_calibrating_sensor"="Stop paddling while calibrating!";
+"dialog_sync"="Synchronization...";
+"dialog_plan_no_elements"="This plan does not have any plan-elements";
+"dialog_event_add_message"="Add to calendar?";
+"dialog_event_delete_title"="Do you really want to delete";
+"dialog_event_delete_message"="This Event will be lost, but you can find it in Plans for add to another day";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";
@@ -113,6 +118,8 @@
 "other_add"="Add";
 "other_save"="Save";
 "other_next"="Next";
+"other_delete"="Delete";
+"other_power_save"="Power Save";
 "other_search"="Search";
 
 //Navigation
