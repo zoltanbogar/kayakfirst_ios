@@ -2,17 +2,13 @@
 //  PlanTableViewCell.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 05. 13..
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
-    
-    //MARK: constants
-    static let playWidth = 80
-    static let doneWidth = 150
+class PlanTableViewCell: AppUITableViewCell<Plan> {
     
     //MARK: properties
     private let stackView = UIStackView()
@@ -29,9 +25,9 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     }
     
     //MARK: init data
-    override func initData(data: PlanEvent?) {
-        labelName.text = data?.event.name
-        doneView.isHidden = data?.event.sessionId == 0
+    override func initData(data: Plan?) {
+        labelName.text = data?.name
+        Plan.setTypeIcon(plan: data, imageView: imgType)
     }
     
     //MARK: init view
@@ -40,8 +36,10 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
         stackView.distribution = .fillProportionally
         
         stackView.addArrangedSubview(playView)
+        stackView.addArrangedSubview(imgType)
         stackView.addArrangedSubview(labelName)
-        stackView.addArrangedSubview(doneView)
+        stackView.addArrangedSubview(btnAddToCalendar)
+        stackView.addArrangedSubview(btnDelete)
         
         return stackView
     }
@@ -81,28 +79,30 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
         return label
     }()
     
-    private lazy var doneView: UIView! = {
-        let view = UIView()
-        
+    private lazy var imgType: UIImageView! = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "doneTrue")
         
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
-        }
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.doneWidth)
-        })
+        return imageView
+    }()
+    
+    private lazy var btnAddToCalendar: UIButton! = {
+        let button = UIButton()
+        let image = UIImage(named: "addCalendar")
+        button.setImage(image, for: .normal)
         
-        return view
+        return button
+    }()
+    
+    private lazy var btnDelete: UIButton! = {
+        let button = UIButton()
+        let image = UIImage(named: "trashSmall")
+        button.setImage(image, for: .normal)
+        
+        return button
     }()
     
     //MARK: button listeners
     @objc private func clickPlay() {
         log("PLAN_TEST", "clickPlayInList")
     }
-    
 }

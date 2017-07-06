@@ -1,14 +1,14 @@
 //
-//  PlanTablewViewHeader.swift
+//  PlanTableViewHeader.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 05. 13..
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class EventTableViewHeader: UIView {
+class PlanTableViewHeader: UIView {
     
     //MARK: contstants
     private let fontSize: CGFloat = 12
@@ -34,7 +34,7 @@ class EventTableViewHeader: UIView {
         
         stackView.addArrangedSubview(playView)
         stackView.addArrangedSubview(labelName)
-        stackView.addArrangedSubview(labelDone)
+        stackView.addArrangedSubview(labelAddToCalendar)
         
         let divider = DividerView()
         addSubview(divider)
@@ -65,17 +65,13 @@ class EventTableViewHeader: UIView {
         return label
     }()
     
-    private lazy var labelDone: AppUILabel! = {
+    private lazy var labelAddToCalendar: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font = label.font.withSize(self.fontSize)
         
-        label.text = getString("plan_done").uppercased()
-        
-        label.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.doneWidth)
-        })
+        label.text = getString("plan_add_calendar").uppercased()
         
         return label
     }()
@@ -89,4 +85,5 @@ class EventTableViewHeader: UIView {
         
         return view
     }()
+    
 }

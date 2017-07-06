@@ -29,8 +29,7 @@ class PlanListVc: BaseVC {
     
     //MARK: functions
     private func setPlanList() {
-        //TODO
-        //tableViewPlan.dataList = Plan.getExamplePlans()
+        tableViewPlan.dataList = Plan.getExamplePlans()
     }
     
     //MARK: initView
@@ -70,13 +69,12 @@ class PlanListVc: BaseVC {
         return button
     }()
 
-    //TODO: change it to 'PlanTableView'
-    private lazy var tableViewPlan: EventTableView! = {
-        let tableViewPlan = EventTableView(view: self.contentView)
+    private lazy var tableViewPlan: PlanTableView! = {
+        let tableViewPlan = PlanTableView(view: self.contentView)
         
-        /*tableViewPlan.rowClickCallback = { plan, position in
+        tableViewPlan.rowClickCallback = { plan, position in
             startPlanDetailsViewController(viewController: self, plan: plan, isEdit: false)
-        }*/
+        }
         
         return tableViewPlan
     }()

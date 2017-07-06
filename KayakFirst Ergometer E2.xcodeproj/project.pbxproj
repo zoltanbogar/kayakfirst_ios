@@ -150,6 +150,9 @@
 		065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */; };
 		065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187211F0A506D00B434B0 /* UploadPlan.swift */; };
 		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
+		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
+		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
+		065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */; };
 		066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00351EC7016700BE0E1F /* PlanElement.swift */; };
 		066B00381EC701B900BE0E1F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00371EC701B900BE0E1F /* Plan.swift */; };
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
@@ -466,6 +469,9 @@
 		0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEvent.swift; sourceTree = "<group>"; };
 		065187211F0A506D00B434B0 /* UploadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlan.swift; sourceTree = "<group>"; };
 		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
+		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
+		065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
 		066B00351EC7016700BE0E1F /* PlanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElement.swift; sourceTree = "<group>"; };
 		066B00371EC701B900BE0E1F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
@@ -1080,6 +1086,9 @@
 				06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */,
 				06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */,
 				06071D441ECA4E59004CB736 /* PlanEditIntervallsCell.swift */,
+				065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */,
+				065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */,
+				065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1708,6 +1717,7 @@
 				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
+				065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
@@ -1826,6 +1836,7 @@
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
+				065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */,
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				066B00411EC7406F00BE0E1F /* PlanningTypeVc.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
@@ -1916,6 +1927,7 @@
 				06CAFF4F1F0D31CB00D2EA14 /* ManagerModifyPlanSave.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
 				0671295F1EC8E37100362C39 /* PECellSpace.swift in Sources */,
+				065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */,
 				060DDFF41E4BDA3900FE2D14 /* TrainingSumElementMaximum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

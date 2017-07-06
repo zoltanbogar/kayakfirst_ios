@@ -130,7 +130,7 @@
 "calendar_empty_list"="Nincs tárolt adat";
 "training_type"=" ";
 "training_log"="napló";
-"calendar_empty_plan"="There is no Plan Data";
+"calendar_empty_event"="There is no Event Data";
 
 //Chart
 "chart_training_no_value_selected"="A diagram megtekintéséhez válassz legalább egy értéket";
@@ -274,7 +274,9 @@
 "plan_saved"="Plan saved";
 "plan_hint_minute"="mm";
 "plan_hint_sec"="ss";
-"plan_hint_meter"="m";
 "plan_hint_percent"="%";
 "plan_hint_name"="Type name...";
 "plan_hint_notes"="Type notes...";
+"plan_empty"="There is no Plan Data";
+"plan_add_calendar"="Add to calendar";
+"plan_end"="The End";

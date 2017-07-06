@@ -2,13 +2,13 @@
 //  PlanTableView.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 05. 13..
+//  Created by Balazs Vidumanszki on 2017. 07. 06..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class EventTableView: TableViewWithEmpty<PlanEvent> {
+class PlanTableView: TableViewWithEmpty<Plan> {
     
     //MARK: init
     override init(view: UIView) {
@@ -28,7 +28,7 @@ class EventTableView: TableViewWithEmpty<PlanEvent> {
     }
     
     override func getCellClass() -> AnyClass {
-        return EventTabLeViewCell.self
+        return PlanTableViewCell.self
     }
     
     override func getHeaderView() -> UIView? {
@@ -38,14 +38,14 @@ class EventTableView: TableViewWithEmpty<PlanEvent> {
     //MARK: views
     private lazy var labelEmpty: UILabel! = {
         let label = AppUILabel()
-        label.text = getString("calendar_empty_event")
+        label.text = getString("plan_empty")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
         
         return label
     }()
     
-    private lazy var headerView: EventTableViewHeader! = {
-        let header = EventTableViewHeader()
+    private lazy var headerView: PlanTableViewHeader! = {
+        let header = PlanTableViewHeader()
         
         return header
     }()
