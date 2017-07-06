@@ -31,6 +31,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private var isBatterySaveShouldActive = false
     
     var plan: Plan?
+    private let planManager = PlanManager.sharedInstance
+    private var planTraining: PlanTraining?
+    
+    var event: Event?
+    
+    private var sessionId: Double = 0
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -109,6 +115,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: true)
                 self.refreshDashboardElements(false)
                 self.batterySaveHelper.activate(isActivate: false)
+                self.savePlan()
             case CycleState.paused:
                 self.showPauseView(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: false)
@@ -119,6 +126,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnPlayState, isShow: false)
                 self.refreshDashboardElements(true)
                 self.batterySaveHelper.activate(isActivate: self.isBatterySaveShouldActive)
+                
+                self.sessionId = self.telemetry.sessionId
             default: break
             }
             self.showBackButton()
@@ -252,7 +261,25 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     func setPlantoPlanView() {
         if plan != nil {
+            planTraining = PlanTraining.createPlanTraining(plan: plan!)
+            
             viewDashboardPlan.plan = plan
+        }
+    }
+    
+    private func savePlan() {
+        if plan != nil && planTraining != nil {
+            if planTraining?.sessionId == 0 {
+                planTraining?.sessionId = sessionId
+            }
+            
+            planManager.savePlanTraining(planTraining: planTraining!)
+        }
+        
+        if event != nil && viewDashboardPlan.isDone {
+            event?.sessionId = sessionId
+            
+            EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: nil)
         }
     }
 

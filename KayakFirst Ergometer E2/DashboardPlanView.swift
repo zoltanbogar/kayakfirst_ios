@@ -27,6 +27,9 @@ class DashboardPlanView: RefreshView {
             setProgressBarPlanElementColor()
         }
     }
+    var isDone: Bool {
+        return planElementPosition == plan?.planElements?.count
+    }
     private var localeValue: Double = 0
     private var planElementPosition: Int = 0
     private let planSoundHelper = PlanSoundHelper.sharedInstance
