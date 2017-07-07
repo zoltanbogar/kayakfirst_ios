@@ -8,28 +8,7 @@
 
 import UIKit
 
-func startPlanningTypeVc(navigationController: UINavigationController, envType: TrainingEnvironmentType) -> UIViewController? {
-    var permissionViewController: UIViewController? = nil
-
-    let planningTypeVc = PlanningTypeVc()
-    planningTypeVc.trainingEnvironmentType = envType
-    
-    if !PermissionCheck.hasLocationPermission() {
-        permissionViewController = startLocationPermissionVc(viewController: navigationController)
-    } else {
-        if UserManager.sharedInstance.getUser() == nil {
-            planningTypeVc.startSetDashboard(viewController: navigationController)
-        } else {
-            navigationController.pushViewController(planningTypeVc, animated: true)
-        }
-    }
-    return permissionViewController
-}
-
-class PlanningTypeVc: BaseVC {
-    
-    //MARK: properties
-    var trainingEnvironmentType: TrainingEnvironmentType?
+class PlanOrNotPlanVc: BaseVC {
     
     //MARK: initView
     override func initView() {
@@ -141,19 +120,7 @@ class PlanningTypeVc: BaseVC {
     
     //MARK: button listeners
     @objc private func clickRun() {
-        startSetDashboard(viewController: self)
-    }
-    
-    func startSetDashboard(viewController: UIViewController) {
-        switch trainingEnvironmentType! {
-        case TrainingEnvironmentType.outdoor:
-            startTrainingViewController(viewController: viewController)
-        case TrainingEnvironmentType.ergometer:
-            //TODO
-            break
-        default:
-            fatalError("there is no other type")
-        }
+        show(MainVc(), sender: self)
     }
     
     @objc private func clickTime() {

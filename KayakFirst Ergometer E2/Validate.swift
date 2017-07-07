@@ -80,4 +80,13 @@ class Validate {
         }
         return isValid
     }
+    
+    class func isValidPlan(viewController: UIViewController, plan: Plan?) -> Bool {
+        let isValid = plan != nil && plan!.planElements != nil && plan!.planElements!.count > 0
+        
+        if !isValid {
+            PlanNoElementsDialog().show(viewController: viewController)
+        }
+        return isValid
+    }
 }

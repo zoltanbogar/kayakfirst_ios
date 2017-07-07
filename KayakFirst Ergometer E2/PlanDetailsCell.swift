@@ -94,7 +94,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         return textField
     }()
     
-    private lazy var etNotes: ProfileElementExpendable! = {
+    lazy var etNotes: ProfileElementExpendable! = {
         let textField = ProfileElementExpendable()
         textField.title = getString("plan_notes")
         textField.active = false

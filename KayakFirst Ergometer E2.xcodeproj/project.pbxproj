@@ -126,6 +126,7 @@
 		061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */; };
 		061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C01F0BED4F0068E6E6 /* UploadType.swift */; };
 		061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */; };
+		0621004E1F0FB15C0024A2AA /* PlanNoElementsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -161,7 +162,7 @@
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
 		066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003C1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift */; };
 		066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003E1EC7253B00BE0E1F /* PlanDbLoader.swift */; };
-		066B00411EC7406F00BE0E1F /* PlanningTypeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00401EC7406F00BE0E1F /* PlanningTypeVc.swift */; };
+		066B00411EC7406F00BE0E1F /* PlanOrNotPlanVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00401EC7406F00BE0E1F /* PlanOrNotPlanVc.swift */; };
 		066B00441EC749BD00BE0E1F /* BebasUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00431EC749BD00BE0E1F /* BebasUILabel.swift */; };
 		066B00461EC7504400BE0E1F /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00451EC7504400BE0E1F /* DividerView.swift */; };
 		066B00491EC7554400BE0E1F /* PlanListVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00481EC7554400BE0E1F /* PlanListVc.swift */; };
@@ -451,6 +452,7 @@
 		061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUpload.swift; sourceTree = "<group>"; };
 		061FF0C01F0BED4F0068E6E6 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
 		061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModify.swift; sourceTree = "<group>"; };
+		0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanNoElementsDialog.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -486,7 +488,7 @@
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
 		066B003C1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinPlanPlanElementsDbLoader.swift; sourceTree = "<group>"; };
 		066B003E1EC7253B00BE0E1F /* PlanDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDbLoader.swift; sourceTree = "<group>"; };
-		066B00401EC7406F00BE0E1F /* PlanningTypeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanningTypeVc.swift; sourceTree = "<group>"; };
+		066B00401EC7406F00BE0E1F /* PlanOrNotPlanVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanOrNotPlanVc.swift; sourceTree = "<group>"; };
 		066B00431EC749BD00BE0E1F /* BebasUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BebasUILabel.swift; sourceTree = "<group>"; };
 		066B00451EC7504400BE0E1F /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		066B00481EC7554400BE0E1F /* PlanListVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanListVc.swift; sourceTree = "<group>"; };
@@ -1072,7 +1074,7 @@
 		066B00471EC7552C00BE0E1F /* plan */ = {
 			isa = PBXGroup;
 			children = (
-				066B00401EC7406F00BE0E1F /* PlanningTypeVc.swift */,
+				066B00401EC7406F00BE0E1F /* PlanOrNotPlanVc.swift */,
 				066B00481EC7554400BE0E1F /* PlanListVc.swift */,
 				067129501EC86FAD00362C39 /* CreatePlanViewController.swift */,
 				067129621EC9030800362C39 /* PlanDetailsViewController.swift */,
@@ -1221,6 +1223,7 @@
 				06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */,
 				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
 				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
+				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1838,6 +1841,7 @@
 				0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
+				0621004E1F0FB15C0024A2AA /* PlanNoElementsDialog.swift in Sources */,
 				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
 				0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */,
 				067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */,
@@ -1861,7 +1865,7 @@
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
 				065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */,
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
-				066B00411EC7406F00BE0E1F /* PlanningTypeVc.swift in Sources */,
+				066B00411EC7406F00BE0E1F /* PlanOrNotPlanVc.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,

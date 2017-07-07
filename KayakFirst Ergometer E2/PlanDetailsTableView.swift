@@ -17,8 +17,17 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
     
     //MARK: properties
     private let emptyView = UIView()
+    private var _plan: Plan?
     var plan: Plan? {
-        didSet {
+        get {
+            if let cell = planDetailsCell {
+                _plan?.name = cell.etName.text
+                _plan?.notes = cell.etNotes.text
+            }
+            return _plan
+        }
+        set {
+            _plan = newValue
             reloadData()
         }
     }
@@ -37,6 +46,8 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
         }
     }
     private var planDetailsCell: PlanDetailsCell?
+    
+    //MARK: functions
     
     //MARK: init
     override init(view: UIView) {
@@ -70,7 +81,7 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
     private func getItemCount() -> Int {
         var baseCount = 1
         
-        if let planValue = plan {
+        if let planValue = _plan {
             if let planEValue = planValue.planElements {
                 baseCount += planEValue.count
             }
@@ -94,7 +105,7 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             
             (cellDetails as! PlanDetailsCell).isEdit = isEdit
             
-            cellDetails.data = plan
+            cellDetails.data = _plan
 
             cell = cellDetails
             
@@ -119,7 +130,7 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             
             let dataPosition = isEdit ? (position - 2) : (position - 1)
             
-            cellNormal.data = plan?.planElements?[dataPosition]
+            cellNormal.data = _plan?.planElements?[dataPosition]
             
             rowHeight = (cellNormal as! PlanElementDetailsCell).getRowHeight()
             

@@ -12,9 +12,10 @@ func startTrainingViewController(viewController: UIViewController) {
     viewController.present(TrainingViewController(), animated: true, completion: nil)
 }
 
-func startTrainingViewController(viewController: UIViewController, plan: Plan) {
+func startTrainingViewController(viewController: UIViewController, plan: Plan?, event: Event?, trainingEnvType: TrainingEnvironmentType) {
     let trainingVc = TrainingViewController()
     trainingVc.plan = plan
+    trainingVc.event = event
     viewController.present(trainingVc, animated: true, completion: nil)
 }
 
@@ -26,6 +27,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     let telemetry = Telemetry.sharedInstance
     let outdoorService = OutdoorService.sharedInstance
     var plan: Plan?
+    var event: Event?
     private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle

@@ -108,7 +108,11 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     
     //MARK: button listeners
     @objc private func clickPlay() {
-        log("PLAN_TEST", "clickPlayInList")
+        if Validate.isValidPlan(viewController: viewController()!, plan: plan) {
+            if viewController()!.parent is UINavigationController {
+                startMainVc(navigationViewController: viewController()!.parent as! UINavigationController, plan: plan, event: nil)
+            }
+        }
     }
     
     @objc private func clickAddToCalendar() {

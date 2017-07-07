@@ -37,6 +37,13 @@ class EventDetailsViewController: BaseVC {
     private var datePickerView = UIDatePicker()
     private var timePickerView = UIDatePicker()
     
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initFields()
+    }
+    
     //MARK: functions
     private func setEditLayout(isEdit: Bool) {
         if isEdit {

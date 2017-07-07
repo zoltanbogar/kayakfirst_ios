@@ -8,6 +8,10 @@
 
 import Foundation
 
+func startPlanDetailsViewController(viewController: UIViewController, plan: Plan) {
+    startPlanDetailsViewController(viewController: viewController, plan: plan, isEdit: false)
+}
+
 func startPlanDetailsViewController(viewController: UIViewController, plan: Plan, isEdit: Bool) {
     let planDetailsVC = PlanDetailsViewController()
     planDetailsVC.plan = plan

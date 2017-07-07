@@ -98,7 +98,7 @@ class PlanListVc: BaseVC {
         let tableViewPlan = PlanTableView(view: self.contentView, deleteCallback: self.deleteCallback)
         
         tableViewPlan.rowClickCallback = { plan, position in
-            startPlanDetailsViewController(viewController: self, plan: plan, isEdit: false)
+            startPlanDetailsViewController(viewController: self, plan: plan)
         }
         
         return tableViewPlan

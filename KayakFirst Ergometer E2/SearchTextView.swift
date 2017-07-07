@@ -81,13 +81,15 @@ class SearchTextView: UITextView, UITextViewDelegate {
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        if let searchListenerValue = searchListener {
+            searchListenerValue(textView.text)
+        }
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             textView.resignFirstResponder()
-            
-            if let searchListenerValue = searchListener {
-                searchListenerValue(textView.text)
-            }
         }
         return true
     }

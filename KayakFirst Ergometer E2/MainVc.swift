@@ -9,11 +9,22 @@
 import UIKit
 import CoreLocation
 
+func startMainVc(navigationViewController: UINavigationController, plan: Plan?, event: Event?) {
+    let mainVc = MainVc()
+    mainVc.plan = plan
+    mainVc.event = event
+    navigationViewController.pushViewController(mainVc, animated: true)
+}
+
 class MainVc: MainTabVc, CLLocationManagerDelegate {
     
     //MARK: properteis
     private let locationManager = CLLocationManager()
     private var permissionViewController: UIViewController? = nil
+    
+    var trainingEnvironmentType: TrainingEnvironmentType?
+    var plan: Plan?
+    var event: Event?
     
     //MARK: views
     override func initView() {
@@ -58,10 +69,14 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {
+        trainingEnvironmentType = TrainingEnvironmentType.outdoor
+        
         checkLocationSettings()
     }
     
     @objc private func clickBtnErgo() {
+        trainingEnvironmentType = TrainingEnvironmentType.ergometer
+        
         startErgometerViewController(viewController: self)
     }
     
@@ -70,10 +85,33 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
         locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-            permissionViewController = startPlanningTypeVc(navigationController: self.navigationController!, envType: TrainingEnvironmentType.outdoor)
+            permissionViewController = initPermissionViewController()
         } else {
             LocationSettingsDialog().show(viewController: self)
         }
+    }
+    
+    private func initPermissionViewController() -> UIViewController? {
+        var permissionViewController: UIViewController? = nil
+        
+        if !PermissionCheck.hasLocationPermission() {
+            permissionViewController = startLocationPermissionVc(viewController: self.parent!)
+        } else {
+            switch trainingEnvironmentType! {
+            case TrainingEnvironmentType.ergometer:
+                //nothing here yet
+                break
+            case TrainingEnvironmentType.outdoor:
+                if plan == nil {
+                    startTrainingViewController(viewController: self)
+                } else {
+                    startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: TrainingEnvironmentType.outdoor)
+                }
+            default:
+                break
+            }
+        }
+        return permissionViewController
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

@@ -145,7 +145,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     }
     
     func getNamePredicate(name: String) -> Expression<Bool> {
-        return self.name.like(name)
+        return self.name.like("%\(name)%")
     }
     
     //MARK: update

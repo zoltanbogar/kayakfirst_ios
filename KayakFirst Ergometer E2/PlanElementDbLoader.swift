@@ -104,7 +104,7 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     }
     
     func getExpressionDelete(planId: String) -> Expression<Bool> {
-        return self.id.like(planId)
+        return self.id.like("%\(planId)%")
     }
     
     //MARK: delete
