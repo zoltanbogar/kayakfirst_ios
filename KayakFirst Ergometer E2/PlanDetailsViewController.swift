@@ -22,6 +22,7 @@ func startPlanDetailsViewController(viewController: UIViewController, plan: Plan
     let planDetailsVC = PlanDetailsViewController()
     PlanDetailsViewController.plan = plan
     planDetailsVC.isEdit = isEdit
+    planDetailsVC.parentVc = viewController
     
     let navVc = UINavigationController()
     navVc.pushViewController(planDetailsVC, animated: false)
@@ -33,6 +34,7 @@ class PlanDetailsViewController: BaseVC {
     //MARK: properties
     static var plan: Plan?
     var isEdit: Bool = false
+    var parentVc: UIViewController?
     
     private var planManager = PlanManager.sharedInstance
     
@@ -47,6 +49,12 @@ class PlanDetailsViewController: BaseVC {
         super.viewWillAppear(animated)
         
         setPlanToTableView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        initPlanFromAdapter()
     }
     
     //MARK: init view
@@ -134,7 +142,15 @@ class PlanDetailsViewController: BaseVC {
             showProgress(baseManagerType: manager)
         }
         
-        //TODO: finish and etc.
+        if self.parentVc != nil && self.parentVc! is CreatePlanViewController {
+            
+            self.dismiss(animated: true, completion: {
+                 //TODO: finish and etc.
+            })
+            
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     private func showEventDetailsVc() {
