@@ -10,13 +10,19 @@ import Foundation
 
 class PECellNormal: AppUITableViewCell<PlanElement> {
     
+    //MARK: constants
+    static let shadowMargin: CGFloat = 5
+    
+    //MARK: properties
+    private let view = UIView()
+    
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        layer.cornerRadius = planRadius
+        backgroundColor = Colors.colorTransparent
         
-        //setAppShadow()
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,14 +32,21 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     //MARK: init data
     override func initData(data: PlanElement?) {
         label.text = data?.getFormattedValue()
-        backgroundColor = getPlanElementColor(planElement: data)
-        
-        selectionStyle = .none
+        planElementView.backgroundColor = getPlanElementColor(planElement: data)
     }
     
     //MARK: init view
     override func initView() -> UIView {
-        return planElementView
+        view.addSubview(planElementView)
+
+        planElementView.snp.makeConstraints { (make) in
+            make.left.equalTo(view).offset(PECellNormal.shadowMargin)
+            make.top.equalTo(view).offset(PECellNormal.shadowMargin)
+            make.right.equalTo(view).offset(-PECellNormal.shadowMargin)
+            make.bottom.equalTo(view).offset(-PECellNormal.shadowMargin)
+        }
+        
+        return view
     }
     
     override func getRowHeight() -> CGFloat {
@@ -48,6 +61,9 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
         self.label.snp.makeConstraints { (make) in
             make.center.equalTo(view)
         }
+        
+        view.layer.cornerRadius = planRadius
+        view.setAppShadow()
         
         return view
     }()
