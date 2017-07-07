@@ -12,9 +12,15 @@ func startPlanDetailsViewController(viewController: UIViewController, plan: Plan
     startPlanDetailsViewController(viewController: viewController, plan: plan, isEdit: false)
 }
 
+func finishEditPlanDetailsVc(viewController: UIViewController, plan: Plan) {
+    viewController.dismiss(animated: true, completion: nil)
+    
+    PlanDetailsViewController.plan = plan
+}
+
 func startPlanDetailsViewController(viewController: UIViewController, plan: Plan, isEdit: Bool) {
     let planDetailsVC = PlanDetailsViewController()
-    planDetailsVC.plan = plan
+    PlanDetailsViewController.plan = plan
     planDetailsVC.isEdit = isEdit
     
     let navVc = UINavigationController()
@@ -25,7 +31,7 @@ func startPlanDetailsViewController(viewController: UIViewController, plan: Plan
 class PlanDetailsViewController: BaseVC {
     
     //MARK: properties
-    var plan: Plan?
+    static var plan: Plan?
     var isEdit: Bool = false
     
     private var planManager = PlanManager.sharedInstance
@@ -35,6 +41,12 @@ class PlanDetailsViewController: BaseVC {
         super.viewDidLoad()
         
         automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setPlanToTableView()
     }
     
     //MARK: init view
@@ -83,8 +95,6 @@ class PlanDetailsViewController: BaseVC {
     private lazy var planDetailsTableView: PlanDetailsTableView! = {
         let view = PlanDetailsTableView(view: self.contentView)
         
-        view.plan = self.plan
-        
         return view
     }()
     
@@ -107,7 +117,7 @@ class PlanDetailsViewController: BaseVC {
     }
     
     @objc private func btnDeleteClick() {
-        DeletePlanDialog.showDeletePlanDialog(viewController: self, plan: plan!, managerCallback: deletePlanCallback)
+        DeletePlanDialog.showDeletePlanDialog(viewController: self, plan: PlanDetailsViewController.plan!, managerCallback: deletePlanCallback)
     }
     
     @objc private func btnEditClick() {
@@ -119,8 +129,8 @@ class PlanDetailsViewController: BaseVC {
         
         initPlanFromAdapter()
         
-        if plan != nil {
-            let manager = planManager.savePlan(plan: plan!, managerCallBack: planCallback)
+        if PlanDetailsViewController.plan != nil {
+            let manager = planManager.savePlan(plan: PlanDetailsViewController.plan!, managerCallBack: planCallback)
             showProgress(baseManagerType: manager)
         }
         
@@ -129,14 +139,14 @@ class PlanDetailsViewController: BaseVC {
     
     private func showEventDetailsVc() {
         initPlanFromAdapter()
-        if let planValue = plan {
+        if let planValue = PlanDetailsViewController.plan {
             startEventDetailsViewController(viewController: self, plan: planValue)
         }
     }
     
     //MARK: functions
     private func setEditLayout(isEdit: Bool) {
-        planDetailsTableView.isEdit = isEdit
+        planDetailsTableView.setEdit(edit: isEdit, editShouldFinish: self.isEdit)
         if isEdit {
             setTabbarItem(tabbarItems: [btnSave, btnDelete])
         } else {
@@ -148,13 +158,12 @@ class PlanDetailsViewController: BaseVC {
         self.navigationItem.setRightBarButtonItems(tabbarItems, animated: true)
     }
     
-    private func activateFields(isActive: Bool) {
-        planDetailsTableView.isEdit = isActive
-        //TODO
+    private func initPlanFromAdapter() {
+        PlanDetailsViewController.plan = planDetailsTableView.plan
     }
     
-    private func initPlanFromAdapter() {
-        plan = planDetailsTableView.plan
+    private func setPlanToTableView() {
+        planDetailsTableView.plan = PlanDetailsViewController.plan
     }
     
     //MARK: plan callbacks

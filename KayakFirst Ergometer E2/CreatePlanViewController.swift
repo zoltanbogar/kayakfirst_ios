@@ -9,10 +9,19 @@
 import Foundation
 import IQKeyboardManagerSwift
 
+func startCreatePlanViewController(viewController: UIViewController, plan: Plan) {
+    let navigationVc = UINavigationController()
+    let createPlanVc = CreatePlanViewController()
+    createPlanVc.plan = plan
+    
+    navigationVc.pushViewController(createPlanVc, animated: false)
+    viewController.present(navigationVc, animated: true, completion: nil)
+}
+
 func startCreatePlanViewController(viewController: UIViewController, planType: PlanType) {
     let navigationVc = UINavigationController()
     let createPlanVc = CreatePlanViewController()
-    createPlanVc.plan = Plan(type: planType)
+    createPlanVc.planType = planType
     
     navigationVc.pushViewController(createPlanVc, animated: false)
     viewController.present(navigationVc, animated: true, completion: nil)
@@ -27,6 +36,13 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     
     //MARK: properties
     var plan: Plan?
+    var planType: PlanType?
+    
+    private var isEdit = false
+    
+    static var staticName: String?
+    static var staticNotes: String?
+    
     private var snapShot: UIView?
     private var draggedView: UIView?
     private var indexPath: IndexPath?
@@ -90,11 +106,12 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     }
     
     private func setUIForType() {
-        planElementTableView.type = plan?.type
+        if planType == nil {
+            planType = plan!.type
+        }
         
         var viewToAdd: UIView? = nil
-        
-        switch plan!.type {
+        switch planType! {
         case PlanType.distance:
             viewToAdd = distanceView
             break
@@ -102,8 +119,17 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             viewToAdd = timeView
             break
         default:
-            fatalError("no other type")
+            break
         }
+        
+        if plan == nil {
+            plan = Plan(type: planType!)
+        } else {
+            isEdit = true
+        }
+        
+        planElementTableView.type = plan?.type
+        planElementTableView.addPlanElementsAll(planElements: plan?.planElements)
         
         contentView.addSubview(viewToAdd!)
         viewToAdd!.snp.makeConstraints({ (make) in
@@ -299,9 +325,22 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     //MARK: button listeners
     @objc func btnSaveClick() {
         plan?.planElements = planElementTableView.dataList
-        startPlanDetailsViewController(viewController: self, plan: plan!, isEdit: true)
-        //TODO
-        //self.dismiss(animated: false, completion: nil)
+        
+        if let name = CreatePlanViewController.staticName {
+            plan?.name = name
+            CreatePlanViewController.staticName = nil
+        }
+        
+        if let notes = CreatePlanViewController.staticNotes {
+            plan?.notes = notes
+            CreatePlanViewController.staticNotes = nil
+        }
+        
+        if isEdit {
+            finishEditPlanDetailsVc(viewController: self, plan: plan!)
+        } else {
+            startPlanDetailsViewController(viewController: self, plan: plan!, isEdit: true)
+        }
     }
     
     @objc func clickPlay() {

@@ -31,11 +31,8 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             reloadData()
         }
     }
-    var isEdit: Bool = false {
-        didSet {
-            reloadData()
-        }
-    }
+    private var isEdit = false
+    private var editShouldFinish = false
     var isNameValid: Bool {
         get {
             if let cell = planDetailsCell {
@@ -48,6 +45,12 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
     private var planDetailsCell: PlanDetailsCell?
     
     //MARK: functions
+    func setEdit(edit: Bool, editShouldFinish: Bool) {
+        self.isEdit = edit
+        self.editShouldFinish = editShouldFinish
+        
+        reloadData()
+    }
     
     //MARK: init
     override init(view: UIView) {
@@ -145,7 +148,17 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if getViewType(indexPath: indexPath) == cellEdit {
-            //TODO
+            if editShouldFinish {
+                let name = planDetailsCell?.etName.text
+                let notes = planDetailsCell?.etNotes.text
+                
+                CreatePlanViewController.staticName = name
+                CreatePlanViewController.staticNotes = notes
+                
+                viewController()!.dismiss(animated: true, completion: nil)
+            } else {
+                startCreatePlanViewController(viewController: viewController()!, plan: _plan!)
+            }
         }
     }
     
