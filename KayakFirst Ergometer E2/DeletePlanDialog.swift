@@ -30,7 +30,7 @@ class DeletePlanDialog: BaseDialog {
         showNegativeButton(title: getString("other_cancel"))
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         PlanManager.sharedInstance.deletePlan(plan: plan, managerCallBack: managerCallback)
     }
 }

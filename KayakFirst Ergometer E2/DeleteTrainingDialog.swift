@@ -30,7 +30,7 @@ class DeleteTrainingDialog: BaseDialog {
         showNegativeButton(title: getString("other_cancel"))
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         TrainingManager.sharedInstance.deleteTraining(sumTraining: sumTraining, managerCallback: managerCallback)
     }
 }

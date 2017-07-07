@@ -12,7 +12,7 @@ import SwiftyJSON
 struct Event: PlanObject, ModifyAble {
     
     //MARK: constants
-    let defaultHour = 8
+    static let defaultHour = 8
     let eventName = "event"
     
     //MARK: properties

@@ -92,6 +92,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         let button = UIButton()
         let image = UIImage(named: "addCalendar")
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(clickAddToCalendar), for: .touchUpInside)
         
         return button
     }()
@@ -108,6 +109,10 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     //MARK: button listeners
     @objc private func clickPlay() {
         log("PLAN_TEST", "clickPlayInList")
+    }
+    
+    @objc private func clickAddToCalendar() {
+        startEventDetailsViewController(viewController: viewController()!, plan: plan!)
     }
     
     @objc private func clickDelete() {

@@ -30,7 +30,7 @@ class DeleteEventDialog: BaseDialog {
         showNegativeButton(title: getString("other_cancel"))
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         EventManager.sharedInstance.deleteEvent(event: event, managerCallback: managerCallback)
     }
 }

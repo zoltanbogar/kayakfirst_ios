@@ -264,6 +264,8 @@
 "error_google_sign_out"="Google Signout problem!";
 "error_user_username_used"="The username is already used";
 "error_user_email_used"="The email is already used";
+"error_event_timestamp_past"="Event cannot start in the past";
+"error_plan_name"="Please add name";
 
 //Date
 "date_format"="dd.MM.yyyy";

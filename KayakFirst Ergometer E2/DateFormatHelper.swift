@@ -79,6 +79,19 @@ class DateFormatHelper {
         return getZeroHour(timeStamp: timeStamp) + 86399000
     }
     
+    class func getTimestampByDate(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> TimeInterval {
+        let calendar = Calendar.current
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        return getMilliSeconds(date: calendar.date(from: dateComponents)!)
+    }
+    
     class func isSameDay(timeStamp1: TimeInterval, timeStamp2: TimeInterval) -> Bool {
         let format = "yyyy.MM.dd"
         return getDate(dateFormat: format, timeIntervallSince1970: timeStamp1) == getDate(dateFormat: format, timeIntervallSince1970: timeStamp2)

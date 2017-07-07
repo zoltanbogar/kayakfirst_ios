@@ -64,4 +64,20 @@ class Validate {
         return isValid
     }
     
+    class func isValidPlanName(etName: ProfileElement) -> Bool {
+        let isValid = etName.text != nil && etName.text != ""
+        if !isValid {
+            etName.error = getString("error_plan_name")
+        }
+        return isValid
+    }
+    
+    class func isEventTimestampValid(viewController: UIViewController, timestamp: Double) -> Bool {
+        let isValid = timestamp > currentTimeMillis()
+        
+        if !isValid {
+            ErrorDialog(errorString: getString("error_event_timestamp_past")).show(viewController: viewController)
+        }
+        return isValid
+    }
 }

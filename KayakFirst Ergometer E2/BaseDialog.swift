@@ -10,13 +10,19 @@ import UIKit
 
 class BaseDialog {
     
+    //MARK: properties
     internal var alertController: UIAlertController?
     private var positiveAction: UIAlertAction?
     
+    var noticeDialogPosListener: (() -> ())?
+    var noticeDialogNegListener: (() -> ())?
+    
+    //MARK: init
     init(title: String?, message: String?) {
         alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     }
     
+    //MARK: functions
     func show() {
         UIApplication.shared.keyWindow?.rootViewController?.present(alertController!, animated: true, completion: nil)
     }
@@ -39,12 +45,31 @@ class BaseDialog {
     }
     
     internal func showNegativeButton(title: String) {
-        alertController?.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.default, handler: nil))
+        alertController?.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.default, handler: onNegativeButtonClicked))
     }
 
-    
-    internal func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
-        //nothing here
+    //MARK: protocol
+    private func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+        btnPosAction()
+        
+        if let listener = noticeDialogPosListener {
+            listener()
+        }
     }
     
+    private func onNegativeButtonClicked(uiAlertAction: UIAlertAction) {
+        btnNegAction()
+        
+        if let listener = noticeDialogNegListener {
+            listener()
+        }
+    }
+    
+    internal func btnPosAction() {
+        //override if needed
+    }
+    
+    internal func btnNegAction() {
+        //override if needed
+    }
 }

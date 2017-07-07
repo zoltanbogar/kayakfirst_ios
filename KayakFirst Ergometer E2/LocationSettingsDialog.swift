@@ -18,7 +18,7 @@ class LocationSettingsDialog: BaseDialog {
         //showNegativeButton(title: getString("other_cancel"))
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         //UIApplication.shared.openURL(NSURL(string: "App-Prefs:root=LOCATION_SERVICES")! as URL)
     }
 }

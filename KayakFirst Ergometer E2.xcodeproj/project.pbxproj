@@ -134,6 +134,9 @@
 		0626FBCB1EFCE98B00DCBB33 /* UnitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */; };
 		0626FBCD1EFCE9DB00DCBB33 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */; };
 		0626FBCF1EFCF0C800DCBB33 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0626FBCE1EFCF0C800DCBB33 /* Validate.swift */; };
+		06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D021F0F5C8100F102C8 /* AddEventDialog.swift */; };
+		06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D041F0F639B00F102C8 /* UITableView+.swift */; };
+		06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D061F0F662600F102C8 /* EventDetailsViewController.swift */; };
 		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -456,6 +459,9 @@
 		0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitHelper.swift; sourceTree = "<group>"; };
 		0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0626FBCE1EFCF0C800DCBB33 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		06287D021F0F5C8100F102C8 /* AddEventDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventDialog.swift; sourceTree = "<group>"; };
+		06287D041F0F639B00F102C8 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		06287D061F0F662600F102C8 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -689,6 +695,7 @@
 				060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */,
 				06018D551E61D9D700F75919 /* UIView+.swift */,
 				06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */,
+				06287D041F0F639B00F102C8 /* UITableView+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1069,6 +1076,7 @@
 				066B00481EC7554400BE0E1F /* PlanListVc.swift */,
 				067129501EC86FAD00362C39 /* CreatePlanViewController.swift */,
 				067129621EC9030800362C39 /* PlanDetailsViewController.swift */,
+				06287D061F0F662600F102C8 /* EventDetailsViewController.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1212,6 +1220,7 @@
 				06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */,
 				06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */,
 				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
+				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1728,6 +1737,7 @@
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
+				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
@@ -1779,6 +1789,7 @@
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
 				067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */,
 				067964991E638A2C00DFC050 /* CommandOutdoorSpeed.swift in Sources */,
+				06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */,
 				0626FBC91EFCE19400DCBB33 /* PickerHelperUnit.swift in Sources */,
 				061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */,
 				06F914611E42802B0041B303 /* LoginDto.swift in Sources */,
@@ -1857,6 +1868,7 @@
 				06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */,
 				065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */,
 				066B004D1EC759F800BE0E1F /* EventTableView.swift in Sources */,
+				06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */,
 				0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */,
 				067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */,
 				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,

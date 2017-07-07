@@ -27,6 +27,16 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             reloadData()
         }
     }
+    var isNameValid: Bool {
+        get {
+            if let cell = planDetailsCell {
+                return Validate.isValidPlanName(etName: cell.etName)
+            } else {
+                return false
+            }
+        }
+    }
+    private var planDetailsCell: PlanDetailsCell?
     
     //MARK: init
     override init(view: UIView) {
@@ -94,6 +104,8 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
                 let contentOffSetOriginal = self.contentOffset
                 self.setContentOffset(contentOffSetOriginal, animated: false)
             }
+            
+            self.planDetailsCell = (cellDetails as! PlanDetailsCell)
             
             setDefaultRowHeight()
         case cellEdit:

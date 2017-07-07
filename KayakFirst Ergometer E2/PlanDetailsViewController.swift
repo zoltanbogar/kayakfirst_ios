@@ -86,13 +86,19 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: button listeners
     @objc private func btnSaveClick() {
-        setEditLayout(isEdit: false)
+        let isValidPlanName = planDetailsTableView.isNameValid
         
-        initPlanFromAdapter()
-        
-        if plan != nil {
-            let manager = planManager.savePlan(plan: plan!, managerCallBack: planCallback)
-            showProgress(baseManagerType: manager)
+        if (!isValidPlanName) {
+            planDetailsTableView.scrollToPosition(position: 0)
+        } else {
+            let addEventDialog = AddEventDialog()
+            addEventDialog.noticeDialogPosListener = {
+                self.showEventDetailsVc()
+            }
+            addEventDialog.noticeDialogNegListener = {
+                self.showPlanListVc()
+            }
+            addEventDialog.show(viewController: self)
         }
     }
     
@@ -102,6 +108,26 @@ class PlanDetailsViewController: BaseVC {
     
     @objc private func btnEditClick() {
         setEditLayout(isEdit: true)
+    }
+    
+    private func showPlanListVc() {
+        setEditLayout(isEdit: false)
+        
+        initPlanFromAdapter()
+        
+        if plan != nil {
+            let manager = planManager.savePlan(plan: plan!, managerCallBack: planCallback)
+            showProgress(baseManagerType: manager)
+        }
+        
+        //TODO: finish and etc.
+    }
+    
+    private func showEventDetailsVc() {
+        initPlanFromAdapter()
+        if let planValue = plan {
+            startEventDetailsViewController(viewController: self, plan: planValue)
+        }
     }
     
     //MARK: functions

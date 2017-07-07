@@ -63,7 +63,7 @@ class NewPasswordDialog: BaseDialog {
         setEnabledPositive(isEnabled: isEnabled)
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         if let passwordHandler = handler {
             passwordHandler(textFieldCurrent!.text!, textFieldNew!.text!)
         }

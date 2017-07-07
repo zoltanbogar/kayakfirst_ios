@@ -15,8 +15,6 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     var isEdit: Bool = false {
         didSet {
             etName.active = isEdit
-            etDate.active = isEdit
-            etStart.active = isEdit
             etNotes.active = isEdit
         }
     }
@@ -25,9 +23,6 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             etNotes.textHeightChangeListener = self.textHeightChangeListener
         }
     }
-    
-    private var datePickerView = UIDatePicker()
-    private var timePickerView = UIDatePicker()
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -51,9 +46,7 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     //MARK: init view
     override func initView() -> UIView {
         baseView.addSubview(etName)
-        baseView.addSubview(etDate)
         baseView.addSubview(etDuration)
-        baseView.addSubview(etStart)
         baseView.addSubview(etNotes)
         
         etName.snp.makeConstraints { (make) in
@@ -61,31 +54,17 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
             make.right.equalTo(baseView)
             make.top.equalTo(baseView)
         }
-        etDate.snp.makeConstraints { (make) in
+        etDuration.snp.makeConstraints { (make) in
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
             make.top.equalTo(etName.snp.bottom).offset(margin)
         }
-        etDuration.snp.makeConstraints { (make) in
-            make.left.equalTo(baseView)
-            make.right.equalTo(baseView)
-            make.top.equalTo(etDate.snp.bottom).offset(margin)
-        }
-        etStart.snp.makeConstraints { (make) in
-            make.left.equalTo(baseView)
-            make.right.equalTo(baseView)
-            make.top.equalTo(etDuration.snp.bottom).offset(margin)
-        }
         etNotes.snp.makeConstraints { (make) in
             make.left.equalTo(baseView)
             make.right.equalTo(baseView)
-            make.top.equalTo(etStart.snp.bottom).offset(margin)
+            make.top.equalTo(etDuration.snp.bottom).offset(margin)
             make.bottom.equalTo(baseView).offset(-margin)
         }
-        
-        datePickerView.datePickerMode = .date
-        datePickerView.minimumDate = Date()
-        timePickerView.datePickerMode = .time
         
         return baseView
     }
@@ -99,21 +78,10 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     }
     
     //MARK: views
-    private lazy var etName: ProfileElement! = {
+    lazy var etName: ProfileElement! = {
         let textField = ProfileElement()
         textField.title = getString("plan_name")
         textField.active = false
-        
-        return textField
-    }()
-    
-    private lazy var etDate: ProfileElement! = {
-        let textField = ProfileElement()
-        textField.title = getString("date_date")
-        textField.active = false
-        
-        textField.valueTextField.inputView = self.datePickerView
-        self.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
     }()
@@ -126,17 +94,6 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         return textField
     }()
     
-    private lazy var etStart: ProfileElement! = {
-        let textField = ProfileElement()
-        textField.title = getString("training_start")
-        textField.active = false
-        
-        textField.valueTextField.inputView = self.timePickerView
-        self.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
-        
-        return textField
-    }()
-    
     private lazy var etNotes: ProfileElementExpendable! = {
         let textField = ProfileElementExpendable()
         textField.title = getString("plan_notes")
@@ -144,17 +101,4 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
         
         return textField
     }()
-    
-    //MARK: listener
-    func datePickerValueChanged(sender: UIDatePicker) {
-        
-        log("DATE_TEST", "\(DateFormatHelper.getTimestampFromDatePicker(datePicker: sender))")
-    }
-    
-    func timePickerValueChanged(sender: UIDatePicker) {
-        
-        let timestamp = DateFormatHelper.getMilliSeconds(date: sender.date)
-        
-        log("DATE_TEST", "\(timestamp)")
-    }
 }
