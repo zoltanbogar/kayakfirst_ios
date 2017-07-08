@@ -289,3 +289,4 @@
 "plan_empty"="There is no Plan Data";
 "plan_add_calendar"="Add to calendar";
 "plan_end"="The End";
+"plan_event_title"="Set date and starting time for the event";

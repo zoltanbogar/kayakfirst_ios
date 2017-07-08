@@ -217,9 +217,15 @@ class EventDetailsViewController: BaseVC {
         stackView.axis = .vertical
         stackView.spacing = margin
         
-        stackView.addArrangedSubview(etName)
+        stackView.addArrangedSubview(labelTitle)
         stackView.addArrangedSubview(etDate)
         stackView.addArrangedSubview(etStart)
+        stackView.addArrangedSubview(etName)
+        
+        labelTitle.snp.makeConstraints { (make) in
+            make.height.equalTo(80)
+            make.width.equalTo(200)
+        }
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
@@ -269,6 +275,16 @@ class EventDetailsViewController: BaseVC {
         self.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
+    }()
+    
+    private lazy var labelTitle: AppUILabel! = {
+        let label = AppUILabel()
+        
+        label.textAlignment = .center
+        label.text = getString("plan_event_title")
+        label.numberOfLines = 0
+        
+        return label
     }()
     
     //MARK: barbuttons
