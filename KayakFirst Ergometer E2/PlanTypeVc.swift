@@ -64,10 +64,9 @@ class PlanTypeVc: BaseVC {
         })
         view.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalTo(view.snp.top).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
+            make.bottom.equalTo(imageView.snp.top).inset(UIEdgeInsetsMake(0, 0, margin2, 0))
             make.centerX.equalTo(view.snp.centerX)
         })
-        
         return view
     }()
     
@@ -89,7 +88,7 @@ class PlanTypeVc: BaseVC {
         })
         view.addSubview(label)
         label.snp.makeConstraints({ (make) in
-            make.top.equalTo(view.snp.top).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
+             make.bottom.equalTo(imageView.snp.top).inset(UIEdgeInsetsMake(0, 0, margin2, 0))
             make.centerX.equalTo(view.snp.centerX)
         })
         
