@@ -11,7 +11,7 @@ import Foundation
 class PlanTableViewHeader: UIView {
     
     //MARK: contstants
-    private let fontSize: CGFloat = 12
+    private let fontSize: CGFloat = 10
     
     //MARK: init
     init() {
@@ -32,9 +32,23 @@ class PlanTableViewHeader: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         
+        let marginView = WeightView(weight: 1)
+        let playView = WeightView(weight: EventTabLeViewCell.playWeight)
+        let typeView = WeightView(weight: EventTabLeViewCell.deleteWeight)
+        let nameMarginView = WeightView(weight: EventTabLeViewCell.nameMarginWeight)
+        let deleteView = WeightView(weight: 2)
+        
+        stackView.addArrangedSubview(marginView)
         stackView.addArrangedSubview(playView)
+        stackView.addArrangedSubview(typeView)
+        stackView.addArrangedSubview(nameMarginView)
         stackView.addArrangedSubview(labelName)
         stackView.addArrangedSubview(labelAddToCalendar)
+        stackView.addArrangedSubview(deleteView)
+        
+        labelAddToCalendar.snp.makeConstraints { (make) in
+            make.width.equalTo(75)
+        }
         
         let divider = DividerView()
         addSubview(divider)
@@ -48,42 +62,33 @@ class PlanTableViewHeader: UIView {
         stackView.snp.makeConstraints { (make) in
             make.left.equalTo(self)
             make.right.equalTo(self)
-            make.top.equalTo(self)
+            make.height.equalTo(50)
             make.bottom.equalTo(divider)
         }
+
     }
     
     //MARK: views
-    private lazy var labelName: AppUILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 1
+    private lazy var labelName: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
+        label.numberOfLines = 0
         label.font = label.font.withSize(self.fontSize)
+        label.textColor = Colors.colorWhite
         
         label.text = getString("plan_name").uppercased()
         
         return label
     }()
     
-    private lazy var labelAddToCalendar: AppUILabel! = {
-        let label = AppUILabel()
+    private lazy var labelAddToCalendar: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.deleteWeight)
         label.textAlignment = .center
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.font = label.font.withSize(self.fontSize)
+        label.textColor = Colors.colorWhite
         
         label.text = getString("plan_add_calendar").uppercased()
         
         return label
     }()
-    
-    private lazy var playView: UIView! = {
-        let view = UIView()
-        
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.playWidth)
-        })
-        
-        return view
-    }()
-    
 }

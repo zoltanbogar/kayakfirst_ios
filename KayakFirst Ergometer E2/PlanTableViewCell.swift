@@ -30,7 +30,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     override func initData(data: Plan?) {
         self.plan = data
         labelName.text = data?.name
-        Plan.setTypeIcon(plan: data, imageView: imgType)
+        btnType.setImage(Plan.getTypeIconSmall(plan: data), for: .normal)
     }
     
     //MARK: init view
@@ -38,8 +38,11 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         
+        let nameMarginView = WeightView(weight: EventTabLeViewCell.nameMarginWeight)
+        
         stackView.addArrangedSubview(playView)
-        stackView.addArrangedSubview(imgType)
+        stackView.addArrangedSubview(btnType)
+        stackView.addArrangedSubview(nameMarginView)
         stackView.addArrangedSubview(labelName)
         stackView.addArrangedSubview(btnAddToCalendar)
         stackView.addArrangedSubview(btnDelete)
@@ -47,13 +50,22 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         return stackView
     }
     
+    //TODO: rowHeights not correct when open first
     override func getRowHeight() -> CGFloat {
-        return trainingRowHeight
+        var newTextViewHeight = ceil(labelName.sizeThatFits(labelName.frame.size).height)
+        
+        if newTextViewHeight < trainingRowHeight {
+            newTextViewHeight = trainingRowHeight
+        } else {
+            newTextViewHeight += margin05
+        }
+        
+        return newTextViewHeight
     }
     
     //MARK: views
-    private lazy var playView: UIView! = {
-        let view = UIView()
+    private lazy var playView: WeightView! = {
+        let view = WeightView(weight: EventTabLeViewCell.playWeight)
         
         view.addSubview(self.btnPlay)
         self.btnPlay.snp.makeConstraints { (make) in
@@ -61,9 +73,6 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
             make.width.equalTo(25)
             make.height.equalTo(25)
         }
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.playWidth)
-        })
         
         return view
     }()
@@ -76,20 +85,20 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         return button
     }()
     
-    private lazy var labelName: UILabel! = {
-        let label = UILabel()
+    private lazy var labelName: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
         
         return label
     }()
     
-    private lazy var imgType: UIImageView! = {
-        let imageView = UIImageView()
+    private lazy var btnType: WeightButton! = {
+        let button = WeightButton(weight: EventTabLeViewCell.deleteWeight)
         
-        return imageView
+        return button
     }()
     
-    private lazy var btnAddToCalendar: UIButton! = {
-        let button = UIButton()
+    private lazy var btnAddToCalendar: WeightButton! = {
+        let button = WeightButton(weight: EventTabLeViewCell.deleteWeight)
         let image = UIImage(named: "addCalendar")
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(clickAddToCalendar), for: .touchUpInside)
@@ -97,8 +106,8 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         return button
     }()
     
-    private lazy var btnDelete: UIButton! = {
-        let button = UIButton()
+    private lazy var btnDelete: WeightButton! = {
+        let button = WeightButton(weight: EventTabLeViewCell.deleteWeight)
         let image = UIImage(named: "trashSmall")
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(clickDelete), for: .touchUpInside)

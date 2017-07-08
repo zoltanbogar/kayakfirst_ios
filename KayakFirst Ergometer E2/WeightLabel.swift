@@ -17,8 +17,6 @@ class WeightLabel: UILabel {
     init(weight: CGFloat) {
         self.weight = weight
         super.init(frame: CGRect.zero)
-        
-        contentMode = .scaleAspectFit
     }
     
     required init?(coder aDecoder: NSCoder) {
