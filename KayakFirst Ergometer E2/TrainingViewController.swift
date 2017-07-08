@@ -84,11 +84,15 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
         pushViewController(dashboardVc!, animated: true)
     }
     
-    func closeViewController() {
+    func closeViewController(shoudlCloseParents: Bool) {
         outdoorService.stopLocationMonitoring()
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            if shoudlCloseParents {
+                (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
+            }
+        })
     }
     
     //MARK: views

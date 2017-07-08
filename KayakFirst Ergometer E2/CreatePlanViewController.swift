@@ -345,8 +345,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     
     @objc func clickPlay() {
         plan?.planElements = planElementTableView.dataList
-        //TODO
-        //startTrainingViewController(viewController: self, plan: plan!)
+        startMainVc(navigationViewController: self.navigationController!, plan: plan, event: nil)
     }
     
     func onClicked(value: Int) {

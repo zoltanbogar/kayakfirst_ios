@@ -9,8 +9,18 @@
 import Foundation
 
 func startEventDetailsViewController(viewController: UIViewController, plan: Plan) {
+    startEventDetailsViewController(viewController: viewController, event: nil, plan: plan)
+}
+
+func startEventDetailsViewController(viewController: UIViewController, event: Event) {
+    startEventDetailsViewController(viewController: viewController, event: event, plan: nil)
+}
+
+func startEventDetailsViewController(viewController: UIViewController, event: Event?, plan: Plan?) {
     let eventDetailsVc = EventDetailsViewController()
     eventDetailsVc.plan = plan
+    eventDetailsVc.event = event
+    eventDetailsVc.parentVc = viewController
     
     let navVc = UINavigationController()
     navVc.pushViewController(eventDetailsVc, animated: false)
@@ -22,6 +32,8 @@ class EventDetailsViewController: BaseVC {
     //MARK: properties
     var plan: Plan?
     var event: Event?
+    
+    var parentVc: UIViewController?
     
     private var year: Int = 0
     private var month: Int = 0
@@ -163,8 +175,13 @@ class EventDetailsViewController: BaseVC {
             let managerType = EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: eventSaveCallback)
             showProgress(baseManagerType: managerType)
             
-            //TODO: setResult
-            self.parent?.dismiss(animated: true, completion: nil)
+            if self.parentVc != nil && self.parentVc is PlanDetailsViewController {
+                self.dismiss(animated: true, completion:  {
+                    (self.parentVc! as! PlanDetailsViewController).eventSaved()
+                })
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

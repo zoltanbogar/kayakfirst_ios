@@ -179,6 +179,7 @@
 		0671295F1EC8E37100362C39 /* PECellSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671295E1EC8E37100362C39 /* PECellSpace.swift */; };
 		067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129601EC8E6A700362C39 /* PECellBlank.swift */; };
 		067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129621EC9030800362C39 /* PlanDetailsViewController.swift */; };
+		067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067545BC1F10AB3C008759E7 /* PlanTypeVc.swift */; };
 		067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */; };
 		067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
@@ -505,6 +506,7 @@
 		0671295E1EC8E37100362C39 /* PECellSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellSpace.swift; sourceTree = "<group>"; };
 		067129601EC8E6A700362C39 /* PECellBlank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellBlank.swift; sourceTree = "<group>"; };
 		067129621EC9030800362C39 /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
+		067545BC1F10AB3C008759E7 /* PlanTypeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTypeVc.swift; sourceTree = "<group>"; };
 		067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTimeLineView.swift; sourceTree = "<group>"; };
 		067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementTimelineView.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
@@ -1079,6 +1081,7 @@
 				067129501EC86FAD00362C39 /* CreatePlanViewController.swift */,
 				067129621EC9030800362C39 /* PlanDetailsViewController.swift */,
 				06287D061F0F662600F102C8 /* EventDetailsViewController.swift */,
+				067545BC1F10AB3C008759E7 /* PlanTypeVc.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1739,6 +1742,7 @@
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */,
+				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,

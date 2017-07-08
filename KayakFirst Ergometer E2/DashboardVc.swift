@@ -38,6 +38,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     private var sessionId: Double = 0
     
+    private var shouldCloseParents = false
+    
     //MARK: lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +88,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     @objc internal override func btnCloseClick() {
         if let parent = self.parent as? TrainingViewController {
-            parent.closeViewController()
+            parent.closeViewController(shoudlCloseParents: shouldCloseParents)
         }
     }
     
@@ -105,6 +107,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     //MARK: cycle state
     func onCycleStateChanged(newCycleState: CycleState) {
         DispatchQueue.main.async {
+            self.shouldCloseParents = false
             self.showViewSwipePause(false)
             self.showPauseView(false)
             switch newCycleState {
@@ -112,6 +115,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnPlayState, isShow: true)
                 self.refreshDashboardElements(false)
             case CycleState.stopped:
+                self.shouldCloseParents = true
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: true)
                 self.refreshDashboardElements(false)
                 self.batterySaveHelper.activate(isActivate: false)

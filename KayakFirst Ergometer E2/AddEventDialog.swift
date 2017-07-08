@@ -14,7 +14,7 @@ class AddEventDialog: BaseDialog {
     init() {
         super.init(title: nil, message: getString("dialog_event_add_message"))
         
-        showPositiveButton(title: getString("other_yes"))
-        showNegativeButton(title: getString("other_no"))
+        showPositiveButton(title: getCapitalizedString("other_yes"))
+        showNegativeButton(title: getCapitalizedString("other_no"))
     }
 }

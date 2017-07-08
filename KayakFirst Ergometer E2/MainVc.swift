@@ -10,10 +10,15 @@ import UIKit
 import CoreLocation
 
 func startMainVc(navigationViewController: UINavigationController, plan: Plan?, event: Event?) {
-    let mainVc = MainVc()
-    mainVc.plan = plan
-    mainVc.event = event
-    navigationViewController.pushViewController(mainVc, animated: true)
+    
+    let isValidPlan = plan == nil || Validate.isValidPlan(viewController: navigationViewController, plan: plan)
+    
+    if isValidPlan {
+        let mainVc = MainVc()
+        mainVc.plan = plan
+        mainVc.event = event
+        navigationViewController.pushViewController(mainVc, animated: true)
+    }
 }
 
 class MainVc: MainTabVc, CLLocationManagerDelegate {

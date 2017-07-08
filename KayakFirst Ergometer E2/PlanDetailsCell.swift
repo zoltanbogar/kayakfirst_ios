@@ -38,9 +38,9 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     
     //MARK: init data
     override func initData(data: Plan?) {
-        //TODO
         etName.text = data?.name
         etNotes.text = data?.notes
+        etDuration.text = data?.getFormattedDuration()
     }
     
     //MARK: init view

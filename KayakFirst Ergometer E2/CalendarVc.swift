@@ -136,7 +136,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems([btnToday], animated: true)
+        self.navigationItem.setRightBarButtonItems([btnAdd, btnToday], animated: true)
         showLogoOnLeft()
     }
     
@@ -397,6 +397,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return calendarMenuView
     }()
     
+    //MARK: bar buttons
     private lazy var btnToday: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "ic_event_white_24dp")
@@ -406,8 +407,22 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return button
     }()
     
+    private lazy var btnAdd: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_add_white")
+        button.target = self
+        button.action = #selector(addClick)
+        
+        return button
+    }()
+    
+    //MARK: buttons listeners
     @objc private func btnTodayClick() {
         cvCalendarView?.toggleCurrentDayView()
+    }
+    
+    @objc private func addClick() {
+        show(PlanTypeVc(), sender: self)
     }
     
     func presentationMode() -> CalendarMode {

@@ -132,6 +132,10 @@ class PlanDetailsViewController: BaseVC {
         setEditLayout(isEdit: true)
     }
     
+    func eventSaved() {
+        showPlanListVc()
+    }
+    
     private func showPlanListVc() {
         setEditLayout(isEdit: false)
         
@@ -145,7 +149,9 @@ class PlanDetailsViewController: BaseVC {
         if self.parentVc != nil && self.parentVc! is CreatePlanViewController {
             
             self.dismiss(animated: true, completion: {
-                 //TODO: finish and etc.
+                log("NAV_TEST", "self.parent is CreatePlanViewController")
+                
+                (self.parentVc! as! CreatePlanViewController).dismiss(animated: false, completion: nil)
             })
             
         } else {
