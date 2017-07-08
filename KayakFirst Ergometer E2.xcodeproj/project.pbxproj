@@ -180,8 +180,10 @@
 		067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129601EC8E6A700362C39 /* PECellBlank.swift */; };
 		067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067129621EC9030800362C39 /* PlanDetailsViewController.swift */; };
 		067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067545BC1F10AB3C008759E7 /* PlanTypeVc.swift */; };
+		067545C31F1131FF008759E7 /* WeightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067545C21F1131FF008759E7 /* WeightButton.swift */; };
+		067545C61F1132C9008759E7 /* WeightLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067545C51F1132C9008759E7 /* WeightLabel.swift */; };
 		067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */; };
-		067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */; };
+		067790C41ED9B4AE0002AA59 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C31ED9B4AE0002AA59 /* WeightView.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
 		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
@@ -507,8 +509,10 @@
 		067129601EC8E6A700362C39 /* PECellBlank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PECellBlank.swift; sourceTree = "<group>"; };
 		067129621EC9030800362C39 /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
 		067545BC1F10AB3C008759E7 /* PlanTypeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTypeVc.swift; sourceTree = "<group>"; };
+		067545C21F1131FF008759E7 /* WeightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightButton.swift; sourceTree = "<group>"; };
+		067545C51F1132C9008759E7 /* WeightLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightLabel.swift; sourceTree = "<group>"; };
 		067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTimeLineView.swift; sourceTree = "<group>"; };
-		067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementTimelineView.swift; sourceTree = "<group>"; };
+		067790C31ED9B4AE0002AA59 /* WeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
 		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
@@ -1131,11 +1135,20 @@
 				060B3DBC1EE8599600AF43DE /* plan_edit_text */,
 				0671295A1EC896FE00362C39 /* PlanUtils.swift */,
 				067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */,
-				067790C31ED9B4AE0002AA59 /* PlanElementTimelineView.swift */,
 				067129521EC8775600362C39 /* KeyboardNumView.swift */,
 				0646A4AB1EF3A9000074101E /* ColorizedButton.swift */,
 			);
 			name = plan;
+			sourceTree = "<group>";
+		};
+		067545C41F11326B008759E7 /* weight */ = {
+			isa = PBXGroup;
+			children = (
+				067790C31ED9B4AE0002AA59 /* WeightView.swift */,
+				067545C21F1131FF008759E7 /* WeightButton.swift */,
+				067545C51F1132C9008759E7 /* WeightLabel.swift */,
+			);
+			name = weight;
 			sourceTree = "<group>";
 		};
 		0677FEF91E41396300A9B977 /* server */ = {
@@ -1298,6 +1311,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				067545C41F11326B008759E7 /* weight */,
 				060958E61EDE973A009A824C /* dialog_element */,
 				067129591EC896EF00362C39 /* plan */,
 				066B00421EC749A700BE0E1F /* label */,
@@ -1716,6 +1730,7 @@
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
 				06AF23371F062812008805A2 /* PlanTraining.swift in Sources */,
+				067545C61F1132C9008759E7 /* WeightLabel.swift in Sources */,
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
@@ -1794,7 +1809,7 @@
 				06AF23391F06760C008805A2 /* UploadAbleDbLoader.swift in Sources */,
 				06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */,
 				061148831E468121003A8FE6 /* UserUpdate.swift in Sources */,
-				067790C41ED9B4AE0002AA59 /* PlanElementTimelineView.swift in Sources */,
+				067790C41ED9B4AE0002AA59 /* WeightView.swift in Sources */,
 				067964991E638A2C00DFC050 /* CommandOutdoorSpeed.swift in Sources */,
 				06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */,
 				0626FBC91EFCE19400DCBB33 /* PickerHelperUnit.swift in Sources */,
@@ -1841,6 +1856,7 @@
 				069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */,
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
 				06CAFF4B1F0D2EDE00D2EA14 /* ManagerModifyPlanDelete.swift in Sources */,
+				067545C31F1131FF008759E7 /* WeightButton.swift in Sources */,
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,
 				0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */,
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,

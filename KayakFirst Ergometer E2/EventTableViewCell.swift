@@ -14,6 +14,12 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     static let playWidth = 80
     static let doneWidth = 150
     
+    static let playWeight: CGFloat = 1
+    static let nameMarginWeight: CGFloat = 0.2
+    static let nameWeight: CGFloat = 3
+    static let doneWeight: CGFloat = 1
+    static let deleteWeight: CGFloat = 1
+    
     //MARK: properties
     private let stackView = UIStackView()
     private var planEvent: PlanEvent?
@@ -34,7 +40,14 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     override func initData(data: PlanEvent?) {
         self.planEvent = data
         labelName.text = data?.event.name
-        doneView.isHidden = data?.event.sessionId == 0
+        
+        var doneImage: UIImage?
+        if data?.event.sessionId == 0 {
+            doneImage = UIImage(named: "")
+        } else {
+            doneImage = UIImage(named: "doneTrue")
+        }
+        btnDone.setImage(doneImage, for: .normal)
         
         initPlayEnable()
     }
@@ -74,33 +87,42 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     //MARK: init view
     override func initView() -> UIView {
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
+        
+        let marginView = WeightView(weight: EventTabLeViewCell.nameMarginWeight)
         
         stackView.addArrangedSubview(playView)
+        stackView.addArrangedSubview(marginView)
         stackView.addArrangedSubview(labelName)
-        stackView.addArrangedSubview(imgDone)
+        stackView.addArrangedSubview(btnDone)
         stackView.addArrangedSubview(btnDelete)
         
         return stackView
     }
     
+    //TODO: rowHeights not correct when open first
     override func getRowHeight() -> CGFloat {
-        return trainingRowHeight
+        var newTextViewHeight = ceil(labelName.sizeThatFits(labelName.frame.size).height)
+        
+        if newTextViewHeight < trainingRowHeight {
+            newTextViewHeight = trainingRowHeight
+        } else {
+            newTextViewHeight += margin05
+        }
+        
+        return newTextViewHeight
     }
     
     //MARK: views
-    private lazy var playView: UIView! = {
-        let view = UIView()
+    private lazy var playView: WeightView! = {
+        let view = WeightView(weight: EventTabLeViewCell.playWeight)
         
         view.addSubview(self.btnPlay)
         self.btnPlay.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
+            make.center.equalTo(view).priority(1)
             make.width.equalTo(25)
             make.height.equalTo(25)
         }
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.playWidth)
-        })
         
         return view
     }()
@@ -112,37 +134,21 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
         return button
     }()
     
-    private lazy var labelName: UILabel! = {
-        let label = UILabel()
+    private lazy var labelName: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
+        label.numberOfLines = 0
         
         return label
     }()
     
-    private lazy var doneView: UIView! = {
-        let view = UIView()
+    private lazy var btnDone: WeightButton! = {
+        let button = WeightButton(weight: EventTabLeViewCell.doneWeight)
         
-        view.addSubview(self.imgDone)
-        self.imgDone.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
-        }
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.doneWidth)
-        })
-        
-        return view
+        return button
     }()
     
-    private lazy var imgDone: UIImageView! = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "doneTrue")
-        
-        return imageView
-    }()
-    
-    private lazy var btnDelete: UIButton! = {
-        let button = UIButton()
+    private lazy var btnDelete: WeightButton! = {
+        let button = WeightButton(weight: EventTabLeViewCell.deleteWeight)
         let image = UIImage(named: "trashSmall")
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(clickDelete), for: .touchUpInside)

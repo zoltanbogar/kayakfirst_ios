@@ -84,8 +84,8 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
         addSubview(stackView)
     }
     
-    private func getPlanElementView(planElement: PlanElement, weight: CGFloat) -> PlanElementTimelineView {
-        let view = PlanElementTimelineView(weight: weight)
+    private func getPlanElementView(planElement: PlanElement, weight: CGFloat) -> WeightView {
+        let view = WeightView(weight: weight)
         view.backgroundColor = getPlanElementColor(planElement: planElement)
         
         return view

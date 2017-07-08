@@ -1,14 +1,14 @@
 //
-//  PlanElementTimelineView.swift
+//  WeightButton.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 05. 27..
+//  Created by Balazs Vidumanszki on 2017. 07. 08..
 //  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class PlanElementTimelineView: UIView {
+class WeightButton: UIButton {
     
     //MARK: properties
     private let weight: CGFloat
@@ -17,6 +17,8 @@ class PlanElementTimelineView: UIView {
     init(weight: CGFloat) {
         self.weight = weight
         super.init(frame: CGRect.zero)
+        
+        contentMode = .scaleAspectFit
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,7 +28,7 @@ class PlanElementTimelineView: UIView {
     //MARK: size
     override var intrinsicContentSize: CGSize {
         get {
-            return CGSize(width: weight * 100, height:  timeLineHeight)
+            return CGSize(width: weight * 100, height:  0)
         }
     }
     

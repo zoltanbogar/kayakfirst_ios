@@ -11,7 +11,7 @@ import Foundation
 class EventTableViewHeader: UIView {
     
     //MARK: contstants
-    private let fontSize: CGFloat = 12
+    private let fontSize: CGFloat = 10
     
     //MARK: init
     init() {
@@ -32,9 +32,15 @@ class EventTableViewHeader: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         
+        let playView = WeightView(weight: EventTabLeViewCell.playWeight)
+        let nameMarginView = WeightView(weight: EventTabLeViewCell.nameMarginWeight * 2)
+        let deleteView = WeightView(weight: EventTabLeViewCell.deleteWeight)
+        
         stackView.addArrangedSubview(playView)
+        stackView.addArrangedSubview(nameMarginView)
         stackView.addArrangedSubview(labelName)
         stackView.addArrangedSubview(labelDone)
+        stackView.addArrangedSubview(deleteView)
         
         let divider = DividerView()
         addSubview(divider)
@@ -54,10 +60,10 @@ class EventTableViewHeader: UIView {
     }
     
     //MARK: views
-    private lazy var labelName: AppUILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
+    private lazy var labelName: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
         label.numberOfLines = 1
+        label.textColor = Colors.colorWhite
         label.font = label.font.withSize(self.fontSize)
         
         label.text = getString("plan_name").uppercased()
@@ -65,10 +71,11 @@ class EventTableViewHeader: UIView {
         return label
     }()
     
-    private lazy var labelDone: AppUILabel! = {
-        let label = AppUILabel()
+    private lazy var labelDone: WeightLabel! = {
+        let label = WeightLabel(weight: EventTabLeViewCell.doneWeight)
         label.textAlignment = .center
         label.numberOfLines = 1
+        label.textColor = Colors.colorWhite
         label.font = label.font.withSize(self.fontSize)
         
         label.text = getString("plan_done").uppercased()
@@ -78,15 +85,5 @@ class EventTableViewHeader: UIView {
         })
         
         return label
-    }()
-    
-    private lazy var playView: UIView! = {
-        let view = UIView()
-        
-        view.snp.makeConstraints({ (make) in
-            make.width.equalTo(EventTabLeViewCell.playWidth)
-        })
-        
-        return view
     }()
 }
