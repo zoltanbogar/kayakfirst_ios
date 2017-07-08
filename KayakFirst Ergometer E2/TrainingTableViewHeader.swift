@@ -11,7 +11,7 @@ import UIKit
 class TrainingTableViewHeader: UIView {
     
     //MARK: contstants
-    private let fontSize: CGFloat = 12
+    private let fontSize: CGFloat = 10
 
     //MARK: init
     init() {
@@ -30,11 +30,17 @@ class TrainingTableViewHeader: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
-        stackView.addArrangedSubview(labelType)
+        let viewTrainingEnvType = UIView()
+        let viewPlanType = UIView()
+        let viewDelete = UIView()
+        
+        stackView.addArrangedSubview(viewTrainingEnvType)
+        stackView.addArrangedSubview(viewPlanType)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
         stackView.addArrangedSubview(labelLog)
+        stackView.addArrangedSubview(viewDelete)
         
         let divider = DividerView()
         addSubview(divider)
@@ -47,8 +53,7 @@ class TrainingTableViewHeader: UIView {
         addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
             make.left.equalTo(self)
-            make.right.equalTo(self)
-            make.top.equalTo(self)
+            make.right.equalTo(self) 
             make.bottom.equalTo(divider)
         }
         
@@ -56,17 +61,6 @@ class TrainingTableViewHeader: UIView {
     }
     
     //MARK: views
-    private lazy var labelType: AppUILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.font = label.font.withSize(self.fontSize)
-        
-        label.text = getString("training_type").uppercased()
-        
-        return label
-    }()
-    
     private lazy var labelStart: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center

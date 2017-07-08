@@ -31,7 +31,14 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
-        Plan.setTypeIcon(plan: sumTraining?.planTraining, imageView: imgPlanType)
+        
+        var imagePlanType: UIImage?
+        if sumTraining?.planTraining == nil {
+            imagePlanType = UIImage(named: "")
+        } else {
+            imagePlanType = Plan.getTypeIconSmall(plan: sumTraining?.planTraining)
+        }
+        btnPlanType.setImage(imagePlanType, for: .normal)
         
         if let envType = data?.trainingEnvironmentType {
             var imageEnviromentType: UIImage?
@@ -59,12 +66,12 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         stackView.distribution = .fillEqually
         
         stackView.addArrangedSubview(viewErgoOutdoor)
-        stackView.addArrangedSubview(imgPlanType)
+        stackView.addArrangedSubview(btnPlanType)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
         //TODO: it should be #viewGraph
-        stackView.addArrangedSubview(imageViewGraph)
+        stackView.addArrangedSubview(btnGraph)
         stackView.addArrangedSubview(btnDelete)
         
         selectionColor = Colors.colorGrey
@@ -101,34 +108,19 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         return label
     }()
     
-    private lazy var imgPlanType: UIImageView! = {
-        let imageView = UIImageView()
+    private lazy var btnPlanType: UIButton! = {
+        let button = UIButton()
         
-        return imageView
+        return button
     }()
     
-    private lazy var viewGraph: UIView! = {
-        let view = UIView()
-        
-        /*view.addSubview(self.imageViewGraph)
-        self.imageViewGraph.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }*/
-        
-        return view
-    }()
-    
-    private lazy var imageViewGraph: UIImageView! = {
-        let imageView = UIImageView()
+    private lazy var btnGraph: UIButton! = {
+        let button = UIButton()
         let image = UIImage(named: "chart_dia")
         
-        imageView.image = image
-        imageView.setImageTint(color: Colors.colorAccent)
+        button.setImage(image?.maskWith(color: Colors.colorAccent), for: .normal)
         
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        
-        return imageView
+        return button
     }()
     
     private lazy var viewErgoOutdoor: UIView! = {
