@@ -42,7 +42,7 @@ class ChartView: UIView {
     }
     
     private func initLabelList() {
-        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelForce, labelSpeed]
+        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelSpeed, labelForce]
     }
     
     private func initChart() {
@@ -66,7 +66,6 @@ class ChartView: UIView {
         }
     }
     
-    //TODO
     private func initPlanTimeLine() {
         let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList
         
@@ -90,7 +89,7 @@ class ChartView: UIView {
         let stackViewL = UIStackView()
         stackViewL.axis = .horizontal
         stackViewL.distribution = .fillEqually
-        stackViewL.spacing = margin
+        stackViewL.spacing = margin05
         stackViewL.addArrangedSubview(labelT200)
         stackViewL.addArrangedSubview(labelT500)
         stackViewL.addArrangedSubview(labelT1000)
@@ -100,8 +99,8 @@ class ChartView: UIView {
         stackViewR.distribution = .fillEqually
         stackViewR.spacing = margin
         stackViewR.addArrangedSubview(labelStrokes)
-        stackViewR.addArrangedSubview(labelForce)
         stackViewR.addArrangedSubview(labelSpeed)
+        stackViewR.addArrangedSubview(labelForce)
         
         let stackViewLabels = UIStackView()
         stackViewLabels.axis = .vertical

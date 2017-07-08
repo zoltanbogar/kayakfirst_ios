@@ -37,6 +37,6 @@ class PECellSpace: AppUITableViewCell<PlanElement> {
     }
     
     override func getRowHeight() -> CGFloat {
-        return margin
+        return margin - 2 * PECellNormal.shadowMargin
     }
 }

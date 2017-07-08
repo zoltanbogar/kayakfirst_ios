@@ -400,6 +400,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         keyboardView.enableEnter(isEnable: enable)
     }
     
+    //TODO: back animation not correct when scrolled
     //MARK: drag drop
     @objc private func onLongPress(gestureRecognizer: UIGestureRecognizer) {
         let locationInView = gestureRecognizer.location(in: contentView)

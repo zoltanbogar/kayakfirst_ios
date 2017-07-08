@@ -148,7 +148,7 @@ class LoginView: UIView {
     
     private lazy var labelNoLogin: UILabel! = {
         let label = AppUILabel()
-        label.text = getString("user_login_or")
+        label.text = ""
         label.textAlignment = .center
         label .font = label.font.withSize(12)
         

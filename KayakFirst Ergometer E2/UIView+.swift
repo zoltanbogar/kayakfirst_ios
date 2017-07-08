@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     //MARK: blur
     func addBlurEffect() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         
@@ -49,8 +49,8 @@ extension UIView {
     }
     
     func setAppShadow() {
-        layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-        layer.shadowRadius = 5.0
+        layer.shadowOffset = CGSize(width: 2.0, height: 1.0)
+        layer.shadowRadius = 2.0
         layer.shadowOpacity = 0.4
         layer.masksToBounds = false
         clipsToBounds = false

@@ -244,9 +244,6 @@ class DashboardPlanView: RefreshView {
         progressViewPlanElement.snp.makeConstraints { (make) in
             make.height.equalTo(progressViewComplete)
         }
-        valuesStackView.snp.makeConstraints { (make) in
-            make.height.equalTo(deElementStackView)
-        }
         spaceView.snp.makeConstraints { (make) in
             make.height.equalTo(margin)
         }
@@ -257,9 +254,8 @@ class DashboardPlanView: RefreshView {
             make.width.equalTo(dashboardDividerWidth)
         }
         deElementStackView.snp.makeConstraints { (make) in
-            make.height.equalTo(115)
+            make.height.equalTo(130)
         }
-        
         
         backgroundColor = Colors.colorPrimary
     }

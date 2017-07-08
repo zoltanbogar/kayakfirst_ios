@@ -109,6 +109,8 @@ class ProfileVc: MainTabVc {
         
         self.navigationItem.setLeftBarButtonItems([btnLogout], animated: true)
         
+        self.navigationController!.navigationBar.tintColor = Colors.colorAccent
+        
         showLogoCenter(viewController: self)
     }
     
@@ -307,7 +309,7 @@ class ProfileVc: MainTabVc {
     
     private lazy var btnSave: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "done_24dp")
+        button.image = UIImage(named: "done_24dp")?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(btnSaveClick)
         
@@ -316,7 +318,7 @@ class ProfileVc: MainTabVc {
     
     private lazy var btnEdit: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "edit")
+        button.image = UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(btnEditClick)
         

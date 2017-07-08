@@ -152,7 +152,7 @@ class UnitHelper {
     }
     
     class func isMetricDistance() -> Bool {
-        var isImperial = true
+        var isImperial = false
         
         if let user = userManager.getUser() {
             isImperial = user.unitDistance == User.unitImperial
@@ -161,7 +161,7 @@ class UnitHelper {
     }
     
     class func isMetricPace() -> Bool {
-        var isImperial = true
+        var isImperial = false
         
         if let user = userManager.getUser() {
             isImperial = user.unitPace == User.unitImperial

@@ -37,10 +37,21 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     
     //MARK: init view
     override func initView() -> UIView {
+        let spaceView = UIView()
+        
+        view.addSubview(spaceView)
+        
         view.addSubview(planElementView)
+        
+        spaceView.snp.makeConstraints { (make) in
+            make.left.equalTo(view)
+            make.top.equalTo(view)
+            make.bottom.equalTo(view)
+            make.width.equalTo(PECellNormal.shadowMargin)
+        }
 
         planElementView.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(PECellNormal.shadowMargin)
+            make.left.equalTo(spaceView.snp.right)
             make.top.equalTo(view).offset(PECellNormal.shadowMargin)
             make.right.equalTo(view).offset(-PECellNormal.shadowMargin)
             make.bottom.equalTo(view).offset(-PECellNormal.shadowMargin)
@@ -50,7 +61,7 @@ class PECellNormal: AppUITableViewCell<PlanElement> {
     }
     
     override func getRowHeight() -> CGFloat {
-        return planElementHeight
+        return planElementHeight + 2 * PECellNormal.shadowMargin
     }
     
     //MARK: views

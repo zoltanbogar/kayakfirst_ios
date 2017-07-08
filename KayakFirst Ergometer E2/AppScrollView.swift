@@ -21,7 +21,7 @@ class AppScrollView: UIView, UIScrollViewDelegate {
         super.init(frame: view.frame)
         scrollView.delegate = self
         
-        log("SCROLL", "frame: \(view.frame)")
+        hideScrollIndicators()
         
         initView()
     }
@@ -56,19 +56,13 @@ class AppScrollView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: design
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let verticalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
-        verticalIndicator.backgroundColor = Colors.colorWhite
-        
-        let horizontalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 2)] as! UIImageView)
-        horizontalIndicator.backgroundColor = Colors.colorWhite
+    private func hideScrollIndicators() {
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
     }
     
     //MARK: functions
     func scrollToView(view: UIView, animated: Bool) {
         scrollView.scrollToView(view: view, animated: animated)
     }
-    
-    
-    
 }

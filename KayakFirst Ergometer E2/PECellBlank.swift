@@ -23,13 +23,9 @@ class PECellBlank: AppUITableViewCell<PlanElement> {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = Colors.colorGrey
-        
-        layer.cornerRadius = planRadius
+        backgroundColor = Colors.colorTransparent
         
         selectionStyle = .none
-        
-        //setAppShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,19 +39,49 @@ class PECellBlank: AppUITableViewCell<PlanElement> {
     
     //MARK: initView
     override func initView() -> UIView {
-        view.addSubview(self.labelAdd)
-        self.labelAdd.snp.makeConstraints { make in
-            make.center.equalTo(view)
+        let spaceView = UIView()
+        
+        view.addSubview(spaceView)
+        
+        view.addSubview(planElementView)
+        
+        spaceView.snp.makeConstraints { (make) in
+            make.left.equalTo(view)
+            make.top.equalTo(view)
+            make.bottom.equalTo(view)
+            make.width.equalTo(PECellNormal.shadowMargin)
+        }
+        
+        planElementView.snp.makeConstraints { (make) in
+            make.left.equalTo(spaceView.snp.right)
+            make.top.equalTo(view).offset(PECellNormal.shadowMargin)
+            make.right.equalTo(view).offset(-PECellNormal.shadowMargin)
+            make.bottom.equalTo(view).offset(-PECellNormal.shadowMargin)
         }
         
         return view
     }
     
     override func getRowHeight() -> CGFloat {
-        return planElementHeight
+        return planElementHeight + 2 * PECellNormal.shadowMargin
     }
     
     //MARK: views
+    private lazy var planElementView: UIView! = {
+        let view = UIView()
+        
+        view.addSubview(self.labelAdd)
+        self.labelAdd.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+        }
+        
+        view.layer.cornerRadius = planRadius
+        view.backgroundColor = Colors.colorGrey
+        view.setAppShadow()
+        
+        return view
+    }()
+    
     private lazy var labelAdd: UILabel! = {
         let label = BebasUILabel()
         

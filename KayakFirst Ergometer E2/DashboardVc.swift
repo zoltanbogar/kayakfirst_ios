@@ -212,11 +212,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
         
         contentView.backgroundColor = Colors.colorDashBoardDivider
-        
-        contentView.addSubview(pauseView)
-        pauseView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
-        }
     }
     
     private func initDashboardViews() {
@@ -439,8 +434,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             make.center.equalTo(viewStop)
         })
         
+        let viewSpace1 = UIView()
+        let viewSpace2 = UIView()
+        let viewSpace3 = UIView()
+        
+        self.pauseStackView.addArrangedSubview(viewSpace1)
         self.pauseStackView.addArrangedSubview(viewPlay)
+        self.pauseStackView.addArrangedSubview(viewSpace2)
         self.pauseStackView.addArrangedSubview(viewStop)
+        self.pauseStackView.addArrangedSubview(viewSpace3)
         
         view.addBlurEffect()
         
@@ -450,6 +452,16 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         }
         
         view.isHidden = true
+        
+        if let applicationDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate? {
+            if let window:UIWindow = applicationDelegate.window {
+                
+                view.frame = UIScreen.main.bounds
+                
+                let blueView:UIView = UIView(frame: UIScreen.main.bounds)
+                window.addSubview(view)
+            }
+        }
         
         return view
     }()
