@@ -31,7 +31,7 @@ class BaseManager {
     //MARK: properties
     var userStack: BaseManagerType?
     
-    private var managerDownloadList: [Any]?
+    private var managerDownloadList: [ManagerDownloadProtocol]?
     
     private var uploadRunning = false
     
@@ -54,7 +54,7 @@ class BaseManager {
     }
     
     func runDownload<E>(managerDownload: ManagerDownload<[E]>, managerCallBack: ((_ data: [E]?, _ error: Responses?) -> ())?) {
-        if shouldRunDownload(managerDownload: managerDownload) {
+        if shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
             Download(managerCallback: managerCallBack, managerDownload: managerDownload, baseManager: self).execute()
         }
     }
@@ -67,10 +67,10 @@ class BaseManager {
         return self.userStack == nil
     }
     
-    private func shouldRunDownload<E>(managerDownload: ManagerDownload<[E]>) -> Bool {
+    private func shouldRunDownload(managerDownload: ManagerDownloadProtocol) -> Bool {
         var contains = false
         if managerDownloadList != nil {
-            contains = managerDownloadList?.contains(where: { ($0 as! ManagerDownload<[E]>).getKeyCache() == managerDownload.getKeyCache()}) ?? false
+            contains = managerDownloadList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
         }
         return !contains
     }
@@ -84,17 +84,19 @@ class BaseManager {
         self.userStack = nil
     }
     
-    private func handlePreExecuteDownload<E>(managerDownload: ManagerDownload<[E]>) {
+    private func handlePreExecuteDownload(managerDownload: ManagerDownloadProtocol) {
         if managerDownloadList == nil {
-            managerDownloadList = [ManagerDownload<[E]>]()
+            managerDownloadList = [ManagerDownloadProtocol]()
         }
         managerDownloadList?.append(managerDownload)
     }
     
-    private func handlePostExecuteDownload<E>(managerDownload: ManagerDownload<[E]>) {
+    private func handlePostExecuteDownload(managerDownload: ManagerDownloadProtocol) {
+        //TODO: test it
         if managerDownloadList != nil {
             for i in 0..<managerDownloadList!.count {
-                if (managerDownloadList![i] as! ManagerDownload).isEqual(anotherManagerDownload: managerDownload) {
+                
+                if managerDownloadList![i].isEqual(anotherManagerDownload: managerDownload) {
                     managerDownloadList!.remove(at: i)
                     break
                 }
@@ -221,7 +223,7 @@ class BaseManager {
         override func onPreExecute() {
             super.onPreExecute()
             
-            baseManager.handlePreExecuteDownload(managerDownload: managerDownload)
+            baseManager.handlePreExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
         }
         
         override func doInBackground(param: Any?) -> Any? {
@@ -233,7 +235,8 @@ class BaseManager {
                 publishProgress(progress: dataFromLocale)
             }
             
-            let uploadStack = ManagerUpload.getStack()
+            //TODO: reactivate this
+            /*let uploadStack = ManagerUpload.getStack()
             
             if uploadStack == nil || uploadStack!.count == 0 {
                 if managerDownload.isCacheInvalid() {
@@ -245,7 +248,8 @@ class BaseManager {
                 }
             }
             
-            publishProgress(progress: dataFromServer)
+            publishProgress(progress: dataFromServer)*/
+            ///////
             
             return nil
         }
@@ -253,7 +257,7 @@ class BaseManager {
         override func onProgressUpdate(progress: [E]?) {
             super.onProgressUpdate(progress: progress)
             
-            baseManager.handlePostExecuteDownload(managerDownload: managerDownload)
+            baseManager.handlePostExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
             
             if let callback = managerCallback {
                 callback(progress, managerDownload.serverError)

@@ -10,7 +10,7 @@ import Foundation
 
 class DeleteEventDialog: BaseDialog {
     
-    static func showDeleteTrainingDialog(viewController: UIViewController, event: Event, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+    static func showDeleteEventDialog(viewController: UIViewController, event: Event, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         DeleteEventDialog(event: event, managerCallback: managerCallback).show(viewController: viewController)
     }
     

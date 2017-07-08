@@ -52,6 +52,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //TODO: by back navigation it will always reload
         refreshContentWithMode()
     }
     
@@ -170,6 +171,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         self.trainingDaysList = trainingDays
         if self.mode == CalendarVc.modeTraining {
             cvCalendarView?.contentController.refreshPresentedMonth()
+            getTrainigsList()
         }
     }
     
@@ -177,6 +179,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         self.eventDaysList = eventDays
         if self.mode == CalendarVc.modeEvent {
             cvCalendarView?.contentController.refreshPresentedMonth()
+            getEventList()
         }
     }
     
@@ -270,8 +273,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         initError(error: error)
     }
     
-    //TODO
     private func deleteDataCallback(data: Bool?, error: Responses?) {
+        if data != nil && data! {
+            refreshContentWithMode()
+        }
         initError(error: error)
     }
     
@@ -311,7 +316,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: init views
     private lazy var tableViewTraining: TrainingTablewView! = {
-        let tableViewTraining = TrainingTablewView(view: self.viewTableView)
+        let tableViewTraining = TrainingTablewView(view: self.viewTableView, deleteCallback: self.deleteDataCallback)
         
         tableViewTraining.rowClickCallback = { sumTraining, position in
             self.trainingManager.detailsTrainingList = tableViewTraining.dataList
@@ -332,9 +337,12 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         return spinner
     }()
     
-    //TODO
     private lazy var tableViewEvent: EventTableView! = {
-        let tableViewEvent = EventTableView(view: self.viewTableView)
+        let tableViewEvent = EventTableView(view: self.viewTableView, deleteCallback: self.deleteDataCallback)
+        
+        tableViewEvent.rowClickCallback = { planEvent, position in
+            startEventDetailsViewController(viewController: self, event: planEvent.event)
+        }
         
         return tableViewEvent
     }()
@@ -436,7 +444,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         switch mode {
         case CalendarVc.modeEvent:
-            //TODO: it wont works, eventDays must be at the same time
             if let eventDayList = eventDaysList {
                 if eventDayList.contains(dayView.date.getTimeMillis()) {
                     return true
@@ -508,8 +515,10 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         switch sender.selectedSegmentIndex {
         case 0:
             viewSub = tableViewEvent
+            setMode(mode: CalendarVc.modeEvent)
         default:
             viewSub = tableViewTraining
+            setMode(mode: CalendarVc.modeTraining)
         }
         
         viewTableView.removeAllSubviews()

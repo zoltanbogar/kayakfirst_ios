@@ -187,7 +187,7 @@ class EventDetailsViewController: BaseVC {
     
     @objc private func btnDeleteClick() {
         if let eventValue = event {
-            DeleteEventDialog.showDeleteTrainingDialog(viewController: self, event: eventValue, managerCallback: eventDeleteCallback)
+            DeleteEventDialog.showDeleteEventDialog(viewController: self, event: eventValue, managerCallback: eventDeleteCallback)
         }
     }
     

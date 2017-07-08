@@ -10,9 +10,13 @@ import Foundation
 
 class EventTableView: TableViewWithEmpty<PlanEvent> {
     
+    //MARK: properties
+    private var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    
     //MARK: init
-    override init(view: UIView) {
+    init(view: UIView, deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         super.init(view: view)
+        self.deleteCallback = deleteCallback
         
         backgroundColor = Colors.colorTransparent
         separatorColor = Colors.colorDashBoardDivider
@@ -33,6 +37,14 @@ class EventTableView: TableViewWithEmpty<PlanEvent> {
     
     override func getHeaderView() -> UIView? {
         return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        (cell as! EventTabLeViewCell).deleteCallback = deleteCallback
+        
+        return cell
     }
     
     //MARK: views

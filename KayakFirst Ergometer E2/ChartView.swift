@@ -132,6 +132,7 @@ class ChartView: UIView {
             make.right.equalTo(lineChart).offset(-margin)
         }
         //TODO: not so elegant solution
+        //TODO: it not works: on the other views (sumView...) will be visible if zoomed
         let viewLeft = UIView()
         viewLeft.backgroundColor = Colors.colorPrimary
         mainStackView.addSubview(viewLeft)

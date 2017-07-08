@@ -144,6 +144,16 @@ class Plan: PlanObject, ModifyAble {
         }
     }
     
+    class func getTypeIconSmall(plan: Plan?) -> UIImage? {
+        var image = getTypeIcon(plan: plan)
+        
+        if image != nil {
+            image = image!.resizeImage(targetSize: CGSize(width: 24, height: 24))
+        }
+        
+        return image
+    }
+    
     class func getTypeIcon(plan: Plan?) -> UIImage? {
         if let planValue = plan {
             switch planValue.type {

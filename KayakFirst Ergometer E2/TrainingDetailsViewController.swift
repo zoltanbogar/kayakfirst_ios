@@ -23,11 +23,6 @@ class TrainingDetailsViewController: BaseVC {
             return titleString
         }
     }
-    var environmentType: TrainingEnvironmentType? {
-        get {
-            return sumTraining?.trainingEnvironmentType
-        }
-    }
     var position: Int = 0
     var maxPosition: Int = 0
     private var stackView: UIStackView?
@@ -271,7 +266,6 @@ class TrainingDetailsViewController: BaseVC {
         }
     }
     
-    //TODO: click time / or distance crash the app (maybe because of the PlanTimeLine?)
     @objc private func handleTabClick(sender: UIButton) {
         if sender == btnTable {
             tabPosition = 0

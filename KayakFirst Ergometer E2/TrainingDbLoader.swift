@@ -106,12 +106,15 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         var trainingDays = [Double]()
         
         do {
-            let query = table?.select(self.sessionId).order(self.timestamp)
+            let query = table?.select(self.sessionId).order(self.sessionId)
             
             let dbList = try db!.prepare(query!)
             
             for days in dbList {
-                trainingDays.append(days[self.timestamp])
+                let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
+                if !trainingDays.contains(midnightTime) {
+                    trainingDays.append(midnightTime)
+                }
             }
         } catch {
             log(databaseLogTag, error)

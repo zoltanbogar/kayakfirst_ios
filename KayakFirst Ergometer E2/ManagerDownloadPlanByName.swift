@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class ManagerDownloadPlanByName: ManagerDownload<[Plan]> {
+class ManagerDownloadPlanByName: ManagerDownload<[Plan]>, ManagerDownloadProtocol {
     
     //MARK: constants
     private let planDbLoader = PlanDbLoader.sharedInstance
@@ -43,7 +43,7 @@ class ManagerDownloadPlanByName: ManagerDownload<[Plan]> {
         planDbLoader.addPlanList(planList: data!)
     }
     
-    override func isEqual(anotherManagerDownload: ManagerDownload<[Plan]>) -> Bool {
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return anotherManagerDownload is ManagerDownloadPlanByName &&
         self.name == (anotherManagerDownload as! ManagerDownloadPlanByName).name
     }

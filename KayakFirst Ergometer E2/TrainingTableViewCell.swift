@@ -12,6 +12,8 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     
     //MARK: properties
     private let stackView = UIStackView()
+    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    private var sumTraining: SumTraining?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -25,9 +27,11 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     }
     
     override func initData(data: SumTraining?) {
+        self.sumTraining = data
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
+        Plan.setTypeIcon(plan: sumTraining?.planTraining, imageView: imgPlanType)
         
         if let envType = data?.trainingEnvironmentType {
             var imageEnviromentType: UIImage?
@@ -44,17 +48,24 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         }
     }
     
+    //MARK: button listener
+    @objc private func clickDelete() {
+        DeleteTrainingDialog.showDeleteTrainingDialog(viewController: viewController()!, sumTraining: sumTraining!, managerCallback: deleteCallback)
+    }
+    
     //MARK: init view
     override func initView() -> UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
         stackView.addArrangedSubview(viewErgoOutdoor)
+        stackView.addArrangedSubview(imgPlanType)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
         //TODO: it should be #viewGraph
         stackView.addArrangedSubview(imageViewGraph)
+        stackView.addArrangedSubview(btnDelete)
         
         selectionColor = Colors.colorGrey
         
@@ -88,6 +99,12 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         label.numberOfLines = 1
         
         return label
+    }()
+    
+    private lazy var imgPlanType: UIImageView! = {
+        let imageView = UIImageView()
+        
+        return imageView
     }()
     
     private lazy var viewGraph: UIView! = {
@@ -131,5 +148,14 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         imageView.contentMode = .scaleAspectFit
         
         return imageView
+    }()
+    
+    private lazy var btnDelete: UIButton! = {
+        let button = UIButton()
+        let image = UIImage(named: "trashSmall")
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(clickDelete), for: .touchUpInside)
+        
+        return button
     }()
 }

@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]> {
+class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, ManagerDownloadProtocol {
     
     //MARK: constants
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
@@ -103,7 +103,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]> {
         }
     }
     
-    override func isEqual(anotherManagerDownload: ManagerDownload<[SumTraining]>) -> Bool {
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return anotherManagerDownload is ManagerDownloadTrainingBySessionId &&
         (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIdFrom == self.sessionIdFrom &&
         (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIdTo == self.sessionIdTo

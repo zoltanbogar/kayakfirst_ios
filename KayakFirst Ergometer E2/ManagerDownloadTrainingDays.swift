@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ManagerDownloadTrainingDays: ManagerDownload<[Double]> {
+class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadProtocol {
     
     //MARK: properties
     internal var daysList: [Double]?
@@ -40,7 +40,7 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]> {
         //nothing here
     }
     
-    override func isEqual(anotherManagerDownload: ManagerDownload<[Double]>) -> Bool {
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return true
     }
     

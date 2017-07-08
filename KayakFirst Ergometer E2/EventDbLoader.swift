@@ -96,7 +96,8 @@ class EventDbLoader: BaseDbLoader<Event> {
             let dbList = try db!.prepare(query!)
             
             for days in dbList {
-                eventDays.append(days[self.timestamp])
+                let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.timestamp])
+                eventDays.append(midnightTime)
             }
         } catch {
             log(databaseLogTag, error)

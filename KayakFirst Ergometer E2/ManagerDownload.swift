@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol ManagerDownloadProtocol {
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool
+}
+
 class ManagerDownload<E> {
     
     //MARK: constants
@@ -69,10 +73,6 @@ class ManagerDownload<E> {
     }
     
     internal func addDataToLocale(data: E?) {
-        fatalError("must be implemented")
-    }
-    
-    internal func isEqual(anotherManagerDownload: ManagerDownload<E>) -> Bool {
         fatalError("must be implemented")
     }
     

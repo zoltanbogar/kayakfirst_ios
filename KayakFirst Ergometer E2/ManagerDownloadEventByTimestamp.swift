@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]> {
+class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]>, ManagerDownloadProtocol {
     
     //MARK: constants
     private let eventDbLoader = EventDbLoader.sharedInstance
@@ -90,7 +90,7 @@ class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]> {
         eventDbLoader.deleteData(predicate: getQueryEventTimestamp())
     }
     
-    override func isEqual(anotherManagerDownload: ManagerDownload<[PlanEvent]>) -> Bool {
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return anotherManagerDownload is ManagerDownloadEventByTimestamp &&
         self.timestampFrom == (anotherManagerDownload as! ManagerDownloadEventByTimestamp).timestampFrom &&
         self.timestampTo == (anotherManagerDownload as! ManagerDownloadEventByTimestamp).timestampTo
