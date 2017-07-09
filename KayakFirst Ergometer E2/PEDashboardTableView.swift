@@ -10,9 +10,6 @@ import Foundation
 
 class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     
-    //MARK: properties
-    private let emptyView = UIView()
-    
     //MARK: init
     override init(view: UIView) {
         super.init(view: view)
@@ -36,11 +33,20 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     }
     
     override func getEmptyView() -> UIView {
-        return emptyView
+        return labelEmpty
     }
     
     override func getCellClass() -> AnyClass {
         return PlanElementDetailsCell.self
     }
+    
+    //MARK: views
+    private lazy var labelEmpty: UILabel! = {
+        let label = AppUILabel()
+        label.text = getString("plan_end")
+        label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        
+        return label
+    }()
     
 }
