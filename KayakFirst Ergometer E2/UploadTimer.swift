@@ -12,16 +12,21 @@ import Foundation
 class UploadTimer {
     
     //MARK: constants
-    private static let timeUploadTrainingsSec: Double = 10
+    private static let timeUploadTrainingsSec: Double = 20
     private static var timer: Timer?
     
     class func startTimer() {
         if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+            DispatchQueue.main.async {
+                //TODO: by training start this called twice in a row
+                log("SERVER_TEST", "startTimer")
+                timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+            }
         }
     }
     
     class func stopTimer() {
+        log("SERVER_TEST", "stopTimer")
         timer?.invalidate()
         timer = nil
     }
@@ -29,5 +34,4 @@ class UploadTimer {
     @objc private class func timerUpdate() {
         TrainingManager.sharedInstance.runUpload()
     }
-    
 }

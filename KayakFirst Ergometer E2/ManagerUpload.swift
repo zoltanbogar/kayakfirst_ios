@@ -28,35 +28,80 @@ class ManagerUpload {
     }
     
     class func getStack() -> [String]? {
-        let dictionary = preferences.persistentDomain(forName: dbUpload)
+        let dictionary = getDictionary()
         
-        return [String]()
-        //TODO
-        //return dictionary?.keys
+        var stack = [String]()
+        
+        for key in dictionary.keys {
+            stack.append(key)
+        }
+        
+        return stack
     }
     
     class func addToStack(uploadType: UploadType, pointer: String?) {
-        /*UploadTimer.startTimer()
+        UploadTimer.startTimer()
         
-        var values = preferences.persistentDomain(forName: dbUpload)?.values[uploadType.rawValue]
+        var dictionary = getDictionary()
         
-        */
+        var values: [String] = dictionary[uploadType.rawValue] ?? [String]()
+
+        if pointer != nil && !values.contains(pointer!) {
+            values.append(pointer!)
+        }
+        
+        dictionary.updateValue(values, forKey: uploadType.rawValue)
+        
+        preferences.setPersistentDomain(dictionary, forName: dbUpload)
+        preferences.synchronize()
     }
     
-    //TODO
     class func getManagerUploadByType(uploadType: String) -> [ManagerUpload] {
         var managerUploads = [ManagerUpload]()
+        
+        switch uploadType {
+        case UploadType.trainingUpload.rawValue:
+            managerUploads.append(ManagerUploadTrainings())
+        case UploadType.trainingAvgUpload.rawValue:
+            managerUploads.append(ManagerUploadTrainingAvgs())
+        case UploadType.planSave.rawValue:
+            managerUploads.append(ManagerModifyPlanSave(data: nil))
+        case UploadType.planDelete.rawValue:
+            managerUploads.append(ManagerModifyPlanDelete(data: nil))
+        case UploadType.eventSave.rawValue:
+            managerUploads.append(ManagerModifyEventSave(data: nil))
+        case UploadType.eventDelete.rawValue:
+            managerUploads.append(ManagerModifyEventDelete(data: nil))
+        case UploadType.planTrainingSave.rawValue:
+            managerUploads.append(ManagerModifyPlanTrainingSave(data: nil))
+        case UploadType.trainingDelete.rawValue:
+            managerUploads.append(ManagerModifyTrainingDelete(data: nil))
+        default:
+            break
+        }
         
         return managerUploads
     }
     
     internal func removeFromStack(uploadType: UploadType) {
-        //TODO
+        
+        var dictionary = ManagerUpload.getDictionary()
+        
+        dictionary.removeValue(forKey: uploadType.rawValue)
+        ManagerUpload.preferences.setPersistentDomain(dictionary, forName: ManagerUpload.dbUpload)
+        ManagerUpload.preferences.synchronize()
     }
     
-    //TODO
     internal func getPointers() -> [String]? {
-        return [String]()
+        let dictionary = ManagerUpload.getDictionary()
+        
+        let pointers = dictionary[getUploadType().rawValue] ?? [String]()
+        
+        return pointers
+    }
+    
+    private class func getDictionary() -> [String : [String]] {
+        return preferences.persistentDomain(forName: dbUpload) as? [String : [String]] ?? [String : [String]]()
     }
     
     //MARK: abstract functions

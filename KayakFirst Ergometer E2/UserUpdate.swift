@@ -61,7 +61,7 @@ class UserUpdate: ServerService<User> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {

@@ -25,8 +25,13 @@ class DownloadPlanByName: ServerService<[Plan]> {
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
-            plans = [Plan]()
-            plans?.append(Plan(json: jsonValue))
+            if let jsonArray = jsonValue.array {
+                plans = [Plan]()
+                
+                for planDto in jsonArray {
+                    plans?.append(Plan(json: planDto))
+                }
+            }
         }
         return plans
     }
@@ -46,11 +51,10 @@ class DownloadPlanByName: ServerService<[Plan]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {
         return PlanManagerType.download_plan
     }
-    
 }

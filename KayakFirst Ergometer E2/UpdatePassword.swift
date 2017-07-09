@@ -40,7 +40,7 @@ class UpdatePassword: ServerService<Bool> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {

@@ -64,6 +64,8 @@ class UploadTrainingAvgs: ServerService<Bool> {
             }
         }
         
+        self.trainingAvgArrayList = list
+        
         isUploadReady = list.count > 0
     }
     

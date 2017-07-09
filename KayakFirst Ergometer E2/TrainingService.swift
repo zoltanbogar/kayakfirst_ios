@@ -17,7 +17,7 @@ class TrainingService: CycleStateChangeListener {
     
     private let pauseDiff = PauseDiff.sharedInstance
     
-    private let saveValues = SaveTrainingValues.sharedInstance
+    private let trainingManager = TrainingManager.sharedInstance
     
     private var realDuration: Double = 0
     
@@ -56,10 +56,10 @@ class TrainingService: CycleStateChangeListener {
     func startCycle() {
         if !isCycleState(cycleState: CycleState.paused) {
             reset()
-            UploadTimer.startTimer()
         }
         pauseDiff.resume()
         setTelemetryCycleState(cycleState: CycleState.resumed)
+        trainingManager.addTrainingUploadPointer()
     }
     
     func pauseCycle() {
@@ -98,7 +98,7 @@ class TrainingService: CycleStateChangeListener {
                     self.telemetry.telemetryObject = telemetryObject
                     self.telemetry.telemetryAvgObject = telemetryAvgObject
                     
-                    self.saveValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+                    self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
                     
                     self.realDuration = self.telemetry.duration
                 }

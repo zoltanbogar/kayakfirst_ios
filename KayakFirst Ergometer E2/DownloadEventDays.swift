@@ -23,7 +23,7 @@ class DownloadEventDays: ServerService<[TimeInterval]> {
             
             for eventDay in jsonValue.arrayObject! {
                 
-                eventDays?.append(eventDay as! TimeInterval)
+                eventDays?.append(DateFormatHelper.getZeroHour(timeStamp: TimeInterval(eventDay as! String)!))
             }
         }
         return eventDays
@@ -42,7 +42,7 @@ class DownloadEventDays: ServerService<[TimeInterval]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {

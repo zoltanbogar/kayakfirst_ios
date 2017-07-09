@@ -27,8 +27,13 @@ class DownloadEventByTimestamp: ServerService<[Event]> {
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
-            events = [Event]()
-            events?.append(Event(json: jsonValue))
+            if let jsonArray = jsonValue.array {
+                events = [Event]()
+                
+                for eventDto in jsonArray {
+                    events?.append(Event(json: eventDto))
+                }
+            }
         }
         return events
     }
@@ -49,7 +54,7 @@ class DownloadEventByTimestamp: ServerService<[Event]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {

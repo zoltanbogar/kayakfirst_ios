@@ -87,6 +87,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     
     private lazy var labelName: WeightLabel! = {
         let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
+        label.numberOfLines = 0
         
         return label
     }()

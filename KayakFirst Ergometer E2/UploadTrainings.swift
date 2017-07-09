@@ -74,16 +74,22 @@ class UploadTrainings: ServerService<Bool> {
         if originalTrainingList != nil && originalTrainingList!.count > 0 {
             
             for i in 0...maxUploadTrainings {
-                arrayList = originalTrainingList![i].getParameters()
-                list.append(arrayList)
-                
-                pointerLocale = originalTrainingList![i].getUploadPointer()
+                if i < originalTrainingList!.count {
+                    arrayList = originalTrainingList![i].getParameters()
+                    list.append(arrayList)
+                    
+                    pointerLocale = originalTrainingList![i].getUploadPointer()
+                } else {
+                    break
+                }
             }
         }
         
         if originalTrainingList == nil || originalTrainingList?.count == 0 {
             isUploadReady = true
         }
+        
+        self.trainingArrayList = list
         
         return list.count > 0
     }

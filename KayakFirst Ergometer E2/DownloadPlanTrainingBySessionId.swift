@@ -27,8 +27,15 @@ class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
-            planTrainings = [PlanTraining]()
-            planTrainings?.append(PlanTraining(json: jsonValue))
+            log("SERVER_TEST", "\(jsonValue)")
+            
+            if let jsonArray = jsonValue.array {
+                planTrainings = [PlanTraining]()
+                
+                for planTrainingDto in jsonArray {
+                    planTrainings?.append(PlanTraining(json: planTrainingDto))
+                }
+            }
         }
         return planTrainings
     }
@@ -49,7 +56,7 @@ class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {

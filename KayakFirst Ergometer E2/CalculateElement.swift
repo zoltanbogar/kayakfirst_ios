@@ -38,7 +38,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     private var maT_500 = MovingAverage()
     private var maT_1000 = MovingAverage()
     
-    private let saveValues = SaveTrainingValues.sharedInstance
+    private let trainingManager = TrainingManager.sharedInstance
     
     //MARK: init
     init(startCommand: S) {
@@ -113,7 +113,8 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
             dataType: dataType.rawValue,
             dataValue: dataValue)
         
-        saveValues.addValue(training: training)
+        usleep(10000)
+        trainingManager.saveTraining(training: training)
         
         return training
     }

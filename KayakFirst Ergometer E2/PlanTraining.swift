@@ -63,13 +63,16 @@ class PlanTraining: Plan {
     }
     
     override func getParameters() -> [String : Any] {
-        var planElementParameters: [[String : Any]]?
+        var planElementParameters: [String : Any]?
+        
+        var planElementList: Array<[String:Any]> = []
         
         if planElements != nil && planElements!.count > 0 {
-            planElementParameters = [[String : Any]]()
+            planElementParameters = [String : Any]()
             
             for planElement in planElements! {
-                planElementParameters?.append(planElement.getParameters())
+                planElementParameters = planElement.getParameters()
+                planElementList.append(planElementParameters!)
             }
         }
         

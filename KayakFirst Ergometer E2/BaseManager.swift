@@ -235,8 +235,7 @@ class BaseManager {
                 publishProgress(progress: dataFromLocale)
             }
             
-            //TODO: reactivate this
-            /*let uploadStack = ManagerUpload.getStack()
+            let uploadStack = ManagerUpload.getStack()
             
             if uploadStack == nil || uploadStack!.count == 0 {
                 if managerDownload.isCacheInvalid() {
@@ -248,8 +247,7 @@ class BaseManager {
                 }
             }
             
-            publishProgress(progress: dataFromServer)*/
-            ///////
+            publishProgress(progress: dataFromServer)
             
             return nil
         }

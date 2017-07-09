@@ -26,7 +26,8 @@ enum Responses: String {
 class ServerService<E> {
     
     //MARK: constants
-    let baseUrl = "http://kayak.einnovart.hu/api/"
+    //let baseUrl = "http://kayak.einnovart.hu/api/"
+    let baseUrl = "http://192.168.0.2:8000/api/"
     
     //MARK: properties
     var error: Responses?
@@ -122,13 +123,16 @@ class ServerService<E> {
     
     private func initAlamofire() -> DataRequest {
         let url = baseUrl + initUrlTag()
-        return Alamofire.request(
+        let dataRequest = Alamofire.request(
             url,
             method: initMethod(),
             parameters: initParameters(),
             encoding: initEncoding(),
             headers: initHeader())
-        .debugLog()
+        
+        log("SERVER_TEST", "\(initParameters())")
+        
+        return dataRequest.debugLog()
     }
     
     private func initError(alamofireRequest: DataRequest) -> Responses? {

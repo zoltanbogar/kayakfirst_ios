@@ -56,6 +56,20 @@ class Plan: PlanObject, ModifyAble {
         self.userId = json["userId"].int64Value
         self.length = json["length"].doubleValue
         self.type = PlanType(rawValue: json["type"].stringValue)!
+        
+        var planElements = [PlanElement]()
+        
+        for planElementDto in json["planElements"].arrayValue {
+            let planElement = PlanElement(
+                planElementId: planElementDto["planElementId"].stringValue,
+                position: planElementDto["position"].intValue,
+                intensity: planElementDto["intensity"].intValue,
+                type: PlanType(rawValue: planElementDto["type"].stringValue)!,
+                value: planElementDto["value"].doubleValue)
+            
+            planElements.append(planElement)
+        }
+        self.planElements = planElements
     }
     
     //MARK: functions
@@ -83,13 +97,16 @@ class Plan: PlanObject, ModifyAble {
     }
     
     func getParameters() -> [String : Any] {
-        var planElementParameters: [[String : Any]]?
+        var planElementParameters: [String : Any]?
+        
+        var planElementList: Array<[String:Any]> = []
         
         if planElements != nil && planElements!.count > 0 {
-            planElementParameters = [[String : Any]]()
+            planElementParameters = [String : Any]()
             
             for planElement in planElements! {
-                planElementParameters?.append(planElement.getParameters())
+                planElementParameters = planElement.getParameters()
+                planElementList.append(planElementParameters!)
             }
         }
         
@@ -100,7 +117,7 @@ class Plan: PlanObject, ModifyAble {
             "name": name ?? "",
             "notes": notes ?? "",
             "length": length,
-            "planElements": planElementParameters ?? ""
+            "planElements": planElementList ?? ""
         ]
     }
     

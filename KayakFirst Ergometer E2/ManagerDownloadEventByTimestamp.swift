@@ -80,6 +80,15 @@ class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]>, ManagerDown
         return planEvents
     }
     
+    override func addDataToLocale(data: [PlanEvent]?) {
+        if let planEvents = data {
+            for planEvent in planEvents {
+                planDbLoader.addData(data: planEvent.plan)
+                eventDbLoader.addData(data: planEvent.event)
+            }
+        }
+    }
+    
     override func deleteDataFromLocale() {
         if planIds != nil {
             for s in planIds! {
