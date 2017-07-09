@@ -72,7 +72,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
     
     override func addData(data: Training?) {
         if let training = data {
-            let insert = table!.insert(self.timeStamp <- training.timeStamp, self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- training.sessionId, self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
+            let insert = table!.insert(self.timeStamp <- Double(Int64(training.timeStamp)), self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- training.sessionId, self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
             
             let rowId = try? db?.run(insert)
         }
@@ -80,7 +80,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
     
     //MARK: update
     override func updateData(data: Training) {
-        //TODO
+        //nothing here
     }
     
     //MARK: delete

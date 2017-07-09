@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO: copy from Android
 class UploadTimer {
     
     //MARK: constants
@@ -16,9 +15,8 @@ class UploadTimer {
     private static var timer: Timer?
     
     class func startTimer() {
-        if timer == nil {
-            DispatchQueue.main.async {
-                //TODO: by training start this called twice in a row
+        DispatchQueue.main.async {
+            if timer == nil {
                 log("SERVER_TEST", "startTimer")
                 timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
             }

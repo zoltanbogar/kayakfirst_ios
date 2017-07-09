@@ -112,6 +112,8 @@ class Telemetry {
         t_200 = 0
         t_500 = 0
         t_1000 = 0
+        
+        sessionId = 0
     }
     
     func resetOthers() {
@@ -125,7 +127,6 @@ class Telemetry {
         
         duration = 0
         averageIndex = 0
-        sessionId = 0
         cycleIndex = 0
     }
     

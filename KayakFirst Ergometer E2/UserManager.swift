@@ -89,6 +89,8 @@ class UserManager: BaseManager {
        
         runUser(serverService: userLogout, managerCallBack: logoutCallback)
         
+        UploadTimer.stopTimer()
+        
         return UserManagerType.logout
     }
     

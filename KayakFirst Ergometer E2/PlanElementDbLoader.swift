@@ -60,7 +60,7 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
     
     //MARK: update
     override func updateData(data: PlanElement) {
-        //TODO
+        //nothing here
     }
     
     //MARK: query

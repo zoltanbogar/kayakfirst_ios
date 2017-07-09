@@ -142,7 +142,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     //MARK: update
     override func updateData(data: Plan) {
-        //TODO
+        //nothing here
     }
     
     //MARK: delete

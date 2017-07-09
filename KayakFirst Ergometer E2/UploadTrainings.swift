@@ -10,8 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-
-//TODO
 class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants

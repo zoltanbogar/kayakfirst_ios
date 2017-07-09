@@ -387,7 +387,6 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         }
     }
     
-    //TODO: returns true even the intensity has no text
     private func checkEnterEnable() {
         var enable = planElementTableView.positionToAdd >= 0
         

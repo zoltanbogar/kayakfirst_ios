@@ -52,7 +52,7 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
     
     //MARK: init view
     private func initView() {
-        //TODO
+        //nothing here
     }
     
     func measureOriginalWidth() {

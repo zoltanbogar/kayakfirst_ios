@@ -56,7 +56,7 @@ class EventDbLoader: BaseDbLoader<Event> {
     
     //MARK: update
     override func updateData(data: Event) {
-        //TODO
+        //nothing here
     }
     
     //MARK: query

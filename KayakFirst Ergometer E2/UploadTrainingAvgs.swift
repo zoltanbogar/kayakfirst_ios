@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-//TODO
 class UploadTrainingAvgs: ServerService<Bool> {
     
     //MARK: properties
@@ -22,7 +21,7 @@ class UploadTrainingAvgs: ServerService<Bool> {
     //MARK: init
     init(sessionId: Double) {
         super.init()
-        initTrainingList(sessionId: sessionId)
+        initTrainingList(sessionId: Int64(sessionId))
     }
     
     override func preCheck() -> Bool {
@@ -49,12 +48,12 @@ class UploadTrainingAvgs: ServerService<Bool> {
         return ArrayEncoding()
     }
     
-    private func initTrainingList(sessionId: Double) {
+    private func initTrainingList(sessionId: Int64) {
         var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
-        let originalList = trainingAvgDbLoader.loadUploadAbleData(pointer: sessionId)
+        let originalList = trainingAvgDbLoader.loadUploadAbleData(pointer: Double(sessionId))
         
         if originalList != nil && originalList!.count > 0 {
             for trainingAvg in originalList! {

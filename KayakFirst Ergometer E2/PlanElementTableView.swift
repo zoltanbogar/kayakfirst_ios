@@ -124,7 +124,13 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         switch getViewType(indexPath: indexPath) {
         case cellSpace:
             if indexPath.row / 2 != positionToAdd {
-                positionToAdd = ((indexPath.row + 1) / 2)
+                let tempPositionToAdd = ((indexPath.row + 1) / 2)
+                
+                if indexPath.row > positionToAdd * 2 {
+                    positionToAdd = tempPositionToAdd - 1
+                } else {
+                    positionToAdd = tempPositionToAdd
+                }
                 reloadData()
             }
             break
@@ -132,7 +138,7 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
             //nothing here
             break
         case cellNormal:
-            //TODO
+            //nothing here
             break
         default:
             fatalError("no other types")

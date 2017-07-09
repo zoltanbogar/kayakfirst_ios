@@ -49,12 +49,16 @@ class PlanListVc: BaseVC {
         dismissProgress()
         
         tableViewPlan.dataList = data
+        
+        errorHandlingWithAlert(viewController: self, error: error)
     }
     
     private func deleteCallback(data: Bool?, error: Responses?) {
         if data != nil && data! {
             setPlanList()
         }
+        
+        errorHandlingWithAlert(viewController: self, error: error)
     }
     
     //MARK: initView

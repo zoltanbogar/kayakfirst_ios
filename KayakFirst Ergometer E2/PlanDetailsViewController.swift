@@ -191,12 +191,15 @@ class PlanDetailsViewController: BaseVC {
     //MARK: plan callbacks
     private func planCallback(data: Bool?, error: Responses?) {
         dismissProgress()
+        
+        errorHandlingWithAlert(viewController: self, error: error)
     }
     
     private func deletePlanCallback(data: Bool?, error: Responses?) {
         if data != nil && data! {
             dismiss(animated: true, completion: nil)
         }
+        errorHandlingWithAlert(viewController: self, error: error)
     }
     
 }

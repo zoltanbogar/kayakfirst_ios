@@ -14,7 +14,6 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     override init(view: UIView) {
         super.init(view: view)
         
-        //TODO: spacing between cells
         backgroundColor = Colors.colorTransparent
         separatorColor = Colors.colorTransparent
     }

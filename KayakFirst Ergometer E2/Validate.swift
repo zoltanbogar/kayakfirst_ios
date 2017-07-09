@@ -47,8 +47,8 @@ class Validate {
     
     class func isValidBodyWeight(tfWeight: DialogElementTextField) -> Bool {
         var isValid = true
-        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < Validate.minBodyWeight {
+        let bodyWeight: Double = tfWeight.text == nil || tfWeight.text == "" ? 0 : Double(tfWeight.text!)!
+        if bodyWeight < Double(Validate.minBodyWeight) {
             tfWeight.error = getString("error_weight")
             isValid = false
         }

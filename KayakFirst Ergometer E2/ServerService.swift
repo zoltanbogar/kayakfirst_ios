@@ -22,10 +22,10 @@ enum Responses: String {
     case error_used_email = "The email is already used."
 }
 
-//TODO: tokenChecnk
 class ServerService<E> {
     
     //MARK: constants
+    //TODO: use correct address
     //let baseUrl = "http://kayak.einnovart.hu/api/"
     let baseUrl = "http://192.168.0.2:8000/api/"
     

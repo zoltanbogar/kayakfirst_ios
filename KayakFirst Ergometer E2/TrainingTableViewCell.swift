@@ -70,7 +70,6 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
-        //TODO: it should be #viewGraph
         stackView.addArrangedSubview(btnGraph)
         stackView.addArrangedSubview(btnDelete)
         

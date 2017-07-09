@@ -7,23 +7,25 @@
 //
 import Foundation
 
-func errorHandlingWithAlert(viewController: UIViewController, error: Responses) {
-    let textRes: String
-    switch error {
-    case Responses.error_no_internet:
-        textRes = "error_no_internet"
-    case Responses.error_invalid_credentials:
-        textRes = "error_user_invalid_credentials"
-    case Responses.error_registration_required:
-        textRes = "user_registration_required"
-    case Responses.error_used_username:
-        textRes = "error_user_username_used"
-    case Responses.error_used_email:
-        textRes = "error_user_email_used"
-    default:
-        textRes = "error_server"
+func errorHandlingWithAlert(viewController: UIViewController, error: Responses?) {
+    if let errorValue = error {
+        let textRes: String
+        switch errorValue {
+        case Responses.error_no_internet:
+            textRes = "error_no_internet"
+        case Responses.error_invalid_credentials:
+            textRes = "error_user_invalid_credentials"
+        case Responses.error_registration_required:
+            textRes = "user_registration_required"
+        case Responses.error_used_username:
+            textRes = "error_user_username_used"
+        case Responses.error_used_email:
+            textRes = "error_user_email_used"
+        default:
+            textRes = "error_server"
+        }
+        ErrorDialog(errorString: getString(textRes)).show(viewController: viewController)
     }
-    ErrorDialog(errorString: getString(textRes)).show(viewController: viewController)
 }
 
 class BaseManager {

@@ -740,7 +740,6 @@
 				067964551E63633E00DFC050 /* CycleState.swift */,
 				067964601E636E7800DFC050 /* MovingAverage.swift */,
 				067964641E63756E00DFC050 /* PauseDiff.swift */,
-				061369891E7C2D8C00896282 /* UploadTimer.swift */,
 			);
 			name = training_calculate;
 			sourceTree = "<group>";
@@ -753,6 +752,7 @@
 				064FE5B11ED0A351004A9F35 /* user */,
 				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
+				061369891E7C2D8C00896282 /* UploadTimer.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";

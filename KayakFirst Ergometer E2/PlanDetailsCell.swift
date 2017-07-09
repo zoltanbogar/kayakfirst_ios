@@ -38,8 +38,12 @@ class PlanDetailsCell: AppUITableViewCell<Plan> {
     
     //MARK: init data
     override func initData(data: Plan?) {
-        etName.text = data?.name
-        etNotes.text = data?.notes
+        if etName.text == "" {
+            etName.text = data?.name
+        }
+        if etNotes.text == "" {
+            etNotes.text = data?.notes
+        }
         etDuration.text = data?.getFormattedDuration()
     }
     

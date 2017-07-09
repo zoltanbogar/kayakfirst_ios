@@ -117,7 +117,6 @@ class PlanEditText: UITextView, UITextViewDelegate {
         inputView = UIView()
     }
     
-    //TODO: not vertically centered the text
     private func addContentSizeObserver() {
         self.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
     }

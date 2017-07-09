@@ -62,7 +62,7 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
             if !avgHashes!.contains(trainingAvg.avgHash) {
                 avgHashes!.append(trainingAvg.avgHash)
                 
-                let insert = table!.insert(self.averageHash <- trainingAvg.avgHash, self.userId <- trainingAvg.userId!, self.sessionId <- trainingAvg.sessionId, self.dataType <- trainingAvg.avgType, self.dataValue <- trainingAvg.avgValue)
+                let insert = table!.insert(self.averageHash <- trainingAvg.avgHash, self.userId <- trainingAvg.userId!, self.sessionId <- Double(Int64(trainingAvg.sessionId)), self.dataType <- trainingAvg.avgType, self.dataValue <- trainingAvg.avgValue)
                 
                 let rowId = try? db?.run(insert)
             } else {
@@ -89,6 +89,8 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
             if let predicateValue = predicate {
                 queryPredicate = queryPredicate && predicateValue
             }
+            
+            log("DB_TEST", "\(queryPredicate)")
             
             let dbList = try db!.prepare(table!.filter(queryPredicate))
             
