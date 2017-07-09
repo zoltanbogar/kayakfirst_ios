@@ -122,6 +122,7 @@
 		0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
+		061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DBCB61F12811600D3C129 /* PortraitNavController.swift */; };
 		061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */; };
 		061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */; };
 		061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C01F0BED4F0068E6E6 /* UploadType.swift */; };
@@ -451,6 +452,7 @@
 		0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		061DBCB61F12811600D3C129 /* PortraitNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitNavController.swift; sourceTree = "<group>"; };
 		061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
 		061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUpload.swift; sourceTree = "<group>"; };
 		061FF0C01F0BED4F0068E6E6 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
@@ -1333,6 +1335,7 @@
 				062369651E9BF44100578017 /* CalibrationView.swift */,
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
+				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1906,6 +1909,7 @@
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
 				0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */,
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
+				061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
 				06AF23401F067D2D008805A2 /* DownloadEventDays.swift in Sources */,

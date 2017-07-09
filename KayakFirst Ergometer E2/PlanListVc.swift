@@ -104,7 +104,7 @@ class PlanListVc: BaseVC {
         return tableViewPlan
     }()
     
-    private lazy var etSearch: UITextView! = {
+    private lazy var etSearch: SearchTextView! = {
         let view = SearchTextView()
         view.layer.cornerRadius = 5
         view.backgroundColor = UIColor.white

@@ -22,7 +22,7 @@ func startEventDetailsViewController(viewController: UIViewController, event: Ev
     eventDetailsVc.event = event
     eventDetailsVc.parentVc = viewController
     
-    let navVc = UINavigationController()
+    let navVc = PortraitNavController()
     navVc.pushViewController(eventDetailsVc, animated: false)
     viewController.present(navVc, animated: true, completion: nil)
 }

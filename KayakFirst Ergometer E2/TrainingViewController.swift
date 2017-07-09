@@ -19,7 +19,7 @@ func startTrainingViewController(viewController: UIViewController, plan: Plan?, 
     viewController.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: UINavigationController, StartDelayDelegate, CalibrationDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, CalibrationDelegate {
     
     //MARK: properties
     private var startDelayView: StartDelayView?
@@ -45,20 +45,6 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
         super.viewWillAppear(animated)
         
         keepScreenOn()
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-    }
-    
-    //MARK: screen orientation
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
-    
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
     }
     
     func getTrainingService() -> TrainingService {

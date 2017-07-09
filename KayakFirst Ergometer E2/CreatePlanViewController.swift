@@ -10,7 +10,7 @@ import Foundation
 import IQKeyboardManagerSwift
 
 func startCreatePlanViewController(viewController: UIViewController, plan: Plan) {
-    let navigationVc = UINavigationController()
+    let navigationVc = PortraitNavController()
     let createPlanVc = CreatePlanViewController()
     createPlanVc.plan = plan
     
@@ -19,7 +19,7 @@ func startCreatePlanViewController(viewController: UIViewController, plan: Plan)
 }
 
 func startCreatePlanViewController(viewController: UIViewController, planType: PlanType) {
-    let navigationVc = UINavigationController()
+    let navigationVc = PortraitNavController()
     let createPlanVc = CreatePlanViewController()
     createPlanVc.planType = planType
     

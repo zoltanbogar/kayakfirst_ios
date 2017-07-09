@@ -24,7 +24,7 @@ func startPlanDetailsViewController(viewController: UIViewController, plan: Plan
     planDetailsVC.isEdit = isEdit
     planDetailsVC.parentVc = viewController
     
-    let navVc = UINavigationController()
+    let navVc = PortraitNavController()
     navVc.pushViewController(planDetailsVC, animated: false)
     viewController.present(navVc, animated: true, completion: nil)
 }

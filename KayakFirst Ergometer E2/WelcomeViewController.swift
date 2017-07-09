@@ -83,7 +83,7 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         }
         contentView.addSubview(loginRegisterView)
         loginRegisterView.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+            make.top.equalTo(segmentedControl.snp.bottom).offset(margin)
             make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, 0))
             make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, marginHorizontal))
             make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
