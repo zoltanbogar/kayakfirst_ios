@@ -130,27 +130,6 @@ class ChartView: UIView {
             make.left.equalTo(lineChart).offset(margin2)
             make.right.equalTo(lineChart).offset(-margin)
         }
-        //TODO: not so elegant solution
-        //TODO: it not works: on the other views (sumView...) will be visible if zoomed
-        let viewLeft = UIView()
-        viewLeft.backgroundColor = Colors.colorPrimary
-        mainStackView.addSubview(viewLeft)
-        viewLeft.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.width.equalTo(margin2)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(timeLineHeight)
-        }
-        let viewRight = UIView()
-        viewRight.backgroundColor = Colors.colorPrimary
-        mainStackView.addSubview(viewRight)
-        viewRight.snp.makeConstraints { (make) in
-            make.right.equalToSuperview()
-            make.width.equalTo(margin)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(timeLineHeight)
-        }
-        ///////////////////////////////////
     }
     
     private lazy var planView: PlanTimeLineView! = {
