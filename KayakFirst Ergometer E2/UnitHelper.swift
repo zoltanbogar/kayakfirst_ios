@@ -45,6 +45,18 @@ class UnitHelper {
         }
     }
     
+    class func getWeightValue(value: Double) -> Double {
+        return getWeightValue(value: value, isMetric: isMetricWeight())
+    }
+    
+    class func getWeightValue(value: Double, isMetric: Bool) -> Double {
+        if isMetric {
+            return value
+        } else {
+            return value * 2.20462
+        }
+    }
+    
     class func getMetricWeightValue(value: Double, isMetric: Bool) -> Double {
         if isMetric {
             return value
@@ -170,8 +182,6 @@ class UnitHelper {
     }
     
     class func isMetric(keyUnit: String?) -> Bool {
-        return keyUnit == nil || User.unitMetric == keyUnit!
+        return keyUnit == nil || User.unitImperial != keyUnit!
     }
-    
-    
 }

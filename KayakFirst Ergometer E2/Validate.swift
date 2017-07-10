@@ -45,11 +45,24 @@ class Validate {
         return isValid
     }
     
-    class func isValidBodyWeight(tfWeight: DialogElementTextField) -> Bool {
+    class func isValidBodyWeight(tfWeight: DialogElementTextField, isMetric: Bool) -> Bool {
         var isValid = true
-        let bodyWeight: Double = tfWeight.text == nil || tfWeight.text == "" ? 0 : Double(tfWeight.text!)!
+        tfWeight.error = nil
+        
+        let bodyWeight: Double = tfWeight.text == nil || tfWeight.text == "" ? 0 :
+            UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: isMetric)
         if bodyWeight < Double(Validate.minBodyWeight) {
-            tfWeight.error = getString("error_weight")
+            let originalErrorText = getString("error_weight")
+            
+            let minWeight = UnitHelper.getWeightValue(value: Double(Validate.minBodyWeight), isMetric: isMetric)
+            
+            let minWeightFormatted: Int = (minWeight - Double(Int(minWeight))) > 0 ? (Int(minWeight) + 1) : Int(minWeight)
+            
+            let weightFormatted = " \(minWeightFormatted) \(UnitHelper.getWeightUnit(isMetric: isMetric))"
+            
+            let errorText = originalErrorText + weightFormatted + "!"
+            
+            tfWeight.error = errorText
             isValid = false
         }
         return isValid
@@ -57,6 +70,8 @@ class Validate {
     
     class func isValidPicker(tfPicker: DialogElementTextField) -> Bool {
         var isValid = true
+        tfPicker.error = nil
+        
         if tfPicker.text! == "" {
             isValid = false
             tfPicker.error = getString("user_spinner_choose")

@@ -102,6 +102,7 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
         }
     }
     var clickable: Bool = true
+    var textChangedListener: (() -> ())?
     
     //MARK: init
     override init(frame: CGRect) {
@@ -162,6 +163,10 @@ class DialogElementTextField: UIView, UITextFieldDelegate {
     
     @objc private func textFieldDidChange() {
         self.error = nil
+        
+        if let listener = textChangedListener {
+            listener()
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

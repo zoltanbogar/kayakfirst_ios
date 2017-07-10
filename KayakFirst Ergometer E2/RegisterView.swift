@@ -380,7 +380,7 @@ class RegisterView: UIView, UITextFieldDelegate {
             isValid = false
             viewToScroll = tfEmail
         }
-        if !Validate.isValidBodyWeight(tfWeight: tfWeight) {
+        if !Validate.isValidBodyWeight(tfWeight: tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())) {
             isValid = false
             viewToScroll = tfWeight
         }

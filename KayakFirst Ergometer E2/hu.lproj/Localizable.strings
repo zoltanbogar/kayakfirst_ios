@@ -254,18 +254,18 @@
 //Error
 "error_no_internet"="No internet connection!";
 "error_user_invalid_credentials"="Invalid credentials!";
-"error_server"="Server error";
-"error_field_not_blank"="This field cannot be blank";
-"error_email"="Not valid email address";
+"error_server"="Server error.";
+"error_field_not_blank"="This field cannot be blank.";
+"error_email"="Not valid email address.";
 "error_user_name"="At least 2 characters!";
 "error_password"="At least 4 characters!";
-"error_weight"="Weight should be 30 at least!";
+"error_weight"="Weight should be at least";
 "error_birth_date"="Birth date cannot be in the future!";
 "error_google_sign_out"="Google Signout problem!";
-"error_user_username_used"="The username is already used";
-"error_user_email_used"="The email is already used";
-"error_event_timestamp_past"="Event cannot start in the past";
-"error_plan_name"="Please add name";
+"error_user_username_used"="The username is already used.";
+"error_user_email_used"="The email is already used.";
+"error_event_timestamp_past"="Event cannot start in the past.";
+"error_plan_name"="Please, add name!";
 
 //Date
 "date_format"="yyyy.MM.dd";

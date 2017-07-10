@@ -34,6 +34,8 @@ class ProfileVc: MainTabVc {
     //MARK: properties
     var userManager = UserManager.sharedInstance
     
+    private var bodyWeight: Double = 0
+    
     override func viewDidLoad() {
         countryPickerHelper = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
         genderPickerHelper = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
@@ -147,11 +149,11 @@ class ProfileVc: MainTabVc {
     }
     
     private func initBodyWeight(user: User?) {
-        let weight = user?.bodyWeight
-        if let weightValue = weight {
-            tfWeight.text = String.init(format: "%.1f", weightValue)
-        }
+        bodyWeight = user!.bodyWeight!
+        
+        tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
         pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
+        tfWeight?.textChangedListener = bodyWeightChangedListener
         
         initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
     }
@@ -165,6 +167,13 @@ class ProfileVc: MainTabVc {
         
         originalTitle = originalTitle + (endWithSpace ? "" : " ") + "(" + UnitHelper.getWeightUnit(isMetric: isMetric) + ")"
         tfWeight.title = originalTitle
+    }
+    
+    private func bodyWeightChangedListener() {
+        let value = tfWeight.text
+        if value != nil && "" != value {
+            bodyWeight = Double(value!)!
+        }
     }
     
     private func pickerUnitWeightListener() {
@@ -333,7 +342,7 @@ class ProfileVc: MainTabVc {
                 lastName: tfLastName.text,
                 firstName: tfFirstName.text,
                 email: tfEmail.text,
-                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
+                bodyWeight: UnitHelper.getMetricWeightValue(value: bodyWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
                 gender: self.userManager.getUser()?.gender,
                 birthDate: self.userManager.getUser()?.birthDate,
                 club: tfClub.text,
@@ -382,7 +391,7 @@ class ProfileVc: MainTabVc {
         let isValidUnitWeight = Validate.isValidPicker(tfPicker: tfUnitWeight)
         let isValidUnitDistance = Validate.isValidPicker(tfPicker: tfUnitDistance)
         let isValidUnitPace = Validate.isValidPicker(tfPicker: tfUnitPace)
-        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: tfWeight)
+        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue()))
         
         return isValidArtOfPaddling && isValidUnitWeight && isValidUnitDistance && isValidUnitPace && isValidBodyWeight
     }
