@@ -356,9 +356,19 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             
             planElementTableView.addPlanElement(planElement: planElement)
             
-            //TODO: scroll not perfect
-            let indexPath = IndexPath(row: planElementTableView.dataList!.count-1, section: 0)
-            planElementTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            tableViewScrollToBottom(animated: true)
+        }
+    }
+    
+    private func tableViewScrollToBottom(animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            let numberOfSections = self.planElementTableView.numberOfSections
+            let numberOfRows = self.planElementTableView.numberOfRows(inSection: numberOfSections-1)
+            
+            if numberOfRows > 0 {
+                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                self.planElementTableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+            }
         }
     }
     
@@ -419,8 +429,8 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
                         
                         viewDelete.isHidden = false
                         
-                        self.draggedViewOriginalX = draggedView!.center.x + margin05
-                        self.draggedViewOriginalY = draggedView!.center.y + margin05
+                        self.draggedViewOriginalX = locationInView.x
+                        self.draggedViewOriginalY = locationInView.y
                         
                         self.snapShot = draggedView!.getSnapshotView()
                         self.contentView.addSubview(self.snapShot!)

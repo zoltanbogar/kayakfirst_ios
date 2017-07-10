@@ -28,6 +28,8 @@ class PlanElementTableView: TableViewWithEmpty<PlanElement> {
         
         backgroundColor = Colors.colorTransparent
         separatorColor = Colors.colorTransparent
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
         
         register(PECellNormal.self, forCellReuseIdentifier: cellNormal)
         register(PECellBlank.self, forCellReuseIdentifier: cellBlank)
