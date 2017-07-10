@@ -10,9 +10,6 @@ import Foundation
 
 class ManagerUpload {
     
-    //MARK: constants
-    private static let dbUpload = "manager_upload_db"
-    
     //MARK: properties
     private static let preferences = UserDefaults.standard
     
@@ -40,20 +37,22 @@ class ManagerUpload {
     }
     
     class func addToStack(uploadType: UploadType, pointer: String?) {
-        UploadTimer.startTimer()
-        
-        var dictionary = getDictionary()
-        
-        var values: [String] = dictionary[uploadType.rawValue] ?? [String]()
-
-        if pointer != nil && !values.contains(pointer!) {
-            values.append(pointer!)
+        if UserManager.sharedInstance.getUser() != nil {
+            UploadTimer.startTimer()
+            
+            var dictionary = getDictionary()
+            
+            var values: [String] = dictionary[uploadType.rawValue] ?? [String]()
+            
+            if pointer != nil && !values.contains(pointer!) {
+                values.append(pointer!)
+            }
+            
+            dictionary.updateValue(values, forKey: uploadType.rawValue)
+            
+            preferences.setPersistentDomain(dictionary, forName: getDbUpload())
+            preferences.synchronize()
         }
-        
-        dictionary.updateValue(values, forKey: uploadType.rawValue)
-        
-        preferences.setPersistentDomain(dictionary, forName: dbUpload)
-        preferences.synchronize()
     }
     
     class func getManagerUploadByType(uploadType: String) -> [ManagerUpload] {
@@ -88,7 +87,7 @@ class ManagerUpload {
         var dictionary = ManagerUpload.getDictionary()
         
         dictionary.removeValue(forKey: uploadType.rawValue)
-        ManagerUpload.preferences.setPersistentDomain(dictionary, forName: ManagerUpload.dbUpload)
+        ManagerUpload.preferences.setPersistentDomain(dictionary, forName: ManagerUpload.getDbUpload())
         ManagerUpload.preferences.synchronize()
     }
     
@@ -101,7 +100,19 @@ class ManagerUpload {
     }
     
     private class func getDictionary() -> [String : [String]] {
-        return preferences.persistentDomain(forName: dbUpload) as? [String : [String]] ?? [String : [String]]()
+        return preferences.persistentDomain(forName: getDbUpload()) as? [String : [String]] ?? [String : [String]]()
+    }
+    
+    private class func getDbUpload() -> String {
+        let user = UserManager.sharedInstance.getUser()
+        
+        var preferencesDb = "manager_upload_db"
+        
+        if let userValue = user {
+            preferencesDb = preferencesDb + "_" + String(userValue.id)
+        }
+        
+        return preferencesDb
     }
     
     //MARK: abstract functions

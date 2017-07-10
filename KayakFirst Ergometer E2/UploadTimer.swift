@@ -15,10 +15,12 @@ class UploadTimer {
     private static var timer: Timer?
     
     class func startTimer() {
-        DispatchQueue.main.async {
-            if timer == nil {
-                log("SERVER_TEST", "startTimer")
-                timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        if UserManager.sharedInstance.getUser() != nil {
+            DispatchQueue.main.async {
+                if timer == nil {
+                    log("SERVER_TEST", "startTimer")
+                    timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+                }
             }
         }
     }
