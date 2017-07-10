@@ -20,7 +20,7 @@ struct Event: PlanObject, ModifyAble {
     var userId: Int64 = 0
     var sessionId: Double
     var timestamp: Double
-    var name: String
+    private var name: String
     var planType: PlanType
     var planId: String
     

@@ -341,7 +341,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         let tableViewEvent = EventTableView(view: self.viewTableView, deleteCallback: self.deleteDataCallback)
         
         tableViewEvent.rowClickCallback = { planEvent, position in
-            startEventDetailsViewController(viewController: self, event: planEvent.event)
+            startEventDetailsViewController(viewController: self, planEvent: planEvent)
         }
         
         return tableViewEvent

@@ -9,17 +9,17 @@
 import Foundation
 
 func startEventDetailsViewController(viewController: UIViewController, plan: Plan) {
-    startEventDetailsViewController(viewController: viewController, event: nil, plan: plan)
+    startEventDetailsViewController(viewController: viewController, planEvent: nil, plan: plan)
 }
 
-func startEventDetailsViewController(viewController: UIViewController, event: Event) {
-    startEventDetailsViewController(viewController: viewController, event: event, plan: nil)
+func startEventDetailsViewController(viewController: UIViewController, planEvent: PlanEvent) {
+    startEventDetailsViewController(viewController: viewController, planEvent: planEvent, plan: nil)
 }
 
-func startEventDetailsViewController(viewController: UIViewController, event: Event?, plan: Plan?) {
+func startEventDetailsViewController(viewController: UIViewController, planEvent: PlanEvent?, plan: Plan?) {
     let eventDetailsVc = EventDetailsViewController()
     eventDetailsVc.plan = plan
-    eventDetailsVc.event = event
+    eventDetailsVc.planEvent = planEvent
     eventDetailsVc.parentVc = viewController
     
     let navVc = PortraitNavController()
@@ -31,7 +31,7 @@ class EventDetailsViewController: BaseVC {
     
     //MARK: properties
     var plan: Plan?
-    var event: Event?
+    var planEvent: PlanEvent?
     
     var parentVc: UIViewController?
     
@@ -59,7 +59,7 @@ class EventDetailsViewController: BaseVC {
     //MARK: functions
     private func setEditLayout(isEdit: Bool) {
         if isEdit {
-            if event != nil {
+            if planEvent != nil {
                 setTabbarItem(tabbarItems: [btnSave, btnDelete])
             } else {
                 setTabbarItem(tabbarItems: [btnSave])
@@ -72,12 +72,12 @@ class EventDetailsViewController: BaseVC {
     }
     
     private func initFields() {
-        if let eventValue = event {
-            name = eventValue.name
-            planType = eventValue.planType
-            planId = eventValue.planId
+        if let eventValue = planEvent {
+            name = planEvent?.plan.name
+            planType = eventValue.plan.type
+            planId = eventValue.plan.planId
             
-            timestamp = eventValue.timestamp
+            timestamp = eventValue.event.timestamp
             
             setTimestampText()
         } else {
@@ -160,7 +160,7 @@ class EventDetailsViewController: BaseVC {
     @objc private func btnSaveClick() {
         if Validate.isEventTimestampValid(viewController: self, timestamp: timestamp) {
             var event: Event? = nil
-            if self.event == nil {
+            if self.planEvent == nil {
                 event = Event(
                     userId: UserManager.sharedInstance.getUser()!.id,
                     sessionId: 0,
@@ -169,8 +169,8 @@ class EventDetailsViewController: BaseVC {
                     planType: planType!,
                     planId: planId!)
             } else {
-                self.event?.timestamp = timestamp
-                event = self.event
+                self.planEvent?.event.timestamp = timestamp
+                event = self.planEvent?.event
             }
             let managerType = EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: eventSaveCallback)
             showProgress(baseManagerType: managerType)
@@ -186,8 +186,8 @@ class EventDetailsViewController: BaseVC {
     }
     
     @objc private func btnDeleteClick() {
-        if let eventValue = event {
-            DeleteEventDialog.showDeleteEventDialog(viewController: self, event: eventValue, managerCallback: eventDeleteCallback)
+        if let eventValue = planEvent {
+            DeleteEventDialog.showDeleteEventDialog(viewController: self, planEvent: eventValue, managerCallback: eventDeleteCallback)
         }
     }
     
@@ -243,7 +243,7 @@ class EventDetailsViewController: BaseVC {
         showCloseButton()
         showLogoCenter(viewController: self)
         
-        setEditLayout(isEdit: event == nil)
+        setEditLayout(isEdit: planEvent == nil)
     }
     
     //MARK: views

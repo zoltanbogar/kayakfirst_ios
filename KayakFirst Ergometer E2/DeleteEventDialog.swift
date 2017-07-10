@@ -10,27 +10,27 @@ import Foundation
 
 class DeleteEventDialog: BaseDialog {
     
-    static func showDeleteEventDialog(viewController: UIViewController, event: Event, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
-        DeleteEventDialog(event: event, managerCallback: managerCallback).show(viewController: viewController)
+    static func showDeleteEventDialog(viewController: UIViewController, planEvent: PlanEvent, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+        DeleteEventDialog(planEvent: planEvent, managerCallback: managerCallback).show(viewController: viewController)
     }
     
     //MARK: properties
-    private let event: Event
+    private let planEvent: PlanEvent
     private let managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     
     //MARK: init
-    private init(event: Event, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
-        self.event = event
+    private init(planEvent: PlanEvent, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+        self.planEvent = planEvent
         self.managerCallback = managerCallback
         
         let originalTitle = getString("dialog_event_delete_title")
-        let titleWithName = "\(originalTitle) \(event.name ?? "")?"
+        let titleWithName = "\(originalTitle) \(planEvent.plan.name ?? "")?"
         super.init(title: titleWithName, message: nil)
         showPositiveButton(title: getString("other_delete"))
         showNegativeButton(title: getString("other_cancel"))
     }
     
     override func btnPosAction() {
-        EventManager.sharedInstance.deleteEvent(event: event, managerCallback: managerCallback)
+        EventManager.sharedInstance.deleteEvent(event: planEvent.event, managerCallback: managerCallback)
     }
 }

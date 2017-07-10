@@ -39,7 +39,7 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     //MARK: init data
     override func initData(data: PlanEvent?) {
         self.planEvent = data
-        labelName.text = data?.event.name
+        labelName.text = data?.plan.name
         
         var doneImage: UIImage?
         if data?.event.sessionId == 0 {
@@ -81,7 +81,7 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     }
     
     @objc private func clickDelete() {
-        DeleteEventDialog.showDeleteEventDialog(viewController: viewController()!, event: planEvent!.event, managerCallback: deleteCallback)
+        DeleteEventDialog.showDeleteEventDialog(viewController: viewController()!, planEvent: planEvent!, managerCallback: deleteCallback)
     }
     
     //MARK: init view
