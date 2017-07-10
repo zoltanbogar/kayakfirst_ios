@@ -67,19 +67,13 @@ class PlanElementDetailsCell: AppUITableViewCell<PlanElement> {
             make.centerY.equalTo(percentView)
         }
         
-        let spaceView = UIView()
-        spaceView.backgroundColor = Colors.colorTransparent
-        baseView.addSubview(spaceView)
-        spaceView.snp.makeConstraints { (make) in
-            make.top.equalTo(valueView.snp.bottom)
-            make.left.equalTo(baseView)
-            make.right.equalTo(baseView)
-            make.height.equalTo(self.spaceHeight)
-        }
-        
         baseView.addSubview(editView)
         editView.snp.makeConstraints { (make) in
             make.edges.equalTo(baseView)
+        }
+        
+        baseView.snp.makeConstraints { (make) in
+            make.height.equalTo(rowHeight + spaceHeight)
         }
         
         return baseView

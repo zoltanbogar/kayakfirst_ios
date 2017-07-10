@@ -50,17 +50,8 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
         return stackView
     }
     
-    //TODO: rowHeights not correct when open first
     override func getRowHeight() -> CGFloat {
-        var newTextViewHeight = ceil(labelName.sizeThatFits(labelName.frame.size).height)
-        
-        if newTextViewHeight < trainingRowHeight {
-            newTextViewHeight = trainingRowHeight
-        } else {
-            newTextViewHeight += margin05
-        }
-        
-        return newTextViewHeight
+        return trainingRowHeight
     }
     
     //MARK: views

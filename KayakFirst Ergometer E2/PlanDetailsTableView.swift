@@ -62,6 +62,8 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
         register(PlanDetailsCell.self, forCellReuseIdentifier: cellBase)
         register(PlanEditIntervallsCell.self, forCellReuseIdentifier: cellEdit)
         register(PlanElementDetailsCell.self, forCellReuseIdentifier: cellPlanElement)
+        
+        self.setDefaultRowHeight()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,19 +115,16 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             cell = cellDetails
             
             (cellDetails as! PlanDetailsCell).textHeightChangeListener = {
+                UIView.setAnimationsEnabled(false)
                 self.beginUpdates()
                 self.endUpdates()
-                let contentOffSetOriginal = self.contentOffset
-                self.setContentOffset(contentOffSetOriginal, animated: false)
+                UIView.setAnimationsEnabled(true)
             }
             
             self.planDetailsCell = (cellDetails as! PlanDetailsCell)
-            
-            setDefaultRowHeight()
         case cellEdit:
             cell = tableView.dequeueReusableCell(withIdentifier: cellEdit, for: indexPath) as! PlanEditIntervallsCell
             
-            setDefaultRowHeight()
         case cellPlanElement:
             let cellNormal = tableView.dequeueReusableCell(withIdentifier: self.cellPlanElement, for: indexPath) as! PlanElementDetailsCell
             
@@ -134,8 +133,6 @@ class PlanDetailsTableView: TableViewWithEmpty<Plan> {
             let dataPosition = isEdit ? (position - 2) : (position - 1)
             
             cellNormal.data = _plan?.planElements?[dataPosition]
-            
-            rowHeight = (cellNormal as! PlanElementDetailsCell).getRowHeight()
             
             cell = cellNormal
         default:
