@@ -14,8 +14,8 @@ class ManagerModifyEventDelete: ManagerModifyEvent {
         eventDbLoader.deleteData(predicate: eventDbLoader.getIdPredicate(eventId: data?.eventId))
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         
         if let pointersValue = pointers {
             var eventIds = [String]()
@@ -29,10 +29,10 @@ class ManagerModifyEventDelete: ManagerModifyEvent {
             if eventIds.count > 0 {
                 let deleteEvent = DeleteEvent(eventIds: eventIds)
                 deleteEvent.run()
-                error = deleteEvent.error
+                serverWasReachable = deleteEvent.serverWasReachable
             }
         }
-        return error?.rawValue
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {

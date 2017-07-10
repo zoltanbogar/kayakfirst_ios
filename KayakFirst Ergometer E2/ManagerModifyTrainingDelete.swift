@@ -22,8 +22,9 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
         }
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachableTraining = true
+        var serverWasReachableTrainingAvg = true
         
         if let pointersValue = pointers {
             var sessionIds = [String]()
@@ -37,14 +38,14 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
             if sessionIds.count > 0 {
                 let deleteTraining = DeleteTraining(sessionIds: sessionIds)
                 deleteTraining.run()
-                error = deleteTraining.error
+                serverWasReachableTraining = deleteTraining.serverWasReachable
                 
                 let deleteTrainingAvg = DeleteTrainingAvg(sessionIds: sessionIds)
-                deleteTraining.run()
-                error = deleteTrainingAvg.error
+                deleteTrainingAvg.run()
+                serverWasReachableTrainingAvg = deleteTrainingAvg.serverWasReachable
             }
         }
-        return error?.rawValue
+        return serverWasReachableTraining && serverWasReachableTrainingAvg
     }
     
     override func getUploadType() -> UploadType {

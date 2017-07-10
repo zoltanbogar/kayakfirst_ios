@@ -15,8 +15,8 @@ class ManagerModifyPlanTrainingSave: ManagerModifyPlanTraining {
         planTrainingDbLoader.addData(data: data)
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         
         if let pointersValue = pointers {
             var planTrainings = [PlanTraining]()
@@ -37,10 +37,10 @@ class ManagerModifyPlanTrainingSave: ManagerModifyPlanTraining {
             if planTrainings.count > 0 {
                 let uploadPlanTraining = UploadPlanTraining(planTrainingList: planTrainings)
                 uploadPlanTraining.run()
-                error = uploadPlanTraining.error
+                serverWasReachable = uploadPlanTraining.serverWasReachable
             }
         }
-        return error?.rawValue
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {

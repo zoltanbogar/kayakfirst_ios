@@ -31,8 +31,11 @@ class ServerService<E> {
     
     //MARK: properties
     var error: Responses?
+    var serverWasReachable = false
     
     func run() -> E? {
+        serverWasReachable = true
+        
         var data = runBase()
         
         if data == nil && error == Responses.error_expired_token {
@@ -53,6 +56,8 @@ class ServerService<E> {
                 
                 if statusCode! >= 200 && statusCode! < 300 {
                     result = handleServiceCommunication(alamofireRequest: response)
+                } else if statusCode == 0 {
+                    serverWasReachable = false
                 } else {
                     error = initError(alamofireRequest: response)
                 }

@@ -15,10 +15,10 @@ class ManagerUploadTrainings: ManagerUpload {
     private var isUploadReady = false
     
     //MARK: functions
-    override func callServer() -> String? {
-        var error = runServer(pointers: getPointers())
+    override func callServer() {
+        var serverWasReachable = runServer(pointers: getPointers())
         
-        if error == nil {
+        if serverWasReachable {
             removeFromStack(uploadType: getUploadType())
             
             if !isUploadReady {
@@ -27,10 +27,9 @@ class ManagerUploadTrainings: ManagerUpload {
                 }
             }
         }
-        return error
     }
     
-    override func runServer(pointers: [String]?) -> String? {
+    override func runServer(pointers: [String]?) -> Bool {
         if let pointersValue = pointers {
             var timestampPointer: String? = nil
             
@@ -49,9 +48,9 @@ class ManagerUploadTrainings: ManagerUpload {
                 isUploadReady = uploadTrainings.isUploadReady
             }
             
-            return uploadTrainings.error?.rawValue
+            return uploadTrainings.serverWasReachable
         }
-        return nil
+        return true
     }
     
     override func getUploadType() -> UploadType {

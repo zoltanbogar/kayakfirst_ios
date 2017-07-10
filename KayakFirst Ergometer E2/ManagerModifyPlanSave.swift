@@ -23,8 +23,9 @@ class ManagerModifyPlanSave: ManagerModifyPlan {
         }
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachableUpload = true
+        var serverWasReachableEdit = true
         
         if let pointersValue = pointers {
             var planListUpload = [Plan]()
@@ -48,17 +49,19 @@ class ManagerModifyPlanSave: ManagerModifyPlan {
                 }
             }
             
-            let uploadPlan = UploadPlan(planList: planListUpload)
-            uploadPlan.run()
-            error = uploadPlan.error
+            if planListUpload.count > 0 {
+                let uploadPlan = UploadPlan(planList: planListUpload)
+                uploadPlan.run()
+                serverWasReachableUpload = uploadPlan.serverWasReachable
+            }
             
             for planToEdit in planListEdit {
                 let editPlan = EditPlan(plan: planToEdit)
                 editPlan.run()
-                error = editPlan.error
+                serverWasReachableEdit = editPlan.serverWasReachable
             }
         }
-        return error?.rawValue
+        return serverWasReachableUpload && serverWasReachableEdit
     }
     
     override func getUploadType() -> UploadType {

@@ -13,31 +13,29 @@ class ManagerUploadTrainingAvgs: ManagerUpload {
     //MARK: properties
     private var isUploadReady = true
     
-    override func callServer() -> String? {
-        let error = runServer(pointers: getPointers())
+    override func callServer() {
+        let serverWasReachable = runServer(pointers: getPointers())
         
-        if error == nil && isUploadReady {
+        if serverWasReachable && isUploadReady {
             removeFromStack(uploadType: getUploadType())
         }
-        
-        return error
     }
     
-    override func runServer(pointers: [String]?) -> String? {
+    override func runServer(pointers: [String]?) -> Bool {
         if let pointersValue = pointers {
             for s in pointersValue {
                 let uploadTrainingAvgs = UploadTrainingAvgs(sessionId: Double(s)!)
                 uploadTrainingAvgs.run()
-                let error = uploadTrainingAvgs.error
+                let serverWasReachable = uploadTrainingAvgs.serverWasReachable
                 
                 if isUploadReady {
                     isUploadReady = uploadTrainingAvgs.isUploadReady
                 }
                 
-                return error?.rawValue
+                return serverWasReachable
             }
         }
-        return nil
+        return true
     }
     
     override func getUploadType() -> UploadType {

@@ -27,8 +27,8 @@ class ManagerModifyPlanDelete: ManagerModifyPlan {
         }
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         
         if let pointersValue = pointers {
             var planIds = [String]()
@@ -42,11 +42,11 @@ class ManagerModifyPlanDelete: ManagerModifyPlan {
             if planIds.count > 0 {
                 let deletePlan = DeletePlan(planIds: planIds)
                 deletePlan.run()
-                error = deletePlan.error
+                serverWasReachable = deletePlan.serverWasReachable
             }
         }
         
-        return error?.rawValue
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {

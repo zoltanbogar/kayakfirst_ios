@@ -14,14 +14,12 @@ class ManagerUpload {
     private static let preferences = UserDefaults.standard
     
     //MARK: functions
-    func callServer() -> String? {
-        let error = runServer(pointers: getPointers())
+    func callServer() {
+        let serverWasReachable = runServer(pointers: getPointers())
         
-        if error == nil {
+        if serverWasReachable {
             removeFromStack(uploadType: getUploadType())
         }
-        
-        return error
     }
     
     class func getStack() -> [String]? {
@@ -116,7 +114,7 @@ class ManagerUpload {
     }
     
     //MARK: abstract functions
-    internal func runServer(pointers: [String]?) -> String? {
+    internal func runServer(pointers: [String]?) -> Bool {
         fatalError("must be implemented")
     }
     

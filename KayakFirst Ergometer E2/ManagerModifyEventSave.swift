@@ -20,8 +20,9 @@ class ManagerModifyEventSave: ManagerModifyEvent {
         eventDbLoader.addData(data: data)
     }
     
-    override func runServer(pointers: [String]?) -> String? {
-        var error: Responses? = nil
+    override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachableUpload = true
+        var serverWasReachableEdit = true
         
         if let pointersValues = pointers {
             var eventListUpload = [Event]()
@@ -48,16 +49,16 @@ class ManagerModifyEventSave: ManagerModifyEvent {
             if eventListUpload.count > 0 {
                 let uploadEvent = UploadEvent(eventList: eventListUpload)
                 uploadEvent.run()
-                error = uploadEvent.error
+                serverWasReachableUpload = uploadEvent.serverWasReachable
             }
             
             for eventToEdit in eventListEdit {
                 let editEvent = EditEvent(event: eventToEdit)
                 editEvent.run()
-                error = editEvent.error
+                serverWasReachableEdit = editEvent.serverWasReachable
             }
         }
-        return error?.rawValue
+        return serverWasReachableUpload && serverWasReachableEdit
     }
     
     override func getUploadType() -> UploadType {
