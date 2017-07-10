@@ -29,7 +29,11 @@ class DownloadPlanByName: ServerService<[Plan]> {
                 plans = [Plan]()
                 
                 for planDto in jsonArray {
-                    plans?.append(Plan(json: planDto))
+                    let plan = Plan(json: planDto)
+                    
+                    if plan != nil {
+                        plans?.append(plan!)
+                    }
                 }
             }
         }

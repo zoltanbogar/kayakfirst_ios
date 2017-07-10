@@ -147,20 +147,29 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     //MARK: delete
     override func deleteData(predicate: Expression<Bool>?) -> Int {
+        let planList = loadData(predicate: predicate)
+        
         var deletedRows = 0
         
-        let deleteData = table!.filter(predicate!)
+        if planList != nil {
+            for plan in planList! {
+                deletedRows += deletePlan(plan: plan)
+            }
+        }
+        
+        return deletedRows
+    }
+    
+    func deletePlan(plan: PlanTraining) -> Int {
+        let deleteData = table!.filter(self.planId == plan.planId)
+        
+        var deletedRows = 0
         
         do {
             deletedRows = try db!.run(deleteData.delete())
         } catch {
             log(databaseLogTag, error)
         }
-        return deletedRows
-    }
-    
-    func deletePlan(plan: Plan) -> Int {
-        let deletedRows = deleteData(predicate: self.planId == plan.planId)
         
         joinPlanElementDbLoader.deleteData(predicate: joinPlanElementDbLoader.planId == plan.planId)
         

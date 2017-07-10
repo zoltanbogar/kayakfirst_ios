@@ -33,7 +33,11 @@ class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
                 planTrainings = [PlanTraining]()
                 
                 for planTrainingDto in jsonArray {
-                    planTrainings?.append(PlanTraining(json: planTrainingDto))
+                    let planTraining = PlanTraining(json: planTrainingDto)
+                    
+                    if planTraining != nil {
+                        planTrainings?.append(planTraining!)
+                    }
                 }
             }
         }

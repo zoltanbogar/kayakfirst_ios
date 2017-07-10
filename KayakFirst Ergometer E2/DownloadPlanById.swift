@@ -25,6 +25,8 @@ class DownloadPlanById: ServerService<Plan> {
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
+            log("JSON_TEST", "\(jsonValue.dictionary)")
+            
             plan = Plan(json: jsonValue)
         }
         return plan

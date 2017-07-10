@@ -52,7 +52,7 @@ class PlanTraining: Plan {
         self.sessionId = sessionId
     }
     
-    override init(json: JSON) {
+    override init?(json: JSON) {
         super.init(json: json)
         self.sessionId = json["sessionId"].doubleValue
     }

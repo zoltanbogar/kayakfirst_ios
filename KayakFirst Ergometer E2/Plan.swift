@@ -49,27 +49,32 @@ class Plan: PlanObject, ModifyAble {
         self.type = type
     }
     
-    init(json: JSON) {
+    init?(json: JSON) {
         self.planId = json["planId"].stringValue
         self.name = json["name"].stringValue
         self.notes = json["notes"].stringValue
         self.userId = json["userId"].int64Value
         self.length = json["length"].doubleValue
-        self.type = PlanType(rawValue: json["type"].stringValue)!
         
-        var planElements = [PlanElement]()
-        
-        for planElementDto in json["planElements"].arrayValue {
-            let planElement = PlanElement(
-                planElementId: planElementDto["planElementId"].stringValue,
-                position: planElementDto["position"].intValue,
-                intensity: planElementDto["intensity"].intValue,
-                type: PlanType(rawValue: planElementDto["type"].stringValue)!,
-                value: planElementDto["value"].doubleValue)
+        if PlanType(rawValue: json["type"].stringValue) == nil {
+            return nil
+        } else {
+            self.type = PlanType(rawValue: json["type"].stringValue)!
             
-            planElements.append(planElement)
+            var planElements = [PlanElement]()
+            
+            for planElementDto in json["planElements"].arrayValue {
+                let planElement = PlanElement(
+                    planElementId: planElementDto["planElementId"].stringValue,
+                    position: planElementDto["position"].intValue,
+                    intensity: planElementDto["intensity"].intValue,
+                    type: PlanType(rawValue: planElementDto["type"].stringValue)!,
+                    value: planElementDto["value"].doubleValue)
+                
+                planElements.append(planElement)
+            }
+            self.planElements = planElements
         }
-        self.planElements = planElements
     }
     
     //MARK: functions
