@@ -15,15 +15,15 @@
 "dashboard_title_av_200_metric"="Avg. 200m";
 "dashboard_title_av_500_metric"="Avg. 500m";
 "dashboard_title_av_1000_metric"="Avg. 1000m";
-"dashboard_title_av_200_imperial"="Avg. 1/4 mile/min";
-"dashboard_title_av_500_imperial"="Avg. 1/2 mile/min";
-"dashboard_title_av_1000_imperial"="Avg. 1 mile/min";
+"dashboard_title_av_200_imperial"="Avg. 1/4 mile";
+"dashboard_title_av_500_imperial"="Avg. 1/2 mile";
+"dashboard_title_av_1000_imperial"="Avg. 1 mile";
 "dashboard_title_actual_200_metric"="Actual 200m";
 "dashboard_title_actual_500_metric"="Actual 500m";
 "dashboard_title_actual_1000_metric"="Actual 1000m";
-"dashboard_title_actual_200_imperial"="Actual 1/4 mile/min";
-"dashboard_title_actual_500_imperial"="Actual 1/2 mile/min";
-"dashboard_title_actual_1000_imperial"="Actual 1 mile/min";
+"dashboard_title_actual_200_imperial"="Actual 1/4 mile";
+"dashboard_title_actual_500_imperial"="Actual 1/2 mile";
+"dashboard_title_actual_1000_imperial"="Actual 1 mile";
 "dashboard_title_stroke_min"="Strokes/min.";
 "dashboard_title_pull_force_metric"="Pull force (N)";
 "dashboard_title_pull_force_imperial"="Pull force (lbs)";
@@ -34,7 +34,7 @@
 "dashboard_title_current_speed_imperial"="Act. speed (mph)";
 "dashboard_title_av_speed_metric"="Avg. speed (km/h)";
 "dashboard_title_av_speed_imperial"="Avg. speed (mph)";
-"dashboard_title_drag_drop"="Drag &amp; Drop here";
+"dashboard_title_drag_drop"="Drag & Drop here";
 "dashboard_title_av_strokes"="Avg. strokes/min";
 "dashboard_title_av_pull_force_metric"="Avg. pull force (N)";
 "dashboard_title_av_pull_force_imperial"="Avg. pull force (lbs)";
@@ -98,13 +98,14 @@
 "dialog_title_reset_password"="Add your email address";
 "dialog_calibrating_sensor"="Stop paddling while calibrating!";
 "dialog_sync"="Synchronization...";
-"dialog_plan_no_elements"="This plan does not have any plan-elements";
+"dialog_plan_no_elements"="This training plan does not have any plan-elements.";
 "dialog_event_add_message"="Add to calendar?";
-"dialog_event_delete_title"="Do you really want to delete";
-"dialog_event_delete_message"="This Event will be lost, but you can find it in Plans for add to another day";
+"dialog_event_delete_title"="Do you really want to delete?";
+"dialog_event_delete_message"="This event will be lost, but the session you can find it in Plans for add to another day.";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";
+"notification_title_outdoor_running"="Outdoor is running...";
 
 //StartDelay
 "delay_start_seconds"="Your session will start in";
@@ -119,7 +120,7 @@
 "other_save"="Save";
 "other_next"="Next";
 "other_delete"="Delete";
-"other_power_save"="Power Save";
+"other_power_save"="Power saving";
 "other_search"="Search";
 
 //Navigation
@@ -137,7 +138,7 @@
 "calendar_empty_list"="There is no Training Data";
 "training_type"=" ";
 "training_log"="log";
-"calendar_empty_event"="There is no Event Data";
+"calendar_empty_event"="There is no event data.";
 
 //Chart
 "chart_training_no_value_selected"="In order to see chart please choose at least one value";
@@ -274,13 +275,13 @@
 "date_date"="Date";
 
 //Plan
-"plan_run"="Run";
+"plan_run"="Go!";
 "plan_plan"="Plan";
 "plan_name"="Name";
 "plan_done"="Done";
 "plan_notes"="Notes";
 "plan_edit_intervals"="Edit intervals";
-"plan_saved"="Plan saved";
+"plan_saved"="Plan saved!";
 "plan_hint_minute"="mm";
 "plan_hint_sec"="ss";
 "plan_hint_percent"="%";

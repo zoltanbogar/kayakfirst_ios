@@ -58,6 +58,7 @@ class ServerService<E> {
                     result = handleServiceCommunication(alamofireRequest: response)
                 } else if statusCode == 0 {
                     serverWasReachable = false
+                    error = initError(alamofireRequest: response)
                 } else {
                     error = initError(alamofireRequest: response)
                 }
@@ -135,7 +136,7 @@ class ServerService<E> {
             encoding: initEncoding(),
             headers: initHeader())
         
-        log("SERVER_TEST", "\(initParameters())")
+        log(alamofireLogTag, "\(initParameters())")
         
         return dataRequest.debugLog()
     }
@@ -175,6 +176,6 @@ class ServerService<E> {
                 }
             }
         }
-        return nil
+        return Responses.error_server_error
     }
 }
