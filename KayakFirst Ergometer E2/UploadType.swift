@@ -9,6 +9,7 @@
 import Foundation
 
 enum UploadType: String {
+    case pushIdUpload = "push_id_upload"
     case trainingUpload = "training_upload"
     case trainingAvgUpload = "training_avg_upload"
     case planSave = "plan_save"

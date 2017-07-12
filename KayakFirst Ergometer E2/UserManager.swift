@@ -118,6 +118,10 @@ class UserManager: BaseManager {
         return UserManagerType.update_pw
     }
     
+    func uploadPushId(pushId: String) -> Bool {
+        return ManagerUpload.addToStack(uploadType: UploadType.pushIdUpload, pointer: pushId)
+    }
+    
     func addUser(user: User?) {
         var userId: Int64 = 0
         var userName: String? = nil

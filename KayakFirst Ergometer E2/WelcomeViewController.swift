@@ -56,6 +56,10 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     func showMainView(isQuickStart: Bool) {
         UserManager.sharedInstance.isQuickStart = isQuickStart
         
+        if !isQuickStart {
+            PushNotificationHelper.uploadPushId()
+        }
+        
         let controller = MainTabViewController()
         self.present(controller, animated: true, completion: nil)
     }

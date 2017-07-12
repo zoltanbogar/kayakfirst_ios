@@ -158,6 +158,9 @@
 		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
 		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
 		065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */; };
+		066579E81F16013300E43852 /* UploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E71F16013300E43852 /* UploadPushId.swift */; };
+		066579EA1F16065000E43852 /* ManagerUploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E91F16065000E43852 /* ManagerUploadPushId.swift */; };
+		066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579ED1F161BD000E43852 /* PushNotificationHelper.swift */; };
 		066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00351EC7016700BE0E1F /* PlanElement.swift */; };
 		066B00381EC701B900BE0E1F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00371EC701B900BE0E1F /* Plan.swift */; };
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
@@ -488,6 +491,10 @@
 		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
 		065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
+		066579E71F16013300E43852 /* UploadPushId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPushId.swift; sourceTree = "<group>"; };
+		066579E91F16065000E43852 /* ManagerUploadPushId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadPushId.swift; sourceTree = "<group>"; };
+		066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KayakFirst Ergometer E2.entitlements"; sourceTree = "<group>"; };
+		066579ED1F161BD000E43852 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		066B00351EC7016700BE0E1F /* PlanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElement.swift; sourceTree = "<group>"; };
 		066B00371EC701B900BE0E1F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
@@ -941,6 +948,7 @@
 				061FF0C01F0BED4F0068E6E6 /* UploadType.swift */,
 				06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */,
 				06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */,
+				066579E91F16065000E43852 /* ManagerUploadPushId.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1039,6 +1047,7 @@
 				0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */,
 				065187211F0A506D00B434B0 /* UploadPlan.swift */,
 				065187231F0A50D000B434B0 /* UploadPlanTraining.swift */,
+				066579E71F16013300E43852 /* UploadPushId.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1056,6 +1065,14 @@
 				061148821E468121003A8FE6 /* UserUpdate.swift */,
 			);
 			name = user;
+			sourceTree = "<group>";
+		};
+		066579EC1F161BBD00E43852 /* cloud_message */ = {
+			isa = PBXGroup;
+			children = (
+				066579ED1F161BD000E43852 /* PushNotificationHelper.swift */,
+			);
+			name = cloud_message;
 			sourceTree = "<group>";
 		};
 		066B00391EC7156300BE0E1F /* plan */ = {
@@ -1401,6 +1418,8 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				066579EC1F161BBD00E43852 /* cloud_message */,
+				066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */,
 				0683EA361E74856D00F39988 /* fonts */,
 				060B99241E64288B00F72404 /* location */,
 				06C1B9861E25961300AB4C47 /* design */,
@@ -1554,6 +1573,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1733,6 +1755,7 @@
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
 				06AF23371F062812008805A2 /* PlanTraining.swift in Sources */,
+				066579E81F16013300E43852 /* UploadPushId.swift in Sources */,
 				067545C61F1132C9008759E7 /* WeightLabel.swift in Sources */,
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
@@ -1787,6 +1810,7 @@
 				069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */,
 				06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
+				066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
@@ -1975,6 +1999,7 @@
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
 				060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */,
+				066579EA1F16065000E43852 /* ManagerUploadPushId.swift in Sources */,
 				060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */,
 				06CAFF4F1F0D31CB00D2EA14 /* ManagerModifyPlanSave.swift in Sources */,
 				060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */,
@@ -2140,6 +2165,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KayakFirst Ergometer E2/KayakFirst Ergometer E2.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PE6XZ62XA5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2163,6 +2189,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "KayakFirst Ergometer E2/KayakFirst Ergometer E2.entitlements";
 				DEVELOPMENT_TEAM = PE6XZ62XA5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

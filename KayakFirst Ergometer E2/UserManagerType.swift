@@ -9,15 +9,17 @@
 import Foundation
 
 enum UserManagerType: Int, BaseManagerType {
-    case token_refresh = 0
-    case login_normal = 1
-    case login_facebook = 2
-    case login_google = 3
-    case register = 4
-    case logout = 5
-    case update_user = 6
-    case update_pw = 7
-    case reset_pw = 8
+    
+    case uploadPushId = 0
+    case token_refresh = 1
+    case login_normal = 2
+    case login_facebook = 3
+    case login_google = 4
+    case register = 5
+    case logout = 6
+    case update_user = 7
+    case update_pw = 8
+    case reset_pw = 9
     
     func isProgressShown() -> Bool {
         return self.rawValue > UserManagerType.token_refresh.rawValue

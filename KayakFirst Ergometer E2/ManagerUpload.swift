@@ -34,7 +34,7 @@ class ManagerUpload {
         return stack
     }
     
-    class func addToStack(uploadType: UploadType, pointer: String?) {
+    class func addToStack(uploadType: UploadType, pointer: String?) -> Bool {
         if UserManager.sharedInstance.getUser() != nil {
             UploadTimer.startTimer()
             
@@ -50,7 +50,10 @@ class ManagerUpload {
             
             preferences.setPersistentDomain(dictionary, forName: getDbUpload())
             preferences.synchronize()
+            
+            return true
         }
+        return false
     }
     
     class func getManagerUploadByType(uploadType: String) -> [ManagerUpload] {
@@ -73,6 +76,8 @@ class ManagerUpload {
             managerUploads.append(ManagerModifyPlanTrainingSave(data: nil))
         case UploadType.trainingDelete.rawValue:
             managerUploads.append(ManagerModifyTrainingDelete(data: nil))
+        case UploadType.pushIdUpload.rawValue:
+            managerUploads.append(ManagerUploadPushId())
         default:
             break
         }

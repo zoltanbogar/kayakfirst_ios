@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import FBSDKLoginKit
 import Google
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    static var buildString: String {
+        get {
+            if let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                return build
+            } else {
+                return "1"
+            }
+        }
+    }
 
     var window: UIWindow?
 
@@ -34,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initKeyboardManager()
         deleteOldData()
         initCrashlytics(appdelegate: self)
+        registerForPushNotifications()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -92,6 +103,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    //MARK: push notifications
+    func registerForPushNotifications() {
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in
+                guard granted else { return }
+                self.getNotificationSettings()
+            }
+        }
+            // iOS 9 support
+        else if #available(iOS 9, *) {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func getNotificationSettings() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                guard settings.authorizationStatus == .authorized else { return }
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        
+        print("APNs device token: \(deviceTokenString)")
+        
+        PushNotificationHelper.setToken(pushToken: deviceTokenString)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
