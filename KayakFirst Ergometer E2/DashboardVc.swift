@@ -60,6 +60,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         batterySaveHelper.activate(isActivate: false)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        viewDashboardPlan.viewDidLayoutSubViews()
+    }
+    
     //MARK: button listeners
     @objc private func btnPlayPauseClick() {
         if let parent = self.parent as? TrainingViewController {

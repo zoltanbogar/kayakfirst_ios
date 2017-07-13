@@ -46,6 +46,10 @@ class DashboardPlanView: RefreshView {
     }
     
     //MARK: functions
+    func viewDidLayoutSubViews() {
+        viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: .verticalSlow)
+    }
+    
     override func startRefresh(_ isStart: Bool) {
         if isStart {
             super.startRefresh(true)
@@ -320,10 +324,7 @@ class DashboardPlanView: RefreshView {
         }
         view.addSubview(self.viewGrad)
         self.viewGrad.snp.makeConstraints { (make) in
-            make.left.equalTo(view)
-            make.right.equalTo(view)
-            make.bottom.equalTo(view)
-            make.height.equalTo(100)
+            make.edges.equalToSuperview()
         }
         
         return view
@@ -339,11 +340,6 @@ class DashboardPlanView: RefreshView {
     
     private lazy var viewGrad: UIView! = {
         let view = UIView()
-        
-        view.backgroundColor = Colors.colorTransparent
-        
-        //TODO: gradient
-        view.applyGradient(withColours: [Colors.colorAccent, Colors.colorGreen], gradientOrientation: GradientOrientation.topRightBottomLeft)
         
         return view
     }()

@@ -38,16 +38,7 @@ extension UIView {
         return self.frame.contains(gestureRecognizer.location(in: superView))
     }
     
-    //MARK: gradient
-    func applyGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation) -> Void {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colours.map { $0.cgColor }
-        gradient.startPoint = orientation.startPoint
-        gradient.endPoint = orientation.endPoint
-        self.layer.insertSublayer(gradient, at: 0)
-    }
-    
+    //MARK: shadow
     func setAppShadow() {
         layer.shadowOffset = CGSize(width: 2.0, height: 1.0)
         layer.shadowRadius = 2.0
@@ -56,12 +47,28 @@ extension UIView {
         clipsToBounds = false
     }
     
+    //MARK: border
     func showAppBorder() {
         layer.borderWidth = dashboardDividerWidth
         layer.borderColor = Colors.colorDashBoardDivider.cgColor
     }
+    
+    //MARK: gradient
+    func applyGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation) -> Void {
+        self.layer.addSublayer(getGradient(withColours: colours, gradientOrientation: orientation))
+    }
+    
+    func getGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.startPoint = orientation.startPoint
+        gradient.endPoint = orientation.endPoint
+        return gradient
+    }
 }
 
+//MARK: gradient helper
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
 
 enum GradientOrientation {
@@ -69,6 +76,7 @@ enum GradientOrientation {
     case topLeftBottomRight
     case horizontal
     case vertical
+    case verticalSlow
     
     var startPoint : CGPoint {
         get { return points.startPoint }
@@ -89,7 +97,11 @@ enum GradientOrientation {
                 return (CGPoint.init(x: 0.0,y: 0.5), CGPoint.init(x: 1.0,y: 0.5))
             case .vertical:
                 return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 0.0,y: 1.0))
+            case .verticalSlow:
+                return (CGPoint.init(x: 0.0,y: 0.25), CGPoint.init(x: 0.0,y: 0.45))
             }
         }
     }
 }
+
+
