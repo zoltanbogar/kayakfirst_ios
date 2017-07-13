@@ -10,6 +10,13 @@ import UIKit
 
 class PlanOrNotPlanVc: BaseVC {
     
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        downloadMessage()
+    }
+    
     //MARK: initView
     override func initView() {
         let mainstackView = UIStackView()

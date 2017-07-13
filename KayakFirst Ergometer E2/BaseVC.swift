@@ -176,6 +176,17 @@ class BaseVC: UIViewController {
         //override if needed
     }
     
+    internal func downloadMessage() {
+        UserManager.sharedInstance.messageCallback = { data, error in
+            if error != nil {
+                errorHandlingWithAlert(viewController: self, error: error)
+            } else if data != nil {
+                ErrorDialog(errorString: data!).show()
+            }
+        }
+        UserManager.sharedInstance.getMessage()
+    }
+    
     //MARK: abstract functions
     func initView() {
         fatalError("Must be implemented")

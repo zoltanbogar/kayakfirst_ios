@@ -306,6 +306,7 @@
 		06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */; };
 		06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CB1E463DB6002AA9D0 /* UserRegister.swift */; };
 		06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657CD1E463DD5002AA9D0 /* UserDto.swift */; };
+		06F7D7B51F17D6260081E473 /* DownloadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F7D7B41F17D6260081E473 /* DownloadMessage.swift */; };
 		06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */; };
 		06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */; };
 		06F8A0921F0E8357006CE6FB /* DeleteEventDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */; };
@@ -646,6 +647,7 @@
 		06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		06F657CB1E463DB6002AA9D0 /* UserRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		06F657CD1E463DD5002AA9D0 /* UserDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
+		06F7D7B41F17D6260081E473 /* DownloadMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadMessage.swift; sourceTree = "<group>"; };
 		06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePlanDialog.swift; sourceTree = "<group>"; };
 		06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTrainingDialog.swift; sourceTree = "<group>"; };
 		06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteEventDialog.swift; sourceTree = "<group>"; };
@@ -1029,6 +1031,7 @@
 				06AF23431F067F06008805A2 /* DownloadPlanById.swift */,
 				06AF23451F06801B008805A2 /* DownloadPlanByName.swift */,
 				06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */,
+				06F7D7B41F17D6260081E473 /* DownloadMessage.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -1906,6 +1909,7 @@
 				06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */,
 				066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
+				06F7D7B51F17D6260081E473 /* DownloadMessage.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,

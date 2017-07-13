@@ -48,6 +48,7 @@ class UserManager: BaseManager {
     var resetPwCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var updateUserCallback: ((_ data: User?, _ error: Responses?) -> ())?
     var updatePwCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    var messageCallback: ((_ data: String?, _ error: Responses?) -> ())?
     
     //MARK: server endpoints
     func register(userDto: UserDto) -> BaseManagerType {
@@ -120,6 +121,11 @@ class UserManager: BaseManager {
     
     func uploadPushId(pushId: String) -> Bool {
         return ManagerUpload.addToStack(uploadType: UploadType.pushIdUpload, pointer: pushId)
+    }
+    
+    func getMessage() {
+        let downloadMessage = DownloadMessage()
+        runUser(serverService: downloadMessage, managerCallBack: messageCallback)
     }
     
     func addUser(user: User?) {

@@ -32,6 +32,8 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         super.viewDidLoad()
         
         initGoogleSignIn()
+        
+        downloadMessage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
