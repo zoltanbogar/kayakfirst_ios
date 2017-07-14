@@ -35,7 +35,7 @@ class EventTableView: TableViewWithEmpty<PlanEvent> {
         return EventTabLeViewCell.self
     }
     
-    override func getHeaderView() -> UIView? {
+    override func getHeaderView() -> AppTableViewHeader? {
         return headerView
     }
     

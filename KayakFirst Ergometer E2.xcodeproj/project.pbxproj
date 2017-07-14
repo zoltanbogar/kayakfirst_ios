@@ -18,6 +18,8 @@
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
 		0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602DEB51ECD635A000E4793 /* PEDashboardTableView.swift */; };
+		060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060468A01F189CB400D3408C /* PlanTypeView.swift */; };
+		060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060468A21F18BF6300D3408C /* AppTableViewHeader.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
 		06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */; };
 		06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */; };
@@ -351,6 +353,8 @@
 		0602B44D1E23CAF000ABA70F /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		0602D3AB1E3156CA001E382E /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0602DEB51ECD635A000E4793 /* PEDashboardTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PEDashboardTableView.swift; sourceTree = "<group>"; };
+		060468A01F189CB400D3408C /* PlanTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTypeView.swift; sourceTree = "<group>"; };
+		060468A21F18BF6300D3408C /* AppTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewHeader.swift; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
 		06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsTableView.swift; sourceTree = "<group>"; };
 		06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDetailsCell.swift; sourceTree = "<group>"; };
@@ -816,6 +820,7 @@
 				066B004A1EC758DF00BE0E1F /* training */,
 				060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */,
 				060D9B9D1E4A5E46006DD8AB /* TableViewWithEmpty.swift */,
+				060468A21F18BF6300D3408C /* AppTableViewHeader.swift */,
 			);
 			name = table_view;
 			sourceTree = "<group>";
@@ -1159,6 +1164,7 @@
 				067790C11ED9A54D0002AA59 /* PlanTimeLineView.swift */,
 				067129521EC8775600362C39 /* KeyboardNumView.swift */,
 				0646A4AB1EF3A9000074101E /* ColorizedButton.swift */,
+				060468A01F189CB400D3408C /* PlanTypeView.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1800,6 +1806,7 @@
 				06AF23461F06801B008805A2 /* DownloadPlanByName.swift in Sources */,
 				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
+				060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
@@ -1932,6 +1939,7 @@
 				064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */,
 				061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */,
 				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */,
+				060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* EventTablewViewHeader.swift in Sources */,
 				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,

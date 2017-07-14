@@ -35,7 +35,7 @@ class PlanTableView: TableViewWithEmpty<Plan> {
         return PlanTableViewCell.self
     }
     
-    override func getHeaderView() -> UIView? {
+    override func getHeaderView() -> AppTableViewHeader? {
         return headerView
     }
     

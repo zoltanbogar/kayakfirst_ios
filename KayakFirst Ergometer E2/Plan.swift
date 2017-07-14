@@ -130,7 +130,7 @@ class Plan: PlanObject, ModifyAble {
     static func getFormattedValue(planType: PlanType, value: Double) -> String {
         switch planType {
         case PlanType.distance:
-            let formattedValue = String.init(format: "%.1f", UnitHelper.getDistanceValue(metricValue: value))
+            let formattedValue = String.init(format: "%.0f", UnitHelper.getDistanceValue(metricValue: value))
             let unit = UnitHelper.getDistanceUnit()
             
             return "\(formattedValue) \(unit)"

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventTableViewHeader: UIView {
+class EventTableViewHeader: AppTableViewHeader {
     
     //MARK: contstants
     private let fontSize: CGFloat = 10
@@ -24,6 +24,11 @@ class EventTableViewHeader: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: functions
+    override func getRowHeight() -> CGFloat {
+        return fontSize + margin05
     }
     
     //MARK: init view

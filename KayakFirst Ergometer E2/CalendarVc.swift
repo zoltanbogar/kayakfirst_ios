@@ -81,16 +81,16 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
         }
         
-        viewTableView.addSubview(tableViewTraining)
-        tableViewTraining.snp.makeConstraints { (make) in
-            make.top.equalTo(viewTableView)
-            make.left.equalTo(viewTableView)
-            make.right.equalTo(viewTableView)
-            make.bottom.equalTo(viewTableView)
-        }
-        
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
+        
+        let offset = UIScreen.main.bounds.height >= 600 ? (margin2 * 2) : -margin
+        
+        log("SIZE_TEST", "\(UIScreen.main.bounds.height)")
+        
+        viewTableView.snp.makeConstraints { (make) in
+            make.height.equalTo(cvCalendarView).offset(offset)
+        }
         
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in

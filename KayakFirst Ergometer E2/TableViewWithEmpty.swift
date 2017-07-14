@@ -80,6 +80,14 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         return getHeaderView()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if let header = getHeaderView() {
+            return header.getRowHeight()
+        } else {
+            return 0
+        }
+    }
+    
     //MARK: abstract functions
     func getEmptyView() -> UIView {
         fatalError("Must be implemented")
@@ -89,7 +97,7 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
         fatalError("Must be implemented")
     }
     
-    func getHeaderView() -> UIView? {
+    func getHeaderView() -> AppTableViewHeader? {
         //override if needed
         return nil
     }

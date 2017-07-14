@@ -8,13 +8,27 @@
 
 import UIKit
 
-class PlanOrNotPlanVc: BaseVC {
+class PlanOrNotPlanVc: BaseVC, PlanTypeSelectListener {
     
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         downloadMessage()
+    }
+    
+    //MARK: button listeners
+    @objc private func clickRun() {
+        show(MainVc(), sender: self)
+    }
+    
+    //MARK: protocol
+    func timeSelected() {
+        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.time)
+    }
+    
+    func distanceSelected() {
+        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.distance)
     }
     
     //MARK: initView
@@ -30,23 +44,10 @@ class PlanOrNotPlanVc: BaseVC {
             make.height.equalTo(dashboardDividerWidth)
         }
         
-        let planStackView = UIStackView()
-        planStackView.axis = .horizontal
-        
-        planStackView.addArrangedSubview(viewTime)
-        
-        let halfDivider = HalfDivider()
-        planStackView.addArrangedSubview(halfDivider)
-        
-        planStackView.addArrangedSubview(viewDistance)
-        mainstackView.addArrangedSubview(planStackView)
-        
-        viewTime.snp.makeConstraints { (make) in
-            make.width.equalTo(viewDistance)
-        }
+        mainstackView.addArrangedSubview(planTypeView)
         
         viewRun.snp.makeConstraints { (make) in
-            make.height.equalTo(planStackView)
+            make.height.equalTo(planTypeView)
         }
         
         contentView.addSubview(mainstackView)
@@ -75,66 +76,11 @@ class PlanOrNotPlanVc: BaseVC {
         return view
     }()
     
-    private lazy var viewTime: UIView! = {
-        let view = UIView()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickTime)))
+    private lazy var planTypeView: PlanTypeView! = {
+        let view = PlanTypeView()
         
-        let label = BebasUILabel()
-        label.text = getString("plan_plan")
-        label.textAlignment = .center
-        label.font = label.font.withSize(56)
-        
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "durationIcon")
-        
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints({ (make) in
-            make.center.equalTo(view).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
-        })
-        view.addSubview(label)
-        label.snp.makeConstraints({ (make) in
-            make.top.equalTo(view.snp.top).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
-            make.centerX.equalTo(view.snp.centerX)
-        })
+        view.planTypeSelectListener = self
         
         return view
     }()
-    
-    private lazy var viewDistance: UIView! = {
-        let view = UIView()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickDistance)))
-        
-        let label = BebasUILabel()
-        label.text = getString("plan_plan")
-        label.textAlignment = .center
-        label.font = label.font.withSize(56)
-        
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "distanceIcon")
-        
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints({ (make) in
-            make.center.equalTo(view).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
-        })
-        view.addSubview(label)
-        label.snp.makeConstraints({ (make) in
-            make.top.equalTo(view.snp.top).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
-            make.centerX.equalTo(view.snp.centerX)
-        })
-        
-        return view
-    }()
-    
-    //MARK: button listeners
-    @objc private func clickRun() {
-        show(MainVc(), sender: self)
-    }
-    
-    @objc private func clickTime() {
-        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.time)
-    }
-    
-    @objc private func clickDistance() {
-        startPlanListVc(navigationController: self.navigationController!, planType: PlanType.distance)
-    }
 }

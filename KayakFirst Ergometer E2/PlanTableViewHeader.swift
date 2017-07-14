@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlanTableViewHeader: UIView {
+class PlanTableViewHeader: AppTableViewHeader {
     
     //MARK: contstants
     private let fontSize: CGFloat = 10
@@ -24,6 +24,11 @@ class PlanTableViewHeader: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: functions
+    override func getRowHeight() -> CGFloat {
+        return trainingRowHeight
     }
     
     //MARK: init view
@@ -62,10 +67,9 @@ class PlanTableViewHeader: UIView {
         stackView.snp.makeConstraints { (make) in
             make.left.equalTo(self)
             make.right.equalTo(self)
-            make.height.equalTo(50)
+            make.height.equalTo(trainingRowHeight)
             make.bottom.equalTo(divider)
         }
-
     }
     
     //MARK: views

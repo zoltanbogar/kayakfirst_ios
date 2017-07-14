@@ -32,7 +32,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     //MARK: constants
     private let btnDeleteRadius: CGFloat = 400
     private let fontSize: CGFloat = 30
-    private let fontSizeEdit: CGFloat = 45
+    private let fontSizeEdit: CGFloat = 35
     
     //MARK: properties
     var plan: Plan?
@@ -68,21 +68,21 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             make.left.equalTo(contentView).offset(margin05)
             make.top.equalTo(contentView).offset(margin05)
             make.bottom.equalTo(contentView)
-            make.width.equalTo(100)
+            make.width.equalTo(95)
         }
         
         contentView.addSubview(intensityView)
         intensityView.snp.makeConstraints { (make) in
-            make.width.equalTo(80)
-            make.right.equalTo(contentView).offset(-margin05)
+            make.width.equalTo(70)
+            make.right.equalTo(contentView)
             make.top.equalTo(planElementTableView)
-            make.height.equalTo(70)
+            make.height.equalTo(55)
         }
         
         contentView.addSubview(keyboardView)
         keyboardView.snp.makeConstraints { (make) in
-            make.top.equalTo(intensityView.snp.bottom).offset(margin)
-            make.right.equalTo(intensityView)
+            make.top.equalTo(intensityView.snp.bottom).offset(margin2)
+            make.right.equalTo(intensityView).offset(-margin05)
             make.bottom.equalTo(contentView.snp.bottom).offset(-128)
             make.left.equalTo(planElementTableView.snp.right).offset(margin)
         }
@@ -136,7 +136,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             make.left.equalTo(keyboardView)
             make.top.equalTo(intensityView)
             make.bottom.equalTo(intensityView)
-            make.right.equalTo(intensityView.snp.left).offset(-margin)
+            make.right.equalTo(intensityView.snp.left).offset(-margin05)
         })
     }
     
@@ -205,7 +205,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         let labelPercent = BebasUILabel()
         labelPercent.text = "%"
         labelPercent.textAlignment = .center
-        labelPercent.font = labelPercent.font.withSize(self.fontSize)
+        labelPercent.font = labelPercent.font.withSize(20)
         
         labelPercent.snp.makeConstraints({ (make) in
             make.width.equalTo(self.fontSize)

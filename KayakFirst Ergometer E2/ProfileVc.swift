@@ -59,7 +59,7 @@ class ProfileVc: MainTabVc {
             scrollView = AppScrollView(view: contentView)
             stackView = UIStackView()
             stackView?.axis = .vertical
-            stackView?.spacing = margin05
+            stackView?.spacing = margin
             
             scrollView!.addSubview(imgProfile)
             imgProfile.snp.makeConstraints { (make) in

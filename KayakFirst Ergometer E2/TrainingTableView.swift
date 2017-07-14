@@ -35,7 +35,7 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         return TrainingTablewViewCell.self
     }
     
-    override func getHeaderView() -> UIView? {
+    override func getHeaderView() -> AppTableViewHeader? {
         return headerView
     }
     
@@ -55,7 +55,7 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         return label
     }()
     
-    private lazy var headerView: UIView! = {
+    private lazy var headerView: AppTableViewHeader! = {
         let view = TrainingTableViewHeader()
         
         return view
