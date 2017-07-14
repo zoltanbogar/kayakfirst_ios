@@ -74,7 +74,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         contentView.addSubview(intensityView)
         intensityView.snp.makeConstraints { (make) in
             make.width.equalTo(70)
-            make.right.equalTo(contentView)
+            make.right.equalTo(contentView).offset(-margin05)
             make.top.equalTo(planElementTableView)
             make.height.equalTo(55)
         }
@@ -82,9 +82,9 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         contentView.addSubview(keyboardView)
         keyboardView.snp.makeConstraints { (make) in
             make.top.equalTo(intensityView.snp.bottom).offset(margin2)
-            make.right.equalTo(intensityView).offset(-margin05)
+            make.right.equalTo(intensityView)
             make.bottom.equalTo(contentView.snp.bottom).offset(-128)
-            make.left.equalTo(planElementTableView.snp.right).offset(margin)
+            make.left.equalTo(planElementTableView.snp.right).offset(margin05)
         }
         
         setUIForType()
@@ -208,7 +208,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         labelPercent.font = labelPercent.font.withSize(20)
         
         labelPercent.snp.makeConstraints({ (make) in
-            make.width.equalTo(self.fontSize)
+            make.width.equalTo(self.fontSize / 2)
         })
         
         stackView.addArrangedSubview(labelPercent)
