@@ -21,6 +21,8 @@ class TrainingService: CycleStateChangeListener {
     
     private var realDuration: Double = 0
     
+    private var isCycleStopped = false
+    
     //MARK: init
     internal init() {
         telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
@@ -110,9 +112,13 @@ class TrainingService: CycleStateChangeListener {
     
     private func startDuration() {
         DispatchQueue.global().async {
-            while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
+            while !self.isCycleStopped {
                 self.setDuration()
+                
+                usleep(UInt32(RefreshView.refreshMillis * 1000))
             }
+            
+            self.setDurationBack()
         }
     }
     
@@ -137,11 +143,12 @@ class TrainingService: CycleStateChangeListener {
     func onCycleStateChanged(newCycleState: CycleState) {
         switch newCycleState {
         case CycleState.resumed:
+            isCycleStopped = false
             startLoop()
         case CycleState.idle:
             reset()
         case CycleState.stopped:
-            setDurationBack()
+            isCycleStopped = true
             telemetry.resetCurrent()
             handleStopTraining()
         default:
