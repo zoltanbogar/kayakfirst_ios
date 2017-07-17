@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initCrashlytics(appdelegate: self)
         registerForPushNotifications()
         
+        downloadMessage()
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -73,9 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func deleteOldData() {
-        DispatchQueue.global().async {
-            AppSql.deleteOldData()
+        TrainingManager.sharedInstance.deleteOldData()
+    }
+    
+    private func downloadMessage() {
+        UserManager.sharedInstance.messageCallback = { data, error in
+            if error != nil {
+                if let vc = UIApplication.shared.keyWindow?.rootViewController {
+                    errorHandlingWithAlert(viewController: vc, error: error)
+                }
+            } else if data != nil {
+                ErrorDialog(errorString: data!).show()
+            }
         }
+        UserManager.sharedInstance.getMessage()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

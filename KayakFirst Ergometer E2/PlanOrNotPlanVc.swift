@@ -10,13 +10,6 @@ import UIKit
 
 class PlanOrNotPlanVc: BaseVC, PlanTypeSelectListener {
     
-    //MARK: lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        downloadMessage()
-    }
-    
     //MARK: button listeners
     @objc private func clickRun() {
         show(MainVc(), sender: self)

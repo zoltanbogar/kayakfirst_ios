@@ -167,6 +167,10 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         return trainingList
     }
     
+    override func getDeleteOldDataPredicate() -> Expression<Bool> {
+        return self.sessionId < getOldDataTimestamp()
+    }
+    
     //MARK: protocol
     override func loadUploadAbleData(pointer: Double) -> [Training]? {
         let predicate = self.timeStamp > pointer

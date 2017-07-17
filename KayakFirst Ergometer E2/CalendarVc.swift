@@ -52,7 +52,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //TODO: by back navigation it will always reload
         refreshContentWithMode()
     }
     
@@ -495,7 +494,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         }
     }
     
-    //TODO: bug: if calendar swipes a little the training data will be empty for this day
     private func refreshMonth(timeStamp: TimeInterval) {
         labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
         cvCalendarView.contentController.refreshPresentedMonth()

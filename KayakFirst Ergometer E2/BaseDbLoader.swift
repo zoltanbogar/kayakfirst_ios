@@ -13,6 +13,7 @@ class BaseDbLoader<Input> {
     
     //MARK: constants
     let databaseLogTag = "DATABASE"
+    private let oldDataDays: TimeInterval = 30
     
     //MARK: properties
     let db = AppSql.sharedInstance.db
@@ -41,17 +42,6 @@ class BaseDbLoader<Input> {
             log(databaseLogTag, error)
         }
     }
-
-    //TODO: is it sure?
-    func deleteData(timeStampFrom: Double) {
-        let oldData = table!.filter(self.sessionId < timeStampFrom)
-        
-        do {
-            try db?.run(oldData.delete())
-        } catch {
-            log(databaseLogTag, error)
-        }
-    }
     
     func loadData(predicate: Expression<Bool>?) -> [Input]? {
         return queryData(predicate: getSumPredicate(predicates: getUserQuery(), predicate))
@@ -59,6 +49,13 @@ class BaseDbLoader<Input> {
     
     func getUserQuery() -> Expression<Bool> {
         return self.userId == UserManager.sharedInstance.getUser()!.id
+    }
+    
+    func getOldDataTimestamp() -> Double {
+        let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
+        let timestamp = currentTimeMillis() - oldaDataDaysInMillis
+        
+        return timestamp
     }
     
     //MARK: static functions

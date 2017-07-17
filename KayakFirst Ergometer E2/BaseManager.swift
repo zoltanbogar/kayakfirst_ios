@@ -94,7 +94,6 @@ class BaseManager {
     }
     
     private func handlePostExecuteDownload(managerDownload: ManagerDownloadProtocol) {
-        //TODO: test it
         if managerDownloadList != nil {
             for i in 0..<managerDownloadList!.count {
                 

@@ -65,4 +65,14 @@ class TrainingManager: BaseManager {
         runModify(managerModify: manager, managerCallBack: managerCallback)
         return TrainingManagerType.delete_training
     }
+    
+    func deleteOldData() {
+        DispatchQueue.global().async {
+            let trainingDbLoader = TrainingDbLoader.sharedInstance
+            trainingDbLoader.deleteData(predicate: trainingDbLoader.getDeleteOldDataPredicate())
+            
+            let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+            trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getDeleteOldDataPredicate())
+        }
+    }
 }
