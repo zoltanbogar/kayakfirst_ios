@@ -234,9 +234,18 @@ class EventDetailsViewController: BaseVC {
             make.right.equalTo(contentView)
         }
         
+       initPickers()
+    }
+    
+    private func initPickers() {
         datePickerView.datePickerMode = .date
         datePickerView.minimumDate = Date()
         timePickerView.datePickerMode = .time
+        
+        if let timestamp = planEvent?.event.timestamp {
+            datePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
+            timePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
+        }
     }
     
     override func initTabBarItems() {
