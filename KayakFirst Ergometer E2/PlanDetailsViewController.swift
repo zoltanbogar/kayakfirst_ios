@@ -145,18 +145,6 @@ class PlanDetailsViewController: BaseVC {
             let manager = planManager.savePlan(plan: PlanDetailsViewController.plan!, managerCallBack: planCallback)
             showProgress(baseManagerType: manager)
         }
-        
-        if self.parentVc != nil && self.parentVc! is CreatePlanViewController {
-            
-            self.dismiss(animated: true, completion: {
-                log("NAV_TEST", "self.parent is CreatePlanViewController")
-                
-                (self.parentVc! as! CreatePlanViewController).dismiss(animated: false, completion: nil)
-            })
-            
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
     }
     
     private func showEventDetailsVc() {
@@ -193,6 +181,16 @@ class PlanDetailsViewController: BaseVC {
         dismissProgress()
         
         errorHandlingWithAlert(viewController: self, error: error)
+        
+        if self.parentVc != nil && self.parentVc! is CreatePlanViewController {
+            
+            self.dismiss(animated: true, completion: {
+                (self.parentVc! as! CreatePlanViewController).dismiss(animated: false, completion: nil)
+            })
+            
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     private func deletePlanCallback(data: Bool?, error: Responses?) {

@@ -194,7 +194,11 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         dashboardElement3?.startRefresh(isRefresh)
         dashboardElement4?.startRefresh(isRefresh)
         
-        viewDashboardPlan.startRefresh(isRefresh)
+        if plan != nil {
+            viewDashboardPlan.startRefresh(isRefresh)
+        } else {
+            viewDashboardPlan.startRefresh(false)
+        }
     }
     
     //MARK: views
@@ -267,9 +271,9 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     func setPlantoPlanView() {
         if plan != nil {
             planTraining = PlanTraining.createPlanTraining(plan: plan!)
-            
-            viewDashboardPlan.plan = plan
         }
+        
+        viewDashboardPlan.plan = plan
     }
     
     private func savePlan() {

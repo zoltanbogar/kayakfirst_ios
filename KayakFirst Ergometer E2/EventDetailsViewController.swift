@@ -65,7 +65,11 @@ class EventDetailsViewController: BaseVC {
                 setTabbarItem(tabbarItems: [btnSave])
             }
         } else {
-            setTabbarItem(tabbarItems: [btnEdit])
+            if planEvent != nil && planEvent!.event.sessionId != 0 {
+                setTabbarItem(tabbarItems: [])
+            } else {
+               setTabbarItem(tabbarItems: [btnEdit])
+            }
         }
         etDate.active = isEdit
         etStart.active = isEdit
@@ -174,14 +178,6 @@ class EventDetailsViewController: BaseVC {
             }
             let managerType = EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: eventSaveCallback)
             showProgress(baseManagerType: managerType)
-            
-            if self.parentVc != nil && self.parentVc is PlanDetailsViewController {
-                self.dismiss(animated: true, completion:  {
-                    (self.parentVc! as! PlanDetailsViewController).eventSaved()
-                })
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
         }
     }
     
@@ -198,6 +194,14 @@ class EventDetailsViewController: BaseVC {
     //MARK: manager callback
     private func eventSaveCallback(data: Bool?, error: Responses?) {
         dismissProgress()
+        
+        if self.parentVc != nil && self.parentVc is PlanDetailsViewController {
+            self.dismiss(animated: true, completion:  {
+                (self.parentVc! as! PlanDetailsViewController).eventSaved()
+            })
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func eventDeleteCallback(data: Bool?, error: Responses?) {

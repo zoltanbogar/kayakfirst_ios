@@ -53,7 +53,8 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     }
     
     private func initPlayEnable() {
-        let isEnable = DateFormatHelper.isSameDay(timeStamp1: (planEvent?.event.timestamp)!, timeStamp2: currentTimeMillis())
+        var isEnable = DateFormatHelper.isSameDay(timeStamp1: (planEvent?.event.timestamp)!, timeStamp2: currentTimeMillis())
+        isEnable = isEnable && planEvent!.event.sessionId == 0
         
         let color: UIColor?
         

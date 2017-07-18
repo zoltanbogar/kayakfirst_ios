@@ -67,6 +67,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         telemetry.cycleState = CycleState.idle
         dashboardVc = DashboardVc()
         dashboardVc!.plan = plan
+        dashboardVc!.event = event
         pushViewController(dashboardVc!, animated: true)
     }
     

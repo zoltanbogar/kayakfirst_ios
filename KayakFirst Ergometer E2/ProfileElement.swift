@@ -65,7 +65,7 @@ class ProfileElement: DialogElementTextField {
         }
         
         errorLabel.snp.makeConstraints { make in
-            make.left.equalTo(valueTextField)
+            make.right.equalTo(valueTextField)
             make.top.equalTo(valueTextField.snp.bottom).offset(margin05)
             make.width.equalTo(self)
         }
