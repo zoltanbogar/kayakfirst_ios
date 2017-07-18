@@ -77,7 +77,9 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     
     private func addPlanWithChildren(plan: Plan) {
         if let planElements = plan.planElements {
-            for planElement in planElements {
+            for i in 0..<planElements.count {
+                var planElement = planElements[i]
+                planElement.position = i
                 planElementDbLoader.addData(data: planElement)
                 joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: plan.planId, planElementId: planElement.planElementId))
             }

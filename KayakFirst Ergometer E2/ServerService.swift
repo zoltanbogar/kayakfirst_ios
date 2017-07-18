@@ -54,6 +54,8 @@ class ServerService<E> {
                 
                 let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
                 
+                log(alamofireLogTag, response)
+                
                 if statusCode! >= 200 && statusCode! < 300 {
                     result = handleServiceCommunication(alamofireRequest: response)
                 } else if statusCode == 0 {

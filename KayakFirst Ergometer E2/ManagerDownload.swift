@@ -15,7 +15,8 @@ protocol ManagerDownloadProtocol {
 class ManagerDownload<E> {
     
     //MARK: constants
-    private let timeCacheMillis: Double = 2 * 60 * 1000 //2 mins
+    //TODO: it should be 2 * 60 * 1000
+    private let timeCacheMillis: Double = 1000 //2 mins
     
     //MARK: properties
     private let preferences = UserDefaults.standard

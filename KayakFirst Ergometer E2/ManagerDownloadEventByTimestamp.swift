@@ -83,7 +83,10 @@ class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]>, ManagerDown
     override func addDataToLocale(data: [PlanEvent]?) {
         if let planEvents = data {
             for planEvent in planEvents {
+                planDbLoader.deletePlan(plan: planEvent.plan)
                 planDbLoader.addData(data: planEvent.plan)
+                
+                eventDbLoader.deleteData(predicate: getQueryEventId(eventId: planEvent.event.eventId))
                 eventDbLoader.addData(data: planEvent.event)
             }
         }
@@ -116,6 +119,10 @@ class ManagerDownloadEventByTimestamp: ManagerDownload<[PlanEvent]>, ManagerDown
     
     private func getQueryPlanId(planId: String) -> Expression<Bool> {
         return planDbLoader.getIdPredicate(planId: planId)
+    }
+    
+    private func getQueryEventId(eventId: String) -> Expression<Bool> {
+        return eventDbLoader.getIdPredicate(eventId: eventId)!
     }
     
 }
