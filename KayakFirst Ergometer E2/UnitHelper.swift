@@ -73,12 +73,11 @@ class UnitHelper {
         }
     }
     
-    //TODO: lbs is for 'kg' not for 'Newton'
     class func getForceValue(metricValue: Double) -> Double {
         if isMetricWeight() {
             return metricValue
         } else {
-            return metricValue * 0.224808942443
+            return metricValue * 7.23301408015
         }
     }
     
