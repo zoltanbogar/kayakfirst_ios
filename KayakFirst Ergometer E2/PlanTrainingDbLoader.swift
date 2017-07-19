@@ -44,7 +44,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     //MARK: init database
     override func initDatabase(database: Connection) throws {
         try database.run(table!.create(ifNotExists: true) { t in
-            t.column(planId, primaryKey: true)
+            t.column(planTrainingId, primaryKey: true)
             t.column(userId)
             t.column(planType)
             t.column(name)
@@ -57,7 +57,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     //MARK: insert
     override func addData(data: PlanTraining?) {
         if let planTraining = data {
-            let insert = table!.insert(self.planId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- planTraining.sessionId)
+            let insert = table!.insert(self.planTrainingId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- planTraining.sessionId)
             
             let rowId = try? db?.run(insert)
             
@@ -84,7 +84,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
             planList = [PlanTraining]()
             
             for planDb in dbList {
-                let id = planDb[self.planId]
+                let id = planDb[self.planTrainingId]
                 let userId = planDb[self.userId]
                 let type = PlanType(rawValue: planDb[self.planType])
                 let name = planDb[self.name]
@@ -161,7 +161,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     }
     
     func deletePlan(plan: PlanTraining) -> Int {
-        let deleteData = table!.filter(self.planId == plan.planId)
+        let deleteData = table!.filter(self.planTrainingId == plan.planId)
         
         var deletedRows = 0
         

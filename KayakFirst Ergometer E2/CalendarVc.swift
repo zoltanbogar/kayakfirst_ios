@@ -85,8 +85,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         
         let offset = UIScreen.main.bounds.height >= 600 ? (margin2 * 2) : -margin
         
-        log("SIZE_TEST", "\(UIScreen.main.bounds.height)")
-        
         viewTableView.snp.makeConstraints { (make) in
             make.height.equalTo(cvCalendarView).offset(offset)
         }
@@ -318,8 +316,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         let tableViewTraining = TrainingTablewView(view: self.viewTableView, deleteCallback: self.deleteDataCallback)
         
         tableViewTraining.rowClickCallback = { sumTraining, position in
-            self.trainingManager.detailsTrainingList = tableViewTraining.dataList
-
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
             self.navigationController?.pushViewController(viewController, animated: true)
