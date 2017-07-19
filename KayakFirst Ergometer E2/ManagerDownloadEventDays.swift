@@ -11,17 +11,17 @@ import Foundation
 class ManagerDownloadEventDays: ManagerDownloadTrainingDays {
     
     override func getDataFromLocale() -> [Double]? {
-        return EventDbLoader.sharedInstance.getEventDays()
+        localeDaysList = EventDbLoader.sharedInstance.getEventDays()
+        return localeDaysList
     }
     
-    override func runServer() -> [Double]? {
-        let downloadEventDays = DownloadEventDays()
-        
-        daysList = downloadEventDays.run()
-        
-        serverError = downloadEventDays.error
-        
-        return daysList
+    override func getServerService() -> ServerService<[Double]> {
+        return DownloadEventDays()
+    }
+    
+    override func deleteDataByTimestamp(timestampFrom: Double, timestampTo: Double) {
+        let eventDbLoader = EventDbLoader.sharedInstance
+        eventDbLoader.deleteData(predicate: eventDbLoader.getEventBetweenTimestampPredicate(timestampFrom: timestampFrom, timestampTo: timestampTo))
     }
     
     override func getKeyCache() -> String {

@@ -11,25 +11,53 @@ import Foundation
 class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadProtocol {
     
     //MARK: properties
-    internal var daysList: [Double]?
+    internal var localeDaysList: [Double]?
+    internal var serverDaysList: [Double]?
     
     //MARK: functions
     override func getDataFromLocale() -> [Double]? {
-        return TrainingDbLoader.sharedInstance.getTrainingDays()
+        localeDaysList = TrainingDbLoader.sharedInstance.getTrainingDays()
+        return localeDaysList
     }
     
     override func getDataFromServer() -> [Double]? {
-        return daysList
+        return serverDaysList
     }
     
     override func runServer() -> [Double]? {
-        let downloadTrainingDays = DownloadTrainingDays()
+        let serverService = getServerService()
         
-        daysList = downloadTrainingDays.run()
+        serverDaysList = serverService.run()
         
-        serverError = downloadTrainingDays.error
+        if localeDaysList != nil && serverDaysList != nil {
+            localeDaysList = Array(Set(localeDaysList!).subtracting(serverDaysList!))
+            
+            for d in localeDaysList! {
+                let timestampFrom = DateFormatHelper.getZeroHour(timeStamp: d)
+                let timestampTo = DateFormatHelper.get23Hour(timeStamp: d)
+                
+                deleteDataByTimestamp(timestampFrom: timestampFrom, timestampTo: timestampTo)
+            }
+        }
         
-        return daysList
+        serverError = serverService.error
+        
+        return serverDaysList
+    }
+    
+    internal func getServerService() -> ServerService<[Double]> {
+        return DownloadTrainingDays()
+    }
+    
+    internal func deleteDataByTimestamp(timestampFrom: Double, timestampTo: Double) {
+        let trainingDbLoader = TrainingDbLoader.sharedInstance
+        trainingDbLoader.deleteData(predicate: trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: timestampFrom, sessionIdTo: timestampTo))
+        
+        let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+        trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: timestampFrom, sessionIdTo: timestampTo))
+        
+        let planTrainingDbLoader = PlanTrainingDbLoader.sharedInstance
+        planTrainingDbLoader.deleteData(predicate: planTrainingDbLoader.getExpressionSessionId(sessionIdFrom: timestampFrom, sessionIdTo: timestampTo))
     }
     
     override func deleteDataFromLocale() {
