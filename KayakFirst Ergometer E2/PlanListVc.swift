@@ -61,6 +61,28 @@ class PlanListVc: BaseVC {
         errorHandlingWithAlert(viewController: self, error: error)
     }
     
+    override func showProgress(baseManagerType: BaseManagerType?) {
+        if let managerType = baseManagerType {
+            let isShow = managerType.isProgressShown()
+            
+            showProgress(isShow: isShow)
+        }
+    }
+    
+    override func dismissProgress() {
+        showProgress(isShow: false)
+    }
+    
+    private func showProgress(isShow: Bool) {
+        if isShow {
+            progressBar.startAnimating()
+        } else {
+            progressBar.stopAnimating()
+        }
+        
+        progressBar.isHidden = !isShow
+    }
+    
     //MARK: initView
     override func initView() {
         showLogoCenter(viewController: self)
@@ -79,6 +101,11 @@ class PlanListVc: BaseVC {
             make.right.equalTo(contentView)
             make.bottom.equalTo(contentView)
             make.top.equalTo(etSearch.snp.bottom).offset(margin)
+        }
+        
+        contentView.addSubview(progressBar)
+        progressBar.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
         
         setPlanList()
@@ -118,6 +145,14 @@ class PlanListVc: BaseVC {
         }
         
         return view
+    }()
+    
+    private lazy var progressBar: UIActivityIndicatorView! = {
+        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
+        spinner.activityIndicatorViewStyle = .whiteLarge
+        spinner.color = Colors.colorWhite
+        
+        return spinner
     }()
     
     //MARK: clicklisteners
