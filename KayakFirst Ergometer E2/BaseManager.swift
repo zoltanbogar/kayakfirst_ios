@@ -74,6 +74,7 @@ class BaseManager {
         if managerDownloadList != nil {
             contains = managerDownloadList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
         }
+        
         return !contains
     }
     
@@ -207,7 +208,7 @@ class BaseManager {
         
     }
     
-    private class Download<E>: AsyncTask<Any, [E], Any> {
+    private class Download<E>: AsyncTask<Any, [E], [E]> {
         
         private let managerCallback: ((_ data: [E]?, _ error: Responses?) -> ())?
         private let managerDownload: ManagerDownload<[E]>
@@ -227,7 +228,7 @@ class BaseManager {
             baseManager.handlePreExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
         }
         
-        override func doInBackground(param: Any?) -> Any? {
+        override func doInBackground(param: Any?) -> [E]? {
             let dataFromLocale = managerDownload.getDataFromLocale()
             
             var dataFromServer = dataFromLocale
@@ -248,18 +249,24 @@ class BaseManager {
                 }
             }
             
-            publishProgress(progress: dataFromServer)
-            
-            return nil
+            return dataFromServer
         }
         
         override func onProgressUpdate(progress: [E]?) {
             super.onProgressUpdate(progress: progress)
             
+            publish(data: progress)
+        }
+        
+        override func onPostExecute(result: [E]?) {
             baseManager.handlePostExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
             
+            publish(data: result)
+        }
+        
+        private func publish(data: [E]?) {
             if let callback = managerCallback {
-                callback(progress, managerDownload.serverError)
+                callback(data, managerDownload.serverError)
             }
         }
     }

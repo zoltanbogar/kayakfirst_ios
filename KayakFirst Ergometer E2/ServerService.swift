@@ -39,6 +39,8 @@ class ServerService<E> {
         var data = runBase()
         
         if data == nil && error == Responses.error_expired_token {
+            error = nil
+            
             refreshToken()
             
             return runBase()
