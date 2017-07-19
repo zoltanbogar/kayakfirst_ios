@@ -11,8 +11,8 @@ import Foundation
 class BatterySaveHelper {
     
     //MARK: constants
-    private let fullLightTime: TimeInterval = 3 //3sec
-    private let noneLightTime: TimeInterval = 8 //8sec
+    private let fullLightTime: TimeInterval = 5 // 5 sec
+    private let noneLightTime: TimeInterval = 8 // 8 sec
     
     //MARK: properties
     private let telemetry = Telemetry.sharedInstance
