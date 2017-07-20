@@ -154,6 +154,10 @@ class BaseVC: UIViewController {
         progressView?.show(false)
     }
     
+    func showToast(text: String) {
+        AppToast(baseVc: self, text: text).show()
+    }
+    
     func handleScreenOrientation(size: CGSize) {
         if viewInited {
             if isScreenPortrait(size: size) {

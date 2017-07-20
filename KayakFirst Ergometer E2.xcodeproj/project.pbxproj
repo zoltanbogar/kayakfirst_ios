@@ -226,6 +226,7 @@
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
 		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
 		0683EA381E74860100F39988 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0683EA371E74858A00F39988 /* BebasNeue.otf */; };
+		068D38801F207DEB005A1197 /* AppToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068D387F1F207DEB005A1197 /* AppToast.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433ED1E28419600CE6398 /* ProgressDialog.swift */; };
@@ -563,6 +564,7 @@
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
 		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
 		0683EA371E74858A00F39988 /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
+		068D387F1F207DEB005A1197 /* AppToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToast.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433ED1E28419600CE6398 /* ProgressDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDialog.swift; sourceTree = "<group>"; };
@@ -1362,6 +1364,7 @@
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
 				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
+				068D387F1F207DEB005A1197 /* AppToast.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1872,6 +1875,7 @@
 				069433E81E28362800CE6398 /* BaseDialog.swift in Sources */,
 				0609EAE41E69FF42006094EC /* UserLoginGoogle.swift in Sources */,
 				06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */,
+				068D38801F207DEB005A1197 /* AppToast.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06C2F3F21F0A42A10077EE21 /* DeleteTrainingAvg.swift in Sources */,
 				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,

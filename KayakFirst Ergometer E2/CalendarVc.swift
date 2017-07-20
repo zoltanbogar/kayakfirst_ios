@@ -83,7 +83,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
         
-        let offset = UIScreen.main.bounds.height >= 600 ? (margin2 * 2) : -margin
+        let offset = UIScreen.main.bounds.height >= 600 ? (margin2 * 1.8) : -margin
         
         viewTableView.snp.makeConstraints { (make) in
             make.height.equalTo(cvCalendarView).offset(offset)

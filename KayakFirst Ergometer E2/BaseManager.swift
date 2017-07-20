@@ -10,9 +10,12 @@ import Foundation
 func errorHandlingWithAlert(viewController: UIViewController, error: Responses?) {
     if let errorValue = error {
         let textRes: String
+        var isNoInternet = false
+        
         switch errorValue {
         case Responses.error_no_internet:
             textRes = "error_no_internet"
+            isNoInternet = true
         case Responses.error_invalid_credentials:
             textRes = "error_user_invalid_credentials"
         case Responses.error_registration_required:
@@ -24,7 +27,12 @@ func errorHandlingWithAlert(viewController: UIViewController, error: Responses?)
         default:
             textRes = "error_server"
         }
-        ErrorDialog(errorString: getString(textRes)).show(viewController: viewController)
+        
+        if viewController is BaseVC && isNoInternet {
+            AppToast(baseVc: viewController as! BaseVC, text: getString(textRes)).show()
+        } else {
+            ErrorDialog(errorString: getString(textRes)).show(viewController: viewController)
+        }
     }
 }
 
