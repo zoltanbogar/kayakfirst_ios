@@ -101,7 +101,7 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
         return stackView
     }
     
-    //TODO: rowHeights not correct when open first
+    //TODO - refactor: rowHeights not correct when open first
     override func getRowHeight() -> CGFloat {
         var newTextViewHeight = ceil(labelName.sizeThatFits(labelName.frame.size).height)
         

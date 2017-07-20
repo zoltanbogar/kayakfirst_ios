@@ -17,6 +17,6 @@ func startErgometerViewController(viewController: UIViewController) {
 
 class ErgometerViewController: TrainingViewController {
     
-    //TODO
+    //TODO - refactor
     
 }

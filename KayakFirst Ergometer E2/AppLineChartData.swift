@@ -7,7 +7,7 @@
 //
 
 import Charts
-//TODO: index out of range exception can be
+//TODO - refactor: index out of range exception can be
 class AppLineChartData {
     
     //MARK: properties

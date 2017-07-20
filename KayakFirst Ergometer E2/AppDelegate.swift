@@ -80,11 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func downloadMessage() {
         UserManager.sharedInstance.messageCallback = { data, error in
-            if error != nil {
-                if let vc = UIApplication.shared.keyWindow?.rootViewController {
-                    errorHandlingWithAlert(viewController: vc, error: error)
-                }
-            } else if data != nil {
+            if data != nil && "" != data {
                 ErrorDialog(errorString: data!).show()
             }
         }
