@@ -24,7 +24,7 @@ class BaseDialog {
     
     //MARK: functions
     func show() {
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController!, animated: true, completion: nil)
+        UIApplication.shared.keyWindow?.currentViewController()?.present(alertController!, animated: true, completion: nil)
     }
     
     func show(viewController: UIViewController) {

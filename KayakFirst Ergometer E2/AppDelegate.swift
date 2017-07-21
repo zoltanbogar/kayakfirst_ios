@@ -143,9 +143,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         
-        print("APNs device token: \(deviceTokenString)")
+        log("PUSH_MESSAGE", "token: \(deviceTokenString)")
         
         PushNotificationHelper.setToken(pushToken: deviceTokenString)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        handlePushMessage(userInfo: userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        handlePushMessage(userInfo: userInfo)
+    }
+    
+    private func handlePushMessage(userInfo: [AnyHashable : Any]) {
+        if let aps = userInfo["aps"] as? NSDictionary {
+            if let alert = aps["alert"] as? NSString {
+                log("PUSH_MESSAGE", "message: \(alert)")
+                
+                ErrorDialog(errorString: alert as String).show()
+            }
+        }
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
