@@ -13,9 +13,16 @@ import SwiftyJSON
 class DownloadMessage: ServerService<String> {
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> String? {
+        var message: String?
         
-        //TODO
-        return nil
+        let response = alamofireRequest.responseJSON()
+        
+        if let json = response.result.value {
+            let jsonValue = JSON(json)
+            
+            message = jsonValue["message"].stringValue
+        }
+        return message
     }
     
     override func initUrlTag() -> String {
