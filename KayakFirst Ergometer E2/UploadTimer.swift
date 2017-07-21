@@ -11,7 +11,7 @@ import Foundation
 class UploadTimer {
     
     //MARK: constants
-    private static let timeUploadTrainingsSec: Double = 20
+    private static let timeUploadTrainingsSec: Double = 30
     private static var timer: Timer?
     
     class func startTimer() {
