@@ -84,7 +84,7 @@ class PlanTraining: Plan {
             "notes": notes ?? "",
             "length": length,
             "sessionId": Int64(sessionId),
-            "planElements": planElementParameters ?? ""
+            "planElements": planElementList ?? ""
         ]
     }
 }
