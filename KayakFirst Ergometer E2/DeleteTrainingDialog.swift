@@ -24,7 +24,7 @@ class DeleteTrainingDialog: BaseDialog {
         self.managerCallback = managerCallback
         
         let originalTitle = getString("dialog_event_delete_title")
-        let titleWithName = "\(originalTitle) ?"
+        let titleWithName = "\(originalTitle)?"
         super.init(title: titleWithName, message: nil)
         showPositiveButton(title: getString("other_delete"))
         showNegativeButton(title: getString("other_cancel"))

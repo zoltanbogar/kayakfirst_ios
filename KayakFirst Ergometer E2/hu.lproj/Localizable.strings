@@ -26,35 +26,35 @@
 "dashboard_title_actual_1000_imperial"="Most 1 mérföld";
 "dashboard_title_stroke_min"="Csapás/perc";
 "dashboard_title_pull_force_metric"="Húzáserő (N)";
-"dashboard_title_pull_force_imperial"="Húzáserő (lbs)";
+"dashboard_title_pull_force_imperial"="Húzáserő (pdl)";
 "dashboard_title_distance_metric"="Távolság (m)";
 "dashboard_title_distance_imperial"="Távolság (ft)";
 "dashboard_title_duration"="Tartam";
-"dashboard_title_current_speed_metric"=" ";
+"dashboard_title_current_speed_metric"="Most (km/h)";
 "dashboard_title_current_speed_imperial"="Seb. most (mph)";
 "dashboard_title_av_speed_metric"="Átlagseb. (km/h)";
-"dashboard_title_av_speed_imperial"="Avg. speed (mph)";
+"dashboard_title_av_speed_imperial"="Átlagseb. (mph)";
 "dashboard_title_drag_drop"="Húzz ide egyet!";
 "dashboard_title_av_strokes"="Átl. csapás/perc";
 "dashboard_title_av_pull_force_metric"="Átl. húzáserő (N)";
-"dashboard_title_av_pull_force_imperial"="Átl. húzáserő (lbs)";
+"dashboard_title_av_pull_force_imperial"="Átl. húzáserő (pdl)";
 
 //DashboardOutdoor
 "dashboard_outdoor_title_av_200_metric"="Átlag\n200m";
 "dashboard_outdoor_title_av_500_metric"="Átlag\n500m";
 "dashboard_outdoor_title_av_1000_metric"="Átlag\n1000m";
-"dashboard_outdoor_title_av_200_imperial"="Átlag\n1/4mile";
-"dashboard_outdoor_title_av_500_imperial"="Átlag\n1/2mile";
-"dashboard_outdoor_title_av_1000_imperial"="Átlag\n1mile";
+"dashboard_outdoor_title_av_200_imperial"="Átlag\n1/4mérföld";
+"dashboard_outdoor_title_av_500_imperial"="Átlag\n1/2mérföld";
+"dashboard_outdoor_title_av_1000_imperial"="Átlag\n1mérföld";
 "dashboard_outdoor_title_actual_200_metric"="Most\n200m";
 "dashboard_outdoor_title_actual_500_metric"="Most\n500m";
 "dashboard_outdoor_title_actual_1000_metric"="Most\n1000m";
-"dashboard_outdoor_title_actual_200_imperial"="Most\n1/4mile";
-"dashboard_outdoor_title_actual_500_imperial"="Most\n1/2mile";
-"dashboard_outdoor_title_actual_1000_imperial"="Most\n1mile";
+"dashboard_outdoor_title_actual_200_imperial"="Most\n1/4mérföld";
+"dashboard_outdoor_title_actual_500_imperial"="Most\n1/2mérföld";
+"dashboard_outdoor_title_actual_1000_imperial"="Most\n1mérföld";
 "dashboard_outdoor_title_stroke_min"="Csapás/perc";
 "dashboard_outdoor_title_pull_force_metric"="Húzáserő\n(N)";
-"dashboard_outdoor_title_pull_force_imperial"="Húzáserő\n(lbs)";
+"dashboard_outdoor_title_pull_force_imperial"="Húzáserő\n(pdl)";
 "dashboard_outdoor_title_distance_metric"="Távolság\n(m)";
 "dashboard_outdoor_title_distance_imperial"="Távolság\n(ft)";
 "dashboard_outdoor_title_duration"="Tartam";
@@ -64,7 +64,7 @@
 "dashboard_outdoor_title_av_speed_imperial"="Átlagseb.\n(mph)";
 "dashboard_outdoor_title_av_strokes"="Átl. csapás/\nperc";
 "dashboard_outdoor_title_av_pull_force_metric"="Átl. húzáserő\n(N)";
-"dashboard_outdoor_title_av_pull_force_imperial"="Átl. húzáserő\n(lbs)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Átl. húzáserő\n(pdl)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Csatlakoztasd az készüléket az alábbi ergométerek egyikéhez...";
@@ -100,7 +100,7 @@
 "dialog_sync"="Szinkronizálás...";
 "dialog_plan_no_elements"="Ez az edzésterv még üres.";
 "dialog_event_add_message"="Napárba teszed?";
-"dialog_event_delete_title"="Biztos törölni akarod?";
+"dialog_event_delete_title"="Biztos törölni akarod";
 "dialog_event_delete_message"="Ez a naptáresemény törölve lesz, de az összeállítást megtalálod a Tervek közt.";
 
 //Notification
@@ -156,7 +156,7 @@
 "training_sum_speed_imperial"="Sebesség\nmph";
 "training_sum_stroke"="Csapásszám\n\\perc";
 "training_sum_pull_force_metric"="Húzóerő\nN";
-"training_sum_pull_force_imperial"="Húzóerő\nlbs";
+"training_sum_pull_force_imperial"="Húzóerő\npdl";
 "training_sum_t_200_metric"="Iram\n200";
 "training_sum_t_500_metric"="Iram\n500";
 "training_sum_t_1000_metric"="Iram\n1000";
@@ -246,7 +246,7 @@
 "unit_speed_metric"="km/h";
 "unit_speed_imperial"="mph";
 "unit_force_metric"="n";
-"unit_force_imperial"="lbs";
+"unit_force_imperial"="pdl";
 "unit_distance_metric"="m";
 "unit_distance_imperial"="ft";
 "unit_weight_metric"="kg";

@@ -26,7 +26,7 @@
 "dashboard_title_actual_1000_imperial"="Actual 1 mile";
 "dashboard_title_stroke_min"="Strokes/min.";
 "dashboard_title_pull_force_metric"="Pull force (N)";
-"dashboard_title_pull_force_imperial"="Pull force (lbs)";
+"dashboard_title_pull_force_imperial"="Pull force (pdl)";
 "dashboard_title_distance_metric"="Distance (m)";
 "dashboard_title_distance_imperial"="Distance (ft)";
 "dashboard_title_duration"="Duration";
@@ -37,7 +37,7 @@
 "dashboard_title_drag_drop"="Drag & Drop here";
 "dashboard_title_av_strokes"="Avg. strokes/min";
 "dashboard_title_av_pull_force_metric"="Avg. pull force (N)";
-"dashboard_title_av_pull_force_imperial"="Avg. pull force (lbs)";
+"dashboard_title_av_pull_force_imperial"="Avg. pull force (pdl)";
 
 //DashBoardOutdoor
 "dashboard_outdoor_title_av_200_metric"="Avg.\n200m";
@@ -54,7 +54,7 @@
 "dashboard_outdoor_title_actual_1000_imperial"="Actual\n1mile";
 "dashboard_outdoor_title_stroke_min"="Strokes/min.";
 "dashboard_outdoor_title_pull_force_metric"="Pull force\n(N)";
-"dashboard_outdoor_title_pull_force_imperial"="Pull force\n(lbs)";
+"dashboard_outdoor_title_pull_force_imperial"="Pull force\n(pdl)";
 "dashboard_outdoor_title_distance_metric"="Distance\n(m)";
 "dashboard_outdoor_title_distance_imperial"="Distance\n(ft)";
 "dashboard_outdoor_title_duration"="Duration";
@@ -64,7 +64,7 @@
 "dashboard_outdoor_title_av_speed_imperial"="Avg. speed\n(mph)";
 "dashboard_outdoor_title_av_strokes"="Avg. strokes\n/min";
 "dashboard_outdoor_title_av_pull_force_metric"="Avg. pull force\n(N)";
-"dashboard_outdoor_title_av_pull_force_imperial"="Avg. pull force\n(lbs)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Avg. pull force\n(pdl)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Connect your phone to any of the below equipments...";
@@ -100,7 +100,7 @@
 "dialog_sync"="Synchronization...";
 "dialog_plan_no_elements"="This training plan does not have any plan-elements.";
 "dialog_event_add_message"="Add to calendar?";
-"dialog_event_delete_title"="Do you really want to delete?";
+"dialog_event_delete_title"="Do you really want to delete";
 "dialog_event_delete_message"="This event will be lost, but the session you can find it in Plans for add to another day.";
 
 //Notification
@@ -156,7 +156,7 @@
 "training_sum_speed_imperial"="Speed\nmph";
 "training_sum_stroke"="Stroke rate\n\\min.";
 "training_sum_pull_force_metric"="Pull force\nN";
-"training_sum_pull_force_imperial"="Pull force\nlbs";
+"training_sum_pull_force_imperial"="Pull force\npdl";
 "training_sum_t_200_metric"="Pace\n200";
 "training_sum_t_500_metric"="Pace\n500";
 "training_sum_t_1000_metric"="Pace\n1000";
@@ -246,7 +246,7 @@
 "unit_speed_metric"="km/h";
 "unit_speed_imperial"="mph";
 "unit_force_metric"="n";
-"unit_force_imperial"="lbs";
+"unit_force_imperial"="pdl";
 "unit_distance_metric"="m";
 "unit_distance_imperial"="ft";
 "unit_weight_metric"="kg";
