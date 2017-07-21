@@ -94,7 +94,7 @@ class EventDbLoader: BaseDbLoader<Event> {
         do {
             let query = table?.select(self.timestamp).order(self.timestamp)
             
-            let dbList = try db!.prepare(query!)
+            let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
                 let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.timestamp])

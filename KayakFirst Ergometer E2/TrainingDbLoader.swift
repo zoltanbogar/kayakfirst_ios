@@ -108,7 +108,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         do {
             let query = table?.select(self.sessionId).order(self.sessionId)
             
-            let dbList = try db!.prepare(query!)
+            let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
                 let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
