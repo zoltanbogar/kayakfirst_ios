@@ -121,6 +121,8 @@ class SumTraining: Equatable, ModifyAble {
         func getTrainingAvg(trainingType: String, sessionId: Double) -> TrainingAvg? {
             let hash = TrainingAvg.getAvgHash(userId: UserManager.sharedInstance.getUser()?.id, avgType: trainingType, sessionId: sessionId)
             if let map = avgTrainingHashMap {
+                let trainingAvg = map[hash]
+                
                 return map[hash]
             }
             return nil

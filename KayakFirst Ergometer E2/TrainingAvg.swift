@@ -27,7 +27,7 @@ struct TrainingAvg: UploadAble {
     }
     
     static func getAvgHash(userId: Int64?, avgType: String, sessionId: TimeInterval) -> String {
-        return "\(sessionId)" + avgType + "\(userId ?? 0)"
+        return "\(Double(Int64(sessionId)))" + avgType + "\(userId ?? 0)"
     }
     
     func getUploadPointer() -> String {
