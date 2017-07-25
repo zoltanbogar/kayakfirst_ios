@@ -8,8 +8,8 @@
 
 import UIKit
 
-func startTrainingViewController(viewController: UIViewController) {
-    viewController.present(TrainingViewController(), animated: true, completion: nil)
+func startTrainingViewController(viewController: UIViewController, trainingEnvType: TrainingEnvironmentType) {
+    startTrainingViewController(viewController: viewController, plan: nil, event: nil, trainingEnvType: trainingEnvType)
 }
 
 func startTrainingViewController(viewController: UIViewController, plan: Plan?, event: Event?, trainingEnvType: TrainingEnvironmentType) {

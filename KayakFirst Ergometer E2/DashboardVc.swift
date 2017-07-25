@@ -44,7 +44,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
+        telemetry.dashboardCycleStateChangeListener = self
+        
         onCycleStateChanged(newCycleState: telemetry.cycleState!)
     }
     
@@ -195,9 +196,13 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         dashboardElement4?.startRefresh(isRefresh)
         
         if plan != nil {
-            viewDashboardPlan.startRefresh(isRefresh)
+            if isRefresh {
+                viewDashboardPlan.startRefresh(true)
+            } else {
+                viewDashboardPlan.stopRefresh()
+            }
         } else {
-            viewDashboardPlan.startRefresh(false)
+            viewDashboardPlan.stopRefresh()
         }
     }
     

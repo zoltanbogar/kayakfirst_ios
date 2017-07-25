@@ -81,11 +81,20 @@ class Telemetry {
                     }
                 }
             }
+            
+            if let listener = dashboardCycleStateChangeListener {
+                if cycleState != nil {
+                    listener.onCycleStateChanged(newCycleState: cycleState!)
+                }
+            }
         }
     }
     
     //MARK: other properties
     private var cycleStateChangeListenerList: [CycleStateChangeListener]?
+    
+    //TODO - refactor: not a good solution, use 'removeCycleStateListener'
+    var dashboardCycleStateChangeListener: CycleStateChangeListener?
     
     func addCycleStateChangeListener(cycleStateChangeListener: CycleStateChangeListener) {
         if self.cycleStateChangeListenerList == nil {

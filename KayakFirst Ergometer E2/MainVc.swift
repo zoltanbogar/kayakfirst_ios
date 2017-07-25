@@ -108,9 +108,9 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
                 break
             case TrainingEnvironmentType.outdoor:
                 if plan == nil {
-                    startTrainingViewController(viewController: self)
+                    startTrainingViewController(viewController: self, trainingEnvType: trainingEnvironmentType!)
                 } else {
-                    startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: TrainingEnvironmentType.outdoor)
+                    startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: trainingEnvironmentType!)
                 }
             default:
                 break

@@ -9,7 +9,6 @@
 import Foundation
 import AVFoundation
 
-//TODO: not always play the sound (if there is more planElements)
 class PlanSoundHelper: CycleStateChangeListener {
     
     //MARK: constants

@@ -61,6 +61,14 @@ class DashboardPlanView: RefreshView {
         planSoundHelper.shouldPlay = isStart
     }
     
+    func stopRefresh() {
+        startRefresh(false)
+        
+        planSoundHelper.stopSound()
+        
+        timer?.invalidate()
+    }
+    
     override func refreshUi() {
         if plan != nil && plan?.planElements != nil {
             let totalPercent = getTotalPercent()
@@ -75,6 +83,7 @@ class DashboardPlanView: RefreshView {
                 setTextsByPercent(percent: currentPercent)
             } else {
                 planElementPosition = plan!.planElements!.count
+                
                 planSoundHelper.stopSound()
                 reset()
             }

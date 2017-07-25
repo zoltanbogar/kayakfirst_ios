@@ -14,7 +14,7 @@ class RefreshView: UIView {
     static let refreshMillis: Double = 33
     
     //MARK: properties
-    private var timer: Timer?
+    var timer: Timer?
     
     //MARK: abstract functions
     internal func refreshUi() {
