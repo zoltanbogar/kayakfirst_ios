@@ -241,7 +241,7 @@ class BaseManager {
             
             var dataFromServer = dataFromLocale
             
-            if dataFromLocale != nil {
+            if dataFromLocale != nil && dataFromLocale!.count > 0 {
                 publishProgress(progress: dataFromLocale)
             }
             
