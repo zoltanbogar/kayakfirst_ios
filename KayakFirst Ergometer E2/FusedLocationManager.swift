@@ -11,6 +11,9 @@ import CoreLocation
 
 class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
+    //MARK: constants
+    private let accuracyLocation: Double = 10 //10 meters
+    
     //MARK: properteis
     private let pauseDiff = PauseDiff.sharedInstance
     private let locationManager = CLLocationManager()
@@ -55,7 +58,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         if locations.count > 0 {
             let accuracy = locations[0].horizontalAccuracy
             
-            if accuracy <= 10 {
+            if accuracy <= accuracyLocation {
                 if currentLocation == nil {
                     currentLocation = locations[0]
                 }
