@@ -22,8 +22,11 @@ class DownloadEventDays: ServerService<[TimeInterval]> {
             eventDays = [TimeInterval]()
             
             for eventDay in jsonValue.arrayObject! {
+                let zeroEventDay = DateFormatHelper.getZeroHour(timeStamp: TimeInterval(eventDay as! String)!)
                 
-                eventDays?.append(DateFormatHelper.getZeroHour(timeStamp: TimeInterval(eventDay as! String)!))
+                if !eventDays!.contains(zeroEventDay) {
+                    eventDays?.append(zeroEventDay)
+                }
             }
         }
         return eventDays
