@@ -9,13 +9,13 @@
 import Foundation
 
 enum UploadType: String {
-    case pushIdUpload = "push_id_upload"
-    case trainingUpload = "training_upload"
-    case trainingAvgUpload = "training_avg_upload"
-    case planSave = "plan_save"
-    case planDelete = "plan_delete"
-    case eventSave = "event_save"
-    case eventDelete = "event_delete"
-    case planTrainingSave = "plan_training_save"
-    case trainingDelete = "training_delete"
+    case pushIdUpload = "0_push_id_upload"
+    case trainingUpload = "1_training_upload"
+    case trainingAvgUpload = "2_training_avg_upload"
+    case planSave = "3_plan_save"
+    case eventSave = "4_event_save"
+    case planTrainingSave = "5_plan_training_save"
+    case planDelete = "6_plan_delete"
+    case eventDelete = "7_event_delete"
+    case trainingDelete = "8_training_delete"
 }

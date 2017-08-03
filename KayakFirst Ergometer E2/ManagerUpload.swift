@@ -31,11 +31,12 @@ class ManagerUpload {
             stack.append(key)
         }
         
-        return stack
+        return stack.sorted()
     }
     
     class func addToStack(uploadType: UploadType, pointer: String?) -> Bool {
         if UserManager.sharedInstance.getUser() != nil {
+            
             UploadTimer.startTimer()
             
             var dictionary = getDictionary()
