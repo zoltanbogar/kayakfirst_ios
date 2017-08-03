@@ -12,11 +12,11 @@ func getPlanElementColor(planElement: PlanElement?) -> UIColor {
     var color = Colors.colorPlanHard
     
     if let element = planElement {
-        if element.intensity < 60 {
+        if element.intensity <= 60 {
             color = Colors.colorPlanLight
-        } else if element.intensity >= 60 && element.intensity < 80 {
+        } else if element.intensity > 60 && element.intensity <= 80 {
             color = Colors.colorPlanMedium
-        } else if element.intensity >= 80 {
+        } else if element.intensity > 80 {
             color = Colors.colorPlanHard
         }
     }
