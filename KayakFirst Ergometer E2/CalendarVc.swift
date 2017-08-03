@@ -231,6 +231,8 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: callbacks
     private func trainingDaysCallback(data: [Double]?, error: Responses?) {
+        showProgressBarTraining(isShow: false)
+        
         initTrainingDays(trainingDays: data)
         
         initError(error: error)
@@ -251,6 +253,8 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func eventDaysCallback(data: [Double]?, error: Responses?) {
+        showProgressBarEvent(isShow: false)
+        
         initEventDays(eventDays: data)
         
         initError(error: error)
