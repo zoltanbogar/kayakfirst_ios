@@ -28,7 +28,7 @@ class UserUpdate: ServerService<User> {
             user = User(json: jsonValue)
             
             if user != nil {
-                UserService.sharedInstance.addUser(user: user)
+                UserManager.sharedInstance.addUser(user: user)
             }
         }
         return user
@@ -48,16 +48,24 @@ class UserUpdate: ServerService<User> {
             "firstName": userDto.firstName ?? "",
             "email": userDto.email ?? "",
             "bodyWeight": userDto.bodyWeight ?? 0,
+            "club": userDto.club ?? "",
             "gender": userDto.gender ?? "",
             "birthDate": userDto.birthDate ?? nil,
             "country": userDto.country ?? "",
+            "artOfPaddling": userDto.artOfPaddling ?? "",
             "username": userDto.userName ?? "",
-            "artOfPaddling": userDto.artOfPaddling ?? ""
+            "unitWeight": userDto.unitWeight ?? "",
+            "unitDistance": userDto.unitDistance ?? "",
+            "unitPace": userDto.unitPace ?? ""
         ]
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.update_user
     }
     
 }

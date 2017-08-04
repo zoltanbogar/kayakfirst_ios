@@ -10,9 +10,13 @@ import UIKit
 
 class TrainingTablewView: TableViewWithEmpty<SumTraining> {
     
+    //MARK: properties
+    private var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    
     //MARK: init
-    override init(view: UIView) {
+    init(view: UIView, deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         super.init(view: view)
+        self.deleteCallback = deleteCallback
         
         backgroundColor = Colors.colorTransparent
         separatorColor = Colors.colorDashBoardDivider
@@ -31,11 +35,29 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         return TrainingTablewViewCell.self
     }
     
+    override func getHeaderView() -> AppTableViewHeader? {
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        (cell as! TrainingTablewViewCell).deleteCallback = deleteCallback
+        
+        return cell
+    }
+    
     private lazy var labelEmpty: UILabel! = {
         let label = AppUILabel()
         label.text = getString("calendar_empty_list")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
         
         return label
+    }()
+    
+    private lazy var headerView: AppTableViewHeader! = {
+        let view = TrainingTableViewHeader()
+        
+        return view
     }()
 }

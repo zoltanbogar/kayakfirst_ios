@@ -60,11 +60,11 @@ enum CalculateEnum: String {
     static func getTitle(calculate: CalculateEnum) -> String {
         switch calculate {
         case CalculateEnum.T_200:
-            return getString("calculate_t200")
+            return UnitHelper.getCalculatePaceTitle(pace: 200)
         case CalculateEnum.T_500:
-            return getString("calculate_t500")
+            return UnitHelper.getCalculatePaceTitle(pace: 500)
         case CalculateEnum.T_1000:
-            return getString("calculate_t1000")
+            return UnitHelper.getCalculatePaceTitle(pace: 1000)
         case CalculateEnum.STROKES:
             return getString("calculate_strokes")
         case CalculateEnum.F:

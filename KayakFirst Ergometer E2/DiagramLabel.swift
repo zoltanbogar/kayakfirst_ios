@@ -69,9 +69,7 @@ class DiagramLabel: UIView, UITextFieldDelegate {
                 textField.backgroundColor = UIColor.clear
             }
         } else {
-            textField.textColor = disabledTextColor
-            textField.borderStyle = .none
-            textField.backgroundColor = UIColor.clear
+            isHidden = true
         }
     }
     

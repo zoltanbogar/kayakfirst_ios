@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
+class ProfileVc: MainTabVc {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
@@ -17,20 +17,40 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     private var stackView: UIStackView?
     private var progressView: ProgressView?
     private var scrollView: AppScrollView?
+    
     private let countryPickerView = UIPickerView()
+    private var countryPickerHelper: PickerHelperLocale?
+    private let genderPickerView = UIPickerView()
+    private var genderPickerHelper: PickerHelperGender?
     private let artOfPaddlingPickerView = UIPickerView()
+    private var artOfPaddlingPickerHelper: PickerHelperArtOfPaddling?
+    private let unitWeightPickerView = UIPickerView()
+    private var pickerHelperUnitWeight: PickerHelperUnit?
+    private let unitDistancePickerView = UIPickerView()
+    private var pickerHelperUnitDistance: PickerHelperUnit?
+    private let unitPacePickerView = UIPickerView()
+    private var pickerHelperUnitPace: PickerHelperUnit?
     
     //MARK: properties
-    var userService = UserService.sharedInstance
-    private var countryCode: String?
-    private var artOfPaddling: String?
+    var userManager = UserManager.sharedInstance
+    
+    private var bodyWeight: Double = 0
     
     override func viewDidLoad() {
+        countryPickerHelper = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
+        genderPickerHelper = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
+        artOfPaddlingPickerHelper = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
+        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
+        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
+        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
+        
         super.viewDidLoad()
         
         initView()
-        countryPickerView.delegate = self
-        artOfPaddlingPickerView.delegate = self
+        
+        userManager.logoutCallback = logoutCallback
+        userManager.updatePwCallback = updatePasswordCallback
+        userManager.updateUserCallback = updateUserCallback
     }
     
     //MARK: init view
@@ -39,7 +59,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
             scrollView = AppScrollView(view: contentView)
             stackView = UIStackView()
             stackView?.axis = .vertical
-            stackView?.spacing = margin05
+            stackView?.spacing = margin
             
             scrollView!.addSubview(imgProfile)
             imgProfile.snp.makeConstraints { (make) in
@@ -66,13 +86,18 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
             stackView?.addArrangedSubview(tfCountry)
             stackView?.addArrangedSubview(tfGender)
             stackView?.addArrangedSubview(tfArtOfPaddling)
+            stackView?.addArrangedSubview(tfUnitWeight)
+            stackView?.addArrangedSubview(tfUnitDistance)
+            stackView?.addArrangedSubview(tfUnitPace)
             
             progressView = ProgressView(superView: contentView)
+            
+            initUser()
         }
     }
     
     private func checkUser() -> Bool {
-        if userService.getUser() == nil {
+        if userManager.getUser() == nil {
             (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
             self.dismiss(animated: false, completion: nil)
             return false
@@ -86,7 +111,73 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         
         self.navigationItem.setLeftBarButtonItems([btnLogout], animated: true)
         
+        self.navigationController!.navigationBar.tintColor = Colors.colorAccent
+        
         showLogoCenter(viewController: self)
+    }
+    
+    private func initUser() {
+        tfFirstName.text = self.userManager.getUser()?.firstName
+        tfLastName.text = self.userManager.getUser()?.lastName
+        if self.userManager.getUser()?.birthDate != 0 {
+            tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userManager.getUser()?.birthDate)
+        }
+        tfClub.text = self.userManager.getUser()?.club
+        tfUserName.text = self.userManager.getUser()?.userName
+        tfEmail.text = self.userManager.getUser()?.email
+        
+        initBodyWeight(user: self.userManager.getUser())
+        
+        tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userManager.getUser()?.country)
+        
+        if let gender = self.userManager.getUser()?.gender {
+            tfGender.text = self.genderPickerHelper!.getTitle(value: gender)
+        }
+        
+        if let artOfPaddling = self.userManager.getUser()?.artOfPaddling {
+            tfArtOfPaddling.text = self.artOfPaddlingPickerHelper!.getTitle(value: artOfPaddling)
+        }
+        if let unitWeight = self.userManager.getUser()?.unitWeight {
+            tfUnitWeight.text = self.pickerHelperUnitWeight!.getTitle(value: unitWeight)
+        }
+        if let unitDistance = self.userManager.getUser()?.unitDistance {
+            tfUnitDistance.text = self.pickerHelperUnitDistance!.getTitle(value: unitDistance)
+        }
+        if let unitPace = self.userManager.getUser()?.unitPace {
+            tfUnitPace.text = self.pickerHelperUnitPace!.getTitle(value: unitPace)
+        }
+    }
+    
+    private func initBodyWeight(user: User?) {
+        bodyWeight = user!.bodyWeight!
+        
+        tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
+        pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
+        tfWeight?.textChangedListener = bodyWeightChangedListener
+        
+        initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
+    }
+    
+    private func initBodyWeightUnit(isMetric: Bool) {
+        let title = tfWeight.title!
+        let splitText = title.components(separatedBy: "(")
+        var originalTitle: String = splitText[0]
+        
+        let endWithSpace = originalTitle.hasSuffix(" ")
+        
+        originalTitle = originalTitle + (endWithSpace ? "" : " ") + "(" + UnitHelper.getWeightUnit(isMetric: isMetric) + ")"
+        tfWeight.title = originalTitle
+    }
+    
+    private func bodyWeightChangedListener() {
+        let value = tfWeight.text
+        if value != nil && "" != value {
+            bodyWeight = Double(value!)!
+        }
+    }
+    
+    private func pickerUnitWeightListener() {
+        initBodyWeightUnit(isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue()))
     }
     
     //MARK: views
@@ -102,7 +193,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_first_name")
         textField.active = false
-        textField.text = self.userService.getUser()?.firstName
         
         return textField
     }()
@@ -111,7 +201,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_last_name")
         textField.active = false
-        textField.text = self.userService.getUser()?.lastName
         
         return textField
     }()
@@ -120,9 +209,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_birth_date")
         textField.active = false
-        if self.userService.getUser()?.birthDate != 0 {
-            textField.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.userService.getUser()?.birthDate)
-        }
         
         return textField
     }()
@@ -131,7 +217,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_club")
         textField.active = false
-        textField.text = self.userService.getUser()?.club
         
         return textField
     }()
@@ -140,7 +225,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_name")
         textField.active = false
-        textField.text = self.userService.getUser()?.userName
         
         return textField
     }()
@@ -162,7 +246,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
         textField.active = false
-        textField.text = self.userService.getUser()?.email
         
         return textField
     }()
@@ -173,12 +256,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.active = false
         textField.keyBoardType = .numberPad
         
-        let weight = self.userService.getUser()?.bodyWeight
-        
-        if let weightValue = weight {
-            textField.text = "\(Int(weightValue))"
-        }
-        
         return textField
     }()
     
@@ -186,9 +263,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         let textField = ProfileElement()
         textField.title = getString("user_country")
         textField.active = false
-        textField.text = NSLocale.getCountryNameByCode(countryCode: self.userService.getUser()?.country)
-        
-        textField.valueTextField.inputView = self.countryPickerView
         
         return textField
     }()
@@ -198,14 +272,6 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_gender")
         textField.active = false
         
-        if let gender = self.userService.getUser()?.gender {
-            if gender == User.genderFemale {
-                textField.text = getString("user_gender_female")
-            } else {
-                textField.text = getString("user_gender_male")
-            }
-        }
-        
         return textField
     }()
     
@@ -214,29 +280,29 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         textField.title = getString("user_art_of_paddling")
         textField.active = false
         
-        textField.valueTextField.inputView = self.artOfPaddlingPickerView
+        return textField
+    }()
+    
+    private lazy var tfUnitWeight: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_weight")
+        textField.active = false
         
-        //TODO: refactor this
-        if let artOfPaddling = self.userService.getUser()?.artOfPaddling {
-            switch artOfPaddling {
-            case User.artOfPaddlingRacingKayaking:
-                textField.text = getString("user_art_of_paddling_racing_kayaking")
-            case User.artOfPaddlingRacingCanoeing:
-                textField.text = getString("user_art_of_paddling_racing_canoeing")
-            case  User.artOfPaddlingRecreationalKayaking:
-                textField.text = getString("user_art_of_paddling_recreational_kayaking")
-            case User.artOfPaddlingRecreationalCanoeing:
-                textField.text = getString("user_art_of_paddling_recreational_canoeing")
-            case User.artOfPaddlingSup:
-                textField.text = getString("user_art_of_paddling_sup")
-            case User.artOfPaddlingDragon:
-                textField.text = getString("user_art_of_paddling_dragon")
-            case User.artOfPaddlingRowing:
-                textField.text = getString("user_art_of_paddling_rowing")
-            default:
-                break
-            }
-        }
+        return textField
+    }()
+    
+    private lazy var tfUnitDistance: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_distance")
+        textField.active = false
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitPace: ProfileElement! = {
+        let textField = ProfileElement()
+        textField.title = getString("unit_pace")
+        textField.active = false
         
         return textField
     }()
@@ -252,7 +318,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     
     private lazy var btnSave: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "done_24dp")
+        button.image = UIImage(named: "done_24dp")?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(btnSaveClick)
         
@@ -261,7 +327,7 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     
     private lazy var btnEdit: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "edit")
+        button.image = UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(btnEditClick)
         
@@ -270,21 +336,26 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: callbacks
     @objc private func btnSaveClick() {
-        if checkBodyWeight() {
-            progressView?.show(true)
-            UserService.sharedInstance.updateUser(userDataCallBack: self.userDataCallback,
-                userDto: UserDto(
-                                lastName: tfLastName.text,
-                                firstName: tfFirstName.text,
-                                email: tfEmail.text,
-                                bodyWeight: Double(tfWeight.text!),
-                                gender: self.userService.getUser()?.gender,
-                                birthDate: self.userService.getUser()?.birthDate,
-                                club: tfClub.text,
-                                country: countryCode,
-                                artOfPaddling: self.artOfPaddling,
-                                password: tfPassword.text,
-                                userName: tfUserName.text))
+        if checkRequiredElements() {
+            
+            let managerType = userManager.update(userDto: UserDto(
+                lastName: tfLastName.text,
+                firstName: tfFirstName.text,
+                email: tfEmail.text,
+                bodyWeight: UnitHelper.getMetricWeightValue(value: bodyWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
+                gender: self.userManager.getUser()?.gender,
+                birthDate: self.userManager.getUser()?.birthDate,
+                club: tfClub.text,
+                country: self.countryPickerHelper!.getValue() ?? userManager.getUser()?.country,
+                artOfPaddling: self.artOfPaddlingPickerHelper!.getValue(),
+                password: tfPassword.text,
+                userName: tfUserName.text,
+                unitWeight: pickerHelperUnitWeight?.getValue(),
+                unitDistance: pickerHelperUnitDistance?.getValue(),
+                unitPace: pickerHelperUnitPace?.getValue(),
+                googleId: nil,
+                facebookId: nil))
+            showProgress(baseManagerType: managerType)
         }
     }
     
@@ -304,108 +375,64 @@ class ProfileVc: MainTabVc, UIPickerViewDataSource, UIPickerViewDelegate {
         tfClub.active = isActive
         tfCountry.active = isActive
         tfArtOfPaddling.active = isActive
+        tfUnitWeight.active = isActive
+        tfUnitDistance.active = isActive
+        tfUnitPace.active = isActive
         
         if !isActive {
-            let weight = self.userService.getUser()?.bodyWeight
+            initBodyWeight(user: self.userManager.getUser())
             
-            if let weightValue = weight {
-                tfWeight.text = "\(Int(weightValue))"
-            }
             tfWeight.endEditing(true)
         }
     }
     
-    private func checkBodyWeight() -> Bool {
-        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < User.minBodyWeight {
-            tfWeight.error = getString("error_weight")
-            return false
-        }
-        return true
-    }
-    
-    //MARK: pickerView
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == countryPickerView {
-            return NSLocale.locales().count
-        } else {
-            return User.artOfPaddlingOptions.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == countryPickerView {
-            return NSLocale.locales()[row].countryName
-        } else {
-            return User.artOfPaddlingOptions[row]
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == countryPickerView {
-            countryCode = NSLocale.locales()[row].countryCode
-            
-            tfCountry.text = NSLocale.locales()[row].countryName
-        } else if pickerView == artOfPaddlingPickerView {
-            let selectedArtOfPaddling = User.artOfPaddlingOptions[row]
-            
-            switch selectedArtOfPaddling {
-            case getString("user_art_of_paddling_racing_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRacingKayaking
-            case getString("user_art_of_paddling_racing_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRacingCanoeing
-            case getString("user_art_of_paddling_recreational_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalKayaking
-            case getString("user_art_of_paddling_recreational_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalCanoeing
-            case getString("user_art_of_paddling_sup"):
-                self.artOfPaddling = User.artOfPaddlingSup
-            case getString("user_art_of_paddling_dragon"):
-                self.artOfPaddling = User.artOfPaddlingDragon
-            case getString("user_art_of_paddling_rowing"):
-                self.artOfPaddling = User.artOfPaddlingRowing
-            default:
-                break
-            }
-            
-            tfArtOfPaddling.text = selectedArtOfPaddling
-        }
+    private func checkRequiredElements() -> Bool {
+        let isValidArtOfPaddling = Validate.isValidPicker(tfPicker: tfArtOfPaddling)
+        let isValidUnitWeight = Validate.isValidPicker(tfPicker: tfUnitWeight)
+        let isValidUnitDistance = Validate.isValidPicker(tfPicker: tfUnitDistance)
+        let isValidUnitPace = Validate.isValidPicker(tfPicker: tfUnitPace)
+        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue()))
+        
+        return isValidArtOfPaddling && isValidUnitWeight && isValidUnitDistance && isValidUnitPace && isValidBodyWeight
     }
     
     @objc private func clickLogout() {
-        progressView?.show(true)
-        (UIApplication.shared.delegate as! AppDelegate).logoutSocial()
-        UserService.sharedInstance.logout(userDataCallBack: logoutCallback)
-    }
-    
-    private func logoutCallback(error: Responses?, userData: Bool?) {
-        self.progressView?.show(false)
-        
-        UserService.sharedInstance.addLoginDto(loginDto: nil)
-        showWelcomeViewController()
+        let manager = userManager.logout()
+        showProgress(baseManagerType: manager)
     }
     
     private func clickPassword() {
         let passworDialog = NewPasswordDialog()
         passworDialog.handler = { currentPassword, newPassword in
-            self.progressView?.show(true)
-            UserService.sharedInstance.updatePassword(userDataCallBack: self.userDataCallback, currentPassword: currentPassword, newPassword: newPassword)
+            let manager = self.userManager.updatePassword(currentPassword: currentPassword, newPassword: newPassword)
+            self.showProgress(baseManagerType: manager)
         }
         passworDialog.show(viewController: self)
     }
     
-    private func userDataCallback(error: Responses?, userData: User?) {
-        self.progressView?.show(false)
+    //MARK: manager callbacks
+    private func logoutCallback(data: Bool?, error: Responses?) {
+        dismissProgress()
         
-        if let user = userData {
-            self.navigationController?.popViewController(animated: true)
+        userManager.addLoginDto(loginDto: nil)
+        showWelcomeViewController()
+    }
+    
+    private func updateUserCallback(data: User?, error: Responses?) {
+        handleUpdate(error: error)
+    }
+    
+    private func updatePasswordCallback(data: Bool?, error: Responses?) {
+        handleUpdate(error: error)
+    }
+    
+    private func handleUpdate(error: Responses?) {
+        dismissProgress()
+        
+        if error == nil {
             initTabBarItems()
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self, error: userError)
+        } else {
+            errorHandlingWithAlert(viewController: self, error: error!)
         }
     }
     

@@ -26,7 +26,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func initQuickStart() {
-        if UserService.sharedInstance.isQuickStart {
+        if UserManager.sharedInstance.isQuickStart {
             let viewControllers = self.viewControllers
             if let vcs = viewControllers {
                 vcs[1].tabBarItem.isEnabled = false
@@ -38,7 +38,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     private lazy var mainViewControllers: [UIViewController]! = {
         var viewControllers = [UIViewController]()
         
-        let mainVc = MainVc()
+        let mainVc = self.getMainVc()
         let mainNavController = UINavigationController()
         mainNavController.pushViewController(mainVc, animated: false)
         let mainTab = UITabBarItem(title: getString("navigation_home"), image: UIImage(named: "navigation_home"), tag: 0)
@@ -61,7 +61,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         settingsNavController.pushViewController(settingsVc, animated: false)
         let settingsTab = UITabBarItem(title: getString("navigation_settings"), image: UIImage(named: "navigation_about"), tag: 0)
         settingsNavController.tabBarItem = settingsTab
-    
         
         viewControllers.append(mainNavController)
         viewControllers.append(calendarNavController)
@@ -70,4 +69,15 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         
         return viewControllers
     }()
+    
+    private func getMainVc() -> BaseVC {
+        let baseVc: BaseVC?
+        
+        if UserManager.sharedInstance.isQuickStart {
+            baseVc = MainVc()
+        } else {
+            baseVc = PlanOrNotPlanVc()
+        }
+        return baseVc!
+    }
 }

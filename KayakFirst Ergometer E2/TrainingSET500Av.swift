@@ -13,15 +13,23 @@ class TrainingSET500Av: TrainingSumElementAvgTime {
         return CalculateEnum.T_500_AV.rawValue
     }
     
-    override func getTitle() -> String {
-        return getString("training_sum_t_500")
+    override func getTitleMetric() -> String {
+        return getString("training_sum_t_500_metric")
     }
     
-    override func getUnit() -> String {
-        return ""
+    override func getTitleImperial() -> String {
+        return getString("training_sum_t_500_imperial")
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricPace()
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].t500List
+        return trainingManager.detailsTrainingList![position!].t500List
+    }
+    
+    override func calculate() -> Double {
+        return UnitHelper.getPaceValue(pace: 500, metricValue: trainingManager.detailsTrainingList![position!].avgT500)
     }
 }

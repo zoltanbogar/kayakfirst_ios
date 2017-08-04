@@ -8,22 +8,29 @@
 
 import Foundation
 import M13Checkbox
-import DatePickerDialog
 
-class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class RegisterView: UIView, UITextFieldDelegate {
     
     //MARK: properties
     private let viewController: WelcomeViewController
+    private let userManager = UserManager.sharedInstance
     
     private var birthDate: TimeInterval?
-    private var gender: String?
-    private var countryCode: String?
-    private var artOfPaddling: String?
     
     private let stackView = UIStackView()
     private let genderPickerView = UIPickerView()
+    private var pickerHelperGender: PickerHelperGender?
     private let countryPickerView = UIPickerView()
+    private var pickerHelperLocale: PickerHelperLocale?
     private let artOfPaddlingPickerView = UIPickerView()
+    private var pickerHelperArtOfPaddling: PickerHelperArtOfPaddling?
+    private let unitWeightPickerView = UIPickerView()
+    private var pickerHelperUnitWeight: PickerHelperUnit?
+    private let unitDistancePickerView = UIPickerView()
+    private var pickerHelperUnitDistance: PickerHelperUnit?
+    private let unitPacePickerView = UIPickerView()
+    private var pickerHelperUnitPace: PickerHelperUnit?
+    private let datePickerView = UIDatePicker()
     private var scrollView: AppScrollView?
     
     //MARK: init
@@ -33,9 +40,14 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         
         initView()
         
-        genderPickerView.delegate = self
-        countryPickerView.delegate = self
-        artOfPaddlingPickerView.delegate = self
+        pickerHelperGender = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
+        pickerHelperLocale = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
+        pickerHelperArtOfPaddling = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
+        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
+        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
+        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
+        
+        userManager.registerCallback = registerCallback
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,6 +74,9 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         stackView.addArrangedSubview(tfCountry)
         stackView.addArrangedSubview(tfGender)
         stackView.addArrangedSubview(tfArtOfPaddling)
+        stackView.addArrangedSubview(tfUnitWeight)
+        stackView.addArrangedSubview(tfUnitDistance)
+        stackView.addArrangedSubview(tfUnitPace)
         stackView.addVerticalSpacing(spacing: margin)
         stackView.addArrangedSubview(labelRequired)
         
@@ -129,10 +144,12 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     private lazy var tfBirthDate: DialogElementTextField! = {
         let textField = DialogElementTextField(frame: CGRect.zero)
         textField.title = getString("user_birth_date")
-        textField.isEditable = false
-        textField.clickCallback = {
-            self.clickBithDate()
-        }
+        
+        self.datePickerView.datePickerMode = .date
+        self.datePickerView.maximumDate = Date()
+        
+        textField.valueTextField.inputView = self.datePickerView
+        self.datePickerView.addTarget(self, action: #selector(self.birthDatePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
     }()
@@ -194,7 +211,29 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         textField.title = getString("user_gender")
         textField.required = true
         
-        textField.valueTextField.inputView = self.genderPickerView
+        return textField
+    }()
+    
+    private lazy var tfUnitWeight: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_weight")
+        textField.required = true
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitDistance: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_distance")
+        textField.required = true
+        
+        return textField
+    }()
+    
+    private lazy var tfUnitPace: DialogElementTextField! = {
+        let textField = DialogElementTextField(frame: CGRect.zero)
+        textField.title = getString("unit_pace")
+        textField.required = true
         
         return textField
     }()
@@ -255,28 +294,6 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return button
     }()
     
-    //MARK: button callbacks
-    private func clickBithDate() {
-        DatePickerDialog().show(
-            title: getString("user_birth_date"),
-            doneButtonTitle: getString("other_ok"),
-            cancelButtonTitle: getString("other_cancel"),
-            datePickerMode: .date) { date in
-                if let selectedDate = date {
-                    let selectedBirthDate = DateFormatHelper.getMilliSeconds(date: selectedDate)
-                    
-                    if selectedBirthDate >= currentTimeMillis() {
-                        self.tfBirthDate.error = getString("error_birth_date")
-                    } else {
-                        self.birthDate = selectedBirthDate
-                        
-                        self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: getString("date_format"), timeIntervallSince1970: self.birthDate)
-                        self.tfBirthDate.error = nil
-                    }
-                }
-        }
-    }
-    
     @objc private func checkBoxTarget() {
         let isChecked = checkBox.checkState == M13Checkbox.CheckState.checked
         btnRegister.setDisabled(!isChecked)
@@ -284,33 +301,37 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     @objc private func clickRegister() {
         if checkFields() {
-            viewController.progressView?.show(true)
-            UserService.sharedInstance.register(
-                userDataCallBack: registerCallback,
-                userDto: UserDto(
-                    lastName: tfLastName.text,
-                    firstName: tfFirstName.text,
-                    email: tfEmail.text,
-                    bodyWeight: Double(tfWeight.text!),
-                    gender: gender,
-                    birthDate: birthDate,
-                    club: tfClub.text,
-                    country: countryCode,
-                    artOfPaddling: self.artOfPaddling,
-                    password: tfPassword.text,
-                    userName: tfUserName.text),
-                facebookId: self.viewController.facebookId,
-                googleId: self.viewController.googleId)
+            let userDto = UserDto(
+                lastName: tfLastName.text,
+                firstName: tfFirstName.text,
+                email: tfEmail.text,
+                bodyWeight: UnitHelper.getMetricWeightValue(value: Double(tfWeight.text!)!, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())),
+                gender: pickerHelperGender!.getValue(),
+                birthDate: birthDate,
+                club: tfClub.text,
+                country: pickerHelperLocale!.getValue(),
+                artOfPaddling: pickerHelperArtOfPaddling!.getValue(),
+                password: tfPassword.text,
+                userName: tfUserName.text,
+                unitWeight: pickerHelperUnitWeight?.getValue(),
+                unitDistance: pickerHelperUnitDistance?.getValue(),
+                unitPace: pickerHelperUnitPace?.getValue(),
+                googleId: self.viewController.googleId,
+                facebookId: self.viewController.facebookId)
+            
+            let managerType = userManager.register(userDto: userDto)
+            viewController.showProgress(baseManagerType: managerType)
         }
     }
     
     //MARK: server callbacks
-    private func registerCallback(error: Responses?, userData: User?) {
-        viewController.progressView?.show(false)
-        if userData != nil {
+    private func registerCallback(data: Bool?, error: Responses?) {
+        self.viewController.dismissProgress()
+        
+        if error == nil {
             viewController.showMainView(isQuickStart: false)
-        } else if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: viewController, error: userError)
+        } else {
+            errorHandlingWithAlert(viewController: viewController, error: error!)
         }
     }
     
@@ -327,65 +348,18 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == genderPickerView {
-            return User.genderOptions.count
-        } else if pickerView == countryPickerView {
-            return NSLocale.locales().count
+    //MARK: pcikerview listener
+    func birthDatePickerValueChanged(sender: UIDatePicker) {
+        
+        let selectedBirthDate = DateFormatHelper.getTimestampFromDatePicker(datePicker: sender)
+        
+        if selectedBirthDate >= currentTimeMillis() {
+            self.tfBirthDate.error = getString("error_birth_date")
         } else {
-            return User.artOfPaddlingOptions.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == genderPickerView {
-            return User.genderOptions[row]
-        } else if pickerView == countryPickerView {
-            return NSLocale.locales()[row].countryName
-        } else {
-            return User.artOfPaddlingOptions[row]
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == genderPickerView {
-            let selectedGender = User.genderOptions[row]
-            let genderFemaleLocalized = getString("user_gender_female")
+            self.birthDate = selectedBirthDate
             
-            if selectedGender == genderFemaleLocalized {
-                gender = User.genderFemale
-            } else {
-                gender = User.genderMale
-            }
-            
-            tfGender.text = selectedGender
-        } else if pickerView == countryPickerView {
-            countryCode = NSLocale.locales()[row].countryCode
-            
-            tfCountry.text = NSLocale.locales()[row].countryName
-        } else if pickerView == artOfPaddlingPickerView {
-            let selectedArtOfPaddling = User.artOfPaddlingOptions[row]
-            
-            switch selectedArtOfPaddling {
-            case getString("user_art_of_paddling_racing_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRacingKayaking
-            case getString("user_art_of_paddling_racing_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRacingCanoeing
-            case getString("user_art_of_paddling_recreational_kayaking"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalKayaking
-            case getString("user_art_of_paddling_recreational_canoeing"):
-                self.artOfPaddling = User.artOfPaddlingRecreationalCanoeing
-            case getString("user_art_of_paddling_sup"):
-                self.artOfPaddling = User.artOfPaddlingSup
-            case getString("user_art_of_paddling_dragon"):
-                self.artOfPaddling = User.artOfPaddlingDragon
-            case getString("user_art_of_paddling_rowing"):
-                self.artOfPaddling = User.artOfPaddlingRowing
-            default:
-                break
-            }
-            
-            tfArtOfPaddling.text = selectedArtOfPaddling
+            self.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.birthDate)
+            self.tfBirthDate.error = nil
         }
     }
     
@@ -393,49 +367,46 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         var isValid = true;
         var viewToScroll: UIView? = nil
         
-        let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
-        if userNameCharacters < User.minCharacterUserName {
-            tfUserName.error = getString("error_user_name")
+        if !Validate.isUserNameValid(tfUserName: tfUserName) {
             isValid = false
             viewToScroll = tfUserName
         }
-        
-        let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
-        if passwordCharacters < User.minCharacterPassword {
-            tfPassword.error = getString("error_password")
+        if !Validate.isPasswordValid(tfPassword: tfPassword) {
             isValid = false
             viewToScroll = tfPassword
         }
-        if !isValidEmail(email: tfEmail.text) {
+        if !Validate.isValidEmail(email: tfEmail.text) {
             tfEmail.error = getString("error_email")
             isValid = false
             viewToScroll = tfEmail
         }
-        
-        let bodyWeight: Int = tfWeight.text == nil || tfWeight.text == "" ? 0 : Int(tfWeight.text!)!
-        if bodyWeight < User.minBodyWeight {
-            tfWeight.error = getString("error_weight")
+        if !Validate.isValidBodyWeight(tfWeight: tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight!.getValue())) {
             isValid = false
             viewToScroll = tfWeight
         }
-        
-        let chooseText = ""
-        if tfCountry.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfCountry) {
             isValid = false
-            tfCountry.error = getString("user_spinner_choose")
             viewToScroll = tfCountry
         }
-        
-        if tfGender.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfGender) {
             isValid = false
-            tfGender.error = getString("user_spinner_choose")
             viewToScroll = tfGender
         }
-        
-        if tfArtOfPaddling.text! == chooseText {
+        if !Validate.isValidPicker(tfPicker: tfArtOfPaddling) {
             isValid = false
-            tfArtOfPaddling.error = getString("user_spinner_choose")
             viewToScroll = tfArtOfPaddling
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitWeight) {
+            isValid = false
+            viewToScroll = tfUnitWeight
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitDistance) {
+            isValid = false
+            viewToScroll = tfUnitDistance
+        }
+        if !Validate.isValidPicker(tfPicker: tfUnitPace) {
+            isValid = false
+            viewToScroll = tfUnitPace
         }
 
         if let scroll = viewToScroll {
@@ -457,5 +428,8 @@ class RegisterView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         tfCountry.text = ""
         tfGender.text = ""
         tfArtOfPaddling.text = ""
+        tfUnitWeight.text = ""
+        tfUnitDistance.text = ""
+        tfUnitPace.text = ""
     }
 }

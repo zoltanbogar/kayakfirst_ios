@@ -9,10 +9,14 @@
 import Foundation
 import SQLite
 
-class TrainingDbLoader: BaseDbLoader<Training> {
+class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
+    
+    //MARK: constants
+    static let tableName = "training_table"
     
     //MARK: init
-    override init() {
+    static let sharedInstance = TrainingDbLoader()
+    private override init() {
         super.init()
     }
     
@@ -20,7 +24,6 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     struct PropertyKey {
         static let timeStampKey = "timeStamp"
         static let currentDistanceKey = "currentDistance"
-        static let userIdKey = "userId"
         static let trainingTypeKey = "trainingType"
         static let trainingEnvironmentTypeKey = "trainingEnvironmentType"
         static let dataTypeKey = "dataType"
@@ -30,54 +33,101 @@ class TrainingDbLoader: BaseDbLoader<Training> {
     //MARK: columns
     private let timeStamp = Expression<Double>(PropertyKey.timeStampKey)
     private let currentDistance = Expression<Double>(PropertyKey.currentDistanceKey)
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
     private let trainingType = Expression<String>(PropertyKey.trainingTypeKey)
     private let trainingEnvironmentType = Expression<String>(PropertyKey.trainingEnvironmentTypeKey)
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)
     private let dataValue = Expression<Double>(PropertyKey.dataValueKey)
     
+    override func getTableName() -> String {
+        return TrainingDbLoader.tableName
+    }
+    
     //MARK: init database
-    override func initDatabase() {
-        table = Table("training_table")
-        do {
-            if let database = db {
-                try database.run(table!.create(ifNotExists: true) { t in
-                    t.column(timeStamp, primaryKey: true)
-                    t.column(currentDistance)
-                    t.column(userId)
-                    t.column(sessionId)
-                    t.column(trainingType)
-                    t.column(trainingEnvironmentType)
-                    t.column(dataType)
-                    t.column(dataValue)
-                })
-            }
-        } catch {
-            log("DATABASE", error)
-        }
+    override func initDatabase(database: Connection) throws {
+        try database.run(table!.create(ifNotExists: true) { t in
+            t.column(timeStamp, primaryKey: true)
+            t.column(currentDistance)
+            t.column(userId)
+            t.column(sessionId)
+            t.column(trainingType)
+            t.column(trainingEnvironmentType)
+            t.column(dataType)
+            t.column(dataValue)
+        })
     }
     
     //MARK: insert
-    override func addData(data: Training) {
-        let insert = table!.insert(self.timeStamp <- data.timeStamp, self.currentDistance <- data.currentDistance, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.trainingType <- data.trainingType.rawValue, self.trainingEnvironmentType <- data.trainingEnvironmentType.rawValue, self.dataType <- data.dataType, self.dataValue <- data.dataValue)
+    func addTrainings(trainings: [Training]) {
+        do {
+            try db!.transaction {
+                for training in trainings {
+                    self.addData(data: training)
+                }
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
         
-        let rowId = try? db?.run(insert)
+    }
+    
+    override func addData(data: Training?) {
+        if let training = data {
+            let insert = table!.insert(self.timeStamp <- Double(Int64(training.timeStamp)), self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- training.sessionId, self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
+            
+            let rowId = try? db?.run(insert)
+        }
+    }
+    
+    //MARK: update
+    override func updateData(data: Training) {
+        //nothing here
+    }
+    
+    //MARK: delete
+    override func deleteData(predicate: Expression<Bool>?) -> Int {
+        var deletedRows = 0
+        
+        let deleteData = table!.filter(predicate!)
+        
+        do {
+            deletedRows = try db!.run(deleteData.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
     }
     
     //MARK: query
-    func getTrainingsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
-        return self.timeStamp > sessionIdFrom && self.timeStamp <= sessionIdTo
+    override func queryData(predicate: Expression<Bool>?) -> [Training]? {
+        return loadData(predicate: predicate)
     }
     
-    func getTrainingsFromTimeStampPredicate(timeStampFrom: Double) -> Expression<Bool> {
-        return self.timeStamp > timeStampFrom
+    func getTrainingDays() -> [Double] {
+        var trainingDays = [Double]()
+        
+        do {
+            let query = table?.select(self.sessionId).order(self.sessionId)
+            
+            let dbList = try db!.prepare(query!.filter(getUserQuery()))
+            
+            for days in dbList {
+                let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
+                if !trainingDays.contains(midnightTime) {
+                    trainingDays.append(midnightTime)
+                }
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+        
+        return trainingDays
     }
     
     override func loadData(predicate: Expression<Bool>?) -> [Training]? {
         var trainingList: [Training]?
         
         do {
-            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            var queryPredicate = self.userId == UserManager.sharedInstance.getUser()!.id
             
             if let predicateValue = predicate {
                 queryPredicate = queryPredicate && predicateValue
@@ -111,9 +161,27 @@ class TrainingDbLoader: BaseDbLoader<Training> {
                 
             }
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
         
         return trainingList
+    }
+    
+    override func getDeleteOldDataPredicate() -> Expression<Bool> {
+        return self.sessionId < getOldDataTimestamp()
+    }
+    
+    //MARK: protocol
+    override func loadUploadAbleData(pointer: Double) -> [Training]? {
+        let predicate = self.timeStamp > pointer
+        return loadData(predicate: predicate)
+    }
+    
+    func getTrainingsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
+        return self.timeStamp > sessionIdFrom && self.timeStamp <= sessionIdTo
+    }
+    
+    func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
     }
 }

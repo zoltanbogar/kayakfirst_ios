@@ -12,37 +12,59 @@
 "app_version"="Verzió: ";
 
 //DashBoard
-"dashboard_title_av_200"="Átlag 200m";
-"dashboard_title_av_500"="Átlag 500m";
-"dashboard_title_av_1000"="Átlag 1000m";
-"dashboard_title_actual_200"="Most 200m";
-"dashboard_title_actual_500"="Most 500m";
-"dashboard_title_actual_1000"="Most 1000m";
+"dashboard_title_av_200_metric"="Átlag 200m";
+"dashboard_title_av_500_metric"="Átlag 500m";
+"dashboard_title_av_1000_metric"="Átlag 1000m";
+"dashboard_title_av_200_imperial"="Átlag 1/4 mérföld";
+"dashboard_title_av_500_imperial"="Átlag 1/2 mérföld";
+"dashboard_title_av_1000_imperial"="Átlag 1 mérföld";
+"dashboard_title_actual_200_metric"="Most 200m";
+"dashboard_title_actual_500_metric"="Most 500m";
+"dashboard_title_actual_1000_metric"="Most 1000m";
+"dashboard_title_actual_200_imperial"="Most 1/4 mérföld";
+"dashboard_title_actual_500_imperial"="Most 1/2 mérföld";
+"dashboard_title_actual_1000_imperial"="Most 1 mérföld";
 "dashboard_title_stroke_min"="Csapás/perc";
-"dashboard_title_pull_force"="Húzáserő (N)";
-"dashboard_title_distance"="Távolság (m)";
+"dashboard_title_pull_force_metric"="Húzáserő (N)";
+"dashboard_title_pull_force_imperial"="Húzáserő (pdl)";
+"dashboard_title_distance_metric"="Távolság (m)";
+"dashboard_title_distance_imperial"="Távolság (ft)";
 "dashboard_title_duration"="Tartam";
-"dashboard_title_current_speed"="Seb. most (km/h)";
-"dashboard_title_av_speed"="Átlagseb. (km/h)";
+"dashboard_title_current_speed_metric"="Most (km/h)";
+"dashboard_title_current_speed_imperial"="Seb. most (mph)";
+"dashboard_title_av_speed_metric"="Átlagseb. (km/h)";
+"dashboard_title_av_speed_imperial"="Átlagseb. (mph)";
 "dashboard_title_drag_drop"="Húzz ide egyet!";
 "dashboard_title_av_strokes"="Átl. csapás/perc";
-"dashboard_title_av_pull_force"="Átl. húzáserő (N)";
+"dashboard_title_av_pull_force_metric"="Átl. húzáserő (N)";
+"dashboard_title_av_pull_force_imperial"="Átl. húzáserő (pdl)";
 
 //DashboardOutdoor
-"dashboard_outdoor_title_av_200"="Átlag\n200m";
-"dashboard_outdoor_title_av_500"="Átlag\n500m";
-"dashboard_outdoor_title_av_1000"="Átlag\n1000m";
-"dashboard_outdoor_title_actual_200"="Most\n200m";
-"dashboard_outdoor_title_actual_500"="Most\n500m";
-"dashboard_outdoor_title_actual_1000"="Most\n1000m";
+"dashboard_outdoor_title_av_200_metric"="Átlag\n200m";
+"dashboard_outdoor_title_av_500_metric"="Átlag\n500m";
+"dashboard_outdoor_title_av_1000_metric"="Átlag\n1000m";
+"dashboard_outdoor_title_av_200_imperial"="Átlag\n1/4mérföld";
+"dashboard_outdoor_title_av_500_imperial"="Átlag\n1/2mérföld";
+"dashboard_outdoor_title_av_1000_imperial"="Átlag\n1mérföld";
+"dashboard_outdoor_title_actual_200_metric"="Most\n200m";
+"dashboard_outdoor_title_actual_500_metric"="Most\n500m";
+"dashboard_outdoor_title_actual_1000_metric"="Most\n1000m";
+"dashboard_outdoor_title_actual_200_imperial"="Most\n1/4mérföld";
+"dashboard_outdoor_title_actual_500_imperial"="Most\n1/2mérföld";
+"dashboard_outdoor_title_actual_1000_imperial"="Most\n1mérföld";
 "dashboard_outdoor_title_stroke_min"="Csapás/perc";
-"dashboard_outdoor_title_pull_force"="Húzáserő\n(N)";
-"dashboard_outdoor_title_distance"="Távolság\n(m)";
-"dashboard_outdoor_title_duration"="Időtartam";
-"dashboard_outdoor_title_current_speed"="Seb. most\n(km/h)";
-"dashboard_outdoor_title_av_speed"="Átlagseb.\n(km/h)";
+"dashboard_outdoor_title_pull_force_metric"="Húzáserő\n(N)";
+"dashboard_outdoor_title_pull_force_imperial"="Húzáserő\n(pdl)";
+"dashboard_outdoor_title_distance_metric"="Távolság\n(m)";
+"dashboard_outdoor_title_distance_imperial"="Távolság\n(ft)";
+"dashboard_outdoor_title_duration"="Tartam";
+"dashboard_outdoor_title_current_speed_metric"="Seb. most\n(km/h)";
+"dashboard_outdoor_title_current_speed_imperial"="Seb. most\n(mph)";
+"dashboard_outdoor_title_av_speed_metric"="Átlagseb.\n(km/h)";
+"dashboard_outdoor_title_av_speed_imperial"="Átlagseb.\n(mph)";
 "dashboard_outdoor_title_av_strokes"="Átl. csapás/\nperc";
-"dashboard_outdoor_title_av_pull_force"="Átl. húzáserő\n(N)";
+"dashboard_outdoor_title_av_pull_force_metric"="Átl. húzáserő\n(N)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Átl. húzáserő\n(pdl)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Csatlakoztasd az készüléket az alábbi ergométerek egyikéhez...";
@@ -75,9 +97,15 @@
 "dialog_message_bluetooth_disconnect"="Szeretnéd bontani a kapcsolatot?";
 "dialog_title_reset_password"="Add meg az e-mail címed";
 "dialog_calibrating_sensor"="Ne evezz, amíg kalibrálunk!";
+"dialog_sync"="Szinkronizálás...";
+"dialog_plan_no_elements"="Ez az edzésterv még üres.";
+"dialog_event_add_message"="Napárba teszed?";
+"dialog_event_delete_title"="Biztos törölni akarod";
+"dialog_event_delete_message"="Ez a naptáresemény törölve lesz, de az összeállítást megtalálod a Tervek közt.";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
+"notification_title_outdoor_running"="Kültéri edzés folyamatban...";
 
 //StartDelay
 "delay_start_seconds"="Kezdésig hátralévő idő";
@@ -88,13 +116,19 @@
 "other_no"="nem";
 "other_ok"="OK";
 "other_cancel"="Mégsem";
+"other_add"="Hozzáadás";
+"other_save"="Mentés";
+"other_next"="Következő";
+"other_delete"="Törlés";
+"other_power_save"="Energiatakarékos mód";
+"other_search"="Keresés";
 
 //Navigation
 "navigation_profile"="Profil";
 "navigation_log"="Edzésnapló";
 "navigation_about"="Információ";
 "navigation_home"="Kezdőlap";
-"navigation_calendar"="Edzésnapló";
+"navigation_calendar"="Naptár";
 "navigation_settings"="Info";
 "navigation_set_dashboard"="Kiválaszt";
 "ergometer_placeholder"="HAMAROSAN...";
@@ -104,6 +138,7 @@
 "calendar_empty_list"="Nincs tárolt adat";
 "training_type"=" ";
 "training_log"="napló";
+"calendar_empty_event"="Nincs naptáresemény.";
 
 //Chart
 "chart_training_no_value_selected"="A diagram megtekintéséhez válassz legalább egy értéket";
@@ -117,21 +152,29 @@
 "training_sum"="Össz.";
 "training_sum_average"="Átlag";
 "training_sum_best"="Max.";
-"training_sum_speed"="Sebesség\nkm/h";
+"training_sum_speed_metric"="Sebesség\nkm/h";
+"training_sum_speed_imperial"="Sebesség\nmph";
 "training_sum_stroke"="Csapásszám\n\\perc";
-"training_sum_pull_force"="Húzóerő\nN";
-"training_sum_t_200"="Iram\n200";
-"training_sum_t_500"="Iram\n500";
-"training_sum_t_1000"="Iram\n1000";
+"training_sum_pull_force_metric"="Húzóerő\nN";
+"training_sum_pull_force_imperial"="Húzóerő\npdl";
+"training_sum_t_200_metric"="Iram\n200";
+"training_sum_t_500_metric"="Iram\n500";
+"training_sum_t_1000_metric"="Iram\n1000";
+"training_sum_t_200_imperial"="Iram\n1/4";
+"training_sum_t_500_imperial"="Iram\n1/2";
+"training_sum_t_1000_imperial"="Iram\n1";
 "training_diagram_time"="Idő";
 "training_diagram_distance"="Táv";
 "training_details_sum"="Össz.";
 "training_details_all"="Adatok";
 
 //Calculate
-"calculate_t200"="Iram 200";
-"calculate_t500"="Iram 500";
-"calculate_t1000"="Iram 1000";
+"calculate_t200_metric"="Iram 200";
+"calculate_t500_metric"="Iram 500";
+"calculate_t1000_metric"="Iram 1000";
+"calculate_t200_imperial"="Iram 1/4";
+"calculate_t500_imperial"="Iram 1/2";
+"calculate_t1000_imperial"="Iram 1";
 "calculate_strokes"="Csapásszám";
 "calculate_f"="Húzóerő";
 "calculate_s"="Táv";
@@ -195,8 +238,19 @@
 "user_terms_conditions_short"="Felhasználási feltételek";
 
 //Unit
-"unit_speed"="km/h";
-"unit_force"="n";
+"unit_weight"="Súly mértékegység";
+"unit_distance"="Sebesség és távolság mértékegység";
+"unit_pace"="Tempó mértékegység";
+"unit_metric"="Metrikus";
+"unit_imperial"="Angolszász";
+"unit_speed_metric"="km/h";
+"unit_speed_imperial"="mph";
+"unit_force_metric"="n";
+"unit_force_imperial"="pdl";
+"unit_distance_metric"="m";
+"unit_distance_imperial"="ft";
+"unit_weight_metric"="kg";
+"unit_weight_imperial"="lbs";
 
 //Error
 "error_no_internet"="Nincs internetkapcsolat!";
@@ -206,13 +260,34 @@
 "error_email"="Érvénytelen email cím!";
 "error_user_name"="Legalább 2 karaktert adj meg!";
 "error_password"="Legalább 4 karaktert adj meg!";
-"error_weight"="Testsúly legalább 30!";
+"error_weight"="Testsúly legalább";
 "error_birth_date"="A születési dátum nem lehet a jövőben!";
 "error_google_sign_out"="Google kijelentkezési probléma!";
-"error_user_username_used"="A felhasználónév már foglalt";
-"error_user_email_used"="Az email már foglalt";
+"error_user_username_used"="A felhasználónév már foglalt!";
+"error_user_email_used"="Az email már foglalt!";
+"error_event_timestamp_past"="Naptáresemény nem indulhat a múltban!";
+"error_plan_name"="Kérjük, töltsd ki az elnevezést!";
 
 //Date
 "date_format"="yyyy.MM.dd";
 "date_time_format"="yyyy.MM.dd kk:mm";
 "date_format_month"="yyyy MMMM";
+"date_date"="Dátum";
+
+//Plan
+"plan_run"="Indulás!";
+"plan_plan"="Edzésterv";
+"plan_name"="Név";
+"plan_done"="Vége";
+"plan_notes"="Jegyzet";
+"plan_edit_intervals"="Interval szerkesztése";
+"plan_saved"="Edzésterv mentve!";
+"plan_hint_minute"="mm";
+"plan_hint_sec"="ss";
+"plan_hint_percent"="%";
+"plan_hint_name"="Név megadása...";
+"plan_hint_notes"="Típus megadása...";
+"plan_empty"="Nincs még edzésterv.";
+"plan_add_calendar"="Naptárba";
+"plan_end"="Vége";
+"plan_event_title"="Nap és időpont megadása";

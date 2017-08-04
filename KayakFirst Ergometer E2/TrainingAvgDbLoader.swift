@@ -9,59 +9,65 @@
 import Foundation
 import SQLite
 
-class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
+class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
+    
+    //MARK: constants
+    static let tableName = "training_avg_table"
     
     //MARK: properties
     private var sessionIdValue: Double?
     private var avgHashes: [String]?
     
+    //MARK: init
+    static let sharedInstance = TrainingAvgDbLoader()
+    private override init() {
+        super.init()
+    }
+    
     //MARK: keys
     struct PropertyKey {
         static let averageHashKey = "averageHash"
-        static let userIdKey = "userId"
         static let dataTypeKey = "dataType"
         static let dataValueKey = "dataValue"
     }
     
     //MARK: columns
     private let averageHash = Expression<String>(PropertyKey.averageHashKey)
-    private let userId = Expression<Int64>(PropertyKey.userIdKey)
     private let dataType = Expression<String>(PropertyKey.dataTypeKey)
     private let dataValue = Expression<Double>(PropertyKey.dataValueKey)
     
+    override func getTableName() -> String {
+        return TrainingAvgDbLoader.tableName
+    }
+    
     //MARK: init database
-    override func initDatabase() {
-        table = Table("training_avg_table")
-        do {
-            if let database = db {
-                try database.run(table!.create(ifNotExists: true) { t in
-                    t.column(averageHash, primaryKey: true)
-                    t.column(userId)
-                    t.column(sessionId)
-                    t.column(dataType)
-                    t.column(dataValue)
-                })
-            }
-        } catch {
-            log("DATABASE", error)
-        }
+    override func initDatabase(database: Connection) throws {
+        try database.run(table!.create(ifNotExists: true) { t in
+            t.column(averageHash, primaryKey: true)
+            t.column(userId)
+            t.column(sessionId)
+            t.column(dataType)
+            t.column(dataValue)
+        })
     }
     
     //MARK: insert
-    override func addData(data: TrainingAvg) {
-        if sessionIdValue != data.sessionId {
-            avgHashes = [String]()
-            sessionIdValue = data.sessionId
-        }
-        
-        if !avgHashes!.contains(data.avgHash) {
-            avgHashes!.append(data.avgHash)
+    override func addData(data: TrainingAvg?) {
+        if let trainingAvg = data {
+            if sessionIdValue != trainingAvg.sessionId {
+                avgHashes = [String]()
+                sessionIdValue = trainingAvg.sessionId
+            }
             
-            let insert = table!.insert(self.averageHash <- data.avgHash, self.userId <- data.userId!, self.sessionId <- data.sessionId, self.dataType <- data.avgType, self.dataValue <- data.avgValue)
-            
-            let rowId = try? db?.run(insert)
-        } else {
-            updateData(trainingAvg: data)
+            if !avgHashes!.contains(trainingAvg.avgHash) {
+                avgHashes!.append(trainingAvg.avgHash)
+                
+                let insert = table!.insert(self.averageHash <- trainingAvg.avgHash, self.userId <- trainingAvg.userId!, self.sessionId <- Double(Int64(trainingAvg.sessionId)), self.dataType <- trainingAvg.avgType, self.dataValue <- trainingAvg.avgValue)
+                
+                let rowId = try? db?.run(insert)
+            } else {
+                updateData(trainingAvg: trainingAvg)
+            }
         }
     }
     
@@ -70,19 +76,21 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
     }
     
-    func getTrainingAvgsfromTimeStampPredicate(timeStampFrom: Double) -> Expression<Bool> {
-        return self.sessionId > timeStampFrom
+    func getSessionIdPredicate(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
     }
     
     override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
         var trainingAvgList: [TrainingAvg]?
         
         do {
-            var queryPredicate = self.userId == UserService.sharedInstance.getUser()!.id
+            var queryPredicate = self.userId == UserManager.sharedInstance.getUser()!.id
             
             if let predicateValue = predicate {
                 queryPredicate = queryPredicate && predicateValue
             }
+            
+            log("DB_TEST", "\(queryPredicate)")
             
             let dbList = try db!.prepare(table!.filter(queryPredicate))
             
@@ -104,10 +112,17 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
                 
             }
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
         
         return trainingAvgList
+    }
+    
+    //MARK: protocol
+    override func loadUploadAbleData(pointer: Double) -> [TrainingAvg]? {
+        let telemetry = Telemetry.sharedInstance
+        let predicate = self.sessionId == pointer && self.sessionId != telemetry.sessionId
+        return loadData(predicate: predicate)
     }
     
     //MARK: update
@@ -116,8 +131,26 @@ class TrainingAvgDbLoader: BaseDbLoader<TrainingAvg> {
         do {
             try db!.run(avg.update(self.dataValue <- trainingAvg.avgValue))
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
+    }
+    
+    //MARK: delete
+    override func deleteData(predicate: Expression<Bool>?) -> Int {
+        var deletedRows = 0
+        
+        let deleteData = table!.filter(predicate!)
+        
+        do {
+            deletedRows = try db!.run(deleteData.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
+    }
+    
+    override func getDeleteOldDataPredicate() -> Expression<Bool> {
+        return self.sessionId < getOldDataTimestamp()
     }
     
 }

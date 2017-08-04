@@ -19,13 +19,8 @@ class TrainingDetailsViewController: BaseVC {
     var titleString: String? {
         get {
             let timeStamp = sumTraining!.startTime
-            let titleString = DateFormatHelper.getDate(dateFormat: getString("date_time_format"), timeIntervallSince1970: timeStamp)
+            let titleString = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateTimeFormat, timeIntervallSince1970: timeStamp)
             return titleString
-        }
-    }
-    var environmentType: TrainingEnvironmentType? {
-        get {
-            return sumTraining?.trainingEnvironmentType
         }
     }
     var position: Int = 0
@@ -128,7 +123,7 @@ class TrainingDetailsViewController: BaseVC {
         
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin05, 0))
         }
     }
     

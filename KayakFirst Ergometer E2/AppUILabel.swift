@@ -19,7 +19,7 @@ class AppUILabel: UILabel {
         fatalError("not implemented")
     }
     
-    private func initLabel() {
+    internal func initLabel() {
         textColor = Colors.colorWhite
         numberOfLines = 0
     }

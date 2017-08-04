@@ -16,18 +16,30 @@ class DashBoardElement_AvSpeed: DashBoardElementBase {
     }
     
     override func getValue() -> Double {
-        return telemetry.speed_av
+        return UnitHelper.getSpeedValue(metricValue: telemetry.speed_av)
     }
     
-    override func getTitle() -> String {
-        return getString("dashboard_outdoor_title_av_speed")
+    override func getTitleMetric() -> String {
+        return getString("dashboard_outdoor_title_av_speed_metric")
     }
     
-    override func getTitleOneLine() -> String {
-        return getString("dashboard_title_av_speed")
+    override func getTitleImperial() -> String {
+        return getString("dashboard_outdoor_title_av_speed_imperial")
+    }
+    
+    override func getTitleOneLineMetric() -> String {
+        return getString("dashboard_title_av_speed_metric")
+    }
+    
+    override func getTitleOneLineImperial() -> String {
+        return getString("dashboard_title_av_speed_imperial")
     }
     
     override func getTagInt() -> Int {
         return DashBoardElement_AvSpeed.tagInt
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricDistance()
     }
 }

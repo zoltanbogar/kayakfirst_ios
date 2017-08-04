@@ -37,7 +37,7 @@ class CalculateElementAvg: CalculateElement<TrainingAvg, StartCommand<MeasureCom
     }
     
     private func createTrainingAvg() -> TrainingAvg {
-        let userId = userService.getUser()?.id
+        let userId = userManager.getUser()?.id
         let sessionId = telemetry.sessionId
         
         return TrainingAvg(

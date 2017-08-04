@@ -17,6 +17,7 @@ class LoginView: UIView {
     
     //MARK: properties
     private let viewController: WelcomeViewController
+    private let userManager = UserManager.sharedInstance
     
     //MARK: init
     init(viewController: WelcomeViewController) {
@@ -24,6 +25,11 @@ class LoginView: UIView {
         super.init(frame: CGRect.zero)
         
         initView()
+        
+        userManager.loginCallback = loginCallback
+        userManager.resetPwCallback = resetPwCallback
+        
+        self.viewController.showProgress(baseManagerType: userManager.userStack)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -142,7 +148,7 @@ class LoginView: UIView {
     
     private lazy var labelNoLogin: UILabel! = {
         let label = AppUILabel()
-        label.text = getString("user_login_or")
+        label.text = ""
         label.textAlignment = .center
         label .font = label.font.withSize(12)
         
@@ -179,16 +185,16 @@ class LoginView: UIView {
     //MARK: button callbacks
     @objc private func btnLoginClick() {
         if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
-            self.viewController.progressView?.show(true)
-            UserService.sharedInstance.login(userDataCallBack: userDataCallback, userName: tfUserName.text!, userPassword: tfPassword.text!)
+            let baseManagerType = userManager.login(userName: tfUserName.text!, userPassword: tfPassword.text!)
+            self.viewController.showProgress(baseManagerType: baseManagerType)
         }
     }
     
     @objc private func btnForgotPasswordClick() {
         let resetPasswordDialog = ResetPasswordDialog()
         resetPasswordDialog.handler = { email in
-            self.viewController.self.progressView?.show(true)
-            UserService.sharedInstance.resetPassword(userDataCallBack: self.resetPasswordCallback, email: email)
+            let baseManagerType = self.userManager.resetPassword(email: email)
+            self.viewController.showProgress(baseManagerType: baseManagerType)
         }
         resetPasswordDialog.show(viewController: self.viewController)
     }
@@ -228,8 +234,8 @@ class LoginView: UIView {
                                 }
                             })
                         }
-                        self.viewController.progressView?.show(true)
-                        UserService.sharedInstance.loginFacebook(userDataCallBack: self.userDataCallback, facebookToken: facebookToken!)
+                        let managerType = self.userManager.loginFacebook(facebookToken: facebookToken!)
+                        self.viewController.showProgress(baseManagerType: managerType)
                     }
                 }
             }
@@ -249,14 +255,15 @@ class LoginView: UIView {
         viewController.socialFirstName = user.profile.givenName
         viewController.socialLastName = user.profile.familyName
         
-        self.viewController.progressView?.show(true)
-        UserService.sharedInstance.loginGoogle(userDataCallBack: self.userDataCallback, email: email!, googleId: googleId!)
+        let managerType = userManager.loginGoogle(email: email!, googleId: googleId!)
+        self.viewController.showProgress(baseManagerType: managerType)
     }
     
     //MARK: server callbacks
-    private func userDataCallback(error: Responses?, userData: LoginDto?) {
-        self.viewController.progressView?.show(false)
-        if userData != nil {
+    private func loginCallback(data: Bool?, error: Responses?) {
+        self.viewController.dismissProgress()
+        
+        if data != nil && data! {
             self.viewController.showMainView(isQuickStart: false)
         } else if let userError = error {
             if error == Responses.error_registration_required {
@@ -264,14 +271,15 @@ class LoginView: UIView {
                 viewController.showRegistrationView()
             }
             
-            AppService.errorHandlingWithAlert(viewController: self.viewController, error: userError)
+            errorHandlingWithAlert(viewController: self.viewController, error: userError)
         }
     }
     
-    private func resetPasswordCallback(error: Responses?, userData: Bool?) {
-        self.viewController.progressView?.show(false)
+    private func resetPwCallback(data: Bool?, error: Responses?) {
+        self.viewController.dismissProgress()
+        
         if let userError = error {
-            AppService.errorHandlingWithAlert(viewController: self.viewController, error: userError)
+            errorHandlingWithAlert(viewController: self.viewController, error: userError)
         }
     }
     

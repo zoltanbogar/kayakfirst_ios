@@ -25,7 +25,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
-    let userService = UserService.sharedInstance
+    let userManager = UserManager.sharedInstance
     let startCommand: S
     
     var calculatedValue: Double = 0
@@ -38,7 +38,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     private var maT_500 = MovingAverage()
     private var maT_1000 = MovingAverage()
     
-    private let saveValues = SaveValues.sharedInstance
+    private let trainingManager = TrainingManager.sharedInstance
     
     //MARK: init
     init(startCommand: S) {
@@ -67,7 +67,7 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     func getWeight() -> Double {
         var bodyWeight: Double? = weightBodyDefault
         
-        let user = userService.getUser()
+        let user = userManager.getUser()
         
         if let userValue = user {
             bodyWeight = userValue.bodyWeight
@@ -79,9 +79,9 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
     func createTrainingObject() -> Training {
         let timeStamp = startCommand.getCalculatedTimeStamp()
         let currentDistance = telemetry.distance
-        let userId = userService.getUser()?.id
+        let userId = userManager.getUser()?.id
         let sessionId = telemetry.sessionId
-        let trainingType = userService.getTrainingType()
+        let trainingType = userManager.getTrainingType()
         let trainingEnvironmentType = startCommand.getTrainingEnvironmentType()
         let dataType = getDataType()
         var dataValue = calculatedValue
@@ -113,7 +113,8 @@ class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
             dataType: dataType.rawValue,
             dataValue: dataValue)
         
-        saveValues.addValue(training: training)
+        usleep(10000)
+        trainingManager.saveTraining(training: training)
         
         return training
     }

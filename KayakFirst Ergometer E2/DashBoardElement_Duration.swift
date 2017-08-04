@@ -19,15 +19,27 @@ class DashBoardElement_Duration: DashBoardelementTime {
         return telemetry.duration
     }
     
-    override internal func getTitle() -> String {
+    override func getTitleMetric() -> String {
         return getString("dashboard_outdoor_title_duration")
     }
     
-    override func getTitleOneLine() -> String {
+    override func getTitleImperial() -> String {
+        return getString("dashboard_outdoor_title_duration")
+    }
+    
+    override func getTitleOneLineMetric() -> String {
+        return getString("dashboard_title_duration")
+    }
+    
+    override func getTitleOneLineImperial() -> String {
         return getString("dashboard_title_duration")
     }
     
     override func getTagInt() -> Int {
         return DashBoardElement_Duration.tagInt
+    }
+    
+    override func isMetric() -> Bool {
+        return true
     }
 }

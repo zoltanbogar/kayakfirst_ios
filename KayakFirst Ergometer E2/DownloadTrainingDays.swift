@@ -22,8 +22,11 @@ class DownloadTrainingDays: ServerService<[TimeInterval]> {
             trainingDays = [TimeInterval]()
             
             for trainingDay in jsonValue.arrayObject! {
+                let zeroEventDay = DateFormatHelper.getZeroHour(timeStamp: TimeInterval(trainingDay as! String)!)
                 
-                trainingDays?.append(DateFormatHelper.getZeroHour(timeStamp: TimeInterval(trainingDay as! String)!))
+                if !trainingDays!.contains(zeroEventDay) {
+                    trainingDays!.append(zeroEventDay)
+                }
             }
         }
         return trainingDays
@@ -42,7 +45,11 @@ class DownloadTrainingDays: ServerService<[TimeInterval]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return TrainingManagerType.download_training_days
     }
     
 }

@@ -19,15 +19,27 @@ class DashBoardElement_Strokes: DashBoardElementBase {
         return telemetry.strokes
     }
     
-    override func getTitle() -> String {
+    override func getTitleMetric() -> String {
         return getString("dashboard_outdoor_title_stroke_min")
     }
     
-    override func getTitleOneLine() -> String {
+    override func getTitleImperial() -> String {
+        return getString("dashboard_outdoor_title_stroke_min")
+    }
+    
+    override func getTitleOneLineMetric() -> String {
+        return getString("dashboard_title_stroke_min")
+    }
+    
+    override func getTitleOneLineImperial() -> String {
         return getString("dashboard_title_stroke_min")
     }
     
     override func getTagInt() -> Int {
         return DashBoardElement_Strokes.tagInt
+    }
+    
+    override func isMetric() -> Bool {
+        return true
     }
 }

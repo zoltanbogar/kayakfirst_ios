@@ -17,5 +17,4 @@ extension UIScrollView {
             self.scrollRectToVisible(CGRect(x: 0, y: childStartPoint.y, width: 1, height: self.frame.height), animated: animated)
         }
     }
-    
 }

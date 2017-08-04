@@ -22,6 +22,9 @@ class DateFormatHelper {
     
     //MARK: constants
     static let timeFormat = "kk:mm"
+    static let dateFormat = getString("date_format")
+    static let dateTimeFormat = getString("date_time_format")
+    static let minSecFormat = "mm:ss"
     
     //MARK: Properties
     var format: TimeEnum?
@@ -68,8 +71,25 @@ class DateFormatHelper {
         return getMilliSeconds(date: calendar.date(from: dateComponents)!)
     }
     
+    class func getTimestampFromDatePicker(datePicker: UIDatePicker) -> TimeInterval {
+        return DateFormatHelper.get23Hour(timeStamp: DateFormatHelper.getMilliSeconds(date: datePicker.date))
+    }
+    
     class func get23Hour(timeStamp: TimeInterval) -> TimeInterval {
         return getZeroHour(timeStamp: timeStamp) + 86399000
+    }
+    
+    class func getTimestampByDate(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> TimeInterval {
+        let calendar = Calendar.current
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        return getMilliSeconds(date: calendar.date(from: dateComponents)!)
     }
     
     class func isSameDay(timeStamp1: TimeInterval, timeStamp2: TimeInterval) -> Bool {

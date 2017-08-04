@@ -34,7 +34,7 @@ class LineChartTime: AppLineChartData {
             let timeStampDiff = training.timeStamp - timeStamp
             timeStamp = training.timeStamp
             
-            entries.append(ChartDataEntry(x: seqTimeStamp, y: training.dataValue))
+            entries.append(ChartDataEntry(x: seqTimeStamp, y: UnitHelper.getTrainingValue(training: training)))
             
             seqTimeStamp = seqTimeStamp + timeStampDiff
         }

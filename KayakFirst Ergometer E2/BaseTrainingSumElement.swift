@@ -11,7 +11,7 @@ import UIKit
 class BaseTrainingSumElement: UIView {
     
     //MARK: properties
-    let trainingDataService = TrainingDataService.sharedInstance
+    let trainingManager = TrainingManager.sharedInstance
     var trainingList: [Training]?
     var position: Int?
     
@@ -40,7 +40,11 @@ class BaseTrainingSumElement: UIView {
     
     //MARK: other
     func run() {
-        labelTitle.text = getTitle()
+        if isMetric() {
+            labelTitle.text = getTitleMetric()
+        } else {
+            labelTitle.text = getTitleImperial()
+        }
         labelValue.text = getFormattedValue(value: calculate())
     }
     
@@ -83,15 +87,19 @@ class BaseTrainingSumElement: UIView {
         fatalError("Must be implemented")
     }
     
-    func getTitle() -> String {
+    func getTitleMetric() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    func getTitleImperial() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    func isMetric() -> Bool {
         fatalError("Must be implemented")
     }
     
     func getFormattedValue(value: Double) -> String {
-        fatalError("Must be implemented")
-    }
-    
-    func getUnit() -> String {
         fatalError("Must be implemented")
     }
     

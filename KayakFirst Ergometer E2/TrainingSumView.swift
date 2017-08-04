@@ -17,7 +17,7 @@ class TrainingSumView: UIView {
     //MARK: init
     init(frame: CGRect, position: Int) {
         self.position = position
-        self.sumTraining = TrainingDataService.sharedInstance.detailsTrainingList![position]
+        self.sumTraining = TrainingManager.sharedInstance.detailsTrainingList![position]
         super.init(frame: frame)
         
         initView()
@@ -55,7 +55,8 @@ class TrainingSumView: UIView {
         horizontalStackView2.addArrangedSubview(seForceAv)
         mainStackView.addArrangedSubview(horizontalStackView2)
         
-        mainStackView.addArrangedSubview(labelBest)
+        //maximum values are not shown
+        /*mainStackView.addArrangedSubview(labelBest)
         labelBest.snp.makeConstraints { (make) in
             make.height.equalTo(labelBest.intrinsicContentSize.height)
         }
@@ -74,7 +75,7 @@ class TrainingSumView: UIView {
         horizontalStackView4.addArrangedSubview(seSpeed)
         horizontalStackView4.addArrangedSubview(seStroke)
         horizontalStackView4.addArrangedSubview(seForce)
-        mainStackView.addArrangedSubview(horizontalStackView4)
+        mainStackView.addArrangedSubview(horizontalStackView4)*/
         
         scrollView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in

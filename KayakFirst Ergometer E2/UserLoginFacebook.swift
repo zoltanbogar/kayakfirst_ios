@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserLoginFacebook: ServerService<LoginDto> {
+class UserLoginFacebook: ServerService<Bool> {
     
     private let facebookToken: String
     
@@ -18,7 +18,7 @@ class UserLoginFacebook: ServerService<LoginDto> {
         self.facebookToken = facebookToken
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> LoginDto? {
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
         var loginDto: LoginDto?
         let response = alamofireRequest.responseJSON()
         
@@ -29,10 +29,11 @@ class UserLoginFacebook: ServerService<LoginDto> {
             loginDto = LoginDto(json: jsonVlaue)
             loginDto!.user = user
             
-            UserService.sharedInstance.addLoginDto(loginDto: loginDto)
+            UserManager.sharedInstance.addLoginDto(loginDto: loginDto)
+            return true
         }
         
-        return loginDto
+        return false
     }
     
     override func initUrlTag() -> String {
@@ -50,7 +51,11 @@ class UserLoginFacebook: ServerService<LoginDto> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.login_facebook
     }
     
 }

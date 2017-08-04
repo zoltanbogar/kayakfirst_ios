@@ -21,5 +21,9 @@ struct UserDto {
     let artOfPaddling: String?
     let password: String?
     let userName: String?
-    
+    let unitWeight: String?
+    let unitDistance: String?
+    let unitPace: String?
+    let googleId: String?
+    let facebookId: String?
 }

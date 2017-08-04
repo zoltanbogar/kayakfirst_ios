@@ -19,7 +19,8 @@ enum TrainingType: String {
     case dragonBoat = "dragonBoat"
 }
 
-struct Training {
+struct Training: UploadAble {
+    typealias E = Double
     
     static let defaultDistance = -1.0
     
@@ -53,5 +54,22 @@ struct Training {
         self.trainingEnvironmentType = trainingEnvironmentType
         self.dataType = dataType
         self.dataValue = dataValue
+    }
+    
+    func getUploadPointer() -> Double {
+        return timeStamp
+    }
+    
+    func getParameters() -> [String : Any] {
+        return [
+            "timestamp":"\(Int64(timeStamp))",
+            "currentDistance":"\(currentDistance)",
+            "userId":"\(userId!)",
+            "sessionId":"\(Int64(sessionId))",
+            "trainingType":"\(trainingType)",
+            "trainingEnvironmentType":"\(trainingEnvironmentType)",
+            "dataType":"\(dataType)",
+            "dataValue":"\(dataValue)"
+        ]
     }
 }

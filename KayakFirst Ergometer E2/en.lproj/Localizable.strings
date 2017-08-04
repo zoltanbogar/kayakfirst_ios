@@ -12,37 +12,59 @@
 "app_version"="Version: ";
 
 //DashBoard
-"dashboard_title_av_200"="Avg. 200m";
-"dashboard_title_av_500"="Avg. 500m";
-"dashboard_title_av_1000"="Avg. 1000m";
-"dashboard_title_actual_200"="Actual 200m";
-"dashboard_title_actual_500"="Actual 500m";
-"dashboard_title_actual_1000"="Actual 1000m";
+"dashboard_title_av_200_metric"="Avg. 200m";
+"dashboard_title_av_500_metric"="Avg. 500m";
+"dashboard_title_av_1000_metric"="Avg. 1000m";
+"dashboard_title_av_200_imperial"="Avg. 1/4 mile";
+"dashboard_title_av_500_imperial"="Avg. 1/2 mile";
+"dashboard_title_av_1000_imperial"="Avg. 1 mile";
+"dashboard_title_actual_200_metric"="Actual 200m";
+"dashboard_title_actual_500_metric"="Actual 500m";
+"dashboard_title_actual_1000_metric"="Actual 1000m";
+"dashboard_title_actual_200_imperial"="Actual 1/4 mile";
+"dashboard_title_actual_500_imperial"="Actual 1/2 mile";
+"dashboard_title_actual_1000_imperial"="Actual 1 mile";
 "dashboard_title_stroke_min"="Strokes/min.";
-"dashboard_title_pull_force"="Pull force (N)";
-"dashboard_title_distance"="Distance (m)";
+"dashboard_title_pull_force_metric"="Pull force (N)";
+"dashboard_title_pull_force_imperial"="Pull force (pdl)";
+"dashboard_title_distance_metric"="Distance (m)";
+"dashboard_title_distance_imperial"="Distance (ft)";
 "dashboard_title_duration"="Duration";
-"dashboard_title_current_speed"="Act. speed (km/h)";
-"dashboard_title_av_speed"="Avg. speed (km/h)";
-"dashboard_title_drag_drop"="Drag &amp; Drop here";
+"dashboard_title_current_speed_metric"="Act. speed (km/h)";
+"dashboard_title_current_speed_imperial"="Act. speed (mph)";
+"dashboard_title_av_speed_metric"="Avg. speed (km/h)";
+"dashboard_title_av_speed_imperial"="Avg. speed (mph)";
+"dashboard_title_drag_drop"="Drag & Drop here";
 "dashboard_title_av_strokes"="Avg. strokes/min";
-"dashboard_title_av_pull_force"="Avg. pull force (N)";
+"dashboard_title_av_pull_force_metric"="Avg. pull force (N)";
+"dashboard_title_av_pull_force_imperial"="Avg. pull force (pdl)";
 
 //DashBoardOutdoor
-"dashboard_outdoor_title_av_200"="Avg.\n200m";
-"dashboard_outdoor_title_av_500"="Avg.\n500m";
-"dashboard_outdoor_title_av_1000"="Avg.\n1000m";
-"dashboard_outdoor_title_actual_200"="Actual\n200m";
-"dashboard_outdoor_title_actual_500"="Actual\n500m";
-"dashboard_outdoor_title_actual_1000"="Actual\n1000m";
+"dashboard_outdoor_title_av_200_metric"="Avg.\n200m";
+"dashboard_outdoor_title_av_500_metric"="Avg.\n500m";
+"dashboard_outdoor_title_av_1000_metric"="Avg.\n1000m";
+"dashboard_outdoor_title_av_200_imperial"="Avg.\n1/4mile";
+"dashboard_outdoor_title_av_500_imperial"="Avg.\n1/2mile";
+"dashboard_outdoor_title_av_1000_imperial"="Avg.\n1mile";
+"dashboard_outdoor_title_actual_200_metric"="Actual\n200m";
+"dashboard_outdoor_title_actual_500_metric"="Actual\n500m";
+"dashboard_outdoor_title_actual_1000_metric"="Actual\n1000m";
+"dashboard_outdoor_title_actual_200_imperial"="Actual\n1/4mile";
+"dashboard_outdoor_title_actual_500_imperial"="Actual\n1/2mile";
+"dashboard_outdoor_title_actual_1000_imperial"="Actual\n1mile";
 "dashboard_outdoor_title_stroke_min"="Strokes/min.";
-"dashboard_outdoor_title_pull_force"="Pull force\n(N)";
-"dashboard_outdoor_title_distance"="Distance\n(m)";
+"dashboard_outdoor_title_pull_force_metric"="Pull force\n(N)";
+"dashboard_outdoor_title_pull_force_imperial"="Pull force\n(pdl)";
+"dashboard_outdoor_title_distance_metric"="Distance\n(m)";
+"dashboard_outdoor_title_distance_imperial"="Distance\n(ft)";
 "dashboard_outdoor_title_duration"="Duration";
-"dashboard_outdoor_title_current_speed"="Act. speed\n(km/h)";
-"dashboard_outdoor_title_av_speed"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_current_speed_metric"="Act. speed\n(km/h)";
+"dashboard_outdoor_title_current_speed_imperial"="Act. speed\n(mph)";
+"dashboard_outdoor_title_av_speed_metric"="Avg. speed\n(km/h)";
+"dashboard_outdoor_title_av_speed_imperial"="Avg. speed\n(mph)";
 "dashboard_outdoor_title_av_strokes"="Avg. strokes\n/min";
-"dashboard_outdoor_title_av_pull_force"="Avg. pull force\n(N)";
+"dashboard_outdoor_title_av_pull_force_metric"="Avg. pull force\n(N)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Avg. pull force\n(pdl)";
 
 //Bluetooth List
 "fragment_bluetooth_title"="Connect your phone to any of the below equipments...";
@@ -75,9 +97,15 @@
 "dialog_message_bluetooth_disconnect"="Do you want to disconnect it?";
 "dialog_title_reset_password"="Add your email address";
 "dialog_calibrating_sensor"="Stop paddling while calibrating!";
+"dialog_sync"="Synchronization...";
+"dialog_plan_no_elements"="This training plan does not have any plan-elements.";
+"dialog_event_add_message"="Add to calendar?";
+"dialog_event_delete_title"="Do you really want to delete";
+"dialog_event_delete_message"="This event will be lost, but the session you can find it in Plans for add to another day.";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";
+"notification_title_outdoor_running"="Outdoor is running...";
 
 //StartDelay
 "delay_start_seconds"="Your session will start in";
@@ -88,6 +116,12 @@
 "other_no"="no";
 "other_ok"="OK";
 "other_cancel"="Cancel";
+"other_add"="Add";
+"other_save"="Save";
+"other_next"="Next";
+"other_delete"="Delete";
+"other_power_save"="Power saving";
+"other_search"="Search";
 
 //Navigation
 "navigation_profile"="Profile";
@@ -104,6 +138,7 @@
 "calendar_empty_list"="There is no Training Data";
 "training_type"=" ";
 "training_log"="log";
+"calendar_empty_event"="There is no event data.";
 
 //Chart
 "chart_training_no_value_selected"="In order to see chart please choose at least one value";
@@ -117,21 +152,29 @@
 "training_sum"="Total";
 "training_sum_average"="Average";
 "training_sum_best"="Best";
-"training_sum_speed"="Speed\nkm/h";
+"training_sum_speed_metric"="Speed\nkm/h";
+"training_sum_speed_imperial"="Speed\nmph";
 "training_sum_stroke"="Stroke rate\n\\min.";
-"training_sum_pull_force"="Pull force\nN";
-"training_sum_t_200"="Pace\n200";
-"training_sum_t_500"="Pace\n500";
-"training_sum_t_1000"="Pace\n1000";
+"training_sum_pull_force_metric"="Pull force\nN";
+"training_sum_pull_force_imperial"="Pull force\npdl";
+"training_sum_t_200_metric"="Pace\n200";
+"training_sum_t_500_metric"="Pace\n500";
+"training_sum_t_1000_metric"="Pace\n1000";
+"training_sum_t_200_imperial"="Pace\n1/4";
+"training_sum_t_500_imperial"="Pace\n1/2";
+"training_sum_t_1000_imperial"="Pace\n1";
 "training_diagram_time"="Time";
 "training_diagram_distance"="Distance";
 "training_details_sum"="Sum";
 "training_details_all"="Table";
 
 //Calculate
-"calculate_t200"="Pace 200";
-"calculate_t500"="Pace 500";
-"calculate_t1000"="Pace 1000";
+"calculate_t200_metric"="Pace 200";
+"calculate_t500_metric"="Pace 500";
+"calculate_t1000_metric"="Pace 1000";
+"calculate_t200_imperial"="Pace 1/4";
+"calculate_t500_imperial"="Pace 1/2";
+"calculate_t1000_imperial"="Pace 1";
 "calculate_strokes"="Strokes";
 "calculate_f"="Pull Force";
 "calculate_s"="Distance";
@@ -195,24 +238,56 @@
 "user_terms_conditions_short"="Terms & Conditions";
 
 //Unit
-"unit_speed"="km/h";
-"unit_force"="n";
+"unit_weight"="Unit of weight";
+"unit_distance"="Unit of speed and distance";
+"unit_pace"="Unit of Pace";
+"unit_metric"="Metric";
+"unit_imperial"="Imperial";
+"unit_speed_metric"="km/h";
+"unit_speed_imperial"="mph";
+"unit_force_metric"="n";
+"unit_force_imperial"="pdl";
+"unit_distance_metric"="m";
+"unit_distance_imperial"="ft";
+"unit_weight_metric"="kg";
+"unit_weight_imperial"="lbs";
 
 //Error
 "error_no_internet"="No internet connection!";
 "error_user_invalid_credentials"="Invalid credentials!";
-"error_server"="Server error";
-"error_field_not_blank"="This field cannot be blank";
-"error_email"="Not valid email address";
+"error_server"="Server error.";
+"error_field_not_blank"="This field cannot be blank.";
+"error_email"="Not valid email address.";
 "error_user_name"="At least 2 characters!";
 "error_password"="At least 4 characters!";
-"error_weight"="Weight should be 30 at least!";
+"error_weight"="Weight should be at least";
 "error_birth_date"="Birth date cannot be in the future!";
 "error_google_sign_out"="Google Signout problem!";
-"error_user_username_used"="The username is already used";
-"error_user_email_used"="The email is already used";
+"error_user_username_used"="The username is already used.";
+"error_user_email_used"="The email is already used.";
+"error_event_timestamp_past"="Event cannot start in the past.";
+"error_plan_name"="Please, add name!";
 
 //Date
 "date_format"="dd.MM.yyyy";
 "date_time_format"="dd.MM.yyyy kk:mm";
 "date_format_month"="MMMM yyyy";
+"date_date"="Date";
+
+//Plan
+"plan_run"="Go!";
+"plan_plan"="Plan";
+"plan_name"="Name";
+"plan_done"="Done";
+"plan_notes"="Notes";
+"plan_edit_intervals"="Edit intervals";
+"plan_saved"="Plan saved!";
+"plan_hint_minute"="mm";
+"plan_hint_sec"="ss";
+"plan_hint_percent"="%";
+"plan_hint_name"="Type name...";
+"plan_hint_notes"="Type notes...";
+"plan_empty"="There is no Plan Data";
+"plan_add_calendar"="Add to calendar";
+"plan_end"="The End";
+"plan_event_title"="Set date and starting time for the event";

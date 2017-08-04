@@ -20,7 +20,6 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK: properties
     let loginRegisterView = UIView()
-    var progressView: ProgressView?
     
     var socialFirstName: String?
     var socialLastName: String?
@@ -55,7 +54,11 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     }
     
     func showMainView(isQuickStart: Bool) {
-        UserService.sharedInstance.isQuickStart = isQuickStart
+        UserManager.sharedInstance.isQuickStart = isQuickStart
+        
+        if !isQuickStart {
+            PushNotificationHelper.uploadPushId()
+        }
         
         let controller = MainTabViewController()
         self.present(controller, animated: true, completion: nil)
@@ -84,13 +87,11 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         }
         contentView.addSubview(loginRegisterView)
         loginRegisterView.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(margin, 0, 0, 0))
+            make.top.equalTo(segmentedControl.snp.bottom).offset(margin)
             make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, 0))
             make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, marginHorizontal))
             make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
         }
-        
-        progressView = ProgressView(superView: view)
     }
     
     //MARK: views

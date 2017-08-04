@@ -81,11 +81,20 @@ class Telemetry {
                     }
                 }
             }
+            
+            if let listener = dashboardCycleStateChangeListener {
+                if cycleState != nil {
+                    listener.onCycleStateChanged(newCycleState: cycleState!)
+                }
+            }
         }
     }
     
     //MARK: other properties
     private var cycleStateChangeListenerList: [CycleStateChangeListener]?
+    
+    //TODO - refactor: not a good solution, use 'removeCycleStateListener'
+    var dashboardCycleStateChangeListener: CycleStateChangeListener?
     
     func addCycleStateChangeListener(cycleStateChangeListener: CycleStateChangeListener) {
         if self.cycleStateChangeListenerList == nil {
@@ -112,6 +121,8 @@ class Telemetry {
         t_200 = 0
         t_500 = 0
         t_1000 = 0
+        
+        sessionId = 0
     }
     
     func resetOthers() {
@@ -125,7 +136,6 @@ class Telemetry {
         
         duration = 0
         averageIndex = 0
-        sessionId = 0
         cycleIndex = 0
     }
     

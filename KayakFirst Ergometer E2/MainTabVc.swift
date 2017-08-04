@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabVc: BaseVC {
     
-    //TODO: something here?
+    //TODO - refactor: something here?
     
 }
 

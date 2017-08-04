@@ -25,12 +25,32 @@ enum Responses: String {
 class ServerService<E> {
     
     //MARK: constants
-    let baseUrl = "http://kayak.einnovart.hu/api/"
+    //TODO: use correct address
+    //let baseUrl = "http://kayak.einnovart.hu/api/"
+    let baseUrl = "http://192.168.0.2:8000/api/"
+
+    //let baseUrl = "http://balazss-mbp:8000/api/"
     
     //MARK: properties
     var error: Responses?
+    var serverWasReachable = false
     
     func run() -> E? {
+        serverWasReachable = true
+        
+        var data = runBase()
+        
+        if data == nil && error == Responses.error_expired_token {
+            error = nil
+            
+            refreshToken()
+            
+            return runBase()
+        }
+        return data
+    }
+    
+    private func runBase() -> E? {
         var result: E?
         if preCheck() {
             if Reachability.isConnectedToNetwork() {
@@ -38,8 +58,13 @@ class ServerService<E> {
                 
                 let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
                 
+                log(alamofireLogTag, response)
+                
                 if statusCode! >= 200 && statusCode! < 300 {
                     result = handleServiceCommunication(alamofireRequest: response)
+                } else if statusCode == 0 {
+                    serverWasReachable = false
+                    error = initError(alamofireRequest: response)
                 } else {
                     error = initError(alamofireRequest: response)
                 }
@@ -48,11 +73,14 @@ class ServerService<E> {
                 error = Responses.error_no_internet
                 return nil
             }
+        } else {
+            result = getResultFromCache()
         }
         
         return result
     }
     
+    //MARK: abstract methods
     internal func handleServiceCommunication(alamofireRequest: DataRequest) -> E? {
         fatalError("Must be implemented")
     }
@@ -65,12 +93,23 @@ class ServerService<E> {
         fatalError("Must be implemented")
     }
     
+    internal func initEncoding() -> ParameterEncoding {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getManagerType() -> BaseManagerType {
+        fatalError("Must be implemented")
+    }
+    
     internal func initParameters() -> Parameters? {
         return nil
     }
     
-    internal func initEncoding() -> ParameterEncoding {
-        fatalError("Must be implemented")
+    private func refreshToken() {
+        let refreshTokenDto = RefreshToken().run()
+        if refreshTokenDto != nil {
+            UserManager.sharedInstance.setTokens(token: refreshTokenDto!.token, refreshToken: refreshTokenDto!.refreshToken)
+        }
     }
     
     //override if needed
@@ -78,8 +117,13 @@ class ServerService<E> {
         return true
     }
     
+    //override if needed
+    internal func getResultFromCache() -> E? {
+        return nil
+    }
+    
     internal func initHeader() -> HTTPHeaders? {
-        let token = UserService.sharedInstance.token
+        let token = UserManager.sharedInstance.token
         
         if let userToken = token {
             return [
@@ -91,13 +135,16 @@ class ServerService<E> {
     
     private func initAlamofire() -> DataRequest {
         let url = baseUrl + initUrlTag()
-        return Alamofire.request(
+        let dataRequest = Alamofire.request(
             url,
             method: initMethod(),
             parameters: initParameters(),
             encoding: initEncoding(),
             headers: initHeader())
-        .debugLog()
+        
+        log(alamofireLogTag, "\(initParameters())")
+        
+        return dataRequest.debugLog()
     }
     
     private func initError(alamofireRequest: DataRequest) -> Responses? {
@@ -135,7 +182,6 @@ class ServerService<E> {
                 }
             }
         }
-        return nil
+        return Responses.error_server_error
     }
-    
 }

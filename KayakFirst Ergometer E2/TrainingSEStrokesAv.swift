@@ -17,15 +17,23 @@ class TrainingSEStrokesAv: TrainingSumElementAverage {
         return "%.0f"
     }
     
-    override func getTitle() -> String {
+    override func getTitleMetric() -> String {
         return getString("training_sum_stroke")
     }
     
-    override func getUnit() -> String {
-        return ""
+    override func getTitleImperial() -> String {
+        return getString("training_sum_stroke")
+    }
+    
+    override func isMetric() -> Bool {
+        return true
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].strokesList
+        return trainingManager.detailsTrainingList![position!].strokesList
+    }
+    
+    override func calculate() -> Double {
+        return trainingManager.detailsTrainingList![position!].avgStrokes
     }
 }

@@ -11,9 +11,8 @@ import UIKit
 class ProfileElement: DialogElementTextField {
     
     //MARK: constants
-    private let textColorNormalValue = Colors.colorDashBoardDivider
-    private let textColorNormalTitle = Colors.colorWhite
-
+    let textColorNormalValue = Colors.colorDashBoardDivider
+    let textColorNormalTitle = Colors.colorWhite
     
     //MARK: properties
     override var title: String? {
@@ -52,25 +51,27 @@ class ProfileElement: DialogElementTextField {
         addSubview(valueTextField)
         addSubview(errorLabel)
         
+        labelTitle.snp.makeConstraints { (make) in
+            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.right.equalTo(valueTextField.snp.left)
+            make.centerY.equalTo(self)
+        }
+        
         valueTextField.snp.makeConstraints{ make in
-            make.width.equalTo(self)
+            make.left.equalTo(labelTitle.snp.right)
+            make.width.equalTo(labelTitle)
             make.centerY.equalTo(self)
             make.right.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, margin))
         }
         
-        labelTitle.snp.makeConstraints { (make) in
-            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
-            make.centerY.equalTo(self)
-        }
-        
         errorLabel.snp.makeConstraints { make in
-            make.left.equalTo(valueTextField)
-            make.top.equalTo(valueTextField.snp.bottom)
+            make.right.equalTo(valueTextField)
+            make.top.equalTo(valueTextField.snp.bottom).offset(margin05)
             make.width.equalTo(self)
         }
     }
     
-    private func designValueTextField() {
+    func designValueTextField() {
         valueTextField.textAlignment = .right
         valueTextField.borderStyle = .none
         valueTextField.textColor = textColorNormalValue
@@ -84,8 +85,10 @@ class ProfileElement: DialogElementTextField {
     }
     
     //MARK: views
-    private lazy var labelTitle: AppUILabel! = {
+    internal lazy var labelTitle: AppUILabel! = {
         let label = AppUILabel()
+        
+        label.numberOfLines = 3
         
         return label
     }()

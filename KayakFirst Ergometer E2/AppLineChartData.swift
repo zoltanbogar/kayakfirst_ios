@@ -7,7 +7,7 @@
 //
 
 import Charts
-//TODO: index out of range exception can be
+//TODO - refactor: index out of range exception can be
 class AppLineChartData {
     
     //MARK: properties
@@ -146,22 +146,22 @@ class AppLineChartData {
     }
     
     func getTrainingListSumByLabel(label: CalculateEnum) -> [Training] {
-        let trainingDataService = TrainingDataService.sharedInstance
+        let trainingManager = TrainingManager.sharedInstance
         switch label {
         case CalculateEnum.T_200:
-            return trainingDataService.detailsTrainingList![position].t200List
+            return trainingManager.detailsTrainingList![position].t200List
         case CalculateEnum.T_500:
-            return trainingDataService.detailsTrainingList![position].t500List
+            return trainingManager.detailsTrainingList![position].t500List
         case CalculateEnum.T_1000:
-            return trainingDataService.detailsTrainingList![position].t1000List
+            return trainingManager.detailsTrainingList![position].t1000List
         case CalculateEnum.STROKES:
-            return trainingDataService.detailsTrainingList![position].strokesList
+            return trainingManager.detailsTrainingList![position].strokesList
         case CalculateEnum.F:
-            return trainingDataService.detailsTrainingList![position].fList
+            return trainingManager.detailsTrainingList![position].fList
         case CalculateEnum.V:
-            return trainingDataService.detailsTrainingList![position].vList
+            return trainingManager.detailsTrainingList![position].vList
         case CalculateEnum.S:
-            return trainingDataService.detailsTrainingList![position].distanceList
+            return trainingManager.detailsTrainingList![position].distanceList
         default:
             fatalError("There is no createTrainingList for this :  \(label)")
         }

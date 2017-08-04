@@ -34,6 +34,7 @@ class ChartView: UIView {
         disableLabelIfNeeded()
         initLabelList()
         initChart()
+        initPlanTimeLine()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,12 +42,12 @@ class ChartView: UIView {
     }
     
     private func initLabelList() {
-        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelForce, labelSpeed]
+        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelSpeed, labelForce]
     }
     
     private func initChart() {
         if chartMode! == ChartMode.chartModeDistance {
-            lineChartData = LineChartDistance(lineChart: lineChart, distanceList: TrainingDataService.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
+            lineChartData = LineChartDistance(lineChart: lineChart, distanceList: TrainingManager.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
         } else {
             lineChartData = LineChartTime(lineChart: lineChart, position: position!)
         }
@@ -58,11 +59,29 @@ class ChartView: UIView {
     }
     
     private func disableLabelIfNeeded() {
-        let isOutdoor = TrainingDataService.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        let isOutdoor = TrainingManager.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
         
         if isOutdoor {
             labelForce.isDisabled = true
         }
+    }
+    
+    private func initPlanTimeLine() {
+        let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList
+        
+        let plan = sumTrainings?[position!].planTraining
+        
+        planView.isHidden = true
+        
+        if plan != nil && isModeCorrect(plan: plan!) {
+            planView.isHidden = false
+            planView.setData(plan: plan!, lineChart: lineChart)
+        }
+    }
+    
+    private func isModeCorrect(plan: Plan) -> Bool {
+        return (plan.type == PlanType.time && chartMode == ChartMode.chartModeTime) ||
+        (plan.type == PlanType.distance && chartMode == ChartMode.chartModeDistance)
     }
     
     //MARK: views
@@ -70,7 +89,7 @@ class ChartView: UIView {
         let stackViewL = UIStackView()
         stackViewL.axis = .horizontal
         stackViewL.distribution = .fillEqually
-        stackViewL.spacing = margin
+        stackViewL.spacing = margin05
         stackViewL.addArrangedSubview(labelT200)
         stackViewL.addArrangedSubview(labelT500)
         stackViewL.addArrangedSubview(labelT1000)
@@ -80,8 +99,8 @@ class ChartView: UIView {
         stackViewR.distribution = .fillEqually
         stackViewR.spacing = margin
         stackViewR.addArrangedSubview(labelStrokes)
-        stackViewR.addArrangedSubview(labelForce)
         stackViewR.addArrangedSubview(labelSpeed)
+        stackViewR.addArrangedSubview(labelForce)
         
         let stackViewLabels = UIStackView()
         stackViewLabels.axis = .vertical
@@ -98,14 +117,26 @@ class ChartView: UIView {
         
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
+        mainStackView.spacing = margin05
         mainStackView.addArrangedSubview(viewLabels)
         mainStackView.addArrangedSubview(lineChart)
+        mainStackView.addArrangedSubview(planView)
         
         addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+        planView.snp.makeConstraints { (make) in
+            make.left.equalTo(lineChart).offset(margin2)
+            make.right.equalTo(lineChart).offset(-margin)
+        }
     }
+    
+    private lazy var planView: PlanTimeLineView! = {
+        let view = PlanTimeLineView()
+        
+        return view
+    }()
     
     private lazy var lineChart: LineChartView! = {
         let chart = LineChartView()

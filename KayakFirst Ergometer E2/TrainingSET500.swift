@@ -9,15 +9,19 @@
 import Foundation
 class TrainingSET500: TrainingSumElementMinimumTime {
     
-    override func getTitle() -> String {
-        return getString("training_sum_t_500")
+    override func getTitleMetric() -> String {
+        return getString("training_sum_t_200_metric")
     }
     
-    override func getUnit() -> String {
-        return ""
+    override func getTitleImperial() -> String {
+        return getString("training_sum_t_200_imperial")
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricPace()
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].t500List
+        return trainingManager.detailsTrainingList![position!].t500List
     }
 }

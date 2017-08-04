@@ -10,26 +10,40 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UploadTrainings: UploadUtils<Bool> {
+class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
     private let maxUploadTrainings = 10000
-    private let keyTimeStamp = "db.upload_trainings_timestamp"
     
     //MARK: properties
-    private let trainingDbLoader = TrainingDbLoader()
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        setTimestamp(timestamp: self.timeStamp)
-        
-        return true
+    private var timestamp: Double
+    private var pointerLocale: Double = 0
+    var isUploadReady = false
+    var pointer: Double = 0
+    
+    init(timestamp: String?) {
+        if timestamp == nil {
+            self.timestamp = 0
+        } else {
+            self.timestamp = Double(timestamp!)!
+        }
     }
     
     override func preCheck() -> Bool {
-        initTrainingList()
+        return initTrainingList()
+    }
+    
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
+        pointer = pointerLocale
         
-        return trainingArrayList != nil && trainingArrayList!.count > 0
+        return isUploadReady
+    }
+    
+    override func getResultFromCache() -> Bool? {
+        return isUploadReady
     }
     
     override func initUrlTag() -> String {
@@ -48,43 +62,37 @@ class UploadTrainings: UploadUtils<Bool> {
         return ArrayEncoding()
     }
     
-    private func initTrainingList() {
+    private func initTrainingList() -> Bool {
         var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
         
-        let originalTrainingList = trainingDbLoader.loadData(predicate: trainingDbLoader.getTrainingsFromTimeStampPredicate(timeStampFrom: self.getTimestamp()))
+        let originalTrainingList = trainingDbLoader.loadUploadAbleData(pointer: timestamp)
         
         if originalTrainingList != nil && originalTrainingList!.count > 0 {
-            for training in originalTrainingList! {
-                self.timeStamp = training.timeStamp
-                
-                if list.count <= maxUploadTrainings {
-                    arrayList = [
-                        "timestamp":"\(Int64(training.timeStamp))",
-                        "currentDistance":"\(training.currentDistance)",
-                        "userId":"\(training.userId!)",
-                        "sessionId":"\(Int64(training.sessionId))",
-                        "trainingType":"\(training.trainingType)",
-                        "trainingEnvironmentType":"\(training.trainingEnvironmentType)",
-                        "dataType":"\(training.dataType)",
-                        "dataValue":"\(training.dataValue)"
-                    ]
-                    
+            
+            for i in 0...maxUploadTrainings {
+                if i < originalTrainingList!.count {
+                    arrayList = originalTrainingList![i].getParameters()
                     list.append(arrayList)
                     
+                    pointerLocale = originalTrainingList![i].getUploadPointer()
                 } else {
                     break
                 }
             }
-        } else {
-            UploadTimer.stopTimer()
         }
+        
+        if originalTrainingList == nil || originalTrainingList?.count == 0 {
+            isUploadReady = true
+        }
+        
         self.trainingArrayList = list
+        
+        return list.count > 0
     }
     
-    override func getKeyTimeStamp() -> String {
-        return keyTimeStamp
+    override func getManagerType() -> BaseManagerType {
+        return TrainingManagerType.upload_training
     }
-    
 }

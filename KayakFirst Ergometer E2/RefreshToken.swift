@@ -16,7 +16,7 @@ class RefreshToken: ServerService<RefreshTokenDto> {
     
     override init() {
         super.init()
-        self.refreshToken = UserService.sharedInstance.refreshToken
+        self.refreshToken = UserManager.sharedInstance.refreshToken
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> RefreshTokenDto? {

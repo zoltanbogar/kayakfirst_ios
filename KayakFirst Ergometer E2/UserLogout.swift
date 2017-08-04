@@ -13,7 +13,7 @@ import SwiftyJSON
 class UserLogout: ServerService<Bool> {
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
-        UserService.sharedInstance.addLoginDto(loginDto: nil)
+        UserManager.sharedInstance.addLoginDto(loginDto: nil)
         
         return true
     }
@@ -31,7 +31,11 @@ class UserLogout: ServerService<Bool> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.logout
     }
     
 }

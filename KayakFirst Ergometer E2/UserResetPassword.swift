@@ -37,11 +37,14 @@ class UserResetPassword: ServerService<Bool> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
     }
     
     override func initHeader() -> HTTPHeaders? {
         return nil
     }
     
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.reset_pw
+    }
 }

@@ -44,6 +44,13 @@ struct Colors {
     static let colorFacebook = getColor("#3b5998")
     static let colorGoogle = getColor("#dc4e41")
     static let colorProfileElement = getColor("#ffffff")
+    
+    static let colorPlanLight = getColor("#00b000")
+    static let colorPlanMedium = getColor("#ffed00")
+    static let colorPlanHard = getColor("#cc0000")
+    static let colorDeleteStart = getColor("#cc0000")
+    static let colorDeleteEnd = getColor("bbcc0000")
+    static let colorKeyPressed = getColor("#e5e5e5")
 }
 
 func getColor(_ hex: String) -> UIColor {

@@ -12,6 +12,8 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     
     //MARK: properties
     private let stackView = UIStackView()
+    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    private var sumTraining: SumTraining?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -25,9 +27,18 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     }
     
     override func initData(data: SumTraining?) {
+        self.sumTraining = data
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
+        
+        var imagePlanType: UIImage?
+        if sumTraining?.planTraining == nil {
+            imagePlanType = UIImage(named: "")
+        } else {
+            imagePlanType = Plan.getTypeIconSmall(plan: sumTraining?.planTraining)
+        }
+        btnPlanType.setImage(imagePlanType, for: .normal)
         
         if let envType = data?.trainingEnvironmentType {
             var imageEnviromentType: UIImage?
@@ -44,16 +55,23 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         }
     }
     
+    //MARK: button listener
+    @objc private func clickDelete() {
+        DeleteTrainingDialog.showDeleteTrainingDialog(viewController: viewController()!, sumTraining: sumTraining!, managerCallback: deleteCallback)
+    }
+    
     //MARK: init view
     override func initView() -> UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
-        stackView.addArrangedSubview(imgErgoOutdoor)
+        stackView.addArrangedSubview(viewErgoOutdoor)
+        stackView.addArrangedSubview(btnPlanType)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
-        stackView.addArrangedSubview(imageViewGraph)
+        stackView.addArrangedSubview(btnGraph)
+        stackView.addArrangedSubview(btnDelete)
         
         selectionColor = Colors.colorGrey
         
@@ -89,16 +107,30 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         return label
     }()
     
-    private lazy var imageViewGraph: UIImageView! = {
-        let imageView = UIImageView()
+    private lazy var btnPlanType: UIButton! = {
+        let button = UIButton()
+        
+        return button
+    }()
+    
+    private lazy var btnGraph: UIButton! = {
+        let button = UIButton()
         let image = UIImage(named: "chart_dia")
         
-        imageView.image = image
-        imageView.setImageTint(color: Colors.colorAccent)
+        button.setImage(image?.maskWith(color: Colors.colorAccent), for: .normal)
         
-        imageView.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private lazy var viewErgoOutdoor: UIView! = {
+        let view = UIView()
         
-        return imageView
+        view.addSubview(self.imgErgoOutdoor)
+        self.imgErgoOutdoor.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+        }
+        
+        return view
     }()
     
     private lazy var imgErgoOutdoor: UIImageView! = {
@@ -109,16 +141,12 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         return imageView
     }()
     
-    //MARK: selection design
-    @IBInspectable var selectionColor: UIColor = UIColor.clear {
-        didSet {
-            configureSelectedBackgroundView()
-        }
-    }
-    
-    private func configureSelectedBackgroundView() {
-        let view = UIView()
-        view.backgroundColor = selectionColor
-        selectedBackgroundView = view
-    }
+    private lazy var btnDelete: UIButton! = {
+        let button = UIButton()
+        let image = UIImage(named: "trashSmall")
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(clickDelete), for: .touchUpInside)
+        
+        return button
+    }()
 }

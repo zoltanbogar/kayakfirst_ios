@@ -12,8 +12,8 @@ import SwiftyJSON
 
 class DownloadTrainingAvgs: ServerService<[TrainingAvg]> {
     
-    private let sessionIdFrom: TimeInterval
-    private let sessionIdTo: TimeInterval
+    let sessionIdFrom: TimeInterval
+    let sessionIdTo: TimeInterval
     
     init(sessionIdFrom: TimeInterval, sessionIdTo: TimeInterval) {
         self.sessionIdFrom = sessionIdFrom
@@ -28,7 +28,7 @@ class DownloadTrainingAvgs: ServerService<[TrainingAvg]> {
             let jsonValue = JSON(json)
             
             if let jsonArray = jsonValue.array {
-                 let userId = UserService.sharedInstance.getUser()!.id
+                 let userId = UserManager.sharedInstance.getUser()!.id
                 
                 trainingAvgList = [TrainingAvg]()
                 
@@ -63,7 +63,11 @@ class DownloadTrainingAvgs: ServerService<[TrainingAvg]> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return TrainingManagerType.download_training_avg
     }
     
 }

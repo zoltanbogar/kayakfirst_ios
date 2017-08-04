@@ -17,9 +17,11 @@ class TrainingService: CycleStateChangeListener {
     
     private let pauseDiff = PauseDiff.sharedInstance
     
-    private let saveValues = SaveValues.sharedInstance
+    private let trainingManager = TrainingManager.sharedInstance
     
     private var realDuration: Double = 0
+    
+    private var isCyclePaused = false
     
     //MARK: init
     internal init() {
@@ -56,10 +58,10 @@ class TrainingService: CycleStateChangeListener {
     func startCycle() {
         if !isCycleState(cycleState: CycleState.paused) {
             reset()
-            UploadTimer.startTimer()
         }
         pauseDiff.resume()
         setTelemetryCycleState(cycleState: CycleState.resumed)
+        trainingManager.addTrainingUploadPointer()
     }
     
     func pauseCycle() {
@@ -86,9 +88,10 @@ class TrainingService: CycleStateChangeListener {
     }
     
     private func startLoop() {
+        startDuration()
+        
         DispatchQueue.global().async {
             while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
-                self.setDuration()
                 
                 if self.runCalculate() {
                     let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
@@ -97,13 +100,25 @@ class TrainingService: CycleStateChangeListener {
                     self.telemetry.telemetryObject = telemetryObject
                     self.telemetry.telemetryAvgObject = telemetryAvgObject
                     
-                    self.saveValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+                    self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
                     
                     self.realDuration = self.telemetry.duration
                 }
                 
                 usleep(self.getTimeWaitAfterCalculate())
             }
+        }
+    }
+    
+    private func startDuration() {
+        DispatchQueue.global().async {
+            while !self.isCyclePaused {
+                self.setDuration()
+                
+                usleep(UInt32(RefreshView.refreshMillis * 1000))
+            }
+            
+            self.setDurationBack()
         }
     }
     
@@ -128,13 +143,15 @@ class TrainingService: CycleStateChangeListener {
     func onCycleStateChanged(newCycleState: CycleState) {
         switch newCycleState {
         case CycleState.resumed:
+            isCyclePaused = false
             startLoop()
         case CycleState.idle:
             reset()
         case CycleState.stopped:
-            setDurationBack()
             telemetry.resetCurrent()
             handleStopTraining()
+        case CycleState.paused:
+            isCyclePaused = true
         default:
             log("CYCLE_STATE", "newCycleState: \(newCycleState)")
         }

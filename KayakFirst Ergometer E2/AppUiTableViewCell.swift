@@ -24,6 +24,7 @@ class AppUITableViewCell<E>: UITableViewCell {
         initView().snp.makeConstraints { make in
             make.width.equalTo(contentView)
             make.centerY.equalTo(contentView)
+            make.height.equalTo(contentView)
         }
     }
     
@@ -42,5 +43,18 @@ class AppUITableViewCell<E>: UITableViewCell {
     
     func getRowHeight() -> CGFloat {
         fatalError("Must be implemented")
+    }
+    
+    //MARK: selection design
+    @IBInspectable var selectionColor: UIColor = UIColor.clear {
+        didSet {
+            configureSelectedBackgroundView()
+        }
+    }
+    
+    private func configureSelectedBackgroundView() {
+        let view = UIView()
+        view.backgroundColor = selectionColor
+        selectedBackgroundView = view
     }
 }

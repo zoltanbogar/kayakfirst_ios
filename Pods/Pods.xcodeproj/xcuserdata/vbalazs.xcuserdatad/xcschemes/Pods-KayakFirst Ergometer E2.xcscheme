@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D8D0403949EAE9ED8ACA27291F21362"
+               BlueprintIdentifier = "9A55492D3954FD1717A4F6D4D0DEF424"
                BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
                BlueprintName = "Pods-KayakFirst Ergometer E2"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D8D0403949EAE9ED8ACA27291F21362"
+            BlueprintIdentifier = "9A55492D3954FD1717A4F6D4D0DEF424"
             BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
             BlueprintName = "Pods-KayakFirst Ergometer E2"
             ReferencedContainer = "container:Pods.xcodeproj">

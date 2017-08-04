@@ -30,10 +30,10 @@ class ResetPasswordDialog: BaseDialog {
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        setEnabledPositive(isEnabled: isValidEmail(email: textField.text))
+        setEnabledPositive(isEnabled: Validate.isValidEmail(email: textField.text))
     }
     
-    override func onPositiveButtonClicked(uiAlertAction: UIAlertAction) {
+    override func btnPosAction() {
         if let emailHandler = handler {
             emailHandler(textField!.text!)
         }

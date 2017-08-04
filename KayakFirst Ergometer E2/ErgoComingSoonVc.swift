@@ -42,7 +42,7 @@ class ErgoComingSoonVc: BaseVC {
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+        showCloseButton()
         showLogoOnRight()
     }
     
@@ -64,20 +64,4 @@ class ErgoComingSoonVc: BaseVC {
         
         return imageView
     }()
-    
-    //MARK: tabbarItems
-    private lazy var btnClose: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_clear_white_24dp")
-        button.target = self
-        button.action = #selector(btnCloseClick)
-        
-        return button
-    }()
-    
-    //MARK: button listeners
-    @objc private func btnCloseClick() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }

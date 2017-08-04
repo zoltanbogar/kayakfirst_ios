@@ -44,13 +44,14 @@ let logoBarItem: UIBarButtonItem! = {
     return button
 }()
 
-let logoHeader = UIImage(named: "logo_header")
+let logoHeader = UIImage(named: "logo_header")?.withRenderingMode(.alwaysOriginal)
 
 class BaseVC: UIViewController {
     
     //MARK: properties
     let contentView = UIView()
     private var viewInited = false
+    private var progressView: ProgressView?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -63,6 +64,8 @@ class BaseVC: UIViewController {
         viewInited = true
         
         view.backgroundColor = Colors.colorPrimary
+        
+        initProgressView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,12 +99,35 @@ class BaseVC: UIViewController {
         showLogoRight(viewController: self)
     }
     
+    func showCloseButton() {
+        self.navigationItem.setLeftBarButtonItems([btnClose], animated: true)
+    }
+    
+    func removeCloseButton() {
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+    }
+    
     private lazy var logoBarItem: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "logo_header")
         
         return button
     }()
+    
+    //MARK: tabbarItems
+    private lazy var btnClose: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_clear_white_24dp")
+        button.target = self
+        button.action = #selector(btnCloseClick)
+        
+        return button
+    }()
+    
+    //MARK: button listeners
+    @objc func btnCloseClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     private func initViewEdges() {
         contentView.snp.makeConstraints { make in
@@ -110,6 +136,26 @@ class BaseVC: UIViewController {
             make.bottom.equalTo(view).inset(UIEdgeInsetsMake(0, 0, getTabBarHeight(viewController: self), 0))
             make.top.equalTo(self.topLayoutGuide.snp.bottom)
         }
+    }
+    
+    private func initProgressView() {
+        progressView = ProgressView(superView: view)
+    }
+    
+    func showProgress(baseManagerType: BaseManagerType?) {
+        if let managerType = baseManagerType {
+            if let view = progressView {
+                view.show(managerType.isProgressShown())
+            }
+        }
+    }
+    
+    func dismissProgress() {
+        progressView?.show(false)
+    }
+    
+    func showToast(text: String) {
+        AppToast(baseVc: self, text: text).show()
     }
     
     func handleScreenOrientation(size: CGSize) {

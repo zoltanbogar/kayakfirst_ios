@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DatePickerDialog.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,12 +112,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>77C6EA481D76087C65D7C52F96D5DED9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9A55492D3954FD1717A4F6D4D0DEF424</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C235F77E101E742652CCF98FFDFA5182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBAA0EE91A686BDEEA9E8A0BFFC48C2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,6 +158,11 @@
 			<true/>
 		</dict>
 		<key>F307B842FF76B2DE6C55DB67C0885325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEDB8DB8EA2C5D055DAD75E29130AA9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

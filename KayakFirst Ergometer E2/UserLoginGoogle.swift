@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserLoginGoogle: ServerService<LoginDto> {
+class UserLoginGoogle: ServerService<Bool> {
     
     private let email: String
     private let googleId: String
@@ -20,7 +20,7 @@ class UserLoginGoogle: ServerService<LoginDto> {
         self.googleId = googleId
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> LoginDto? {
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
         var loginDto: LoginDto?
         let response = alamofireRequest.responseJSON()
         
@@ -31,10 +31,11 @@ class UserLoginGoogle: ServerService<LoginDto> {
             loginDto = LoginDto(json: jsonVlaue)
             loginDto!.user = user
             
-            UserService.sharedInstance.addLoginDto(loginDto: loginDto)
+            UserManager.sharedInstance.addLoginDto(loginDto: loginDto)
+            return true
         }
         
-        return loginDto
+        return false
     }
     
     override func initUrlTag() -> String {
@@ -53,7 +54,11 @@ class UserLoginGoogle: ServerService<LoginDto> {
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return URLEncoding.default
+        return JSONEncoding.default
+    }
+    
+    override func getManagerType() -> BaseManagerType {
+        return UserManagerType.login_google
     }
     
 }

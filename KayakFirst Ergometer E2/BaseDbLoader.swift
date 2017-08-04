@@ -11,33 +11,85 @@ import SQLite
 
 class BaseDbLoader<Input> {
     
+    //MARK: constants
+    let databaseLogTag = "DATABASE"
+    private let oldDataDays: TimeInterval = 30
+    
     //MARK: properties
     let db = AppSql.sharedInstance.db
     let sessionId = Expression<Double>("sessionId")
+    let userId = Expression<Int64>("userId")
+    let planType = Expression<String>("planType")
+    let planId = Expression<String>("planId")
+    let name = Expression<String>("name")
+    let timestamp = Expression<Double>("timestamp")
+    
     var table: Table?
     
     //MARK: init
     init() {
-        initDatabase()
+        initBaseDatabase()
     }
     
-    func deleteData(timeStampFrom: Double) {
-        let oldData = table!.filter(self.sessionId < timeStampFrom)
-        
+    //MARK: functions
+    private func initBaseDatabase() {
+        table = Table(getTableName())
         do {
-            try db?.run(oldData.delete())
+            if let database = db {
+                try initDatabase(database: database)
+            }
         } catch {
-            log("DATABASE", error)
+            log(databaseLogTag, error)
         }
     }
     
-    func initDatabase() {
-        fatalError("Must be implemented")
-    }
-    func addData(data: Input) {
-        fatalError("Must be implemented")
-    }
     func loadData(predicate: Expression<Bool>?) -> [Input]? {
+        return queryData(predicate: getSumPredicate(predicates: getUserQuery(), predicate))
+    }
+    
+    func getUserQuery() -> Expression<Bool> {
+        return self.userId == UserManager.sharedInstance.getUser()!.id
+    }
+    
+    func getOldDataTimestamp() -> Double {
+        let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
+        let timestamp = currentTimeMillis() - oldaDataDaysInMillis
+        
+        return timestamp
+    }
+    
+    //MARK: static functions
+    func getSumPredicate(predicates: Expression<Bool>?...) -> Expression<Bool>? {
+        var sumPredicate: Expression<Bool>? = predicates[0]
+        for predicate in predicates {
+            if let predicateValue = predicate {
+                if sumPredicate == nil {
+                    sumPredicate = predicateValue
+                } else {
+                    sumPredicate = sumPredicate! && predicateValue
+                }
+            }
+        }
+        return sumPredicate
+    }
+    
+    //MARK: abstract functions
+    func getTableName() -> String {
+        fatalError("Must be implemented")
+    }
+    func initDatabase(database: Connection) throws {
+        fatalError("Must be implemented")
+    }
+    func addData(data: Input?) {
+        fatalError("Must be implemented")
+    }
+    func queryData(predicate: Expression<Bool>?) -> [Input]? {
+        fatalError("Must be implemented")
+    }
+    func updateData(data: Input) {
+        fatalError("Must be implemented")
+    }
+    func deleteData(predicate: Expression<Bool>?) -> Int {
         fatalError("Must be implemented")
     }
 }

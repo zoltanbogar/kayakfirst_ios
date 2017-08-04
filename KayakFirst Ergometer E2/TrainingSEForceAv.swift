@@ -18,15 +18,23 @@ class TrainingSEForceAv: TrainingSumElementAverage {
         return "%.0f"
     }
     
-    override func getTitle() -> String {
-        return getString("training_sum_pull_force")
+    override func getTitleMetric() -> String {
+        return getString("training_sum_pull_force_metric")
     }
     
-    override func getUnit() -> String {
-        return getString("unit_force")
+    override func getTitleImperial() -> String {
+        return getString("training_sum_pull_force_imperial")
+    }
+    
+    override func isMetric() -> Bool {
+        return UnitHelper.isMetricWeight()
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingDataService.detailsTrainingList![position!].fList
+        return trainingManager.detailsTrainingList![position!].fList
+    }
+    
+    override func calculate() -> Double {
+        return UnitHelper.getForceValue(metricValue: trainingManager.detailsTrainingList![position!].avgF)
     }
 }

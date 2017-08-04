@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TrainingTableViewHeader: UIView {
+class TrainingTableViewHeader: AppTableViewHeader {
     
     //MARK: contstants
-    private let fontSize: CGFloat = 12
+    private let fontSize: CGFloat = 10
 
     //MARK: init
     init() {
@@ -24,36 +24,48 @@ class TrainingTableViewHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: functions
+    override func getRowHeight() -> CGFloat {
+        return fontSize + margin05
+    }
+    
     //MARK: init view
     private func initView() {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
-        stackView.addArrangedSubview(labelType)
+        let viewTrainingEnvType = UIView()
+        let viewPlanType = UIView()
+        let viewDelete = UIView()
+        
+        stackView.addArrangedSubview(viewTrainingEnvType)
+        stackView.addArrangedSubview(viewPlanType)
         stackView.addArrangedSubview(labelStart)
         stackView.addArrangedSubview(labelDuration)
         stackView.addArrangedSubview(labelDistance)
         stackView.addArrangedSubview(labelLog)
+        stackView.addArrangedSubview(viewDelete)
+        
+        let divider = DividerView()
+        addSubview(divider)
+        divider.snp.makeConstraints { (make) in
+            make.width.equalTo(self)
+            make.height.equalTo(dashboardDividerWidth)
+            make.top.equalTo(self.snp.bottom)
+        }
         
         addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
+            make.left.equalTo(self)
+            make.right.equalTo(self) 
+            make.bottom.equalTo(divider)
         }
+        
+        backgroundColor = Colors.colorPrimary
     }
     
     //MARK: views
-    private lazy var labelType: AppUILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.font = label.font.withSize(self.fontSize)
-        
-        label.text = getString("training_type").uppercased()
-        
-        return label
-    }()
-    
     private lazy var labelStart: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center

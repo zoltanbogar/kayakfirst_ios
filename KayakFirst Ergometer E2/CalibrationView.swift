@@ -54,6 +54,7 @@ class CalibrationView: UIView {
             make.top.equalTo(imageSatelite.snp.bottom).offset(margin2)
             make.left.equalTo(view).offset(margin2)
             make.right.equalTo(view).offset(-margin2)
+            make.height.equalTo(5)
         }
         
         superView.addSubview(view)

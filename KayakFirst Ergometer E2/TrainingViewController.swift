@@ -8,23 +8,27 @@
 
 import UIKit
 
-func startTrainingViewController(viewController: UIViewController) -> UIViewController? {
-    var permissionViewController: UIViewController? = nil
-    if !PermissionCheck.hasLocationPermission() {
-        permissionViewController = startLocationPermissionVc(viewController: viewController)
-    } else {
-        viewController.present(TrainingViewController(), animated: true, completion: nil)
-    }
-    return permissionViewController
+func startTrainingViewController(viewController: UIViewController, trainingEnvType: TrainingEnvironmentType) {
+    startTrainingViewController(viewController: viewController, plan: nil, event: nil, trainingEnvType: trainingEnvType)
 }
 
-class TrainingViewController: UINavigationController, StartDelayDelegate, CalibrationDelegate {
+func startTrainingViewController(viewController: UIViewController, plan: Plan?, event: Event?, trainingEnvType: TrainingEnvironmentType) {
+    let trainingVc = TrainingViewController()
+    trainingVc.plan = plan
+    trainingVc.event = event
+    viewController.present(trainingVc, animated: true, completion: nil)
+}
+
+class TrainingViewController: PortraitNavController, StartDelayDelegate, CalibrationDelegate {
     
     //MARK: properties
     private var startDelayView: StartDelayView?
     var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance
     let outdoorService = OutdoorService.sharedInstance
+    var plan: Plan?
+    var event: Event?
+    private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -41,21 +45,6 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
         super.viewWillAppear(animated)
         
         keepScreenOn()
-        setBrightnessFull()
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-    }
-    
-    //MARK: screen orientation
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
-    
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
     }
     
     func getTrainingService() -> TrainingService {
@@ -64,22 +53,33 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     
     //MARK: training
     func showSetDashboard() {
-        if viewControllers.count > 0 {
-            popViewController(animated: true)
+        if plan == nil {
+            if viewControllers.count > 0 {
+                popViewController(animated: true)
+            } else {
+                pushViewController(SetDashboardVc(), animated: true)
+            }
         } else {
-            pushViewController(SetDashboardVc(), animated: true)
+            showDashboard()
         }
     }
     func showDashboard() {
         telemetry.cycleState = CycleState.idle
-        pushViewController(DashboardVc(), animated: true)
+        dashboardVc = DashboardVc()
+        dashboardVc!.plan = plan
+        dashboardVc!.event = event
+        pushViewController(dashboardVc!, animated: true)
     }
     
-    func closeViewController() {
+    func closeViewController(shoudlCloseParents: Bool) {
         outdoorService.stopLocationMonitoring()
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            if shoudlCloseParents {
+                (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
+            }
+        })
     }
     
     //MARK: views
@@ -97,6 +97,7 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     
     func onCounterEnd() {
         startServiceLoop(true)
+        dashboardVc!.setPlantoPlanView()
     }
     
     //MARK: dashboard elements
@@ -127,9 +128,5 @@ class TrainingViewController: UINavigationController, StartDelayDelegate, Calibr
     //MARK: other
     private func keepScreenOn() {
         UIApplication.shared.isIdleTimerDisabled = true
-    }
-    
-    private func setBrightnessFull() {
-        UIScreen.main.brightness = CGFloat(1)
     }
 }

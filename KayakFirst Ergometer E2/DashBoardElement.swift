@@ -8,10 +8,7 @@
 
 import UIKit
 
-class DashBoardElement: UIView {
-    
-    //MARK: constants
-    private let refreshMillis: Double = 33
+class DashBoardElement: RefreshView {
     
     //MARK: properties
     internal let telemetry = Telemetry.sharedInstance
@@ -28,11 +25,19 @@ class DashBoardElement: UIView {
                     make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
                     make.centerX.equalTo(self)
                     
-                    labelTitle.text = self.getTitleOneLine().uppercased()
+                    if isMetric() {
+                        labelTitle.text = self.getTitleOneLineMetric().uppercased()
+                    } else {
+                        labelTitle.text = self.getTitleOneLineImperial().uppercased()
+                    }
                 } else {
                     make.center.equalTo(self)
                     
-                    labelTitle.text = self.getTitle().uppercased()
+                    if isMetric() {
+                        labelTitle.text = self.getTitleMetric().uppercased()
+                    } else {
+                        labelTitle.text = self.getTitleImperial().uppercased()
+                    }
                 }
             }
         }
@@ -46,7 +51,6 @@ class DashBoardElement: UIView {
             }
         }
     }
-    private var timer: Timer?
     
     //MARK: init
     override init(frame: CGRect) {
@@ -57,34 +61,12 @@ class DashBoardElement: UIView {
         tag = getTagInt()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        refresh()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startRefresh(_ isStart: Bool) {
-        if isStart {
-            timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
-        } else {
-            timer?.invalidate()
-        }
-    }
-    
-    @objc private func refresh() {
+    override func refreshUi() {
         labelValue?.text = getFormattedText()
-    }
-    
-    //MARK: size
-    override var intrinsicContentSize: CGSize {
-        get {
-            let height: CGFloat = 100
-            return CGSize(width: 0, height: height)
-        }
     }
 
     //MARK: abstract functions
@@ -100,11 +82,23 @@ class DashBoardElement: UIView {
         fatalError("Must be implemented")
     }
     
-    internal func getTitle() -> String {
+    internal func getTitleMetric() -> String {
         fatalError("Must be implemented")
     }
     
-    internal func getTitleOneLine() -> String {
+    internal func getTitleImperial() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTitleOneLineMetric() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func getTitleOneLineImperial() -> String {
+        fatalError("Must be implemented")
+    }
+    
+    internal func isMetric() -> Bool {
         fatalError("Must be implemented")
     }
     
@@ -146,7 +140,11 @@ class DashBoardElement: UIView {
         labelTitle.snp.makeConstraints { make in
             make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
             make.centerX.equalTo(self)
-            make.height.equalTo(60)
+            var height = self.frame.height / 3
+            if height == 0 {
+                height = 30
+            }
+            make.height.equalTo(height)
         }
         
         labelValue.snp.makeConstraints { make in
@@ -159,7 +157,11 @@ class DashBoardElement: UIView {
     private lazy var labelTitle: UILabel! = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = self.getTitle().uppercased()
+        if self.isMetric() {
+            label.text = self.getTitleMetric().uppercased()
+        } else {
+            label.text = self.getTitleImperial().uppercased()
+        }
         label.textColor = Colors.colorWhite
         label.numberOfLines = 0
         
@@ -185,21 +187,6 @@ class DashBoardElement: UIView {
         
         return view
     }()
-    
-    func getSnapshotView() -> UIView {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
-        UIGraphicsEndImageContext()
-        
-        let snapshot : UIView = UIImageView(image: image)
-        snapshot.layer.masksToBounds = false
-        snapshot.layer.cornerRadius = 0.0
-        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-        snapshot.layer.shadowRadius = 5.0
-        snapshot.layer.shadowOpacity = 0.4
-        return snapshot
-    }
     
     class func getDashBoardElementByTag(tag: Int, isValueVisible: Bool) -> DashBoardElement {
         var dashBoardelement: DashBoardElement

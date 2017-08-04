@@ -96,7 +96,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }
     
     private func initViewControllers() {
-        if let sumTrainings = TrainingDataService.sharedInstance.detailsTrainingList {
+        if let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList {
             trainingViewControllers = [TrainingDetailsViewController]()
             for i in 0..<sumTrainings.count {
                 let controller = TrainingDetailsViewController()
@@ -109,24 +109,34 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }
     
     //MARK: views
-    private lazy var btnType: UIBarButtonItem! = {
+    private lazy var btnTrainingType: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "sun")
+        
+        return button
+    }()
+    
+    private lazy var btnPlanType: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
         
         return button
     }()
     
     private func initEnvType(viewController: TrainingDetailsViewController) {
-        switch viewController.environmentType! {
+        switch viewController.sumTraining!.trainingEnvironmentType! {
         case TrainingEnvironmentType.ergometer:
-            btnType.image = UIImage(named: "lightBulbCopy")
+            btnTrainingType.image = UIImage(named: "lightBulbCopy")
         case TrainingEnvironmentType.outdoor:
-            btnType.image = UIImage(named: "sunCopy")
+            btnTrainingType.image = UIImage(named: "sunCopy")
         default:
-            btnType.image = UIImage(named: "lightBulbCopy")
+            break
         }
         
-        self.navigationItem.setRightBarButtonItems([btnType], animated: true)
+        if viewController.sumTraining?.planTraining != nil {
+            btnPlanType.image = Plan.getTypeIconSmall(plan: viewController.sumTraining!.planTraining)
+            self.navigationItem.setRightBarButtonItems([btnTrainingType, btnPlanType], animated: true)
+        } else {
+            self.navigationItem.setRightBarButtonItems([btnTrainingType], animated: true)
+        }
     }
     
     //MARK: tabbaritem
