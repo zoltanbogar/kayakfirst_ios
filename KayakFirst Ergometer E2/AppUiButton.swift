@@ -12,8 +12,12 @@ class AppUIButton: UIButton {
     
     //MARK: properties
     private var originalBackgroundColor: UIColor?
-    private var text: String?
     private var textColor: UIColor?
+    var text: String? {
+        didSet {
+            setTitle(text?.uppercased(), for: .normal)
+        }
+    }
     
     //MARK: init
     init(width: CGFloat, text: String, backgroundColor: UIColor, textColor: UIColor) {
@@ -35,7 +39,6 @@ class AppUIButton: UIButton {
         backgroundColor = originalBackgroundColor
         setTitleColor(textColor, for: .normal)
         setTitleColor(Colors.colorInactive, for: .highlighted)
-        setTitle(text?.uppercased(), for: .normal)
     }
     
     //MARK: functions
