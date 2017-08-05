@@ -96,8 +96,13 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     }
     
     func onCounterEnd() {
+        let beforeCycleState = telemetry.cycleState
+        
         startServiceLoop(true)
-        dashboardVc!.setPlantoPlanView()
+        
+        if CycleState.paused != beforeCycleState {
+            dashboardVc!.setPlantoPlanView()
+        }
     }
     
     //MARK: dashboard elements
