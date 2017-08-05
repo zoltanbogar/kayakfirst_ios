@@ -8,9 +8,11 @@
 
 import UIKit
 
-func startLocationPermissionVc(viewController: UIViewController) -> UIViewController {
+func startLocationPermissionVc(viewController: UIViewController, trainingEnvType: TrainingEnvironmentType) -> UIViewController {
     let navController = UINavigationController()
-    navController.pushViewController(LocationPermissionVc(), animated: false)
+    let permissionVc = LocationPermissionVc()
+    permissionVc.trainingEnvType = trainingEnvType
+    navController.pushViewController(permissionVc, animated: false)
     viewController.present(navController, animated: true, completion: nil)
     
     return navController
@@ -18,17 +20,53 @@ func startLocationPermissionVc(viewController: UIViewController) -> UIViewContro
 
 class LocationPermissionVc: BaseVC {
     
+    //MARK: properties
+    var trainingEnvType: TrainingEnvironmentType?
+    
     //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initEnvType()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         checkLocationPermission()
     }
     
-    //MARK: check permission
+    //MARK: functions
     private func checkLocationPermission() {
         if PermissionCheck.hasLocationPermission() {
             btnCloseClick()
+        }
+    }
+    
+    //MARK: functions
+    private func initEnvType() {
+        var iconColor: UIColor?
+        var icon: UIImage?
+        var text: String?
+        
+        if let envType = trainingEnvType {
+            switch envType {
+            case TrainingEnvironmentType.ergometer:
+                iconColor = Colors.colorBluetooth
+                icon = UIImage(named: "ic_bluetooth_white_48pt")!
+                text = getString("fragment_bluetooth_location_permission_ios")
+                break
+            case TrainingEnvironmentType.outdoor:
+                iconColor = Colors.colorAccent
+                icon = UIImage(named: "ic_location_on_white_48pt")!
+                text = getString("permission_location_ios")
+            default:
+                break
+            }
+            
+            imgLocationIcon.image = icon
+            imgLocationIcon.color = iconColor!
+            label.text = text
         }
     }
     
@@ -59,7 +97,7 @@ class LocationPermissionVc: BaseVC {
     }
     
     //MARK: views
-    private lazy var imgLocationIcon: UIButton! = {
+    private lazy var imgLocationIcon: RoundButton! = {
         let button = RoundButton(radius: 75, image: UIImage(named: "ic_location_on_white_48pt")!, color: Colors.colorAccent)
         
         return button
@@ -74,7 +112,7 @@ class LocationPermissionVc: BaseVC {
         return label
     }()
     
-    private lazy var btnSetting: UIButton! = {
+    private lazy var btnSetting: AppUIButton! = {
         let button = AppUIButton(width: 0, text: getString("fragment_bluetooth_app_details_settings"), backgroundColor: Colors.colorAccent, textColor: Colors.colorPrimary)
         
         button.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)

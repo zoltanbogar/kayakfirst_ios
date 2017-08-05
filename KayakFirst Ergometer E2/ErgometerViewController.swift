@@ -19,4 +19,7 @@ class ErgometerViewController: TrainingViewController {
     
     //TODO - refactor
     
+    
+    //MARK: init view
+    
 }

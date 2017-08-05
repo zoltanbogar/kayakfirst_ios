@@ -16,6 +16,7 @@ func startTrainingViewController(viewController: UIViewController, plan: Plan?, 
     let trainingVc = TrainingViewController()
     trainingVc.plan = plan
     trainingVc.event = event
+    trainingVc.trainingEnvType = trainingEnvType
     viewController.present(trainingVc, animated: true, completion: nil)
 }
 
@@ -28,6 +29,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     let outdoorService = OutdoorService.sharedInstance
     var plan: Plan?
     var event: Event?
+    var trainingEnvType: TrainingEnvironmentType?
+    
     private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle
@@ -38,13 +41,23 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         
         interactivePopGestureRecognizer?.isEnabled = false
         
-        showSetDashboard()
+        showDefaultVc()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         keepScreenOn()
+    }
+    
+    private func showDefaultVc() {
+        if let trainingEnvironmentType = trainingEnvType {
+            if trainingEnvironmentType == TrainingEnvironmentType.outdoor {
+                showSetDashboard()
+            } else if trainingEnvironmentType == TrainingEnvironmentType.ergometer {
+                showBluetoothVc()
+            }
+        }
     }
     
     func getTrainingService() -> TrainingService {
@@ -69,6 +82,10 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         dashboardVc!.plan = plan
         dashboardVc!.event = event
         pushViewController(dashboardVc!, animated: true)
+    }
+    func showBluetoothVc() {
+        let ergoVc = BluetoothViewController()
+        pushViewController(ergoVc, animated: true)
     }
     
     func closeViewController(shoudlCloseParents: Bool) {

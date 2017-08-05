@@ -75,6 +75,7 @@
 "fragment_bluetooth_off"="Bluetooth is off.";
 "fragment_bluetooth_list_empty"="No active Bluetooth devices were found.\n\n If you don\'t find the ID of this machine on the screen, please, make a short stroke, that wakes up the signaler, then try again with the connection!";
 "fragment_bluetooth_location_permission"="To use Bluetooth, click Settings below and turn Location ON in Permissions. ";
+"fragment_bluetooth_location_permission_ios"="To use Bluetooth, click Settings below and turn Location ALWAYS. ";
 "fragment_bluetooth_app_details_settings"="Settings";
 
 //Bluetotoh

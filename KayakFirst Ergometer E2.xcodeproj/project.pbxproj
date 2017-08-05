@@ -299,6 +299,7 @@
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
 		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
 		06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */; };
+		06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840501F35E1C300303574 /* BluetoothViewController.swift */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
 		06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */; };
@@ -643,6 +644,7 @@
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
 		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
 		06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTrainingDbLoader.swift; sourceTree = "<group>"; };
+		06E840501F35E1C300303574 /* BluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -1473,6 +1475,7 @@
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
 				06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */,
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
+				06E840501F35E1C300303574 /* BluetoothViewController.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -1738,6 +1741,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */,
 				06CAFF531F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift in Sources */,
+				06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */,
 				0626FBCD1EFCE9DB00DCBB33 /* UserManager.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
