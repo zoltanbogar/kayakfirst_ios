@@ -22,6 +22,27 @@ class ManagerUpload {
         }
     }
     
+    class func hasStackToWait() -> Bool {
+        let stack = getStack()
+        
+        var shouldWaitForIt = false
+        
+        if let stackValue = stack {
+            for s in stackValue {
+                let uploadType = UploadType(rawValue: s)
+                
+                if let uploadTypeValue = uploadType {
+                    shouldWaitForIt = uploadTypeValue.shouldWaitForIt()
+                }
+                
+                if shouldWaitForIt {
+                    break
+                }
+            }
+        }
+        return shouldWaitForIt
+    }
+    
     class func getStack() -> [String]? {
         let dictionary = getDictionary()
         

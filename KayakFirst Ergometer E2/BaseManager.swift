@@ -245,9 +245,7 @@ class BaseManager {
                 publishProgress(progress: dataFromLocale)
             }
             
-            let uploadStack = ManagerUpload.getStack()
-            
-            if uploadStack == nil || uploadStack!.count == 0 {
+            if !ManagerUpload.hasStackToWait() {
                 if managerDownload.isCacheInvalid() {
                     let serverError = managerDownload.callServer()
                     

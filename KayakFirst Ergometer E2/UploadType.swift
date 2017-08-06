@@ -18,4 +18,8 @@ enum UploadType: String {
     case planDelete = "6_plan_delete"
     case eventDelete = "7_event_delete"
     case trainingDelete = "8_training_delete"
+    
+    func shouldWaitForIt() -> Bool {
+        return self != UploadType.pushIdUpload
+    }
 }
