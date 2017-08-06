@@ -46,8 +46,9 @@ class TrainingManager: BaseManager {
     }
     
     func addTrainingUploadPointer() {
-        ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: nil)
-        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: "\(Telemetry.sharedInstance.sessionId)")
+        let sessionId = "\(Telemetry.sharedInstance.sessionId)"
+        ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
+        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)
     }
     
     func saveTraining(training: Training) {
