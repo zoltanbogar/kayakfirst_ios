@@ -270,7 +270,6 @@
 		06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F51F0A44B40077EE21 /* EditPlan.swift */; };
 		06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F71F0A48F00077EE21 /* PlanObject.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
-		06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB81E2267A000562B27 /* Assets.xcassets */; };
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
@@ -305,6 +304,9 @@
 		06E8405A1F35FA3800303574 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840591F35FA3800303574 /* Bluetooth.swift */; };
 		06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */; };
 		06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */; };
+		06E840611F37500A00303574 /* ErgometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840601F37500A00303574 /* ErgometerService.swift */; };
+		06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */; };
+		06E840651F376A8500303574 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E840641F376A8500303574 /* Assets.xcassets */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
 		06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */; };
@@ -615,7 +617,6 @@
 		06C2F3F71F0A48F00077EE21 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
-		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "KayakFirst Ergometer E2/Assets.xcassets"; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "KayakFirst Ergometer E2/Info.plist"; sourceTree = "<group>"; };
 		06C6ABC21E2267A100562B27 /* KayakFirst Ergometer E2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -655,6 +656,9 @@
 		06E840591F35FA3800303574 /* Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceTableView.swift; sourceTree = "<group>"; };
 		06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableViewCell.swift; sourceTree = "<group>"; };
+		06E840601F37500A00303574 /* ErgometerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerService.swift; sourceTree = "<group>"; };
+		06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDisconnectDialog.swift; sourceTree = "<group>"; };
+		06E840641F376A8500303574 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -801,6 +805,7 @@
 			children = (
 				060B99171E641A5200F72404 /* TrainingService.swift */,
 				060B99291E64313B00F72404 /* OutdoorService.swift */,
+				06E840601F37500A00303574 /* ErgometerService.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -1283,6 +1288,7 @@
 				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
 				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
 				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
+				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1420,7 +1426,7 @@
 				06C6ABBD1E2267A000562B27 /* Info.plist */,
 				0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */,
 				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
-				06C6ABB81E2267A000562B27 /* Assets.xcassets */,
+				06E840641F376A8500303574 /* Assets.xcassets */,
 				0613A9101E67E54000B13342 /* FBSDKCoreKit.framework */,
 				0613A9111E67E54000B13342 /* FBSDKLoginKit.framework */,
 				06C6ABC51E2267A100562B27 /* KayakFirst Ergometer E2Tests */,
@@ -1667,8 +1673,8 @@
 				06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */,
 				0698BC4D1F005E9200FC7A0E /* plan_tick.mp3 in Resources */,
 				0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */,
+				06E840651F376A8500303574 /* Assets.xcassets in Resources */,
 				0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */,
-				06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1811,6 +1817,7 @@
 				06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
+				06E840611F37500A00303574 /* ErgometerService.swift in Sources */,
 				060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */,
 				060D9B9E1E4A5E46006DD8AB /* TableViewWithEmpty.swift in Sources */,
 				067964611E636E7800DFC050 /* MovingAverage.swift in Sources */,
@@ -1821,6 +1828,7 @@
 				06CAFF3F1F0D28CD00D2EA14 /* ManagerModifyEditable.swift in Sources */,
 				065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
+				06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */,

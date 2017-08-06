@@ -20,7 +20,8 @@ class OutdoorService: TrainingService {
     //MARK: init
     static let sharedInstance = OutdoorService()
     private override init() {
-        //private empty constructor
+        super.init()
+        telemetry.outdoorCycleStateChangeListener = self
     }
     
     //MARK: start/stop monitoring

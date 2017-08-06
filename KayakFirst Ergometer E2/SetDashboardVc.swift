@@ -122,9 +122,18 @@ class SetDashboardVc: BaseVC {
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems([btnDone], animated: true)
-        showCloseButton()
-        showLogoOnLeft()
+        var buttons: [UIBarButtonItem] = [btnDone]
+        
+        if let parent = self.parent as? TrainingViewController {
+            if parent.trainingEnvType == TrainingEnvironmentType.ergometer {
+                buttons.append(parent.bluetoothTabBarItem)
+            }
+        }
+        
+        self.navigationItem.setRightBarButtonItems(buttons, animated: true)
+        
+        //TODO: logo must show in center
+        //showLogoOnLeft()
         
         self.title = getString("navigation_set_dashboard")
     }
@@ -443,6 +452,12 @@ class SetDashboardVc: BaseVC {
     @objc private func btnDoneClick() {
         if let parent = self.parent as? TrainingViewController {
             parent.showDashboard()
+        }
+    }
+    
+    override func backClick(sender: UIBarButtonItem) {
+        if let parent = self.parent as? TrainingViewController {
+            parent.showBluetoothDisconnectDialog()
         }
     }
     

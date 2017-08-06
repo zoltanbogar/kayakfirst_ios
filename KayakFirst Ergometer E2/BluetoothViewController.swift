@@ -50,7 +50,9 @@ class BluetoothViewController: BaseVC {
     }()
     
     private lazy var bluetoothList: BluetoothList! = {
-        let bluetoothList = BluetoothList()
+        let trainingViewController = self.parent as! TrainingViewController
+        
+        let bluetoothList = BluetoothList(trainingViewController: trainingViewController)
         
         bluetoothList.btnBluetooth = self.btnSetting
         

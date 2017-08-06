@@ -23,11 +23,6 @@ class TrainingService: CycleStateChangeListener {
     
     private var isCyclePaused = false
     
-    //MARK: init
-    internal init() {
-        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
-    }
-    
     //MARK: abstract methods
     internal func initCommandList() {
         fatalError("Must be implemented")

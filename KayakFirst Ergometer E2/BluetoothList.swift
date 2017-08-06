@@ -27,8 +27,11 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
     private var bluetoothDeviceList: [CBPeripheral]?
     private var isDiscovering = false
     
+    private var trainingViewController: TrainingViewController
+    
     //MARK: init
-    init() {
+    init(trainingViewController: TrainingViewController) {
+        self.trainingViewController = trainingViewController
         super.init(frame: CGRect.zero)
         initView()
         
@@ -229,6 +232,10 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
     
     private lazy var bluetoothTableView: BluetoothDeviceTableView! = {
         let view = BluetoothDeviceTableView(view: self)
+        
+        view.rowClickCallback = { bluetoothDevice, position in
+            self.trainingViewController.connectBluetooth(bluetoothDevice: bluetoothDevice)
+        }
         
         return view
     }()

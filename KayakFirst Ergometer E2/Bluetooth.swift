@@ -17,16 +17,28 @@ protocol BluetoothScanCallback {
     func didDiscover(peripheral: CBPeripheral)
 }
 
-class Bluetooth: NSObject, CBCentralManagerDelegate {
+protocol OnBluetoothConnectedListener {
+    func onConnected()
+    
+    func onDisconnected()
+    
+    func onDataAvailable(stringData: String)
+}
+
+class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     //MARK: constants
     private let serviceUuid = CBUUID(string: "0000FFE0-0000-1000-8000-00805F9B34FB")
+    private let characteristicUuid = CBUUID(string: "0000FFE1-0000-1000-8000-00805F9B34FB")
 
     //MARK: properties
     var bluetoothManager: CBCentralManager?
     var bluetoothStateChangedListener: BluetoothStateChangedListener?
+    var onBluetoothConnectedListener: OnBluetoothConnectedListener?
     
     private var bluetoothScanCallback: BluetoothScanCallback?
+    
+    private var connectedPeripheral: CBPeripheral?
     
     //MARK: init
     static let sharedInstance = Bluetooth()
@@ -47,6 +59,51 @@ class Bluetooth: NSObject, CBCentralManagerDelegate {
             callBack.didDiscover(peripheral: peripheral)
         }
     }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        connectedPeripheral = nil
+        
+        if let listener = onBluetoothConnectedListener {
+            listener.onDisconnected()
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if let services = peripheral.services {
+            for service in services {
+                if service.uuid == serviceUuid {
+                    peripheral.discoverCharacteristics(nil, for: service)
+                }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        if let characteristics = service.characteristics {
+            for characteristic in characteristics {
+                if characteristicUuid == characteristic.uuid {
+                    connectedPeripheral = peripheral
+                    
+                    connectedPeripheral?.setNotifyValue(true, for: characteristic)
+                    
+                    if let listener = onBluetoothConnectedListener {
+                        listener.onConnected()
+                    }
+                }
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        //TODO
+        log("BLE_TEST", "didUpadteValue: \(characteristic)")
+    }
+    
     
     //MARK: functions
     func isBluetoothOn() -> Bool? {
@@ -75,5 +132,17 @@ class Bluetooth: NSObject, CBCentralManagerDelegate {
     
     func stopScan() {
         bluetoothManager!.stopScan()
+    }
+    
+    func connect(bluetoothDevice: CBPeripheral) {
+        if isBluetoothOn() != nil && isBluetoothOn()! {
+            bluetoothManager?.connect(bluetoothDevice, options: nil)
+        }
+    }
+    
+    func disconnect() {
+        if let peripheral = connectedPeripheral {
+            bluetoothManager?.cancelPeripheralConnection(peripheral)
+        }
     }
 }
