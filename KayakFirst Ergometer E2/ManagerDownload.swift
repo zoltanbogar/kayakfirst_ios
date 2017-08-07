@@ -44,19 +44,23 @@ class ManagerDownload<E> {
     }
     
     func isCacheInvalid() -> Bool {
-        let cacheTimestamp = preferences.double(forKey: getKeyCache())
+        let cacheTimestamp = preferences.double(forKey: getKeyCacheWithUserId())
         let timeDiff = currentTimeMillis() - cacheTimestamp
         
         return timeDiff >= getCacheTime()
     }
     
     private func setCacheInvalid() {
-        preferences.set(currentTimeMillis(), forKey: getKeyCache())
+        preferences.set(currentTimeMillis(), forKey: getKeyCacheWithUserId())
         preferences.synchronize()
     }
     
     internal func getCacheTime() -> Double {
         return timeCacheMillis
+    }
+    
+    private func getKeyCacheWithUserId() -> String {
+        return ManagerUpload.getStaticDbUpload(db: getKeyCache())
     }
     
     //MARK: abstract functions

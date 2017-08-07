@@ -10,6 +10,9 @@ import Foundation
 
 class ManagerUpload {
     
+    //MARK: constants
+    private static let dbUpload = "manager_upload_db"
+    
     //MARK: properties
     private static let preferences = UserDefaults.standard
     
@@ -129,9 +132,13 @@ class ManagerUpload {
     }
     
     private class func getDbUpload() -> String {
+        return getStaticDbUpload(db: dbUpload)
+    }
+    
+    class func getStaticDbUpload(db: String) -> String {
         let user = UserManager.sharedInstance.getUser()
         
-        var preferencesDb = "manager_upload_db"
+        var preferencesDb = db
         
         if let userValue = user {
             preferencesDb = preferencesDb + "_" + String(userValue.id)
