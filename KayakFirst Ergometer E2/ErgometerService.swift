@@ -20,6 +20,21 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     
     var onBluetoothConnectedListener: OnBluetoothConnectedListener?
     
+    private var commandErgometerReset: CommandErgometerReset?
+    private var commandErgometerRPM: CommandErgometerRPM?
+    private var commandErgometerT_h: CommandErgometerT_H?
+    private var commandErgometerT_max: CommandErgometerT_MAX?
+    private var commandErgometerT_min: CommandErgometerT_MIN?
+    private var commandErgometerT_v: CommandErgometerT_V?
+    
+    private var commandIndex: Int = 0
+    private var bluetoothResetNumber = 0
+    
+    private var cycleIndex: Int64 = 0
+    
+    private var inactiveDisconnectTime: Double = 0
+    private var inactiveTime: Double = 0
+    
     //MARK: init
     static let sharedInstance = ErgometerService()
     private override init() {
@@ -64,11 +79,32 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     
     //MARK: override abstract methods
     override func reset() {
-        //TODO
+        super.reset()
+        
+        cycleIndex = 0
+        inactiveDisconnectTime = 0
+        inactiveTime = 0
     }
     
     override func initCommandList() {
-        //TODO
+        commandErgometerReset = CommandErgometerReset()
+        commandErgometerRPM = CommandErgometerRPM()
+        commandErgometerT_h = CommandErgometerT_H()
+        commandErgometerT_max = CommandErgometerT_MAX()
+        commandErgometerT_min = CommandErgometerT_MIN()
+        commandErgometerT_v = CommandErgometerT_V()
+        
+        commandIndex = 0
+        bluetoothResetNumber = 0
+        
+        commandList = [
+            commandErgometerReset!,
+            commandErgometerRPM!,
+            commandErgometerT_min!,
+            commandErgometerT_h!,
+            commandErgometerT_max!,
+            commandErgometerT_v!
+        ]
     }
     
     override func initStartCommand() {

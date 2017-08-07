@@ -30,7 +30,7 @@ class StartCommand<E: MeasureCommand> {
     var strokesAv: TrainingAvg?
     
     var v_av: Double = 0
-    
+    var distanceSum: Double = 0
     
     func calculate(measureCommands: [E]) -> TelemetryObject {
         return calculateValues(measureCommands: measureCommands)

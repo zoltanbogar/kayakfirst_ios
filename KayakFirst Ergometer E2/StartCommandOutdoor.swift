@@ -10,7 +10,6 @@ import Foundation
 class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     //MARK: properties
-    var distanceSum: Double = 0
     var speed: Double = 0
     var strokesValue: Double = 0
     

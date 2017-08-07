@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum CommandErgometerEnum: String {
+    case tMin = "1"
+    case tH = "2"
+    case tMax = "3"
+    case tV = "4"
+    case rpm = "5"
+    case reset = "9"
+}
+
 enum CommandOutdoorEnum: String {
     case distance = "distance"
     case speed = "speed"
@@ -29,8 +38,7 @@ class MeasureCommand {
     func getValue() -> Double {
         fatalError("Must be implemented")
     }
-    func setValue(value: AnyObject) {
+    func setValue(stringValue: String) {
         fatalError("Must be implemented")
     }
-    
 }

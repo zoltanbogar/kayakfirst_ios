@@ -12,12 +12,12 @@ let converSationMpsKmph: Double = 3.6
 let maxSpeedKmph: Double = 30
 let minSpeedKmh: Double = 2
 
-class CalculateElement<Result, S: StartCommand<MeasureCommand>> {
+class CalculateElement<Result, M: MeasureCommand, S: StartCommand<M>> {
     
     //MARK constants
-    let oneMinuteInMillisec = 60 * 1000
+    let oneMinuteInMillisec: Double = 60 * 1000
     let j = 0.02527962
-    let q = 1
+    let q: Double = 1
     let rh = 0.027
     let c = 0.1419262
     let weightBoat: Double = 12

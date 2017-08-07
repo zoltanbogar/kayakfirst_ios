@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class CalculateElementSOutdoor: CalculateElementS<StartCommandOutdoor> {
+class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, StartCommandOutdoor> {
     
     override func run() -> Training {
         calculatedValue = startCommand.distanceSum
