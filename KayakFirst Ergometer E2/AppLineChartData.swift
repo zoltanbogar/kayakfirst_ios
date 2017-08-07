@@ -82,7 +82,11 @@ class AppLineChartData {
             lineData = LineChartData(dataSets: dataSets)
         }
         
+        let lowestVisibleX = lineChart.lowestVisibleX
+        
         lineChart.data = lineData
+        
+        lineChart.moveViewToX(lowestVisibleX)
     }
     
     private func createLineDataSet(entries: [ChartDataEntry]?, diagramLabel: DiagramLabel) -> LineChartDataSet {
