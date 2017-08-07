@@ -91,7 +91,7 @@ class PlanDbLoader: BaseDbLoader<Plan> {
         var planList: [Plan]?
         
         do {
-            let dbList = try db!.prepare(table!.filter(predicate!))
+            let dbList = try db!.prepare(table!.filter(predicate!).order(name.lowercaseString.asc))
             
             planList = [Plan]()
             
