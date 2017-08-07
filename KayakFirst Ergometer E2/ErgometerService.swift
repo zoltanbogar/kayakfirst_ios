@@ -9,11 +9,11 @@
 import Foundation
 import CoreBluetooth
 
-class ErgometerService: TrainingService, OnBluetoothConnectedListener {
+class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothConnectedListener {
     
     //MARK: constants
-    private let bluetoothDisconnectedTime = 2 * 60 * 1000 //2 min
-    private let bluetoothInactiveTime = 20 * 1000 //20 sec
+    private let bluetoothDisconnectedTime: Double = 2 * 60 * 1000 //2 min
+    private let bluetoothInactiveTime: Double = 20 * 1000 //20 sec
     
     //MARK: properties
     private let bluetooth = Bluetooth.sharedInstance
@@ -39,7 +39,6 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     static let sharedInstance = ErgometerService()
     private override init() {
         super.init()
-        telemetry.ergometerCycleStateChangeListener = self
         initConnection()
     }
     
@@ -75,6 +74,11 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     
     func onDataAvailable(stringData: String) {
         //TODO
+        log("BLE_TEST", "dataAvailableErgometerService: \(stringData)")
+    }
+    
+    private func writeBluetoothData() {
+        //TODO
     }
     
     //MARK: override abstract methods
@@ -108,7 +112,7 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     }
     
     override func initStartCommand() {
-        //TODO
+        startCommand = StartCommandErgometer.sharedInstance
     }
     
     override func runCommandList() {
@@ -120,7 +124,19 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     }
     
     override func runCalculate() -> Bool {
-        //TODO
+        let telemetryCycleIndex = telemetry.cycleIndex
+        
+        runCommandList()
+        
+        checkBluetoothInactiveTimeout()
+        
+        if cycleIndex > telemetryCycleIndex {
+            telemetry.cycleIndex = cycleIndex
+            return true
+        } else if telemetryCycleIndex == 0 && telemetry.duration <= bluetoothInactiveTime {
+            return true
+        }
+    
         return false
     }
     
@@ -129,7 +145,47 @@ class ErgometerService: TrainingService, OnBluetoothConnectedListener {
     }
     
     override func onCycleStateChanged(newCycleState: CycleState) {
-        //TODO
+        if !isServiceStopped {
+            super.onCycleStateChanged(newCycleState: newCycleState)
+            
+            if CycleState.idle == newCycleState {
+                usleep(300000)
+                
+                writeBluetoothData()
+            }
+        }
+    }
+    
+    private func checkBluetoothDisconnectTimeout() {
+        if cycleIndex == telemetry.cycleIndex {
+            if inactiveDisconnectTime == 0 {
+                inactiveDisconnectTime = currentTimeMillis()
+            }
+            
+            let timeDiff = currentTimeMillis() - inactiveDisconnectTime
+            
+            if timeDiff > bluetoothDisconnectedTime {
+                disconnectBluetoothn()
+            }
+        } else {
+            inactiveDisconnectTime = 0
+        }
+    }
+    
+    private func checkBluetoothInactiveTimeout() {
+        if cycleIndex == telemetry.cycleIndex {
+            if inactiveTime == 0 {
+                inactiveTime = currentTimeMillis()
+            }
+            
+            let timeDiff = currentTimeMillis() - inactiveTime
+            
+            if timeDiff > bluetoothInactiveTime {
+                stopCycle()
+            }
+        } else {
+            inactiveTime = 0
+        }
     }
     
 }

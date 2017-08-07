@@ -17,7 +17,6 @@ class StartCommand<E: MeasureCommand> {
     private var t500Element: CalculateElementT_500?
     private var t1000Element: CalculateElementT_1000?
     private var f_avElement: CalculateF_AV?
-    private var v_avElement: CalculateV_AV?
     private var t200_avElement: CalculateT_200_AV?
     private var t500_avElement: CalculateT_500_AV?
     private var t1000_avElement: CalculateT_1000_AV?
@@ -28,6 +27,7 @@ class StartCommand<E: MeasureCommand> {
     var s: Training = Training()
     
     var strokesAv: TrainingAvg?
+    var vAv: TrainingAvg?
     
     var v_av: Double = 0
     var distanceSum: Double = 0
@@ -46,7 +46,6 @@ class StartCommand<E: MeasureCommand> {
         t1000Element = CalculateElementT_1000(startCommand: getSelfStartCommand())
         
         f_avElement = CalculateF_AV(startCommand: getSelfStartCommand())
-        v_avElement = CalculateV_AV(startCommand: getSelfStartCommand())
         t200_avElement = CalculateT_200_AV(startCommand: getSelfStartCommand())
         t500_avElement = CalculateT_500_AV(startCommand: getSelfStartCommand())
         t1000_avElement = CalculateT_1000_AV(startCommand: getSelfStartCommand())
@@ -85,7 +84,7 @@ class StartCommand<E: MeasureCommand> {
     func createTelemetryAvgObject() -> TelemetryAvgObject {
         return TelemetryAvgObject(
             f_av: f_avElement!.run(),
-            v_av: v_avElement!.run(),
+            v_av: vAv!,
             strokes_av: strokesAv!,
             t_200_av: t200_avElement!.run(),
             t_500_av: t500_avElement!.run(),

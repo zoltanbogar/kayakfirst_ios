@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateV_AV: CalculateElementAvg {
+class CalculateV_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
     override func getAvgType() -> CalculateEnum {
         return CalculateEnum.V_AV
@@ -20,18 +20,4 @@ class CalculateV_AV: CalculateElementAvg {
     override func getAvValue() -> Double {
         return telemetry.speed_av
     }
-    
-    override func calculate() -> Double {
-        let distance = telemetry.distance
-        let duration = telemetry.duration
-        
-        if duration > 0 {
-            calculatedValue = (distance / duration) * 1000 * converSationMpsKmph
-        }
-        
-        startCommand.v_av = calculatedValue
-        
-        return calculatedValue
-    }
-    
 }

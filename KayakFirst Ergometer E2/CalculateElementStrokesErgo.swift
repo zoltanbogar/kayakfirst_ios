@@ -1,5 +1,5 @@
 //
-//  CalculateElementStrokes.swift
+//  CalculateElementStrokesErgo.swift
 //  KayakFirst Ergometer E2
 //
 //  Created by Balazs Vidumanszki on 2017. 08. 07..
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementStrokes: CalculateElementStroke<MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgometer, StartCommandErgometer> {
     
     private var cycleIndex: Int64 = 0
     private var timestamp: Double = 0
@@ -25,7 +25,7 @@ class CalculateElementStrokes: CalculateElementStroke<MeasureCommandErgometer, S
             
             timestamp = startCommand.getCalculatedTimeStamp()
             if timeDiff != 0 {
-                calculatedValue = Double(diffCycleIndex) / timeDiff / oneMinuteInMillisec
+                calculatedValue = Double(diffCycleIndex) / (timeDiff / oneMinuteInMillisec)
             }
         }
         

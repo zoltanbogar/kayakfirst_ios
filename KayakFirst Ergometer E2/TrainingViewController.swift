@@ -61,14 +61,17 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
                 showBluetoothVc()
             }
         }
+        
+        getTrainingService().addTelemetryListener(true)
     }
     
-    func getTrainingService() -> TrainingService {
+    func getTrainingService() -> TrainingService<MeasureCommand> {
         switch trainingEnvType! {
         case TrainingEnvironmentType.outdoor:
             return outdoorService
         case TrainingEnvironmentType.ergometer:
-            return ergometerService
+            //TODO: maybe it will crash!!
+            return ergometerService as! TrainingService<MeasureCommand>
         default:
             break
         }
@@ -113,6 +116,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         outdoorService.stopLocationMonitoring()
         ergometerService.onBluetoothConnectedListener = nil
         
+        getTrainingService().addTelemetryListener(false)
+        
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
         self.dismiss(animated: true, completion: {
@@ -126,6 +131,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     func connectBluetooth(bluetoothDevice: CBPeripheral) {
         progressView?.show(true)
         ergometerService.connectBluetooth(bluetoothDevice: bluetoothDevice)
+        telemetry.trainingServiceCycleStateChangeListener = ergometerService
     }
     
     func onConnected() {

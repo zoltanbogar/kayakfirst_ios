@@ -83,8 +83,7 @@ class Telemetry {
             }
             
             notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: ergometerCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: outdoorCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
         }
     }
     
@@ -102,8 +101,7 @@ class Telemetry {
     //TODO - refactor: not a good solution, use 'removeCycleStateListener'
     var dashboardCycleStateChangeListener: CycleStateChangeListener?
     
-    var ergometerCycleStateChangeListener: CycleStateChangeListener?
-    var outdoorCycleStateChangeListener: CycleStateChangeListener?
+    var trainingServiceCycleStateChangeListener: CycleStateChangeListener?
     
     func addCycleStateChangeListener(cycleStateChangeListener: CycleStateChangeListener) {
         if self.cycleStateChangeListenerList == nil {

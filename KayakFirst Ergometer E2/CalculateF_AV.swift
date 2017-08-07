@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateF_AV: CalculateElementAvg {
+class CalculateF_AV: CalculateElementAvg<MeasureCommand> {
     
     override func getAvgType() -> CalculateEnum {
         return CalculateEnum.F_AV

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class OutdoorService: TrainingService {
+class OutdoorService: TrainingService<MeasureCommand> {
     
     //MARK: properties
     private let fusedLocationManager = FusedLocationManager.sharedInstance
@@ -21,7 +21,6 @@ class OutdoorService: TrainingService {
     static let sharedInstance = OutdoorService()
     private override init() {
         super.init()
-        telemetry.outdoorCycleStateChangeListener = self
     }
     
     //MARK: start/stop monitoring

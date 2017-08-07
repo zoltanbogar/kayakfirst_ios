@@ -8,18 +8,20 @@
 
 import Foundation
 
-class TrainingService: CycleStateChangeListener {
+class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
-    var commandList: [MeasureCommand]?
-    var startCommand: StartCommand<MeasureCommand>?
+    var commandList: [M]?
+    var startCommand: StartCommand<M>?
     
     private let pauseDiff = PauseDiff.sharedInstance
     
     private let trainingManager = TrainingManager.sharedInstance
     
     private var realDuration: Double = 0
+    
+    internal var isServiceStopped = false
     
     private var isCyclePaused = false
     
@@ -47,6 +49,15 @@ class TrainingService: CycleStateChangeListener {
     //useconds
     internal func getTimeWaitAfterCalculate() -> useconds_t {
         fatalError("Must be implemented")
+    }
+    
+    func addTelemetryListener(_ isAdd: Bool) {
+        if isAdd {
+            telemetry.trainingServiceCycleStateChangeListener = self
+        } else {
+            telemetry.trainingServiceCycleStateChangeListener = nil
+        }
+        isServiceStopped = !isAdd
     }
     
     //MARK: lifecycle
@@ -136,19 +147,21 @@ class TrainingService: CycleStateChangeListener {
     }
     
     func onCycleStateChanged(newCycleState: CycleState) {
-        switch newCycleState {
-        case CycleState.resumed:
-            isCyclePaused = false
-            startLoop()
-        case CycleState.idle:
-            reset()
-        case CycleState.stopped:
-            telemetry.resetCurrent()
-            handleStopTraining()
-        case CycleState.paused:
-            isCyclePaused = true
-        default:
-            log("CYCLE_STATE", "newCycleState: \(newCycleState)")
+        if !isServiceStopped {
+            switch newCycleState {
+            case CycleState.resumed:
+                isCyclePaused = false
+                startLoop()
+            case CycleState.idle:
+                reset()
+            case CycleState.stopped:
+                telemetry.resetCurrent()
+                handleStopTraining()
+            case CycleState.paused:
+                isCyclePaused = true
+            default:
+                break
+            }
         }
     }
     

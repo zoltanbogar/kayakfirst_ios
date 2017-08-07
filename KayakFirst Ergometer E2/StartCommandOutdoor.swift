@@ -19,6 +19,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     private var strokeElement: CalculateElementStrokesOutdoor?
     
     private var calculateStrokes_av_outdoor: CalculateStrokes_AV_Outdoor?
+    private var calculateV_av_outdoor: CalculateV_AV_Outdoor?
     
     //MARK: init
     static let sharedInstance: StartCommandOutdoor = StartCommandOutdoor()
@@ -39,6 +40,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
         strokeElement = CalculateElementStrokesOutdoor(startCommand: self)
         
         calculateStrokes_av_outdoor = CalculateStrokes_AV_Outdoor(startCommand: self)
+        calculateV_av_outdoor = CalculateV_AV_Outdoor(startCommand: self)
     }
     
     override func getTrainingEnvironmentType() -> TrainingEnvironmentType {
@@ -78,6 +80,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
         strokes = strokeElement!.run()
         
         strokesAv = calculateStrokes_av_outdoor?.run()
+        vAv = calculateV_av_outdoor!.run()
     }
     
 }
