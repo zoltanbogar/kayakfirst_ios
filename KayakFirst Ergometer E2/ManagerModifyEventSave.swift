@@ -49,13 +49,13 @@ class ManagerModifyEventSave: ManagerModifyEvent {
             if eventListUpload.count > 0 {
                 let uploadEvent = UploadEvent(eventList: eventListUpload)
                 uploadEvent.run()
-                serverWasReachableUpload = uploadEvent.serverWasReachable
+                serverWasReachableUpload = serverWasReachableUpload && uploadEvent.serverWasReachable
             }
             
             for eventToEdit in eventListEdit {
                 let editEvent = EditEvent(event: eventToEdit)
                 editEvent.run()
-                serverWasReachableEdit = editEvent.serverWasReachable
+                serverWasReachableEdit = serverWasReachableEdit && editEvent.serverWasReachable
             }
         }
         return serverWasReachableUpload && serverWasReachableEdit

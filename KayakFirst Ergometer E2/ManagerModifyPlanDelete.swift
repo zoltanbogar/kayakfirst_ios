@@ -42,7 +42,7 @@ class ManagerModifyPlanDelete: ManagerModifyPlan {
             if planIds.count > 0 {
                 let deletePlan = DeletePlan(planIds: planIds)
                 deletePlan.run()
-                serverWasReachable = deletePlan.serverWasReachable
+                serverWasReachable = serverWasReachable && deletePlan.serverWasReachable
             }
         }
         

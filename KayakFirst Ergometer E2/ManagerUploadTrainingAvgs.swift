@@ -22,24 +22,22 @@ class ManagerUploadTrainingAvgs: ManagerUpload {
     }
     
     override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         if let pointersValue = pointers {
             for s in pointersValue {
                 let uploadTrainingAvgs = UploadTrainingAvgs(sessionId: Double(s)!)
                 uploadTrainingAvgs.run()
-                let serverWasReachable = uploadTrainingAvgs.serverWasReachable
+                serverWasReachable = serverWasReachable && uploadTrainingAvgs.serverWasReachable
                 
                 if isUploadReady {
                     isUploadReady = uploadTrainingAvgs.isUploadReady
                 }
-                
-                return serverWasReachable
             }
         }
-        return true
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {
         return UploadType.trainingAvgUpload
     }
-    
 }

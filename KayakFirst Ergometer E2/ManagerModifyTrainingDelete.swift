@@ -18,7 +18,7 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
     override func modifyLocale() {
         if let sumTraining = data {
             trainingDbLoader.deleteData(predicate: trainingDbLoader.getPredicateSessionId(sessionId: sumTraining.sessionId))
-        trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getSessionIdPredicate(sessionId: sumTraining.sessionId))
+            trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getSessionIdPredicate(sessionId: sumTraining.sessionId))
         }
     }
     
@@ -38,11 +38,11 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
             if sessionIds.count > 0 {
                 let deleteTraining = DeleteTraining(sessionIds: sessionIds)
                 deleteTraining.run()
-                serverWasReachableTraining = deleteTraining.serverWasReachable
+                serverWasReachableTraining = serverWasReachableTraining && deleteTraining.serverWasReachable
                 
                 let deleteTrainingAvg = DeleteTrainingAvg(sessionIds: sessionIds)
                 deleteTrainingAvg.run()
-                serverWasReachableTrainingAvg = deleteTrainingAvg.serverWasReachable
+                serverWasReachableTrainingAvg = serverWasReachableTrainingAvg && deleteTrainingAvg.serverWasReachable
             }
         }
         return serverWasReachableTraining && serverWasReachableTrainingAvg

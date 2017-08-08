@@ -29,7 +29,7 @@ class ManagerModifyEventDelete: ManagerModifyEvent {
             if eventIds.count > 0 {
                 let deleteEvent = DeleteEvent(eventIds: eventIds)
                 deleteEvent.run()
-                serverWasReachable = deleteEvent.serverWasReachable
+                serverWasReachable = serverWasReachable && deleteEvent.serverWasReachable
             }
         }
         return serverWasReachable

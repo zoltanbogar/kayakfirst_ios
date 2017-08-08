@@ -52,13 +52,13 @@ class ManagerModifyPlanSave: ManagerModifyPlan {
             if planListUpload.count > 0 {
                 let uploadPlan = UploadPlan(planList: planListUpload)
                 uploadPlan.run()
-                serverWasReachableUpload = uploadPlan.serverWasReachable
+                serverWasReachableUpload = serverWasReachableUpload && uploadPlan.serverWasReachable
             }
             
             for planToEdit in planListEdit {
                 let editPlan = EditPlan(plan: planToEdit)
                 editPlan.run()
-                serverWasReachableEdit = editPlan.serverWasReachable
+                serverWasReachableEdit = serverWasReachableEdit && editPlan.serverWasReachable
             }
         }
         return serverWasReachableUpload && serverWasReachableEdit

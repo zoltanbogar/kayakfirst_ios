@@ -37,7 +37,7 @@ class ManagerModifyPlanTrainingSave: ManagerModifyPlanTraining {
             if planTrainings.count > 0 {
                 let uploadPlanTraining = UploadPlanTraining(planTrainingList: planTrainings)
                 uploadPlanTraining.run()
-                serverWasReachable = uploadPlanTraining.serverWasReachable
+                serverWasReachable = serverWasReachable && uploadPlanTraining.serverWasReachable
             }
         }
         return serverWasReachable

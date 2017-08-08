@@ -11,14 +11,17 @@ import Foundation
 class ManagerUploadPushId: ManagerUpload {
     
     override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         if let pointersValue = pointers {
-            let pushId = pointersValue[pointersValue.count - 1]
-            
-            let uploadPushId = UploadPushId(pushId: pushId)
-            uploadPushId.run()
-            return uploadPushId.serverWasReachable
+            if pointersValue.count > 0 {
+                let pushId = pointersValue[pointersValue.count - 1]
+                
+                let uploadPushId = UploadPushId(pushId: pushId)
+                uploadPushId.run()
+                serverWasReachable = uploadPushId.serverWasReachable
+            }
         }
-        return false
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {

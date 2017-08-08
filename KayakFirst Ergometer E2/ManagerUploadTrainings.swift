@@ -33,6 +33,7 @@ class ManagerUploadTrainings: ManagerUpload {
     }
     
     override func runServer(pointers: [String]?) -> Bool {
+        var serverWasReachable = true
         if let pointersValue = pointers {
             var timestampPointer: String? = nil
             
@@ -48,15 +49,13 @@ class ManagerUploadTrainings: ManagerUpload {
             let uploadTrainings = UploadTrainings(timestamp: timestampPointer)
             uploadTrainings.run()
             
-            let serverWasReachable = uploadTrainings.serverWasReachable
+            serverWasReachable = uploadTrainings.serverWasReachable
             
             if serverWasReachable {
                 pointerTimestamp = uploadTrainings.pointer
             }
-            
-            return serverWasReachable
         }
-        return true
+        return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {
