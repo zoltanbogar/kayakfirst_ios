@@ -1365,6 +1365,7 @@
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
 				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
+				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1390,7 +1391,6 @@
 				060A37721E57A9E500A973BF /* DashBoardElement_Duration.swift */,
 				060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */,
 				060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */,
-				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
 			);
 			name = dashboard_elements;
 			sourceTree = "<group>";

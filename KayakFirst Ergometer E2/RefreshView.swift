@@ -11,7 +11,7 @@ import Foundation
 class RefreshView: UIView {
     
     //MARK: constants
-    static let refreshMillis: Double = 33
+    static let refreshMillis: Double = 66
     
     //MARK: properties
     var timer: Timer?

@@ -79,7 +79,7 @@ class CalibrationView: UIView {
         
         DispatchQueue.global().async {
             while timeDiff < analyzeTime {
-                usleep(10000)
+                usleep(UInt32(RefreshView.refreshMillis * 1000 / 2))
                 timeDiff = currentTimeMillis() - startTime
                 DispatchQueue.main.async {
                     let percent = timeDiff / analyzeTime
