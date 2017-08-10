@@ -59,7 +59,11 @@ class OutdoorService: TrainingService {
     }
     
     override func getTimeWaitAfterCalculate() -> useconds_t {
-        return 200000
+        let maxSpm = AppSensorManager.maxSpm
+        
+        let timeWait = useconds_t((Double(1000) / (Double(maxSpm) / Double(60))))
+        
+        return timeWait
     }
     
     override func runCalculate() -> Bool {

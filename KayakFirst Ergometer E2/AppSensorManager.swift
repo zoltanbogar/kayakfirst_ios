@@ -13,7 +13,7 @@ let analyzeTime: Double = 3000
 
 class AppSensorManager {
     
-    private let maxSpm: Double = 200
+    static let maxSpm: Double = 200
     private let minSpm: Double = 24
     private let sampleRate: Double = 50 //Hz
     private let axisY = 1
@@ -240,8 +240,8 @@ class AppSensorManager {
             
             spmTotal = Double((index * 60)) / (((arraySPM[index] - arraySPM[0]))/1000)
         }
-        if spmTotal > maxSpm {
-            spmTotal = maxSpm
+        if spmTotal > AppSensorManager.maxSpm {
+            spmTotal = AppSensorManager.maxSpm
         }
         
         return spmTotal
@@ -448,11 +448,11 @@ class AppSensorManager {
     }
     
     private func getMovingAverageNum() -> Int {
-        return Int(((sampleRate / (maxSpm / Double(60))) / Double(2)))
+        return Int(((sampleRate / (AppSensorManager.maxSpm / Double(60))) / Double(2)))
     }
     
     private func getMinTimeBetweenStrokes() -> Double {
-        return (1000 / (maxSpm / 60))
+        return (1000 / (AppSensorManager.maxSpm / 60))
     }
     
     private func getMaxTimeBetweenStrokes() -> Double {
