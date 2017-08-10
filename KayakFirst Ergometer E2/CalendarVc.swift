@@ -164,7 +164,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         eventManager.getEventDays()
     }
     
-    private func initTrainingDays(trainingDays: [TimeInterval]?) {
+    private func initTrainingDays(trainingDays: [TimeInterval]) {
         self.trainingDaysList = trainingDays
         if self.mode == CalendarVc.modeTraining {
             cvCalendarView?.contentController.refreshPresentedMonth()
@@ -172,7 +172,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         }
     }
     
-    private func initEventDays(eventDays: [TimeInterval]?) {
+    private func initEventDays(eventDays: [TimeInterval]) {
         self.eventDaysList = eventDays
         if self.mode == CalendarVc.modeEvent {
             cvCalendarView?.contentController.refreshPresentedMonth()
@@ -233,7 +233,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func trainingDaysCallback(data: [Double]?, error: Responses?) {
         showProgressBarTraining(isShow: false)
         
-        initTrainingDays(trainingDays: data)
+        if let dataValue = data {
+            initTrainingDays(trainingDays: dataValue)
+        }
         
         initError(error: error)
     }
@@ -255,7 +257,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func eventDaysCallback(data: [Double]?, error: Responses?) {
         showProgressBarEvent(isShow: false)
         
-        initEventDays(eventDays: data)
+        if let dataValue = data {
+            initEventDays(eventDays: dataValue)
+        }
         
         initError(error: error)
     }

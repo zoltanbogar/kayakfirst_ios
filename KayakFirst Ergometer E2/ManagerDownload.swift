@@ -23,6 +23,10 @@ class ManagerDownload<E> {
     internal var serverError: Responses?
     
     //MARK: functions
+    func shouldWaitForStack() -> Bool {
+        return true
+    }
+    
     func callServer() -> String? {
         let data: E? = runServer()
         

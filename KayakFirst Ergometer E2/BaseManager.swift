@@ -64,9 +64,7 @@ class BaseManager {
     }
     
     func runDownload<E>(managerDownload: ManagerDownload<[E]>, managerCallBack: ((_ data: [E]?, _ error: Responses?) -> ())?) {
-        if shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
-            Download(managerCallback: managerCallBack, managerDownload: managerDownload, baseManager: self).execute()
-        }
+        Download(managerCallback: managerCallBack, managerDownload: managerDownload, baseManager: self).execute()
     }
     
     func runModify<E: ModifyAble>(managerModify: ManagerModify<E>, managerCallBack: ((_ data: Bool?, _ error: Responses?) -> ())?) {
@@ -245,7 +243,7 @@ class BaseManager {
                 publishProgress(progress: dataFromLocale)
             }
             
-            if !ManagerUpload.hasStackToWait() {
+            if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) && (!managerDownload.shouldWaitForStack() || !ManagerUpload.hasStackToWait()) {
                 if managerDownload.isCacheInvalid() {
                     let serverError = managerDownload.callServer()
                     

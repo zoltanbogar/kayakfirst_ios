@@ -48,7 +48,9 @@ class PlanListVc: BaseVC {
     private func planCallback(data: [Plan]?, error: Responses?) {
         dismissProgress()
         
-        tableViewPlan.dataList = data
+        if data != nil {
+            tableViewPlan.dataList = data
+        }
         
         errorHandlingWithAlert(viewController: self, error: error)
     }

@@ -15,6 +15,10 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
     internal var serverDaysList: [Double]?
     
     //MARK: functions
+    override func shouldWaitForStack() -> Bool {
+        return false
+    }
+    
     override func getDataFromLocale() -> [Double]? {
         localeDaysList = TrainingDbLoader.sharedInstance.getTrainingDays()
         return localeDaysList
@@ -69,7 +73,7 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
     }
     
     func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
-        return true
+        return ((anotherManagerDownload as? ManagerDownloadTrainingDays) != nil) ? true : false
     }
     
     override func getKeyCache() -> String {
