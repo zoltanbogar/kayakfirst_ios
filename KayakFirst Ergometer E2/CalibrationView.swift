@@ -148,6 +148,7 @@ class CalibrationView: UIView {
         let progressView = UIProgressView()
         
         progressView.tintColor = Colors.colorWhite
+        progressView.trackTintColor = Colors.colorAccent
         
         return progressView
     }()

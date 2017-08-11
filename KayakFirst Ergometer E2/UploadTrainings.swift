@@ -32,7 +32,7 @@ class UploadTrainings: ServerService<Bool> {
         }
     }
     
-    override func preCheck() 
+    override func preCheck() -> Bool {
         return initTrainingList()
     }
     

@@ -278,7 +278,7 @@ class DashboardPlanView: RefreshView {
         let progressView = UIProgressView()
         
         progressView.tintColor = Colors.colorWhite
-        progressView.trackTintColor = Colors.colorGrey
+        progressView.trackTintColor = Colors.colorAccent
         
         return progressView
     }()
