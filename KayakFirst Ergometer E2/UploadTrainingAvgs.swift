@@ -49,6 +49,8 @@ class UploadTrainingAvgs: ServerService<Bool> {
     }
     
     private func initTrainingList(sessionId: Int64) {
+        isUploadReady = true
+        
         var arrayList: [String:Any]
         
         var list: Array<[String:Any]> = []
@@ -56,16 +58,20 @@ class UploadTrainingAvgs: ServerService<Bool> {
         let originalList = trainingAvgDbLoader.loadUploadAbleData(pointer: Double(sessionId))
         
         if originalList != nil && originalList!.count > 0 {
-            for trainingAvg in originalList! {
-                arrayList = trainingAvg.getParameters()
+            let localeSessionId = originalList![0].sessionId
+            
+            if Telemetry.sharedInstance.sessionId != localeSessionId {
+                for trainingAvg in originalList! {
+                    arrayList = trainingAvg.getParameters()
+                    
+                    list.append(arrayList)
+                }
                 
-                list.append(arrayList)
+                self.trainingAvgArrayList = list
+            } else {
+                isUploadReady = false
             }
         }
-        
-        self.trainingAvgArrayList = list
-        
-        isUploadReady = list.count > 0
     }
     
     override func getManagerType() -> BaseManagerType {

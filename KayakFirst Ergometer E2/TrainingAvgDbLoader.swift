@@ -120,8 +120,7 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     
     //MARK: protocol
     override func loadUploadAbleData(pointer: Double) -> [TrainingAvg]? {
-        let telemetry = Telemetry.sharedInstance
-        let predicate = self.sessionId == pointer && self.sessionId != telemetry.sessionId
+        let predicate = self.sessionId == pointer
         return loadData(predicate: predicate)
     }
     
