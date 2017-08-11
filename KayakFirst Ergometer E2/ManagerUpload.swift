@@ -111,7 +111,6 @@ class ManagerUpload {
     }
     
     internal func removeFromStack(uploadType: UploadType) {
-        
         var dictionary = ManagerUpload.getDictionary()
         
         dictionary.removeValue(forKey: uploadType.rawValue)

@@ -70,6 +70,7 @@ class ServerService<E> {
                 }
                 
             } else {
+                serverWasReachable = false
                 error = Responses.error_no_internet
                 return nil
             }
