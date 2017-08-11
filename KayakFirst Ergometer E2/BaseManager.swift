@@ -228,12 +228,6 @@ class BaseManager {
             self.baseManager = baseManager
         }
         
-        override func onPreExecute() {
-            super.onPreExecute()
-            
-            baseManager.handlePreExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
-        }
-        
         override func doInBackground(param: Any?) -> [E]? {
             let dataFromLocale = managerDownload.getDataFromLocale()
             
@@ -243,12 +237,16 @@ class BaseManager {
                 publishProgress(progress: dataFromLocale)
             }
             
-            if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) && (!managerDownload.shouldWaitForStack() || !ManagerUpload.hasStackToWait()) {
-                if managerDownload.isCacheInvalid() {
-                    let serverError = managerDownload.callServer()
-                    
-                    if serverError == nil {
-                        dataFromServer = managerDownload.getDataFromServer()
+            if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
+                baseManager.handlePreExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
+                
+                if (!managerDownload.shouldWaitForStack() || !ManagerUpload.hasStackToWait()) {
+                    if managerDownload.isCacheInvalid() {
+                        let serverError = managerDownload.callServer()
+                        
+                        if serverError == nil {
+                            dataFromServer = managerDownload.getDataFromServer()
+                        }
                     }
                 }
             }
