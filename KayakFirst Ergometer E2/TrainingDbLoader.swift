@@ -106,7 +106,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         var trainingDays = [Double]()
         
         do {
-            let query = table?.select(self.sessionId).order(self.sessionId)
+            let query = table?.select(distinct: self.sessionId).order(self.sessionId)
             
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             

@@ -29,9 +29,7 @@ class ManagerUploadTrainingAvgs: ManagerUpload {
                 uploadTrainingAvgs.run()
                 serverWasReachable = serverWasReachable && uploadTrainingAvgs.serverWasReachable
                 
-                if isUploadReady {
-                    isUploadReady = uploadTrainingAvgs.isUploadReady
-                }
+                isUploadReady = isUploadReady && uploadTrainingAvgs.isUploadReady
             }
         }
         return serverWasReachable

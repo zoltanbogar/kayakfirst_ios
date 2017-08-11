@@ -92,7 +92,7 @@ class EventDbLoader: BaseDbLoader<Event> {
         var eventDays = [Double]()
         
         do {
-            let query = table?.select(self.timestamp).order(self.timestamp)
+            let query = table?.select(distinct: self.timestamp).order(self.timestamp)
             
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             

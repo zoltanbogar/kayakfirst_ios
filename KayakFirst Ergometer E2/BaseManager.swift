@@ -229,6 +229,8 @@ class BaseManager {
         }
         
         override func doInBackground(param: Any?) -> [E]? {
+            log("DOWNLOAD_TEST", "doInBackground: \(managerDownload)")
+            
             let dataFromLocale = managerDownload.getDataFromLocale()
             
             var dataFromServer = dataFromLocale
@@ -256,6 +258,8 @@ class BaseManager {
         
         override func onProgressUpdate(progress: [E]?) {
             super.onProgressUpdate(progress: progress)
+            
+            log("DOWNLOAD_TEST", "progressUpdate: \(managerDownload)")
             
             publish(data: progress)
         }
