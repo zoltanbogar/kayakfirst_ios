@@ -52,6 +52,18 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     }
     
     //MARK: insert
+    func addTrainingAvgs(trainingAvgs: [TrainingAvg]) {
+        do {
+            try db!.transaction {
+                for trainingAvg in trainingAvgs {
+                    self.addData(data: trainingAvg)
+                }
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+    }
+    
     override func addData(data: TrainingAvg?) {
         if let trainingAvg = data {
             if sessionIdValue != trainingAvg.sessionId {
@@ -72,6 +84,10 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     }
     
     //MARK: query
+    func getTrainingAvgsByTypePredicate(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
+        return self.sessionId == sessionId && self.dataType == type.rawValue
+    }
+    
     func getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
         return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
     }

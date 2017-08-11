@@ -55,6 +55,18 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     }
     
     //MARK: insert
+    func addPlanTrainings(planTrainings: [PlanTraining]) {
+        do {
+            try db!.transaction {
+                for planTraining in planTrainings {
+                    self.addData(data: planTraining)
+                }
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+    }
+    
     override func addData(data: PlanTraining?) {
         if let planTraining = data {
             let insert = table!.insert(self.planTrainingId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- planTraining.sessionId)
@@ -138,6 +150,10 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     func getExpressionById(planTrainingId: String) -> Expression<Bool> {
         return self.planTrainingId == planTrainingId
+    }
+    
+    func getExpressionBySessionId(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
     }
     
     //MARK: update

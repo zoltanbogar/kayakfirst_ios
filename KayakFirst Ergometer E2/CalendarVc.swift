@@ -24,6 +24,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: daysList
     private var trainingDaysList: [TimeInterval]?
+    private var sessionIdList: [TimeInterval]?
     private var eventDaysList: [TimeInterval]?
     
     //MARK: manager
@@ -183,13 +184,21 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func getTrainigsList() {
         tableViewTraining.dataList = nil
         
-        if hasData(listToCheck: trainingDaysList) {
-            let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate!)
-            let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate!)
-            
-            showProgressBarTraining(isShow: true)
-            trainingManager.downloadTrainings(sessionIdFrom: fromDate, sessionIdTo: toDate)
+        var sessionIds = [Double]()
+        
+        if let trainingDaysValue = sessionIdList {
+            for sessionId in trainingDaysValue {
+                if DateFormatHelper.isSameDay(timeStamp1: sessionId, timeStamp2: selectedDate!) {
+                    sessionIds.append(sessionId)
+                }
+            }
         }
+        
+        if sessionIds.count > 0 {
+            showProgressBarTraining(isShow: true)
+            trainingManager.downloadTrainings(sessionIds: sessionIds)
+        }
+        
         errorHandling()
     }
     
@@ -233,8 +242,20 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func trainingDaysCallback(data: [Double]?, error: Responses?) {
         showProgressBarTraining(isShow: false)
         
+        self.sessionIdList = data
+        
+        var trainingDays = [Double]()
+        
         if let dataValue = data {
-            initTrainingDays(trainingDays: dataValue)
+            for trainingDay in dataValue {
+                let zeroTrainingDay = DateFormatHelper.getZeroHour(timeStamp: trainingDay)
+                 
+                 if !trainingDays.contains(zeroTrainingDay) {
+                 trainingDays.append(zeroTrainingDay)
+                 }
+            }
+            
+            initTrainingDays(trainingDays: trainingDays)
         }
         
         initError(error: error)
@@ -290,24 +311,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func initError(error: Responses?) {
-        self.error = error
-        errorHandling()
-    }
-    
-    
-    private func trainingDaysListTrainingDataCallback(error: Responses?, trainingData: [TimeInterval]?) {
-        if let trainingDays = trainingData {
-            initTrainingDays(trainingDays: trainingDays)
-            
-            cvCalendarView?.contentController.refreshPresentedMonth()
-            getTrainigsList()
-        }
-        self.error = error
-        errorHandling()
-    }
-    
-    private func trainingListTrainingDataCallback(error: Responses?, trainingData: [SumTraining]?) {
-        
         self.error = error
         errorHandling()
     }
@@ -456,6 +459,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             }
         case CalendarVc.modeTraining:
             if let trainingDayList = trainingDaysList {
+                
+                log("DAY_TEST", "calendar: \(dayView.date.getTimeMillis())")
+                
                 if trainingDayList.contains(dayView.date.getTimeMillis()) {
                     return true
                 }

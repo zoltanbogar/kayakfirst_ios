@@ -32,8 +32,8 @@ class TrainingManager: BaseManager {
         return TrainingManagerType.download_training_days
     }
     
-    func downloadTrainings(sessionIdFrom: Double, sessionIdTo: Double) -> BaseManagerType {
-        let manager = ManagerDownloadTrainingBySessionId(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
+    func downloadTrainings(sessionIds: [Double]) -> BaseManagerType {
+        let manager = ManagerDownloadTrainingBySessionId(sessionIds: sessionIds)
         runDownload(managerDownload: manager, managerCallBack: { data, error in
             self.detailsTrainingList = data
             

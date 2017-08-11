@@ -67,7 +67,6 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         } catch {
             log(databaseLogTag, error)
         }
-        
     }
     
     override func addData(data: Training?) {
@@ -111,10 +110,13 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
-                let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
+                //TODO: delete
+                /*let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
                 if !trainingDays.contains(midnightTime) {
                     trainingDays.append(midnightTime)
-                }
+                }*/
+                
+                trainingDays.append(days[self.sessionId])
             }
         } catch {
             log(databaseLogTag, error)
@@ -177,8 +179,12 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         return loadData(predicate: predicate)
     }
     
+    func getTrainingsByTypePredicate(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
+        return self.sessionId == sessionId && self.dataType == type.rawValue
+    }
+    
     func getTrainingsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
-        return self.timeStamp > sessionIdFrom && self.timeStamp <= sessionIdTo
+        return self.timeStamp >= sessionIdFrom && self.timeStamp <= sessionIdTo
     }
     
     func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {

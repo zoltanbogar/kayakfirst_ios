@@ -22,11 +22,14 @@ class DownloadTrainingDays: ServerService<[TimeInterval]> {
             trainingDays = [TimeInterval]()
             
             for trainingDay in jsonValue.arrayObject! {
-                let zeroEventDay = DateFormatHelper.getZeroHour(timeStamp: TimeInterval(trainingDay as! String)!)
+                //TODO: delete
+                /*let zeroEventDay = DateFormatHelper.getZeroHour(timeStamp: TimeInterval(trainingDay as! String)!)
                 
                 if !trainingDays!.contains(zeroEventDay) {
                     trainingDays!.append(zeroEventDay)
-                }
+                }*/
+                
+                trainingDays?.append(TimeInterval(trainingDay as! String)!)
             }
         }
         return trainingDays

@@ -17,47 +17,103 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     private let planTrainingDbLoader = PlanTrainingDbLoader.sharedInstance
     
     //MARK: properties
-    private let sessionIdFrom: Double
-    private let sessionIdTo: Double
+    private let sessionIds: [Double]
+    
+    private var trainings: [Training]?
+    private var trainingAvgs: [TrainingAvg]?
+    private var planTrainings: [PlanTraining]?
     
     //MARK: init
-    init(sessionIdFrom: Double, sessionIdTo: Double) {
-        self.sessionIdFrom = sessionIdFrom
-        self.sessionIdTo = sessionIdTo
+    init(sessionIds: [Double]) {
+        self.sessionIds = sessionIds
     }
     
     //MARK: functions
     override func getDataFromLocale() -> [SumTraining]? {
-        let trainings = trainingDbLoader.loadData(predicate: getQueryTraining())
+        var sumTrainings = [SumTraining]()
         
-        let trainingAvgs = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvg())
-        let avgTrainingHashMap = putTrainingAvgsToMap(avgs: trainingAvgs)
-        
-        var planTrainings: [PlanTraining]? = nil
-        if getQueryPlan() != nil {
-            planTrainings = planTrainingDbLoader.loadData(predicate: getQueryPlan())
+        for sessionId in sessionIds {
+            let t200List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_200))
+            let t500List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_500))
+            let t1000List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_1000))
+            let strokesList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.STROKES))
+            let fList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.F))
+            let vList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.V))
+            let sList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.S))
+            
+            var t200Avg: TrainingAvg? = nil
+            var t200AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_200_AV))
+            if t200AvgList != nil && t200AvgList!.count > 0 {
+                t200Avg = t200AvgList![0]
+            }
+            var t500Avg: TrainingAvg? = nil
+            var t500AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_500_AV))
+            if t500AvgList != nil && t500AvgList!.count > 0 {
+                t500Avg = t500AvgList![0]
+            }
+            var t1000Avg: TrainingAvg? = nil
+            var t1000AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_1000_AV))
+            if t1000AvgList != nil && t1000AvgList!.count > 0 {
+                t1000Avg = t1000AvgList![0]
+            }
+            var strokesAvg: TrainingAvg? = nil
+            var strokesAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.STROKES_AV))
+            if strokesAvgList != nil && strokesAvgList!.count > 0 {
+                strokesAvg = strokesAvgList![0]
+            }
+            var fAvg: TrainingAvg? = nil
+            var fAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.F_AV))
+            if fAvgList != nil && fAvgList!.count > 0 {
+                fAvg = fAvgList![0]
+            }
+            var vAvg: TrainingAvg? = nil
+            var vAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.V_AV))
+            if vAvgList != nil && vAvgList!.count > 0 {
+                vAvg = vAvgList![0]
+            }
+            
+            var planTraining: PlanTraining? = nil
+            var planTrainingList = planTrainingDbLoader.loadData(predicate: getQueryPlanBySessionId(sessionId: sessionId))
+            if planTrainingList != nil && planTrainingList!.count > 0 {
+                planTraining = planTrainingList![0]
+            }
+            
+            if t200List != nil && t500List != nil && t1000List != nil && strokesList != nil && fList != nil && vList != nil && sList != nil {
+                sumTrainings.append(SumTraining(
+                    t200List: t200List!,
+                    t500List: t500List!,
+                    t1000List: t1000List!,
+                    strokesList: strokesList!,
+                    fList: fList!,
+                    vList: vList!,
+                    distanceList: sList!,
+                    trainingAvgT200: t200Avg,
+                    trainingAvgT500: t500Avg,
+                    trainingAvgT1000: t1000Avg,
+                    trainingAvgStrokes: strokesAvg,
+                    trainingAvgF: fAvg,
+                    trainingAvgV: vAvg,
+                    planTraining: planTraining))
+            }
         }
-        let planHashMap = putPlanToMap(planList: planTrainings)
-
-        return getSumTrainingList(trainings: trainings, avgTrainingHashMap: avgTrainingHashMap, planHashMap: planHashMap)
+        
+        return sumTrainings
     }
     
     override func runServer() -> [SumTraining]? {
-        let downloadTrainings = DownloadTrainings(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
-        let trainings = downloadTrainings.run()
+        let downloadTrainings = DownloadTrainings(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        trainings = downloadTrainings.run()
         serverError = downloadTrainings.error
         
-        let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
-        let trainingAvgs = downloadTrainingAvgs.run()
-        let avgTrainingHashMap = putTrainingAvgsToMap(avgs: trainingAvgs)
+        let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        trainingAvgs = downloadTrainingAvgs.run()
         serverError = downloadTrainingAvgs.error
         
-        let downloadPlanBySessionId = DownloadPlanTrainingBySessionId(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
-        let planTrainings = downloadPlanBySessionId.run()
-        let planHashMap = putPlanToMap(planList: planTrainings)
+        let downloadPlanBySessionId = DownloadPlanTrainingBySessionId(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        planTrainings = downloadPlanBySessionId.run()
         serverError = downloadPlanBySessionId.error
         
-        return getSumTrainingList(trainings: trainings, avgTrainingHashMap: avgTrainingHashMap, planHashMap: planHashMap)
+        return nil
     }
     
     override func deleteDataFromLocale() {
@@ -67,94 +123,62 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     }
     
     override func addDataToLocale(data: [SumTraining]?) {
-        if let sumTrainingList = data {
-            for sumTraining in sumTrainingList {
-                trainingDbLoader.addTrainings(trainings: sumTraining.t200List)
-                trainingDbLoader.addTrainings(trainings: sumTraining.t500List)
-                trainingDbLoader.addTrainings(trainings: sumTraining.t1000List)
-                trainingDbLoader.addTrainings(trainings: sumTraining.strokesList)
-                trainingDbLoader.addTrainings(trainings: sumTraining.fList)
-                trainingDbLoader.addTrainings(trainings: sumTraining.vList)
-                trainingDbLoader.addTrainings(trainings: sumTraining.distanceList)
-                
-                if sumTraining.trainingAvgT200 != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgT200!)
-                }
-                if sumTraining.trainingAvgT500 != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgT500!)
-                }
-                if sumTraining.trainingAvgT1000 != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgT1000!)
-                }
-                if sumTraining.trainingAvgStrokes != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgStrokes!)
-                }
-                if sumTraining.trainingAvgF != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgF!)
-                }
-                if sumTraining.trainingAvgV != nil {
-                    trainingAvgDbLoader.addData(data: sumTraining.trainingAvgV!)
-                }
-                
-                if sumTraining.planTraining != nil {
-                    planTrainingDbLoader.addData(data: sumTraining.planTraining!)
-                }
-            }
+        if let trainingsValue = trainings {
+            trainingDbLoader.addTrainings(trainings: trainingsValue)
+        }
+        if let trainingAvgsValue = trainingAvgs {
+            trainingAvgDbLoader.addTrainingAvgs(trainingAvgs: trainingAvgsValue)
+        }
+        if let planTrainingsValue = planTrainings {
+            planTrainingDbLoader.addPlanTrainings(planTrainings: planTrainingsValue)
         }
     }
     
     func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return anotherManagerDownload is ManagerDownloadTrainingBySessionId &&
-        (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIdFrom == self.sessionIdFrom &&
-        (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIdTo == self.sessionIdTo
+        (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIds == self.sessionIds
     }
     
     override func getKeyCache() -> String {
-        return "manager_download_training_sessionid_\(sessionIdFrom)_\(sessionIdTo)"
-    }
-    
-    //MARK: helper
-    private func putTrainingAvgsToMap(avgs: [TrainingAvg]?) -> [String : TrainingAvg]? {
-        var avgTrainingHashMap: [String : TrainingAvg]? = nil
-        if let trainingAvgs = avgs {
-            avgTrainingHashMap = [String : TrainingAvg]()
-            for trainingAvg in trainingAvgs {
-                avgTrainingHashMap?.updateValue(trainingAvg, forKey: trainingAvg.avgHash)
-            }
-        }
-        return avgTrainingHashMap
-    }
-    
-    private func putPlanToMap(planList: [PlanTraining]?) -> [Double : PlanTraining]? {
-        var hashMap: [Double : PlanTraining]? = nil
+        var stringBuilder: String = ""
         
-        if let planListValue = planList {
-            hashMap = [Double : PlanTraining]()
-            for planTraining in planListValue {
-                hashMap?.updateValue(planTraining, forKey: planTraining.sessionId)
-            }
+        for sessionId in sessionIds {
+            stringBuilder = stringBuilder + String(sessionId)
         }
-        return hashMap
+        
+        return "manager_download_training_sessionid_\(stringBuilder)"
     }
     
-    private func getSumTrainingList(trainings: [Training]?, avgTrainingHashMap: [String : TrainingAvg]?, planHashMap: [Double : PlanTraining]?) -> [SumTraining]? {
-        if trainings != nil {
-            return SumTraining.Builder.init(trainings: trainings!, avgTrainingHashMap: avgTrainingHashMap, planHashMap: planHashMap).createSumTrainingList()
-        } else {
-            return nil
-        }
+    private func getSessionIdFrom() -> Double {
+        return sessionIds.count > 0 ? DateFormatHelper.getZeroHour(timeStamp: sessionIds[0]) : 0
+    }
+    
+    private func getSessionIdTo() -> Double {
+        return sessionIds.count > 0 ? DateFormatHelper.get23Hour(timeStamp: sessionIds[0]) : 0
+    }
+    
+    private func getQueryTrainingByType(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
+        return trainingDbLoader.getTrainingsByTypePredicate(sessionId: sessionId, type: type)
+    }
+    
+    private func getQueryTrainingAvgByType(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
+        return trainingAvgDbLoader.getTrainingAvgsByTypePredicate(sessionId: sessionId, type: type)
+    }
+    
+    private func getQueryPlanBySessionId(sessionId: Double) -> Expression<Bool> {
+        return planTrainingDbLoader.getExpressionBySessionId(sessionId: sessionId)
     }
     
     private func getQueryTraining() -> Expression<Bool> {
-        return trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
+        return trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
     }
     
     private func getQueryTrainingAvg() -> Expression<Bool> {
-        return trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
+        return trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
     }
     
     private func getQueryPlan() -> Expression<Bool>? {
-        return planTrainingDbLoader.getExpressionSessionId(sessionIdFrom: sessionIdFrom, sessionIdTo: sessionIdTo)
+        return planTrainingDbLoader.getExpressionSessionId(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
     }
     
 }
