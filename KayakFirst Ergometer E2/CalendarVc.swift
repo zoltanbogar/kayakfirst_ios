@@ -460,8 +460,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         case CalendarVc.modeTraining:
             if let trainingDayList = trainingDaysList {
                 
-                log("DAY_TEST", "calendar: \(dayView.date.getTimeMillis())")
-                
                 if trainingDayList.contains(dayView.date.getTimeMillis()) {
                     return true
                 }

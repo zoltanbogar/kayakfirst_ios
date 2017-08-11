@@ -40,7 +40,9 @@ class ManagerDownloadPlanByName: ManagerDownload<[Plan]>, ManagerDownloadProtoco
     }
     
     override func addDataToLocale(data: [Plan]?) {
-        planDbLoader.addPlanList(planList: data!)
+        if let dataValue = data {
+            planDbLoader.addPlanList(planList: data!)
+        }
     }
     
     func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {

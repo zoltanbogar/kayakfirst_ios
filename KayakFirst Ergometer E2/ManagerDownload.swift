@@ -35,9 +35,7 @@ class ManagerDownload<E> {
             
             deleteDataFromLocale()
             
-            if let dataValue = data {
-                addDataToLocale(data: dataValue)
-            }
+            addDataToLocale(data: data)
         }
         
         return serverError?.rawValue
