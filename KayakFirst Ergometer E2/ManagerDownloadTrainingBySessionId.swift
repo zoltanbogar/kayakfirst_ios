@@ -104,7 +104,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         }
         
         if let sumTrainings = localeSumTrainings {
-            localeSumTrainings = sumTrainings.sorted(by: { $0.startTime! < $1.startTime! })
+            localeSumTrainings = sumTrainings.sorted(by: { $0.startTime < $1.startTime })
         }
         
         return localeSumTrainings

@@ -13,7 +13,7 @@ class SumTraining: Equatable, ModifyAble {
     private let oneHourMilliseconds: TimeInterval = 60 * 60 * 1000
     
     //MARK: properties
-    var startTime: TimeInterval?
+    var startTime: TimeInterval = 0
     private var duration: TimeInterval?
     private var distance: Double?
     var trainingList: [Training]?
@@ -67,7 +67,7 @@ class SumTraining: Equatable, ModifyAble {
         
         if distanceList.count > 0 {
             startTime = distanceList[0].timeStamp
-            duration = distanceList[distanceList.count - 1].timeStamp - startTime!
+            duration = distanceList[distanceList.count - 1].timeStamp - startTime
             sessionId = distanceList[0].sessionId
             trainingEnvironmentType = distanceList[0].trainingEnvironmentType
             

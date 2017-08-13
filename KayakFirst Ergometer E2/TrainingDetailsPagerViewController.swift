@@ -40,6 +40,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     
     private func initActionbar() {
         self.navigationItem.setLeftBarButtonItems([btnBack], animated: true)
+        self.navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Arial", size: 14.0)!];
         showLogoLeft(viewController: self)
     }
     
@@ -132,7 +133,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         }
         
         if viewController.sumTraining?.planTraining != nil {
-            btnPlanType.image = Plan.getTypeIconSmall(plan: viewController.sumTraining!.planTraining)
+            btnPlanType.image = Plan.getTypeIconSmall(plan: viewController.sumTraining!.planTraining)?.withRenderingMode(.alwaysOriginal)
             self.navigationItem.setRightBarButtonItems([btnTrainingType, btnPlanType], animated: true)
         } else {
             self.navigationItem.setRightBarButtonItems([btnTrainingType], animated: true)
