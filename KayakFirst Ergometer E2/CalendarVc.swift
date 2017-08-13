@@ -35,6 +35,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private var selectedDate: TimeInterval?
     private var error: Responses?
     private var mode = CalendarVc.modeEvent
+    var shouldRefresh = false
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -53,8 +54,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if mode == CalendarVc.modeEvent {
-            refreshContentWithMode()
+        if mode == CalendarVc.modeEvent || shouldRefresh {
+            shouldRefresh = false
+             refreshContentWithMode()
         }
     }
     

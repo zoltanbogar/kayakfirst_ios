@@ -9,6 +9,10 @@
 import UIKit
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
+    //MARK: constants
+    private let calendarTab = UITabBarItem(title: getString("navigation_calendar"), image: UIImage(named: "navigation_calendar"), tag: 0)
+    private let calendarVc = CalendarVc()
+    
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,13 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+    //MARK: delegate
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item == calendarTab {
+            calendarVc.shouldRefresh = true
+        }
+    }
+    
     //MARK: views
     private lazy var mainViewControllers: [UIViewController]! = {
         var viewControllers = [UIViewController]()
@@ -44,11 +55,9 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let mainTab = UITabBarItem(title: getString("navigation_home"), image: UIImage(named: "navigation_home"), tag: 0)
         mainNavController.tabBarItem = mainTab
         
-        let calendarVc = CalendarVc()
         let calendarNavController = UINavigationController()
-        calendarNavController.pushViewController(calendarVc, animated: false)
-        let calendarTab = UITabBarItem(title: getString("navigation_calendar"), image: UIImage(named: "navigation_calendar"), tag: 0)
-        calendarNavController.tabBarItem = calendarTab
+        calendarNavController.pushViewController(self.calendarVc, animated: false)
+        calendarNavController.tabBarItem = self.calendarTab
         
         let profileVc = ProfileVc()
         let profileNavController = UINavigationController()
