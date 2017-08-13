@@ -1,0 +1,294 @@
+/* 
+  Localizable.strings
+  KayakFirst Ergometer E2
+
+  Created by Balazs Vidumanszki on 2017. 01. 09..
+  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+*/
+
+//Info
+"app_name"="KayakFirst Paddle App";
+"app_link"="www.kayakfirst.com";
+"app_version"="Версия:";
+
+//DashBoard
+"dashboard_title_av_200_metric"="Средн.на 200м";
+"dashboard_title_av_500_metric"="Средн.на 500м";
+"dashboard_title_av_1000_metric"="Средн.на 1000м";
+"dashboard_title_av_200_imperial"="Средн.на 1/4 мили";
+"dashboard_title_av_500_imperial"="Средн.на 1/2 мили";
+"dashboard_title_av_1000_imperial"="Средн.на 1 мили";
+"dashboard_title_actual_200_metric"="Сейчас на 200м";
+"dashboard_title_actual_500_metric"="Сейчас на 500м ";
+"dashboard_title_actual_1000_metric"="Сейчас на 1000м";
+"dashboard_title_actual_200_imperial"="Сейчас на 1/4 мили";
+"dashboard_title_actual_500_imperial"="Сейчас на 1/2 мили";
+"dashboard_title_actual_1000_imperial"="Сейчас на 1 мили";
+"dashboard_title_stroke_min"=" Гребок/мин.";
+"dashboard_title_pull_force_metric"="Сила проводка (Н)";
+"dashboard_title_pull_force_imperial"="Сила проводка (паундаль)";
+"dashboard_title_distance_metric"="Дистанция (м)";
+"dashboard_title_distance_imperial"="Дистанция (фут)";
+"dashboard_title_duration"="Продолжительность";
+"dashboard_title_current_speed_metric"="Сейчас(км/ч)";
+"dashboard_title_current_speed_imperial"="Скорость сейчас (миля/ч)";
+"dashboard_title_av_speed_metric"="Средн. скорость (км/ч)";
+"dashboard_title_av_speed_imperial"="Средн. скорость (миля/ч)";
+"dashboard_title_drag_drop"="Сделай одну проводку сюда!";
+"dashboard_title_av_strokes"="Средн.частоты гребка/мин.";
+"dashboard_title_av_pull_force_metric"="Средн.сила проводка (Н)";
+"dashboard_title_av_pull_force_imperial"="Средн. сила проводка (паундаль)";
+
+//DashBoardOutdoor
+"dashboard_outdoor_title_av_200_metric"="Средн.\n200м";
+"dashboard_outdoor_title_av_500_metric"="Средн.\n500м";
+"dashboard_outdoor_title_av_1000_metric"="Средн.\n100м";
+"dashboard_outdoor_title_av_200_imperial"="Средн.\n1/4 мили";
+"dashboard_outdoor_title_av_500_imperial"="Средн.\n1/2 мили";
+"dashboard_outdoor_title_av_1000_imperial"="Средн.\n1 мили";
+"dashboard_outdoor_title_actual_200_metric"="Сейчас\n200м";
+"dashboard_outdoor_title_actual_500_metric"="Сейчас\n500м";
+"dashboard_outdoor_title_actual_1000_metric"="Сейчас\n100м";
+"dashboard_outdoor_title_actual_200_imperial"="Сейчас\n1/4 мили";
+"dashboard_outdoor_title_actual_500_imperial"="Сейчас\n1/2 мили";
+"dashboard_outdoor_title_actual_1000_imperial"="Сейчас\n1 мили";
+"dashboard_outdoor_title_stroke_min"="Гребок/мин.";
+"dashboard_outdoor_title_pull_force_metric"="Сила проводка\n(Н)";
+"dashboard_outdoor_title_pull_force_imperial"="Сила проводка\n(паундаль)";
+"dashboard_outdoor_title_distance_metric"="Дистанция\n (м)";
+"dashboard_outdoor_title_distance_imperial"="Дистанция\n (фут)";
+"dashboard_outdoor_title_duration"="Продолжительность";
+"dashboard_outdoor_title_current_speed_metric"="Скорость сейчас\n(км/ч)";
+"dashboard_outdoor_title_current_speed_imperial"="Скорость сейчас\n(миля/ч)";
+"dashboard_outdoor_title_av_speed_metric"="Средн. скорость\n(км/ч)";
+"dashboard_outdoor_title_av_speed_imperial"="Средн. скорость\n(миля/ч)";
+"dashboard_outdoor_title_av_strokes"="Cредн. гребка\nмин.";
+"dashboard_outdoor_title_av_pull_force_metric"="Средн.сила проводка\n(Н)";
+"dashboard_outdoor_title_av_pull_force_imperial"="Средн.сила проводка\n(паундаль)";
+
+//Bluetooth List
+"fragment_bluetooth_title"="Подключи смартфон к одному из тренажеров...";
+"fragment_bluetooth_subtitle"="...или выбери новую!";
+"fragment_bluetooth_button_refresh"="Поиск устройств Bluetooth";
+"fragment_bluetooth_button_turn_on"="Включиние Bluetooth";
+"fragment_bluetooth_not_supported"="Ваш Смартфон не поддерживает Bluetooth BLE...";
+"fragment_bluetooth_off"="Bluetooth выключен";
+"fragment_bluetooth_list_empty"="Активное устройсво Bluetooth не найдено.\n\n  Если вы не нашли идентификатор этого эргометра  на экране, сделайте короткую проводку на тренажере, чтобы включить передатчик, а затем повторите попытку подключения! ";
+"fragment_bluetooth_location_permission"=" К использованию Bluetooth, нажмите ниже на Настройки, затем  включите  в функции  Разрешения - Местоположение  ";
+"fragment_bluetooth_location_permission_ios"="К использованию Bluetooth, нажмите ниже на Настройки, затем переключите положение следующее: ВСЕГДА.";
+"fragment_bluetooth_app_details_settings"="Настройки";
+
+//Bluetotoh
+"bluetooth_connect"="Bluetooth подключен";
+"bluetooth_disconnect"="Соединение с Bluetooth- м  разорвано";
+
+//Outdoor
+"permission_location"="При внешнем использовании, нажмите ниже на Настройки, затем включите в меню Разрешения  функцию Местоположение";
+"permission_location_ios"="При внешнем использовании, нажмите ниже на Настройки, затем переключите положение следующее: ВСЕГДА.";
+"settings_location_ios"="К внешнему использованию разрешите функцию Местоположение";
+
+//Dialog
+"dialog_title_finish"="Точно хотите выйти?";
+"dialog_message_finish"="Если переступите, измерение завершится...";
+"dialog_title_bluetooth_connecting"="Подключение Bluetooth";
+"dialog_message_bluetooth_connecting"="Подключение к устройству...";
+"dialog_title_bluetooth_discovery"="Поиск Bluetooth";
+"dialog_message_bluetooth_discovery"="Поиск устройств Bluetooth...";
+"dialog_title_bluetooth_disconnect"="Соединенние к Bluetooth активный";
+"dialog_message_bluetooth_disconnect"="Хотите разорвать соединение?";
+"dialog_title_reset_password"="Введите эл.почтовый адрес  ";
+"dialog_calibrating_sensor"="Не гребите пока калибрируем!";
+"dialog_sync"="Синхронизация";
+"dialog_plan_no_elements"="Этот план тренировки ещё пуст.";
+"dialog_event_add_message"="Введёте в календарь?";
+"dialog_event_delete_title"="Точно хотите удалить";
+"dialog_event_delete_message"="Это календарьное событие будет удалено,но его можете найти в Планах";
+
+//Notification
+"notification_title_bluetooth_connected"="Эргометр  Bluetooth подключен";
+"notification_title_outdoor_running"="Внешная тренировка загружается...";
+
+//StartDelay
+"delay_start_seconds"="Время до начала";
+"delay_quick_start"="Быстрый старт";
+
+//Base Language
+"other_yes"="да";
+"other_no"="нет";
+"other_ok"="OK";
+"other_cancel"="Отменить";
+"other_add"="Добавить";
+"other_save"="Сохранить";
+"other_next"="Следующее";
+"other_delete"="Удалить";
+"other_power_save"="Энергосберегательный режим";
+"other_search"="Поиск";
+
+//Navigation
+"navigation_profile"="Профиль";
+"navigation_log"="Дневник тренировки";
+"navigation_about"="Информация";
+"navigation_home"="Главная";
+"navigation_calendar"="Календарь";
+"navigation_settings"="Информация";
+"navigation_set_dashboard"="Выбрать";
+"ergometer_placeholder"="СКОРО...";
+
+//Calendar
+"calendar_jump_today"="Перейти на сегодняшний день";
+"calendar_empty_list"="Нет сохраненных данных";
+"training_type"=" ";
+"training_log"="Дневник";
+"calendar_empty_event"="Нет календарьных событий";
+
+//Chart
+"chart_training_no_value_selected"="К просмотру диаграммы выберите хотя бы одну из значений";
+"chart_y_left"="Л";
+"chart_y_right"="П";
+
+//Trainig
+"training_start"="Старт";
+"training_duration"="Продолжительность";
+"training_distance"="Дистанция";
+"training_sum"="Сумма";
+"training_sum_average"="Средн.";
+"training_sum_best"="Максимум";
+"training_sum_speed_metric"="Скорость\nкм/ч";
+"training_sum_speed_imperial"="Скорость\nmph";
+"training_sum_stroke"="Частота гребка\n\\минута";
+"training_sum_pull_force_metric"="Проводка\nН";
+"training_sum_pull_force_imperial"="Проводка\nпаундаль";
+"training_sum_t_200_metric"="Темп\n200";
+"training_sum_t_500_metric"="Темп\n500";
+"training_sum_t_1000_metric"="Темп\n1000";
+"training_sum_t_200_imperial"="Темп\n1/4";
+"training_sum_t_500_imperial"="Темп\n1/2";
+"training_sum_t_1000_imperial"="Темп\n1";
+"training_diagram_time"="Время";
+"training_diagram_distance"="Дистанция";
+"training_details_sum"="Сумма";
+"training_details_all"="Данные";
+
+//Calculate
+"calculate_t200_metric"="Темп 200";
+"calculate_t500_metric"="Темп 500";
+"calculate_t1000_metric"="Темп1000";
+"calculate_t200_imperial"="Темп1/4";
+"calculate_t500_imperial"="Темп 1/2";
+"calculate_t1000_imperial"="Темп 1";
+"calculate_strokes"="Частота гребка";
+"calculate_f"="Сила проводка";
+"calculate_s"="Дистанция";
+"calculate_v"="Скорость";
+"calculate_t"="Время";
+
+//User
+"user_login"="Вход";
+"user_register"="Регистрация";
+"user_name"="Имя";
+"user_password"="Пароль";
+"user_forgot_password"="Забыли пароль?";
+"user_required"="Обязательно";
+"user_optional"="Не обязательно";
+"user_first_name"="Имя";
+"user_last_name"="Фамилия";
+"user_birth_date"="Дата рождения";
+"user_birth_date_placeholder"="дд.мм.гггг.";
+"user_email"="Эл.почта";
+"user_weight"="Вес";
+"user_country"="Страна";
+"user_gender"="Пол";
+"user_gender_female"="Женский";
+"user_gender_male"="Мужской";
+"user_accept"="Принимаю ";
+"user_terms_conditions"="условия пользовательского соглашения";
+"user_login_social"="или вход с помощю соц. сети";
+"user_login_no_login"="Продолжение без входа";
+"user_login_no_data"="(Данные тренировок не будут сохранены)";
+"user_profile"="Профиль";
+"user_log_out"="Выйти";
+"user_save"="Сохранить";
+"user_password_old"="Действующий пароль";
+"user_password_new"="Новый пароль";
+"user_password_confirm"="Повторить пароль";
+"user_progress_log_in"="Вход";
+"user_progress_log_out"="Выйти";
+"user_reset_password"="Восстановление пароля";
+"user_reseting_password"="Восстановление пароля в процессе...";
+"user_reseted_password"="Эл.почта выслана";
+"user_registering"="Регистрация в процессе...";
+"user_updating"="Обновление  профиля в процессе...";
+"user_updated"="Профиль обнавлен";
+"user_updating_password"="Обновление пароля в процессе...";
+"user_registration_required"="Пожалуйста заполните регистрационные данные!";
+"user_spinner_choose"="Выбрать...";
+"user_required_field"="*Обьязательное поле";
+"user_login_or"="ИЛИ";
+"user_login_facebook"="С ящиком Facebook";
+"user_login_google"="С ящиком Google";
+"user_edit"="Редактировать";
+"user_club"="Клуб";
+"user_art_of_paddling"="Тип гребли";
+"user_art_of_paddling_racing_kayaking"="Спортивный каяк";
+"user_art_of_paddling_racing_canoeing"="Спортивный каноэ";
+"user_art_of_paddling_recreational_kayaking"="Рекреационный каяк";
+"user_art_of_paddling_recreational_canoeing"="Рекреационный каноэ";
+"user_art_of_paddling_sup"="SUP";
+"user_art_of_paddling_dragon"="Лодка 'Дракон'";
+"user_art_of_paddling_rowing"="Академическая гребля";
+"user_terms_conditions_short"="Пользовательские условия";
+
+//Unit
+"unit_weight"="Единица тяжести";
+"unit_distance"="Единица  скорости и расстояния";
+"unit_pace"="Единица темпа";
+"unit_metric"="Метрический";
+"unit_imperial"="Англосаксонский";
+"unit_speed_metric"="км/ч";
+"unit_speed_imperial"="миля/ч";
+"unit_force_metric"="н";
+"unit_force_imperial"="паундаль";
+"unit_distance_metric"="м";
+"unit_distance_imperial"="фут";
+"unit_weight_metric"="кг";
+"unit_weight_imperial"="фунт";
+
+//Error
+"error_no_internet"="Нет интернета!";
+"error_user_invalid_credentials"="Неверные учетные данные!";
+"error_server"="Ошибка сервера!";
+"error_field_not_blank"="Это поле должно быть заполнено!";
+"error_email"="Неправильный адрес эл.почты!";
+"error_user_name"="Пожалуйста введите не менее 2-х символов!";
+"error_password"="Пожалуйста введите не менее 4-х символов!";
+"error_weight"="Мин. вес";
+"error_birth_date"="Год рождения не может быть в будущем !";
+"error_google_sign_out"="Проблема из выхода  Google";
+"error_user_username_used"="Имя пользователя занята!";
+"error_user_email_used"="Эл.почта уже занята!";
+"error_event_timestamp_past"="Календарьное событие не может быть начинаться в прошлом!";
+"error_plan_name"="Пожалуйста заполните название плана тренировки!";
+
+//Date
+"date_format"="dd.MM.yyyy";
+"date_time_format"="dd.MM.yyyy hh:mm";
+"date_format_month"="MMMM yyyy";
+"date_date"="Дата";
+
+//Plan
+"plan_run"="Запуск!";
+"plan_plan"="План тренировки";
+"plan_name"="Имя";
+"plan_done"="Конец";
+"plan_notes"="Примечание";
+"plan_edit_intervals"="Редактирование интервала!";
+"plan_saved"="План тренировки сохранён!";
+"plan_hint_minute"="мм";
+"plan_hint_sec"="сс";
+"plan_hint_percent"="%";
+"plan_hint_name"="Указать имя...";
+"plan_hint_notes"="Указать тип...";
+"plan_empty"="Нет ещё плана тренировки.";
+"plan_add_calendar"="В календарь";
+"plan_end"="Конец";
+"plan_event_title"="Указать дату и время";

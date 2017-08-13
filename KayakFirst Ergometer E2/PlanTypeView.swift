@@ -77,6 +77,10 @@ class PlanTypeView: UIView {
         let halfDivider = HalfDivider()
         stackView.addArrangedSubview(halfDivider)
         
+        halfDivider.snp.makeConstraints { (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        }
+        
         stackView.addArrangedSubview(viewDistance)
         
         viewTime.snp.makeConstraints { (make) in
@@ -92,7 +96,6 @@ class PlanTypeView: UIView {
     private lazy var viewTime: UIView! = {
         let view = UIView()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickTime)))
-        view.clipsToBounds = true
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: "durationIcon")
@@ -110,6 +113,10 @@ class PlanTypeView: UIView {
         
         view.addSubview(stackView)
         
+        self.labelPlanTime.snp.makeConstraints({ (make) in
+            make.width.equalTo(view.snp.width)
+        })
+        
         stackView.snp.makeConstraints({ (make) in
             make.center.equalToSuperview()
         })
@@ -122,7 +129,7 @@ class PlanTypeView: UIView {
         
         label.text = getString("plan_plan")
         label.textAlignment = .center
-        label.font = label.font.withSize(56)
+        label.font = label.font.withSize(self.maxTextSize)
         
         return label
     }()
@@ -147,6 +154,10 @@ class PlanTypeView: UIView {
         
         view.addSubview(stackView)
         
+        self.labelPlanDistance.snp.makeConstraints({ (make) in
+            make.width.equalTo(view.snp.width)
+        })
+        
         stackView.snp.makeConstraints({ (make) in
             make.center.equalToSuperview()
         })
@@ -159,7 +170,7 @@ class PlanTypeView: UIView {
         
         label.text = getString("plan_plan")
         label.textAlignment = .center
-        label.font = label.font.withSize(56)
+        label.font = label.font.withSize(self.maxTextSize)
         
         return label
     }()

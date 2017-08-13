@@ -638,6 +638,7 @@
 		06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainingAvgs.swift; sourceTree = "<group>"; };
 		06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainings.swift; sourceTree = "<group>"; };
 		06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlan.swift; sourceTree = "<group>"; };
+		06CBD6DB1F40EFF300BB570B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -1630,6 +1631,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 06C6ABA51E2267A000562B27;
 			productRefGroup = 06C6ABAF1E2267A000562B27 /* Products */;
@@ -2082,6 +2084,7 @@
 			children = (
 				0602B44A1E23C9B400ABA70F /* hu */,
 				0602B44C1E23C9B900ABA70F /* en */,
+				06CBD6DB1F40EFF300BB570B /* ru */,
 			);
 			name = Localizable.strings;
 			path = "KayakFirst Ergometer E2";

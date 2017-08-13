@@ -125,6 +125,7 @@ class DashBoardElement: RefreshView {
             make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
             make.centerY.equalTo(self)
             make.height.equalTo(self)
+            make.width.equalTo(self)
         }
         
         labelValue.snp.makeConstraints { make in
@@ -145,6 +146,7 @@ class DashBoardElement: RefreshView {
                 height = 30
             }
             make.height.equalTo(height)
+            make.width.equalTo(self)
         }
         
         labelValue.snp.makeConstraints { make in
@@ -164,6 +166,7 @@ class DashBoardElement: RefreshView {
         }
         label.textColor = Colors.colorWhite
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()

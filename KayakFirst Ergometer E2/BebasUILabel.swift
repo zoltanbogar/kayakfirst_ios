@@ -15,5 +15,4 @@ class BebasUILabel: AppUILabel {
         
         font = UIFont(name: "BebasNeue", size: 16)
     }
-    
 }

@@ -32,7 +32,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     //MARK: constants
     private let btnDeleteRadius: CGFloat = 400
     private let fontSize: CGFloat = 30
-    private let fontSizeEdit: CGFloat = 35
+    private let fontSizeEdit: CGFloat = 28
     
     //MARK: properties
     var plan: Plan?
