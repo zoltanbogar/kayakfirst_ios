@@ -33,15 +33,31 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
         
         serverDaysList = serverService.run()
         
-        if localeDaysList != nil && serverDaysList != nil {
-            localeDaysList = Array(Set(localeDaysList!).subtracting(serverDaysList!))
-            
-            for d in localeDaysList! {
-                let timestampFrom = DateFormatHelper.getZeroHour(timeStamp: d)
-                let timestampTo = DateFormatHelper.get23Hour(timeStamp: d)
+        let deletedSessionIds = ManagerModifyTrainingDelete(data: nil).getDeletedSessionIds()
+        
+        if deletedSessionIds != nil {
+            serverDaysList = Array(Set(serverDaysList!).subtracting(deletedSessionIds!))
+        }
+        
+        if !ManagerUpload.hasStackToWait() {
+            if localeDaysList != nil && serverDaysList != nil {
+                localeDaysList = Array(Set(localeDaysList!).subtracting(serverDaysList!))
                 
-                deleteDataByTimestamp(timestampFrom: timestampFrom, timestampTo: timestampTo)
+                for d in localeDaysList! {
+                    let timestampFrom = DateFormatHelper.getZeroHour(timeStamp: d)
+                    let timestampTo = DateFormatHelper.get23Hour(timeStamp: d)
+                    
+                    deleteDataByTimestamp(timestampFrom: timestampFrom, timestampTo: timestampTo)
+                }
             }
+        }
+        
+        if serverDaysList != nil && localeDaysList != nil {
+            serverDaysList = serverDaysList! + localeDaysList!
+        }
+        
+        if serverDaysList != nil {
+            serverDaysList = Array(Set(serverDaysList!))
         }
         
         serverError = serverService.error

@@ -9,10 +9,7 @@
 import Foundation
 import SQLite
 
-class ManagerDownloadPlanByName: ManagerDownload<[Plan]>, ManagerDownloadProtocol {
-    
-    //MARK: constants
-    private let planDbLoader = PlanDbLoader.sharedInstance
+class ManagerDownloadPlanByName: ManagerDownloadPlan<[Plan]>, ManagerDownloadProtocol {
     
     //MARK: properties
     private let name: String
@@ -27,31 +24,8 @@ class ManagerDownloadPlanByName: ManagerDownload<[Plan]>, ManagerDownloadProtoco
         return planDbLoader.loadData(predicate: getQueryName())
     }
     
-    override func runServer() -> [Plan]? {
-        let downloadPlanByName = DownloadPlanByName(name: name)
-        let planArrayList = downloadPlanByName.run()
-        serverError = downloadPlanByName.error
-        
-        return planArrayList
-    }
-    
-    override func deleteDataFromLocale() {
-        planDbLoader.deleteData(predicate: getQueryName())
-    }
-    
-    override func addDataToLocale(data: [Plan]?) {
-        if let dataValue = data {
-            planDbLoader.addPlanList(planList: data!)
-        }
-    }
-    
     func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
-        return anotherManagerDownload is ManagerDownloadPlanByName &&
-        self.name == (anotherManagerDownload as! ManagerDownloadPlanByName).name
-    }
-    
-    override func getKeyCache() -> String {
-        return "manager_download_plan_name_\(name)"
+        return anotherManagerDownload is ManagerDownloadPlanByName
     }
     
     //MARK: helpers

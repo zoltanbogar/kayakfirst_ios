@@ -53,7 +53,9 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        refreshContentWithMode()
+        if mode == CalendarVc.modeEvent {
+            refreshContentWithMode()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -278,8 +280,18 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func eventDaysCallback(data: [Double]?, error: Responses?) {
         showProgressBarEvent(isShow: false)
         
+        var eventDays = [Double]()
+        
         if let dataValue = data {
-            initEventDays(eventDays: dataValue)
+            for eventDay in dataValue {
+                let zeroTrainingDay = DateFormatHelper.getZeroHour(timeStamp: eventDay)
+                
+                if !eventDays.contains(zeroTrainingDay) {
+                    eventDays.append(zeroTrainingDay)
+                }
+            }
+            
+            initEventDays(eventDays: eventDays)
         }
         
         initError(error: error)
@@ -458,7 +470,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
                 return false
             }
         case CalendarVc.modeTraining:
-            if let trainingDayList = trainingDaysList {
+            if let trainingDayList = trainingDaysList { 
                 
                 if trainingDayList.contains(dayView.date.getTimeMillis()) {
                     return true

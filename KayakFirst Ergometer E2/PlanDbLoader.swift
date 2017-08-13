@@ -156,6 +156,11 @@ class PlanDbLoader: BaseDbLoader<Plan> {
     }
     
     //MARK: delete
+    override func deleteAll() -> Int {
+        joinPlanElementDbLoader.deleteAll()
+        return super.deleteAll()
+    }
+    
     override func deleteData(predicate: Expression<Bool>?) -> Int {
         let planList = loadData(predicate: predicate)
         

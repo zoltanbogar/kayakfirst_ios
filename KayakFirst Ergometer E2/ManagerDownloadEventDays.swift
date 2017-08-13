@@ -8,24 +8,14 @@
 
 import Foundation
 
-class ManagerDownloadEventDays: ManagerDownloadTrainingDays {
+class ManagerDownloadEventDays: ManagerDownloadPlan<[Double]>, ManagerDownloadProtocol {
     
     override func getDataFromLocale() -> [Double]? {
-        localeDaysList = EventDbLoader.sharedInstance.getEventDays()
-        return localeDaysList
+        return eventDbLoader.getEventDays()
     }
     
-    override func getServerService() -> ServerService<[Double]> {
-        return DownloadEventDays()
-    }
-    
-    override func deleteDataByTimestamp(timestampFrom: Double, timestampTo: Double) {
-        let eventDbLoader = EventDbLoader.sharedInstance
-        eventDbLoader.deleteData(predicate: eventDbLoader.getEventBetweenTimestampPredicate(timestampFrom: timestampFrom, timestampTo: timestampTo))
-    }
-    
-    override func getKeyCache() -> String {
-        return "manager_download_event_days"
+    func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
+        return anotherManagerDownload is ManagerDownloadEventDays
     }
     
 }

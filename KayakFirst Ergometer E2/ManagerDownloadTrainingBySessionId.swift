@@ -23,14 +23,20 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     private var trainingAvgs: [TrainingAvg]?
     private var planTrainings: [PlanTraining]?
     
+    private var localeSumTrainings: [SumTraining]?
+    
     //MARK: init
     init(sessionIds: [Double]) {
         self.sessionIds = sessionIds
     }
     
     //MARK: functions
+    override func shouldWaitForStack() -> Bool {
+        return localeSumTrainings != nil && localeSumTrainings!.count > 0
+    }
+    
     override func getDataFromLocale() -> [SumTraining]? {
-        var sumTrainings = [SumTraining]()
+        localeSumTrainings = [SumTraining]()
         
         for sessionId in sessionIds {
             let t200List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_200))
@@ -79,7 +85,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
             }
             
             if t200List != nil && t500List != nil && t1000List != nil && strokesList != nil && fList != nil && vList != nil && sList != nil {
-                sumTrainings.append(SumTraining(
+                localeSumTrainings!.append(SumTraining(
                     t200List: t200List!,
                     t500List: t500List!,
                     t1000List: t1000List!,
@@ -97,19 +103,19 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
             }
         }
         
-        return sumTrainings
+        return localeSumTrainings
     }
     
     override func runServer() -> [SumTraining]? {
-        let downloadTrainings = DownloadTrainings(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        let downloadTrainings = DownloadTrainings(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
         trainings = downloadTrainings.run()
         serverError = downloadTrainings.error
         
-        let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        let downloadTrainingAvgs = DownloadTrainingAvgs(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
         trainingAvgs = downloadTrainingAvgs.run()
         serverError = downloadTrainingAvgs.error
         
-        let downloadPlanBySessionId = DownloadPlanTrainingBySessionId(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        let downloadPlanBySessionId = DownloadPlanTrainingBySessionId(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
         planTrainings = downloadPlanBySessionId.run()
         serverError = downloadPlanBySessionId.error
         
@@ -146,15 +152,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
             stringBuilder = stringBuilder + String(sessionId)
         }
         
-        return "manager_download_training_sessionid_\(stringBuilder)"
-    }
-    
-    private func getSessionIdFrom() -> Double {
-        return sessionIds.count > 0 ? DateFormatHelper.getZeroHour(timeStamp: sessionIds[0]) : 0
-    }
-    
-    private func getSessionIdTo() -> Double {
-        return sessionIds.count > 0 ? DateFormatHelper.get23Hour(timeStamp: sessionIds[0]) : 0
+        return "manager_download_training_sessionid_\(getSessionIdFrom(sessionIds: sessionIds))_\(getSessionIdTo(sessionIds: sessionIds)))"
     }
     
     private func getQueryTrainingByType(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
@@ -170,15 +168,15 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     }
     
     private func getQueryTraining() -> Expression<Bool> {
-        return trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        return trainingDbLoader.getTrainingsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
     }
     
     private func getQueryTrainingAvg() -> Expression<Bool> {
-        return trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        return trainingAvgDbLoader.getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
     }
     
     private func getQueryPlan() -> Expression<Bool>? {
-        return planTrainingDbLoader.getExpressionSessionId(sessionIdFrom: getSessionIdFrom(), sessionIdTo: getSessionIdTo())
+        return planTrainingDbLoader.getExpressionSessionId(sessionIdFrom: getSessionIdFrom(sessionIds: sessionIds), sessionIdTo: getSessionIdTo(sessionIds: sessionIds))
     }
     
 }

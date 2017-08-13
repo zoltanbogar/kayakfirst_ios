@@ -15,7 +15,9 @@ protocol ManagerDownloadProtocol {
 class ManagerDownload<E> {
     
     //MARK: constants
-    private let timeCacheMillis: Double = 2 * 60 * 1000 //2 mins
+    //private let timeCacheMillis: Double = 2 * 60 * 1000 //2 mins
+    //TODO: delete
+    private let timeCacheMillis: Double = 21 * 1000
     
     //MARK: properties
     private let preferences = UserDefaults.standard
@@ -63,6 +65,14 @@ class ManagerDownload<E> {
     
     private func getKeyCacheWithUserId() -> String {
         return ManagerUpload.getStaticDbUpload(db: getKeyCache())
+    }
+    
+    func getSessionIdFrom(sessionIds: [Double]?) -> Double {
+        return (sessionIds != nil && sessionIds!.count > 0) ? DateFormatHelper.getZeroHour(timeStamp: sessionIds![0]) : 0
+    }
+    
+    func getSessionIdTo(sessionIds: [Double]?) -> Double {
+        return (sessionIds != nil && sessionIds!.count > 0) ? DateFormatHelper.get23Hour(timeStamp: sessionIds![sessionIds!.count - 1]) : 0
     }
     
     //MARK: abstract functions

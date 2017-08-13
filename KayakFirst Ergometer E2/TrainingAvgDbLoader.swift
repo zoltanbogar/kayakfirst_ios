@@ -89,7 +89,7 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     }
     
     func getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
-        return self.sessionId > sessionIdFrom && self.sessionId <= sessionIdTo
+        return self.sessionId >= sessionIdFrom && self.sessionId <= sessionIdTo
     }
     
     func getSessionIdPredicate(sessionId: Double) -> Expression<Bool> {

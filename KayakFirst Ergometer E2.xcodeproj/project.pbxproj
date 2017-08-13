@@ -292,6 +292,7 @@
 		06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */; };
 		06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */; };
 		06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */; };
+		06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
@@ -636,6 +637,7 @@
 		06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyTrainingDelete.swift; sourceTree = "<group>"; };
 		06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainingAvgs.swift; sourceTree = "<group>"; };
 		06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainings.swift; sourceTree = "<group>"; };
+		06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlan.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -940,12 +942,9 @@
 		061FF0B81F0BE29B0068E6E6 /* download */ = {
 			isa = PBXGroup;
 			children = (
+				06CBD6D81F40958900BB570B /* training */,
+				06CBD6D71F40958100BB570B /* plan */,
 				061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */,
-				06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */,
-				06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */,
-				06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */,
-				06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */,
-				06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -1464,6 +1463,26 @@
 			path = "KayakFirst Ergometer E2UITests";
 			sourceTree = "<group>";
 		};
+		06CBD6D71F40958100BB570B /* plan */ = {
+			isa = PBXGroup;
+			children = (
+				06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */,
+				06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */,
+				06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */,
+				06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */,
+			);
+			name = plan;
+			sourceTree = "<group>";
+		};
+		06CBD6D81F40958900BB570B /* training */ = {
+			isa = PBXGroup;
+			children = (
+				06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */,
+				06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */,
+			);
+			name = training;
+			sourceTree = "<group>";
+		};
 		06DE18481E56D22B00374107 /* training_viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,6 +1843,7 @@
 				06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
 				066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */,
+				06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,

@@ -25,7 +25,7 @@ class UploadTrainingAvgs: ServerService<Bool> {
     }
     
     override func preCheck() -> Bool {
-        return isUploadReady
+        return isUploadReady && trainingAvgArrayList != nil && trainingAvgArrayList!.count > 0
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {

@@ -38,11 +38,11 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
             if sessionIds.count > 0 {
                 let deleteTraining = DeleteTraining(sessionIds: sessionIds)
                 deleteTraining.run()
-                serverWasReachableTraining = serverWasReachableTraining && deleteTraining.serverWasReachable
+                serverWasReachableTraining = deleteTraining.serverWasReachable
                 
                 let deleteTrainingAvg = DeleteTrainingAvg(sessionIds: sessionIds)
                 deleteTrainingAvg.run()
-                serverWasReachableTrainingAvg = serverWasReachableTrainingAvg && deleteTrainingAvg.serverWasReachable
+                serverWasReachableTrainingAvg = deleteTrainingAvg.serverWasReachable
             }
         }
         return serverWasReachableTraining && serverWasReachableTrainingAvg
@@ -50,5 +50,24 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
     
     override func getUploadType() -> UploadType {
         return UploadType.trainingDelete
+    }
+    
+    func getDeletedSessionIds() -> [Double]? {
+        var sessionIds: [Double]? = nil
+        
+        let pointers = getPointers()
+        
+        if pointers != nil {
+            for s in pointers! {
+                if sessionIds == nil {
+                    sessionIds = [Double]()
+                }
+                let pointerValue = removeEditPointer(pointer: s)
+                
+                sessionIds!.append(Double(pointerValue)!)
+            }
+        }
+        
+        return sessionIds
     }
 }

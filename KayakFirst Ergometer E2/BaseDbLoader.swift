@@ -43,8 +43,33 @@ class BaseDbLoader<Input> {
         }
     }
     
+    func addDataList(dataList: [Input]?) {
+        if let dataListValue = dataList {
+            do {
+                try db!.transaction {
+                    for data in dataListValue {
+                        self.addData(data: data)
+                    }
+                }
+            } catch {
+                log(databaseLogTag, error)
+            }
+        }
+    }
+    
     func loadData(predicate: Expression<Bool>?) -> [Input]? {
         return queryData(predicate: getSumPredicate(predicates: getUserQuery(), predicate))
+    }
+    
+    func deleteAll() -> Int {
+        var deletedRows = 0
+        
+        do {
+            deletedRows = try db!.run(table!.delete())
+        } catch {
+            log(databaseLogTag, error)
+        }
+        return deletedRows
     }
     
     func getUserQuery() -> Expression<Bool> {
