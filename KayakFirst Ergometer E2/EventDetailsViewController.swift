@@ -27,7 +27,7 @@ func startEventDetailsViewController(viewController: UIViewController, planEvent
     viewController.present(navVc, animated: true, completion: nil)
 }
 
-class EventDetailsViewController: BaseVC {
+class EventDetailsViewController: BaseVC, UITextFieldDelegate {
     
     //MARK: properties
     var plan: Plan?
@@ -137,6 +137,15 @@ class EventDetailsViewController: BaseVC {
         timestamp = DateFormatHelper.getTimestampByDate(year: year, month: month, day: day, hour: hour, minute: minute)
         
         setTimestampText()
+    }
+    
+    //MARK: textview delegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.inputView == datePickerView {
+            datePickerValueChanged(sender: datePickerView)
+        } else if textField.inputView == timePickerView {
+            datePickerValueChanged(sender: timePickerView)
+        }
     }
     
     //MARK: picker listener
@@ -274,6 +283,7 @@ class EventDetailsViewController: BaseVC {
         textField.active = false
         
         textField.valueTextField.inputView = self.datePickerView
+        textField.valueTextField.delegate = self
         self.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
@@ -285,6 +295,7 @@ class EventDetailsViewController: BaseVC {
         textField.active = false
         
         textField.valueTextField.inputView = self.timePickerView
+        textField.valueTextField.delegate = self
         self.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField

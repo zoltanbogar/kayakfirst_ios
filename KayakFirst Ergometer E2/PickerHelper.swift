@@ -8,10 +8,10 @@
 
 import Foundation
 
-class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     //MARK: properties
-    private let pickerView: UIPickerView
+    let pickerView: UIPickerView
     let textField: UITextField
     var pickerChangedListener: (() -> ())?
 
@@ -23,6 +23,7 @@ class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         super.init()
         
         self.textField.inputView = pickerView
+        self.textField.delegate = self
         
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
@@ -42,6 +43,14 @@ class PickerHelper: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     //MARK: delegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.inputView == pickerView {
+            if textField.text == nil || textField.text == "" {
+                pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+            }
+        }
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

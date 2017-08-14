@@ -110,12 +110,6 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
-                //TODO: delete
-                /*let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.sessionId])
-                if !trainingDays.contains(midnightTime) {
-                    trainingDays.append(midnightTime)
-                }*/
-                
                 trainingDays.append(days[self.sessionId])
             }
         } catch {
