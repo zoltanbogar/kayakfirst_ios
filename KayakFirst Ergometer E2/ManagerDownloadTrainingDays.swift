@@ -35,7 +35,7 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
         
         let deletedSessionIds = ManagerModifyTrainingDelete(data: nil).getDeletedSessionIds()
         
-        if deletedSessionIds != nil {
+        if serverDaysList != nil && deletedSessionIds != nil {
             serverDaysList = Array(Set(serverDaysList!).subtracting(deletedSessionIds!))
         }
         

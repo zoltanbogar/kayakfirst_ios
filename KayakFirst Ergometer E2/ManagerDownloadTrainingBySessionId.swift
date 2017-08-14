@@ -156,7 +156,10 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
             stringBuilder = stringBuilder + String(sessionId)
         }
         
-        return "manager_download_training_sessionid_\(getSessionIdFrom(sessionIds: sessionIds))_\(getSessionIdTo(sessionIds: sessionIds)))"
+        let sessionIdFrom = DateFormatHelper.getZeroHour(timeStamp: getSessionIdFrom(sessionIds: sessionIds))
+        let sessionIdTo = DateFormatHelper.get23Hour(timeStamp: getSessionIdTo(sessionIds: sessionIds))
+        
+        return "manager_download_training_sessionid_\(sessionIdFrom)_\(sessionIdTo)"
     }
     
     private func getQueryTrainingByType(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
