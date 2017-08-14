@@ -149,13 +149,15 @@ class ProfileVc: MainTabVc {
     }
     
     private func initBodyWeight(user: User?) {
-        bodyWeight = user!.bodyWeight!
-        
-        tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
-        pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
-        tfWeight?.textChangedListener = bodyWeightChangedListener
-        
-        initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
+        if user != nil {
+            bodyWeight = user!.bodyWeight!
+            
+            tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
+            pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
+            tfWeight?.textChangedListener = bodyWeightChangedListener
+            
+            initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
+        }
     }
     
     private func initBodyWeightUnit(isMetric: Bool) {
