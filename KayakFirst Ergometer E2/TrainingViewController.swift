@@ -62,16 +62,11 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
             }
         }
         
-        getTrainingService().addTelemetryListener(true)
-    }
-    
-    func getTrainingService() -> TrainingService<MeasureCommand> {
         switch trainingEnvType! {
         case TrainingEnvironmentType.outdoor:
-            return outdoorService
+            outdoorService.addTelemetryListener(true)
         case TrainingEnvironmentType.ergometer:
-            //TODO: maybe it will crash!!
-            return ergometerService as! TrainingService<MeasureCommand>
+            ergometerService.addTelemetryListener(true)
         default:
             break
         }
@@ -116,7 +111,14 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         outdoorService.stopLocationMonitoring()
         ergometerService.onBluetoothConnectedListener = nil
         
-        getTrainingService().addTelemetryListener(false)
+        switch trainingEnvType! {
+        case TrainingEnvironmentType.outdoor:
+            outdoorService.addTelemetryListener(false)
+        case TrainingEnvironmentType.ergometer:
+            ergometerService.addTelemetryListener(false)
+        default:
+            break
+        }
         
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
@@ -201,7 +203,14 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     }
     
     func onPauseClicked() {
-        getTrainingService().pauseCycle()
+        switch trainingEnvType! {
+        case TrainingEnvironmentType.outdoor:
+            outdoorService.pauseCycle()
+        case TrainingEnvironmentType.ergometer:
+            ergometerService.pauseCycle()
+        default:
+            break
+        }
     }
     
     func onStopClicked() {
@@ -210,9 +219,23 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     
     private func startServiceLoop(_ isStart: Bool) {
         if isStart {
-            getTrainingService().startCycle()
+            switch trainingEnvType! {
+            case TrainingEnvironmentType.outdoor:
+                outdoorService.startCycle()
+            case TrainingEnvironmentType.ergometer:
+                ergometerService.startCycle()
+            default:
+                break
+            }
         } else {
-            getTrainingService().stopCycle()
+            switch trainingEnvType! {
+            case TrainingEnvironmentType.outdoor:
+                outdoorService.stopCycle()
+            case TrainingEnvironmentType.ergometer:
+                ergometerService.stopCycle()
+            default:
+                break
+            }
         }
     }
     
