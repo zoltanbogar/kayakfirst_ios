@@ -73,12 +73,39 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     }
     
     func onDataAvailable(stringData: String) {
-        //TODO
-        log("BLE_TEST", "dataAvailableErgometerService: \(stringData)")
+        let command = commandList![commandIndex]
+        
+        command.setValue(stringValue: stringData)
+        
+        log("BLE_TEST", "onDataAvailable: (\(command.getCommand())): \(stringData)")
+        
+        if commandIndex == 0 {
+            if command.getValue() == Double(commandErgometerReset!.resetSuccess) {
+                commandIndex = 1
+                bluetoothResetNumber = 0
+            } else {
+                bluetoothResetNumber += 1
+            }
+            
+            if bluetoothResetNumber == commandErgometerReset?.tryResetNumber {
+                bluetoothResetNumber = 0
+                handleStopTraining()
+            }
+        } else {
+            if commandIndex == commandList!.count - 1 {
+                setCycleIndex(cycleIndex: command.getCycleIndex())
+                commandIndex = 0
+            }
+            commandIndex += 1
+        }
+        
+        writeBluetoothData()
     }
     
     private func writeBluetoothData() {
-        //TODO
+        checkBluetoothInactiveTimeout()
+        
+        bluetooth.writeData(meausreCommandErgometer: commandList![commandIndex])
     }
     
     //MARK: override abstract methods
@@ -142,6 +169,10 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     
     override func getTimeWaitAfterCalculate() -> useconds_t {
         return 0
+    }
+    
+    private func setCycleIndex(cycleIndex: Int64) {
+        self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
     }
     
     override func onCycleStateChanged(newCycleState: CycleState) {

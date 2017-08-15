@@ -1591,7 +1591,6 @@
 				06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */,
 				06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */,
 				06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */,
-				067A09AC1F38A82200CC8051 /* CalculateElementVErgo.swift */,
 			);
 			name = ergometer;
 			sourceTree = "<group>";
@@ -1599,6 +1598,7 @@
 		06F9D5DC1F389965005ECA8B /* ergometer */ = {
 			isa = PBXGroup;
 			children = (
+				067A09AC1F38A82200CC8051 /* CalculateElementVErgo.swift */,
 				06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */,
 				067A09A21F38A2DA00CC8051 /* CalculateElementOmegaMax.swift */,
 				067A09A41F38A39200CC8051 /* CalculateElementOmegaMin.swift */,

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateT_AV: CalculateElementAvg<MeasureCommand> {
+class CalculateT_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
     //MARK: abstract method
     func getDistance() -> Double {

@@ -15,7 +15,7 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
     var commandList: [M]?
     var startCommand: StartCommand<M>?
     
-    private let pauseDiff = PauseDiff.sharedInstance
+    let pauseDiff = PauseDiff.sharedInstance
     
     private let trainingManager = TrainingManager.sharedInstance
     

@@ -47,10 +47,6 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
         return TrainingEnvironmentType.outdoor
     }
     
-    override func getSelfStartCommand() -> StartCommand<MeasureCommand> {
-        return self
-    }
-    
     override func calculateValues(measureCommands: [MeasureCommand]) -> TelemetryObject {
         fillCommands(commands: measureCommands)
         fillHelperValues()

@@ -68,6 +68,10 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
         omegaMin = 0
     }
     
+    override func getTrainingEnvironmentType() -> TrainingEnvironmentType {
+        return TrainingEnvironmentType.ergometer
+    }
+    
     override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> TelemetryObject {
         fillCommands(measureCommands: measureCommands)
         fillHelperValues()

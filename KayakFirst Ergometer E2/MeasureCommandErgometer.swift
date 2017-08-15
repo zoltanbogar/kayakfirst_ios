@@ -14,43 +14,69 @@ class MeasureCommandErgometer: MeasureCommand {
     private let numCommandType = 1
     private let numCycleIndex = 2
     private let numValue = 3
+    private let unitConversion: Double = 1000 * 1000
+    
+    //MARK: properties
+    private var stringValue: String?
     
     //MARK: implement abstract methods
     override func getCycleIndex() -> Int64 {
-        //TODO
+        if let value = stringValue {
+            return initCycleIndex(stringValue: value)
+        }
         return 0
     }
     
     override func getValue() -> Double {
-        //TODO
-        return Double(0)
+        //UNIT: [sec]
+        return value / unitConversion
     }
     
     override func setValue(stringValue: String) {
-        //TODO
+        self.stringValue = stringValue
+        if Int(getCommand()) == initCommandType(stringValue: stringValue) {
+            value = Double(initValue(stringValue: stringValue))
+        }
     }
     
     //MARK: functions
     func initValue(stringValue: String) -> Int64 {
-        //TODO
-        return 0
+        let valueSub = getStringByRowNumber(stringValue: stringValue, rowNumber: numValue)
+        return Int64(valueSub)!
     }
     
     func initCommandType(stringValue: String) -> Int {
-        //TODO
-        return 0
+        let commandType = getStringByRowNumber(stringValue: stringValue, rowNumber: numCommandType)
+        return Int(commandType)!
     }
     
     func initCycleIndex(stringValue: String) -> Int64 {
-        //TODO
-        return 0
+        let cycleIndexString = getStringByRowNumber(stringValue: stringValue, rowNumber: numCycleIndex)
+        return Int64(cycleIndexString)!
     }
     
     func getStringByRowNumber(stringValue: String, rowNumber: Int) -> String {
         var foundRow = 0
         
-        return ""
-        //TODO
+        var stringBuilder: String = ""
+        
+        for i in 0..<stringValue.characters.count {
+            let character = stringValue[i]
+            
+            if character == "\n" {
+                foundRow += 1
+                
+                if foundRow == rowNumber {
+                    break
+                } else {
+                    stringBuilder = ""
+                }
+            } else {
+               stringBuilder += character
+            }
+        }
+        
+        return stringBuilder
     }
     
 }
