@@ -80,8 +80,6 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
         
         command.setValue(stringValue: stringData)
         
-        log("BLE_TEST", "onDataAvailable: (\(command.getCommand())): \(stringData)")
-        
         if commandIndex == 0 {
             if command.getValue() == Double(commandErgometerReset!.resetSuccess) {
                 commandIndex = 1
@@ -99,14 +97,14 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
                 setCycleIndex(cycleIndex: command.getCycleIndex())
                 commandIndex = 0
             }
-            commandIndex += 1
+            commandIndex = commandIndex + 1
         }
         
         writeBluetoothData()
     }
     
     private func writeBluetoothData() {
-        checkBluetoothInactiveTimeout()
+        checkBluetoothDisconnectTimeout()
         
         bluetooth.writeData(meausreCommandErgometer: commandList![commandIndex])
     }
@@ -215,6 +213,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
             let timeDiff = currentTimeMillis() - inactiveTime
             
             if timeDiff > bluetoothInactiveTime {
+                log("ERGO_TEST", "timeDiffStop: \(inactiveTime)")
                 stopCycle()
             }
         } else {

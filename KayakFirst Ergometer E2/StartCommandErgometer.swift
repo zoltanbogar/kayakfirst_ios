@@ -102,6 +102,8 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
                 t_max = measureCommandErgometer.getValue()
             }
         }
+        
+        log("ERGO_TEST", "t_min: \(t_min), t_minFuture \(t_min_future), t_h \(t_h), t_h_future \(t_h_future)")
     }
     
     private func fillHelperValues() {

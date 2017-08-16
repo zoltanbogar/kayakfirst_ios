@@ -15,6 +15,7 @@ class MeasureCommandErgometer: MeasureCommand {
     private let numCycleIndex = 2
     private let numValue = 3
     private let unitConversion: Double = 1000 * 1000
+    private let notValidCommandType = -1
     
     //MARK: properties
     private var stringValue: String?
@@ -34,9 +35,14 @@ class MeasureCommandErgometer: MeasureCommand {
     
     override func setValue(stringValue: String) {
         self.stringValue = stringValue
-        if Int(getCommand()) == initCommandType(stringValue: stringValue) {
+        
+        if isValidCommand(stringValue: stringValue) {
             value = Double(initValue(stringValue: stringValue))
         }
+    }
+    
+    func isValidCommand(stringValue: String) -> Bool {
+        return Int(getCommand()) == initCommandType(stringValue: stringValue)
     }
     
     //MARK: functions
@@ -47,7 +53,13 @@ class MeasureCommandErgometer: MeasureCommand {
     
     func initCommandType(stringValue: String) -> Int {
         let commandType = getStringByRowNumber(stringValue: stringValue, rowNumber: numCommandType)
-        return Int(commandType)!
+        let intCommand = Int(commandType)
+        
+        if let intValue = intCommand {
+            return intValue
+        }
+        
+        return notValidCommandType
     }
     
     func initCycleIndex(stringValue: String) -> Int64 {

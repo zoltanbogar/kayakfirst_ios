@@ -28,6 +28,10 @@ class CommandErgometerReset: MeasureCommandErgometer {
         value = Double(initValue(stringValue: stringValue))
     }
     
+    override func isValidCommand(stringValue: String) -> Bool {
+        return initValue(stringValue: stringValue) == resetSuccess || initValue(stringValue: stringValue) == resetNotSuccess
+    }
+    
     override func getValue() -> Double {
         return value
     }

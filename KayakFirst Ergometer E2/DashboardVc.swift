@@ -73,8 +73,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()
             } else if telemetry.cycleState != CycleState.paused {
-                parent.outdoorService.startLocationMonitoring()
-                parent.calibrationView?.showView()
+                switch parent.trainingEnvType! {
+                case TrainingEnvironmentType.outdoor:
+                    parent.outdoorService.startLocationMonitoring()
+                    parent.calibrationView?.showView()
+                case TrainingEnvironmentType.ergometer:
+                    parent.onCalibrationEnd()
+                default:
+                    break
+                }
             }
         }
     }

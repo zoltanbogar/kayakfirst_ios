@@ -87,7 +87,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         }
     }
     func showDashboard() {
-        telemetry.cycleState = CycleState.idle
+        //TODO: test - if works Android as well
+        //telemetry.cycleState = CycleState.idle
         dashboardVc = DashboardVc()
         dashboardVc!.plan = plan
         dashboardVc!.event = event
@@ -98,6 +99,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         pushViewController(BluetoothViewController(), animated: true)
     }
     
+    //TODO: show bluetooth disconnect if needed
     func closeViewController(shoudlCloseParents: Bool) {
         outdoorService.stopLocationMonitoring()
         ergometerService.onBluetoothConnectedListener = nil
