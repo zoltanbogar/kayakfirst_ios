@@ -12,7 +12,7 @@ class DashboardPlanView: RefreshView {
     
     //MARK: constants
     private let progressHeight: CGFloat = 12
-    private let valueFontSize: CGFloat = 75
+    private let valueFontSize: CGFloat = 70
     
     private let telemetry = Telemetry.sharedInstance
     

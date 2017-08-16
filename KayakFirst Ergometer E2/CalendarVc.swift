@@ -68,7 +68,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     internal override func initView() {
         stackView = UIStackView()
-        stackView?.distribution = .fillEqually
         stackView?.spacing = margin
         
         viewCalendar.addSubview(cvCalendarView)
@@ -79,6 +78,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             make.width.equalTo(viewCalendar).offset(-2 * margin2)
             make.centerX.equalTo(viewCalendar)
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
+            make.height.equalTo(25)
         }
         labelMonth.snp.makeConstraints { (make) in
             make.width.equalTo(viewCalendar)
@@ -88,10 +88,12 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
         
-        let offset = UIScreen.main.bounds.height >= 600 ? (margin2 * 1.8) : -margin
+        let screenheight = UIScreen.main.bounds.height
+        
+        let tableViewHeight = screenheight >= 600 ? (screenheight / 2.6) : (screenheight / 3.7)
         
         viewTableView.snp.makeConstraints { (make) in
-            make.height.equalTo(cvCalendarView).offset(offset)
+            make.height.equalTo(tableViewHeight)
         }
         
         contentView.addSubview(stackView!)

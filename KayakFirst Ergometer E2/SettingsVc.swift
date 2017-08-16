@@ -75,7 +75,8 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
         
         labelVersion.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
-            make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
+            make.top.equalTo(textFieldTermsCondition.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
+            make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin05, 0))
         }
     }
     
@@ -88,6 +89,7 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
         let imageView = UIImageView()
         let image = UIImage(named: "logo")
         imageView.image = image
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()

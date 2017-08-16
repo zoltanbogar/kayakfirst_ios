@@ -42,9 +42,9 @@ class PlanTypeView: UIView {
     
     //MARK: functions
     private func initTextHeight() {
-        let width = self.frame.width
+        let height = self.frame.height
         
-        var textHeight = width / 8
+        var textHeight = height / 6
         
         if textHeight > maxTextSize {
             textHeight = maxTextSize
