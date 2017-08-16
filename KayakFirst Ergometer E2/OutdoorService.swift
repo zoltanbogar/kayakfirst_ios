@@ -25,6 +25,7 @@ class OutdoorService: TrainingService<MeasureCommand> {
     
     //MARK: start/stop monitoring
     public func startLocationMonitoring() {
+        setTelemetryListener(true)
         fusedLocationManager.startLocationMonitoring(start: true)
         sensorManager.startSensorMonitoring(start: true)
     }
@@ -32,6 +33,7 @@ class OutdoorService: TrainingService<MeasureCommand> {
     public func stopLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: false)
         sensorManager.startSensorMonitoring(start: false)
+        setTelemetryListener(false)
     }
     
     override func initCommandList() {

@@ -51,13 +51,13 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
         fatalError("Must be implemented")
     }
     
-    func addTelemetryListener(_ isAdd: Bool) {
-        if isAdd {
+    internal func setTelemetryListener(_ isSet: Bool) {
+        if isSet {
             telemetry.trainingServiceCycleStateChangeListener = self
         } else {
             telemetry.trainingServiceCycleStateChangeListener = nil
         }
-        isServiceStopped = !isAdd
+        isServiceStopped = !isSet
     }
     
     //MARK: lifecycle

@@ -57,6 +57,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     
     //MARK: delegeta
     func onConnected() {
+        setTelemetryListener(true)
         telemetry.cycleState = CycleState.idle
         
         if let listener = onBluetoothConnectedListener {
@@ -70,6 +71,8 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
         if let listener = onBluetoothConnectedListener {
             listener.onDisconnected()
         }
+        
+        setTelemetryListener(false)
     }
     
     func onDataAvailable(stringData: String) {

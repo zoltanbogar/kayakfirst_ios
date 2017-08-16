@@ -61,15 +61,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
                 showBluetoothVc()
             }
         }
-        
-        switch trainingEnvType! {
-        case TrainingEnvironmentType.outdoor:
-            outdoorService.addTelemetryListener(true)
-        case TrainingEnvironmentType.ergometer:
-            ergometerService.addTelemetryListener(true)
-        default:
-            break
-        }
     }
     
     //MARK: training
@@ -110,15 +101,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     func closeViewController(shoudlCloseParents: Bool) {
         outdoorService.stopLocationMonitoring()
         ergometerService.onBluetoothConnectedListener = nil
-        
-        switch trainingEnvType! {
-        case TrainingEnvironmentType.outdoor:
-            outdoorService.addTelemetryListener(false)
-        case TrainingEnvironmentType.ergometer:
-            ergometerService.addTelemetryListener(false)
-        default:
-            break
-        }
         
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil

@@ -74,16 +74,10 @@ class Telemetry {
                 }
             }
             
-            if let cycleStateListeners = cycleStateChangeListenerList {
-                if cycleState != nil {
-                    for listener in cycleStateListeners {
-                        listener.onCycleStateChanged(newCycleState: cycleState!)
-                    }
-                }
-            }
-            
             notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
             notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: planSoundHelperCycleStateChangeListener)
+            
         }
     }
     
@@ -95,20 +89,11 @@ class Telemetry {
         }
     }
     
-    //MARK: other properties
-    private var cycleStateChangeListenerList: [CycleStateChangeListener]?
-    
-    //TODO - refactor: not a good solution, use 'removeCycleStateListener'
     var dashboardCycleStateChangeListener: CycleStateChangeListener?
     
     var trainingServiceCycleStateChangeListener: CycleStateChangeListener?
     
-    func addCycleStateChangeListener(cycleStateChangeListener: CycleStateChangeListener) {
-        if self.cycleStateChangeListenerList == nil {
-            self.cycleStateChangeListenerList = [CycleStateChangeListener]()
-        }
-        self.cycleStateChangeListenerList?.append(cycleStateChangeListener)
-    }
+    var planSoundHelperCycleStateChangeListener: CycleStateChangeListener?
     
     private func setAverageIndex() {
         if averageIndex == 0 {
