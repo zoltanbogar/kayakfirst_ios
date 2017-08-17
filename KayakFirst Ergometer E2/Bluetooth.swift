@@ -100,7 +100,6 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private func parseData(data: Data?) -> String {
         var stringValue: String = ""
         if let dataValue = data {
-            //TODO
             stringValue = String(data: dataValue, encoding: String.Encoding.utf8)!
         }
         return stringValue

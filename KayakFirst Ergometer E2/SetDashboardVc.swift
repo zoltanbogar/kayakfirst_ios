@@ -104,7 +104,6 @@ class SetDashboardVc: BaseVC {
     }
     
     //MARK: views
-    //TODO: fonts not correct in bracnh 'BLE'
     override func initView() {
         mainStackView.removeAllSubviews()
         
@@ -137,8 +136,7 @@ class SetDashboardVc: BaseVC {
         
         self.navigationItem.setRightBarButtonItems(buttons, animated: true)
         
-        //TODO: logo must show in center
-        //showLogoOnLeft()
+        showLogoOnLeft()
         
         self.title = getString("navigation_set_dashboard")
     }

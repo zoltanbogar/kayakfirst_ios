@@ -66,13 +66,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     //MARK: training
     func showSetDashboard() {
         if plan == nil {
-            //TODO: test it
-            /*if viewControllers.count > 0 {
-                popViewController(animated: true)
-            } else {
-                pushViewController(SetDashboardVc(), animated: true)
-            }*/
-            
             let setDashboardVc = SetDashboardVc()
             setDashboardVc.withBluetooth = trainingEnvType == TrainingEnvironmentType.ergometer
             
@@ -122,8 +115,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         if trainingEnvType == TrainingEnvironmentType.outdoor {
             outdoorService.stopLocationMonitoring()
         }
-        //TODO
-        //ergometerService.onBluetoothConnectedListener = nil
         
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil

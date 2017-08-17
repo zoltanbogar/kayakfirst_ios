@@ -109,7 +109,6 @@ class BaseVC: UIViewController {
     
     func showCustomBackButton() {
         self.navigationItem.hidesBackButton = true
-        //TODO: 'back' title string
         let button = UIBarButtonItem()
         button.image = UIImage(named: "arrowBack")
         button.target = self

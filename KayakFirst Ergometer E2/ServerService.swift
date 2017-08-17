@@ -25,11 +25,7 @@ enum Responses: String {
 class ServerService<E> {
     
     //MARK: constants
-    //TODO: use correct address
     let baseUrl = "http://api.kayakfirst.com/api/"
-    //let baseUrl = "http://192.168.0.2:8000/api/"
-
-    //let baseUrl = "http://balazss-mbp:8000/api/"
     
     //MARK: properties
     var error: Responses?
