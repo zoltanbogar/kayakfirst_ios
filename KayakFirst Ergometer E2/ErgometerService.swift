@@ -100,7 +100,9 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
             commandIndex = commandIndex + 1
         }
         
-        writeBluetoothData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(Int(getTimeBasedMaxSpm())), execute: {
+            self.writeBluetoothData()
+        })
     }
     
     private func writeBluetoothData() {
@@ -181,9 +183,10 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
             super.onCycleStateChanged(newCycleState: newCycleState)
             
             if CycleState.idle == newCycleState {
-                usleep(300000)
                 
-                writeBluetoothData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(300000), execute: {
+                    self.writeBluetoothData()
+                })
             }
         }
     }
@@ -207,13 +210,12 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     private func checkBluetoothInactiveTimeout() {
         if cycleIndex == telemetry.cycleIndex {
             if inactiveTime == 0 {
-                inactiveTime = currentTimeMillis()
+                inactiveTime = pauseDiff.getAbsoluteTimeStamp()
             }
             
-            let timeDiff = currentTimeMillis() - inactiveTime
+            let timeDiff = pauseDiff.getAbsoluteTimeStamp() - inactiveTime
             
             if timeDiff > bluetoothInactiveTime {
-                log("ERGO_TEST", "timeDiffStop: \(inactiveTime)")
                 stopCycle()
             }
         } else {

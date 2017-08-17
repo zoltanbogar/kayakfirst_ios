@@ -34,7 +34,11 @@ class Telemetry {
     var t_1000_av: Double = 0
     
     //MARK: helper values
-    var duration: TimeInterval = 0
+    var duration: TimeInterval = 0 {
+        didSet {
+            log("DURATION_TEST", "durationSet: \(duration)")
+        }
+    }
     var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
     var sessionId: Double = 0

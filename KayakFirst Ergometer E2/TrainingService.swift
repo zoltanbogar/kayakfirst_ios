@@ -157,12 +157,21 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
             case CycleState.stopped:
                 telemetry.resetCurrent()
                 handleStopTraining()
+                isCyclePaused = true
             case CycleState.paused:
                 isCyclePaused = true
             default:
                 break
             }
         }
+    }
+    
+    internal func getTimeBasedMaxSpm() -> useconds_t {
+        let maxSpm = AppSensorManager.maxSpm
+        
+        let timeWait = useconds_t((Double(1000) / (Double(maxSpm) / Double(60)))) * 1000
+        
+        return timeWait
     }
     
 }

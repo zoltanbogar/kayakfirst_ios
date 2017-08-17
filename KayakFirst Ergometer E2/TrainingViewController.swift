@@ -89,6 +89,10 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     func showDashboard() {
         //TODO: test - if works Android as well
         //telemetry.cycleState = CycleState.idle
+        if trainingEnvType == TrainingEnvironmentType.outdoor {
+            telemetry.cycleState = CycleState.idle
+        }
+        
         dashboardVc = DashboardVc()
         dashboardVc!.plan = plan
         dashboardVc!.event = event
@@ -99,10 +103,26 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         pushViewController(BluetoothViewController(), animated: true)
     }
     
-    //TODO: show bluetooth disconnect if needed
     func closeViewController(shoudlCloseParents: Bool) {
-        outdoorService.stopLocationMonitoring()
-        ergometerService.onBluetoothConnectedListener = nil
+        closeViewController(shoudlCloseParents: shoudlCloseParents, forceClose: false)
+    }
+    
+    func closeViewController(shoudlCloseParents: Bool, forceClose: Bool) {
+        if trainingEnvType == TrainingEnvironmentType.ergometer && !forceClose {
+            showBluetoothDisconnectDialog(dialogPosListener: {
+                self.closeStuff(shoudlCloseParents: shoudlCloseParents)
+            })
+        } else {
+            closeStuff(shoudlCloseParents: shoudlCloseParents)
+        }
+    }
+    
+    private func closeStuff(shoudlCloseParents: Bool) {
+        if trainingEnvType == TrainingEnvironmentType.outdoor {
+            outdoorService.stopLocationMonitoring()
+        }
+        //TODO
+        //ergometerService.onBluetoothConnectedListener = nil
         
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
@@ -127,20 +147,22 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     }
     
     func onDisconnected() {
-        closeViewController(shoudlCloseParents: true)
+        closeViewController(shoudlCloseParents: true, forceClose: true)
     }
     
     func onDataAvailable(stringData: String) {
         //nothing here
     }
     
-    func showBluetoothDisconnectDialog() {
-        BluetoothDisconnectDialog().show()
+    func showBluetoothDisconnectDialog(dialogPosListener: (() -> ())?) {
+        let bluetoothDialog = BluetoothDisconnectDialog()
+        bluetoothDialog.noticeDialogPosListener = dialogPosListener
+        bluetoothDialog.show()
     }
     
     //MARK: button listeners
     @objc private func btnBluetoothClick() {
-        showBluetoothDisconnectDialog()
+        closeViewController(shoudlCloseParents: true)
     }
     
     //MARK: views

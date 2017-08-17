@@ -36,6 +36,8 @@ class MeasureCommandErgometer: MeasureCommand {
     override func setValue(stringValue: String) {
         self.stringValue = stringValue
         
+        log("BLE_TEST", "stringValue: \(stringValue)")
+        
         if isValidCommand(stringValue: stringValue) {
             value = Double(initValue(stringValue: stringValue))
         }

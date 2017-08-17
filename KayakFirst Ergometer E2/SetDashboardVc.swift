@@ -457,7 +457,7 @@ class SetDashboardVc: BaseVC {
     
     override func backClick(sender: UIBarButtonItem) {
         if let parent = self.parent as? TrainingViewController {
-            parent.showBluetoothDisconnectDialog()
+            parent.closeViewController(shoudlCloseParents: false)
         }
     }
     
