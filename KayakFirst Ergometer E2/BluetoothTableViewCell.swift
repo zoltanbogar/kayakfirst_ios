@@ -11,16 +11,23 @@ import CoreBluetooth
 
 class BluetoothTableViewCell: AppUITableViewCell<CBPeripheral> {
     
+    //MARK: properties
+    private let view = UIView()
+    
     //MARK: init data
     override func initData(data: CBPeripheral?) {
-        //TODO
-        
         labelName.text = data?.name
     }
     
     //MARK: init view
     override func initView() -> UIView {
-        return labelName
+        view.addSubview(labelName)
+        labelName.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(margin2)
+            make.centerY.equalToSuperview()
+        }
+        
+        return view
     }
     
     override func getRowHeight() -> CGFloat {

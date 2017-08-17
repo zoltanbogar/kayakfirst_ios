@@ -12,6 +12,9 @@ import CoreBluetooth
 class BluetoothDeviceTableView: TableViewWithEmpty<CBPeripheral> {
     
     //MARK: properties
+    private let emptyView = UIView()
+    
+    //MARK: properties
     var emptyText: String? {
         didSet {
             labelEmpty.text = emptyText
@@ -20,7 +23,12 @@ class BluetoothDeviceTableView: TableViewWithEmpty<CBPeripheral> {
     
     //MARK: override abstract functions
     override func getEmptyView() -> UIView {
-        return labelEmpty
+        emptyView.addSubview(labelEmpty)
+        labelEmpty.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+        return emptyView
     }
     
     override func getCellClass() -> AnyClass {
@@ -35,6 +43,8 @@ class BluetoothDeviceTableView: TableViewWithEmpty<CBPeripheral> {
     private lazy var labelEmpty: UILabel! = {
         let label = AppUILabel()
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        label.textAlignment = .center
+        label.numberOfLines = 0
         
         return label
     }()

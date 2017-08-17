@@ -206,15 +206,22 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
     
     //MARK: init views
     private func initView() {
+        addSubview(labelTitle)
+        labelTitle.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-margin2)
+            make.top.equalToSuperview().offset(margin)
+        }
+        
         addSubview(progressBar)
         progressBar.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(margin05)
+            make.top.equalTo(labelTitle.snp.bottom).offset(margin)
         }
         
         addSubview(bluetoothTableView)
         bluetoothTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(progressBar.snp.bottom)
+            make.top.equalTo(progressBar.snp.bottom).offset(margin)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -222,6 +229,16 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
     }
     
     //MARK: views
+    private lazy var labelTitle: UILabel! = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        
+        label.text = getString("fragment_bluetooth_title")
+        
+        return label
+    }()
+    
     private lazy var progressBar: AppProgressBar! = {
         let spinner = AppProgressBar()
         

@@ -51,6 +51,7 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         let label = AppUILabel()
         label.text = getString("calendar_empty_list")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        label.textAlignment = .center
         
         return label
     }()

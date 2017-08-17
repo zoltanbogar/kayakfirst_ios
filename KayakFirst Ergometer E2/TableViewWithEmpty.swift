@@ -27,12 +27,15 @@ class TableViewWithEmpty<E>: UITableView, UITableViewDelegate, UITableViewDataSo
     init(view: UIView) {
         super.init(frame: view.frame, style: .plain)
         
+        backgroundColor = Colors.colorTransparent
+        
         if getHeaderView() != nil {
             sectionHeaderHeight = 40
         }
         
         addSubview(getEmptyView())
         getEmptyView().snp.makeConstraints { make in
+            make.width.equalToSuperview().offset(-margin2)
             make.center.equalTo(self)
         }
         

@@ -44,6 +44,7 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
         let label = AppUILabel()
         label.text = getString("plan_end")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        label.textAlignment = .center
         
         return label
     }()

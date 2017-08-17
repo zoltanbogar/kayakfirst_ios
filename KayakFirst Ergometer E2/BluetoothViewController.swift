@@ -33,7 +33,7 @@ class BluetoothViewController: BaseVC {
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalTo(btnSetting.snp.top).offset(margin2)
+            make.bottom.equalTo(btnSetting.snp.top).offset(-margin2)
         }
     }
     
