@@ -24,6 +24,8 @@ class AppUIButton: UIButton {
         super.init(frame: CGRect(x: 0, y: 0, width: width, height: 0))
         self.textColor = textColor
         self.text = text
+        setTitle(text.uppercased(), for: .normal)
+        
         self.originalBackgroundColor = backgroundColor
         initView()
     }

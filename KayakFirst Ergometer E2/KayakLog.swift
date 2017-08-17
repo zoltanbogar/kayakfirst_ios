@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 //TODO
-private let logNeeded = false
+let logNeeded = false
 
 private let logDateFormat = "HH.mm.ss.SSS"
 

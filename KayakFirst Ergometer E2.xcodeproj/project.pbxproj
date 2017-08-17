@@ -160,6 +160,8 @@
 		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
 		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
 		065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */; };
+		066461611F459CC200145960 /* BluetoothList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066461601F459CC200145960 /* BluetoothList.swift */; };
+		066461631F459D0200145960 /* AppProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066461621F459D0200145960 /* AppProgressBar.swift */; };
 		066579E81F16013300E43852 /* UploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E71F16013300E43852 /* UploadPushId.swift */; };
 		066579EA1F16065000E43852 /* ManagerUploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E91F16065000E43852 /* ManagerUploadPushId.swift */; };
 		066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579ED1F161BD000E43852 /* PushNotificationHelper.swift */; };
@@ -309,8 +311,6 @@
 		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
 		06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */; };
 		06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840501F35E1C300303574 /* BluetoothViewController.swift */; };
-		06E840531F35F15900303574 /* BluetoothList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840521F35F15900303574 /* BluetoothList.swift */; };
-		06E840551F35F32400303574 /* AppProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840541F35F32400303574 /* AppProgressBar.swift */; };
 		06E8405A1F35FA3800303574 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840591F35FA3800303574 /* Bluetooth.swift */; };
 		06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */; };
 		06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */; };
@@ -524,6 +524,8 @@
 		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
 		065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
+		066461601F459CC200145960 /* BluetoothList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothList.swift; sourceTree = "<group>"; };
+		066461621F459D0200145960 /* AppProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProgressBar.swift; sourceTree = "<group>"; };
 		066579E71F16013300E43852 /* UploadPushId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPushId.swift; sourceTree = "<group>"; };
 		066579E91F16065000E43852 /* ManagerUploadPushId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadPushId.swift; sourceTree = "<group>"; };
 		066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KayakFirst Ergometer E2.entitlements"; sourceTree = "<group>"; };
@@ -681,8 +683,6 @@
 		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
 		06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTrainingDbLoader.swift; sourceTree = "<group>"; };
 		06E840501F35E1C300303574 /* BluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
-		06E840521F35F15900303574 /* BluetoothList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothList.swift; sourceTree = "<group>"; };
-		06E840541F35F32400303574 /* AppProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProgressBar.swift; sourceTree = "<group>"; };
 		06E840591F35FA3800303574 /* Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceTableView.swift; sourceTree = "<group>"; };
 		06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableViewCell.swift; sourceTree = "<group>"; };
@@ -1427,6 +1427,8 @@
 				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
 				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
+				066461601F459CC200145960 /* BluetoothList.swift */,
+				066461621F459D0200145960 /* AppProgressBar.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -1897,6 +1899,7 @@
 				06C2F3EC1F0A3F5D0077EE21 /* DeleteEvent.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
+				066461611F459CC200145960 /* BluetoothList.swift in Sources */,
 				067A09AD1F38A82200CC8051 /* CalculateElementVErgo.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
 				06AF23371F062812008805A2 /* PlanTraining.swift in Sources */,
@@ -1936,7 +1939,6 @@
 				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
-				06E840551F35F32400303574 /* AppProgressBar.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
@@ -1974,7 +1976,6 @@
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
-				06E840531F35F15900303574 /* BluetoothList.swift in Sources */,
 				060A37901E58969300A973BF /* MainTabVc.swift in Sources */,
 				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
@@ -2053,6 +2054,7 @@
 				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
 				0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */,
 				067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */,
+				066461631F459D0200145960 /* AppProgressBar.swift in Sources */,
 				06AF23421F067DEC008805A2 /* EventManagerType.swift in Sources */,
 				060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */,
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
