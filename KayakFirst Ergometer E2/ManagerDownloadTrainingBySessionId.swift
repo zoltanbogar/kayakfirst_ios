@@ -146,7 +146,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     
     func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
         return anotherManagerDownload is ManagerDownloadTrainingBySessionId &&
-        (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).sessionIds == self.sessionIds
+        (anotherManagerDownload as! ManagerDownloadTrainingBySessionId).getKeyCache() == self.getKeyCache()
     }
     
     override func getKeyCache() -> String {

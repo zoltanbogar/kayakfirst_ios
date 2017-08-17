@@ -41,7 +41,8 @@ class BaseManager {
     //MARK: properties
     var userStack: BaseManagerType?
     
-    private var managerDownloadList: [ManagerDownloadProtocol]?
+    private var managerDownloadServerList: [ManagerDownloadProtocol]?
+    private var managerDownloadLocaleList: [ManagerDownloadProtocol]?
     
     private var uploadRunning = false
     
@@ -77,8 +78,17 @@ class BaseManager {
     
     private func shouldRunDownload(managerDownload: ManagerDownloadProtocol) -> Bool {
         var contains = false
-        if managerDownloadList != nil {
-            contains = managerDownloadList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
+        if managerDownloadServerList != nil {
+            contains = managerDownloadServerList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
+        }
+        
+        return !contains
+    }
+    
+    private func shouldRunDownloadLocale(managerDownload: ManagerDownloadProtocol) -> Bool {
+        var contains = false
+        if managerDownloadLocaleList != nil {
+            contains = managerDownloadLocaleList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
         }
         
         return !contains
@@ -94,18 +104,37 @@ class BaseManager {
     }
     
     private func handlePreExecuteDownload(managerDownload: ManagerDownloadProtocol) {
-        if managerDownloadList == nil {
-            managerDownloadList = [ManagerDownloadProtocol]()
+        if managerDownloadServerList == nil {
+            managerDownloadServerList = [ManagerDownloadProtocol]()
         }
-        managerDownloadList?.append(managerDownload)
+        managerDownloadServerList?.append(managerDownload)
+    }
+    
+    private func handlePreExecuteDownloadLocale(managerDownload: ManagerDownloadProtocol) {
+        if managerDownloadLocaleList == nil {
+            managerDownloadLocaleList = [ManagerDownloadProtocol]()
+        }
+        managerDownloadLocaleList?.append(managerDownload)
     }
     
     private func handlePostExecuteDownload(managerDownload: ManagerDownloadProtocol) {
-        if managerDownloadList != nil {
-            for i in 0..<managerDownloadList!.count {
+        if managerDownloadServerList != nil {
+            for i in 0..<managerDownloadServerList!.count {
                 
-                if managerDownloadList![i].isEqual(anotherManagerDownload: managerDownload) {
-                    managerDownloadList!.remove(at: i)
+                if managerDownloadServerList![i].isEqual(anotherManagerDownload: managerDownload) {
+                    managerDownloadServerList!.remove(at: i)
+                    break
+                }
+            }
+        }
+    }
+    
+    private func handlePublishDownload(managerDownload: ManagerDownloadProtocol) {
+        if managerDownloadLocaleList != nil {
+            for i in 0..<managerDownloadLocaleList!.count {
+                
+                if managerDownloadLocaleList![i].isEqual(anotherManagerDownload: managerDownload) {
+                    managerDownloadLocaleList!.remove(at: i)
                     break
                 }
             }
@@ -229,14 +258,18 @@ class BaseManager {
         }
         
         override func doInBackground(param: Any?) -> [E]? {
-            log("DOWNLOAD_TEST", "doInBackground: \(managerDownload)")
+            var dataFromServer: [E]? = nil
             
-            let dataFromLocale = managerDownload.getDataFromLocale()
-            
-            var dataFromServer = dataFromLocale
-            
-            if dataFromLocale != nil && dataFromLocale!.count > 0 {
-                publishProgress(progress: dataFromLocale)
+            if baseManager.shouldRunDownloadLocale(managerDownload: managerDownload as! ManagerDownloadProtocol) {
+                baseManager.handlePreExecuteDownloadLocale(managerDownload: managerDownload as! ManagerDownloadProtocol)
+                
+                let dataFromLocale = managerDownload.getDataFromLocale()
+                
+                dataFromServer = dataFromLocale
+                
+                if dataFromLocale != nil && dataFromLocale!.count > 0 {
+                    publishProgress(progress: dataFromLocale)
+                }
             }
             
             if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
@@ -259,7 +292,7 @@ class BaseManager {
         override func onProgressUpdate(progress: [E]?) {
             super.onProgressUpdate(progress: progress)
             
-            log("DOWNLOAD_TEST", "progressUpdate: \(managerDownload)")
+            baseManager.handlePublishDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
             
             publish(data: progress)
         }
