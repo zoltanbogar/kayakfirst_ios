@@ -25,7 +25,7 @@ class PlanSoundHelper: CycleStateChangeListener {
     static let sharedInstance = PlanSoundHelper()
     
     private init() {
-        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
+        telemetry.planSoundHelperCycleStateChangeListener = self
     }
     
     func stopSound() {

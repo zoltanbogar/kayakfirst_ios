@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 func startTrainingViewController(viewController: UIViewController, trainingEnvType: TrainingEnvironmentType) {
     startTrainingViewController(viewController: viewController, plan: nil, event: nil, trainingEnvType: trainingEnvType)
@@ -16,18 +17,23 @@ func startTrainingViewController(viewController: UIViewController, plan: Plan?, 
     let trainingVc = TrainingViewController()
     trainingVc.plan = plan
     trainingVc.event = event
+    trainingVc.trainingEnvType = trainingEnvType
     viewController.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, StartDelayDelegate, CalibrationDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, CalibrationDelegate, OnBluetoothConnectedListener {
     
     //MARK: properties
+    private var progressView: ProgressView?
     private var startDelayView: StartDelayView?
     var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance
     let outdoorService = OutdoorService.sharedInstance
+    let ergometerService = ErgometerService.sharedInstance
     var plan: Plan?
     var event: Event?
+    var trainingEnvType: TrainingEnvironmentType?
+    
     private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle
@@ -38,7 +44,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         
         interactivePopGestureRecognizer?.isEnabled = false
         
-        showSetDashboard()
+        showDefaultVc()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,32 +53,78 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         keepScreenOn()
     }
     
-    func getTrainingService() -> TrainingService {
-        return outdoorService
+    private func showDefaultVc() {
+        if let trainingEnvironmentType = trainingEnvType {
+            if trainingEnvironmentType == TrainingEnvironmentType.outdoor {
+                showSetDashboard()
+            } else if trainingEnvironmentType == TrainingEnvironmentType.ergometer {
+                showBluetoothVc()
+            }
+        }
     }
     
     //MARK: training
     func showSetDashboard() {
         if plan == nil {
-            if viewControllers.count > 0 {
+            //TODO: test it
+            /*if viewControllers.count > 0 {
                 popViewController(animated: true)
             } else {
                 pushViewController(SetDashboardVc(), animated: true)
+            }*/
+            
+            let setDashboardVc = SetDashboardVc()
+            setDashboardVc.withBluetooth = trainingEnvType == TrainingEnvironmentType.ergometer
+            
+            if trainingEnvType == TrainingEnvironmentType.outdoor {
+                setDashboardVc.showCloseButton()
+            } else {
+                setDashboardVc.showCustomBackButton()
             }
+            
+            pushViewController(setDashboardVc, animated: true)
         } else {
             showDashboard()
         }
     }
     func showDashboard() {
-        telemetry.cycleState = CycleState.idle
+        //TODO: test - if works Android as well
+        //telemetry.cycleState = CycleState.idle
+        if trainingEnvType == TrainingEnvironmentType.outdoor {
+            telemetry.cycleState = CycleState.idle
+        }
+        
         dashboardVc = DashboardVc()
         dashboardVc!.plan = plan
         dashboardVc!.event = event
         pushViewController(dashboardVc!, animated: true)
     }
+    func showBluetoothVc() {
+        ergometerService.onBluetoothConnectedListener = self
+        pushViewController(BluetoothViewController(), animated: true)
+    }
     
     func closeViewController(shoudlCloseParents: Bool) {
-        outdoorService.stopLocationMonitoring()
+        closeViewController(shoudlCloseParents: shoudlCloseParents, forceClose: false)
+    }
+    
+    func closeViewController(shoudlCloseParents: Bool, forceClose: Bool) {
+        if trainingEnvType == TrainingEnvironmentType.ergometer && !forceClose {
+            showBluetoothDisconnectDialog(dialogPosListener: {
+                self.closeStuff(shoudlCloseParents: shoudlCloseParents)
+            })
+        } else {
+            closeStuff(shoudlCloseParents: shoudlCloseParents)
+        }
+    }
+    
+    private func closeStuff(shoudlCloseParents: Bool) {
+        if trainingEnvType == TrainingEnvironmentType.outdoor {
+            outdoorService.stopLocationMonitoring()
+        }
+        //TODO
+        //ergometerService.onBluetoothConnectedListener = nil
+        
         UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
         self.dismiss(animated: true, completion: {
@@ -82,6 +134,38 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         })
     }
     
+    //MARK: bluetooth
+    func connectBluetooth(bluetoothDevice: CBPeripheral) {
+        progressView?.show(true)
+        ergometerService.connectBluetooth(bluetoothDevice: bluetoothDevice)
+        telemetry.trainingServiceCycleStateChangeListener = ergometerService
+    }
+    
+    func onConnected() {
+        progressView?.show(false)
+        
+        showSetDashboard()
+    }
+    
+    func onDisconnected() {
+        closeViewController(shoudlCloseParents: true, forceClose: true)
+    }
+    
+    func onDataAvailable(stringData: String) {
+        //nothing here
+    }
+    
+    func showBluetoothDisconnectDialog(dialogPosListener: (() -> ())?) {
+        let bluetoothDialog = BluetoothDisconnectDialog()
+        bluetoothDialog.noticeDialogPosListener = dialogPosListener
+        bluetoothDialog.show()
+    }
+    
+    //MARK: button listeners
+    @objc private func btnBluetoothClick() {
+        closeViewController(shoudlCloseParents: true)
+    }
+    
     //MARK: views
     private func initView() {
         startDelayView = StartDelayView(superView: view)
@@ -89,7 +173,18 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         
         calibrationView = CalibrationView(superView: view)
         calibrationView!.delegate = self
+        
+        progressView = ProgressView(superView: view)
     }
+    
+    lazy var bluetoothTabBarItem: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "ic_bluetooth")?.maskWith(color: Colors.colorBluetooth).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        button.target = self
+        button.action = #selector(btnBluetoothClick)
+        
+        return button
+    }()
     
     func onCalibrationEnd() {
         onPlayClicked()
@@ -115,7 +210,14 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     }
     
     func onPauseClicked() {
-        getTrainingService().pauseCycle()
+        switch trainingEnvType! {
+        case TrainingEnvironmentType.outdoor:
+            outdoorService.pauseCycle()
+        case TrainingEnvironmentType.ergometer:
+            ergometerService.pauseCycle()
+        default:
+            break
+        }
     }
     
     func onStopClicked() {
@@ -124,9 +226,23 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     
     private func startServiceLoop(_ isStart: Bool) {
         if isStart {
-            getTrainingService().startCycle()
+            switch trainingEnvType! {
+            case TrainingEnvironmentType.outdoor:
+                outdoorService.startCycle()
+            case TrainingEnvironmentType.ergometer:
+                ergometerService.startCycle()
+            default:
+                break
+            }
         } else {
-            getTrainingService().stopCycle()
+            switch trainingEnvType! {
+            case TrainingEnvironmentType.outdoor:
+                outdoorService.stopCycle()
+            case TrainingEnvironmentType.ergometer:
+                ergometerService.stopCycle()
+            default:
+                break
+            }
         }
     }
     

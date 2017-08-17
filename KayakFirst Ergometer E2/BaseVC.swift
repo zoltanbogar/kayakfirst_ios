@@ -107,6 +107,21 @@ class BaseVC: UIViewController {
         self.navigationItem.setLeftBarButtonItems(nil, animated: true)
     }
     
+    func showCustomBackButton() {
+        self.navigationItem.hidesBackButton = true
+        //TODO: 'back' title string
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "arrowBack")
+        button.target = self
+        button.action = #selector(backClick(sender:))
+        
+        self.navigationItem.leftBarButtonItem = button
+    }
+    
+    func backClick(sender: UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     private lazy var logoBarItem: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "logo_header")

@@ -82,7 +82,7 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     @objc private func clickBtnErgo() {
         trainingEnvironmentType = TrainingEnvironmentType.ergometer
         
-        startErgometerViewController(viewController: self)
+        checkLocationSettings()
     }
     
     private func checkLocationSettings() {
@@ -100,21 +100,9 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
         var permissionViewController: UIViewController? = nil
         
         if !PermissionCheck.hasLocationPermission() {
-            permissionViewController = startLocationPermissionVc(viewController: self.parent!)
+            permissionViewController = startLocationPermissionVc(viewController: self.parent!, trainingEnvType: trainingEnvironmentType!)
         } else {
-            switch trainingEnvironmentType! {
-            case TrainingEnvironmentType.ergometer:
-                //nothing here yet
-                break
-            case TrainingEnvironmentType.outdoor:
-                if plan == nil {
-                    startTrainingViewController(viewController: self, trainingEnvType: trainingEnvironmentType!)
-                } else {
-                    startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: trainingEnvironmentType!)
-                }
-            default:
-                break
-            }
+            startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: trainingEnvironmentType!)
         }
         return permissionViewController
     }

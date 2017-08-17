@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementStroke<E: StartCommand<MeasureCommand>>: CalculateElement<Training, E> {
+class CalculateElementStroke<M: MeasureCommand, E: StartCommand<M>>: CalculateElement<Training, M, E> {
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.STROKES

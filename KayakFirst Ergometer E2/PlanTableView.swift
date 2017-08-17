@@ -52,6 +52,7 @@ class PlanTableView: TableViewWithEmpty<Plan> {
         let label = AppUILabel()
         label.text = getString("plan_empty")
         label.font = UIFont.italicSystemFont(ofSize: 16.0)
+        label.textAlignment = .center
         
         return label
     }()

@@ -34,7 +34,11 @@ class Telemetry {
     var t_1000_av: Double = 0
     
     //MARK: helper values
-    var duration: TimeInterval = 0
+    var duration: TimeInterval = 0 {
+        didSet {
+            log("DURATION_TEST", "durationSet: \(duration)")
+        }
+    }
     var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
     var sessionId: Double = 0
@@ -74,34 +78,26 @@ class Telemetry {
                 }
             }
             
-            if let cycleStateListeners = cycleStateChangeListenerList {
-                if cycleState != nil {
-                    for listener in cycleStateListeners {
-                        listener.onCycleStateChanged(newCycleState: cycleState!)
-                    }
-                }
-            }
+            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: planSoundHelperCycleStateChangeListener)
             
-            if let listener = dashboardCycleStateChangeListener {
-                if cycleState != nil {
-                    listener.onCycleStateChanged(newCycleState: cycleState!)
-                }
+        }
+    }
+    
+    private func notifyListener(cycleStateChangeListener: CycleStateChangeListener?) {
+        if let listener = cycleStateChangeListener {
+            if cycleState != nil {
+                listener.onCycleStateChanged(newCycleState: cycleState!)
             }
         }
     }
     
-    //MARK: other properties
-    private var cycleStateChangeListenerList: [CycleStateChangeListener]?
-    
-    //TODO - refactor: not a good solution, use 'removeCycleStateListener'
     var dashboardCycleStateChangeListener: CycleStateChangeListener?
     
-    func addCycleStateChangeListener(cycleStateChangeListener: CycleStateChangeListener) {
-        if self.cycleStateChangeListenerList == nil {
-            self.cycleStateChangeListenerList = [CycleStateChangeListener]()
-        }
-        self.cycleStateChangeListenerList?.append(cycleStateChangeListener)
-    }
+    var trainingServiceCycleStateChangeListener: CycleStateChangeListener?
+    
+    var planSoundHelperCycleStateChangeListener: CycleStateChangeListener?
     
     private func setAverageIndex() {
         if averageIndex == 0 {

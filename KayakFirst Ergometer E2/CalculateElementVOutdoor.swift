@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementVOutdoor: CalculateElementV<StartCommandOutdoor> {
+class CalculateElementVOutdoor: CalculateElementV<MeasureCommand, StartCommandOutdoor> {
     
     private var currentTimeStamp: Double = 0
     
@@ -16,5 +16,4 @@ class CalculateElementVOutdoor: CalculateElementV<StartCommandOutdoor> {
         
         return createTrainingObject()
     }
-    
 }

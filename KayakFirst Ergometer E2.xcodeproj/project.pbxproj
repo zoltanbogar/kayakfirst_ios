@@ -223,6 +223,15 @@
 		0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */; };
 		067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */; };
 		067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */; };
+		067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09A21F38A2DA00CC8051 /* CalculateElementOmegaMax.swift */; };
+		067A09A51F38A39200CC8051 /* CalculateElementOmegaMin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09A41F38A39200CC8051 /* CalculateElementOmegaMin.swift */; };
+		067A09A71F38A40E00CC8051 /* CalculateElementP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09A61F38A40E00CC8051 /* CalculateElementP.swift */; };
+		067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09A81F38A56000CC8051 /* CalculateElementSErgo.swift */; };
+		067A09AB1F38A71400CC8051 /* CalculateElementStrokesErgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09AA1F38A71400CC8051 /* CalculateElementStrokesErgo.swift */; };
+		067A09AD1F38A82200CC8051 /* CalculateElementVErgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09AC1F38A82200CC8051 /* CalculateElementVErgo.swift */; };
+		067A09AF1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09AE1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift */; };
+		067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */; };
+		067A09B31F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */; };
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
 		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
 		0683EA381E74860100F39988 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0683EA371E74858A00F39988 /* BebasNeue.otf */; };
@@ -270,7 +279,6 @@
 		06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F51F0A44B40077EE21 /* EditPlan.swift */; };
 		06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C2F3F71F0A48F00077EE21 /* PlanObject.swift */; };
 		06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABB11E2267A000562B27 /* AppDelegate.swift */; };
-		06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABB81E2267A000562B27 /* Assets.xcassets */; };
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
@@ -300,6 +308,15 @@
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
 		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
 		06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */; };
+		06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840501F35E1C300303574 /* BluetoothViewController.swift */; };
+		06E840531F35F15900303574 /* BluetoothList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840521F35F15900303574 /* BluetoothList.swift */; };
+		06E840551F35F32400303574 /* AppProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840541F35F32400303574 /* AppProgressBar.swift */; };
+		06E8405A1F35FA3800303574 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840591F35FA3800303574 /* Bluetooth.swift */; };
+		06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */; };
+		06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */; };
+		06E840611F37500A00303574 /* ErgometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840601F37500A00303574 /* ErgometerService.swift */; };
+		06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */; };
+		06E840651F376A8500303574 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06E840641F376A8500303574 /* Assets.xcassets */; };
 		06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */; };
 		06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */; };
 		06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */; };
@@ -321,6 +338,15 @@
 		06F938FE1E3F386500920753 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FD1E3F386500920753 /* UITextField+.swift */; };
 		06F939001E3F720A00920753 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F938FF1E3F720A00920753 /* Dimens.swift */; };
 		06F939021E3F793100920753 /* AppUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F939011E3F793100920753 /* AppUILabel.swift */; };
+		06F9D5CD1F3892A1005ECA8B /* MeasureCommandErgometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */; };
+		06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */; };
+		06F9D5D11F389595005ECA8B /* CommandErgometerRPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */; };
+		06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */; };
+		06F9D5D51F389637005ECA8B /* CommandErgometerT_MAX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */; };
+		06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */; };
+		06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */; };
+		06F9D5DB1F38985F005ECA8B /* StartCommandErgometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */; };
+		06F9D5DE1F38997F005ECA8B /* CalculateElementFErgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */; };
 		F2AE34EE861A1337DC55E42A /* Pods_KayakFirst_Ergometer_E2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */; };
 /* End PBXBuildFile section */
 
@@ -562,6 +588,15 @@
 		0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementSOutdoor.swift; sourceTree = "<group>"; };
 		067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStrokesOutdoor.swift; sourceTree = "<group>"; };
 		067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVOutdoor.swift; sourceTree = "<group>"; };
+		067A09A21F38A2DA00CC8051 /* CalculateElementOmegaMax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementOmegaMax.swift; sourceTree = "<group>"; };
+		067A09A41F38A39200CC8051 /* CalculateElementOmegaMin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementOmegaMin.swift; sourceTree = "<group>"; };
+		067A09A61F38A40E00CC8051 /* CalculateElementP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementP.swift; sourceTree = "<group>"; };
+		067A09A81F38A56000CC8051 /* CalculateElementSErgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementSErgo.swift; sourceTree = "<group>"; };
+		067A09AA1F38A71400CC8051 /* CalculateElementStrokesErgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStrokesErgo.swift; sourceTree = "<group>"; };
+		067A09AC1F38A82200CC8051 /* CalculateElementVErgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVErgo.swift; sourceTree = "<group>"; };
+		067A09AE1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Ergo.swift; sourceTree = "<group>"; };
+		067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Ergo.swift; sourceTree = "<group>"; };
+		067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Outdoor.swift; sourceTree = "<group>"; };
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
 		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
 		0683EA371E74858A00F39988 /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
@@ -610,7 +645,6 @@
 		06C2F3F71F0A48F00077EE21 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
-		06C6ABB81E2267A000562B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "KayakFirst Ergometer E2/Assets.xcassets"; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "KayakFirst Ergometer E2/Info.plist"; sourceTree = "<group>"; };
 		06C6ABC21E2267A100562B27 /* KayakFirst Ergometer E2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -646,6 +680,15 @@
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
 		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
 		06E82BE61F0A75CD006EC016 /* PlanTrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTrainingDbLoader.swift; sourceTree = "<group>"; };
+		06E840501F35E1C300303574 /* BluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
+		06E840521F35F15900303574 /* BluetoothList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothList.swift; sourceTree = "<group>"; };
+		06E840541F35F32400303574 /* AppProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppProgressBar.swift; sourceTree = "<group>"; };
+		06E840591F35FA3800303574 /* Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDeviceTableView.swift; sourceTree = "<group>"; };
+		06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableViewCell.swift; sourceTree = "<group>"; };
+		06E840601F37500A00303574 /* ErgometerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerService.swift; sourceTree = "<group>"; };
+		06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothDisconnectDialog.swift; sourceTree = "<group>"; };
+		06E840641F376A8500303574 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		06F657BD1E4601FF002AA9D0 /* UpdatePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePassword.swift; sourceTree = "<group>"; };
@@ -667,6 +710,15 @@
 		06F938FD1E3F386500920753 /* UITextField+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		06F938FF1E3F720A00920753 /* Dimens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimens.swift; sourceTree = "<group>"; };
 		06F939011E3F793100920753 /* AppUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUILabel.swift; sourceTree = "<group>"; };
+		06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureCommandErgometer.swift; sourceTree = "<group>"; };
+		06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerReset.swift; sourceTree = "<group>"; };
+		06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerRPM.swift; sourceTree = "<group>"; };
+		06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_H.swift; sourceTree = "<group>"; };
+		06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MAX.swift; sourceTree = "<group>"; };
+		06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MIN.swift; sourceTree = "<group>"; };
+		06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_V.swift; sourceTree = "<group>"; };
+		06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommandErgometer.swift; sourceTree = "<group>"; };
+		06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementFErgo.swift; sourceTree = "<group>"; };
 		4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KayakFirst_Ergometer_E2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31816E028C7E966780D9DF9 /* Pods-KayakFirst Ergometer E2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.release.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.release.xcconfig"; sourceTree = "<group>"; };
 		DDFF98EF1EA2CB93E4A696A8 /* Pods-KayakFirst Ergometer E2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -792,6 +844,7 @@
 			children = (
 				060B99171E641A5200F72404 /* TrainingService.swift */,
 				060B99291E64313B00F72404 /* OutdoorService.swift */,
+				06E840601F37500A00303574 /* ErgometerService.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -820,6 +873,7 @@
 		060D9BA11E4A6539006DD8AB /* table_view */ = {
 			isa = PBXGroup;
 			children = (
+				06E8405B1F360A6100303574 /* bluetooth */,
 				067129561EC8953700362C39 /* plan_element */,
 				066B004B1EC758EA00BE0E1F /* plan */,
 				066B004A1EC758DF00BE0E1F /* training */,
@@ -904,6 +958,7 @@
 		061145D21E58D6920058EAF4 /* calculate */ = {
 			isa = PBXGroup;
 			children = (
+				06F9D5DC1F389965005ECA8B /* ergometer */,
 				067964751E63815000DFC050 /* outdoor */,
 				067964661E637C3700DFC050 /* average */,
 				060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */,
@@ -1198,6 +1253,7 @@
 			children = (
 				0679645E1E636CCE00DFC050 /* StartCommand.swift */,
 				0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */,
+				06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */,
 			);
 			name = start_command;
 			sourceTree = "<group>";
@@ -1214,6 +1270,9 @@
 				067964711E63804500DFC050 /* CalculateT_1000_AV.swift */,
 				067964731E63808100DFC050 /* CalculateV_AV.swift */,
 				0613590E1E8325C80085578E /* CalculateT_AV.swift */,
+				067A09AE1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift */,
+				067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */,
+				067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */,
 			);
 			name = average;
 			sourceTree = "<group>";
@@ -1232,6 +1291,7 @@
 		0679648E1E63878900DFC050 /* command */ = {
 			isa = PBXGroup;
 			children = (
+				06F9D5CB1F389287005ECA8B /* ergometer */,
 				067964911E63881200DFC050 /* outdoor */,
 				0679648F1E6387A000DFC050 /* MeasureCommand.swift */,
 			);
@@ -1270,6 +1330,7 @@
 				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
 				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
 				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
+				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1405,7 +1466,7 @@
 				06C6ABBD1E2267A000562B27 /* Info.plist */,
 				0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */,
 				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
-				06C6ABB81E2267A000562B27 /* Assets.xcassets */,
+				06E840641F376A8500303574 /* Assets.xcassets */,
 				0613A9101E67E54000B13342 /* FBSDKCoreKit.framework */,
 				0613A9111E67E54000B13342 /* FBSDKLoginKit.framework */,
 				06C6ABC51E2267A100562B27 /* KayakFirst Ergometer E2Tests */,
@@ -1430,6 +1491,7 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
+				06E840561F35F50900303574 /* bluetooth */,
 				066579EC1F161BBD00E43852 /* cloud_message */,
 				066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */,
 				0683EA361E74856D00F39988 /* fonts */,
@@ -1493,6 +1555,7 @@
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
 				06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */,
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
+				06E840501F35E1C300303574 /* BluetoothViewController.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -1506,6 +1569,23 @@
 			name = dashboard;
 			sourceTree = "<group>";
 		};
+		06E840561F35F50900303574 /* bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				06E840591F35FA3800303574 /* Bluetooth.swift */,
+			);
+			name = bluetooth;
+			sourceTree = "<group>";
+		};
+		06E8405B1F360A6100303574 /* bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				06E8405C1F360A7000303574 /* BluetoothDeviceTableView.swift */,
+				06E8405E1F360ABE00303574 /* BluetoothTableViewCell.swift */,
+			);
+			name = bluetooth;
+			sourceTree = "<group>";
+		};
 		06F9145F1E42801C0041B303 /* backend */ = {
 			isa = PBXGroup;
 			children = (
@@ -1517,6 +1597,34 @@
 				060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */,
 			);
 			name = backend;
+			sourceTree = "<group>";
+		};
+		06F9D5CB1F389287005ECA8B /* ergometer */ = {
+			isa = PBXGroup;
+			children = (
+				06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */,
+				06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */,
+				06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */,
+				06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */,
+				06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */,
+				06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */,
+				06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */,
+			);
+			name = ergometer;
+			sourceTree = "<group>";
+		};
+		06F9D5DC1F389965005ECA8B /* ergometer */ = {
+			isa = PBXGroup;
+			children = (
+				067A09AC1F38A82200CC8051 /* CalculateElementVErgo.swift */,
+				06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */,
+				067A09A21F38A2DA00CC8051 /* CalculateElementOmegaMax.swift */,
+				067A09A41F38A39200CC8051 /* CalculateElementOmegaMin.swift */,
+				067A09A61F38A40E00CC8051 /* CalculateElementP.swift */,
+				067A09A81F38A56000CC8051 /* CalculateElementSErgo.swift */,
+				067A09AA1F38A71400CC8051 /* CalculateElementStrokesErgo.swift */,
+			);
+			name = ergometer;
 			sourceTree = "<group>";
 		};
 		D05B288D65A9DF744A8B9998 /* Pods */ = {
@@ -1654,8 +1762,8 @@
 				06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */,
 				0698BC4D1F005E9200FC7A0E /* plan_tick.mp3 in Resources */,
 				0613A91C1E67EECC00B13342 /* GoogleService-Info.plist in Resources */,
+				06E840651F376A8500303574 /* Assets.xcassets in Resources */,
 				0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */,
-				06C6ABB91E2267A000562B27 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1753,17 +1861,20 @@
 				0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */,
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
+				06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
 				06AF23331F0625FA008805A2 /* Event.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */,
 				06CAFF531F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift in Sources */,
+				06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */,
 				0626FBCD1EFCE9DB00DCBB33 /* UserManager.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */,
 				060A377C1E58522E00A973BF /* DashBoardElement_Av1000.swift in Sources */,
+				06F9D5CD1F3892A1005ECA8B /* MeasureCommandErgometer.swift in Sources */,
 				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
 				060B3DC01EE85E5900AF43DE /* PlanEtIntensity.swift in Sources */,
 				06CAFF451F0D2C8900D2EA14 /* ManagerModifyEventSave.swift in Sources */,
@@ -1786,16 +1897,20 @@
 				06C2F3EC1F0A3F5D0077EE21 /* DeleteEvent.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
 				066B00381EC701B900BE0E1F /* Plan.swift in Sources */,
+				067A09AD1F38A82200CC8051 /* CalculateElementVErgo.swift in Sources */,
 				066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */,
 				06AF23371F062812008805A2 /* PlanTraining.swift in Sources */,
 				066579E81F16013300E43852 /* UploadPushId.swift in Sources */,
+				06E8405A1F35FA3800303574 /* Bluetooth.swift in Sources */,
 				067545C61F1132C9008759E7 /* WeightLabel.swift in Sources */,
 				060B99261E64289700F72404 /* FusedLocationManager.swift in Sources */,
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
+				06F9D5D51F389637005ECA8B /* CommandErgometerT_MAX.swift in Sources */,
 				069433F81E28487800CE6398 /* PasswordCheck.swift in Sources */,
 				06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
+				06E840611F37500A00303574 /* ErgometerService.swift in Sources */,
 				060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */,
 				060D9B9E1E4A5E46006DD8AB /* TableViewWithEmpty.swift in Sources */,
 				067964611E636E7800DFC050 /* MovingAverage.swift in Sources */,
@@ -1806,12 +1921,14 @@
 				06CAFF3F1F0D28CD00D2EA14 /* ManagerModifyEditable.swift in Sources */,
 				065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
+				06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */,
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
 				06CAFF4D1F0D304D00D2EA14 /* EventManager.swift in Sources */,
+				067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */,
 				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
 				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
@@ -1819,9 +1936,11 @@
 				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
+				06E840551F35F32400303574 /* AppProgressBar.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
+				067A09B31F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift in Sources */,
 				067129581EC8958600362C39 /* PECellNormal.swift in Sources */,
 				060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
@@ -1830,6 +1949,7 @@
 				06AF23461F06801B008805A2 /* DownloadPlanByName.swift in Sources */,
 				061145D81E58D9620058EAF4 /* LabelStroke.swift in Sources */,
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
+				06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */,
 				060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
@@ -1848,11 +1968,13 @@
 				06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
+				06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
 				06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */,
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
+				06E840531F35F15900303574 /* BluetoothList.swift in Sources */,
 				060A37901E58969300A973BF /* MainTabVc.swift in Sources */,
 				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
@@ -1891,6 +2013,7 @@
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
 				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
+				067A09A51F38A39200CC8051 /* CalculateElementOmegaMin.swift in Sources */,
 				06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */,
 				0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */,
 				060DE0061E4BDFB400FE2D14 /* TrainingSET1000.swift in Sources */,
@@ -1905,11 +2028,13 @@
 				067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */,
 				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
+				06F9D5DE1F38997F005ECA8B /* CalculateElementFErgo.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
 				064FE5AC1ED0A002004A9F35 /* TrainingManagerType.swift in Sources */,
 				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
 				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,
 				061C80191E693F8700BCE509 /* RegisterView.swift in Sources */,
+				06F9D5D11F389595005ECA8B /* CommandErgometerRPM.swift in Sources */,
 				060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */,
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
@@ -1981,9 +2106,13 @@
 				064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */,
 				064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */,
 				062369661E9BF44100578017 /* CalibrationView.swift in Sources */,
+				067A09AF1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift in Sources */,
 				06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */,
 				0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */,
+				06F9D5DB1F38985F005ECA8B /* StartCommandErgometer.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
+				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
+				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,
@@ -1992,6 +2121,7 @@
 				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
 				061145DA1E58D97C0058EAF4 /* LabelT200.swift in Sources */,
 				060B3DC21EE85EC100AF43DE /* PlanEtMinute.swift in Sources */,
+				067A09A71F38A40E00CC8051 /* CalculateElementP.swift in Sources */,
 				06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */,
 				06C2F3F01F0A42360077EE21 /* DeleteTraining.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
@@ -2015,12 +2145,15 @@
 				06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
+				067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
 				067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */,
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
+				06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
+				067A09AB1F38A71400CC8051 /* CalculateElementStrokesErgo.swift in Sources */,
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */,
@@ -2031,6 +2164,7 @@
 				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,
 				060B99181E641A5200F72404 /* TrainingService.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
+				06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */,
 				06CAFF491F0D2E1000D2EA14 /* ManagerModifyPlan.swift in Sources */,

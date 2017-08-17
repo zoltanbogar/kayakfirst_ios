@@ -20,6 +20,8 @@ class AppUITableViewCell<E>: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = Colors.colorTransparent
+        
         contentView.addSubview(initView())
         initView().snp.makeConstraints { make in
             make.width.equalTo(contentView)

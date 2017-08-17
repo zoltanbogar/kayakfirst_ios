@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementStrokesOutdoor: CalculateElementStroke<StartCommandOutdoor> {
+class CalculateElementStrokesOutdoor: CalculateElementStroke<MeasureCommand, StartCommandOutdoor> {
     
     override func run() -> Training {
         let currentSpeed = telemetry.speed

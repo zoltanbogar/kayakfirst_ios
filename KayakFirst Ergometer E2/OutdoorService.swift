@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class OutdoorService: TrainingService {
+class OutdoorService: TrainingService<MeasureCommand> {
     
     //MARK: properties
     private let fusedLocationManager = FusedLocationManager.sharedInstance
@@ -20,11 +20,12 @@ class OutdoorService: TrainingService {
     //MARK: init
     static let sharedInstance = OutdoorService()
     private override init() {
-        //private empty constructor
+        super.init()
     }
     
     //MARK: start/stop monitoring
     public func startLocationMonitoring() {
+        setTelemetryListener(true)
         fusedLocationManager.startLocationMonitoring(start: true)
         sensorManager.startSensorMonitoring(start: true)
     }
@@ -32,6 +33,7 @@ class OutdoorService: TrainingService {
     public func stopLocationMonitoring() {
         fusedLocationManager.startLocationMonitoring(start: false)
         sensorManager.startSensorMonitoring(start: false)
+        setTelemetryListener(false)
     }
     
     override func initCommandList() {

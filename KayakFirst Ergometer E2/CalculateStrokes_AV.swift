@@ -8,7 +8,7 @@
 
 import Foundation
 //abstract class
-class CalculateStrokes_AV: CalculateElementAvg {
+class CalculateStrokes_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
     override func getAvgType() -> CalculateEnum {
         return CalculateEnum.STROKES_AV

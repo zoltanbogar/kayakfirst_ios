@@ -8,25 +8,22 @@
 
 import Foundation
 
-class TrainingService: CycleStateChangeListener {
+class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
-    var commandList: [MeasureCommand]?
-    var startCommand: StartCommand<MeasureCommand>?
+    var commandList: [M]?
+    var startCommand: StartCommand<M>?
     
-    private let pauseDiff = PauseDiff.sharedInstance
+    let pauseDiff = PauseDiff.sharedInstance
     
     private let trainingManager = TrainingManager.sharedInstance
     
     private var realDuration: Double = 0
     
-    private var isCyclePaused = false
+    internal var isServiceStopped = false
     
-    //MARK: init
-    internal init() {
-        telemetry.addCycleStateChangeListener(cycleStateChangeListener: self)
-    }
+    private var isCyclePaused = false
     
     //MARK: abstract methods
     internal func initCommandList() {
@@ -52,6 +49,15 @@ class TrainingService: CycleStateChangeListener {
     //useconds
     internal func getTimeWaitAfterCalculate() -> useconds_t {
         fatalError("Must be implemented")
+    }
+    
+    internal func setTelemetryListener(_ isSet: Bool) {
+        if isSet {
+            telemetry.trainingServiceCycleStateChangeListener = self
+        } else {
+            telemetry.trainingServiceCycleStateChangeListener = nil
+        }
+        isServiceStopped = !isSet
     }
     
     //MARK: lifecycle
@@ -141,20 +147,31 @@ class TrainingService: CycleStateChangeListener {
     }
     
     func onCycleStateChanged(newCycleState: CycleState) {
-        switch newCycleState {
-        case CycleState.resumed:
-            isCyclePaused = false
-            startLoop()
-        case CycleState.idle:
-            reset()
-        case CycleState.stopped:
-            telemetry.resetCurrent()
-            handleStopTraining()
-        case CycleState.paused:
-            isCyclePaused = true
-        default:
-            log("CYCLE_STATE", "newCycleState: \(newCycleState)")
+        if !isServiceStopped {
+            switch newCycleState {
+            case CycleState.resumed:
+                isCyclePaused = false
+                startLoop()
+            case CycleState.idle:
+                reset()
+            case CycleState.stopped:
+                telemetry.resetCurrent()
+                handleStopTraining()
+                isCyclePaused = true
+            case CycleState.paused:
+                isCyclePaused = true
+            default:
+                break
+            }
         }
+    }
+    
+    internal func getTimeBasedMaxSpm() -> useconds_t {
+        let maxSpm = AppSensorManager.maxSpm
+        
+        let timeWait = useconds_t((Double(1000) / (Double(maxSpm) / Double(60)))) * 1000
+        
+        return timeWait
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateT_500_AV: CalculateT_AV {
+class CalculateT_500_AV<M: MeasureCommand>: CalculateT_AV<M> {
     
     override func getAvgType() -> CalculateEnum {
         return CalculateEnum.T_500_AV

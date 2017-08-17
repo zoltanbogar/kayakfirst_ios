@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementT: CalculateElementCurrent {
+class CalculateElementT<M: MeasureCommand>: CalculateElementCurrent<M> {
     
     //MARK: abstract method
     internal func getDistance() -> Double {

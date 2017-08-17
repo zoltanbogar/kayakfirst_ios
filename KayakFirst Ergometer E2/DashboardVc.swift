@@ -73,8 +73,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()
             } else if telemetry.cycleState != CycleState.paused {
-                parent.outdoorService.startLocationMonitoring()
-                parent.calibrationView?.showView()
+                switch parent.trainingEnvType! {
+                case TrainingEnvironmentType.outdoor:
+                    parent.outdoorService.startLocationMonitoring()
+                    parent.calibrationView?.showView()
+                case TrainingEnvironmentType.ergometer:
+                    parent.onCalibrationEnd()
+                default:
+                    break
+                }
             }
         }
     }
@@ -169,22 +176,24 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func showBackButton() {
-        switch telemetry.cycleState! {
-        case CycleState.idle:
-            self.navigationItem.setHidesBackButton(false, animated: true)
-            if plan == nil {
+        if telemetry.cycleState != nil {
+            switch telemetry.cycleState! {
+            case CycleState.idle:
+                self.navigationItem.setHidesBackButton(false, animated: true)
+                if plan == nil {
+                    removeCloseButton()
+                }
+            case CycleState.stopped:
+                self.navigationItem.setHidesBackButton(true, animated: true)
+                showCloseButton()
+            case CycleState.paused:
+                self.navigationItem.setHidesBackButton(true, animated: true)
                 removeCloseButton()
+            case CycleState.resumed:
+                self.navigationItem.setHidesBackButton(true, animated: true)
+                removeCloseButton()
+            default: break
             }
-        case CycleState.stopped:
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            showCloseButton()
-        case CycleState.paused:
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            removeCloseButton()
-        case CycleState.resumed:
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            removeCloseButton()
-        default: break
         }
     }
     
@@ -373,6 +382,12 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
         if isShow {
             menuItem = [btnPowerSaveOn]
         }
+        
+        if let parent = self.parent as? TrainingViewController {
+            if parent.trainingEnvType == TrainingEnvironmentType.ergometer {
+                menuItem.append(parent.bluetoothTabBarItem)
+            }
+        }
         self.navigationItem.setRightBarButtonItems(menuItem, animated: true)
     }
     
@@ -500,7 +515,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     private lazy var btnPowerSaveOff: UIBarButtonItem! = {
         let button = UIBarButtonItem()
         button.image = UIImage(named: "powerSavingMode")?.withRenderingMode(.alwaysOriginal)
-        button.image?.withRenderingMode(.alwaysOriginal)
         button.target = self
         button.action = #selector(clickPowerSaveOn)
         

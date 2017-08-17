@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementT_500: CalculateElementT {
+class CalculateElementT_500<M: MeasureCommand>: CalculateElementT<M> {
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.T_500

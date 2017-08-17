@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateStrokes_AV_Outdoor: CalculateStrokes_AV {
+class CalculateStrokes_AV_Outdoor: CalculateStrokes_AV<MeasureCommand> {
     
     override func calculate() -> Double {
         let index: Double = Double(telemetry.averageIndex)

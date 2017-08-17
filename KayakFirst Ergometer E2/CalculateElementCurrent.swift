@@ -7,6 +7,6 @@
 //
 
 import Foundation
-class CalculateElementCurrent: CalculateElement<Training, StartCommand<MeasureCommand>> {
+class CalculateElementCurrent<M: MeasureCommand>: CalculateElement<Training, M,  StartCommand<M>> {
     //abstract class
 }

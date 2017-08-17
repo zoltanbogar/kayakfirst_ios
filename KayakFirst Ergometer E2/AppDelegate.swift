@@ -12,6 +12,7 @@ import FBSDKLoginKit
 import Google
 import UserNotifications
 
+//TODO: there is no buttons texts...
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

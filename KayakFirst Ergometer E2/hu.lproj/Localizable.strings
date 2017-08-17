@@ -75,6 +75,7 @@
 "fragment_bluetooth_off"="Bluetooth ki van kapcsolva.";
 "fragment_bluetooth_list_empty"="Nem található aktív Bluetooth eszköz.\n\n Amennyiben nem találod ennek a gépnek az azonosítóját a képernyőn, húzz egy rövidet a gépen, az bekapcsolja a jeladót, majd próbálkozz újra a kapcsolódással!";
 "fragment_bluetooth_location_permission"="A Bluetooth használatához, kattints a Beállításokra alább, majd kapcsold be a Helyadatokat az Engedélyek menüben.";
+"fragment_bluetooth_location_permission_ios"="A Bluetooth használatához, kattints a Beállításokra alább, majd állítsd át a Helyzetet erre: MINDIG.";
 "fragment_bluetooth_app_details_settings"="Beállítások";
 
 //Bluetooth

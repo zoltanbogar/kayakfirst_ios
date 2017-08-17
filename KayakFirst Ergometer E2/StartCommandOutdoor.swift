@@ -10,7 +10,6 @@ import Foundation
 class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     //MARK: properties
-    var distanceSum: Double = 0
     var speed: Double = 0
     var strokesValue: Double = 0
     
@@ -20,6 +19,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     private var strokeElement: CalculateElementStrokesOutdoor?
     
     private var calculateStrokes_av_outdoor: CalculateStrokes_AV_Outdoor?
+    private var calculateV_av_outdoor: CalculateV_AV_Outdoor?
     
     //MARK: init
     static let sharedInstance: StartCommandOutdoor = StartCommandOutdoor()
@@ -40,14 +40,11 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
         strokeElement = CalculateElementStrokesOutdoor(startCommand: self)
         
         calculateStrokes_av_outdoor = CalculateStrokes_AV_Outdoor(startCommand: self)
+        calculateV_av_outdoor = CalculateV_AV_Outdoor(startCommand: self)
     }
     
     override func getTrainingEnvironmentType() -> TrainingEnvironmentType {
         return TrainingEnvironmentType.outdoor
-    }
-    
-    override func getSelfStartCommand() -> StartCommand<MeasureCommand> {
-        return self
     }
     
     override func calculateValues(measureCommands: [MeasureCommand]) -> TelemetryObject {
@@ -79,6 +76,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
         strokes = strokeElement!.run()
         
         strokesAv = calculateStrokes_av_outdoor?.run()
+        vAv = calculateV_av_outdoor!.run()
     }
     
 }
