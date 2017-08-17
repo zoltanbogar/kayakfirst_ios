@@ -74,6 +74,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
             }*/
             
             let setDashboardVc = SetDashboardVc()
+            setDashboardVc.withBluetooth = trainingEnvType == TrainingEnvironmentType.ergometer
             
             if trainingEnvType == TrainingEnvironmentType.outdoor {
                 setDashboardVc.showCloseButton()

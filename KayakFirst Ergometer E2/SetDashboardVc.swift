@@ -16,6 +16,8 @@ class SetDashboardVc: BaseVC {
     private var draggedViewOriginalX: CGFloat = 0
     private var draggedViewOriginalY: CGFloat = 0
     
+    var withBluetooth = false
+    
     //MARK: lífecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class SetDashboardVc: BaseVC {
         addGesutreRecognizer(dashBoardElement: dashboardElementDistance)
         addGesutreRecognizer(dashBoardElement: dashboardElementDuration)
         addGesutreRecognizer(dashBoardElement: dashboardElementStrokes)
+        addGesutreRecognizer(dashBoardElement: dashboardElementForce)
+        addGesutreRecognizer(dashBoardElement: dashboardElementAvForce)
     }
     
     private func addGesutreRecognizer(dashBoardElement: DashBoardElement) {
@@ -100,6 +104,7 @@ class SetDashboardVc: BaseVC {
     }
     
     //MARK: views
+    //TODO: fonts not correct in bracnh 'BLE'
     override func initView() {
         mainStackView.removeAllSubviews()
         
@@ -340,10 +345,39 @@ class SetDashboardVc: BaseVC {
             make.width.equalTo(halfDivider8)
         })
         
+        let stackView5 = UIStackView()
+        stackView5.axis = .horizontal
+        stackView5.addArrangedSubview(self.dashboardElementForce)
+        let halfDivider9 = HalfDivider()
+        stackView5.addArrangedSubview(halfDivider9)
+        stackView5.addArrangedSubview(self.imgLogo)
+        let halfDivider10 = HalfDivider()
+        stackView5.addArrangedSubview(halfDivider10)
+        stackView5.addArrangedSubview(self.dashboardElementAvForce)
+        self.dashboardElementForce.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.imgLogo)
+        })
+        self.imgLogo.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementAvForce)
+        })
+        self.dashboardElementAvForce.snp.makeConstraints({ (make) in
+            make.width.equalTo(self.dashboardElementForce)
+        })
+        halfDivider9.snp.makeConstraints({ (make) in
+            make.width.equalTo(dashboardDividerWidth)
+        })
+        halfDivider10.snp.makeConstraints({ (make) in
+            make.width.equalTo(halfDivider9)
+        })
+        
         stackView.addArrangedSubview(stackView1)
         stackView.addArrangedSubview(stackView2)
         stackView.addArrangedSubview(stackView3)
         stackView.addArrangedSubview(stackView4)
+        
+        if self.withBluetooth {
+            stackView.addArrangedSubview(stackView5)
+        }
         
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
@@ -436,6 +470,30 @@ class SetDashboardVc: BaseVC {
         view.isValueVisible = false
         
         return view
+    }()
+    
+    private lazy var dashboardElementForce: DashBoardElement_PullForce! = {
+        let view = DashBoardElement_PullForce()
+        view.isValueVisible = false
+        
+        return view
+    }()
+    
+    private lazy var dashboardElementAvForce: DashBoardElement_AvPullForce! = {
+        let view = DashBoardElement_AvPullForce()
+        view.isValueVisible = false
+        
+        return view
+    }()
+    
+    private lazy var imgLogo: UIImageView! = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo_header")
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = Colors.colorPrimary
+        imageView.contentMode = UIViewContentMode.center
+        
+        return imageView
     }()
     
     //MARK: tabbar items
