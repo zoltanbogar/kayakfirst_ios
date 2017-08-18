@@ -61,11 +61,13 @@ class OutdoorService: TrainingService<MeasureCommand> {
     }
     
     override func getTimeWaitAfterCalculate() -> useconds_t {
-        return getTimeBasedMaxSpm()
+        return getTimeBasedMaxSpm() * 2
     }
     
     override func runCalculate() -> Bool {
         runCommandList()
-        return fusedLocationManager.isNewLocationAvailable
+        //TODO - refactor: test this
+        //return fusedLocationManager.isNewLocationAvailable
+        return true
     }
 }
