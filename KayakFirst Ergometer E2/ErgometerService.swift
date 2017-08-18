@@ -100,9 +100,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
             commandIndex = commandIndex + 1
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(Int(getTimeBasedMaxSpm())), execute: {
-            self.writeBluetoothData()
-        })
+       self.writeBluetoothData()
     }
     
     private func writeBluetoothData() {
