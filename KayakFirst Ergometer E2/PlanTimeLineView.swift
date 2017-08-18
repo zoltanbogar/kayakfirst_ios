@@ -136,6 +136,10 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
     }
     
     private func initConstraints() {
+        if leftConstant.isNaN {
+            leftConstant = 0
+        }
+        
         stackView.snp.remakeConstraints { (make) in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()

@@ -41,7 +41,13 @@ class Telemetry {
     }
     var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
-    var sessionId: Double = 0
+    
+    private var _sessionId: Double = 0
+    var sessionId: Double {
+        get {
+            return Double(Int64(_sessionId))
+        }
+    }
     
     //MARK telemtry objects
     var telemetryObject: TelemetryObject? {
@@ -74,7 +80,7 @@ class Telemetry {
         didSet {
             if cycleState == CycleState.resumed {
                 if sessionId == 0 {
-                    sessionId = currentTimeMillis()
+                    _sessionId = currentTimeMillis()
                 }
             }
             
@@ -118,7 +124,7 @@ class Telemetry {
         t_500 = 0
         t_1000 = 0
         
-        sessionId = 0
+        _sessionId = 0
     }
     
     func resetOthers() {

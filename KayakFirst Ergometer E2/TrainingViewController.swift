@@ -85,6 +85,9 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         //telemetry.cycleState = CycleState.idle
         if trainingEnvType == TrainingEnvironmentType.outdoor {
             telemetry.cycleState = CycleState.idle
+            outdoorService.reset()
+        } else {
+            ergometerService.reset()
         }
         
         dashboardVc = DashboardVc()
