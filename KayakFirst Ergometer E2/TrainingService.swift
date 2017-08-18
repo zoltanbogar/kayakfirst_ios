@@ -123,8 +123,6 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
                 
                 usleep(UInt32(RefreshView.refreshMillis * 1000))
             }
-            
-            self.setDurationBack()
         }
     }
     
@@ -157,6 +155,7 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
             case CycleState.stopped:
                 telemetry.resetCurrent()
                 handleStopTraining()
+                setDurationBack()
                 isCyclePaused = true
             case CycleState.paused:
                 isCyclePaused = true

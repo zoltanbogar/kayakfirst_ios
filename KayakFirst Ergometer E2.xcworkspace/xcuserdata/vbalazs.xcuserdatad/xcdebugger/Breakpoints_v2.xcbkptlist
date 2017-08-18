@@ -22,49 +22,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KayakFirst Ergometer E2/PlanTrainingDbLoader.swift"
-            timestampString = "524765784.983618"
+            filePath = "KayakFirst Ergometer E2/CalculateElementFErgo.swift"
+            timestampString = "524767977.73377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "addData(data:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "run()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KayakFirst_Ergometer_E2.PlanTrainingDbLoader.addData (data : Swift.Optional&lt;KayakFirst_Ergometer_E2.PlanTraining&gt;) -&gt; ()"
-                  moduleName = "KayakFirst Ergometer E2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vbalazs/Documents/Android/Projects/Xcode%20Projects/kayakfirst-e2-ios/KayakFirst%20Ergometer%20E2/PlanTrainingDbLoader.swift"
-                  timestampString = "524766555.517572"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KayakFirst_Ergometer_E2.PlanTrainingDbLoader.(addData (data : Swift.Optional&lt;KayakFirst_Ergometer_E2.PlanTraining&gt;) -&gt; ()).(implicit closure #1)"
-                  moduleName = "KayakFirst Ergometer E2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vbalazs/Documents/Android/Projects/Xcode%20Projects/kayakfirst-e2-ios/KayakFirst%20Ergometer%20E2/PlanTrainingDbLoader.swift"
-                  timestampString = "524766555.519444"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -73,46 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KayakFirst Ergometer E2/PlanTrainingDbLoader.swift"
-            timestampString = "524765786.685085"
+            filePath = "KayakFirst Ergometer E2/PlanManager.swift"
+            timestampString = "524773709.49993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "addData(data:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "savePlan(plan:managerCallBack:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KayakFirst_Ergometer_E2.PlanTrainingDbLoader.addData (data : Swift.Optional&lt;KayakFirst_Ergometer_E2.PlanTraining&gt;) -&gt; ()"
-                  moduleName = "KayakFirst Ergometer E2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vbalazs/Documents/Android/Projects/Xcode%20Projects/kayakfirst-e2-ios/KayakFirst%20Ergometer%20E2/PlanTrainingDbLoader.swift"
-                  timestampString = "524766555.52514"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "KayakFirst_Ergometer_E2.PlanTrainingDbLoader.addData (data : Swift.Optional&lt;KayakFirst_Ergometer_E2.PlanTraining&gt;) -&gt; ()"
-                  moduleName = "KayakFirst Ergometer E2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vbalazs/Documents/Android/Projects/Xcode%20Projects/kayakfirst-e2-ios/KayakFirst%20Ergometer%20E2/PlanTrainingDbLoader.swift"
-                  timestampString = "524766555.526839"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
