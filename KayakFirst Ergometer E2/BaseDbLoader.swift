@@ -85,7 +85,7 @@ class BaseDbLoader<Input> {
     
     //MARK: static functions
     func getSumPredicate(predicates: Expression<Bool>?...) -> Expression<Bool>? {
-        var sumPredicate: Expression<Bool>? = predicates[0]
+        var sumPredicate: Expression<Bool>? = nil
         for predicate in predicates {
             if let predicateValue = predicate {
                 if sumPredicate == nil {

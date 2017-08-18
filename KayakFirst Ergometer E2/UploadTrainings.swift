@@ -13,23 +13,24 @@ import SwiftyJSON
 class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
-    private let maxUploadTrainings = 10000
+    //TODO: reactivate this
+    //private let maxUploadTrainings = 10000
+    private let maxUploadTrainings = 3
     
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
+    private var sessionId: Double
     private var timestamp: Double
+    
     private var pointerLocale: Double = 0
     var isUploadReady = false
     var pointer: Double = 0
     
-    init(timestamp: String?) {
-        if timestamp == nil {
-            self.timestamp = 0
-        } else {
-            self.timestamp = Double(timestamp!)!
-        }
+    init(sessionId: Double, timestamp: Double) {
+        self.sessionId = Double(Int64(sessionId))
+        self.timestamp = timestamp
     }
     
     override func preCheck() -> Bool {
@@ -67,7 +68,7 @@ class UploadTrainings: ServerService<Bool> {
         
         var list: Array<[String:Any]> = []
         
-        let originalTrainingList = trainingDbLoader.loadUploadAbleData(pointer: timestamp)
+        let originalTrainingList = trainingDbLoader.loadUploadAbleData(sessionId: sessionId, timestampPointer: timestamp)
         
         if originalTrainingList != nil && originalTrainingList!.count > 0 {
             

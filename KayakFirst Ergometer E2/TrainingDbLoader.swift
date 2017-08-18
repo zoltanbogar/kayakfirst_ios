@@ -71,7 +71,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
     
     override func addData(data: Training?) {
         if let training = data {
-            let insert = table!.insert(self.timeStamp <- Double(Int64(training.timeStamp)), self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- training.sessionId, self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
+            let insert = table!.insert(self.timeStamp <- Double(Int64(training.timeStamp)), self.currentDistance <- training.currentDistance, self.userId <- training.userId!, self.sessionId <- Double(Int64(training.sessionId)), self.trainingType <- training.trainingType.rawValue, self.trainingEnvironmentType <- training.trainingEnvironmentType.rawValue, self.dataType <- training.dataType, self.dataValue <- training.dataValue)
             
             let rowId = try? db?.run(insert)
         }
@@ -171,6 +171,12 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
     override func loadUploadAbleData(pointer: Double) -> [Training]? {
         let predicate = self.timeStamp > pointer
         return loadData(predicate: predicate)
+    }
+    
+    func loadUploadAbleData(sessionId: Double, timestampPointer: Double) -> [Training]? {
+        let predicateTimestamp = self.timeStamp > timestampPointer
+        let predicateSessionId = self.sessionId == sessionId
+        return loadData(predicate: getSumPredicate(predicates: predicateTimestamp, predicateSessionId))
     }
     
     func getTrainingsByTypePredicate(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
