@@ -11,9 +11,7 @@ import Foundation
 class UploadTimer {
     
     //MARK: constants
-    //TODO: reactivate this
-    //private static let timeUploadTrainingsSec: Double = 5 * 60 //5 min
-    private static let timeUploadTrainingsSec: Double = 10 //5 min
+    private static let timeUploadTrainingsSec: Double = 5 * 60 //5 min
     
     private static var timer: Timer?
     

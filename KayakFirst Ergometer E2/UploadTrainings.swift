@@ -13,9 +13,7 @@ import SwiftyJSON
 class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
-    //TODO: reactivate this
-    //private let maxUploadTrainings = 10000
-    private let maxUploadTrainings = 3
+    private let maxUploadTrainings = 10000
     
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
