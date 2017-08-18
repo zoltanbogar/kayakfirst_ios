@@ -19,6 +19,14 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
     private var currentTime: Double = 0
+    private var _isNewLocationAvailable = true
+    var isNewLocationAvailable: Bool {
+        get {
+            let isNew = _isNewLocationAvailable
+            _isNewLocationAvailable = false
+            return isNew
+        }
+    }
     
     var distanceSum: Double = 0
     var speed: Double = 0
@@ -59,6 +67,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
             let accuracy = locations[0].horizontalAccuracy
             
             if accuracy <= accuracyLocation {
+                _isNewLocationAvailable = true
                 if currentLocation == nil {
                     currentLocation = locations[0]
                 }

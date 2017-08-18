@@ -66,6 +66,6 @@ class OutdoorService: TrainingService<MeasureCommand> {
     
     override func runCalculate() -> Bool {
         runCommandList()
-        return true
+        return fusedLocationManager.isNewLocationAvailable
     }
 }
