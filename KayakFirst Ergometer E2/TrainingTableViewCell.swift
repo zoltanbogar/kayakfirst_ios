@@ -10,6 +10,9 @@ import UIKit
 
 class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     
+    //MARK: constants
+    static let fontSize: CGFloat = 15
+    
     //MARK: properties
     private let stackView = UIStackView()
     var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
@@ -86,6 +89,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     private lazy var labelStart: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.font = label.font.withSize(fontSize)
         label.numberOfLines = 1
         
         return label
@@ -94,6 +98,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     private lazy var labelDuration: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.font = label.font.withSize(fontSize)
         label.numberOfLines = 1
         
         return label
@@ -102,6 +107,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     private lazy var labelDistance: AppUILabel! = {
         let label = AppUILabel()
         label.textAlignment = .center
+        label.font = label.font.withSize(fontSize)
         label.numberOfLines = 1
         
         return label

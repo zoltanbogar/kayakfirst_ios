@@ -137,6 +137,7 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     
     private lazy var labelName: WeightLabel! = {
         let label = WeightLabel(weight: EventTabLeViewCell.nameWeight)
+        label.font = label.font.withSize(TrainingTablewViewCell.fontSize)
         label.numberOfLines = 0
         
         return label
