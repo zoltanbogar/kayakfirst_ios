@@ -187,7 +187,9 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
     }
     
     @objc private func stop() {
-        handleState(state: stateBluetoothScanningStop)
+        if bluetooth.isBluetoothOn() != nil && bluetooth.isBluetoothOn()! {
+            handleState(state: stateBluetoothScanningStop)
+        }
         
         bluetooth.stopScan()
         
