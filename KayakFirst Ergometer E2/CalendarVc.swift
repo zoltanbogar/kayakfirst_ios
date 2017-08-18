@@ -326,6 +326,12 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     private func initError(error: Responses?) {
         self.error = error
+        
+        if (error != nil) {
+            showProgressBarEvent(isShow: false)
+            showProgressBarTraining(isShow: false)
+        }
+        
         errorHandling()
     }
     
