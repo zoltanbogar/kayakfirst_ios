@@ -84,9 +84,9 @@ class Telemetry {
                 }
             }
             
-            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
             notifyListener(cycleStateChangeListener: planSoundHelperCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
+            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
             
         }
     }
