@@ -267,9 +267,7 @@ class BaseManager {
                 
                 dataFromServer = dataFromLocale
                 
-                if dataFromLocale != nil && dataFromLocale!.count > 0 {
-                    publishProgress(progress: dataFromLocale)
-                }
+                publishProgress(progress: dataFromLocale)
             }
             
             if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
