@@ -14,37 +14,41 @@ class ManagerUploadTrainings: ManagerUpload {
     private let keyTrainingUploadPointer = "training_upload_key"
     
     //MARK: properties
-    private var pointerTimestamp: Double = 0
+    private var isUploadReady = false
     
     private var preferences = UserDefaults.standard
     
+    //MARK: functions
+    override func callServer() {
+        let serverWasReachable = runServer(pointers: getPointers())
+        
+        if serverWasReachable && isUploadReady {
+            removeFromStack(uploadType: getUploadType())
+        }
+    }
+    
     override func runServer(pointers: [String]?) -> Bool {
         var serverWasReachable = true
+        isUploadReady = true
+        
         if let pointersValue = pointers {
             var timestamp: Double = getLocalePointer()
             
             for s in pointersValue {
                 let sessionId = Double(s)
                 
-                var uploadTrainings = UploadTrainings(sessionId: sessionId!, timestamp: timestamp)
+                let uploadTrainings = UploadTrainings(sessionId: sessionId!, timestamp: timestamp)
                 uploadTrainings.run()
                 serverWasReachable = serverWasReachable && uploadTrainings.serverWasReachable
                 
                 if serverWasReachable {
-                    timestamp = uploadTrainings.pointer
-                    setLocaelPointer(timestamp: timestamp)
-                }
-                
-                while !uploadTrainings.isUploadReady && uploadTrainings.serverWasReachable {
-                    uploadTrainings = UploadTrainings(sessionId: sessionId!, timestamp: timestamp)
-                    uploadTrainings.run()
-                    serverWasReachable = serverWasReachable && uploadTrainings.serverWasReachable
-                    
-                    if serverWasReachable {
+                    if uploadTrainings.pointer != 0 {
                         timestamp = uploadTrainings.pointer
                         setLocaelPointer(timestamp: timestamp)
                     }
                 }
+                
+                isUploadReady = isUploadReady && uploadTrainings.isUploadReady
             }
         }
         return serverWasReachable
@@ -55,9 +59,7 @@ class ManagerUploadTrainings: ManagerUpload {
     }
     
     private func setLocaelPointer(timestamp: Double) {
-        if timestamp != 0 {
-            preferences.set(timestamp, forKey: keyTrainingUploadPointer)
-        }
+        preferences.set(timestamp, forKey: keyTrainingUploadPointer)
     }
     
     private func getLocalePointer() -> Double {

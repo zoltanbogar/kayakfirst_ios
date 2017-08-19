@@ -49,6 +49,8 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
                     
                     deleteDataByTimestamp(timestampFrom: timestampFrom, timestampTo: timestampTo)
                 }
+                
+                localeDaysList = serverDaysList
             }
         }
         
