@@ -25,8 +25,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = mainViewControllers
         
         initQuickStart()
-        
-        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     private func initQuickStart() {

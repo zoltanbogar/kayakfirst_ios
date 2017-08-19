@@ -58,6 +58,14 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
             shouldRefresh = false
              refreshContentWithMode()
         }
+        
+        WindowHelper.keepScreenOn(isOn: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        WindowHelper.keepScreenOn(isOn: false)
     }
     
     override func viewDidLayoutSubviews() {

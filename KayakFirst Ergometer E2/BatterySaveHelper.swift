@@ -48,7 +48,7 @@ class BatterySaveHelper {
     }
     
     private func setBrightness(isFull: Bool) {
-        UIScreen.main.brightness = isFull ? CGFloat(1) : CGFloat(0)
+        WindowHelper.setBrightness(isFull: isFull)
     }
     
     private func startTimer(timeInterval: TimeInterval, selector: Selector) {

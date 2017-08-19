@@ -26,6 +26,7 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         super.init(coder: coder)
     }
     
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +37,18 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
         setFirstViewController()
         
         initActionbar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        WindowHelper.keepScreenOn(isOn: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        WindowHelper.keepScreenOn(isOn: false)
     }
     
     private func initActionbar() {

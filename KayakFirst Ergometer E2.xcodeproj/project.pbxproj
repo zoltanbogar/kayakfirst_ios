@@ -141,6 +141,7 @@
 		06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D021F0F5C8100F102C8 /* AddEventDialog.swift */; };
 		06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D041F0F639B00F102C8 /* UITableView+.swift */; };
 		06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D061F0F662600F102C8 /* EventDetailsViewController.swift */; };
+		062F02CD1F485CCA003CEE36 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062F02CC1F485CCA003CEE36 /* WindowHelper.swift */; };
 		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -505,6 +506,7 @@
 		06287D021F0F5C8100F102C8 /* AddEventDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventDialog.swift; sourceTree = "<group>"; };
 		06287D041F0F639B00F102C8 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		06287D061F0F662600F102C8 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		062F02CC1F485CCA003CEE36 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -1051,6 +1053,7 @@
 				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
 				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
+				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1942,6 +1945,7 @@
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
+				062F02CD1F485CCA003CEE36 /* WindowHelper.swift in Sources */,
 				067A09B31F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift in Sources */,
 				067129581EC8958600362C39 /* PECellNormal.swift in Sources */,
 				060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */,

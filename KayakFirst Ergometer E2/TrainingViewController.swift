@@ -50,7 +50,13 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        keepScreenOn()
+        WindowHelper.keepScreenOn(isOn: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        WindowHelper.keepScreenOn(isOn: false)
     }
     
     private func showDefaultVc() {
@@ -118,8 +124,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         if trainingEnvType == TrainingEnvironmentType.outdoor {
             outdoorService.stopLocationMonitoring()
         }
-        
-        UIApplication.shared.isIdleTimerDisabled = false
         telemetry.cycleState = nil
         self.dismiss(animated: true, completion: {
             if shoudlCloseParents {
@@ -238,10 +242,5 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
                 break
             }
         }
-    }
-    
-    //MARK: other
-    private func keepScreenOn() {
-        UIApplication.shared.isIdleTimerDisabled = true
     }
 }

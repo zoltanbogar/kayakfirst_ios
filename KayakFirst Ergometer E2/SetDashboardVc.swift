@@ -25,6 +25,12 @@ class SetDashboardVc: BaseVC {
         handleLongClick()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        WindowHelper.setBrightness(isFull: true)
+    }
+    
     //MARK: longpress
     private func handleLongClick() {
         addGesutreRecognizer(dashBoardElement: dashboardElementActual200)

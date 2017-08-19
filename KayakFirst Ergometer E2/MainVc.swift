@@ -31,6 +31,13 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     var plan: Plan?
     var event: Event?
     
+    //MARK: lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        WindowHelper.setBrightness(isFull: true)
+    }
+    
     //MARK: views
     override func initView() {
         let stackView = UIStackView()
