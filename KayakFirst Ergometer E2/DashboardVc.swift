@@ -137,8 +137,6 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             case CycleState.paused:
                 self.showPauseView(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: false)
-                //TODO: test this - because telemetry current reset should show
-                //self.refreshDashboardElements(false)
                 self.batterySaveHelper.activate(isActivate: false)
             case CycleState.resumed:
                 self.showViewSwipePause(true)
