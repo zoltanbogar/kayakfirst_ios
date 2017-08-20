@@ -87,8 +87,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         }
     }
     func showDashboard() {
-        //TODO: test - if works Android as well
-        //telemetry.cycleState = CycleState.idle
         if trainingEnvType == TrainingEnvironmentType.outdoor {
             telemetry.cycleState = CycleState.idle
             outdoorService.reset()

@@ -20,7 +20,6 @@ class AppSensorManager {
     private let axisZ = 2
     private let defaultThreshold: Double = 0.25
     private let thresholdCheckUnit: Double = 0.5
-    private let timeMinStrokesValidate: Double = 4000 //4 sec
     
     //MARK: properties
     private let sensorManager = CMMotionManager()
@@ -383,20 +382,6 @@ class AppSensorManager {
     
     private func setStrokesPerMin(strokesPerMin: Double) {
         if self.strokesPerMin < 40 || strokesPerMin <= self.strokesPerMin * 2 {
-            
-            if strokesPerMin < self.strokesPerMin {
-                if lastRealStrokesTimestamp == 0 {
-                    lastRealStrokesTimestamp = currentTimeMillis()
-                }
-                
-                let timeDiff = currentTimeMillis() - lastRealStrokesTimestamp
-                
-                if timeDiff < timeMinStrokesValidate {
-                    return
-                }
-            }
-            
-            lastRealStrokesTimestamp = 0
             
             log("SPM", "think get stroke: " + (abs(self.strokesPerMin - strokesPerMin) > 0.5 ? "true" : "false"))
             
