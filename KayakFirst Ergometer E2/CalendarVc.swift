@@ -96,14 +96,6 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
         
-        let screenheight = UIScreen.main.bounds.height
-        
-        let tableViewHeight = screenheight >= 600 ? (screenheight / 2.6) : (screenheight / 3.7)
-        
-        viewTableView.snp.makeConstraints { (make) in
-            make.height.equalTo(tableViewHeight)
-        }
-        
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
@@ -128,6 +120,14 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         cvCalendarView.frame = CGRect(x: 0, y: 100, width: width, height: height)
         calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
         
+        let screenheight = UIScreen.main.bounds.height
+        let tableViewHeight = screenheight >= 600 ? (screenheight / 2.6) : (screenheight / 3.7)
+        
+        viewTableView.snp.removeConstraints()
+        viewTableView.snp.makeConstraints { (make) in
+            make.height.equalTo(tableViewHeight)
+        }
+        
         refreshCalendarDesign()
     }
     
@@ -139,6 +139,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         
         cvCalendarView.frame = CGRect(x: 0, y: 90, width: width, height: height)
         calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
+        
+        viewTableView.snp.removeConstraints()
+        viewTableView.snp.makeConstraints { (make) in
+            make.width.equalTo(width)
+        }
         
         refreshCalendarDesign()
     }
