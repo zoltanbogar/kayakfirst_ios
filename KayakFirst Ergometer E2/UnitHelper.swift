@@ -83,7 +83,7 @@ class UnitHelper {
     
     class func getPaceValue(pace: Int, metricValue: Double) -> Double {
         var value: Double = 0
-        if isMetricDistance() {
+        if isMetricPace() {
             value = metricValue
         } else {
             var correction: Double = 1
@@ -97,7 +97,7 @@ class UnitHelper {
             default:
                 break
             }
-            value = (metricValue / Double(pace)) * correction
+            value = (metricValue / Double(pace)) * (1609.34 * correction)
         }
         return value
     }
