@@ -85,7 +85,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
             }
             
             if t200List != nil && t500List != nil && t1000List != nil && strokesList != nil && fList != nil && vList != nil && sList != nil {
-                localeSumTrainings!.append(SumTraining(
+                let sumTraining = SumTraining(
                     t200List: t200List!,
                     t500List: t500List!,
                     t1000List: t1000List!,
@@ -99,7 +99,11 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
                     trainingAvgStrokes: strokesAvg,
                     trainingAvgF: fAvg,
                     trainingAvgV: vAvg,
-                    planTraining: planTraining))
+                    planTraining: planTraining)
+                
+                if sumTraining.sessionId != 0 {
+                    localeSumTrainings!.append(sumTraining)
+                }
             }
         }
         

@@ -31,11 +31,11 @@ class ManagerDownload<E> {
         let data: E? = runServer()
         
         if serverError == nil {
-            setCacheInvalid()
-            
             deleteDataFromLocale()
             
             addDataToLocale(data: data)
+            
+            setCacheInvalid()
         }
         
         return serverError?.rawValue
