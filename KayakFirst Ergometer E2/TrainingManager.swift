@@ -36,12 +36,10 @@ class TrainingManager: BaseManager {
         let manager = ManagerDownloadTrainingBySessionId(sessionIds: sessionIds)
         runDownload(managerDownload: manager, managerCallBack: { data, error in
             
-            if data != nil && data!.count > 0 {
-                self.detailsTrainingList = data
-                
-                if let callback = self.trainingCallback {
-                    callback(data, error)
-                }
+            self.detailsTrainingList = data
+            
+            if let callback = self.trainingCallback {
+                callback(data, error)
             }
         })
         

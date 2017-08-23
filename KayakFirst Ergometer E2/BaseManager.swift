@@ -260,18 +260,10 @@ class BaseManager {
         override func doInBackground(param: Any?) -> [E]? {
             var dataFromServer: [E]? = nil
             
-            if baseManager.shouldRunDownloadLocale(managerDownload: managerDownload as! ManagerDownloadProtocol) {
-                baseManager.handlePreExecuteDownloadLocale(managerDownload: managerDownload as! ManagerDownloadProtocol)
-                
-                let dataFromLocale = managerDownload.getDataFromLocale()
-                
-                dataFromServer = dataFromLocale
-                
-                publishProgress(progress: dataFromLocale)
-            }
-            
             if baseManager.shouldRunDownload(managerDownload: managerDownload as! ManagerDownloadProtocol) {
                 baseManager.handlePreExecuteDownload(managerDownload: managerDownload as! ManagerDownloadProtocol)
+                
+                dataFromServer = managerDownload.getDataFromLocale()
                 
                 if (!managerDownload.shouldWaitForStack() || !ManagerUpload.hasStackToWait()) {
                     if managerDownload.isCacheInvalid() {
@@ -279,9 +271,15 @@ class BaseManager {
                         
                         if serverError == nil {
                             dataFromServer = managerDownload.getDataFromServer()
+                            
+                            return dataFromServer
                         }
                     }
                 }
+            }
+            
+            if dataFromServer == nil {
+                dataFromServer = managerDownload.getDataFromLocale()
             }
             
             return dataFromServer

@@ -177,10 +177,12 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     func getTrainingDays() {
+        showProgressBarTraining(isShow: true)
         trainingManager.getTrainingDays()
     }
     
     func getEventDays() {
+        showProgressBarEvent(isShow: true)
         eventManager.getEventDays()
     }
     
@@ -285,11 +287,13 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func trainigCallback(data: [SumTraining]?, error: Responses?) {
+        showProgressBarTraining(isShow: false)
         if data != nil && data!.count > 0 {
             if isDataCorrectDay(timestamp: data![0].sessionId) {
                 refreshTableViewTraining(sumTrainings: data!)
-                showProgressBarTraining(isShow: false)
             }
+        } else {
+            refreshTableViewTraining(sumTrainings: nil)
         }
         
         initError(error: error)

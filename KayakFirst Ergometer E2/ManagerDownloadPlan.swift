@@ -27,6 +27,10 @@ class ManagerDownloadPlan<E>: ManagerDownload<E> {
         return nil
     }
     
+    override func shouldWaitForStack() -> Bool {
+        return ManagerUpload.hasStackPlan()
+    }
+    
     override func deleteDataFromLocale() {
         planDbLoader.deleteAll()
         planElementDbLoader.deleteAll()

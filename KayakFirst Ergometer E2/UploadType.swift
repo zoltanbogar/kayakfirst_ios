@@ -22,4 +22,8 @@ enum UploadType: String {
     func shouldWaitForIt() -> Bool {
         return self != UploadType.pushIdUpload
     }
+    
+    func shouldWaitForPlan() -> Bool {
+        return self == UploadType.planSave || self == UploadType.planDelete || self == UploadType.eventSave || self == UploadType.eventDelete || self == UploadType.planTrainingSave
+    }
 }
