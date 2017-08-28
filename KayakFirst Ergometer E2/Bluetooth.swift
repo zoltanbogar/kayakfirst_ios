@@ -41,7 +41,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var connectedPeripheral: CBPeripheral?
     private var characteristic: CBCharacteristic?
     
-    private var isConnected = false
+    var isConnected = false
     
     //MARK: init
     static let sharedInstance = Bluetooth()

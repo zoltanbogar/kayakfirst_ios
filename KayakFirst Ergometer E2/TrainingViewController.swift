@@ -24,7 +24,7 @@ func startTrainingViewController(viewController: UIViewController, plan: Plan?, 
 class TrainingViewController: PortraitNavController, StartDelayDelegate, CalibrationDelegate, OnBluetoothConnectedListener {
     
     //MARK: properties
-    private var progressView: ProgressView?
+    var progressView: ProgressView?
     private var startDelayView: StartDelayView?
     var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance

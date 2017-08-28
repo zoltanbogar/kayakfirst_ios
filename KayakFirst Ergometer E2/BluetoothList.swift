@@ -13,7 +13,8 @@ import CoreBluetooth
 class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallback {
     
     //MARK: constants
-    private let bluetoothScanTimeout: Double = 5//5 sec
+    private let bluetoothScanTimeout: Double = 5 //5 sec
+    private let bluetoothConnectTimeout: Double = 5 //5 sec
     
     private let stateBluetoothOff = 0
     private let stateBluetoothFound = 1
@@ -206,6 +207,20 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
         return true
     }
     
+    private func setBluetoothDisconnectTimeout() {
+        Timer.scheduledTimer(timeInterval: bluetoothConnectTimeout, target: self, selector: #selector(bluetoothConnectTimeouted), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func bluetoothConnectTimeouted() {
+        let bluetooth = Bluetooth.sharedInstance
+        
+        if !bluetooth.isConnected {
+            bluetooth.disconnect()
+            self.trainingViewController.progressView?.show(false)
+        }
+        
+    }
+    
     //MARK: init views
     private func initView() {
         addSubview(labelTitle)
@@ -254,6 +269,8 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
         
         view.rowClickCallback = { bluetoothDevice, position in
             self.trainingViewController.connectBluetooth(bluetoothDevice: bluetoothDevice)
+            
+            self.setBluetoothDisconnectTimeout()
         }
         
         return view
