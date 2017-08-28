@@ -67,12 +67,14 @@ class TrainingManager: BaseManager {
     }
     
     func deleteOldData() {
-        DispatchQueue.global().async {
-            let trainingDbLoader = TrainingDbLoader.sharedInstance
-            trainingDbLoader.deleteData(predicate: trainingDbLoader.getDeleteOldDataPredicate())
-            
-            let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
-            trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getDeleteOldDataPredicate())
+        if !ManagerUpload.hasStackToWait() {
+            DispatchQueue.global().async {
+                let trainingDbLoader = TrainingDbLoader.sharedInstance
+                trainingDbLoader.deleteData(predicate: trainingDbLoader.getDeleteOldDataPredicate())
+                
+                let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+                trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getDeleteOldDataPredicate())
+            }
         }
     }
 }

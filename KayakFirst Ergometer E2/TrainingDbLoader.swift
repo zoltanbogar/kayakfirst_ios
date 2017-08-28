@@ -101,7 +101,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
         return loadData(predicate: predicate)
     }
     
-    func getTrainingDays() -> [Double] {
+    func getSessionIds() -> [Double] {
         var trainingDays = [Double]()
         
         do {

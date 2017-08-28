@@ -20,7 +20,7 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
     }
     
     override func getDataFromLocale() -> [Double]? {
-        localeDaysList = TrainingDbLoader.sharedInstance.getTrainingDays()
+        localeDaysList = TrainingDbLoader.sharedInstance.getSessionIds()
         return localeDaysList
     }
     
