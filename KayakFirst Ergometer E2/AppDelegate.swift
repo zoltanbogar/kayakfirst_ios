@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        UploadTimer.startTimer()
+        UploadTimer.startTimer(forceStart: true)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

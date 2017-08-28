@@ -14,6 +14,13 @@ class UploadTimer {
     private static let timeUploadTrainingsSec: Double = 5 * 60 //5 min
     
     private static var timer: Timer?
+
+    class func startTimer(forceStart: Bool) {
+        if forceStart && timer == nil {
+            timerUpdate()
+        }
+        startTimer()
+    }
     
     class func startTimer() {
         if UserManager.sharedInstance.getUser() != nil {
