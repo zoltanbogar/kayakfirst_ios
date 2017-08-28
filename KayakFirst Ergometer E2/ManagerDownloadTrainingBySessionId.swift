@@ -151,6 +151,10 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         return "manager_download_training_sessionid_\(sessionIdFrom)_\(sessionIdTo)"
     }
     
+    override func getCacheTime() -> Double {
+        return 0
+    }
+    
     private func getQueryTrainingByType(sessionId: Double, type: CalculateEnum) -> Expression<Bool> {
         return trainingDbLoader.getTrainingsByTypePredicate(sessionId: sessionId, type: type)
     }
