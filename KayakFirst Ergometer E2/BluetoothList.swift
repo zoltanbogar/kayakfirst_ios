@@ -217,6 +217,7 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
         if !bluetooth.isConnected {
             bluetooth.disconnect()
             self.trainingViewController.progressView?.show(false)
+            self.trainingViewController.bluetoothViewController?.refreshBluetoothList()
         }
         
     }
@@ -269,8 +270,8 @@ class BluetoothList: UIView, BluetoothStateChangedListener, BluetoothScanCallbac
         
         view.rowClickCallback = { bluetoothDevice, position in
             self.trainingViewController.connectBluetooth(bluetoothDevice: bluetoothDevice)
-            
             self.setBluetoothDisconnectTimeout()
+            self.stop()
         }
         
         return view

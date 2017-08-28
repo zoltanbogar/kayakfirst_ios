@@ -15,6 +15,11 @@ class BluetoothViewController: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        refreshBluetoothList()
+    }
+    
+    //MARK: functions
+    func refreshBluetoothList() {
         bluetoothList.refresh()
     }
     

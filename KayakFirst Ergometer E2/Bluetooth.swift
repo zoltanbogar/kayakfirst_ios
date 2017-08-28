@@ -80,6 +80,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func connect(bluetoothDevice: CBPeripheral) {
         if isBluetoothOn() != nil && isBluetoothOn()! {
+            connectedPeripheral = bluetoothDevice
             bluetoothManager?.connect(bluetoothDevice, options: nil)
         }
     }
@@ -149,7 +150,6 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if let characteristics = service.characteristics {
             for characteristic in characteristics {
                 if characteristicUuid == characteristic.uuid {
-                    connectedPeripheral = peripheral
                     self.characteristic = characteristic
                     
                     connectedPeripheral?.setNotifyValue(true, for: characteristic)

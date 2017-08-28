@@ -34,6 +34,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     var event: Event?
     var trainingEnvType: TrainingEnvironmentType?
     
+    var bluetoothViewController: BluetoothViewController?
+    
     private var dashboardVc: DashboardVc?
     
     //MARK: lifeCycle
@@ -101,7 +103,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     }
     func showBluetoothVc() {
         ergometerService.onBluetoothConnectedListener = self
-        pushViewController(BluetoothViewController(), animated: true)
+        bluetoothViewController = BluetoothViewController()
+        pushViewController(bluetoothViewController!, animated: true)
     }
     
     func closeViewController(shoudlCloseParents: Bool) {
