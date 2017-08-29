@@ -80,6 +80,9 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     private func addPlanWithChildren(planTraining: PlanTraining) {
         if let planElements = planTraining.planElements {
             for planElement in planElements {
+                
+                log("PLAN_ELEMENT", "id: \(planElement.planElementId)")
+                
                 planElementDbLoader.addData(data: planElement)
                 joinPlanElementDbLoader.addData(data: PlanPlanElements(planId: planTraining.planId, planElementId: planElement.planElementId))
             }

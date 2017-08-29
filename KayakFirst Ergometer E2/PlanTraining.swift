@@ -12,7 +12,7 @@ import SwiftyJSON
 class PlanTraining: Plan {
     
     //MARK: constants
-    private let planTrainingName = "plan_training"
+    static let planTrainingName = "plan_training"
     
     //MARK: static functions
     class func createPlanTraining(plan: Plan) -> PlanTraining {
@@ -59,7 +59,7 @@ class PlanTraining: Plan {
     
     //MARK: protocol
     override func getPlanObjectName() -> String {
-        return planTrainingName
+        return PlanTraining.planTrainingName
     }
     
     override func getParameters() -> [String : Any] {

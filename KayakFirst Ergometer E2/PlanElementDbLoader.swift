@@ -120,4 +120,9 @@ class PlanElementDbLoader: BaseDbLoader<PlanElement> {
         }
         return deletedRows
     }
+    
+    func deleteAllWithoutPlanTraining() -> Int {
+        let expression = !self.id.like("%\(PlanTraining.planTrainingName)%")
+        return deleteData(predicate: expression)
+    }
 }

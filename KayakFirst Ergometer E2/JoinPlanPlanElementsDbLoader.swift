@@ -80,4 +80,9 @@ class JoinPlanPlanElements: BaseDbLoader<PlanPlanElements> {
         }
         return deletedRows
     }
+    
+    func deleteAllWithoutPlanTraining() -> Int {
+        let expression = !self.planElementId.like("%\(PlanTraining.planTrainingName)%")
+        return deleteData(predicate: expression)
+    }
 }

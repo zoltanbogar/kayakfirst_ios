@@ -32,8 +32,8 @@ class ManagerDownloadPlan<E>: ManagerDownload<E> {
     }
     
     override func deleteDataFromLocale() {
-        planDbLoader.deleteAll()
-        planElementDbLoader.deleteAll()
+        planDbLoader.deleteAllWithoutPlanTraining()
+        planElementDbLoader.deleteAllWithoutPlanTraining()
         eventDbLoader.deleteAll()
     }
     
