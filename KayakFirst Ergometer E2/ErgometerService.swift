@@ -14,6 +14,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     //MARK: constants
     private let bluetoothDisconnectedTime: Double = 2 * 60 * 1000 //2 min
     private let bluetoothInactiveTime: Double = 20 * 1000 //20 sec
+    private let bluetoothMaxSleep: Double = 300 //300 millisec
     
     //MARK: properties
     private let bluetooth = Bluetooth.sharedInstance
@@ -31,9 +32,14 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     private var bluetoothResetNumber = 0
     
     private var cycleIndex: Int64 = 0
+    private var lastCycleIndexTime: Double = 0
     
     private var inactiveDisconnectTime: Double = 0
     private var inactiveTime: Double = 0
+    
+    private var dataAvailableTime: Double = 0
+    private var maDataAvailableTime = MovingAverage()
+    private var avgDataAvailableTime: Double = 0
     
     //MARK: init
     static let sharedInstance = ErgometerService()
@@ -76,31 +82,51 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     }
     
     func onDataAvailable(stringData: String) {
-        let command = commandList![commandIndex]
-        
-        command.setValue(stringValue: stringData)
-        
-        if commandIndex == 0 {
-            if command.getValue() == Double(commandErgometerReset!.resetSuccess) {
-                commandIndex = 1
-                bluetoothResetNumber = 0
-            } else {
-                bluetoothResetNumber += 1
-            }
-            
-            if bluetoothResetNumber == commandErgometerReset?.tryResetNumber {
-                bluetoothResetNumber = 0
-                handleStopTraining()
-            }
-        } else {
-            if commandIndex == commandList!.count - 1 {
-                setCycleIndex(cycleIndex: command.getCycleIndex())
-                commandIndex = 0
-            }
-            commandIndex = commandIndex + 1
+        if dataAvailableTime == 0 {
+            dataAvailableTime = pauseDiff.getAbsoluteTimeStamp()
         }
         
-       self.writeBluetoothData()
+        let timeDiff = pauseDiff.getAbsoluteTimeStamp() - dataAvailableTime
+        
+        var diffAvg: Double = Double(abs(timeDiff - avgDataAvailableTime))
+        
+        avgDataAvailableTime = maDataAvailableTime.calAverage(newValue: timeDiff)
+        
+        if diffAvg > bluetoothMaxSleep {
+            diffAvg = bluetoothMaxSleep
+        }
+        
+        let sleepTime: Int = Int(diffAvg * 1000)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .microseconds(sleepTime), execute: {
+            self.dataAvailableTime = self.pauseDiff.getAbsoluteTimeStamp()
+            
+            let command = self.commandList![self.commandIndex]
+            
+            command.setValue(stringValue: stringData)
+            
+            if self.commandIndex == 0 {
+                if command.getValue() == Double(self.commandErgometerReset!.resetSuccess) {
+                    self.commandIndex = 1
+                    self.bluetoothResetNumber = 0
+                } else {
+                    self.bluetoothResetNumber += 1
+                }
+                
+                if self.bluetoothResetNumber == self.commandErgometerReset?.tryResetNumber {
+                    self.bluetoothResetNumber = 0
+                    self.handleStopTraining()
+                }
+            } else {
+                if self.commandIndex == self.commandList!.count - 1 {
+                    self.setCycleIndex(cycleIndex: command.getCycleIndex(), timestampDiff: diffAvg)
+                    self.commandIndex = 0
+                }
+                self.commandIndex = self.commandIndex + 1
+            }
+            
+            self.writeBluetoothData()
+        })
     }
     
     private func writeBluetoothData() {
@@ -114,8 +140,13 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
         super.reset()
         
         cycleIndex = 0
+        lastCycleIndexTime = 0
         inactiveDisconnectTime = 0
         inactiveTime = 0
+        
+        dataAvailableTime = 0
+        maDataAvailableTime = MovingAverage(numAverage: 5)
+        avgDataAvailableTime = 0
     }
     
     override func initCommandList() {
@@ -152,14 +183,14 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     }
     
     override func runCalculate() -> Bool {
-        let telemetryCycleIndex = telemetry.cycleIndex
+        let telemetryCycleIndex = telemetry.getCycleIndex()
         
         runCommandList()
         
         checkBluetoothInactiveTimeout()
         
         if cycleIndex > telemetryCycleIndex {
-            telemetry.cycleIndex = cycleIndex
+            telemetry.setCycleIndex(cycleIndex: cycleIndex, lastCycleIndexTime: lastCycleIndexTime)
             return true
         } else if telemetryCycleIndex == 0 && telemetry.duration <= bluetoothInactiveTime {
             return true
@@ -172,8 +203,9 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
         return 0
     }
     
-    private func setCycleIndex(cycleIndex: Int64) {
+    private func setCycleIndex(cycleIndex: Int64, timestampDiff: Double) {
         self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
+        self.lastCycleIndexTime = pauseDiff.getAbsoluteTimeStamp() - timestampDiff
     }
     
     override func onCycleStateChanged(newCycleState: CycleState) {
@@ -190,7 +222,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     }
     
     private func checkBluetoothDisconnectTimeout() {
-        if cycleIndex == telemetry.cycleIndex {
+        if cycleIndex == telemetry.getCycleIndex() {
             if inactiveDisconnectTime == 0 {
                 inactiveDisconnectTime = currentTimeMillis()
             }
@@ -206,7 +238,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     }
     
     private func checkBluetoothInactiveTimeout() {
-        if cycleIndex == telemetry.cycleIndex {
+        if cycleIndex == telemetry.getCycleIndex() {
             if inactiveTime == 0 {
                 inactiveTime = pauseDiff.getAbsoluteTimeStamp()
             }

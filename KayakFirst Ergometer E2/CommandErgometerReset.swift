@@ -16,7 +16,7 @@ class CommandErgometerReset: MeasureCommandErgometer {
     private let resetOk = "OK"
     let resetSuccess: Int64 = 1
     private let resetNotSuccess: Int64 = -1
-    let tryResetNumber = 3
+    let tryResetNumber = 8
     
     override func getCommand() -> String {
         return CommandErgometerEnum.reset.rawValue

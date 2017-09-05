@@ -36,7 +36,7 @@ class PauseDiff {
     
     func pause() {
         pauseTimeStamp = currentTimeMillis()
-        pauseCycleIndex = telemetry.cycleIndex
+        pauseCycleIndex = telemetry.getCycleIndex()
         wasPause = true
     }
     

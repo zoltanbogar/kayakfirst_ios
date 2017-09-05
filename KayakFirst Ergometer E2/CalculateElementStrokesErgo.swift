@@ -13,19 +13,28 @@ class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgomete
     private var cycleIndex: Int64 = 0
     private var timestamp: Double = 0
     
+    private var maSpm = MovingAverage(numAverage: 5)
+    
     override func run() -> Training {
-        if telemetry.cycleIndex > 0 {
-            let diffCycleIndex = telemetry.cycleIndex - cycleIndex
-            cycleIndex = telemetry.cycleIndex
-            var timeDiff: Double = 0
+        if telemetry.getCycleIndex() > 0 {
+            let diffCycleIndex = telemetry.getCycleIndex() - cycleIndex
             
-            if timestamp != 0 {
-                timeDiff = startCommand.getCalculatedTimeStamp() - timestamp
+            if timestamp == 0 {
+                timestamp = telemetry.lastCycleIndexTime
             }
             
-            timestamp = startCommand.getCalculatedTimeStamp()
-            if timeDiff != 0 {
-                calculatedValue = Double(diffCycleIndex) / (timeDiff / oneMinuteInMillisec)
+            let timeDiff: Double = telemetry.lastCycleIndexTime - timestamp
+            
+            if timeDiff > 0 {
+                cycleIndex = telemetry.getCycleIndex()
+                
+                timestamp = telemetry.lastCycleIndexTime
+                
+                let spm = Double(diffCycleIndex) / (timeDiff / oneMinuteInMillisec)
+                
+                if spm <= AppSensorManager.maxSpm {
+                    calculatedValue = maSpm.calAverage(newValue: spm)
+                }
             }
         }
         

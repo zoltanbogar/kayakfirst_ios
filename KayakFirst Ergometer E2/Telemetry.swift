@@ -39,7 +39,7 @@ class Telemetry {
             log("DURATION_TEST", "durationSet: \(duration)")
         }
     }
-    var cycleIndex: Int64 = 0
+    private var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
     
     private var _sessionId: Double = 0
@@ -48,6 +48,8 @@ class Telemetry {
             return Double(Int64(_sessionId))
         }
     }
+    
+    var lastCycleIndexTime: Double = 0
     
     //MARK telemtry objects
     var telemetryObject: TelemetryObject? {
@@ -139,6 +141,7 @@ class Telemetry {
         duration = 0
         averageIndex = 0
         cycleIndex = 0
+        lastCycleIndexTime = 0
     }
     
     //MARK other functions
@@ -148,6 +151,15 @@ class Telemetry {
             isSame = selfCycleState == cycleState
         }
         return isSame
+    }
+    
+    func setCycleIndex(cycleIndex: Int64, lastCycleIndexTime: Double) {
+        self.cycleIndex = cycleIndex
+        self.lastCycleIndexTime = lastCycleIndexTime
+    }
+    
+    func getCycleIndex() -> Int64 {
+        return self.cycleIndex
     }
 }
 

@@ -15,7 +15,7 @@ class CalculateElementP: CalculateElement<Double, MeasureCommandErgometer, Start
     }
     
     override func run() -> Double {
-        if telemetry.cycleIndex > 0 {
+        if telemetry.getCycleIndex() > 0 {
             let w_min = (j * pow(startCommand.omegaMin, 2)) / 2
             let w_max = (j * pow(startCommand.omegaMax, 2)) / 2
             let w = w_max - w_min

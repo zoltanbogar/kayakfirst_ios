@@ -15,7 +15,7 @@ class CalculateElementOmegaMin: CalculateElement<Double, MeasureCommandErgometer
     }
     
     override func run() -> Double {
-        if telemetry.cycleIndex > 0 {
+        if telemetry.getCycleIndex() > 0 {
             let tMax = startCommand.t_max
             if tMax == 0 {
                 calculatedValue = 0

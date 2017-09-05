@@ -13,7 +13,7 @@ class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, StartCom
     private var timestampCal: Double = 0
     
     override func run() -> Training {
-        if telemetry.cycleIndex > 0 {
+        if telemetry.getCycleIndex() > 0 {
             
             var timestampCurrent = startCommand.getCalculatedTimeStamp()
             

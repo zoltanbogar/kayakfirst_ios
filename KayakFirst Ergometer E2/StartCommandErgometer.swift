@@ -80,7 +80,7 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
     }
     
     private func fillCommands(measureCommands: [MeasureCommand]) {
-        let cycleIndex = telemetry.cycleIndex
+        let cycleIndex = telemetry.getCycleIndex()
         
         for measureCommandErgometer in measureCommands {
             if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMin.rawValue {

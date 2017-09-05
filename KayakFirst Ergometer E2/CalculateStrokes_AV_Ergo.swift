@@ -13,7 +13,7 @@ class CalculateStrokes_AV_Ergo: CalculateStrokes_AV<MeasureCommandErgometer> {
     override func calculate() -> Double {
         let durationTest = telemetry.duration
         
-        let cycleIndexTest: Double = Double(telemetry.cycleIndex)
+        let cycleIndexTest: Double = Double(telemetry.getCycleIndex())
         
         if durationTest != 0 {
             calculatedValue = cycleIndexTest / (durationTest / oneMinuteInMillisec)

@@ -14,7 +14,7 @@ class CalculateElementFErgo: CalculateElementF<MeasureCommandErgometer, StartCom
     private let maxForce: Double = 20000
     
     override func run() -> Training {
-        if telemetry.cycleIndex > 0 {
+        if telemetry.getCycleIndex() > 0 {
             let omegaMin = startCommand.omegaMin
             let omegaMax = startCommand.omegaMax
             
