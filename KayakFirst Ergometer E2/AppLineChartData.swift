@@ -132,7 +132,7 @@ class AppLineChartData {
         rightAxis.valueFormatter = RightYAxisFormatter()
         
         leftAxis.gridColor = Colors.colorInactive
-        rightAxis.drawGridLinesEnabled = false
+        rightAxis.gridColor = Colors.colorInactive
         
         leftAxis.axisLineColor = Colors.colorWhite
         rightAxis.axisLineColor = Colors.colorWhite
