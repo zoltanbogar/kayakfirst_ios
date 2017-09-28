@@ -82,6 +82,10 @@
 	<string>To connect to the ergometer we need access to the Bluetooth.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To track your distance and speed during workouts, we need access to the GPS.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>To track your distance and speed during workouts, we need access to the GPS.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>To track your distance and speed during workouts, we need access to the GPS.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>For enhanced stroke traking, give us permission to access your motion and fitness sensor.</string>
 	<key>UIAppFonts</key>

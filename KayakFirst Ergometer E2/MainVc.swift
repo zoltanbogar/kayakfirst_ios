@@ -115,7 +115,7 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if (status == CLAuthorizationStatus.authorizedAlways) {
+        if (PermissionCheck.isAuthorizationStatusOk(status: status)) {
             if let permissionVc = permissionViewController {
                 permissionVc.dismiss(animated: true, completion: nil)
             }
