@@ -41,14 +41,21 @@ class ManagerUploadTrainings: ManagerUpload {
                 uploadTrainings.run()
                 serverWasReachable = serverWasReachable && uploadTrainings.serverWasReachable
                 
+                isUploadReady = isUploadReady && uploadTrainings.isUploadReady
+                
                 if serverWasReachable {
+                    log("UPLOAD_TEST", "serverWasReachable")
                     if uploadTrainings.pointer != 0 {
                         timestamp = uploadTrainings.pointer
                         setLocaelPointer(timestamp: timestamp)
                     }
+                } else {
+                    log("UPLOAD_TEST", "serverWasNotReachable")
                 }
                 
-                isUploadReady = isUploadReady && uploadTrainings.isUploadReady
+                if !serverWasReachable || !isUploadReady {
+                    break
+                }
             }
         }
         return serverWasReachable
@@ -59,10 +66,19 @@ class ManagerUploadTrainings: ManagerUpload {
     }
     
     private func setLocaelPointer(timestamp: Double) {
-        preferences.set(timestamp, forKey: keyTrainingUploadPointer)
+        preferences.set(timestamp, forKey: getLocalePointerKey())
     }
     
     private func getLocalePointer() -> Double {
-        return preferences.double(forKey: keyTrainingUploadPointer)
+        return preferences.double(forKey: getLocalePointerKey())
+    }
+    
+    private func getLocalePointerKey() -> String {
+        let user = UserManager.sharedInstance.getUser()
+        
+        if let userValue = user {
+            return keyTrainingUploadPointer + "_" + String(userValue.id)
+        }
+        return keyTrainingUploadPointer
     }
 }

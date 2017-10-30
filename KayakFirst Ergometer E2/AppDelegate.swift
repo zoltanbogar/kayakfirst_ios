@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import FBSDKLoginKit
 import Google
 import UserNotifications
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -104,10 +105,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        startUploadTimer()
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        UploadTimer.startTimer(forceStart: true)
+        startUploadTimer()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -187,6 +190,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func logoutSocial() {
         FBSDKLoginManager().logOut()
         GIDSignIn.sharedInstance().signOut()
+    }
+    
+    private func startUploadTimer() {
+        UploadTimer.startTimer(forceStart: true)
+    }
+    
+    private func configureAlamofire() {
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 60 // in seconds
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = 60 // in seconds
     }
     
     private func initColors() {

@@ -68,11 +68,13 @@ class ManagerUpload {
     }
     
     class func getStack() -> [String]? {
+        log("UPLOAD_TEST", "getStack...")
         let dictionary = getDictionary()
         
         var stack = [String]()
         
         for key in dictionary.keys {
+            log("UPLOAD_TEST", "stackElement: \(key)")
             stack.append(key)
         }
         
@@ -81,6 +83,8 @@ class ManagerUpload {
     
     class func addToStack(uploadType: UploadType, pointer: String?) -> Bool {
         if UserManager.sharedInstance.getUser() != nil {
+            
+            log("UPLOAD_TEST", "addToStack: \(uploadType.rawValue) - \(pointer)")
             
             UploadTimer.startTimer()
             
@@ -132,6 +136,7 @@ class ManagerUpload {
     }
     
     internal func removeFromStack(uploadType: UploadType) {
+        log("UPLOAD_TEST", "removeFromStack: \(uploadType.rawValue)")
         var dictionary = ManagerUpload.getDictionary()
         
         dictionary.removeValue(forKey: uploadType.rawValue)
@@ -143,6 +148,10 @@ class ManagerUpload {
         let dictionary = ManagerUpload.getDictionary()
         
         let pointers = dictionary[getUploadType().rawValue] ?? [String]()
+        
+        for pointer in pointers {
+            log("UPLOAD_TEST", "pointer: \(pointer)")
+        }
         
         return pointers
     }
