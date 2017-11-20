@@ -33,14 +33,17 @@ class MeasureCommandErgometer: MeasureCommand {
         return value / unitConversion
     }
     
-    override func setValue(stringValue: String) {
+    override func setValue(stringValue: String) -> Bool {
         self.stringValue = stringValue
         
         log("BLE_TEST", "stringValue: \(stringValue)")
         
         if isValidCommand(stringValue: stringValue) {
             value = Double(initValue(stringValue: stringValue))
+            
+            return true
         }
+        return false
     }
     
     func isValidCommand(stringValue: String) -> Bool {

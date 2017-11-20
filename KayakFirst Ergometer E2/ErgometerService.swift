@@ -103,7 +103,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
             
             let command = self.commandList![self.commandIndex]
             
-            command.setValue(stringValue: stringData)
+            let valueWasParsable = command.setValue(stringValue: stringData)
             
             if self.commandIndex == 0 {
                 if command.getValue() == Double(self.commandErgometerReset!.resetSuccess) {
@@ -122,7 +122,9 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
                     self.setCycleIndex(cycleIndex: command.getCycleIndex(), timestampDiff: diffAvg)
                     self.commandIndex = 0
                 }
-                self.commandIndex = self.commandIndex + 1
+                if valueWasParsable {
+                    self.commandIndex = self.commandIndex + 1
+                }
             }
             
             self.writeBluetoothData()

@@ -38,7 +38,7 @@ class MeasureCommand {
     func getValue() -> Double {
         fatalError("Must be implemented")
     }
-    func setValue(stringValue: String) {
+    func setValue(stringValue: String) -> Bool {
         fatalError("Must be implemented")
     }
 }

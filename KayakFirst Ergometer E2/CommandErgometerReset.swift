@@ -22,10 +22,12 @@ class CommandErgometerReset: MeasureCommandErgometer {
         return CommandErgometerEnum.reset.rawValue
     }
     
-    override func setValue(stringValue: String) {
+    override func setValue(stringValue: String) -> Bool {
         initValue(stringValue: stringValue)
         
         value = Double(initValue(stringValue: stringValue))
+        
+        return true
     }
     
     override func isValidCommand(stringValue: String) -> Bool {
