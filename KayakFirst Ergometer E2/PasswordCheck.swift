@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO: delete this class
 class PasswordCheck {
     
     private static let minCharacterPassword = 4

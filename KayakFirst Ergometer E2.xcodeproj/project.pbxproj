@@ -648,7 +648,7 @@
 		06C2F3F51F0A44B40077EE21 /* EditPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPlan.swift; sourceTree = "<group>"; };
 		06C2F3F71F0A48F00077EE21 /* PlanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanObject.swift; sourceTree = "<group>"; };
 		06C6ABAE1E2267A000562B27 /* KayakFirst Ergometer E2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KayakFirst Ergometer E2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "KayakFirst Ergometer E2/AppDelegate.swift"; sourceTree = "<group>"; };
+		06C6ABB11E2267A000562B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06C6ABBB1E2267A000562B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06C6ABBD1E2267A000562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "KayakFirst Ergometer E2/Info.plist"; sourceTree = "<group>"; };
 		06C6ABC21E2267A100562B27 /* KayakFirst Ergometer E2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -860,7 +860,7 @@
 			name = location;
 			sourceTree = "<group>";
 		};
-		060C8B751E4068220057DD61 /* domain */ = {
+		060C8B751E4068220057DD61 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				06AF232B1F062278008805A2 /* training */,
@@ -869,7 +869,7 @@
 				06AF232E1F06251B008805A2 /* ModifyAble.swift */,
 				06AF23301F06253B008805A2 /* UploadAble.swift */,
 			);
-			name = domain;
+			name = model;
 			sourceTree = "<group>";
 		};
 		060D9BA11E4A6539006DD8AB /* table_view */ = {
@@ -1040,22 +1040,54 @@
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				064764C61E237035004B9ED3 /* KayakLog.swift */,
 				064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */,
-				0602B44D1E23CAF000ABA70F /* Localize.swift */,
 				06703F701E24025A0028135A /* Colors.swift */,
 				069433F71E28487800CE6398 /* PasswordCheck.swift */,
 				06BF94F31E2A36140010C8A7 /* DesignUtils.swift */,
 				06F938FF1E3F720A00920753 /* Dimens.swift */,
-				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
-				0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */,
 				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
-				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
-				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
 			);
 			name = utils;
+			sourceTree = "<group>";
+		};
+		064D91F61FE6853300179498 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				0602D3AA1E31568F001E382E /* extensions */,
+				0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */,
+				0602B44D1E23CAF000ABA70F /* Localize.swift */,
+				064764C61E237035004B9ED3 /* KayakLog.swift */,
+				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
+			);
+			name = app;
+			sourceTree = "<group>";
+		};
+		064D91F71FE685B600179498 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
+				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
+				060A37741E584F6F00A973BF /* training_calculate */,
+				0677FEF91E41396300A9B977 /* server */,
+				060B99241E64288B00F72404 /* location */,
+				066579EC1F161BBD00E43852 /* cloud_message */,
+				06E840561F35F50900303574 /* bluetooth */,
+			);
+			name = service;
+			sourceTree = "<group>";
+		};
+		064D91F81FE6861000179498 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				064764C51E237022004B9ED3 /* utils */,
+				06BF94F01E2A30E20010C8A7 /* view_controller */,
+				06C1B9861E25961300AB4C47 /* design */,
+				0683EA361E74856D00F39988 /* fonts */,
+				069433E61E28361B00CE6398 /* dialog */,
+			);
+			name = ui;
 			sourceTree = "<group>";
 		};
 		064FE5A31ED09DCE004A9F35 /* manager */ = {
@@ -1242,6 +1274,7 @@
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
+				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
 				06F9145F1E42801C0041B303 /* backend */,
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				064FE5A31ED09DCE004A9F35 /* manager */,
@@ -1470,7 +1503,6 @@
 				0602B44B1E23C9B400ABA70F /* Localizable.strings */,
 				06C6ABBD1E2267A000562B27 /* Info.plist */,
 				0613A91B1E67EECC00B13342 /* GoogleService-Info.plist */,
-				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
 				06E840641F376A8500303574 /* Assets.xcassets */,
 				0613A9101E67E54000B13342 /* FBSDKCoreKit.framework */,
 				0613A9111E67E54000B13342 /* FBSDKLoginKit.framework */,
@@ -1496,19 +1528,11 @@
 		06C6ABB01E2267A000562B27 /* KayakFirst Ergometer E2 */ = {
 			isa = PBXGroup;
 			children = (
-				06E840561F35F50900303574 /* bluetooth */,
-				066579EC1F161BBD00E43852 /* cloud_message */,
 				066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */,
-				0683EA361E74856D00F39988 /* fonts */,
-				060B99241E64288B00F72404 /* location */,
-				06C1B9861E25961300AB4C47 /* design */,
-				069433E61E28361B00CE6398 /* dialog */,
-				060C8B751E4068220057DD61 /* domain */,
-				0602D3AA1E31568F001E382E /* extensions */,
-				0677FEF91E41396300A9B977 /* server */,
-				060A37741E584F6F00A973BF /* training_calculate */,
-				064764C51E237022004B9ED3 /* utils */,
-				06BF94F01E2A30E20010C8A7 /* view_controller */,
+				064D91F81FE6861000179498 /* ui */,
+				064D91F71FE685B600179498 /* service */,
+				064D91F61FE6853300179498 /* app */,
+				060C8B751E4068220057DD61 /* model */,
 			);
 			path = "KayakFirst Ergometer E2";
 			sourceTree = "<group>";

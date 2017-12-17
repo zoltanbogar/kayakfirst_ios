@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//TODO: delete this class
 class ErgoComingSoonVc: BaseVC {
     
     //MARK: init view
