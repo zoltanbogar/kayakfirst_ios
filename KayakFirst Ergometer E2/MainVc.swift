@@ -97,21 +97,18 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
         locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-            permissionViewController = initPermissionViewController()
+            initPermissionViewController()
         } else {
             LocationSettingsDialog().show(viewController: self)
         }
     }
     
-    private func initPermissionViewController() -> UIViewController? {
-        var permissionViewController: UIViewController? = nil
-        
+    private func initPermissionViewController() {
         if !PermissionCheck.hasLocationPermission() {
             permissionViewController = startLocationPermissionVc(viewController: self.parent!, trainingEnvType: trainingEnvironmentType!)
         } else {
             startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: trainingEnvironmentType!)
         }
-        return permissionViewController
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
