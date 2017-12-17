@@ -12,6 +12,11 @@ import FBSDKLoginKit
 import Crashlytics
 import Fabric
 
+func startWelcomeViewController(viewController: UIViewController) {
+    let controller = WelcomeViewController()
+    viewController.present(controller, animated: true, completion: nil)
+}
+
 class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     
     //MARK: constants

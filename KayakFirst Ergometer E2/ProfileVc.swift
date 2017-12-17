@@ -417,7 +417,7 @@ class ProfileVc: MainTabVc {
         dismissProgress()
         
         userManager.addLoginDto(loginDto: nil)
-        showWelcomeViewController()
+        startWelcomeViewController(viewController: self)
     }
     
     private func updateUserCallback(data: User?, error: Responses?) {
@@ -436,11 +436,6 @@ class ProfileVc: MainTabVc {
         } else {
             errorHandlingWithAlert(viewController: self, error: error!)
         }
-    }
-    
-    private func showWelcomeViewController() {
-        let controller = WelcomeViewController()
-        self.present(controller, animated: true, completion: nil)
     }
     
 }
