@@ -416,7 +416,6 @@ class ProfileVc: MainTabVc {
     private func logoutCallback(data: Bool?, error: Responses?) {
         dismissProgress()
         
-        userManager.addLoginDto(loginDto: nil)
         startWelcomeViewController(viewController: self)
     }
     

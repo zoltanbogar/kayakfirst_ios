@@ -41,6 +41,11 @@ class UserManager: BaseManager {
     
     var isQuickStart = false
     
+    var socialUser: SocialUser?
+    
+    private let facebookLoginHelper = FacebookLoginHelper.sharedInstance
+    private let googleLoginHelper = GoogleLoginHelper.sharedInstance
+    
     //MARK: callbacks
     var loginCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var registerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
@@ -67,32 +72,52 @@ class UserManager: BaseManager {
         return UserManagerType.login_normal
     }
     
-    func loginFacebook(facebookToken: String) -> BaseManagerType {
-        let userLoginFacebook = UserLoginFacebook(facebookToken: facebookToken)
-        
-        runUser(serverService: userLoginFacebook, managerCallBack: loginCallback)
+    func loginFacebook(viewController: UIViewController) -> BaseManagerType {
+        facebookLoginHelper.login(viewController: viewController, managerCallBack: { (socialUser, error) in
+            if let data = socialUser {
+                self.socialUser = data
+                
+                let userLoginFacebook = UserLoginFacebook(facebookToken: data.facebookToken!)
+                self.runUser(serverService: userLoginFacebook, managerCallBack: self.loginCallback)
+            } else {
+                self.loginCallback?(false, error)
+            }
+        })
         
         return UserManagerType.login_facebook
     }
     
-    func loginGoogle(email: String, googleId: String) -> BaseManagerType {
-        let userLoginGoogle = UserLoginGoogle(email: email, googleId: googleId)
-        
-        runUser(serverService: userLoginGoogle, managerCallBack: loginCallback)
+    func loginGoogle(viewController: UIViewController) -> BaseManagerType {
+        googleLoginHelper.login(viewController: viewController, managerCallBack: { (socialUser, error) in
+            if let data = socialUser {
+                self.socialUser = data
+                
+                let userLoginGoogle = UserLoginGoogle(email: data.socialEmail, googleId: data.googleId!)
+                self.runUser(serverService: userLoginGoogle, managerCallBack: self.loginCallback)
+            } else {
+                self.loginCallback?(false, error)
+            }
+        })
         
         return UserManagerType.login_google
     }
     
     func logout() -> BaseManagerType {
-        (UIApplication.shared.delegate as! AppDelegate).logoutSocial()
+        ErgometerService.sharedInstance.disconnectBluetoothn()
         
         let userLogout = UserLogout()
-       
         runUser(serverService: userLogout, managerCallBack: logoutCallback)
+        
+        socialLogout()
         
         UploadTimer.stopTimer()
         
         return UserManagerType.logout
+    }
+    
+    func socialLogout() {
+        facebookLoginHelper.logout()
+        googleLoginHelper.logout()
     }
     
     func resetPassword(email: String) -> BaseManagerType {

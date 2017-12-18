@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let vc = welcomeViewController {
             vc.resetFields()
-            logoutSocial()
+            vc.socialLogoutIfNeeded()
         }
     }
 
@@ -185,11 +185,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-    }
-    
-    func logoutSocial() {
-        FBSDKLoginManager().logOut()
-        GIDSignIn.sharedInstance().signOut()
     }
     
     private func startUploadTimer() {

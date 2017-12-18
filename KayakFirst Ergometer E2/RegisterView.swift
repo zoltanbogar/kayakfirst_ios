@@ -33,6 +33,19 @@ class RegisterView: UIView, UITextFieldDelegate {
     private let datePickerView = UIDatePicker()
     private var scrollView: AppScrollView?
     
+    private var facebookId: String?
+    private var googleId: String?
+    
+    var socialUser: SocialUser? {
+        didSet {
+            tfFirstName.text = socialUser?.socialFirstName
+            tfLastName.text = socialUser?.socialLastName
+            tfEmail.text = socialUser?.socialEmail
+            facebookId = socialUser?.facebookId
+            googleId = socialUser?.googleId
+        }
+    }
+    
     //MARK: init
     init(viewController: WelcomeViewController) {
         self.viewController = viewController
@@ -316,8 +329,8 @@ class RegisterView: UIView, UITextFieldDelegate {
                 unitWeight: pickerHelperUnitWeight?.getValue(),
                 unitDistance: pickerHelperUnitDistance?.getValue(),
                 unitPace: pickerHelperUnitPace?.getValue(),
-                googleId: self.viewController.googleId,
-                facebookId: self.viewController.facebookId)
+                googleId: self.googleId,
+                facebookId: self.facebookId)
             
             let managerType = userManager.register(userDto: userDto)
             viewController.showProgress(baseManagerType: managerType)

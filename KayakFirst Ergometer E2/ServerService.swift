@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 //MARK: responses
+//TODO: rename these
 enum Responses: String {
     case error_no_internet = "error_no_internet"
     case error_invalid_credentials = "INVALID_CREDENTIALS"
@@ -20,6 +21,7 @@ enum Responses: String {
     case error_registration_required = "Registration required"
     case error_used_username = "The username is already used."
     case error_used_email = "The email is already used."
+    case error_social = "error_social"
 }
 
 class ServerService<E> {

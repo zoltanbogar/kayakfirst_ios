@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
 
 class LoginView: UIView {
 
@@ -204,58 +202,12 @@ class LoginView: UIView {
     }
     
     @objc private func btnFacebookClick() {
-        let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.loginBehavior = .web
-        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self.viewController, handler: { (result, error) -> Void in
-            if error == nil {
-                if let resultValue = result {
-                    if !resultValue.isCancelled {
-                        
-                        let facebookToken = resultValue.token.tokenString
-                        log("FACEBOOK", "result: \(facebookToken)")
-                        
-                        let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: facebookToken, version: nil, httpMethod: "GET")
-                        
-                        if let reqValue = req {
-                            reqValue.start(completionHandler: { (connection, result, error) -> Void in
-                                
-                                if ((error) != nil) {
-                                    log("FACEBOOK", "\(error)")
-                                } else {
-                                    let data:[String:AnyObject] = result as! [String : AnyObject]
-                                    
-                                    self.viewController.socialEmail = data["email"] as! String?
-                                    
-                                    let name = data["name"] as! String
-                                    let fullNameArr = name.characters.split{$0 == " "}.map(String.init)
-                                    self.viewController.socialFirstName = fullNameArr[0]
-                                    self.viewController.socialLastName = fullNameArr.count > 1 ? fullNameArr[1] : nil
-                                    self.viewController.facebookId = facebookToken
-                                }
-                            })
-                        }
-                        let managerType = self.userManager.loginFacebook(facebookToken: facebookToken!)
-                        self.viewController.showProgress(baseManagerType: managerType)
-                    }
-                }
-            }
-        })
+        let managerType = userManager.loginFacebook(viewController: self.viewController)
+        self.viewController.showProgress(baseManagerType: managerType)
     }
     
     @objc private func btnGoogleClick() {
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    func googleSignInResult(user: GIDGoogleUser) {
-        let email = user.profile.email
-        let googleId = user.authentication.idToken
-        
-        viewController.socialEmail = email
-        viewController.googleId = googleId
-        viewController.socialFirstName = user.profile.givenName
-        viewController.socialLastName = user.profile.familyName
-        
-        let managerType = userManager.loginGoogle(email: email!, googleId: googleId!)
+        let managerType = userManager.loginGoogle(viewController: self.viewController)
         self.viewController.showProgress(baseManagerType: managerType)
     }
     
@@ -268,7 +220,7 @@ class LoginView: UIView {
         } else if let userError = error {
             if error == Responses.error_registration_required {
                 resetDataFields()
-                viewController.showRegistrationView()
+                viewController.showRegistrationView(socialUser: userManager.socialUser!)
             }
             
             errorHandlingWithAlert(viewController: self.viewController, error: userError)

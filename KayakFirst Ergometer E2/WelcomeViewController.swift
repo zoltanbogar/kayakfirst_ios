@@ -17,7 +17,7 @@ func startWelcomeViewController(viewController: UIViewController) {
     viewController.present(controller, animated: true, completion: nil)
 }
 
-class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
+class WelcomeViewController: BaseVC {
     
     //MARK: constants
     private let segmentItems = [getString("user_login"), getString("user_register")]
@@ -26,36 +26,28 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
     //MARK: properties
     let loginRegisterView = UIView()
     
-    var socialFirstName: String?
-    var socialLastName: String?
-    var socialEmail: String?
-    var facebookId: String?
-    var googleId: String?
-    
-    //MARK: lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        initGoogleSignIn()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         resetFields()
+        
+        socialLogoutIfNeeded()
     }
     
     func resetFields() {
         loginView.resetDataFields()
         registerView.resetDataFields()
-        socialFirstName = nil
-        socialLastName = nil
-        socialEmail = nil
-        facebookId = nil
-        googleId = nil
         
         segmentedControl.selectedSegmentIndex = 0
         setSegmentedItem(sender: segmentedControl)
+    }
+    
+    func socialLogoutIfNeeded() {
+        let userManager = UserManager.sharedInstance
+        
+        if userManager.getUser() == nil {
+            userManager.socialLogout()
+        }
     }
     
     func showMainView(isQuickStart: Bool) {
@@ -69,10 +61,8 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         self.present(controller, animated: true, completion: nil)
     }
     
-    func showRegistrationView() {
-        registerView.tfFirstName.text = socialFirstName
-        registerView.tfLastName.text = socialLastName
-        registerView.tfEmail.text = socialEmail
+    func showRegistrationView(socialUser: SocialUser) {
+        registerView.socialUser = socialUser
         
         segmentedControl.selectedSegmentIndex = 1
         setSegmentedItem(sender: segmentedControl)
@@ -136,41 +126,5 @@ class WelcomeViewController: BaseVC, GIDSignInDelegate, GIDSignInUIDelegate {
         viewSub.snp.makeConstraints { make in
             make.edges.equalTo(loginRegisterView)
         }
-    }
-    
-    //MARK: google signin
-    private func initGoogleSignIn() {
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error == nil {
-            loginView.googleSignInResult(user: user)
-        } else {
-            //nothing here
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        //nothing here
-    }
-    
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        //nothing here
-    }
-    
-    func sign(_ signIn: GIDSignIn!,
-              present viewController: UIViewController!) {
-        self.present(viewController, animated: true, completion: nil)
-    }
-    
-    func sign(_ signIn: GIDSignIn!,
-              dismiss viewController: UIViewController!) {
-        self.dismiss(animated: true, completion: nil)
     }
 }

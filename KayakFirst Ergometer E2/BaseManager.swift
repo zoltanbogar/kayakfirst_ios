@@ -9,7 +9,7 @@ import Foundation
 
 func errorHandlingWithAlert(viewController: UIViewController, error: Responses?) {
     if let errorValue = error {
-        let textRes: String
+        var textRes: String? = nil
         var isNoInternet = false
         
         switch errorValue {
@@ -24,14 +24,18 @@ func errorHandlingWithAlert(viewController: UIViewController, error: Responses?)
             textRes = "error_user_username_used"
         case Responses.error_used_email:
             textRes = "error_user_email_used"
+        case Responses.error_social:
+            textRes = nil
         default:
             textRes = "error_server"
         }
         
-        if viewController is BaseVC && isNoInternet {
-            AppToast(baseVc: viewController as! BaseVC, text: getString(textRes)).show()
-        } else {
-            ErrorDialog(errorString: getString(textRes)).show(viewController: viewController)
+        if let textResValue = textRes {
+            if viewController is BaseVC && isNoInternet {
+                AppToast(baseVc: viewController as! BaseVC, text: getString(textResValue)).show()
+            } else {
+                ErrorDialog(errorString: getString(textResValue)).show(viewController: viewController)
+            }
         }
     }
 }
