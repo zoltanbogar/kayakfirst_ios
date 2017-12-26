@@ -310,6 +310,7 @@
 		06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */; };
 		06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */; };
 		06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */; };
+		06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
@@ -689,6 +690,7 @@
 		06CBD6DB1F40EFF300BB570B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
 		06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSettingsLayout.swift; sourceTree = "<group>"; };
+		06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCalendarLayout.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -1605,6 +1607,7 @@
 			children = (
 				06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */,
 				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
+				06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -2171,6 +2174,7 @@
 				060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,
+				06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */,
 				0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */,
 				064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */,
 				064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */,

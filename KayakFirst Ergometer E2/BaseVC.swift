@@ -203,6 +203,7 @@ class BaseVC: UIViewController {
     }
     
     //MARK: abstract functions
+    //TODO: generic E: BaseLayout
     func getContentLayout(contentView: UIView) -> BaseLayout {
         fatalError("Must be implemented")
     }
