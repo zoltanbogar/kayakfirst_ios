@@ -308,6 +308,8 @@
 		06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */; };
 		06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */; };
 		06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */; };
+		06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */; };
+		06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
@@ -685,6 +687,8 @@
 		06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainings.swift; sourceTree = "<group>"; };
 		06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlan.swift; sourceTree = "<group>"; };
 		06CBD6DB1F40EFF300BB570B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
+		06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSettingsLayout.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -1101,6 +1105,7 @@
 		064D91F81FE6861000179498 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				06CBFCBD1FF244CE0017E9B5 /* layout */,
 				064764C51E237022004B9ED3 /* utils */,
 				06BF94F01E2A30E20010C8A7 /* view_controller */,
 				06C1B9861E25961300AB4C47 /* design */,
@@ -1595,6 +1600,15 @@
 			name = training;
 			sourceTree = "<group>";
 		};
+		06CBFCBD1FF244CE0017E9B5 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */,
+				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
+			);
+			name = layout;
+			sourceTree = "<group>";
+		};
 		06DE18481E56D22B00374107 /* training_viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1971,6 +1985,7 @@
 				0626FBCB1EFCE98B00DCBB33 /* UnitHelper.swift in Sources */,
 				06CAFF3F1F0D28CD00D2EA14 /* ManagerModifyEditable.swift in Sources */,
 				065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */,
+				06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */,
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
@@ -2185,6 +2200,7 @@
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
 				06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */,
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
+				06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */,
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,

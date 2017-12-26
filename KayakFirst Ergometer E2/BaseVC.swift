@@ -52,6 +52,7 @@ class BaseVC: UIViewController {
     let contentView = UIView()
     private var viewInited = false
     private var progressView: ProgressView?
+    var contentLayout: BaseLayout?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -187,15 +188,22 @@ class BaseVC: UIViewController {
     }
     
     func handlePortraitLayout(size: CGSize) {
-        //override if needed
+        self.contentLayout?.handlePortraitLayout(size: size)
     }
     
     func handleLandscapeLayout(size: CGSize) {
-        //override if needed
+        self.contentLayout?.handleLandscapeLayout(size: size)
+    }
+    
+    //TODO: should be private
+    func initView() {
+        //TODO: reactivate this
+        //self.contentLayout = getContentLayout(contentView: contentView)
+        //self.contentLayout?.setView()
     }
     
     //MARK: abstract functions
-    func initView() {
+    func getContentLayout(contentView: UIView) -> BaseLayout {
         fatalError("Must be implemented")
     }
 }
