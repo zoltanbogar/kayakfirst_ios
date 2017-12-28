@@ -40,7 +40,7 @@ class PlanListVc: BaseVC {
     }
     
     private func search() {
-        let manager = planManager.getPlanByName(name: etSearch.text, managerCallBack: planCallback)
+        let manager = planManager.getPlanByName(name: (contentLayout as! VcPlanListLayout).etSearch.text, managerCallBack: planCallback)
         showProgress(baseManagerType: manager)
     }
     
@@ -49,7 +49,7 @@ class PlanListVc: BaseVC {
         dismissProgress()
         
         if data != nil {
-            tableViewPlan.dataList = data
+            (contentLayout as! VcPlanListLayout).tableViewPlan.dataList = data
         }
         
         errorHandlingWithAlert(viewController: self, error: error)
@@ -77,85 +77,45 @@ class PlanListVc: BaseVC {
     
     private func showProgress(isShow: Bool) {
         if isShow {
-            progressBar.startAnimating()
+            (contentLayout as! VcPlanListLayout).progressBar.startAnimating()
         } else {
-            progressBar.stopAnimating()
+            (contentLayout as! VcPlanListLayout).progressBar.stopAnimating()
         }
         
-        progressBar.isHidden = !isShow
+        (contentLayout as! VcPlanListLayout).progressBar.isHidden = !isShow
     }
     
     //MARK: initView
     override func initView() {
+        super.initView()
+        
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
+        
+        (contentLayout as! VcPlanListLayout).btnAdd.target = self
+        (contentLayout as! VcPlanListLayout).btnAdd.action = #selector(addClick)
+        (contentLayout as! VcPlanListLayout).etSearch.searchListener = { text in
+            self.search()
+        }
+        (contentLayout as! VcPlanListLayout).tableViewPlan.deleteCallback = self.deleteCallback
+        (contentLayout as! VcPlanListLayout).tableViewPlan.rowClickCallback = { plan, position in
+            startPlanDetailsViewController(viewController: self, plan: plan)
+        }
+        
         showLogoCenter(viewController: self)
-        
-        contentView.addSubview(etSearch)
-        etSearch.snp.makeConstraints { (make) in
-            make.left.equalTo(contentView).offset(margin2)
-            make.right.equalTo(contentView).offset(-margin2)
-            make.top.equalTo(contentView).offset(margin)
-            make.height.equalTo(30)
-        }
-        
-        contentView.addSubview(tableViewPlan)
-        tableViewPlan.snp.makeConstraints { (make) in
-            make.left.equalTo(contentView)
-            make.right.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.top.equalTo(etSearch.snp.bottom).offset(margin)
-        }
-        
-        contentView.addSubview(progressBar)
-        progressBar.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-        }
         
         setPlanList()
     }
     
-    override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems([btnAdd], animated: true)
+    override func getContentLayout(contentView: UIView) -> VcPlanListLayout {
+        return VcPlanListLayout(contentView: contentView)
     }
     
-    //MARK: views
-    private lazy var btnAdd: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "ic_add_white")
-        button.target = self
-        button.action = #selector(addClick)
-        
-        return button
-    }()
-
-    private lazy var tableViewPlan: PlanTableView! = {
-        let tableViewPlan = PlanTableView(view: self.contentView, deleteCallback: self.deleteCallback)
-        
-        tableViewPlan.rowClickCallback = { plan, position in
-            startPlanDetailsViewController(viewController: self, plan: plan)
-        }
-        
-        return tableViewPlan
-    }()
-    
-    private lazy var etSearch: SearchTextView! = {
-        let view = SearchTextView()
-        view.layer.cornerRadius = 5
-        view.backgroundColor = UIColor.white
-        
-        view.searchListener = { text in
-            self.search()
-        }
-        
-        return view
-    }()
-    
-    private lazy var progressBar: UIActivityIndicatorView! = {
-        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
-        spinner.activityIndicatorViewStyle = .whiteLarge
-        spinner.color = Colors.colorWhite
-        
-        return spinner
-    }()
+    override func initTabBarItems() {
+        self.navigationItem.setRightBarButtonItems([(contentLayout as! VcPlanListLayout).btnAdd], animated: true)
+    }
     
     //MARK: clicklisteners
     @objc private func addClick() {

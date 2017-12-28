@@ -11,12 +11,11 @@ import Foundation
 class PlanTableView: TableViewWithEmpty<Plan> {
     
     //MARK: properties
-    private var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     
     //MARK: init
-    init(view: UIView, deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+    override init(view: UIView) {
         super.init(view: view)
-        self.deleteCallback = deleteCallback
         
         backgroundColor = Colors.colorTransparent
         separatorColor = Colors.colorDashBoardDivider
