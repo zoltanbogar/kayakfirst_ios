@@ -26,54 +26,20 @@ class PlanOrNotPlanVc: BaseVC, PlanTypeSelectListener {
     
     //MARK: initView
     override func initView() {
-        let mainstackView = UIStackView()
-        mainstackView.axis = .vertical
+        super.initView()
         
-        mainstackView.addArrangedSubview(viewRun)
-        let dividerView = DividerView()
-        mainstackView.addArrangedSubview(dividerView)
-        dividerView.snp.makeConstraints { (make) in
-            make.width.equalTo(mainstackView)
-            make.height.equalTo(dashboardDividerWidth)
-        }
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
         
-        mainstackView.addArrangedSubview(planTypeView)
-        
-        viewRun.snp.makeConstraints { (make) in
-            make.height.equalTo(planTypeView)
-        }
-        
-        contentView.addSubview(mainstackView)
-        mainstackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
-        }
+        (contentLayout as! VcPlanOrNotPlanLayout).planTypeView.planTypeSelectListener = self
+        (contentLayout as! VcPlanOrNotPlanLayout).viewRun.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickRun)))
         
         showLogoCenter(viewController: self)
     }
     
-    //MARK: views
-    private lazy var viewRun: UIView! = {
-        let view = UIView()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickRun)))
-        
-        let label = BebasUILabel()
-        label.text = getString("plan_run")
-        label.textAlignment = .center
-        label.font = label.font.withSize(75)
-        
-        view.addSubview(label)
-        label.snp.makeConstraints({ (make) in
-            make.edges.equalTo(view)
-        })
-        
-        return view
-    }()
-    
-    private lazy var planTypeView: PlanTypeView! = {
-        let view = PlanTypeView()
-        
-        view.planTypeSelectListener = self
-        
-        return view
-    }()
+    override func getContentLayout(contentView: UIView) -> VcPlanOrNotPlanLayout {
+        return VcPlanOrNotPlanLayout(contentView: contentView)
+    }
 }

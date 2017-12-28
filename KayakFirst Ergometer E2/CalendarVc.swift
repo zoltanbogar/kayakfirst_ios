@@ -65,8 +65,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     internal override func initView() {
+        super.initView()
+        //TODO: delete this
         self.contentLayout = getContentLayout(contentView: contentView)
         self.contentLayout?.setView()
+        //////////////////
         
         (contentLayout as! VcCalendarLayout).cvCalendarView.calendarAppearanceDelegate = self
         (contentLayout as! VcCalendarLayout).cvCalendarView.calendarDelegate = self

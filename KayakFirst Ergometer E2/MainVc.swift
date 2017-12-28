@@ -40,6 +40,7 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     
     //MARK: views
     override func initView() {
+        super.initView()
         //TODO: move this to BaseVc
         self.contentLayout = getContentLayout(contentView: contentView)
         self.contentLayout?.setView()
