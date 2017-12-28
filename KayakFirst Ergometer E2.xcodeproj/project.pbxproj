@@ -152,6 +152,7 @@
 		06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C251FF56A7700469A46 /* VcPlanListLayout.swift */; };
 		06371C281FF56C8100469A46 /* VcCreatePlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */; };
 		06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */; };
+		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -530,6 +531,7 @@
 		06371C251FF56A7700469A46 /* VcPlanListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanListLayout.swift; sourceTree = "<group>"; };
 		06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCreatePlanLayout.swift; sourceTree = "<group>"; };
 		06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanDetailsLayout.swift; sourceTree = "<group>"; };
+		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -1626,6 +1628,7 @@
 				06371C251FF56A7700469A46 /* VcPlanListLayout.swift */,
 				06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */,
 				06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */,
+				06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -2193,6 +2196,7 @@
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */,
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
+				06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */,
 				06AF23401F067D2D008805A2 /* DownloadEventDays.swift in Sources */,
 				060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,

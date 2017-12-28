@@ -46,9 +46,6 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
     private var planType: PlanType?
     private var planId: String?
     
-    private var datePickerView = UIDatePicker()
-    private var timePickerView = UIDatePicker()
-    
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,19 +57,19 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
     private func setEditLayout(isEdit: Bool) {
         if isEdit {
             if planEvent != nil {
-                setTabbarItem(tabbarItems: [btnSave, btnDelete])
+                setTabbarItem(tabbarItems: [(contentLayout as! VcEventDetailsLayout).btnSave, (contentLayout as! VcEventDetailsLayout).btnDelete])
             } else {
-                setTabbarItem(tabbarItems: [btnSave])
+                setTabbarItem(tabbarItems: [(contentLayout as! VcEventDetailsLayout).btnSave])
             }
         } else {
             if planEvent != nil && planEvent!.event.sessionId != 0 {
                 setTabbarItem(tabbarItems: [])
             } else {
-               setTabbarItem(tabbarItems: [btnEdit])
+               setTabbarItem(tabbarItems: [(contentLayout as! VcEventDetailsLayout).btnEdit])
             }
         }
-        etDate.active = isEdit
-        etStart.active = isEdit
+        (contentLayout as! VcEventDetailsLayout).etDate.active = isEdit
+        (contentLayout as! VcEventDetailsLayout).etStart.active = isEdit
     }
     
     private func initFields() {
@@ -89,7 +86,7 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
             planType = plan?.type
             planId = plan?.planId
         }
-        etName.text = name
+        (contentLayout as! VcEventDetailsLayout).etName.text = name
     }
     
     private func setTimestampText() {
@@ -104,8 +101,8 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
             initDateComponents(calendar: calendar, date: date)
             initTimeComponents(calendar: calendar, date: date)
         }
-        etDate.text = dateText
-        etStart.text = timeText
+        (contentLayout as! VcEventDetailsLayout).etDate.text = dateText
+        (contentLayout as! VcEventDetailsLayout).etStart.text = timeText
     }
     
     private func initDateComponents(calendar: Calendar, date: Date) {
@@ -141,10 +138,10 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
     
     //MARK: textview delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.inputView == datePickerView {
-            datePickerValueChanged(sender: datePickerView)
-        } else if textField.inputView == timePickerView {
-            datePickerValueChanged(sender: timePickerView)
+        if textField.inputView == (contentLayout as! VcEventDetailsLayout).datePickerView {
+            datePickerValueChanged(sender: (contentLayout as! VcEventDetailsLayout).datePickerView)
+        } else if textField.inputView == (contentLayout as! VcEventDetailsLayout).timePickerView {
+            datePickerValueChanged(sender: (contentLayout as! VcEventDetailsLayout).timePickerView)
         }
     }
     
@@ -226,38 +223,43 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
     
     //MARK: init view
     override func initView() {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = margin
+        super.initView()
         
-        stackView.addArrangedSubview(labelTitle)
-        stackView.addArrangedSubview(etDate)
-        stackView.addArrangedSubview(etStart)
-        stackView.addArrangedSubview(etName)
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
         
-        labelTitle.snp.makeConstraints { (make) in
-            make.height.equalTo(80)
-            make.width.equalTo(200)
-        }
+        (contentLayout as! VcEventDetailsLayout).btnSave.target = self
+        (contentLayout as! VcEventDetailsLayout).btnSave.action = #selector(btnSaveClick)
+        (contentLayout as! VcEventDetailsLayout).btnDelete.target = self
+        (contentLayout as! VcEventDetailsLayout).btnDelete.action = #selector(btnDeleteClick)
+        (contentLayout as! VcEventDetailsLayout).btnEdit.target = self
+        (contentLayout as! VcEventDetailsLayout).btnEdit.action = #selector(btnEditClick)
         
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.left.equalTo(contentView)
-            make.top.equalTo(contentView)
-            make.right.equalTo(contentView)
-        }
+        (contentLayout as! VcEventDetailsLayout).etDate.valueTextField.inputView = (contentLayout as! VcEventDetailsLayout).datePickerView
+        (contentLayout as! VcEventDetailsLayout).etDate.valueTextField.delegate = self
+        (contentLayout as! VcEventDetailsLayout).datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        (contentLayout as! VcEventDetailsLayout).etStart.valueTextField.inputView = (contentLayout as! VcEventDetailsLayout).timePickerView
+        (contentLayout as! VcEventDetailsLayout).etStart.valueTextField.delegate = self
+        (contentLayout as! VcEventDetailsLayout).timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
         
        initPickers()
     }
     
+    override func getContentLayout(contentView: UIView) -> VcEventDetailsLayout {
+        return VcEventDetailsLayout(contentView: contentView)
+    }
+    
     private func initPickers() {
-        datePickerView.datePickerMode = .date
-        datePickerView.minimumDate = Date()
-        timePickerView.datePickerMode = .time
+        (contentLayout as! VcEventDetailsLayout).datePickerView.datePickerMode = .date
+        (contentLayout as! VcEventDetailsLayout).datePickerView.minimumDate = Date()
+        (contentLayout as! VcEventDetailsLayout).timePickerView.datePickerMode = .time
         
         if let timestamp = planEvent?.event.timestamp {
-            datePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
-            timePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
+            (contentLayout as! VcEventDetailsLayout).datePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
+            (contentLayout as! VcEventDetailsLayout).timePickerView.date = Date(timeIntervalSince1970: timestamp / 1000)
         }
     }
     
@@ -267,75 +269,4 @@ class EventDetailsViewController: BaseVC, UITextFieldDelegate {
         
         setEditLayout(isEdit: planEvent == nil)
     }
-    
-    //MARK: views
-    lazy var etName: ProfileElement! = {
-        let textField = ProfileElement()
-        textField.title = getString("plan_name")
-        textField.active = false
-        
-        return textField
-    }()
-    
-    private lazy var etDate: ProfileElement! = {
-        let textField = ProfileElement()
-        textField.title = getString("date_date")
-        textField.active = false
-        
-        textField.valueTextField.inputView = self.datePickerView
-        textField.valueTextField.delegate = self
-        self.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        
-        return textField
-    }()
-    
-    private lazy var etStart: ProfileElement! = {
-        let textField = ProfileElement()
-        textField.title = getString("training_start")
-        textField.active = false
-        
-        textField.valueTextField.inputView = self.timePickerView
-        textField.valueTextField.delegate = self
-        self.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
-        
-        return textField
-    }()
-    
-    private lazy var labelTitle: AppUILabel! = {
-        let label = AppUILabel()
-        
-        label.textAlignment = .center
-        label.text = getString("plan_event_title")
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    
-    //MARK: barbuttons
-    private lazy var btnSave: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "save")
-        button.target = self
-        button.action = #selector(btnSaveClick)
-        
-        return button
-    }()
-    
-    private lazy var btnDelete: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "trash")
-        button.target = self
-        button.action = #selector(btnDeleteClick)
-        
-        return button
-    }()
-    
-    private lazy var btnEdit: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "edit")
-        button.target = self
-        button.action = #selector(btnEditClick)
-        
-        return button
-    }()
 }
