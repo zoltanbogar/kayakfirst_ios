@@ -84,14 +84,16 @@ class ProfileVc: MainTabVc {
     }
     
     override func initTabBarItems() {
-        setTabbarItem(tabbarItem: (contentLayout as! VcProfileLayout).btnEdit)
-        activateFields(isActive: false)
-        
-        self.navigationItem.setLeftBarButtonItems([(contentLayout as! VcProfileLayout).btnLogout], animated: true)
-        
-        self.navigationController!.navigationBar.tintColor = Colors.colorAccent
-        
-        showLogoCenter(viewController: self)
+        if contentLayout != nil {
+            setTabbarItem(tabbarItem: (contentLayout as! VcProfileLayout).btnEdit)
+            activateFields(isActive: false)
+            
+            self.navigationItem.setLeftBarButtonItems([(contentLayout as! VcProfileLayout).btnLogout], animated: true)
+            
+            self.navigationController!.navigationBar.tintColor = Colors.colorAccent
+            
+            showLogoCenter(viewController: self)
+        }
     }
     
     private func initUser() {
@@ -190,8 +192,8 @@ class ProfileVc: MainTabVc {
         setTabbarItem(tabbarItem: (contentLayout as! VcProfileLayout).btnSave)
     }
     
-    private func setTabbarItem(tabbarItem: UIBarButtonItem) {
-        self.navigationItem.setRightBarButtonItems([tabbarItem], animated: true)
+    private func setTabbarItem(tabbarItem: UIBarButtonItem?) {
+        self.navigationItem.setRightBarButtonItems([tabbarItem!], animated: true)
     }
     
     private func activateFields(isActive: Bool) {
