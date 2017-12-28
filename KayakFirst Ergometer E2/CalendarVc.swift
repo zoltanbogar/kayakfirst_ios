@@ -70,6 +70,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         
         (contentLayout as! VcCalendarLayout).cvCalendarView.calendarAppearanceDelegate = self
         (contentLayout as! VcCalendarLayout).cvCalendarView.calendarDelegate = self
+        (contentLayout as! VcCalendarLayout).calendarMenuView.menuViewDelegate = self
         
         (contentLayout as! VcCalendarLayout).segmentedControl.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
         (contentLayout as! VcCalendarLayout).btnToday.target = self
@@ -99,7 +100,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     override func handlePortraitLayout(size: CGSize) {
-        super.handleLandscapeLayout(size: size)
+        super.handlePortraitLayout(size: size)
         
         refreshCalendarDesign()
     }
@@ -113,6 +114,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func refreshCalendarDesign() {
         (contentLayout as! VcCalendarLayout).cvCalendarView.commitCalendarViewUpdate()
         (contentLayout as! VcCalendarLayout).calendarMenuView?.commitMenuViewUpdate()
+        (contentLayout as! VcCalendarLayout).designCalendarView()
     }
     
     override func initTabBarItems() {

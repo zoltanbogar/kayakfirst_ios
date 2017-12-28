@@ -89,6 +89,12 @@ class VcCalendarLayout: BaseLayout {
         }
     }
     
+    func designCalendarView() {
+        cvCalendarView.appearance.dayLabelWeekdayInTextColor = Colors.colorWhite
+        cvCalendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
+        cvCalendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
+    }
+    
     lazy var tableViewTraining: TrainingTablewView! = {
         let tableViewTraining = TrainingTablewView(view: self.viewTableView)
         
@@ -127,11 +133,6 @@ class VcCalendarLayout: BaseLayout {
     lazy var cvCalendarView: CVCalendarView! = {
         let calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: self.contentView.frame.width, height: 200))
         
-        //TODO: reactivate this
-        /*calendarView.appearance.dayLabelWeekdayInTextColor = Colors.colorWhite
-        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
-        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent*/
-        
         self.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: currentTimeMillis())
         
         return calendarView
@@ -140,8 +141,6 @@ class VcCalendarLayout: BaseLayout {
     lazy var calendarMenuView: CVCalendarMenuView! = {
         let calendarMenuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 95, width: self.contentView.frame.width, height: 20))
         calendarMenuView.dayOfWeekTextColor = Colors.colorWhite
-        
-        calendarMenuView.menuViewDelegate = self
         
         return calendarMenuView
     }()
