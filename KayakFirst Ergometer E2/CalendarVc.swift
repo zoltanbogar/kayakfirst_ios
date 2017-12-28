@@ -333,6 +333,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
         (contentLayout as! VcCalendarLayout).cvCalendarView?.toggleCurrentDayView()
     }
     
+    //TODO: add showPlanType function
     @objc private func addClick() {
         show(PlanTypeVc(), sender: self)
     }

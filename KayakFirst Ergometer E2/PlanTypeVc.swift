@@ -21,22 +21,22 @@ class PlanTypeVc: BaseVC, PlanTypeSelectListener {
     
     //MARK: inint views
     override func initView() {
-        contentView.addSubview(viewPlanType)
-        viewPlanType.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
-        }
+        super.initView()
+        
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
+        
+        (contentLayout as! VcPlanTypeLayout).viewPlanType.planTypeSelectListener = self
+    }
+    
+    override func getContentLayout(contentView: UIView) -> VcPlanTypeLayout {
+        return VcPlanTypeLayout(contentView: contentView)
     }
     
     override func initTabBarItems() {
         showLogoCenter(viewController: self)
     }
     
-    //MARK: views
-    private lazy var viewPlanType: PlanTypeView! = {
-        let view = PlanTypeView()
-        
-        view.planTypeSelectListener = self
-        
-        return view
-    }()
 }
