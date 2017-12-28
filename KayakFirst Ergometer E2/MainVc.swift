@@ -40,44 +40,22 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     
     //MARK: views
     override func initView() {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-                
-        stackView.addArrangedSubview(btnErgo)
-        stackView.addHorizontalSeparator(color: Colors.colorDashBoardDivider, thickness: 1)
-        stackView.addArrangedSubview(btnOutdoor)
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
         
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(contentView)
-            make.bottom.equalTo(contentView)
-            make.center.equalTo(contentView)
-        }
+        (contentLayout as! VcMainLayout).btnErgo.addTarget(self, action: #selector(clickBtnErgo), for: .touchUpInside)
+        (contentLayout as! VcMainLayout).btnOutdoor.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
+    }
+    
+    override func getContentLayout(contentView: UIView) -> VcMainLayout {
+        return VcMainLayout(contentView: contentView)
     }
     
     override func initTabBarItems() {
         showLogoCenter(viewController: self)
     }
-    
-    private lazy var btnErgo: UIButton! = {
-        let button = UIButton()
-        
-        button.setImage(UIImage(named: "halfBulb"), for: .normal)
-        
-        button.addTarget(self, action: #selector(clickBtnErgo), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var btnOutdoor: UIButton! = {
-        let button = UIButton()
-        
-        button.setImage(UIImage(named: "halfSun"), for: .normal)
-        
-        button.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
-        
-        return button
-    }()
     
     //MARK: button listeners
     @objc private func clickBtnOutdoor() {

@@ -147,6 +147,7 @@
 		06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D061F0F662600F102C8 /* EventDetailsViewController.swift */; };
 		062F02CD1F485CCA003CEE36 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062F02CC1F485CCA003CEE36 /* WindowHelper.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
+		06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcMainLayout.swift */; };
 		064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -520,6 +521,7 @@
 		06287D061F0F662600F102C8 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		062F02CC1F485CCA003CEE36 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
+		06371C211FF5663500469A46 /* VcMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcMainLayout.swift; sourceTree = "<group>"; };
 		064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorDistance.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -1611,6 +1613,7 @@
 				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
 				06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */,
 				06371C1F1FF5610200469A46 /* VcProfileLayout.swift */,
+				06371C211FF5663500469A46 /* VcMainLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -2082,6 +2085,7 @@
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */,
 				066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */,
+				06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */,
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
 				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
