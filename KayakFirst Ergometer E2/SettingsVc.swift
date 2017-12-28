@@ -21,8 +21,10 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
     override func initView() {
         super.initView()
         
+        //TODO: move this to BaseVc
         self.contentLayout = getContentLayout(contentView: contentView)
         self.contentLayout?.setView()
+        ///////////////////////////
         
         (contentLayout as! VcSettingsLayout).textFieldWebsite.delegate = self
         (contentLayout as! VcSettingsLayout).textFieldTermsCondition.delegate = self
