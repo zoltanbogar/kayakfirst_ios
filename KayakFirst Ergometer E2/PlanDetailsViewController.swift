@@ -59,12 +59,25 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: init view
     override func initView() {
+        super.initView()
+        
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
+        
         setEditLayout(isEdit: isEdit)
         
-        contentView.addSubview(planDetailsTableView)
-        planDetailsTableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
-        }
+        (contentLayout as! VcPlanDetailsLayout).btnSave.target = self
+        (contentLayout as! VcPlanDetailsLayout).btnSave.action = #selector(btnSaveClick)
+        (contentLayout as! VcPlanDetailsLayout).btnDelete.target = self
+        (contentLayout as! VcPlanDetailsLayout).btnDelete.action = #selector(btnDeleteClick)
+        (contentLayout as! VcPlanDetailsLayout).btnEdit.target = self
+        (contentLayout as! VcPlanDetailsLayout).btnEdit.action = #selector(btnEditClick)
+    }
+    
+    override func getContentLayout(contentView: UIView) -> VcPlanDetailsLayout {
+        return VcPlanDetailsLayout(contentView: contentView)
     }
     
     override func initTabBarItems() {
@@ -72,46 +85,12 @@ class PlanDetailsViewController: BaseVC {
         showLogoCenter(viewController: self)
     }
     
-    //MARK: views
-    private lazy var btnSave: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "save")
-        button.target = self
-        button.action = #selector(btnSaveClick)
-        
-        return button
-    }()
-    
-    private lazy var btnDelete: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "trash")
-        button.target = self
-        button.action = #selector(btnDeleteClick)
-        
-        return button
-    }()
-    
-    private lazy var btnEdit: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "edit")
-        button.target = self
-        button.action = #selector(btnEditClick)
-        
-        return button
-    }()
-    
-    private lazy var planDetailsTableView: PlanDetailsTableView! = {
-        let view = PlanDetailsTableView(view: self.contentView)
-        
-        return view
-    }()
-    
     //MARK: button listeners
     @objc private func btnSaveClick() {
-        let isValidPlanName = planDetailsTableView.isNameValid
+        let isValidPlanName = (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.isNameValid
         
         if (!isValidPlanName) {
-            planDetailsTableView.scrollToPosition(position: 0)
+            (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.scrollToPosition(position: 0)
         } else {
             let addEventDialog = AddEventDialog()
             addEventDialog.noticeDialogPosListener = {
@@ -155,12 +134,12 @@ class PlanDetailsViewController: BaseVC {
     }
     
     //MARK: functions
-    private func setEditLayout(isEdit: Bool) {
-        planDetailsTableView.setEdit(edit: isEdit, editShouldFinish: self.isEdit)
+    func setEditLayout(isEdit: Bool) {
+        (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.setEdit(edit: isEdit, editShouldFinish: self.isEdit)
         if isEdit {
-            setTabbarItem(tabbarItems: [btnSave, btnDelete])
+            setTabbarItem(tabbarItems: [(contentLayout as! VcPlanDetailsLayout).btnSave, (contentLayout as! VcPlanDetailsLayout).btnDelete])
         } else {
-            setTabbarItem(tabbarItems: [btnEdit])
+            setTabbarItem(tabbarItems: [(contentLayout as! VcPlanDetailsLayout).btnEdit])
         }
     }
     
@@ -169,11 +148,11 @@ class PlanDetailsViewController: BaseVC {
     }
     
     private func initPlanFromAdapter() {
-        PlanDetailsViewController.plan = planDetailsTableView.plan
+        PlanDetailsViewController.plan = (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.plan
     }
     
     private func setPlanToTableView() {
-        planDetailsTableView.plan = PlanDetailsViewController.plan
+        (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.plan = PlanDetailsViewController.plan
     }
     
     //MARK: plan callbacks
