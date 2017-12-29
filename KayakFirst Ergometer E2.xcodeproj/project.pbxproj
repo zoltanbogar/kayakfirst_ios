@@ -146,6 +146,7 @@
 		06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D041F0F639B00F102C8 /* UITableView+.swift */; };
 		06287D071F0F662600F102C8 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06287D061F0F662600F102C8 /* EventDetailsViewController.swift */; };
 		062F02CD1F485CCA003CEE36 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062F02CC1F485CCA003CEE36 /* WindowHelper.swift */; };
+		063237C91FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237C81FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
 		06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcMainLayout.swift */; };
 		06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */; };
@@ -526,6 +527,7 @@
 		06287D041F0F639B00F102C8 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		06287D061F0F662600F102C8 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		062F02CC1F485CCA003CEE36 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
+		063237C81FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcTrainingDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
 		06371C211FF5663500469A46 /* VcMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcMainLayout.swift; sourceTree = "<group>"; };
 		06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanOrNotPlanLayout.swift; sourceTree = "<group>"; };
@@ -1632,6 +1634,7 @@
 				06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */,
 				06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */,
 				06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */,
+				063237C81FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -2138,6 +2141,7 @@
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
+				063237C91FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift in Sources */,
 				06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */,
 				067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */,
 				069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */,
