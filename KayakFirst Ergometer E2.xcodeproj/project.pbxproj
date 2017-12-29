@@ -149,6 +149,7 @@
 		063237CB1FF629B000F04A4B /* VcSetDsahboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CA1FF629B000F04A4B /* VcSetDsahboardLayout.swift */; };
 		063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */; };
 		063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */; };
+		063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
 		06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcMainLayout.swift */; };
 		06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */; };
@@ -532,6 +533,7 @@
 		063237CA1FF629B000F04A4B /* VcSetDsahboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSetDsahboardLayout.swift; sourceTree = "<group>"; };
 		063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcDashboardLayout.swift; sourceTree = "<group>"; };
 		063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcLocationPermissionLayout.swift; sourceTree = "<group>"; };
+		063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcBluetoothLayout.swift; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
 		06371C211FF5663500469A46 /* VcMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcMainLayout.swift; sourceTree = "<group>"; };
 		06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanOrNotPlanLayout.swift; sourceTree = "<group>"; };
@@ -1642,6 +1644,7 @@
 				063237CA1FF629B000F04A4B /* VcSetDsahboardLayout.swift */,
 				063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */,
 				063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */,
+				063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -1962,6 +1965,7 @@
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
+				063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */,
 				06AF23331F0625FA008805A2 /* Event.swift in Sources */,
 				060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */,
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
