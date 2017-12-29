@@ -8,13 +8,6 @@
 
 import UIKit
 
-func startErgometerViewController(viewController: UIViewController) {
-    let ergoController = ErgometerViewController()
-    let ergoComingSoon = ErgoComingSoonVc()
-    ergoController.pushViewController(ergoComingSoon, animated: false)
-    viewController.present(ergoController, animated: true, completion: nil)
-}
-
 class ErgometerViewController: TrainingViewController {
     
     //TODO - refactor

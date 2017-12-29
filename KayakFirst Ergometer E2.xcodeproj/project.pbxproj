@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */; };
-		06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */; };
 		06018D541E61B8D500F75919 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D531E61B8D500F75919 /* RoundButton.swift */; };
 		06018D561E61D9D700F75919 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D551E61D9D700F75919 /* UIView+.swift */; };
 		06018D581E620FFC00F75919 /* AppSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D571E620FFC00F75919 /* AppSql.swift */; };
@@ -388,7 +387,6 @@
 
 /* Begin PBXFileReference section */
 		06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgometerViewController.swift; sourceTree = "<group>"; };
-		06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErgoComingSoonVc.swift; sourceTree = "<group>"; };
 		06018D531E61B8D500F75919 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		06018D551E61D9D700F75919 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		06018D571E620FFC00F75919 /* AppSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSql.swift; sourceTree = "<group>"; };
@@ -1652,7 +1650,6 @@
 				06DE18421E56D0A100374107 /* SetDashboardVc.swift */,
 				06DE18491E56D24700374107 /* DashboardVc.swift */,
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
-				06018D511E61766D00F75919 /* ErgoComingSoonVc.swift */,
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
 				06E840501F35E1C300303574 /* BluetoothViewController.swift */,
 			);
@@ -2189,7 +2186,6 @@
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,
-				06018D521E61766D00F75919 /* ErgoComingSoonVc.swift in Sources */,
 				065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */,
 				066B004D1EC759F800BE0E1F /* EventTableView.swift in Sources */,
 				06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */,
