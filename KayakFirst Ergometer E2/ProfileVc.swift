@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVc: MainTabVc {
+class ProfileVc: BaseVC<VcProfileLayout> {
     
     //MARK: constants
     private let viewBottomHeight: CGFloat = buttonHeight + margin2
@@ -38,33 +38,28 @@ class ProfileVc: MainTabVc {
         if checkUser() {
             super.initView()
             
-            //TODO: move this to BaseVc
-            self.contentLayout = getContentLayout(contentView: contentView)
-            self.contentLayout?.setView()
-            ///////////////////////////
-            
-            (contentLayout as! VcProfileLayout).tfPassword.clickCallback = {
+            contentLayout!.tfPassword.clickCallback = {
                 self.clickPassword()
             }
-            (contentLayout as! VcProfileLayout).btnLogout.target = self
-            (contentLayout as! VcProfileLayout).btnLogout.action = #selector(clickLogout)
-            (contentLayout as! VcProfileLayout).btnSave.target = self
-            (contentLayout as! VcProfileLayout).btnSave.action = #selector(btnSaveClick)
-            (contentLayout as! VcProfileLayout).btnEdit.target = self
-            (contentLayout as! VcProfileLayout).btnEdit.action = #selector(btnEditClick)
+            contentLayout!.btnLogout.target = self
+            contentLayout!.btnLogout.action = #selector(clickLogout)
+            contentLayout!.btnSave.target = self
+            contentLayout!.btnSave.action = #selector(btnSaveClick)
+            contentLayout!.btnEdit.target = self
+            contentLayout!.btnEdit.action = #selector(btnEditClick)
             
             countryPickerHelper = PickerHelperLocale(
-                pickerView: (contentLayout as! VcProfileLayout).countryPickerView, textField: (contentLayout as! VcProfileLayout).tfCountry.valueTextField)
+                pickerView: contentLayout!.countryPickerView, textField: contentLayout!.tfCountry.valueTextField)
             genderPickerHelper = PickerHelperGender(
-                pickerView: (contentLayout as! VcProfileLayout).genderPickerView, textField: (contentLayout as! VcProfileLayout).tfGender.valueTextField)
+                pickerView: contentLayout!.genderPickerView, textField: contentLayout!.tfGender.valueTextField)
             artOfPaddlingPickerHelper = PickerHelperArtOfPaddling(
-                pickerView: (contentLayout as! VcProfileLayout).artOfPaddlingPickerView, textField: (contentLayout as! VcProfileLayout).tfArtOfPaddling.valueTextField)
+                pickerView: contentLayout!.artOfPaddlingPickerView, textField: contentLayout!.tfArtOfPaddling.valueTextField)
             pickerHelperUnitWeight = PickerHelperUnit(
-                pickerView: (contentLayout as! VcProfileLayout).unitWeightPickerView, textField: (contentLayout as! VcProfileLayout).tfUnitWeight.valueTextField)
+                pickerView: contentLayout!.unitWeightPickerView, textField: contentLayout!.tfUnitWeight.valueTextField)
             pickerHelperUnitDistance = PickerHelperUnit(
-                pickerView: (contentLayout as! VcProfileLayout).unitDistancePickerView, textField: (contentLayout as! VcProfileLayout).tfUnitDistance.valueTextField)
+                pickerView: contentLayout!.unitDistancePickerView, textField: contentLayout!.tfUnitDistance.valueTextField)
             pickerHelperUnitPace = PickerHelperUnit(
-                pickerView: (contentLayout as! VcProfileLayout).unitPacePickerView, textField: (contentLayout as! VcProfileLayout).tfUnitPace.valueTextField)
+                pickerView: contentLayout!.unitPacePickerView, textField: contentLayout!.tfUnitPace.valueTextField)
             
             initUser()
         }
@@ -85,10 +80,10 @@ class ProfileVc: MainTabVc {
     
     override func initTabBarItems() {
         if contentLayout != nil {
-            setTabbarItem(tabbarItem: (contentLayout as! VcProfileLayout).btnEdit)
+            setTabbarItem(tabbarItem: contentLayout!.btnEdit)
             activateFields(isActive: false)
             
-            self.navigationItem.setLeftBarButtonItems([(contentLayout as! VcProfileLayout).btnLogout], animated: true)
+            self.navigationItem.setLeftBarButtonItems([contentLayout!.btnLogout], animated: true)
             
             self.navigationController!.navigationBar.tintColor = Colors.colorAccent
             
@@ -97,34 +92,34 @@ class ProfileVc: MainTabVc {
     }
     
     private func initUser() {
-        (contentLayout as! VcProfileLayout).tfFirstName.text = self.userManager.getUser()?.firstName
-        (contentLayout as! VcProfileLayout).tfLastName.text = self.userManager.getUser()?.lastName
+        contentLayout!.tfFirstName.text = self.userManager.getUser()?.firstName
+        contentLayout!.tfLastName.text = self.userManager.getUser()?.lastName
         if self.userManager.getUser()?.birthDate != 0 {
-            (contentLayout as! VcProfileLayout).tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userManager.getUser()?.birthDate)
+            contentLayout!.tfBirthDate.text = DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateFormat, timeIntervallSince1970: self.userManager.getUser()?.birthDate)
         }
-        (contentLayout as! VcProfileLayout).tfClub.text = self.userManager.getUser()?.club
-        (contentLayout as! VcProfileLayout).tfUserName.text = self.userManager.getUser()?.userName
-        (contentLayout as! VcProfileLayout).tfEmail.text = self.userManager.getUser()?.email
+        contentLayout!.tfClub.text = self.userManager.getUser()?.club
+        contentLayout!.tfUserName.text = self.userManager.getUser()?.userName
+        contentLayout!.tfEmail.text = self.userManager.getUser()?.email
         
         initBodyWeight(user: self.userManager.getUser())
         
-        (contentLayout as! VcProfileLayout).tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userManager.getUser()?.country)
+        contentLayout!.tfCountry.text = NSLocale.getCountryNameByCode(countryCode: self.userManager.getUser()?.country)
         
         if let gender = self.userManager.getUser()?.gender {
-            (contentLayout as! VcProfileLayout).tfGender.text = self.genderPickerHelper!.getTitle(value: gender)
+            contentLayout!.tfGender.text = self.genderPickerHelper!.getTitle(value: gender)
         }
         
         if let artOfPaddling = self.userManager.getUser()?.artOfPaddling {
-            (contentLayout as! VcProfileLayout).tfArtOfPaddling.text = self.artOfPaddlingPickerHelper!.getTitle(value: artOfPaddling)
+            contentLayout!.tfArtOfPaddling.text = self.artOfPaddlingPickerHelper!.getTitle(value: artOfPaddling)
         }
         if let unitWeight = self.userManager.getUser()?.unitWeight {
-            (contentLayout as! VcProfileLayout).tfUnitWeight.text = self.pickerHelperUnitWeight!.getTitle(value: unitWeight)
+            contentLayout!.tfUnitWeight.text = self.pickerHelperUnitWeight!.getTitle(value: unitWeight)
         }
         if let unitDistance = self.userManager.getUser()?.unitDistance {
-            (contentLayout as! VcProfileLayout).tfUnitDistance.text = self.pickerHelperUnitDistance!.getTitle(value: unitDistance)
+            contentLayout!.tfUnitDistance.text = self.pickerHelperUnitDistance!.getTitle(value: unitDistance)
         }
         if let unitPace = self.userManager.getUser()?.unitPace {
-            (contentLayout as! VcProfileLayout).tfUnitPace.text = self.pickerHelperUnitPace!.getTitle(value: unitPace)
+            contentLayout!.tfUnitPace.text = self.pickerHelperUnitPace!.getTitle(value: unitPace)
         }
     }
     
@@ -132,9 +127,9 @@ class ProfileVc: MainTabVc {
         if user != nil {
             bodyWeight = user!.bodyWeight!
             
-            (contentLayout as! VcProfileLayout).tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
+            contentLayout!.tfWeight.text = String.init(format: "%.0f", UnitHelper.getWeightValue(value: bodyWeight))
             pickerHelperUnitWeight?.pickerChangedListener = pickerUnitWeightListener
-            (contentLayout as! VcProfileLayout).tfWeight?.textChangedListener = bodyWeightChangedListener
+            contentLayout!.tfWeight?.textChangedListener = bodyWeightChangedListener
             
             initBodyWeightUnit(isMetric: UnitHelper.isMetricWeight())
         }
@@ -148,7 +143,7 @@ class ProfileVc: MainTabVc {
         let endWithSpace = originalTitle.hasSuffix(" ")
         
         originalTitle = originalTitle + (endWithSpace ? "" : " ") + "(" + UnitHelper.getWeightUnit(isMetric: isMetric) + ")"
-        (contentLayout as! VcProfileLayout).tfWeight.title = originalTitle
+        contentLayout!.tfWeight.title = originalTitle
     }
     
     private func bodyWeightChangedListener() {
@@ -167,17 +162,17 @@ class ProfileVc: MainTabVc {
         if checkRequiredElements() {
             
             let managerType = userManager.update(userDto: UserDto(
-                lastName: (contentLayout as! VcProfileLayout).tfLastName.text,
-                firstName: (contentLayout as! VcProfileLayout).tfFirstName.text,
-                email: (contentLayout as! VcProfileLayout).tfEmail.text,
+                lastName: contentLayout!.tfLastName.text,
+                firstName: contentLayout!.tfFirstName.text,
+                email: contentLayout!.tfEmail.text,
                 bodyWeight: UnitHelper.getMetricWeightValue(value: bodyWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue())),
                 gender: self.userManager.getUser()?.gender,
                 birthDate: self.userManager.getUser()?.birthDate,
-                club: (contentLayout as! VcProfileLayout).tfClub.text,
+                club: contentLayout!.tfClub.text,
                 country: self.countryPickerHelper!.getValue() ?? userManager.getUser()?.country,
                 artOfPaddling: self.artOfPaddlingPickerHelper!.getValue(),
-                password: (contentLayout as! VcProfileLayout).tfPassword.text,
-                userName: (contentLayout as! VcProfileLayout).tfUserName.text,
+                password: contentLayout!.tfPassword.text,
+                userName: contentLayout!.tfUserName.text,
                 unitWeight: pickerHelperUnitWeight?.getValue(),
                 unitDistance: pickerHelperUnitDistance?.getValue(),
                 unitPace: pickerHelperUnitPace?.getValue(),
@@ -197,15 +192,15 @@ class ProfileVc: MainTabVc {
     }
     
     private func activateFields(isActive: Bool) {
-        (contentLayout as! VcProfileLayout).tfPassword.clickable = isActive
-        (contentLayout as! VcProfileLayout).tfPassword.active = isActive
-        (contentLayout as! VcProfileLayout).tfWeight.active = isActive
-        (contentLayout as! VcProfileLayout).tfClub.active = isActive
-        (contentLayout as! VcProfileLayout).tfCountry.active = isActive
-        (contentLayout as! VcProfileLayout).tfArtOfPaddling.active = isActive
-        (contentLayout as! VcProfileLayout).tfUnitWeight.active = isActive
-        (contentLayout as! VcProfileLayout).tfUnitDistance.active = isActive
-        (contentLayout as! VcProfileLayout).tfUnitPace.active = isActive
+        contentLayout!.tfPassword.clickable = isActive
+        contentLayout!.tfPassword.active = isActive
+        contentLayout!.tfWeight.active = isActive
+        contentLayout!.tfClub.active = isActive
+        contentLayout!.tfCountry.active = isActive
+        contentLayout!.tfArtOfPaddling.active = isActive
+        contentLayout!.tfUnitWeight.active = isActive
+        contentLayout!.tfUnitDistance.active = isActive
+        contentLayout!.tfUnitPace.active = isActive
         
         if !isActive {
             initBodyWeight(user: self.userManager.getUser())
@@ -215,11 +210,11 @@ class ProfileVc: MainTabVc {
     }
     
     private func checkRequiredElements() -> Bool {
-        let isValidArtOfPaddling = Validate.isValidPicker(tfPicker: (contentLayout as! VcProfileLayout).tfArtOfPaddling)
-        let isValidUnitWeight = Validate.isValidPicker(tfPicker: (contentLayout as! VcProfileLayout).tfUnitWeight)
-        let isValidUnitDistance = Validate.isValidPicker(tfPicker: (contentLayout as! VcProfileLayout).tfUnitDistance)
-        let isValidUnitPace = Validate.isValidPicker(tfPicker: (contentLayout as! VcProfileLayout).tfUnitPace)
-        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: (contentLayout as! VcProfileLayout).tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue()))
+        let isValidArtOfPaddling = Validate.isValidPicker(tfPicker: contentLayout!.tfArtOfPaddling)
+        let isValidUnitWeight = Validate.isValidPicker(tfPicker: contentLayout!.tfUnitWeight)
+        let isValidUnitDistance = Validate.isValidPicker(tfPicker: contentLayout!.tfUnitDistance)
+        let isValidUnitPace = Validate.isValidPicker(tfPicker: contentLayout!.tfUnitPace)
+        let isValidBodyWeight = Validate.isValidBodyWeight(tfWeight: contentLayout!.tfWeight, isMetric: UnitHelper.isMetric(keyUnit: pickerHelperUnitWeight?.getValue()))
         
         return isValidArtOfPaddling && isValidUnitWeight && isValidUnitDistance && isValidUnitPace && isValidBodyWeight
     }

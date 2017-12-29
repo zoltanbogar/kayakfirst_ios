@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-class BluetoothViewController: BaseVC {
+class BluetoothViewController: BaseVC<VcBluetoothLayout> {
     
     //MARK: life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -20,17 +20,12 @@ class BluetoothViewController: BaseVC {
     
     //MARK: functions
     func refreshBluetoothList() {
-        (contentLayout as! VcBluetoothLayout).bluetoothList.refresh()
+        contentLayout!.bluetoothList.refresh()
     }
     
     //MARK: init view
     override func initView() {
         super.initView()
-        
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
     }
     
     override func getContentLayout(contentView: UIView) -> VcBluetoothLayout {

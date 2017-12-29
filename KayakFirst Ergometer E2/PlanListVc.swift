@@ -15,7 +15,7 @@ func startPlanListVc(navigationController: UINavigationController, planType: Pla
     navigationController.pushViewController(planListVc, animated: true)
 }
 
-class PlanListVc: BaseVC {
+class PlanListVc: BaseVC<VcPlanListLayout> {
     
     //MARK: properties
     private let planManager = PlanManager.sharedInstance
@@ -40,7 +40,7 @@ class PlanListVc: BaseVC {
     }
     
     private func search() {
-        let manager = planManager.getPlanByName(name: (contentLayout as! VcPlanListLayout).etSearch.text, managerCallBack: planCallback)
+        let manager = planManager.getPlanByName(name: contentLayout!.etSearch.text, managerCallBack: planCallback)
         showProgress(baseManagerType: manager)
     }
     
@@ -49,7 +49,7 @@ class PlanListVc: BaseVC {
         dismissProgress()
         
         if data != nil {
-            (contentLayout as! VcPlanListLayout).tableViewPlan.dataList = data
+            contentLayout?.tableViewPlan.dataList = data
         }
         
         errorHandlingWithAlert(viewController: self, error: error)
@@ -77,30 +77,25 @@ class PlanListVc: BaseVC {
     
     private func showProgress(isShow: Bool) {
         if isShow {
-            (contentLayout as! VcPlanListLayout).progressBar.startAnimating()
+            contentLayout?.progressBar.startAnimating()
         } else {
-            (contentLayout as! VcPlanListLayout).progressBar.stopAnimating()
+            contentLayout?.progressBar.stopAnimating()
         }
         
-        (contentLayout as! VcPlanListLayout).progressBar.isHidden = !isShow
+        contentLayout?.progressBar.isHidden = !isShow
     }
     
     //MARK: initView
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcPlanListLayout).btnAdd.target = self
-        (contentLayout as! VcPlanListLayout).btnAdd.action = #selector(addClick)
-        (contentLayout as! VcPlanListLayout).etSearch.searchListener = { text in
+        contentLayout?.btnAdd.target = self
+        contentLayout?.btnAdd.action = #selector(addClick)
+        contentLayout?.etSearch.searchListener = { text in
             self.search()
         }
-        (contentLayout as! VcPlanListLayout).tableViewPlan.deleteCallback = self.deleteCallback
-        (contentLayout as! VcPlanListLayout).tableViewPlan.rowClickCallback = { plan, position in
+        contentLayout?.tableViewPlan.deleteCallback = self.deleteCallback
+        contentLayout?.tableViewPlan.rowClickCallback = { plan, position in
             startPlanDetailsViewController(viewController: self, plan: plan)
         }
         
@@ -114,7 +109,7 @@ class PlanListVc: BaseVC {
     }
     
     override func initTabBarItems() {
-        self.navigationItem.setRightBarButtonItems([(contentLayout as! VcPlanListLayout).btnAdd], animated: true)
+        self.navigationItem.setRightBarButtonItems([contentLayout!.btnAdd], animated: true)
     }
     
     //MARK: clicklisteners

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlanTypeVc: BaseVC, PlanTypeSelectListener {
+class PlanTypeVc: BaseVC<VcPlanTypeLayout>, PlanTypeSelectListener {
     
     //MARK: protocol
     func timeSelected() {
@@ -23,12 +23,7 @@ class PlanTypeVc: BaseVC, PlanTypeSelectListener {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcPlanTypeLayout).viewPlanType.planTypeSelectListener = self
+        contentLayout?.viewPlanType.planTypeSelectListener = self
     }
     
     override func getContentLayout(contentView: UIView) -> VcPlanTypeLayout {

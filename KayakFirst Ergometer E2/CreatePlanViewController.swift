@@ -27,7 +27,7 @@ func startCreatePlanViewController(viewController: UIViewController, planType: P
     viewController.present(navigationVc, animated: true, completion: nil)
 }
 
-class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedListener, OnTextChangedListener {
+class CreatePlanViewController: BaseVC<VcCreatePlanLayout>, OnFocusedListener, OnKeyboardClickedListener, OnTextChangedListener {
     
     //MARK: properties
     var plan: Plan?
@@ -60,31 +60,26 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
         setUiForType()
         
-        (contentLayout as! VcCreatePlanLayout).keyboardView.createPlanViewController = self
-        (contentLayout as! VcCreatePlanLayout).keyboardView.keyboardClickListener = self
+        contentLayout?.keyboardView.createPlanViewController = self
+        contentLayout?.keyboardView.keyboardClickListener = self
         
-        (contentLayout as! VcCreatePlanLayout).etMinute.onFocusedListener = self
-        (contentLayout as! VcCreatePlanLayout).etMinute.onTextChangedListener = self
-        (contentLayout as! VcCreatePlanLayout).etSec.onFocusedListener = self
-        (contentLayout as! VcCreatePlanLayout).etSec.onTextChangedListener = self
-        (contentLayout as! VcCreatePlanLayout).etIntensity.onFocusedListener = self
-        (contentLayout as! VcCreatePlanLayout).etIntensity.onTextChangedListener = self
-        (contentLayout as! VcCreatePlanLayout).etDistance.onFocusedListener = self
-        (contentLayout as! VcCreatePlanLayout).etDistance.onTextChangedListener = self
+        contentLayout?.etMinute.onFocusedListener = self
+        contentLayout?.etMinute.onTextChangedListener = self
+        contentLayout?.etSec.onFocusedListener = self
+        contentLayout?.etSec.onTextChangedListener = self
+        contentLayout?.etIntensity.onFocusedListener = self
+        contentLayout?.etIntensity.onTextChangedListener = self
+        contentLayout?.etDistance.onFocusedListener = self
+        contentLayout?.etDistance.onTextChangedListener = self
         
-        (contentLayout as! VcCreatePlanLayout).planElementTableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(onLongPress)))
+        contentLayout?.planElementTableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(onLongPress)))
         
-        (contentLayout as! VcCreatePlanLayout).btnSave.target = self
-        (contentLayout as! VcCreatePlanLayout).btnSave.action = #selector(btnSaveClick)
-        (contentLayout as! VcCreatePlanLayout).btnPlay.target = self
-        (contentLayout as! VcCreatePlanLayout).btnPlay.action = #selector(clickPlay)
+        contentLayout?.btnSave.target = self
+        contentLayout?.btnSave.action = #selector(btnSaveClick)
+        contentLayout?.btnPlay.target = self
+        contentLayout?.btnPlay.action = #selector(clickPlay)
     }
     
     override func getContentLayout(contentView: UIView) -> VcCreatePlanLayout {
@@ -96,7 +91,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             planType = plan!.type
         }
         
-        (contentLayout as! VcCreatePlanLayout).setUIForType(planType: planType!)
+        contentLayout?.setUIForType(planType: planType!)
         
         if plan == nil {
             plan = Plan(type: planType!)
@@ -104,19 +99,19 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             isEdit = true
         }
         
-        (contentLayout as! VcCreatePlanLayout).planElementTableView.type = plan?.type
-        (contentLayout as! VcCreatePlanLayout).planElementTableView.addPlanElementsAll(planElements: plan?.planElements)
+        contentLayout?.planElementTableView.type = plan?.type
+        contentLayout?.planElementTableView.addPlanElementsAll(planElements: plan?.planElements)
     }
     
     override func initTabBarItems() {
         showCloseButton()
         showLogoCenter(viewController: self)
-        self.navigationItem.setRightBarButtonItems([(contentLayout as! VcCreatePlanLayout).btnSave, (contentLayout as! VcCreatePlanLayout).btnPlay], animated: true)
+        self.navigationItem.setRightBarButtonItems([contentLayout!.btnSave, contentLayout!.btnPlay], animated: true)
     }
     
     //MARK: button listeners
     @objc func btnSaveClick() {
-        plan?.planElements = (contentLayout as! VcCreatePlanLayout).planElementTableView.dataList
+        plan?.planElements = contentLayout?.planElementTableView.dataList
         
         if let name = CreatePlanViewController.staticName {
             plan?.name = name
@@ -136,17 +131,17 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     }
     
     @objc func clickPlay() {
-        plan?.planElements = (contentLayout as! VcCreatePlanLayout).planElementTableView.dataList
+        plan?.planElements = contentLayout?.planElementTableView.dataList
         startMainVc(navigationViewController: self.navigationController!, plan: plan, event: nil)
     }
     
     func onClicked(value: Int) {
         if value == KeyboardNumView.valueNext {
-            let intensity = Int((contentLayout as! VcCreatePlanLayout).etIntensity.text) ?? 0
+            let intensity = Int(contentLayout!.etIntensity.text) ?? 0
             let value = createValue()
             let planElement = PlanElement(planId: plan!.planId, intensity: intensity, type: plan!.type, value: value)
             
-            (contentLayout as! VcCreatePlanLayout).planElementTableView.addPlanElement(planElement: planElement)
+            contentLayout?.planElementTableView.addPlanElement(planElement: planElement)
             
             tableViewScrollToBottom(animated: true)
         }
@@ -154,12 +149,12 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     
     private func tableViewScrollToBottom(animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
-            let numberOfSections = (self.contentLayout as! VcCreatePlanLayout).planElementTableView.numberOfSections
-            let numberOfRows = (self.contentLayout as! VcCreatePlanLayout).planElementTableView.numberOfRows(inSection: numberOfSections-1)
+            let numberOfSections = self.contentLayout?.planElementTableView.numberOfSections
+            let numberOfRows = self.contentLayout!.planElementTableView.numberOfRows(inSection: numberOfSections!-1)
             
             if numberOfRows > 0 {
-                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
-                (self.contentLayout as! VcCreatePlanLayout).planElementTableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections!-1))
+                self.contentLayout?.planElementTableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
             }
         }
     }
@@ -177,10 +172,10 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     private func createValue() -> Double {
         switch plan!.type {
         case PlanType.distance:
-            return UnitHelper.getMetricDistanceValue(value: Double((contentLayout as! VcCreatePlanLayout).etDistance.text) ?? 0)
+            return UnitHelper.getMetricDistanceValue(value: Double(contentLayout!.etDistance.text) ?? 0)
         case PlanType.time:
-            let minutes = Int((contentLayout as! VcCreatePlanLayout).etMinute.text) ?? 0
-            let sec = Int((contentLayout as! VcCreatePlanLayout).etSec.text) ?? 0
+            let minutes = Int(contentLayout!.etMinute.text) ?? 0
+            let sec = Int(contentLayout!.etSec.text) ?? 0
             
             let value = (minutes * 60 + sec) * 1000
             return Double(value)
@@ -190,15 +185,15 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
     }
     
     private func checkEnterEnable() {
-        var enable = (contentLayout as! VcCreatePlanLayout).planElementTableView.positionToAdd >= 0
+        var enable = contentLayout!.planElementTableView.positionToAdd >= 0
         
         if PlanType.distance == plan?.type {
-            enable = enable && (contentLayout as! VcCreatePlanLayout).etDistance.hasText && (contentLayout as! VcCreatePlanLayout).etIntensity.hasText
+            enable = enable && contentLayout!.etDistance.hasText && contentLayout!.etIntensity.hasText
         } else {
-            enable = enable && (contentLayout as! VcCreatePlanLayout).etMinute.isHasText && (contentLayout as! VcCreatePlanLayout).etSec.isHasText && (contentLayout as! VcCreatePlanLayout).etIntensity.isHasText
+            enable = enable && contentLayout!.etMinute.isHasText && contentLayout!.etSec.isHasText && contentLayout!.etIntensity.isHasText
         }
         
-        (contentLayout as! VcCreatePlanLayout).keyboardView.enableEnter(isEnable: enable)
+        contentLayout?.keyboardView.enableEnter(isEnable: enable)
     }
     
     //MARK: drag drop
@@ -208,9 +203,9 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         switch gestureRecognizer.state {
         case UIGestureRecognizerState.began:
             
-            let tableLocation = gestureRecognizer.location(in: (contentLayout as! VcCreatePlanLayout).planElementTableView)
-            indexPath = (contentLayout as! VcCreatePlanLayout).planElementTableView.indexPathForRow(at: tableLocation)
-            draggedView = (contentLayout as! VcCreatePlanLayout).planElementTableView.cellForRow(at: indexPath!) as! UITableViewCell
+            let tableLocation = gestureRecognizer.location(in: contentLayout!.planElementTableView)
+            indexPath = contentLayout!.planElementTableView.indexPathForRow(at: tableLocation)
+            draggedView = contentLayout!.planElementTableView.cellForRow(at: indexPath!) as! UITableViewCell
             
             if draggedView is PECellNormal {
                 if isDragEnded {
@@ -218,7 +213,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
                         
                         self.snapShot?.layer.cornerRadius = draggedView?.layer.cornerRadius ?? 0
                         
-                        (contentLayout as! VcCreatePlanLayout).viewDelete.isHidden = false
+                        contentLayout!.viewDelete.isHidden = false
                         
                         self.draggedViewOriginalX = locationInView.x
                         self.draggedViewOriginalY = locationInView.y
@@ -237,12 +232,12 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
             if let dragView = self.snapShot {
                 dragView.center = locationInView
                 
-                shouldDelete = (contentLayout as! VcCreatePlanLayout).viewDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
+                shouldDelete = contentLayout!.viewDelete.isDragDropEnter(superView: contentView, gestureRecognizer: gestureRecognizer)
             }
         default:
             if shouldDelete {
                 resetDrag()
-                (contentLayout as! VcCreatePlanLayout).planElementTableView.deletePlanElement(position: (indexPath?.row)!)
+                contentLayout?.planElementTableView.deletePlanElement(position: (indexPath?.row)!)
             } else {
                 animateDraggedViewToOriginal()
             }
@@ -264,7 +259,7 @@ class CreatePlanViewController: BaseVC, OnFocusedListener, OnKeyboardClickedList
         self.snapShot = nil
         self.draggedView = nil
         self.isDragEnded = true
-        (contentLayout as! VcCreatePlanLayout).viewDelete.isHidden = true
+        contentLayout!.viewDelete.isHidden = true
     }
     
 }

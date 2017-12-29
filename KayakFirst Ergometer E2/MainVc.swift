@@ -21,7 +21,7 @@ func startMainVc(navigationViewController: UINavigationController, plan: Plan?, 
     }
 }
 
-class MainVc: MainTabVc, CLLocationManagerDelegate {
+class MainVc: BaseVC<VcMainLayout>, CLLocationManagerDelegate {
     
     //MARK: properteis
     private let locationManager = CLLocationManager()
@@ -41,13 +41,9 @@ class MainVc: MainTabVc, CLLocationManagerDelegate {
     //MARK: views
     override func initView() {
         super.initView()
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
         
-        (contentLayout as! VcMainLayout).btnErgo.addTarget(self, action: #selector(clickBtnErgo), for: .touchUpInside)
-        (contentLayout as! VcMainLayout).btnOutdoor.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
+        contentLayout!.btnErgo.addTarget(self, action: #selector(clickBtnErgo), for: .touchUpInside)
+        contentLayout!.btnOutdoor.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
     }
     
     override func getContentLayout(contentView: UIView) -> VcMainLayout {

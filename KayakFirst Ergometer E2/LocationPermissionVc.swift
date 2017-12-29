@@ -18,7 +18,7 @@ func startLocationPermissionVc(viewController: UIViewController, trainingEnvType
     return navController
 }
 
-class LocationPermissionVc: BaseVC {
+class LocationPermissionVc: BaseVC<VcLocationPermissionLayout> {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType?
@@ -64,9 +64,9 @@ class LocationPermissionVc: BaseVC {
                 break
             }
             
-            (contentLayout as! VcLocationPermissionLayout).imgLocationIcon.image = icon
-            (contentLayout as! VcLocationPermissionLayout).imgLocationIcon.color = iconColor!
-            (contentLayout as! VcLocationPermissionLayout).label.text = text
+            contentLayout!.imgLocationIcon.image = icon
+            contentLayout!.imgLocationIcon.color = iconColor!
+            contentLayout!.label.text = text
         }
     }
     
@@ -78,12 +78,7 @@ class LocationPermissionVc: BaseVC {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcLocationPermissionLayout).btnSetting.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)
+        contentLayout!.btnSetting.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)
     }
     
     override func initTabBarItems() {

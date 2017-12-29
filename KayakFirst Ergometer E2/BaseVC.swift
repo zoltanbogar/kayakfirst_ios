@@ -46,13 +46,13 @@ let logoBarItem: UIBarButtonItem! = {
 
 let logoHeader = UIImage(named: "logo_header")?.withRenderingMode(.alwaysOriginal)
 
-class BaseVC: UIViewController {
+class BaseVC<E: BaseLayout>: UIViewController {
     
     //MARK: properties
     let contentView = UIView()
     private var viewInited = false
     private var progressView: ProgressView?
-    var contentLayout: BaseLayout?
+    var contentLayout: E?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -170,7 +170,7 @@ class BaseVC: UIViewController {
     }
     
     func showToast(text: String) {
-        AppToast(baseVc: self, text: text).show()
+        AppToast(baseVc: self as! BaseVC<BaseLayout>, text: text).show()
     }
     
     func handleScreenOrientation(size: CGSize) {
@@ -195,16 +195,13 @@ class BaseVC: UIViewController {
         self.contentLayout?.handleLandscapeLayout(size: size)
     }
     
-    //TODO: should be private
     func initView() {
-        //TODO: reactivate this
-        //self.contentLayout = getContentLayout(contentView: contentView)
-        //self.contentLayout?.setView()
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
     }
     
     //MARK: abstract functions
-    //TODO: generic E: BaseLayout
-    func getContentLayout(contentView: UIView) -> BaseLayout {
+    func getContentLayout(contentView: UIView) -> E {
         fatalError("Must be implemented")
     }
 }

@@ -15,11 +15,11 @@ class AppToast: UIView {
     private let animationTime: Double = 0.4
     
     //MARK: properties
-    private let baseVc: BaseVC
+    private let baseVc: BaseVC<BaseLayout>
     private let text: String
     
     //MARK: init
-    init(baseVc: BaseVC, text: String) {
+    init(baseVc: BaseVC<BaseLayout>, text: String) {
         self.baseVc = baseVc
         self.text = text
         

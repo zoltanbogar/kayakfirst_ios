@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardVc: BaseVC, CycleStateChangeListener {
+class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     
     //MARK: constants
     private let btnPlayState = 0
@@ -57,7 +57,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        (contentLayout as! VcDashobardLayout).viewDashboardPlan.viewDidLayoutSubViews()
+        contentLayout!.viewDashboardPlan.viewDidLayoutSubViews()
     }
     
     //MARK: button listeners
@@ -149,19 +149,19 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             planTraining = PlanTraining.createPlanTraining(plan: plan!)
         }
         
-        (contentLayout as! VcDashobardLayout).setPlantoPlanView()
+        contentLayout!.setPlantoPlanView()
     }
     
     private func showPauseView(_ isShow: Bool) {
-        (contentLayout as! VcDashobardLayout).pauseView.isHidden = !isShow
+        contentLayout!.pauseView.isHidden = !isShow
     }
     
     private func showViewSwipePause(_ isShow: Bool) {
-        (contentLayout as! VcDashobardLayout).viewSwipePause.isHidden = !isShow
+        contentLayout!.viewSwipePause.isHidden = !isShow
     }
     
     private func initBtnPlaySmall(btnPlayPauseIcon: Int, isShow: Bool) {
-        (contentLayout as! VcDashobardLayout).btnPlaySmall.isHidden = true
+        contentLayout!.btnPlaySmall.isHidden = true
         
         var image: UIImage = UIImage(named: "ic_play_48dp")!
         switch btnPlayPauseIcon {
@@ -171,8 +171,8 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             break
         }
         
-        (contentLayout as! VcDashobardLayout).btnPlaySmall.image = image
-        (contentLayout as! VcDashobardLayout).btnPlaySmall.isHidden = !isShow
+        contentLayout!.btnPlaySmall.image = image
+        contentLayout!.btnPlaySmall.isHidden = !isShow
     }
     
     private func showBackButton() {
@@ -198,20 +198,20 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func refreshDashboardElements(_ isRefresh: Bool) {
-        (contentLayout as! VcDashobardLayout).dashboardElement0?.startRefresh(isRefresh)
-        (contentLayout as! VcDashobardLayout).dashboardElement1?.startRefresh(isRefresh)
-        (contentLayout as! VcDashobardLayout).dashboardElement2?.startRefresh(isRefresh)
-        (contentLayout as! VcDashobardLayout).dashboardElement3?.startRefresh(isRefresh)
-        (contentLayout as! VcDashobardLayout).dashboardElement4?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement0?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement1?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement2?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement3?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement4?.startRefresh(isRefresh)
         
         if plan != nil {
             if isRefresh {
-                (contentLayout as! VcDashobardLayout).viewDashboardPlan.startRefresh(true)
+                contentLayout!.viewDashboardPlan.startRefresh(true)
             } else {
-                (contentLayout as! VcDashobardLayout).viewDashboardPlan.stopRefresh()
+                contentLayout!.viewDashboardPlan.stopRefresh()
             }
         } else {
-            (contentLayout as! VcDashobardLayout).viewDashboardPlan.stopRefresh()
+            contentLayout!.viewDashboardPlan.stopRefresh()
         }
     }
     
@@ -219,20 +219,15 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
+        contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
+        contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
+        contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
+        contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
         
-        (contentLayout as! VcDashobardLayout).btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
-        (contentLayout as! VcDashobardLayout).btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
-        (contentLayout as! VcDashobardLayout).btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
-        (contentLayout as! VcDashobardLayout).btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
-        
-        (contentLayout as! VcDashobardLayout).btnPowerSaveOn.target = self
-        (contentLayout as! VcDashobardLayout).btnPowerSaveOn.action = #selector(clickPowerSaveOff)
-        (contentLayout as! VcDashobardLayout).btnPowerSaveOff.target = self
-        (contentLayout as! VcDashobardLayout).btnPowerSaveOff.action = #selector(clickPowerSaveOn)
+        contentLayout!.btnPowerSaveOn.target = self
+        contentLayout!.btnPowerSaveOn.action = #selector(clickPowerSaveOff)
+        contentLayout!.btnPowerSaveOff.target = self
+        contentLayout!.btnPowerSaveOff.action = #selector(clickPowerSaveOn)
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
@@ -248,7 +243,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             planManager.savePlanTraining(planTraining: planTraining!)
         }
         
-        if event != nil && (contentLayout as! VcDashobardLayout).viewDashboardPlan.isDone {
+        if event != nil && contentLayout!.viewDashboardPlan.isDone {
             event?.sessionId = sessionId
             
             EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: nil)
@@ -264,9 +259,9 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     }
     
     private func showPowerSaveOn(isShow: Bool) {
-        var menuItem: [UIBarButtonItem] = [(contentLayout as! VcDashobardLayout).btnPowerSaveOff]
+        var menuItem: [UIBarButtonItem] = [contentLayout!.btnPowerSaveOff]
         if isShow {
-            menuItem = [(contentLayout as! VcDashobardLayout).btnPowerSaveOn]
+            menuItem = [contentLayout!.btnPowerSaveOn]
         }
         
         if let parent = self.parent as? TrainingViewController {
@@ -291,7 +286,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
             
             var swipe: CGFloat = 0
             
-            if (contentLayout as! VcDashobardLayout).isLandscape {
+            if contentLayout!.isLandscape {
                 let diffYGlobal = pan.view!.center.y + translation.y
                 diffY = diffYGlobal < btnPauseOriginalY ? diffYGlobal : btnPauseOriginalY
                 swipe = btnPauseOriginalY - diffY
@@ -317,7 +312,7 @@ class DashboardVc: BaseVC, CycleStateChangeListener {
     
     private func animateBtnPlayPauseToOriginal() {
         UIView.animate(withDuration: 0.2, animations: {
-            (self.contentLayout as! VcDashobardLayout).btnPause.center = CGPoint(x: self.btnPauseOriginalX, y: self.btnPauseOriginalY)
+            self.contentLayout!.btnPause.center = CGPoint(x: self.btnPauseOriginalX, y: self.btnPauseOriginalY)
         })
     }
 }

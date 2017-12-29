@@ -29,7 +29,7 @@ func startPlanDetailsViewController(viewController: UIViewController, plan: Plan
     viewController.present(navVc, animated: true, completion: nil)
 }
 
-class PlanDetailsViewController: BaseVC {
+class PlanDetailsViewController: BaseVC<VcPlanDetailsLayout> {
     
     //MARK: properties
     static var plan: Plan?
@@ -61,19 +61,14 @@ class PlanDetailsViewController: BaseVC {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
         setEditLayout(isEdit: isEdit)
         
-        (contentLayout as! VcPlanDetailsLayout).btnSave.target = self
-        (contentLayout as! VcPlanDetailsLayout).btnSave.action = #selector(btnSaveClick)
-        (contentLayout as! VcPlanDetailsLayout).btnDelete.target = self
-        (contentLayout as! VcPlanDetailsLayout).btnDelete.action = #selector(btnDeleteClick)
-        (contentLayout as! VcPlanDetailsLayout).btnEdit.target = self
-        (contentLayout as! VcPlanDetailsLayout).btnEdit.action = #selector(btnEditClick)
+        contentLayout?.btnSave.target = self
+        contentLayout?.btnSave.action = #selector(btnSaveClick)
+        contentLayout?.btnDelete.target = self
+        contentLayout?.btnDelete.action = #selector(btnDeleteClick)
+        contentLayout?.btnEdit.target = self
+        contentLayout?.btnEdit.action = #selector(btnEditClick)
     }
     
     override func getContentLayout(contentView: UIView) -> VcPlanDetailsLayout {
@@ -87,10 +82,10 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: button listeners
     @objc private func btnSaveClick() {
-        let isValidPlanName = (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.isNameValid
+        let isValidPlanName = contentLayout!.planDetailsTableView.isNameValid
         
         if (!isValidPlanName) {
-            (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.scrollToPosition(position: 0)
+            contentLayout?.planDetailsTableView.scrollToPosition(position: 0)
         } else {
             let addEventDialog = AddEventDialog()
             addEventDialog.noticeDialogPosListener = {
@@ -135,11 +130,11 @@ class PlanDetailsViewController: BaseVC {
     
     //MARK: functions
     func setEditLayout(isEdit: Bool) {
-        (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.setEdit(edit: isEdit, editShouldFinish: self.isEdit)
+        contentLayout?.planDetailsTableView.setEdit(edit: isEdit, editShouldFinish: self.isEdit)
         if isEdit {
-            setTabbarItem(tabbarItems: [(contentLayout as! VcPlanDetailsLayout).btnSave, (contentLayout as! VcPlanDetailsLayout).btnDelete])
+            setTabbarItem(tabbarItems: [contentLayout!.btnSave, contentLayout!.btnDelete])
         } else {
-            setTabbarItem(tabbarItems: [(contentLayout as! VcPlanDetailsLayout).btnEdit])
+            setTabbarItem(tabbarItems: [contentLayout!.btnEdit])
         }
     }
     
@@ -148,11 +143,11 @@ class PlanDetailsViewController: BaseVC {
     }
     
     private func initPlanFromAdapter() {
-        PlanDetailsViewController.plan = (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.plan
+        PlanDetailsViewController.plan = contentLayout?.planDetailsTableView.plan
     }
     
     private func setPlanToTableView() {
-        (contentLayout as! VcPlanDetailsLayout).planDetailsTableView.plan = PlanDetailsViewController.plan
+        contentLayout?.planDetailsTableView.plan = PlanDetailsViewController.plan
     }
     
     //MARK: plan callbacks

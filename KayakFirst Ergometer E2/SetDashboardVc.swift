@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetDashboardVc: BaseVC {
+class SetDashboardVc: BaseVC<VcSetDashboardLayout> {
     
     //MARK: properties
     private var snapShot: UIView?
@@ -33,20 +33,20 @@ class SetDashboardVc: BaseVC {
     
     //MARK: longpress
     private func handleLongClick() {
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementActual200)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementActual500)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementActual1000)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAv200)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAv500)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAv1000)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAvSpeed)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAvStrokes)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementCurrentSpeed)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementDistance)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementDuration)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementStrokes)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementForce)
-        addGesutreRecognizer(dashBoardElement: (contentLayout as! VcSetDashboardLayout).dashboardElementAvForce)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementActual200)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementActual500)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementActual1000)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAv200)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAv500)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAv1000)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAvSpeed)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAvStrokes)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementCurrentSpeed)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementDistance)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementDuration)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementStrokes)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementForce)
+        addGesutreRecognizer(dashBoardElement: contentLayout!.dashboardElementAvForce)
     }
     
     private func addGesutreRecognizer(dashBoardElement: DashBoardElement) {
@@ -58,11 +58,11 @@ class SetDashboardVc: BaseVC {
         
         let view = gestureRecognizer.view! as! DashBoardElement
         
-        let didEnter0 = (contentLayout as! VcSetDashboardLayout).viewDragDrop0.setDragEvent(superView: (contentLayout as! VcSetDashboardLayout).mainStackView, gestureRecognizer: gestureRecognizer)
-        let didEnter1 = (contentLayout as! VcSetDashboardLayout).viewDragDrop1.setDragEvent(superView: (contentLayout as! VcSetDashboardLayout).stackViewTop1, gestureRecognizer: gestureRecognizer)
-        let didEnter2 = (contentLayout as! VcSetDashboardLayout).viewDragDrop2.setDragEvent(superView: (contentLayout as! VcSetDashboardLayout).stackViewTop1, gestureRecognizer: gestureRecognizer)
-        let didEnter3 = (contentLayout as! VcSetDashboardLayout).viewDragDrop3.setDragEvent(superView: (contentLayout as! VcSetDashboardLayout).stackViewTop2, gestureRecognizer: gestureRecognizer)
-        let didEnter4 = (contentLayout as! VcSetDashboardLayout).viewDragDrop4.setDragEvent(superView: (contentLayout as! VcSetDashboardLayout).stackViewTop2, gestureRecognizer: gestureRecognizer)
+        let didEnter0 = contentLayout!.viewDragDrop0.setDragEvent(superView: contentLayout!.mainStackView, gestureRecognizer: gestureRecognizer)
+        let didEnter1 = contentLayout!.viewDragDrop1.setDragEvent(superView: contentLayout!.stackViewTop1, gestureRecognizer: gestureRecognizer)
+        let didEnter2 = contentLayout!.viewDragDrop2.setDragEvent(superView: contentLayout!.stackViewTop1, gestureRecognizer: gestureRecognizer)
+        let didEnter3 = contentLayout!.viewDragDrop3.setDragEvent(superView: contentLayout!.stackViewTop2, gestureRecognizer: gestureRecognizer)
+        let didEnter4 = contentLayout!.viewDragDrop4.setDragEvent(superView: contentLayout!.stackViewTop2, gestureRecognizer: gestureRecognizer)
         
         switch gestureRecognizer.state {
         case UIGestureRecognizerState.began:
@@ -113,18 +113,13 @@ class SetDashboardVc: BaseVC {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcSetDashboardLayout).btnDone.target = self
-        (contentLayout as! VcSetDashboardLayout).btnDone.action = #selector(btnDoneClick)
-        (contentLayout as! VcSetDashboardLayout).viewDragDrop0.viewAddedCallback = self.viewAdded
-        (contentLayout as! VcSetDashboardLayout).viewDragDrop1.viewAddedCallback = self.viewAdded
-        (contentLayout as! VcSetDashboardLayout).viewDragDrop2.viewAddedCallback = self.viewAdded
-        (contentLayout as! VcSetDashboardLayout).viewDragDrop3.viewAddedCallback = self.viewAdded
-        (contentLayout as! VcSetDashboardLayout).viewDragDrop4.viewAddedCallback = self.viewAdded
+        contentLayout?.btnDone.target = self
+        contentLayout?.btnDone.action = #selector(btnDoneClick)
+        contentLayout?.viewDragDrop0.viewAddedCallback = self.viewAdded
+        contentLayout?.viewDragDrop1.viewAddedCallback = self.viewAdded
+        contentLayout?.viewDragDrop2.viewAddedCallback = self.viewAdded
+        contentLayout?.viewDragDrop3.viewAddedCallback = self.viewAdded
+        contentLayout?.viewDragDrop4.viewAddedCallback = self.viewAdded
     }
     
     override func getContentLayout(contentView: UIView) -> VcSetDashboardLayout {
@@ -132,7 +127,7 @@ class SetDashboardVc: BaseVC {
     }
     
     override func initTabBarItems() {
-        var buttons: [UIBarButtonItem] = [(contentLayout as! VcSetDashboardLayout).btnDone]
+        var buttons: [UIBarButtonItem] = [contentLayout!.btnDone]
         
         if let parent = self.parent as? TrainingViewController {
             if parent.trainingEnvType == TrainingEnvironmentType.ergometer {
@@ -165,15 +160,15 @@ class SetDashboardVc: BaseVC {
             
             var key = 0
             switch dragDropLayout {
-            case (contentLayout as! VcSetDashboardLayout).viewDragDrop0:
+            case contentLayout!.viewDragDrop0:
                 key = 0
-            case (contentLayout as! VcSetDashboardLayout).viewDragDrop1:
+            case contentLayout!.viewDragDrop1:
                 key = 1
-            case (contentLayout as! VcSetDashboardLayout).viewDragDrop2:
+            case contentLayout!.viewDragDrop2:
                 key = 2
-            case (contentLayout as! VcSetDashboardLayout).viewDragDrop3:
+            case contentLayout!.viewDragDrop3:
                 key = 3
-            case (contentLayout as! VcSetDashboardLayout).viewDragDrop4:
+            case contentLayout!.viewDragDrop4:
                 key = 4
             default:
                 fatalError()

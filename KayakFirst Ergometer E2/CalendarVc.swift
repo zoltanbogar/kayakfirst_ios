@@ -9,7 +9,7 @@
 import UIKit
 import CVCalendar
 
-class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
+class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
     
     //MARK: constants
     private static let modeEvent = "mode_event"
@@ -66,35 +66,31 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     internal override func initView() {
         super.initView()
-        //TODO: delete this
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        //////////////////
         
-        (contentLayout as! VcCalendarLayout).cvCalendarView.calendarAppearanceDelegate = self
-        (contentLayout as! VcCalendarLayout).cvCalendarView.calendarDelegate = self
-        (contentLayout as! VcCalendarLayout).calendarMenuView.menuViewDelegate = self
+        contentLayout!.cvCalendarView.calendarAppearanceDelegate = self
+        contentLayout!.cvCalendarView.calendarDelegate = self
+        contentLayout!.calendarMenuView.menuViewDelegate = self
         
-        (contentLayout as! VcCalendarLayout).segmentedControl.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
-        (contentLayout as! VcCalendarLayout).btnToday.target = self
-        (contentLayout as! VcCalendarLayout).btnToday.action = #selector(btnTodayClick)
+        contentLayout!.segmentedControl.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
+        contentLayout!.btnToday.target = self
+        contentLayout!.btnToday.action = #selector(btnTodayClick)
         
-        (contentLayout as! VcCalendarLayout).btnAdd.target = self
-        (contentLayout as! VcCalendarLayout).btnAdd.action = #selector(addClick)
+        contentLayout!.btnAdd.target = self
+        contentLayout!.btnAdd.action = #selector(addClick)
         
-        (contentLayout as! VcCalendarLayout).tableViewTraining.deleteCallback = self.deleteDataCallback
-        (contentLayout as! VcCalendarLayout).tableViewEvent.deleteCallback = self.deleteDataCallback
+        contentLayout!.tableViewTraining.deleteCallback = self.deleteDataCallback
+        contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
         
-        (contentLayout as! VcCalendarLayout).tableViewTraining.rowClickCallback = { sumTraining, position in
+        contentLayout!.tableViewTraining.rowClickCallback = { sumTraining, position in
             let viewController = TrainingDetailsPagerViewController()
             viewController.position = position
             self.navigationController?.pushViewController(viewController, animated: true)
         }
-        (contentLayout as! VcCalendarLayout).tableViewEvent.rowClickCallback = { planEvent, position in
+        contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
             startEventDetailsViewController(viewController: self, planEvent: planEvent)
         }
         
-        (contentLayout as! VcCalendarLayout).segmentedControl.selectedSegmentIndex = 0
+        contentLayout!.segmentedControl.selectedSegmentIndex = 0
         setSegmentedItem(sender: (contentLayout as! VcCalendarLayout).segmentedControl)
     }
     
@@ -115,15 +111,15 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func refreshCalendarDesign() {
-        (contentLayout as! VcCalendarLayout).cvCalendarView.commitCalendarViewUpdate()
-        (contentLayout as! VcCalendarLayout).calendarMenuView?.commitMenuViewUpdate()
-        (contentLayout as! VcCalendarLayout).designCalendarView()
+        contentLayout!.cvCalendarView.commitCalendarViewUpdate()
+        contentLayout!.calendarMenuView?.commitMenuViewUpdate()
+        contentLayout!.designCalendarView()
     }
     
     override func initTabBarItems() {
         self.navigationItem.setRightBarButtonItems([
-            (contentLayout as! VcCalendarLayout).btnAdd,
-            (contentLayout as! VcCalendarLayout).btnToday], animated: true)
+            contentLayout!.btnAdd,
+            contentLayout!.btnToday], animated: true)
         showLogoOnLeft()
     }
     
@@ -134,7 +130,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func refreshContentWithMode() {
-        (contentLayout as! VcCalendarLayout).cvCalendarView?.contentController.refreshPresentedMonth()
+        contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
         switch mode {
         case CalendarVc.modeEvent:
             getEventDays()
@@ -158,7 +154,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func initTrainingDays(trainingDays: [TimeInterval]) {
         self.trainingDaysList = trainingDays
         if self.mode == CalendarVc.modeTraining {
-            (contentLayout as! VcCalendarLayout).cvCalendarView?.contentController.refreshPresentedMonth()
+            contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
             getTrainigsList()
         }
     }
@@ -166,13 +162,13 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     private func initEventDays(eventDays: [TimeInterval]) {
         self.eventDaysList = eventDays
         if self.mode == CalendarVc.modeEvent {
-            (contentLayout as! VcCalendarLayout).cvCalendarView?.contentController.refreshPresentedMonth()
+            contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
             getEventList()
         }
     }
     
     private func getTrainigsList() {
-        (contentLayout as! VcCalendarLayout).tableViewTraining.dataList = nil
+        contentLayout!.tableViewTraining.dataList = nil
         
         var sessionIds = [Double]()
         
@@ -195,7 +191,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func getEventList() {
-        (contentLayout as! VcCalendarLayout).tableViewEvent.dataList = nil
+        contentLayout!.tableViewEvent.dataList = nil
         
         if hasData(listToCheck: eventDaysList) {
             let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate)
@@ -225,11 +221,11 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func refreshTableViewTraining(sumTrainings: [SumTraining]?) {
-        (contentLayout as! VcCalendarLayout).tableViewTraining?.dataList = sumTrainings
+        contentLayout!.tableViewTraining?.dataList = sumTrainings
     }
     
     private func refreshTableViewEvent(planEvents: [PlanEvent]?) {
-        (contentLayout as! VcCalendarLayout).tableViewEvent.dataList = planEvents
+        contentLayout!.tableViewEvent.dataList = planEvents
     }
     
     //MARK: callbacks
@@ -330,7 +326,7 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     
     //MARK: buttons listeners
     @objc private func btnTodayClick() {
-        (contentLayout as! VcCalendarLayout).cvCalendarView?.toggleCurrentDayView()
+        contentLayout!.cvCalendarView?.toggleCurrentDayView()
     }
     
     //TODO: add showPlanType function
@@ -402,34 +398,34 @@ class CalendarVc: MainTabVc, CVCalendarViewDelegate, CVCalendarMenuViewDelegate,
     }
     
     private func refreshMonth(timeStamp: TimeInterval) {
-        (contentLayout as! VcCalendarLayout).labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
-        (contentLayout as! VcCalendarLayout).cvCalendarView.contentController.refreshPresentedMonth()
+        contentLayout!.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
+        contentLayout!.cvCalendarView.contentController.refreshPresentedMonth()
     }
     
     @objc private func setSegmentedItem(sender: UISegmentedControl) {
         let viewSub: UIView
         switch sender.selectedSegmentIndex {
         case 0:
-            viewSub = (contentLayout as! VcCalendarLayout).tableViewEvent
+            viewSub = contentLayout!.tableViewEvent
             setMode(mode: CalendarVc.modeEvent)
         default:
-            viewSub = (contentLayout as! VcCalendarLayout).tableViewTraining
+            viewSub = contentLayout!.tableViewTraining
             setMode(mode: CalendarVc.modeTraining)
         }
         
-        (contentLayout as! VcCalendarLayout).viewTableView.removeAllSubviews()
-        (contentLayout as! VcCalendarLayout).viewTableView.addSubview(viewSub)
+        contentLayout!.viewTableView.removeAllSubviews()
+        contentLayout!.viewTableView.addSubview(viewSub)
         viewSub.snp.makeConstraints { make in
-            make.edges.equalTo((contentLayout as! VcCalendarLayout).viewTableView)
+            make.edges.equalTo(contentLayout!.viewTableView)
         }
     }
     
     private func showProgressBarTraining(isShow: Bool) {
-        showProgressBar(progressBar: (contentLayout as! VcCalendarLayout).progressBarTraining, isShow: isShow)
+        showProgressBar(progressBar: contentLayout!.progressBarTraining, isShow: isShow)
     }
     
     private func showProgressBarEvent(isShow: Bool) {
-        showProgressBar(progressBar: (contentLayout as! VcCalendarLayout).progressBarEvent, isShow: isShow)
+        showProgressBar(progressBar: contentLayout!.progressBarEvent, isShow: isShow)
     }
     
     private func showProgressBar(progressBar: UIActivityIndicatorView, isShow: Bool) {

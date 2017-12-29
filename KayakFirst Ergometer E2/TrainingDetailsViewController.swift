@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class TrainingDetailsViewController: BaseVC {
+class TrainingDetailsViewController: BaseVC<VcTrainingDetailsLayout> {
     
     //MARK: properties
     var sumTraining: SumTraining?
@@ -42,17 +42,12 @@ class TrainingDetailsViewController: BaseVC {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
+        contentLayout?.btnTable.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
+        contentLayout?.btnTimeChart.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
+        contentLayout?.btnDistanceChart.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
         
-        (contentLayout as! VcTrainingDetailsLayout).btnTable.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
-        (contentLayout as! VcTrainingDetailsLayout).btnTimeChart.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
-        (contentLayout as! VcTrainingDetailsLayout).btnDistanceChart.addTarget(self, action: #selector(self.handleTabClick(sender:)), for: .touchUpInside)
-        
-        (contentLayout as! VcTrainingDetailsLayout).labelDuration.text = sumTraining?.formattedDuration
-        (contentLayout as! VcTrainingDetailsLayout).labelDistance.text = sumTraining?.formattedDistance
+        contentLayout?.labelDuration.text = sumTraining?.formattedDuration
+        contentLayout?.labelDistance.text = sumTraining?.formattedDistance
     }
     
     override func getContentLayout(contentView: UIView) -> VcTrainingDetailsLayout {
@@ -61,15 +56,15 @@ class TrainingDetailsViewController: BaseVC {
     
     //MARK: callbacks
     private func setTabPosition() {
-        (contentLayout as! VcTrainingDetailsLayout).setTabPosition(tabPosition: tabPosition)
+        contentLayout!.setTabPosition(tabPosition: tabPosition)
     }
     
     @objc private func handleTabClick(sender: UIButton) {
-        if sender == (contentLayout as! VcTrainingDetailsLayout).btnTable {
+        if sender == contentLayout!.btnTable {
             tabPosition = 0
-        } else if sender == (contentLayout as! VcTrainingDetailsLayout).btnTimeChart {
+        } else if sender == contentLayout!.btnTimeChart {
             tabPosition = 1
-        } else if sender == (contentLayout as! VcTrainingDetailsLayout).btnDistanceChart {
+        } else if sender == contentLayout!.btnDistanceChart {
             tabPosition = 2
         }
     }

@@ -17,14 +17,7 @@ func startWelcomeViewController(viewController: UIViewController) {
     viewController.present(controller, animated: true, completion: nil)
 }
 
-class WelcomeViewController: BaseVC {
-    
-    //MARK: constants
-    private let segmentItems = [getString("user_login"), getString("user_register")]
-    private let marginHorizontal: CGFloat = 30
-    
-    //MARK: properties
-    let loginRegisterView = UIView()
+class WelcomeViewController: BaseVC<VcWelcomeLayout> {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,11 +28,11 @@ class WelcomeViewController: BaseVC {
     }
     
     func resetFields() {
-        loginView.resetDataFields()
-        registerView.resetDataFields()
+        contentLayout!.loginView.resetDataFields()
+        contentLayout!.registerView.resetDataFields()
         
-        segmentedControl.selectedSegmentIndex = 0
-        setSegmentedItem(sender: segmentedControl)
+        contentLayout!.segmentedControl.selectedSegmentIndex = 0
+        setSegmentedItem(sender: contentLayout!.segmentedControl)
     }
     
     func socialLogoutIfNeeded() {
@@ -62,69 +55,25 @@ class WelcomeViewController: BaseVC {
     }
     
     func showRegistrationView(socialUser: SocialUser) {
-        registerView.socialUser = socialUser
+        contentLayout!.registerView.socialUser = socialUser
         
-        segmentedControl.selectedSegmentIndex = 1
-        setSegmentedItem(sender: segmentedControl)
+        contentLayout!.segmentedControl.selectedSegmentIndex = 1
+        setSegmentedItem(sender: contentLayout!.segmentedControl)
     }
     
     //MARK: init view
     override func initView() {
-        contentView.addSubview(segmentedControl)
-        segmentedControl.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).inset(UIEdgeInsetsMake(margin2, 0, 0, 0))
-            make.width.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, marginHorizontal))
-            make.centerX.equalTo(contentView)
-        }
-        loginRegisterView.addSubview(loginView)
-        loginView.snp.makeConstraints { (make) in
-            make.edges.equalTo(loginRegisterView)
-        }
-        contentView.addSubview(loginRegisterView)
-        loginRegisterView.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentedControl.snp.bottom).offset(margin)
-            make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, marginHorizontal, 0, 0))
-            make.right.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, 0, marginHorizontal))
-            make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
-        }
+        super.initView()
+        
+        contentLayout!.segmentedControl.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
     }
     
-    //MARK: views
-    private lazy var segmentedControl: UISegmentedControl! = {
-        let control = UISegmentedControl(items: self.segmentItems)
-        control.tintColor = Colors.colorAccent
-        control.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
-        control.selectedSegmentIndex = 0
-        
-        return control
-    }()
-    
-    private lazy var loginView: LoginView! = {
-        let view = LoginView(viewController: self)
-        
-        return view
-    }()
-    
-    private lazy var registerView: RegisterView! = {
-        let view = RegisterView(viewController: self)
-        
-        return view
-    }()
+    override func getContentLayout(contentView: UIView) -> VcWelcomeLayout {
+        return VcWelcomeLayout(contentView: contentView, viewController: self)
+    }
     
     //MARK: listeners
     @objc private func setSegmentedItem(sender: UISegmentedControl) {
-        let viewSub: UIView
-        switch sender.selectedSegmentIndex {
-        case 1:
-            viewSub = registerView
-        default:
-            viewSub = loginView
-        }
-        
-        loginRegisterView.removeAllSubviews()
-        loginRegisterView.addSubview(viewSub)
-        viewSub.snp.makeConstraints { make in
-            make.edges.equalTo(loginRegisterView)
-        }
+        contentLayout!.setSegmentedItem(sender: sender)
     }
 }

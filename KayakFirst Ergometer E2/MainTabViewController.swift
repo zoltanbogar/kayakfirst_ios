@@ -77,14 +77,14 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         return viewControllers
     }()
     
-    private func getMainVc() -> BaseVC {
-        let baseVc: BaseVC?
+    private func getMainVc() -> UIViewController {
+        let baseVc: UIViewController
         
         if UserManager.sharedInstance.isQuickStart {
             baseVc = MainVc()
         } else {
             baseVc = PlanOrNotPlanVc()
         }
-        return baseVc!
+        return baseVc
     }
 }

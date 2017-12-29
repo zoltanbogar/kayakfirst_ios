@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsVc: MainTabVc, UITextFieldDelegate {
+class SettingsVc: BaseVC<VcSettingsLayout>, UITextFieldDelegate {
     
     //MARK: life cycle
     override func viewDidLoad() {
@@ -21,13 +21,8 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcSettingsLayout).textFieldWebsite.delegate = self
-        (contentLayout as! VcSettingsLayout).textFieldTermsCondition.delegate = self
+        contentLayout!.textFieldWebsite.delegate = self
+        contentLayout!.textFieldTermsCondition.delegate = self
     }
     
     override func getContentLayout(contentView: UIView) -> VcSettingsLayout {
@@ -40,10 +35,10 @@ class SettingsVc: MainTabVc, UITextFieldDelegate {
     
     //MARK: callbacks
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == (contentLayout as! VcSettingsLayout).textFieldTermsCondition {
+        if textField == contentLayout!.textFieldTermsCondition {
             UIApplication.shared.openURL(NSURL(string: "http://kayakfirst.com/terms-conditions")! as URL)
             return false
-        } else if textField == (contentLayout as! VcSettingsLayout).textFieldWebsite {
+        } else if textField == contentLayout!.textFieldWebsite {
             UIApplication.shared.openURL(NSURL(string: "http://kayakfirst.com")! as URL)
             return false
         } else {

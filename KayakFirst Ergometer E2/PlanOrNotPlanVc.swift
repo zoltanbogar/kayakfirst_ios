@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlanOrNotPlanVc: BaseVC, PlanTypeSelectListener {
+class PlanOrNotPlanVc: BaseVC<VcPlanOrNotPlanLayout>, PlanTypeSelectListener {
     
     //MARK: button listeners
     @objc private func clickRun() {
@@ -28,13 +28,8 @@ class PlanOrNotPlanVc: BaseVC, PlanTypeSelectListener {
     override func initView() {
         super.initView()
         
-        //TODO: move this to BaseVc
-        self.contentLayout = getContentLayout(contentView: contentView)
-        self.contentLayout?.setView()
-        ///////////////////////////
-        
-        (contentLayout as! VcPlanOrNotPlanLayout).planTypeView.planTypeSelectListener = self
-        (contentLayout as! VcPlanOrNotPlanLayout).viewRun.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickRun)))
+        contentLayout?.planTypeView.planTypeSelectListener = self
+        contentLayout?.viewRun.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickRun)))
         
         showLogoCenter(viewController: self)
     }

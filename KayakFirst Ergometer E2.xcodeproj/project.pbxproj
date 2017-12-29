@@ -44,7 +44,6 @@
 		060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A37891E58551400A973BF /* DashBoardElement_Distance.swift */; };
 		060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */; };
 		060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */; };
-		060A37901E58969300A973BF /* MainTabVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A378F1E58969300A973BF /* MainTabVc.swift */; };
 		060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0A1E41B44100F6A29F /* ServerService.swift */; };
 		060A7D0D1E41B5C900F6A29F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7D0C1E41B5C900F6A29F /* Reachability.swift */; };
 		060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B3DBD1EE85D1300AF43DE /* PlanEtDistance.swift */; };
@@ -150,6 +149,7 @@
 		063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */; };
 		063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */; };
 		063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */; };
+		063237D51FF6441B00F04A4B /* VcWelcomeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
 		06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcMainLayout.swift */; };
 		06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */; };
@@ -427,7 +427,6 @@
 		060A37891E58551400A973BF /* DashBoardElement_Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Distance.swift; sourceTree = "<group>"; };
 		060A378B1E58555800A973BF /* DashBoardElement_PullForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_PullForce.swift; sourceTree = "<group>"; };
 		060A378D1E58559600A973BF /* DashBoardElement_Strokes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElement_Strokes.swift; sourceTree = "<group>"; };
-		060A378F1E58969300A973BF /* MainTabVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabVc.swift; sourceTree = "<group>"; };
 		060A7D0A1E41B44100F6A29F /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		060A7D0C1E41B5C900F6A29F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		060B3DBD1EE85D1300AF43DE /* PlanEtDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanEtDistance.swift; sourceTree = "<group>"; };
@@ -534,6 +533,7 @@
 		063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcDashboardLayout.swift; sourceTree = "<group>"; };
 		063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcLocationPermissionLayout.swift; sourceTree = "<group>"; };
 		063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcBluetoothLayout.swift; sourceTree = "<group>"; };
+		063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcWelcomeLayout.swift; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
 		06371C211FF5663500469A46 /* VcMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcMainLayout.swift; sourceTree = "<group>"; };
 		06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanOrNotPlanLayout.swift; sourceTree = "<group>"; };
@@ -1477,7 +1477,6 @@
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
-				060A378F1E58969300A973BF /* MainTabVc.swift */,
 				06BCB0D31E564F0200F41652 /* MainVc.swift */,
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
@@ -1645,6 +1644,7 @@
 				063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */,
 				063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */,
 				063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */,
+				063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -1988,6 +1988,7 @@
 				060A376C1E578F4F00A973BF /* DragDropLayout.swift in Sources */,
 				06071D451ECA4E59004CB736 /* PlanEditIntervallsCell.swift in Sources */,
 				060A37821E58543900A973BF /* DashBoardElement_AvSpeed.swift in Sources */,
+				063237D51FF6441B00F04A4B /* VcWelcomeLayout.swift in Sources */,
 				0679647B1E6382CE00DFC050 /* CalculateElementS.swift in Sources */,
 				06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */,
 				061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */,
@@ -2086,7 +2087,6 @@
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
-				060A37901E58969300A973BF /* MainTabVc.swift in Sources */,
 				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
 				069ADD951EFB861800F24427 /* PickerHelper.swift in Sources */,
