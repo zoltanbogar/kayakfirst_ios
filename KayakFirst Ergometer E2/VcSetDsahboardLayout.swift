@@ -15,7 +15,6 @@ class VcSetDashboardLayout: BaseLayout {
     init(contentView: UIView, withBluetooth: Bool) {
         self.withBluetooth = withBluetooth
         super.init(contentView: contentView)
-        
     }
     
     override func setView() {

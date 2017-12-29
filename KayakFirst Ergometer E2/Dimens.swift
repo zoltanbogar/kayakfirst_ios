@@ -20,6 +20,7 @@ let profileElementHeight: CGFloat = 50
 let planElementHeight: CGFloat = 40
 let timeLineHeight: CGFloat = 10
 let planRadius: CGFloat = 9
+let dashboardPauseSwipeArea: CGFloat = 180
 
 //text
 let planElementCellTextSize: CGFloat = 18

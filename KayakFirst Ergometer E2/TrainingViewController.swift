@@ -195,7 +195,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         startServiceLoop(true)
         
         if CycleState.paused != beforeCycleState {
-            dashboardVc!.setPlantoPlanView()
+            dashboardVc!.setPlanToPlanView()
         }
     }
     
