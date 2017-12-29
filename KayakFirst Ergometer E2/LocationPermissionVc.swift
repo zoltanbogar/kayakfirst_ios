@@ -64,61 +64,32 @@ class LocationPermissionVc: BaseVC {
                 break
             }
             
-            imgLocationIcon.image = icon
-            imgLocationIcon.color = iconColor!
-            label.text = text
+            (contentLayout as! VcLocationPermissionLayout).imgLocationIcon.image = icon
+            (contentLayout as! VcLocationPermissionLayout).imgLocationIcon.color = iconColor!
+            (contentLayout as! VcLocationPermissionLayout).label.text = text
         }
+    }
+    
+    override func getContentLayout(contentView: UIView) -> VcLocationPermissionLayout {
+        return VcLocationPermissionLayout(contentView: contentView)
     }
     
     //MARK: init view
     override func initView() {
-        view.addSubview(imgLocationIcon)
-        view.addSubview(label)
-        view.addSubview(btnSetting)
+        super.initView()
         
-        imgLocationIcon.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
-        }
-        label.snp.makeConstraints { (make) in
-            make.top.equalTo(imgLocationIcon.snp.bottom).offset(margin)
-            make.centerX.equalTo(view)
-            make.width.equalTo(view)
-        }
-        btnSetting.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view).offset(-margin)
-            make.width.equalTo(view).inset(UIEdgeInsetsMake(0, margin2, 0, margin2))
-            make.centerX.equalTo(view)
-        }
+        //TODO: move this to BaseVc
+        self.contentLayout = getContentLayout(contentView: contentView)
+        self.contentLayout?.setView()
+        ///////////////////////////
+        
+        (contentLayout as! VcLocationPermissionLayout).btnSetting.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)
     }
     
     override func initTabBarItems() {
         showLogoOnRight()
         showCloseButton()
     }
-    
-    //MARK: views
-    private lazy var imgLocationIcon: RoundButton! = {
-        let button = RoundButton(radius: 75, image: UIImage(named: "ic_location_on_white_48pt")!, color: Colors.colorAccent)
-        
-        return button
-    }()
-    
-    private lazy var label: UILabel! = {
-        let label = AppUILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.text = getString("permission_location_ios")
-        
-        return label
-    }()
-    
-    private lazy var btnSetting: AppUIButton! = {
-        let button = AppUIButton(width: 0, text: getString("fragment_bluetooth_app_details_settings"), backgroundColor: Colors.colorAccent, textColor: Colors.colorPrimary)
-        
-        button.addTarget(self, action: #selector(self.clickBtnSettings), for: .touchUpInside)
-        
-        return button
-    }()
     
     //MARK: button callbacks
     @objc private func clickBtnSettings() {
