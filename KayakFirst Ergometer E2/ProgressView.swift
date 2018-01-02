@@ -29,11 +29,7 @@ class ProgressView: CustomUi {
     }
     
     func show(_ isShow: Bool) {
-        if isShow {
-            (contentLayout as! ViewProgressLayout).spinner.startAnimating()
-        } else {
-            (contentLayout as! ViewProgressLayout).spinner.stopAnimating()
-        }
+        (contentLayout as! ViewProgressLayout).spinner.showProgressBar(isShow)
         
         isHidden = !isShow
     }

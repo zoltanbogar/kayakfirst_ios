@@ -48,10 +48,8 @@ class VcPlanListLayout: BaseLayout {
         return view
     }()
     
-    lazy var progressBar: UIActivityIndicatorView! = {
-        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
-        spinner.activityIndicatorViewStyle = .whiteLarge
-        spinner.color = Colors.colorWhite
+    lazy var progressBar: AppProgressBar! = {
+        let spinner = AppProgressBar()
         
         return spinner
     }()

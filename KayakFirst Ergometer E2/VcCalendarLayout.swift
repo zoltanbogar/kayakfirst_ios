@@ -101,10 +101,8 @@ class VcCalendarLayout: BaseLayout {
         return tableViewTraining
     }()
     
-    lazy var progressBarTraining: UIActivityIndicatorView! = {
-        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
-        spinner.activityIndicatorViewStyle = .whiteLarge
-        spinner.color = Colors.colorWhite
+    lazy var progressBarTraining: AppProgressBar! = {
+        let spinner = AppProgressBar()
         
         return spinner
     }()
@@ -115,10 +113,8 @@ class VcCalendarLayout: BaseLayout {
         return tableViewEvent
     }()
     
-    lazy var progressBarEvent: UIActivityIndicatorView! = {
-        let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
-        spinner.activityIndicatorViewStyle = .whiteLarge
-        spinner.color = Colors.colorWhite
+    lazy var progressBarEvent: AppProgressBar! = {
+        let spinner = AppProgressBar()
         
         return spinner
     }()

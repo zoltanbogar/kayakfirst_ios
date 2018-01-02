@@ -428,13 +428,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         showProgressBar(progressBar: contentLayout!.progressBarEvent, isShow: isShow)
     }
     
-    private func showProgressBar(progressBar: UIActivityIndicatorView, isShow: Bool) {
-        if isShow {
-            progressBar.startAnimating()
-        } else {
-            progressBar.stopAnimating()
-        }
-        
-        progressBar.isHidden = !isShow
+    private func showProgressBar(progressBar: AppProgressBar, isShow: Bool) {
+        progressBar.showProgressBar(isShow)
     }
 }

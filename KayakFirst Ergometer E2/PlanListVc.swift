@@ -76,13 +76,7 @@ class PlanListVc: BaseVC<VcPlanListLayout> {
     }
     
     private func showProgress(isShow: Bool) {
-        if isShow {
-            contentLayout?.progressBar.startAnimating()
-        } else {
-            contentLayout?.progressBar.stopAnimating()
-        }
-        
-        contentLayout?.progressBar.isHidden = !isShow
+        contentLayout?.progressBar.showProgressBar(isShow)
     }
     
     //MARK: initView

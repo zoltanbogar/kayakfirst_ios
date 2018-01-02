@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO - refactor: everywhere should this used
 class AppProgressBar: UIActivityIndicatorView {
     
     //MARK: init
@@ -16,7 +15,7 @@ class AppProgressBar: UIActivityIndicatorView {
         super.init(frame: CGRect(x: 0, y: 0, width: buttonHeight, height: buttonHeight))
         
         activityIndicatorViewStyle = .whiteLarge
-        color = Colors.colorWhite
+        color = Colors.colorAccent
     }
     
     required init(coder: NSCoder) {

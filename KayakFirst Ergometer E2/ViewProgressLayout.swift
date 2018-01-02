@@ -10,11 +10,10 @@ import Foundation
 
 class ViewProgressLayout: BaseLayout {
     
-    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    let spinner = AppProgressBar()
     
     override func setView() {
         contentView.backgroundColor = Colors.colorPrimaryTransparent
-        spinner.color = Colors.colorWhite
         
         contentView.addSubview(spinner)
         spinner.snp.makeConstraints { make in
