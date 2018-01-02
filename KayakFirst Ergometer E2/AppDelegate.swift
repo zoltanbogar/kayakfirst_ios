@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        initMainWindow()
+        startMainWindow()
         initColors()
         initKeyboardManager()
         deleteOldData()
@@ -52,14 +52,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func initMainWindow() {
-        window = UIWindow.init(frame: UIScreen.main.bounds)
+    func startMainWindow() {
+        if (window == nil) {
+            window = UIWindow.init(frame: UIScreen.main.bounds)
+        }
         
         var viewController: UIViewController
         
-        if UserManager.sharedInstance.getUser() != nil {
-            UserManager.sharedInstance.isQuickStart = false
-            
+        let userManager = UserManager.sharedInstance
+        let isUserLoggedIn = userManager.getUser() != nil || userManager.isQuickStart
+        
+        if isUserLoggedIn {
             viewController = MainTabViewController()
             welcomeViewController = nil
         } else {

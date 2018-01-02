@@ -71,8 +71,8 @@ class ProfileVc: BaseVC<VcProfileLayout> {
     
     private func checkUser() -> Bool {
         if userManager.getUser() == nil {
-            (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
-            self.dismiss(animated: false, completion: nil)
+            userManager.isQuickStart = false
+            (UIApplication.shared.delegate as! AppDelegate).startMainWindow()
             return false
         }
         return true
@@ -237,7 +237,7 @@ class ProfileVc: BaseVC<VcProfileLayout> {
     private func logoutCallback(data: Bool?, error: Responses?) {
         dismissProgress()
         
-        startWelcomeViewController(viewController: self)
+        (UIApplication.shared.delegate as! AppDelegate).startMainWindow()
     }
     
     private func updateUserCallback(data: User?, error: Responses?) {

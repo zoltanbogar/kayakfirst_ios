@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: constants
@@ -33,6 +34,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
             if let vcs = viewControllers {
                 vcs[1].tabBarItem.isEnabled = false
             }
+        } else {
+            PushNotificationHelper.uploadPushId()
         }
     }
     

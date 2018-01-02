@@ -128,7 +128,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
         telemetry.cycleState = nil
         self.dismiss(animated: true, completion: {
             if shoudlCloseParents {
-                (UIApplication.shared.delegate as! AppDelegate).initMainWindow()
+                (UIApplication.shared.delegate as! AppDelegate).startMainWindow()
             }
         })
     }

@@ -12,11 +12,6 @@ import FBSDKLoginKit
 import Crashlytics
 import Fabric
 
-func startWelcomeViewController(viewController: UIViewController) {
-    let controller = WelcomeViewController()
-    viewController.present(controller, animated: true, completion: nil)
-}
-
 class WelcomeViewController: BaseVC<VcWelcomeLayout> {
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,12 +41,7 @@ class WelcomeViewController: BaseVC<VcWelcomeLayout> {
     func showMainView(isQuickStart: Bool) {
         UserManager.sharedInstance.isQuickStart = isQuickStart
         
-        if !isQuickStart {
-            PushNotificationHelper.uploadPushId()
-        }
-        
-        let controller = MainTabViewController()
-        self.present(controller, animated: true, completion: nil)
+        (UIApplication.shared.delegate as! AppDelegate).startMainWindow()
     }
     
     func showRegistrationView(socialUser: SocialUser) {
