@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppToast<E: BaseLayout>: UIView {
+class AppToast<E: BaseLayout>: CustomUi {
     
     //MARK: constants
     private let lengthShort: Double = 3 //3 sec
@@ -23,15 +23,31 @@ class AppToast<E: BaseLayout>: UIView {
         self.baseVc = baseVc
         self.text = text
         
-        super.init(frame: CGRect.zero)
-        
-        initView()
+        super.init()
         
         isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func getContentLayout(contentView: UIView) -> BaseLayout {
+        return ViewAppToastLayout(contentView: contentView)
+    }
+    
+    override func initView() {
+        super.initView()
+        
+        (contentLayout as! ViewAppToastLayout).label.text = self.text
+        
+        baseVc.contentView.addSubview(self)
+        self.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-margin05)
+            make.left.lessThanOrEqualToSuperview().offset(margin2)
+            make.right.lessThanOrEqualToSuperview().offset(-margin2)
+            make.centerX.equalToSuperview()
+        }
     }
     
     //MARK: functions
@@ -53,35 +69,5 @@ class AppToast<E: BaseLayout>: UIView {
             self.isHidden = true
         })
     }
-    
-    //MARK: init view
-    private func initView() {
-        backgroundColor = Colors.colorAccent
-        layer.cornerRadius = 15
-        
-        addSubview(label)
-        label.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(margin05, margin05, margin05, margin05))
-        }
-        
-        baseVc.contentView.addSubview(self)
-        self.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-margin05)
-            make.left.lessThanOrEqualToSuperview().offset(margin2)
-            make.right.lessThanOrEqualToSuperview().offset(-margin2)
-            make.centerX.equalToSuperview()
-        }
-    }
-    
-    private lazy var label: UILabel! = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        
-        label.text = self.text
-        
-        return label
-    }()
     
 }
