@@ -29,7 +29,7 @@ class CustomUi: UIView {
         fatalError("Must be implemented")
     }
     
-    private func initView() {
+    func initView() {
         self.contentLayout = getContentLayout(contentView: self)
         self.contentLayout?.setView()
     }
