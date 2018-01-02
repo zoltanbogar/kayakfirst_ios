@@ -170,7 +170,7 @@ class BaseVC<E: BaseLayout>: UIViewController {
     }
     
     func showToast(text: String) {
-        AppToast(baseVc: self as! BaseVC<BaseLayout>, text: text).show()
+        AppToast<E>(baseVc: self, text: text).show()
     }
     
     func handleScreenOrientation(size: CGSize) {

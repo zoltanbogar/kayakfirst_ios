@@ -7,7 +7,7 @@
 //
 import Foundation
 
-func errorHandlingWithAlert(viewController: UIViewController, error: Responses?) {
+func errorHandlingWithAlert<E>(viewController: BaseVC<E>, error: Responses?) {
     if let errorValue = error {
         var textRes: String? = nil
         var isNoInternet = false
@@ -31,8 +31,8 @@ func errorHandlingWithAlert(viewController: UIViewController, error: Responses?)
         }
         
         if let textResValue = textRes {
-            if viewController is BaseVC && isNoInternet {
-                AppToast(baseVc: viewController as! BaseVC, text: getString(textResValue)).show()
+            if isNoInternet {
+                viewController.showToast(text: getString(textResValue))
             } else {
                 ErrorDialog(errorString: getString(textResValue)).show(viewController: viewController)
             }

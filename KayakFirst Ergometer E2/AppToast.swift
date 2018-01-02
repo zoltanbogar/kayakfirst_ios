@@ -8,18 +8,18 @@
 
 import Foundation
 
-class AppToast: UIView {
+class AppToast<E: BaseLayout>: UIView {
     
     //MARK: constants
     private let lengthShort: Double = 3 //3 sec
     private let animationTime: Double = 0.4
     
     //MARK: properties
-    private let baseVc: BaseVC<BaseLayout>
+    private let baseVc: BaseVC<E>
     private let text: String
     
     //MARK: init
-    init(baseVc: BaseVC<BaseLayout>, text: String) {
+    init(baseVc: BaseVC<E>, text: String) {
         self.baseVc = baseVc
         self.text = text
         
