@@ -8,20 +8,13 @@
 
 import UIKit
 
-class DragDropLayout: UIView {
+class DragDropLayout: CustomUi<ViewDragDropLayout> {
     
     //MARK: properties
     var viewAddedCallback: ((_ dragDropLayout: DragDropLayout, _ tag: Int) ->())?
     
-    //MARK: init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        initView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func getContentLayout(contentView: UIView) -> ViewDragDropLayout {
+        return ViewDragDropLayout(contentView: contentView)
     }
     
     //MARK: dragdrop
@@ -51,22 +44,22 @@ class DragDropLayout: UIView {
             color = nil
         }
         
-        viewDragDrop.backgroundColor = color
-        viewDragDrop.isHidden = color == nil
+        contentLayout!.viewDragDrop.backgroundColor = color
+        contentLayout!.viewDragDrop.isHidden = color == nil
         
         return didEnter
     }
     
     private func addNewView(tag: Int) {
-        newView.removeAllSubviews()
-        imgAdd.isHidden = true
+        contentLayout!.newView.removeAllSubviews()
+        contentLayout!.imgAdd.isHidden = true
         
         let view = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: false)
         
-        newView.addSubview(view)
+        contentLayout!.newView.addSubview(view)
         
         view.snp.makeConstraints { make in
-            make.edges.equalTo(newView)
+            make.edges.equalTo(contentLayout!.newView)
         }
         
         if let callback = viewAddedCallback {
@@ -74,41 +67,4 @@ class DragDropLayout: UIView {
         }
     }
     
-    //MARK: views
-    private func initView() {
-        addSubview(imgAdd)
-        imgAdd.snp.makeConstraints { make in
-            make.center.equalTo(self)
-        }
-        addSubview(newView)
-        newView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        addSubview(viewDragDrop)
-        viewDragDrop.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        backgroundColor = Colors.colorPrimary
-    }
-    
-    private lazy var imgAdd: UIImageView! = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "ic_add_white")
-        
-        return imageView
-    }()
-    
-    private lazy var viewDragDrop: UIView! = {
-        let view = UIView()
-        
-        view.isHidden = true
-        
-        return view
-    }()
-    
-    private lazy var newView: UIView! = {
-        let view = UIView()
-        
-        return view
-    }()
 }
