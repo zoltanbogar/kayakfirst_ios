@@ -15,7 +15,7 @@ enum ChartMode: String {
     case chartModeDistance = "distance"
 }
 
-class ChartView: UIView {
+class ChartView: CustomUi<ViewChartLayout> {
     
     //MARK: properties
     private var position: Int?
@@ -25,12 +25,11 @@ class ChartView: UIView {
     
     //MARK: init
     init(position: Int, chartMode: ChartMode) {
-        super.init(frame: CGRect.zero)
+        super.init()
         
         self.chartMode = chartMode
         self.position = position
         
-        initView()
         disableLabelIfNeeded()
         initLabelList()
         initChart()
@@ -41,15 +40,37 @@ class ChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: views
+    override func initView() {
+        super.initView()
+        
+        contentLayout!.labelT200.labelSelectedListener = self.labelT200Listener
+        contentLayout!.labelT500.labelSelectedListener = self.labelT500Listener
+        contentLayout!.labelT1000.labelSelectedListener = self.labelT1000Listener
+        contentLayout!.labelStrokes.labelSelectedListener = self.labelListener
+        contentLayout!.labelForce.labelSelectedListener = self.labelListener
+        contentLayout!.labelSpeed.labelSelectedListener = self.labelListener
+    }
+    
+    override func getContentLayout(contentView: UIView) -> ViewChartLayout {
+        return ViewChartLayout(contentView: contentView)
+    }
+    
     private func initLabelList() {
-        diagramLabelList = [labelT200, labelT500, labelT1000, labelStrokes, labelSpeed, labelForce]
+        diagramLabelList = [
+            contentLayout!.labelT200,
+            contentLayout!.labelT500,
+            contentLayout!.labelT1000,
+            contentLayout!.labelStrokes,
+            contentLayout!.labelSpeed,
+            contentLayout!.labelForce]
     }
     
     private func initChart() {
         if chartMode! == ChartMode.chartModeDistance {
-            lineChartData = LineChartDistance(lineChart: lineChart, distanceList: TrainingManager.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
+            lineChartData = LineChartDistance(lineChart: contentLayout!.lineChart, distanceList: TrainingManager.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
         } else {
-            lineChartData = LineChartTime(lineChart: lineChart, position: position!)
+            lineChartData = LineChartTime(lineChart: contentLayout!.lineChart, position: position!)
         }
         refreshChart()
     }
@@ -62,7 +83,7 @@ class ChartView: UIView {
         let isOutdoor = TrainingManager.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
         
         if isOutdoor {
-            labelForce.isDisabled = true
+            contentLayout!.labelForce.isDisabled = true
         }
     }
     
@@ -71,11 +92,11 @@ class ChartView: UIView {
         
         let plan = sumTrainings?[position!].planTraining
         
-        planView.isHidden = true
+        contentLayout!.planView.isHidden = true
         
         if plan != nil && isModeCorrect(plan: plan!) {
-            planView.isHidden = false
-            planView.setData(plan: plan!, lineChart: lineChart)
+            contentLayout!.planView.isHidden = false
+            contentLayout!.planView.setData(plan: plan!, lineChart: contentLayout!.lineChart)
         }
     }
     
@@ -84,133 +105,25 @@ class ChartView: UIView {
         (plan.type == PlanType.distance && chartMode == ChartMode.chartModeDistance)
     }
     
-    //MARK: views
-    private func initView() {
-        let stackViewL = UIStackView()
-        stackViewL.axis = .horizontal
-        stackViewL.distribution = .fillEqually
-        stackViewL.spacing = margin05
-        stackViewL.addArrangedSubview(labelT200)
-        stackViewL.addArrangedSubview(labelT500)
-        stackViewL.addArrangedSubview(labelT1000)
-        
-        let stackViewR = UIStackView()
-        stackViewR.axis = .horizontal
-        stackViewR.distribution = .fillEqually
-        stackViewR.spacing = margin
-        stackViewR.addArrangedSubview(labelStrokes)
-        stackViewR.addArrangedSubview(labelSpeed)
-        stackViewR.addArrangedSubview(labelForce)
-        
-        let stackViewLabels = UIStackView()
-        stackViewLabels.axis = .vertical
-        stackViewLabels.distribution = .fillEqually
-        stackViewLabels.spacing = margin
-        stackViewLabels.addArrangedSubview(stackViewL)
-        stackViewLabels.addArrangedSubview(stackViewR)
-        
-        let viewLabels = UIView()
-        viewLabels.addSubview(stackViewLabels)
-        stackViewLabels.snp.makeConstraints { (make) in
-            make.edges.equalTo(viewLabels).inset(UIEdgeInsetsMake(0, margin, 0, margin))
-        }
-        
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        mainStackView.spacing = margin05
-        mainStackView.addArrangedSubview(viewLabels)
-        mainStackView.addArrangedSubview(lineChart)
-        mainStackView.addArrangedSubview(planView)
-        
-        addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        planView.snp.makeConstraints { (make) in
-            make.left.equalTo(lineChart).offset(margin2)
-            make.right.equalTo(lineChart).offset(-margin)
-        }
-    }
-    
-    private lazy var planView: PlanTimeLineView! = {
-        let view = PlanTimeLineView()
-        
-        return view
-    }()
-    
-    private lazy var lineChart: LineChartView! = {
-        let chart = LineChartView()
-        
-        return chart
-    }()
-    
-    private lazy var labelT200: LabelT200! = {
-        let label = LabelT200()
-        
-        label.labelSelectedListener = self.labelT200Listener
-        
-        return label
-    }()
-    
-    private lazy var labelT500: LabelT500! = {
-        let label = LabelT500()
-        
-        label.labelSelectedListener = self.labelT500Listener
-        
-        return label
-    }()
-    
-    private lazy var labelT1000: LabelT1000! = {
-        let label = LabelT1000()
-        
-        label.labelSelectedListener = self.labelT1000Listener
-        
-        return label
-    }()
-    
-    private lazy var labelStrokes: LabelStroke! = {
-        let label = LabelStroke()
-        
-        label.labelSelectedListener = self.labelListener
-        
-        return label
-    }()
-    
-    private lazy var labelForce: LabelForce! = {
-        let label = LabelForce()
-        
-        label.labelSelectedListener = self.labelListener
-        
-        return label
-    }()
-    
-    private lazy var labelSpeed: LabelSpeed! = {
-        let label = LabelSpeed()
-        
-        label.labelSelectedListener = self.labelListener
-        
-        return label
-    }()
-    
     //MARK: listeners
     private func labelT200Listener(_ label: DiagramLabel) {
-        labelT200.isActive = true
-        labelT500.isActive = false
-        labelT1000.isActive = false
+        contentLayout!.labelT200.isActive = true
+        contentLayout!.labelT500.isActive = false
+        contentLayout!.labelT1000.isActive = false
         refreshChart()
     }
     
     private func labelT500Listener(_ label: DiagramLabel) {
-        labelT200.isActive = false
-        labelT500.isActive = true
-        labelT1000.isActive = false
+        contentLayout!.labelT200.isActive = false
+        contentLayout!.labelT500.isActive = true
+        contentLayout!.labelT1000.isActive = false
         refreshChart()
     }
     
     private func labelT1000Listener(_ label: DiagramLabel) {
-        labelT200.isActive = false
-        labelT500.isActive = false
-        labelT1000.isActive = true
+        contentLayout!.labelT200.isActive = false
+        contentLayout!.labelT500.isActive = false
+        contentLayout!.labelT1000.isActive = true
         refreshChart()
     }
     
