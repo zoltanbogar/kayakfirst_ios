@@ -307,6 +307,7 @@
 		06C7070E1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7070D1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift */; };
 		06C707101FFB88D200D72E72 /* ViewDividerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */; };
 		06C707121FFB90AD00D72E72 /* ViewAppToastLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */; };
+		06C707141FFB91EC00D72E72 /* ViewBluetoothListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -704,6 +705,7 @@
 		06C7070D1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHaldDividerLayout.swift; sourceTree = "<group>"; };
 		06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDividerLayout.swift; sourceTree = "<group>"; };
 		06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppToastLayout.swift; sourceTree = "<group>"; };
+		06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBluetoothListLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1626,6 +1628,7 @@
 				06C7070D1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift */,
 				06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */,
 				06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */,
+				06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2072,6 +2075,7 @@
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
 				06CAFF4D1F0D304D00D2EA14 /* EventManager.swift in Sources */,
+				06C707141FFB91EC00D72E72 /* ViewBluetoothListLayout.swift in Sources */,
 				06C7070C1FFB864500D72E72 /* ViewCalibrationLayout.swift in Sources */,
 				067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */,
 				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
