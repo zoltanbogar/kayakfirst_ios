@@ -7,24 +7,13 @@
 //
 
 import UIKit
-class ProgressView: UIView {
-    
-    private let view = UIView()
-    private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+class ProgressView: CustomUi {
     
     init(superView: UIView) {
-        super.init(frame: superView.frame)
-        view.backgroundColor = Colors.colorPrimaryTransparent
-        spinner.color = Colors.colorWhite
+        super.init()
         
-        view.addSubview(spinner)
-        spinner.snp.makeConstraints { make in
-            make.center.equalTo(view)
-            make.width.equalTo(buttonHeight)
-            make.height.equalTo(buttonHeight)
-        }
-        superView.addSubview(view)
-        view.snp.makeConstraints { make in
+        superView.addSubview(contentLayout!.contentView)
+        contentLayout!.contentView.snp.makeConstraints { (make) in
             make.edges.equalTo(superView)
         }
         
@@ -32,16 +21,20 @@ class ProgressView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func getContentLayout(contentView: UIView) -> BaseLayout {
+        return ViewProgressLayout(contentView: contentView)
     }
     
     func show(_ isShow: Bool) {
         if isShow {
-            spinner.startAnimating()
+            (contentLayout as! ViewProgressLayout).spinner.startAnimating()
         } else {
-            spinner.stopAnimating()
+            (contentLayout as! ViewProgressLayout).spinner.stopAnimating()
         }
         
-        view.isHidden = !isShow
+        isHidden = !isShow
     }
 }

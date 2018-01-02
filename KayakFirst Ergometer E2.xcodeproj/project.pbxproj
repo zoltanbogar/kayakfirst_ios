@@ -301,6 +301,7 @@
 		06C6ABBC1E2267A000562B27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C6ABBA1E2267A000562B27 /* LaunchScreen.storyboard */; };
 		06C6ABC71E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABC61E2267A100562B27 /* KayakFirst_Ergometer_E2Tests.swift */; };
 		06C6ABD21E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */; };
+		06C707071FFB824D00D72E72 /* ViewProgressLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707061FFB824D00D72E72 /* ViewProgressLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -692,6 +693,7 @@
 		06C6ABCD1E2267A100562B27 /* KayakFirst Ergometer E2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KayakFirst Ergometer E2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C6ABD11E2267A100562B27 /* KayakFirst_Ergometer_E2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayakFirst_Ergometer_E2UITests.swift; sourceTree = "<group>"; };
 		06C6ABD31E2267A100562B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06C707061FFB824D00D72E72 /* ViewProgressLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProgressLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1605,6 +1607,37 @@
 			path = "KayakFirst Ergometer E2UITests";
 			sourceTree = "<group>";
 		};
+		06C707051FFB823900D72E72 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				06C707061FFB824D00D72E72 /* ViewProgressLayout.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		06C707081FFB830200D72E72 /* view_controller */ = {
+			isa = PBXGroup;
+			children = (
+				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
+				06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */,
+				06371C1F1FF5610200469A46 /* VcProfileLayout.swift */,
+				06371C211FF5663500469A46 /* VcMainLayout.swift */,
+				06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */,
+				06371C251FF56A7700469A46 /* VcPlanListLayout.swift */,
+				06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */,
+				06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */,
+				06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */,
+				06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */,
+				063237C81FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift */,
+				063237CA1FF629B000F04A4B /* VcSetDsahboardLayout.swift */,
+				063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */,
+				063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */,
+				063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */,
+				063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */,
+			);
+			name = view_controller;
+			sourceTree = "<group>";
+		};
 		06CBD6D71F40958100BB570B /* plan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1628,23 +1661,9 @@
 		06CBFCBD1FF244CE0017E9B5 /* layout */ = {
 			isa = PBXGroup;
 			children = (
+				06C707081FFB830200D72E72 /* view_controller */,
+				06C707051FFB823900D72E72 /* view */,
 				06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */,
-				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
-				06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */,
-				06371C1F1FF5610200469A46 /* VcProfileLayout.swift */,
-				06371C211FF5663500469A46 /* VcMainLayout.swift */,
-				06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */,
-				06371C251FF56A7700469A46 /* VcPlanListLayout.swift */,
-				06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */,
-				06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */,
-				06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */,
-				06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */,
-				063237C81FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift */,
-				063237CA1FF629B000F04A4B /* VcSetDsahboardLayout.swift */,
-				063237CC1FF62CDA00F04A4B /* VcDashboardLayout.swift */,
-				063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */,
-				063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */,
-				063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -2220,6 +2239,7 @@
 				060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,
+				06C707071FFB824D00D72E72 /* ViewProgressLayout.swift in Sources */,
 				06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */,
 				0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */,
 				064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */,
