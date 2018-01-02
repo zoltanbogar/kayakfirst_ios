@@ -8,28 +8,18 @@
 
 import Foundation
 
-class HalfDivider: UIView {
+class HalfDivider: CustomUi {
     
-    //MARK: init
-    init() {
-        super.init(frame: CGRect.zero)
-        initView()
+    override init() {
+        super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: init views
-    private func initView() {
-        backgroundColor = Colors.colorPrimary
-        let divider = UIView()
-        divider.backgroundColor = Colors.colorDashBoardDivider
-        
-        addSubview(divider)
-        divider.snp.makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(margin, 0, margin, 0))
-        }
+    override func getContentLayout(contentView: UIView) -> BaseLayout {
+        return ViewHalfDividerLayout(contentView: contentView)
     }
     
     //MARK: size
