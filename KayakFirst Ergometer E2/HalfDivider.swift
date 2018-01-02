@@ -8,9 +8,9 @@
 
 import Foundation
 
-class HalfDivider: CustomUi {
+class HalfDivider: CustomUi<ViewHalfDividerLayout> {
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewHalfDividerLayout {
         return ViewHalfDividerLayout(contentView: contentView)
     }
     

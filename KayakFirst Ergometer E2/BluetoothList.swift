@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 //TODO - refactor: BaseView class for the init stuffs
-class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallback {
+class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedListener, BluetoothScanCallback {
     
     //MARK: constants
     private let bluetoothScanTimeout: Double = 5 //5 sec
@@ -42,7 +42,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewBluetoothListLayout {
         return ViewBluetoothListLayout(contentView: contentView)
     }
     
@@ -50,7 +50,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     override func initView() {
         super.initView()
         
-        (contentLayout as! ViewBluetoothListLayout).bluetoothTableView.rowClickCallback = { bluetoothDevice, position in
+        contentLayout!.bluetoothTableView.rowClickCallback = { bluetoothDevice, position in
             self.trainingViewController.connectBluetooth(bluetoothDevice: bluetoothDevice)
             self.setBluetoothDisconnectTimeout()
             self.stop()
@@ -121,7 +121,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     
     private func resetDeviceList() {
         bluetoothDeviceList = [CBPeripheral]()
-        (contentLayout as! ViewBluetoothListLayout).bluetoothTableView.dataList = bluetoothDeviceList
+        contentLayout!.bluetoothTableView.dataList = bluetoothDeviceList
     }
     
     private func handleState(state: Int) {
@@ -146,7 +146,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     private func setStateBluetoothOff() {
         resetDeviceList()
         
-        (contentLayout as! ViewBluetoothListLayout).progressBar.showProgressBar(false)
+        contentLayout!.progressBar.showProgressBar(false)
         
         setButtonText(text: getString("fragment_bluetooth_button_turn_on"))
         setButtonClickListener(action: #selector(turnBluetoothOnClick))
@@ -155,7 +155,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     }
     
     private func setStateBluetoothFound() {
-        (contentLayout as! ViewBluetoothListLayout).bluetoothTableView.dataList = bluetoothDeviceList
+        contentLayout!.bluetoothTableView.dataList = bluetoothDeviceList
         
         setButtonText(text: getString("fragment_bluetooth_button_refresh"))
         setButtonClickListener(action: #selector(refreshClick))
@@ -164,7 +164,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     }
     
     private func setStateBluetoothScanningStart() {
-        (contentLayout as! ViewBluetoothListLayout).progressBar.showProgressBar(true)
+        contentLayout!.progressBar.showProgressBar(true)
         
         setButtonText(text: getString("fragment_bluetooth_button_refresh"))
         setButtonClickListener(action: #selector(refreshClick))
@@ -173,7 +173,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     }
     
     private func setStateBluetoothScanningStop() {
-        (contentLayout as! ViewBluetoothListLayout).progressBar.showProgressBar(false)
+        contentLayout!.progressBar.showProgressBar(false)
         
         setButtonText(text: getString("fragment_bluetooth_button_refresh"))
         setButtonClickListener(action: #selector(refreshClick))
@@ -190,7 +190,7 @@ class BluetoothList: CustomUi, BluetoothStateChangedListener, BluetoothScanCallb
     }
     
     private func setEmptyText(text: String) {
-        (contentLayout as! ViewBluetoothListLayout).bluetoothTableView.emptyText = text
+        contentLayout!.bluetoothTableView.emptyText = text
     }
     
     @objc private func refreshClick() {

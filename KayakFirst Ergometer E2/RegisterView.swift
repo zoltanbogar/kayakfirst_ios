@@ -53,12 +53,12 @@ class RegisterView: UIView, UITextFieldDelegate {
         
         initView()
         
-        pickerHelperGender = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.valueTextField)
-        pickerHelperLocale = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.valueTextField)
-        pickerHelperArtOfPaddling = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.valueTextField)
-        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.valueTextField)
-        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.valueTextField)
-        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.valueTextField)
+        pickerHelperGender = PickerHelperGender(pickerView: genderPickerView, textField: tfGender.contentLayout!.valueTextField)
+        pickerHelperLocale = PickerHelperLocale(pickerView: countryPickerView, textField: tfCountry.contentLayout!.valueTextField)
+        pickerHelperArtOfPaddling = PickerHelperArtOfPaddling(pickerView: artOfPaddlingPickerView, textField: tfArtOfPaddling.contentLayout!.valueTextField)
+        pickerHelperUnitWeight = PickerHelperUnit(pickerView: unitWeightPickerView, textField: tfUnitWeight.contentLayout!.valueTextField)
+        pickerHelperUnitDistance = PickerHelperUnit(pickerView: unitDistancePickerView, textField: tfUnitDistance.contentLayout!.valueTextField)
+        pickerHelperUnitPace = PickerHelperUnit(pickerView: unitPacePickerView, textField: tfUnitPace.contentLayout!.valueTextField)
         
         userManager.registerCallback = registerCallback
     }
@@ -141,41 +141,41 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     lazy var tfFirstName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_first_name")
         
         return textField
     }()
     
     lazy var tfLastName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_last_name")
         
         return textField
     }()
     
     private lazy var tfBirthDate: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_birth_date")
         
         self.datePickerView.datePickerMode = .date
         self.datePickerView.maximumDate = Date()
         
-        textField.valueTextField.inputView = self.datePickerView
+        textField.contentLayout!.valueTextField.inputView = self.datePickerView
         self.datePickerView.addTarget(self, action: #selector(self.birthDatePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return textField
     }()
     
     private lazy var tfClub: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_club")
         
         return textField
     }()
     
     private lazy var tfUserName: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_name")
         textField.required = true
         
@@ -183,7 +183,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfPassword: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_password")
         textField.secureTextEntry = true
         textField.required = true
@@ -192,7 +192,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     lazy var tfEmail: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_email")
         textField.keyBoardType = .emailAddress
         textField.required = true
@@ -201,7 +201,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfWeight: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_weight")
         textField.keyBoardType = .numberPad
         textField.required = true
@@ -210,17 +210,17 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfCountry: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_country")
         textField.required = true
         
-        textField.valueTextField.inputView = self.countryPickerView
+        textField.contentLayout!.valueTextField.inputView = self.countryPickerView
         
         return textField
     }()
     
     private lazy var tfGender: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_gender")
         textField.required = true
         
@@ -228,7 +228,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfUnitWeight: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("unit_weight")
         textField.required = true
         
@@ -236,7 +236,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfUnitDistance: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("unit_distance")
         textField.required = true
         
@@ -244,7 +244,7 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfUnitPace: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("unit_pace")
         textField.required = true
         
@@ -252,11 +252,11 @@ class RegisterView: UIView, UITextFieldDelegate {
     }()
     
     private lazy var tfArtOfPaddling: DialogElementTextField! = {
-        let textField = DialogElementTextField(frame: CGRect.zero)
+        let textField = DialogElementTextField()
         textField.title = getString("user_art_of_paddling")
         textField.required = true
         
-        textField.valueTextField.inputView = self.artOfPaddlingPickerView
+        textField.contentLayout!.valueTextField.inputView = self.artOfPaddlingPickerView
         
         return textField
     }()

@@ -12,7 +12,7 @@ public protocol StartDelayDelegate {
     func onCounterEnd()
 }
 
-class StartDelayView: CustomUi {
+class StartDelayView: CustomUi<ViewStartDelayLayout> {
     
     //MARK: constants
     private let countTime = 30
@@ -38,15 +38,15 @@ class StartDelayView: CustomUi {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewStartDelayLayout {
         return ViewStartDelayLayout(contentView: contentView, frame: self.frame)
     }
     
     override func initView() {
         super.initView()
         
-        (contentLayout as! ViewStartDelayLayout).labelDelay.text = "\(self.countTime)"
-        (contentLayout as! ViewStartDelayLayout).btnQuickStart.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
+        contentLayout!.labelDelay.text = "\(self.countTime)"
+        contentLayout!.btnQuickStart.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
     }
     
     //MARK: show view
@@ -61,7 +61,7 @@ class StartDelayView: CustomUi {
         } else {
             timer?.invalidate()
             timeInSeconds = 0
-            (contentLayout as! ViewStartDelayLayout).labelDelay.text = "\(countTime)"
+            contentLayout!.labelDelay.text = "\(countTime)"
             
             if let delegateValue = delegate {
                 delegateValue.onCounterEnd()
@@ -72,7 +72,7 @@ class StartDelayView: CustomUi {
     @objc private func timerUpdate() {
         timeInSeconds = timeInSeconds + 1
         
-        (contentLayout as! ViewStartDelayLayout).labelDelay.text = "\(countTime - timeInSeconds)"
+        contentLayout!.labelDelay.text = "\(countTime - timeInSeconds)"
         
         //the 0 number is has to be shown (countTime + 1)
         if timeInSeconds == countTime + 1 {

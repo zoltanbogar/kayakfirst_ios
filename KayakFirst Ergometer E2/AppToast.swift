@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppToast<E: BaseLayout>: CustomUi {
+class AppToast<E: BaseLayout>: CustomUi<ViewAppToastLayout> {
     
     //MARK: constants
     private let lengthShort: Double = 3 //3 sec
@@ -32,14 +32,14 @@ class AppToast<E: BaseLayout>: CustomUi {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewAppToastLayout {
         return ViewAppToastLayout(contentView: contentView)
     }
     
     override func initView() {
         super.initView()
         
-        (contentLayout as! ViewAppToastLayout).label.text = self.text
+        contentLayout!.label.text = self.text
         
         baseVc.contentView.addSubview(self)
         self.snp.makeConstraints { (make) in

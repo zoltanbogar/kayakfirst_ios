@@ -21,6 +21,8 @@ let planElementHeight: CGFloat = 40
 let timeLineHeight: CGFloat = 10
 let planRadius: CGFloat = 9
 let dashboardPauseSwipeArea: CGFloat = 180
+let colorNormalDialogElement = Colors.colorWhite
+let colorHighlitedDialogElement = Colors.colorAccent
 
 //text
 let planElementCellTextSize: CGFloat = 18

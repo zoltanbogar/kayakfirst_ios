@@ -12,7 +12,7 @@ public protocol CalibrationDelegate {
     func onCalibrationEnd()
 }
 
-class CalibrationView: CustomUi {
+class CalibrationView: CustomUi<ViewCalibrationLayout> {
     
     //MARK: properties
     var delegate: CalibrationDelegate?
@@ -33,7 +33,7 @@ class CalibrationView: CustomUi {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewCalibrationLayout {
         return ViewCalibrationLayout(contentView: contentView)
     }
     
@@ -51,7 +51,7 @@ class CalibrationView: CustomUi {
                 timeDiff = currentTimeMillis() - startTime
                 DispatchQueue.main.async {
                     let percent = timeDiff / analyzeTime
-                    (self.contentLayout as! ViewCalibrationLayout).progressView.progress = Float(percent)
+                    self.contentLayout!.progressView.progress = Float(percent)
                 }
             }
             DispatchQueue.main.async {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
+class ProfileElementExpendable: BaseProfileElement<ViewProfileElementExpandableLayout>, UITextViewDelegate {
     
     //MARK: constants
     private let defaultHeight: CGFloat = 70
@@ -21,11 +21,11 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
         }
         set {
             if newValue {
-                valueTextView.textColor = DialogElementTextField.colorHighlited
-                labelTitle.textColor = DialogElementTextField.colorHighlited
+                contentLayout!.valueTextView.textColor = colorHighlitedDialogElement
+                contentLayout!.labelTitle.textColor = colorHighlitedDialogElement
             } else {
-                valueTextView.textColor = textColorNormalValue
-                labelTitle.textColor = textColorNormalTitle
+                contentLayout!.valueTextView.textColor = textColorNormalValue
+                contentLayout!.labelTitle.textColor = textColorNormalTitle
             }
             isEditable = newValue
             error = nil
@@ -34,19 +34,19 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     
     override var keyBoardType: UIKeyboardType? {
         get {
-            return valueTextView.keyboardType
+            return contentLayout!.valueTextView.keyboardType
         }
         set {
-            valueTextView.keyboardType = newValue!
+            contentLayout!.valueTextView.keyboardType = newValue!
         }
     }
     
     override var text: String? {
         get {
-            return valueTextView.text
+            return contentLayout!.valueTextView.text
         }
         set {
-            valueTextView.text = newValue
+            contentLayout!.valueTextView.text = newValue
             
             layoutIfNeeded()
             
@@ -55,42 +55,15 @@ class ProfileElementExpendable: ProfileElement, UITextViewDelegate {
     }
     
     override func initView() {
-        backgroundColor = Colors.colorProfileElement
+        super.initView()
         
-        addSubview(labelTitle)
-        addSubview(valueTextView)
-        addSubview(errorLabel)
-        
-        labelTitle.snp.makeConstraints { (make) in
-            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
-            make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
-        }
-        
-        valueTextView.snp.makeConstraints{ make in
-            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
-            make.right.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, margin))
-            make.top.equalTo(labelTitle.snp.bottom)
-            make.bottom.equalTo(self)
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.left.equalTo(valueTextView)
-            make.top.equalTo(valueTextView.snp.bottom)
-            make.width.equalTo(self)
-        }
+        contentLayout!.valueTextView.textColor = self.textColorNormalValue
+        contentLayout!.valueTextView.delegate = self
     }
     
-    //MARK: views
-    private lazy var valueTextView: UITextView! = {
-        let view = UITextView()
-        
-        view.textColor = self.textColorNormalValue
-        view.font = .systemFont(ofSize: 17)
-        view.delegate = self
-        view.isScrollEnabled = false
-        
-        return view
-    }()
+    override func getContentLayout(contentView: UIView) -> ViewProfileElementExpandableLayout {
+        return ViewProfileElementExpandableLayout(contentView: contentView)
+    }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if clickable {

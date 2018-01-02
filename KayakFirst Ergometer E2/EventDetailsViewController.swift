@@ -232,12 +232,12 @@ class EventDetailsViewController: BaseVC<VcEventDetailsLayout>, UITextFieldDeleg
         contentLayout?.btnEdit.target = self
         contentLayout?.btnEdit.action = #selector(btnEditClick)
         
-        contentLayout?.etDate.valueTextField.inputView = contentLayout!.datePickerView
-        contentLayout?.etDate.valueTextField.delegate = self
+        contentLayout?.etDate.contentLayout!.valueTextField.inputView = contentLayout!.datePickerView
+        contentLayout?.etDate.contentLayout!.valueTextField.delegate = self
         contentLayout?.datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
-        contentLayout?.etStart.valueTextField.inputView = contentLayout!.timePickerView
-        contentLayout?.etStart.valueTextField.delegate = self
+        contentLayout?.etStart.contentLayout!.valueTextField.inputView = contentLayout!.timePickerView
+        contentLayout?.etStart.contentLayout!.valueTextField.delegate = self
         contentLayout?.timePickerView.addTarget(self, action: #selector(self.timePickerValueChanged), for: UIControlEvents.valueChanged)
         
        initPickers()

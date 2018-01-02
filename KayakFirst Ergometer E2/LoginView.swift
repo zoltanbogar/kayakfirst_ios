@@ -98,14 +98,14 @@ class LoginView: UIView {
     }()
     
     private lazy var tfUserName: DialogElementTextField! = {
-        let view = DialogElementTextField(frame: CGRect.zero)
+        let view = DialogElementTextField()
         view.title = getString("user_name")
         
         return view
     }()
     
     private lazy var tfPassword: DialogElementTextField! = {
-        let view = DialogElementTextField(frame: CGRect.zero)
+        let view = DialogElementTextField()
         view.title = getString("user_password")
         view.secureTextEntry = true
         

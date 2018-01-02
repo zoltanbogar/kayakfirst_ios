@@ -25,7 +25,7 @@ class Validate {
         }
     }
     
-    class func isUserNameValid(tfUserName: DialogElementTextField) -> Bool {
+    class func isUserNameValid<E>(tfUserName: BaseDialogElementTextField<E>) -> Bool {
         var isValid = true
         let userNameCharacters = tfUserName.text == nil ? 0 : tfUserName.text!.characters.count
         if userNameCharacters < Validate.minCharacterUserName {
@@ -35,7 +35,7 @@ class Validate {
         return isValid
     }
     
-    class func isPasswordValid(tfPassword: DialogElementTextField) -> Bool {
+    class func isPasswordValid<E>(tfPassword: BaseDialogElementTextField<E>) -> Bool {
         var isValid = true
         let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
         if passwordCharacters < Validate.minCharacterPassword {
@@ -45,7 +45,7 @@ class Validate {
         return isValid
     }
     
-    class func isValidBodyWeight(tfWeight: DialogElementTextField, isMetric: Bool) -> Bool {
+    class func isValidBodyWeight<E>(tfWeight: BaseDialogElementTextField<E>, isMetric: Bool) -> Bool {
         var isValid = true
         tfWeight.error = nil
         
@@ -68,7 +68,7 @@ class Validate {
         return isValid
     }
     
-    class func isValidPicker(tfPicker: DialogElementTextField) -> Bool {
+    class func isValidPicker<E>(tfPicker: BaseDialogElementTextField<E>) -> Bool {
         var isValid = true
         tfPicker.error = nil
         

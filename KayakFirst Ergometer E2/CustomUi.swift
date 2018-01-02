@@ -9,9 +9,9 @@
 import UIKit
 
 //TODO: generic for BaseLayout
-class CustomUi: UIView {
+class CustomUi<E: BaseLayout>: UIView {
     
-    var contentLayout: BaseLayout?
+    var contentLayout: E?
     
     private let contentView = UIView()
     
@@ -25,7 +25,7 @@ class CustomUi: UIView {
     }
     
     //MARK: abstract functions
-    func getContentLayout(contentView: UIView) -> BaseLayout {
+    func getContentLayout(contentView: UIView) -> E {
         fatalError("Must be implemented")
     }
     

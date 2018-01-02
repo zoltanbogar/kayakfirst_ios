@@ -308,6 +308,11 @@
 		06C707101FFB88D200D72E72 /* ViewDividerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */; };
 		06C707121FFB90AD00D72E72 /* ViewAppToastLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */; };
 		06C707141FFB91EC00D72E72 /* ViewBluetoothListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */; };
+		06C707161FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707151FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift */; };
+		06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707171FFBA7DD00D72E72 /* ViewProfileElementLayout.swift */; };
+		06C7071A1FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707191FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift */; };
+		06C7071C1FFBADF000D72E72 /* BaseDialogelementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7071B1FFBADF000D72E72 /* BaseDialogelementTextField.swift */; };
+		06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -706,6 +711,11 @@
 		06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDividerLayout.swift; sourceTree = "<group>"; };
 		06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppToastLayout.swift; sourceTree = "<group>"; };
 		06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBluetoothListLayout.swift; sourceTree = "<group>"; };
+		06C707151FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDialogElementTextFieldLayout.swift; sourceTree = "<group>"; };
+		06C707171FFBA7DD00D72E72 /* ViewProfileElementLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileElementLayout.swift; sourceTree = "<group>"; };
+		06C707191FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileElementExpandableLayout.swift; sourceTree = "<group>"; };
+		06C7071B1FFBADF000D72E72 /* BaseDialogelementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDialogelementTextField.swift; sourceTree = "<group>"; };
+		06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileElement.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -841,6 +851,8 @@
 				06F938FB1E3F2B5400920753 /* DialogElementTextField.swift */,
 				0609B5371E6C06A100011CED /* ProfileElement.swift */,
 				060958E71EDE9758009A824C /* ProfileElementExpendable.swift */,
+				06C7071B1FFBADF000D72E72 /* BaseDialogelementTextField.swift */,
+				06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */,
 			);
 			name = dialog_element;
 			sourceTree = "<group>";
@@ -1629,6 +1641,9 @@
 				06C7070F1FFB88D200D72E72 /* ViewDividerLayout.swift */,
 				06C707111FFB90AD00D72E72 /* ViewAppToastLayout.swift */,
 				06C707131FFB91EC00D72E72 /* ViewBluetoothListLayout.swift */,
+				06C707151FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift */,
+				06C707171FFBA7DD00D72E72 /* ViewProfileElementLayout.swift */,
+				06C707191FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2086,6 +2101,7 @@
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
+				06C7071C1FFBADF000D72E72 /* BaseDialogelementTextField.swift in Sources */,
 				060E97601FE8286400CB4258 /* FacebookLoginHelper.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
@@ -2232,6 +2248,7 @@
 				060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */,
 				063237CB1FF629B000F04A4B /* VcSetDsahboardLayout.swift in Sources */,
 				066B00411EC7406F00BE0E1F /* PlanOrNotPlanVc.swift in Sources */,
+				06C7071A1FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,
@@ -2275,6 +2292,7 @@
 				063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
+				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
@@ -2309,6 +2327,7 @@
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
+				06C707161FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift in Sources */,
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
@@ -2322,6 +2341,7 @@
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */,
+				06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */,
 				0679646E1E637FCC00DFC050 /* CalculateT_200_AV.swift in Sources */,
 				06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */,
 				06C2F3F41F0A43850077EE21 /* EditEvent.swift in Sources */,

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ProgressView: CustomUi {
+class ProgressView: CustomUi<ViewProgressLayout> {
     
     init(superView: UIView) {
         super.init()
@@ -24,12 +24,12 @@ class ProgressView: CustomUi {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewProgressLayout {
         return ViewProgressLayout(contentView: contentView)
     }
     
     func show(_ isShow: Bool) {
-        (contentLayout as! ViewProgressLayout).spinner.showProgressBar(isShow)
+        contentLayout!.spinner.showProgressBar(isShow)
         
         isHidden = !isShow
     }

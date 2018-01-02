@@ -49,17 +49,17 @@ class ProfileVc: BaseVC<VcProfileLayout> {
             contentLayout!.btnEdit.action = #selector(btnEditClick)
             
             countryPickerHelper = PickerHelperLocale(
-                pickerView: contentLayout!.countryPickerView, textField: contentLayout!.tfCountry.valueTextField)
+                pickerView: contentLayout!.countryPickerView, textField: contentLayout!.tfCountry.contentLayout!.valueTextField)
             genderPickerHelper = PickerHelperGender(
-                pickerView: contentLayout!.genderPickerView, textField: contentLayout!.tfGender.valueTextField)
+                pickerView: contentLayout!.genderPickerView, textField: contentLayout!.tfGender.contentLayout!.valueTextField)
             artOfPaddlingPickerHelper = PickerHelperArtOfPaddling(
-                pickerView: contentLayout!.artOfPaddlingPickerView, textField: contentLayout!.tfArtOfPaddling.valueTextField)
+                pickerView: contentLayout!.artOfPaddlingPickerView, textField: contentLayout!.tfArtOfPaddling.contentLayout!.valueTextField)
             pickerHelperUnitWeight = PickerHelperUnit(
-                pickerView: contentLayout!.unitWeightPickerView, textField: contentLayout!.tfUnitWeight.valueTextField)
+                pickerView: contentLayout!.unitWeightPickerView, textField: contentLayout!.tfUnitWeight.contentLayout!.valueTextField)
             pickerHelperUnitDistance = PickerHelperUnit(
-                pickerView: contentLayout!.unitDistancePickerView, textField: contentLayout!.tfUnitDistance.valueTextField)
+                pickerView: contentLayout!.unitDistancePickerView, textField: contentLayout!.tfUnitDistance.contentLayout!.valueTextField)
             pickerHelperUnitPace = PickerHelperUnit(
-                pickerView: contentLayout!.unitPacePickerView, textField: contentLayout!.tfUnitPace.valueTextField)
+                pickerView: contentLayout!.unitPacePickerView, textField: contentLayout!.tfUnitPace.contentLayout!.valueTextField)
             
             initUser()
         }
@@ -136,7 +136,7 @@ class ProfileVc: BaseVC<VcProfileLayout> {
     }
     
     private func initBodyWeightUnit(isMetric: Bool) {
-        let title = (contentLayout as! VcProfileLayout).tfWeight.title!
+        let title = contentLayout!.tfWeight.title!
         let splitText = title.components(separatedBy: "(")
         var originalTitle: String = splitText[0]
         
@@ -147,7 +147,7 @@ class ProfileVc: BaseVC<VcProfileLayout> {
     }
     
     private func bodyWeightChangedListener() {
-        let value = (contentLayout as! VcProfileLayout).tfWeight.text
+        let value = contentLayout!.tfWeight.text
         if value != nil && "" != value {
             bodyWeight = Double(value!)!
         }
@@ -184,7 +184,7 @@ class ProfileVc: BaseVC<VcProfileLayout> {
     
     @objc private func btnEditClick() {
         activateFields(isActive: true)
-        setTabbarItem(tabbarItem: (contentLayout as! VcProfileLayout).btnSave)
+        setTabbarItem(tabbarItem: contentLayout!.btnSave)
     }
     
     private func setTabbarItem(tabbarItem: UIBarButtonItem?) {
@@ -205,7 +205,7 @@ class ProfileVc: BaseVC<VcProfileLayout> {
         if !isActive {
             initBodyWeight(user: self.userManager.getUser())
             
-            (contentLayout as! VcProfileLayout).tfWeight.endEditing(true)
+            contentLayout!.tfWeight.endEditing(true)
         }
     }
     

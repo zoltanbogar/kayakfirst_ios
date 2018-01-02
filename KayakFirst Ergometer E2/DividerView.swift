@@ -8,9 +8,9 @@
 
 import Foundation
 
-class DividerView: CustomUi {
+class DividerView: CustomUi<ViewDividerLayout> {
     
-    override func getContentLayout(contentView: UIView) -> BaseLayout {
+    override func getContentLayout(contentView: UIView) -> ViewDividerLayout {
         return ViewDividerLayout(contentView: contentView)
     }
     
