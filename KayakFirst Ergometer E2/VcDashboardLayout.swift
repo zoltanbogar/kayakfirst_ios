@@ -105,11 +105,11 @@ class VcDashobardLayout: BaseLayout {
     }
     
     private func setDashboardElementsOrientation() {
-        (viewDashboard.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.contentLayout!.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.contentLayout!.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.contentLayout!.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.contentLayout!.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (viewDashboard.contentLayout!.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
     }
     
     private func initDashboardViews() {
@@ -120,19 +120,19 @@ class VcDashobardLayout: BaseLayout {
             var view: UIView?
             switch position {
             case 0:
-                view = viewDashboard.view0
+                view = viewDashboard.contentLayout!.view0
                 dashboardElement0 = dashboardElement
             case 1:
-                view = viewDashboard.view1
+                view = viewDashboard.contentLayout!.view1
                 dashboardElement1 = dashboardElement
             case 2:
-                view = viewDashboard.view2
+                view = viewDashboard.contentLayout!.view2
                 dashboardElement2 = dashboardElement
             case 3:
-                view = viewDashboard.view3
+                view = viewDashboard.contentLayout!.view3
                 dashboardElement3 = dashboardElement
             case 4:
-                view = viewDashboard.view4
+                view = viewDashboard.contentLayout!.view4
                 dashboardElement4 = dashboardElement
             default:
                 fatalError()

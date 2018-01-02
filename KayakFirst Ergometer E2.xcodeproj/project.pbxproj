@@ -321,6 +321,7 @@
 		06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7072B1FFBC4A100D72E72 /* ViewChartLayout.swift */; };
 		06C7072E1FFBC79100D72E72 /* ViewDragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */; };
 		06C707301FFBC93700D72E72 /* ViewTrainingSumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */; };
+		06C707321FFBCAC600D72E72 /* ViewDashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -732,6 +733,7 @@
 		06C7072B1FFBC4A100D72E72 /* ViewChartLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewChartLayout.swift; sourceTree = "<group>"; };
 		06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDragDropLayout.swift; sourceTree = "<group>"; };
 		06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTrainingSumLayout.swift; sourceTree = "<group>"; };
+		06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1668,6 +1670,7 @@
 				06C7072B1FFBC4A100D72E72 /* ViewChartLayout.swift */,
 				06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */,
 				06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */,
+				06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2204,6 +2207,7 @@
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */,
 				066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */,
+				06C707321FFBCAC600D72E72 /* ViewDashboardLayout.swift in Sources */,
 				06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */,
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
