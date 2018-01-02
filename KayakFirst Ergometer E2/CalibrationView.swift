@@ -12,53 +12,17 @@ public protocol CalibrationDelegate {
     func onCalibrationEnd()
 }
 
-class CalibrationView: UIView {
+class CalibrationView: CustomUi {
     
     //MARK: properties
-    private let view = UIView()
     var delegate: CalibrationDelegate?
     
     //MARK: init
     init(superView: UIView) {
-        super.init(frame: superView.frame)
+        super.init()
         
-        view.backgroundColor = Colors.colorPrimary
-        
-        view.addSubview(imageLogo)
-        imageLogo.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(margin2)
-        }
-        
-        view.addSubview(imageStop)
-        imageStop.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(imageLogo.snp.bottom).offset(margin2)
-        }
-        
-        view.addSubview(labelTitle)
-        labelTitle.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(imageStop.snp.bottom).offset(margin2)
-        }
-        
-        view.addSubview(imageSatelite)
-        imageSatelite.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(labelTitle.snp.bottom).offset(margin2)
-        }
-        
-        view.addSubview(progressView)
-        progressView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(imageSatelite.snp.bottom).offset(margin2)
-            make.left.equalTo(view).offset(margin2)
-            make.right.equalTo(view).offset(-margin2)
-            make.height.equalTo(5)
-        }
-        
-        superView.addSubview(view)
-        view.snp.makeConstraints { make in
+        superView.addSubview(contentLayout!.contentView)
+        contentLayout!.contentView.snp.makeConstraints { make in
             make.edges.equalTo(superView)
         }
         
@@ -67,6 +31,10 @@ class CalibrationView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func getContentLayout(contentView: UIView) -> BaseLayout {
+        return ViewCalibrationLayout(contentView: contentView)
     }
     
     func showView() {
@@ -83,7 +51,7 @@ class CalibrationView: UIView {
                 timeDiff = currentTimeMillis() - startTime
                 DispatchQueue.main.async {
                     let percent = timeDiff / analyzeTime
-                    self.progressView.progress = Float(percent)
+                    (self.contentLayout as! ViewCalibrationLayout).progressView.progress = Float(percent)
                 }
             }
             DispatchQueue.main.async {
@@ -103,54 +71,7 @@ class CalibrationView: UIView {
             }
         }
         
-        view.isHidden = !isShow
+        isHidden = !isShow
     }
-    
-    //MARK: views
-    private lazy var labelTitle: UILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 16.0)
-        
-        label.text = getString("dialog_calibrating_sensor")
-        
-        return label
-    }()
-    
-    private lazy var imageLogo: UIImageView! = {
-        let imageView = UIImageView()
-        
-        let image = UIImage(named: "logo_header")
-        imageView.image = image
-        
-        return imageView
-    }()
-    
-    private lazy var imageStop: UIImageView! = {
-        let imageView = UIImageView()
-        
-        let image = UIImage(named: "stopTable")
-        imageView.image = image
-        
-        return imageView
-    }()
-    
-    private lazy var imageSatelite: UIImageView! = {
-        let imageView = UIImageView()
-        
-        let image = UIImage(named: "satelliteIcon")
-        imageView.image = image
-        
-        return imageView
-    }()
-    
-    private lazy var progressView: UIProgressView! = {
-        let progressView = UIProgressView()
-        
-        progressView.tintColor = Colors.colorWhite
-        progressView.trackTintColor = Colors.colorTransparent
-        
-        return progressView
-    }()
     
 }
