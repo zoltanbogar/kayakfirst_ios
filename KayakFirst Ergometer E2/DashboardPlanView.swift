@@ -8,11 +8,7 @@
 
 import Foundation
 
-class DashboardPlanView: RefreshView {
-    
-    //MARK: constants
-    private let progressHeight: CGFloat = 12
-    private let valueFontSize: CGFloat = 70
+class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     
     private let telemetry = Telemetry.sharedInstance
     
@@ -22,7 +18,7 @@ class DashboardPlanView: RefreshView {
             localeValue = 0
             planElementPosition = 0
             
-            peTableView.dataList = self.plan?.planElements
+            contentLayout!.peTableView.dataList = self.plan?.planElements
             
             setProgressBarPlanElementColor()
         }
@@ -34,20 +30,13 @@ class DashboardPlanView: RefreshView {
     private var planElementPosition: Int = 0
     private let planSoundHelper = PlanSoundHelper.sharedInstance
     
-    //MARK: init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        initView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func getContentLayout(contentView: UIView) -> ViewDashboardPlanLayout {
+        return ViewDashboardPlanLayout(contentView: contentView)
     }
     
     //MARK: functions
     func viewDidLayoutSubViews() {
-        viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: .verticalSlow)
+        contentLayout!.viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: .verticalSlow)
     }
     
     override func startRefresh(_ isStart: Bool) {
@@ -55,8 +44,8 @@ class DashboardPlanView: RefreshView {
             super.startRefresh(true)
         }
         
-        deActual1000.startRefresh(isStart)
-        deSpm.startRefresh(isStart)
+        contentLayout!.deActual1000.startRefresh(isStart)
+        contentLayout!.deSpm.startRefresh(isStart)
         
         planSoundHelper.shouldPlay = isStart
     }
@@ -77,8 +66,8 @@ class DashboardPlanView: RefreshView {
                 setPlanElementPosition()
                 let currentPercent = getCurrentPercent()
                 
-                progressViewComplete.progress = Float(totalPercent / 100)
-                progressViewPlanElement.progress = (Float((Double(1) - currentPercent)))
+                contentLayout!.progressViewComplete.progress = Float(totalPercent / 100)
+                contentLayout!.progressViewPlanElement.progress = (Float((Double(1) - currentPercent)))
                 
                 setTextsByPercent(percent: currentPercent)
             } else {
@@ -166,8 +155,8 @@ class DashboardPlanView: RefreshView {
     }
     
     private func setTexts(valueText: String, valueAccentText: String) {
-        labelValue.text = valueText
-        labelValueAccent.text = valueAccentText
+        contentLayout!.labelValue.text = valueText
+        contentLayout!.labelValueAccent.text = valueAccentText
     }
     
     private func reset() {
@@ -178,7 +167,7 @@ class DashboardPlanView: RefreshView {
         }
         
         setTextsByPercent(percent: 0)
-        peTableView.removePlanElement(position: 0)
+        contentLayout!.peTableView.removePlanElement(position: 0)
         
         setProgressBarPlanElementColor()
     }
@@ -205,152 +194,7 @@ class DashboardPlanView: RefreshView {
             color = getPlanElementColor(planElement: currentPlanElement)
         }
         
-        progressViewPlanElement.trackTintColor = color
+        contentLayout!.progressViewPlanElement.trackTintColor = color
     }
-    
-    //MARK: init views
-    private func initView() {
-        let mainStackView = UIStackView()
-        mainStackView.axis = .vertical
-        
-        mainStackView.addArrangedSubview(progressViewComplete)
-        
-        let valuesStackView = UIStackView()
-        valuesStackView.axis = .horizontal
-        valuesStackView.distribution = .fillEqually
-        valuesStackView.addArrangedSubview(labelValue)
-        valuesStackView.addArrangedSubview(labelValueAccent)
-        
-        mainStackView.addArrangedSubview(valuesStackView)
-        
-        mainStackView.addArrangedSubview(progressViewPlanElement)
-        
-        let spaceView = UIView()
-        spaceView.backgroundColor = Colors.colorTransparent
-        mainStackView.addArrangedSubview(spaceView)
-        
-        mainStackView.addArrangedSubview(tableView)
-        
-        let horizontalDivider = DividerView()
-        mainStackView.addArrangedSubview(horizontalDivider)
-        horizontalDivider.snp.makeConstraints { (make) in
-            make.height.equalTo(dashboardDividerWidth)
-        }
-        
-        let deElementStackView = UIStackView()
-        deElementStackView.axis = .horizontal
-        deElementStackView.addArrangedSubview(deActual1000)
-        let deDivider = HalfDivider()
-        deElementStackView.addArrangedSubview(deDivider)
-        deElementStackView.addArrangedSubview(deSpm)
-        
-        mainStackView.addArrangedSubview(deElementStackView)
-        
-        addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
-        }
-        
-        progressViewComplete.snp.makeConstraints { (make) in
-            make.height.equalTo(progressHeight)
-        }
-        progressViewPlanElement.snp.makeConstraints { (make) in
-            make.height.equalTo(progressViewComplete)
-        }
-        spaceView.snp.makeConstraints { (make) in
-            make.height.equalTo(margin)
-        }
-        deActual1000.snp.makeConstraints { (make) in
-            make.width.equalTo(deSpm)
-        }
-        deDivider.snp.makeConstraints { (make) in
-            make.width.equalTo(dashboardDividerWidth)
-        }
-        deElementStackView.snp.makeConstraints { (make) in
-            make.height.equalTo(130)
-        }
-        
-        backgroundColor = Colors.colorPrimary
-    }
-    
-    //MARK: views
-    private lazy var progressViewComplete: UIProgressView! = {
-        let progressView = UIProgressView()
-        
-        progressView.tintColor = Colors.colorWhite
-        progressView.trackTintColor = Colors.colorAccent
-        
-        return progressView
-    }()
-    
-    private lazy var progressViewPlanElement: UIProgressView! = {
-        let progressView = UIProgressView()
-        
-        progressView.tintColor = Colors.colorWhite
-        progressView.trackTintColor = Colors.colorPlanLight
-        
-        return progressView
-    }()
-    
-    private lazy var labelValue: UILabel! = {
-        let label = BebasUILabel()
-        
-        label.textAlignment = .center
-        label.font = label.font.withSize(self.valueFontSize)
-        
-        return label
-    }()
-    
-    private lazy var labelValueAccent: UILabel! = {
-        let label = BebasUILabel()
-        
-        label.textAlignment = .center
-        label.font = label.font.withSize(self.valueFontSize)
-        
-        return label
-    }()
-    
-    private lazy var deActual1000: DashBoardElement_Actual1000! = {
-        let de = DashBoardElement_Actual1000()
-        de.isValueVisible = true
-        
-        return de
-    }()
-    
-    private lazy var deSpm: DashBoardElement_Strokes! = {
-        let de = DashBoardElement_Strokes()
-        de.isValueVisible = true
-        
-        return de
-    }()
-    
-    private lazy var tableView: UIView! = {
-        let view = UIView()
-        
-        view.addSubview(self.peTableView)
-        self.peTableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        view.addSubview(self.viewGrad)
-        self.viewGrad.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        return view
-    }()
-    
-    private lazy var peTableView: PEDashboardTableView! = {
-        let tableView = PEDashboardTableView(view: self)
-        tableView.alwaysBounceVertical = false
-        tableView.isScrollEnabled = false
-        
-        return tableView
-    }()
-    
-    private lazy var viewGrad: UIView! = {
-        let view = UIView()
-        
-        return view
-    }()
     
 }

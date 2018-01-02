@@ -8,11 +8,8 @@
 
 import Foundation
 
-class RefreshView: UIView {
-    
-    //MARK: constants
-    static let refreshMillis: Double = 66
-    
+class RefreshView<E: BaseLayout>: CustomUi<E> {
+
     //MARK: properties
     var timer: Timer?
     
@@ -24,7 +21,7 @@ class RefreshView: UIView {
     //MARK: functions
     func startRefresh(_ isStart: Bool) {
         if isStart {
-            timer = Timer.scheduledTimer(timeInterval: (RefreshView.refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
         } else {
             timer?.invalidate()
         }

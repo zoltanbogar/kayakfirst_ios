@@ -121,7 +121,7 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
             while !self.isCyclePaused {
                 self.setDuration()
                 
-                usleep(UInt32(RefreshView.refreshMillis * 1000))
+                usleep(UInt32(refreshMillis * 1000))
             }
         }
     }

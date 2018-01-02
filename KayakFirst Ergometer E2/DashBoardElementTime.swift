@@ -12,8 +12,8 @@ class DashBoardelementTime: DashBoardElement {
     
     private let dateFormatHelper = DateFormatHelper()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init() {
+        super.init()
         
         dateFormatHelper.format = TimeEnum(rawValue: getStringFormatter())
     }

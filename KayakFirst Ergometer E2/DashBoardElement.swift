@@ -8,35 +8,35 @@
 
 import UIKit
 
-class DashBoardElement: RefreshView {
+class DashBoardElement: RefreshView<ViewDashboardElementLayout> {
     
     //MARK: properties
     internal let telemetry = Telemetry.sharedInstance
     var isSelected: Bool = false {
         didSet {
-            selectedView.isHidden = !isSelected
+            contentLayout!.selectedView.isHidden = !isSelected
         }
     }
     var isValueVisible: Bool = true {
         didSet {
-            labelValue.isHidden = !isValueVisible
-            labelTitle.snp.makeConstraints { make in
+            contentLayout!.labelValue.isHidden = !isValueVisible
+            contentLayout!.labelTitle.snp.makeConstraints { make in
                 if isValueVisible {
                     make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
                     make.centerX.equalTo(self)
                     
                     if isMetric() {
-                        labelTitle.text = self.getTitleOneLineMetric().uppercased()
+                        contentLayout!.labelTitle.text = self.getTitleOneLineMetric().uppercased()
                     } else {
-                        labelTitle.text = self.getTitleOneLineImperial().uppercased()
+                        contentLayout!.labelTitle.text = self.getTitleOneLineImperial().uppercased()
                     }
                 } else {
                     make.center.equalTo(self)
                     
                     if isMetric() {
-                        labelTitle.text = self.getTitleMetric().uppercased()
+                        contentLayout!.labelTitle.text = self.getTitleMetric().uppercased()
                     } else {
-                        labelTitle.text = self.getTitleImperial().uppercased()
+                        contentLayout!.labelTitle.text = self.getTitleImperial().uppercased()
                     }
                 }
             }
@@ -45,18 +45,16 @@ class DashBoardElement: RefreshView {
     var isLandscape: Bool = false {
         didSet {
             if isLandscape {
-                initLandscape()
+                contentLayout!.initLandscape()
             } else {
-                initPortrait()
+                contentLayout!.initPortrait()
             }
         }
     }
     
     //MARK: init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        initView()
+    override init() {
+        super.init()
         
         tag = getTagInt()
     }
@@ -65,8 +63,24 @@ class DashBoardElement: RefreshView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: views
+    override func initView() {
+        super.initView()
+        
+        if self.isMetric() {
+            contentLayout!.labelTitle.text = self.getTitleMetric().uppercased()
+        } else {
+            contentLayout!.labelTitle.text = self.getTitleImperial().uppercased()
+        }
+        
+    }
+    
+    override func getContentLayout(contentView: UIView) -> ViewDashboardElementLayout {
+        return ViewDashboardElementLayout(contentView: contentView)
+    }
+    
     override func refreshUi() {
-        labelValue?.text = getFormattedText()
+        contentLayout!.labelValue?.text = getFormattedText()
     }
 
     //MARK: abstract functions
@@ -105,91 +119,6 @@ class DashBoardElement: RefreshView {
     internal func getTagInt() -> Int {
         fatalError("Must be implemented")
     }
-    
-    //MARK: views
-    private func initView() {
-        addSubview(labelTitle)
-        addSubview(labelValue)
-        addSubview(selectedView)
-        selectedView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        backgroundColor = Colors.colorPrimary
-        initPortrait()
-    }
-    
-    private func initLandscape() {
-        labelTitle.snp.removeConstraints()
-        labelValue.snp.removeConstraints()
-        labelTitle.snp.makeConstraints { make in
-            make.left.equalTo(self).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
-            make.centerY.equalTo(self)
-            make.height.equalTo(self)
-            make.width.equalTo(self)
-        }
-        
-        labelValue.snp.makeConstraints { make in
-            make.left.equalTo(labelTitle.snp.right)
-            make.center.equalTo(self).inset(UIEdgeInsetsMake(0, margin, 0, 0))
-            make.height.equalTo(self)
-        }
-    }
-    
-    private func initPortrait() {
-        labelTitle.snp.removeConstraints()
-        labelValue.snp.removeConstraints()
-        labelTitle.snp.makeConstraints { make in
-            make.top.equalTo(self).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
-            make.centerX.equalTo(self)
-            var height = self.frame.height / 3
-            if height == 0 {
-                height = 30
-            }
-            make.height.equalTo(height)
-            make.width.equalTo(self)
-        }
-        
-        labelValue.snp.makeConstraints { make in
-            make.top.equalTo(labelTitle.snp.bottom)
-            make.bottom.equalTo(self)
-            make.centerX.equalTo(self)
-        }
-    }
-    
-    private lazy var labelTitle: UILabel! = {
-        let label = UILabel()
-        label.textAlignment = .center
-        if self.isMetric() {
-            label.text = self.getTitleMetric().uppercased()
-        } else {
-            label.text = self.getTitleImperial().uppercased()
-        }
-        label.textColor = Colors.colorWhite
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        
-        return label
-    }()
-    
-    private lazy var labelValue: UILabel! = {
-        let label = LabelWithAdaptiveTextHeight()
-        label.textAlignment = .center
-        label.textColor = Colors.colorWhite
-        
-        label.font = UIFont(name: "BebasNeue", size: 94)
-        
-        return label
-    }()
-    
-    private lazy var selectedView: UIView! = {
-        let view = UIView()
-        
-        view.backgroundColor = Colors.dragDropStart
-        
-        view.isHidden = true
-        
-        return view
-    }()
     
     class func getDashBoardElementByTag(tag: Int, isValueVisible: Bool) -> DashBoardElement {
         var dashBoardelement: DashBoardElement

@@ -322,6 +322,8 @@
 		06C7072E1FFBC79100D72E72 /* ViewDragDropLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */; };
 		06C707301FFBC93700D72E72 /* ViewTrainingSumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */; };
 		06C707321FFBCAC600D72E72 /* ViewDashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */; };
+		06C707341FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */; };
+		06C707361FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -734,6 +736,8 @@
 		06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDragDropLayout.swift; sourceTree = "<group>"; };
 		06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTrainingSumLayout.swift; sourceTree = "<group>"; };
 		06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardLayout.swift; sourceTree = "<group>"; };
+		06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardPlanLayout.swift; sourceTree = "<group>"; };
+		06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardElementLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1671,6 +1675,8 @@
 				06C7072D1FFBC79100D72E72 /* ViewDragDropLayout.swift */,
 				06C7072F1FFBC93700D72E72 /* ViewTrainingSumLayout.swift */,
 				06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */,
+				06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */,
+				06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2054,6 +2060,7 @@
 				06CAFF531F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift in Sources */,
 				06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */,
 				0626FBCD1EFCE9DB00DCBB33 /* UserManager.swift in Sources */,
+				06C707361FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift in Sources */,
 				06018D501E616D6C00F75919 /* ErgometerViewController.swift in Sources */,
 				060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */,
 				064260DF1E7EA9CA00830278 /* CommandOutdoorDistance.swift in Sources */,
@@ -2329,6 +2336,7 @@
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,
+				06C707341FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
 				060EE8D21EC2E3CD0060FD6F /* String+.swift in Sources */,
 				060DDFF81E4BDC3B00FE2D14 /* TrainingSEForceAv.swift in Sources */,
