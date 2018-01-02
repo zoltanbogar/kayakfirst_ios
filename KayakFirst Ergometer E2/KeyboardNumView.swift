@@ -12,153 +12,46 @@ protocol OnKeyboardClickedListener {
     func onClicked(value: Int)
 }
 
-class KeyboardNumView: UIView {
+class KeyboardNumView: CustomUi<ViewKeyboardNumLayout> {
     
     //MARK: constants
     static let valueBackSpace = -1
     static let valueNext = -2
-    private let horizontalMargin: CGFloat = 11
-    private let verticalMargin: CGFloat = 23
     
     //MARK: properties
     var createPlanViewController: CreatePlanViewController?
     var keyboardClickListener: OnKeyboardClickedListener?
     
-    //MARK: init
-    init() {
-        super.init(frame: CGRect.zero)
-        initView()
+    //MARK: init view
+    override func initView() {
+        super.initView()
         
         enableEnter(isEnable: false)
+        
+        //TODO: extension for UIButton: onClickListener, eithout .toucupinside
+        contentLayout!.btn0.addTarget(self, action: #selector(btn0Click), for: .touchUpInside)
+        contentLayout!.btn1.addTarget(self, action: #selector(btn1Click), for: .touchUpInside)
+        contentLayout!.btn2.addTarget(self, action: #selector(btn2Click), for: .touchUpInside)
+        contentLayout!.btn3.addTarget(self, action: #selector(btn3Click), for: .touchUpInside)
+        contentLayout!.btn4.addTarget(self, action: #selector(btn4Click), for: .touchUpInside)
+        contentLayout!.btn5.addTarget(self, action: #selector(btn5Click), for: .touchUpInside)
+        contentLayout!.btn6.addTarget(self, action: #selector(btn6Click), for: .touchUpInside)
+        contentLayout!.btn7.addTarget(self, action: #selector(btn7Click), for: .touchUpInside)
+        contentLayout!.btn8.addTarget(self, action: #selector(btn8Click), for: .touchUpInside)
+        contentLayout!.btn9.addTarget(self, action: #selector(btn9Click), for: .touchUpInside)
+        contentLayout!.btnBackSpace.addTarget(self, action: #selector(btnBackSpaceClick), for: .touchUpInside)
+        contentLayout!.btnNext.addTarget(self, action: #selector(btnNextClick), for: .touchUpInside)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func getContentLayout(contentView: UIView) -> ViewKeyboardNumLayout {
+        return ViewKeyboardNumLayout(contentView: contentView)
     }
     
     //MARK: functions
     func enableEnter(isEnable: Bool) {
-        btnNext.isEnabled = isEnable
+        contentLayout!.btnNext.isEnabled = isEnable
         
-        btnNext.setTitleColor(Colors.colorGrey, for: .disabled)
-    }
-    
-    //MARK: init view
-    private func initView() {
-        let verticalStackView = UIStackView()
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fillEqually
-        verticalStackView.spacing = verticalMargin
-        
-        let horizontalSv1 = UIStackView()
-        horizontalSv1.axis = .horizontal
-        horizontalSv1.distribution = .fillEqually
-        horizontalSv1.spacing = horizontalMargin
-        horizontalSv1.addArrangedSubview(btn1)
-        horizontalSv1.addArrangedSubview(btn2)
-        horizontalSv1.addArrangedSubview(btn3)
-        
-        let horizontalSv2 = UIStackView()
-        horizontalSv2.axis = .horizontal
-        horizontalSv2.distribution = .fillEqually
-        horizontalSv2.spacing = horizontalMargin
-        horizontalSv2.addArrangedSubview(btn4)
-        horizontalSv2.addArrangedSubview(btn5)
-        horizontalSv2.addArrangedSubview(btn6)
-        
-        let horizontalSv3 = UIStackView()
-        horizontalSv3.axis = .horizontal
-        horizontalSv3.distribution = .fillEqually
-        horizontalSv3.spacing = horizontalMargin
-        horizontalSv3.addArrangedSubview(btn7)
-        horizontalSv3.addArrangedSubview(btn8)
-        horizontalSv3.addArrangedSubview(btn9)
-        
-        let horizontalSv4 = UIStackView()
-        horizontalSv4.axis = .horizontal
-        horizontalSv4.distribution = .fillEqually
-        horizontalSv4.spacing = horizontalMargin
-        horizontalSv4.addArrangedSubview(btnBackSpace)
-        horizontalSv4.addArrangedSubview(btn0)
-        horizontalSv4.addArrangedSubview(btnNext)
-        
-        verticalStackView.addArrangedSubview(horizontalSv1)
-        verticalStackView.addArrangedSubview(horizontalSv2)
-        verticalStackView.addArrangedSubview(horizontalSv3)
-        verticalStackView.addArrangedSubview(horizontalSv4)
-        
-        addSubview(verticalStackView)
-        verticalStackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
-        }
-    }
-    
-    //MARK: views
-    private lazy var btn1: UIButton! = {
-        return self.getButton(title: "1", listener: "btn1Click")
-    }()
-    
-    private lazy var btn2: UIButton! = {
-        return self.getButton(title: "2", listener: "btn2Click")
-    }()
-    
-    private lazy var btn3: UIButton! = {
-        return self.getButton(title: "3", listener: "btn3Click")
-    }()
-    
-    private lazy var btn4: UIButton! = {
-        return self.getButton(title: "4", listener: "btn4Click")
-    }()
-    
-    private lazy var btn5: UIButton! = {
-        return self.getButton(title: "5", listener: "btn5Click")
-    }()
-    
-    private lazy var btn6: UIButton! = {
-        return self.getButton(title: "6", listener: "btn6Click")
-    }()
-    
-    private lazy var btn7: UIButton! = {
-        return self.getButton(title: "7", listener: "btn7Click")
-    }()
-    
-    private lazy var btn8: UIButton! = {
-        return self.getButton(title: "8", listener: "btn8Click")
-    }()
-    
-    private lazy var btn9: UIButton! = {
-        return self.getButton(title: "9", listener: "btn9Click")
-    }()
-    
-    private lazy var btnBackSpace: UIButton! = {
-        let button = self.getButton(title: "", listener: "btnBackSpaceClick")
-        button.setImage(UIImage(named: "ic_backspace"), for: .normal)
-        
-        return button
-    }()
-    
-    private lazy var btn0: UIButton! = {
-        return self.getButton(title: "0", listener: "btn0Click")
-    }()
-    
-    private lazy var btnNext: UIButton! = {
-        return self.getButton(title: getString("other_ok").capitalized, listener: "btnNextClick")
-    }()
-    
-    private func getButton(title: String, listener: String) -> UIButton {
-        let button = ColorizedButton()
-        
-        button.setTitle(title, for: .normal)
-        button.addTarget(self, action: Selector(listener), for: .touchUpInside)
-        
-        button.setTitleColor(Colors.colorWhite, for: .normal)
-        button.backgroundColor = UIColor.white
-        
-        button.layer.cornerRadius = planRadius
-        
-        button.titleLabel?.font = UIFont(name: "BebasNeue", size: 50)
-        
-        return button
+        contentLayout!.btnNext.setTitleColor(Colors.colorGrey, for: .disabled)
     }
     
     //MARK: button listeners
