@@ -314,6 +314,7 @@
 		06C7071C1FFBADF000D72E72 /* BaseDialogelementTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7071B1FFBADF000D72E72 /* BaseDialogelementTextField.swift */; };
 		06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */; };
 		06C707221FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */; };
+		06C707241FFBB8E800D72E72 /* ViewPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -718,6 +719,7 @@
 		06C7071B1FFBADF000D72E72 /* BaseDialogelementTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDialogelementTextField.swift; sourceTree = "<group>"; };
 		06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileElement.swift; sourceTree = "<group>"; };
 		06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewKeyboardNumLayout.swift; sourceTree = "<group>"; };
+		06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlanTypeLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1647,6 +1649,7 @@
 				06C707171FFBA7DD00D72E72 /* ViewProfileElementLayout.swift */,
 				06C707191FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift */,
 				06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */,
+				06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2309,6 +2312,7 @@
 				06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */,
 				06C2F3F01F0A42360077EE21 /* DeleteTraining.swift in Sources */,
 				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
+				06C707241FFBB8E800D72E72 /* ViewPlanTypeLayout.swift in Sources */,
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,
 				06C2F3EE1F0A41CF0077EE21 /* DeletePlan.swift in Sources */,
