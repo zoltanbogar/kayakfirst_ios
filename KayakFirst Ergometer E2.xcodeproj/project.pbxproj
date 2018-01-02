@@ -315,6 +315,7 @@
 		06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */; };
 		06C707221FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */; };
 		06C707241FFBB8E800D72E72 /* ViewPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */; };
+		06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -720,6 +721,7 @@
 		06C7071F1FFBB0C100D72E72 /* BaseProfileElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProfileElement.swift; sourceTree = "<group>"; };
 		06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewKeyboardNumLayout.swift; sourceTree = "<group>"; };
 		06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlanTypeLayout.swift; sourceTree = "<group>"; };
+		06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoginLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1650,6 +1652,7 @@
 				06C707191FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift */,
 				06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */,
 				06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */,
+				06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2331,6 +2334,7 @@
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				06CAFF431F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift in Sources */,
+				06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */,
 				060B992A1E64313B00F72404 /* OutdoorService.swift in Sources */,
 				06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,

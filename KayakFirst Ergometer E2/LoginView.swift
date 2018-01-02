@@ -8,11 +8,8 @@
 
 import UIKit
 
-class LoginView: UIView {
+class LoginView: CustomUi<ViewLoginLayout> {
 
-    //MARK: constants
-    private let socialIconHeight: CGFloat = 15
-    
     //MARK: properties
     private let viewController: WelcomeViewController
     private let userManager = UserManager.sharedInstance
@@ -20,9 +17,7 @@ class LoginView: UIView {
     //MARK: init
     init(viewController: WelcomeViewController) {
         self.viewController = viewController
-        super.init(frame: CGRect.zero)
-        
-        initView()
+        super.init()
         
         userManager.loginCallback = loginCallback
         userManager.resetPwCallback = resetPwCallback
@@ -35,155 +30,24 @@ class LoginView: UIView {
     }
     
     //MARK: init view
-    private func initView() {
-        let scrollView = AppScrollView(view: self)
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 13
+    override func initView() {
+        super.initView()
         
-        let viewLogo = UIView()
-        viewLogo.addSubview(imageLogo)
-        imageLogo.snp.makeConstraints { (make) in
-            make.center.equalTo(viewLogo)
-            make.height.equalTo(100)
-        }
-        viewLogo.snp.makeConstraints { (make) in
-            make.height.equalTo(120)
-        }
-        
-        stackView.addArrangedSubview(viewLogo)
-        stackView.addArrangedSubview(tfUserName)
-        tfUserName.snp.makeConstraints { (make) in
-            make.height.equalTo(buttonHeight)
-        }
-        stackView.addArrangedSubview(tfPassword)
-        tfPassword.snp.makeConstraints { (make) in
-            make.height.equalTo(buttonHeight)
-        }
-        stackView.addArrangedSubview(btnForgotPassword)
-        stackView.addArrangedSubview(btnLogin)
-        stackView.addArrangedSubview(btnFacebook)
-        btnFacebook.addSubview(imgFacebook)
-        imgFacebook.snp.makeConstraints { (make) in
-            make.left.equalTo(btnFacebook).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
-            make.height.equalTo(socialIconHeight)
-            make.width.equalTo(socialIconHeight)
-            make.centerY.equalTo(btnFacebook)
-        }
-        stackView.addArrangedSubview(btnGoogle)
-        btnGoogle.addSubview(imgGoogle)
-        imgGoogle.snp.makeConstraints { (make) in
-            make.left.equalTo(btnGoogle).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
-            make.height.equalTo(socialIconHeight)
-            make.width.equalTo(socialIconHeight)
-            make.centerY.equalTo(btnGoogle)
-        }
-        stackView.addArrangedSubview(labelNoLogin)
-        stackView.addArrangedSubview(btnQuickStart)
-        
-        scrollView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(scrollView.containerView)
-        }
+        contentLayout!.btnLogin.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
+        contentLayout!.btnForgotPassword.addTarget(self, action: #selector(btnForgotPasswordClick), for: .touchUpInside)
+        contentLayout!.btnFacebook.addTarget(self, action: #selector(btnFacebookClick), for: .touchUpInside)
+        contentLayout!.btnGoogle.addTarget(self, action: #selector(btnGoogleClick), for: .touchUpInside)
+        contentLayout!.btnQuickStart.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
     }
     
-    //MARK: views
-    private lazy var imageLogo: UIImageView! = {
-        let imageView = UIImageView()
-        let logo = UIImage(named: "logo")
-        imageView.image = logo
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        
-        return imageView
-    }()
-    
-    private lazy var tfUserName: DialogElementTextField! = {
-        let view = DialogElementTextField()
-        view.title = getString("user_name")
-        
-        return view
-    }()
-    
-    private lazy var tfPassword: DialogElementTextField! = {
-        let view = DialogElementTextField()
-        view.title = getString("user_password")
-        view.secureTextEntry = true
-        
-        return view
-    }()
-    
-    private lazy var btnLogin: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login"), backgroundColor: Colors.colorAccent, textColor: Colors.colorPrimary)
-        button.addTarget(self, action: #selector(btnLoginClick), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var btnForgotPassword: UIButton! = {
-        let button = UIButton()
-        button.backgroundColor = Colors.colorTransparent
-        button.setTitleColor(Colors.colorWhite, for: .normal)
-        button.setTitle(getString("user_forgot_password"), for: .normal)
-        button.titleLabel?.font = button.titleLabel?.font.withSize(12)
-        button.addTarget(self, action: #selector(btnForgotPasswordClick), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var btnFacebook: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login_facebook"), backgroundColor: Colors.colorFacebook, textColor: Colors.colorPrimary)
-        button.addTarget(self, action: #selector(btnFacebookClick), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var btnGoogle: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("user_login_google"), backgroundColor: Colors.colorGoogle, textColor: Colors.colorPrimary)
-        button.addTarget(self, action: #selector(btnGoogleClick), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var labelNoLogin: UILabel! = {
-        let label = AppUILabel()
-        label.text = ""
-        label.textAlignment = .center
-        label .font = label.font.withSize(12)
-        
-        return label
-    }()
-    
-    private lazy var btnQuickStart: UIButton! = {
-        let button = AppUIButton(width: 0, text: getString("delay_quick_start"), backgroundColor: Colors.colorGreen, textColor: Colors.colorPrimary)
-        button.addTarget(self, action: #selector(btnQuickStartClick), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var imgFacebook: UIImageView! = {
-        let imageView = UIImageView()
-        let image = UIImage(named: "facebook")
-        
-        imageView.image = image
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        
-        return imageView
-    }()
-    
-    private lazy var imgGoogle: UIImageView! = {
-        let imageView = UIImageView()
-        let image = UIImage(named: "google")
-        
-        imageView.image = image
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        
-        return imageView
-    }()
+    override func getContentLayout(contentView: UIView) -> ViewLoginLayout {
+        return ViewLoginLayout(contentView: contentView)
+    }
     
     //MARK: button callbacks
     @objc private func btnLoginClick() {
-        if !(tfUserName.text?.isEmpty)! && !(tfPassword.text?.isEmpty)! {
-            let baseManagerType = userManager.login(userName: tfUserName.text!, userPassword: tfPassword.text!)
+        if !(contentLayout!.tfUserName.text?.isEmpty)! && !(contentLayout!.tfPassword.text?.isEmpty)! {
+            let baseManagerType = userManager.login(userName: contentLayout!.tfUserName.text!, userPassword: contentLayout!.tfPassword.text!)
             self.viewController.showProgress(baseManagerType: baseManagerType)
         }
     }
@@ -237,8 +101,8 @@ class LoginView: UIView {
     }
     
     func resetDataFields() {
-        tfUserName.text = ""
-        tfPassword.text = ""
+        contentLayout!.tfUserName.text = ""
+        contentLayout!.tfPassword.text = ""
     }
     
 }
