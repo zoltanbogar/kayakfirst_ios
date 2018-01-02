@@ -316,6 +316,7 @@
 		06C707221FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */; };
 		06C707241FFBB8E800D72E72 /* ViewPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */; };
 		06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */; };
+		06C707281FFBBDB200D72E72 /* ViewRegisterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707271FFBBDB200D72E72 /* ViewRegisterLayout.swift */; };
 		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
 		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
 		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
@@ -722,6 +723,7 @@
 		06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewKeyboardNumLayout.swift; sourceTree = "<group>"; };
 		06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlanTypeLayout.swift; sourceTree = "<group>"; };
 		06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoginLayout.swift; sourceTree = "<group>"; };
+		06C707271FFBBDB200D72E72 /* ViewRegisterLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRegisterLayout.swift; sourceTree = "<group>"; };
 		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
 		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
 		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
@@ -1653,6 +1655,7 @@
 				06C707211FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift */,
 				06C707231FFBB8E800D72E72 /* ViewPlanTypeLayout.swift */,
 				06C707251FFBBBCD00D72E72 /* ViewLoginLayout.swift */,
+				06C707271FFBBDB200D72E72 /* ViewRegisterLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2136,6 +2139,7 @@
 				067129511EC86FAD00362C39 /* CreatePlanViewController.swift in Sources */,
 				06CAFF411F0D2A5000D2EA14 /* ManagerModifyEvent.swift in Sources */,
 				067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */,
+				06C707281FFBBDB200D72E72 /* ViewRegisterLayout.swift in Sources */,
 				069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */,
 				06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
