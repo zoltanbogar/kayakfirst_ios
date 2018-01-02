@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        initColors()
         initMainWindow()
+        initColors()
         initKeyboardManager()
         deleteOldData()
         initCrashlytics(appdelegate: self)
@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initMainWindow() {
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.backgroundColor = Colors.colorPrimary
         
         var viewController: UIViewController
         
@@ -197,6 +196,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initColors() {
+        window?.backgroundColor = Colors.colorPrimary
+        
         UITabBar.appearance().tintColor = Colors.colorAccent
         UITabBar.appearance().barTintColor = Colors.colorPrimary
         if #available(iOS 10.0, *) {
