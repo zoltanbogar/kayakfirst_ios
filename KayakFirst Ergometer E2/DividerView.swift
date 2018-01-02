@@ -8,20 +8,10 @@
 
 import Foundation
 
-class DividerView: UIView {
+class DividerView: CustomUi {
     
-    //MARK: init
-    init() {
-        super.init(frame: CGRect.zero)
-        initView()
+    override func getContentLayout(contentView: UIView) -> BaseLayout {
+        return ViewDividerLayout(contentView: contentView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: init views
-    private func initView() {
-        backgroundColor = Colors.colorDashBoardDivider
-    }
 }

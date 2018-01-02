@@ -10,14 +10,6 @@ import Foundation
 
 class HalfDivider: CustomUi {
     
-    override init() {
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func getContentLayout(contentView: UIView) -> BaseLayout {
         return ViewHalfDividerLayout(contentView: contentView)
     }
