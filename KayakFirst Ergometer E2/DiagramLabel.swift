@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiagramLabel: UIView, UITextFieldDelegate {
+class DiagramLabel: CustomUi<ViewDiagramLabelLayout>, UITextFieldDelegate {
     
     //MARK: constants
     private let defaultTextColor = Colors.colorWhite
@@ -38,16 +38,21 @@ class DiagramLabel: UIView, UITextFieldDelegate {
         }
     }
     
-    //MARK: init
-    init() {
-        super.init(frame: CGRect.zero)
+    //MARK: views
+    override func initView() {
+        super.initView()
+        
         initLabel()
-        initView()
+        
+        contentLayout!.textField.delegate = self
+        contentLayout!.textField.textColor = self.defaultTextColor
+        contentLayout!.textField.text = self.title!.uppercased()
+        
         initDefault()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func getContentLayout(contentView: UIView) -> ViewDiagramLabelLayout {
+        return ViewDiagramLabelLayout(contentView: contentView)
     }
     
     //MARK: abstract functions
@@ -60,13 +65,13 @@ class DiagramLabel: UIView, UITextFieldDelegate {
         if !isDisabled {
             isSelected = !isSelected
             if isSelected {
-                textField.textColor = Colors.colorPrimary
-                textField.borderStyle = .roundedRect
-                textField.backgroundColor = color
+                contentLayout!.textField.textColor = Colors.colorPrimary
+                contentLayout!.textField.borderStyle = .roundedRect
+                contentLayout!.textField.backgroundColor = color
             } else {
-                textField.textColor = defaultTextColor
-                textField.borderStyle = .none
-                textField.backgroundColor = UIColor.clear
+                contentLayout!.textField.textColor = defaultTextColor
+                contentLayout!.textField.borderStyle = .none
+                contentLayout!.textField.backgroundColor = UIColor.clear
             }
         } else {
             isHidden = true
@@ -85,26 +90,6 @@ class DiagramLabel: UIView, UITextFieldDelegate {
             }
         }
     }
-    
-    //MARK: views
-    private func initView() {
-        addSubview(textField)
-        textField.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-    }
-    
-    private lazy var textField: UITextField! = {
-        let textField = UITextField()
-        textField.textAlignment = .center
-        textField.font = textField.font?.withSize(12)
-        textField.delegate = self
-        
-        textField.textColor = self.defaultTextColor
-        textField.text = self.title!.uppercased()
-        
-        return textField
-    }()
     
     //MARK: callback
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
