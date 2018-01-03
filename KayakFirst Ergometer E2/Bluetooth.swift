@@ -21,8 +21,6 @@ protocol OnBluetoothConnectedListener {
     func onConnected()
     
     func onDisconnected()
-    
-    func onDataAvailable(stringData: String)
 }
 
 class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -41,12 +39,24 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var connectedPeripheral: CBPeripheral?
     private var characteristic: CBCharacteristic?
     
+    private var _bluetoothService: BluetoothService!
+    var bluetoothService: BluetoothService {
+        get {
+            return _bluetoothService
+        }
+    }
+    let telemetry: Telemetry
+    
     var isConnected = false
     
     //MARK: init
     static let sharedInstance = Bluetooth()
     private override init() {
-        //private empty constructor
+        telemetry = Telemetry.sharedInstance
+        
+        super.init()
+        
+        _bluetoothService = BluetoothService.getInstance(bluetooth: self, telemetry: telemetry)
     }
     
     //MARK: functions
@@ -131,6 +141,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         isConnected = false
         
+        bluetoothService.stop()
+        
         if let listener = onBluetoothConnectedListener {
             listener.onDisconnected()
         }
@@ -156,6 +168,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                     
                     isConnected = true
                     
+                    bluetoothService.start()
+                    
                     if let listener = onBluetoothConnectedListener {
                         listener.onConnected()
                     }
@@ -166,8 +180,6 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
-        if let listener = onBluetoothConnectedListener {
-            listener.onDataAvailable(stringData: parseData(data: characteristic.value))
-        }
+        bluetoothService.onDataAvailable(stringData: parseData(data: characteristic.value))
     }
 }
