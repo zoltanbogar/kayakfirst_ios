@@ -2,95 +2,94 @@
 //  TrainingService.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 27..
-//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//  Created by Balazs Vidumanszki on 2018. 01. 03..
+//  Copyright © 2018. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
+class TrainingService {
     
     //MARK: properties
-    let telemetry = Telemetry.sharedInstance
-    var commandList: [M]?
-    var startCommand: StartCommand<M>?
+    internal let telemetry: Telemetry
     
-    let pauseDiff = PauseDiff.sharedInstance
+    private let trainingManager: TrainingManager
     
-    private let trainingManager = TrainingManager.sharedInstance
+    private var realDuration: Int64 = 0
+    private var isCyclePaused: Bool = false
     
-    private var realDuration: Double = 0
-    
-    internal var isServiceStopped = false
-    
-    private var isCyclePaused = false
-    
-    //MARK: abstract methods
-    internal func initCommandList() {
-        fatalError("Must be implemented")
+    //MARK: init
+    init(telemetry: Telemetry) {
+        self.telemetry = telemetry
+        trainingManager = TrainingManager.sharedInstance
+        
+        reset()
     }
     
-    internal func initStartCommand() {
-        fatalError("Must be implemented")
+    //MARK: abstract functions
+    internal func getTelemetryObject() -> TelemetryObject {
+        fatalError("must be implemented")
     }
     
-    internal func runCommandList() {
-        fatalError("Must be implemented")
+    internal func getTelemetryAvgObject() -> TelemetryAvgObject {
+        fatalError("must be implemented")
     }
     
-    internal func handleStopTraining() {
-        fatalError("Must be implemented")
+    internal func resetServices() {
+        fatalError("must be implemented")
     }
     
-    internal func runCalculate() -> Bool {
-        fatalError("Must be implemented")
+    //MARK: functions
+    func bindService(isBind: Bool) {
+        //TODO: eventBus
     }
     
-    //useconds
-    internal func getTimeWaitAfterCalculate() -> useconds_t {
-        fatalError("Must be implemented")
+    func start() {
+        //TODO
     }
     
-    internal func setTelemetryListener(_ isSet: Bool) {
-        if isSet {
-            telemetry.trainingServiceCycleStateChangeListener = self
-        } else {
-            telemetry.trainingServiceCycleStateChangeListener = nil
-        }
-        isServiceStopped = !isSet
-    }
-    
-    //MARK: lifecycle
-    func startCycle() {
-        if !isCycleState(cycleState: CycleState.paused) {
-            reset()
-        }
-        pauseDiff.resume()
+    func resume() {
         setTelemetryCycleState(cycleState: CycleState.resumed)
-        trainingManager.addTrainingUploadPointer()
     }
     
-    func pauseCycle() {
-        pauseDiff.pause()
+    func pause() {
         setTelemetryCycleState(cycleState: CycleState.paused)
     }
     
-    func stopCycle() {
+    func stop() {
         setTelemetryCycleState(cycleState: CycleState.stopped)
     }
     
-    internal func reset() {
-        initStartCommand()
-        startCommand!.reset()
-        
-        initCommandList()
-        
-        pauseDiff.reset()
-        
+    internal func shouldCalculate() -> Bool {
+        return true
+    }
+    
+    internal func getTimeWaitAfterCalculate() -> useconds_t {
+        return 0
+    }
+    
+    internal func onResumed() {
+        //TODO
+    }
+    
+    internal func onStopped() {
+        //TODO
+    }
+    
+    internal func onPaused() {
+        isCyclePaused = true
+    }
+    
+    private func reset() {
         realDuration = 0
-        
         telemetry.resetCurrent()
         telemetry.resetOthers()
+        
+        resetServices()
+    }
+    
+    private func setTelemetryCycleState(cycleState: CycleState) {
+        telemetry.cycleState = cycleState
     }
     
     private func startLoop() {
@@ -99,16 +98,16 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
         DispatchQueue.global().async {
             while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
                 
-                if self.runCalculate() {
-                    let telemetryObject = self.startCommand!.calculate(measureCommands: self.commandList!)
-                    let telemetryAvgObject = self.startCommand!.calculateAvg()
+                if self.shouldCalculate() {
+                    let telemetryObject = self.getTelemetryObject()
+                    let telemetryAvgObject = self.getTelemetryAvgObject()
                     
                     self.telemetry.telemetryObject = telemetryObject
                     self.telemetry.telemetryAvgObject = telemetryAvgObject
                     
                     self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
                     
-                    self.realDuration = self.telemetry.duration
+                    self.realDuration = Int64(self.telemetry.duration)
                 }
                 
                 usleep(self.getTimeWaitAfterCalculate())
@@ -127,50 +126,25 @@ class TrainingService<M: MeasureCommand>: CycleStateChangeListener {
     }
     
     private func setDuration() {
-        let timeDiff = pauseDiff.getAbsoluteTimeStamp() - telemetry.sessionId
-        
-        telemetry.duration = timeDiff
+        //TODO
     }
     
     private func setDurationBack() {
-        telemetry.duration = realDuration
+        //TODO
     }
     
-    internal func isCycleState(cycleState: CycleState) -> Bool {
-        return cycleState == telemetry.cycleState
-    }
-    
-    private func setTelemetryCycleState(cycleState: CycleState) {
-        telemetry.cycleState = cycleState
-    }
-    
-    func onCycleStateChanged(newCycleState: CycleState) {
-        if !isServiceStopped {
-            switch newCycleState {
-            case CycleState.resumed:
-                isCyclePaused = false
-                startLoop()
-            case CycleState.idle:
-                reset()
-            case CycleState.stopped:
-                telemetry.resetCurrent()
-                handleStopTraining()
-                setDurationBack()
-                isCyclePaused = true
-            case CycleState.paused:
-                isCyclePaused = true
-            default:
-                break
-            }
+    private func onCycleStateChanged(cycleState: CycleState) {
+        switch cycleState {
+        case CycleState.resumed:
+            onResumed()
+        case CycleState.stopped:
+            onStopped()
+        case CycleState.paused:
+            onPaused()
+        default:
+            //TODO: handle default
+            let index = 0
         }
     }
-    
-    internal func getTimeBasedMaxSpm() -> useconds_t {
-        let maxSpm = AppSensorManager.maxSpm
-        
-        let timeWait = useconds_t((Double(1000) / (Double(maxSpm) / Double(60)))) * 1000
-        
-        return timeWait
-    }
-    
+
 }

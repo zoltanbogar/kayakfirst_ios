@@ -28,8 +28,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, Calibra
     private var startDelayView: StartDelayView?
     var calibrationView: CalibrationView?
     let telemetry = Telemetry.sharedInstance
-    let outdoorService = OutdoorService.sharedInstance
-    let ergometerService = ErgometerService.sharedInstance
+    let outdoorService = OutdoorServiceOld.sharedInstance
+    let ergometerService = ErgometerServiceOld.sharedInstance
     var plan: Plan?
     var event: Event?
     var trainingEnvType: TrainingEnvironmentType?

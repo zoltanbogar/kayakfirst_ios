@@ -20,6 +20,6 @@ class BluetoothDisconnectDialog: BaseDialog {
     }
     
     override func btnPosAction() {
-        ErgometerService.sharedInstance.disconnectBluetoothn()
+        ErgometerServiceOld.sharedInstance.disconnectBluetoothn()
     }
 }

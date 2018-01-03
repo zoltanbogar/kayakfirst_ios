@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class OutdoorService: TrainingService<MeasureCommand> {
+class OutdoorServiceOld: TrainingServiceOld<MeasureCommand> {
     
     //MARK: properties
     private let fusedLocationManager = FusedLocationManager.sharedInstance
@@ -18,7 +18,7 @@ class OutdoorService: TrainingService<MeasureCommand> {
     private var commandOutdoorStroke: CommandOutdoorStroke?
     
     //MARK: init
-    static let sharedInstance = OutdoorService()
+    static let sharedInstance = OutdoorServiceOld()
     private override init() {
         super.init()
     }

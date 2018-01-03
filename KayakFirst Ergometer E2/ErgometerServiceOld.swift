@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothConnectedListener {
+class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBluetoothConnectedListener {
     
     //MARK: constants
     private let bluetoothDisconnectedTime: Double = 2 * 60 * 1000 //2 min
@@ -42,7 +42,7 @@ class ErgometerService: TrainingService<MeasureCommandErgometer>, OnBluetoothCon
     private var avgDataAvailableTime: Double = 0
     
     //MARK: init
-    static let sharedInstance = ErgometerService()
+    static let sharedInstance = ErgometerServiceOld()
     private override init() {
         super.init()
         initConnection()
