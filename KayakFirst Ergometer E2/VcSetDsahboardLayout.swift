@@ -10,10 +10,10 @@ import Foundation
 
 class VcSetDashboardLayout: BaseLayout {
     
-    private let withBluetooth: Bool
+    private let showPullForceLayout: Bool
     
-    init(contentView: UIView, withBluetooth: Bool) {
-        self.withBluetooth = withBluetooth
+    init(contentView: UIView, showPullForceLayout: Bool) {
+        self.showPullForceLayout = showPullForceLayout
         super.init(contentView: contentView)
     }
     
@@ -266,7 +266,7 @@ class VcSetDashboardLayout: BaseLayout {
         stackView.addArrangedSubview(stackView3)
         stackView.addArrangedSubview(stackView4)
         
-        if self.withBluetooth {
+        if self.showPullForceLayout {
             stackView.addArrangedSubview(stackView5)
         }
         

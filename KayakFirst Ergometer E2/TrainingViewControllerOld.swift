@@ -73,7 +73,7 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
     
     //MARK: training
     func showSetDashboard() {
-        if plan == nil {
+        /*if plan == nil {
             let setDashboardVc = SetDashboardVc()
             setDashboardVc.withBluetooth = trainingEnvType == TrainingEnvironmentType.ergometer
             
@@ -86,7 +86,7 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
             pushViewController(setDashboardVc, animated: true)
         } else {
             showDashboard()
-        }
+        }*/
     }
     func showDashboard() {
         if trainingEnvType == TrainingEnvironmentType.outdoor {

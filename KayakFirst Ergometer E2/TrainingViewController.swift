@@ -26,4 +26,16 @@ class TrainingViewController: PortraitNavController {
     var plan: Plan?
     var event: Event?
     
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        pushViewController(SetDashboardVc(), animated: true)
+    }
+    
+    //MARK: functions
+    func showBluetoothDisconnectDialog() {
+        //TODO
+    }
+    
 }
