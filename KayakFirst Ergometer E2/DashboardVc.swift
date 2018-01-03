@@ -62,7 +62,7 @@ class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     
     //MARK: button listeners
     @objc private func btnPlayPauseClick() {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             if telemetry.cycleState == CycleState.resumed {
                 parent.onPauseClicked()
             } else if telemetry.cycleState != CycleState.paused {
@@ -80,7 +80,7 @@ class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     }
     
     @objc private func btnPlayClick() {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             if telemetry.cycleState == CycleState.paused {
                 parent.onCounterEnd()
             }
@@ -88,13 +88,13 @@ class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     }
     
     @objc private func btnStopClick() {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             parent.onStopClicked()
         }
     }
     
     @objc internal override func btnCloseClick() {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             parent.closeViewController(shoudlCloseParents: shouldCloseParents)
         }
     }
@@ -231,7 +231,7 @@ class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
-        return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: (parent as! TrainingViewController).dashboardLayoutDict, plan: plan)
+        return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: (parent as! TrainingViewControllerOld).dashboardLayoutDict, plan: plan)
     }
     
     private func savePlan() {
@@ -264,7 +264,7 @@ class DashboardVc: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
             menuItem = [contentLayout!.btnPowerSaveOn]
         }
         
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             if parent.trainingEnvType == TrainingEnvironmentType.ergometer {
                 menuItem.append(parent.bluetoothTabBarItem)
             }

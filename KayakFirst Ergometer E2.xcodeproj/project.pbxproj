@@ -256,6 +256,7 @@
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
 		068277831FFD13E5003A5667 /* ErgometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277821FFD13E5003A5667 /* ErgometerService.swift */; };
 		068277851FFD146A003A5667 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277841FFD146A003A5667 /* BluetoothService.swift */; };
+		068277871FFD203D003A5667 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277861FFD203D003A5667 /* TrainingViewController.swift */; };
 		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
 		0683EA381E74860100F39988 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0683EA371E74858A00F39988 /* BebasNeue.otf */; };
 		068D38801F207DEB005A1197 /* AppToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068D387F1F207DEB005A1197 /* AppToast.swift */; };
@@ -351,7 +352,7 @@
 		06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */; };
 		06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
-		06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewController.swift */; };
+		06DE18451E56D13600374107 /* TrainingViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */; };
 		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
 		06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */; };
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
@@ -668,6 +669,7 @@
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
 		068277821FFD13E5003A5667 /* ErgometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErgometerService.swift; sourceTree = "<group>"; };
 		068277841FFD146A003A5667 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
+		068277861FFD203D003A5667 /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
 		0683EA371E74858A00F39988 /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
 		068D387F1F207DEB005A1197 /* AppToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToast.swift; sourceTree = "<group>"; };
@@ -770,7 +772,7 @@
 		06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSettingsLayout.swift; sourceTree = "<group>"; };
 		06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCalendarLayout.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
-		06DE18441E56D13600374107 /* TrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewControllerOld.swift; sourceTree = "<group>"; };
 		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
 		06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
@@ -1748,12 +1750,13 @@
 		06DE18481E56D22B00374107 /* training_viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				06DE18441E56D13600374107 /* TrainingViewController.swift */,
+				06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */,
 				06DE18421E56D0A100374107 /* SetDashboardVc.swift */,
 				06DE18491E56D24700374107 /* DashboardVc.swift */,
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
 				06E840501F35E1C300303574 /* BluetoothViewController.swift */,
+				068277861FFD203D003A5667 /* TrainingViewController.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -2276,7 +2279,7 @@
 				068D38801F207DEB005A1197 /* AppToast.swift in Sources */,
 				06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */,
 				06C2F3F21F0A42A10077EE21 /* DeleteTrainingAvg.swift in Sources */,
-				06DE18451E56D13600374107 /* TrainingViewController.swift in Sources */,
+				06DE18451E56D13600374107 /* TrainingViewControllerOld.swift in Sources */,
 				06AF23311F06253B008805A2 /* UploadAble.swift in Sources */,
 				067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */,
 				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
@@ -2361,6 +2364,7 @@
 				06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */,
 				06AF23401F067D2D008805A2 /* DownloadEventDays.swift in Sources */,
 				060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */,
+				068277871FFD203D003A5667 /* TrainingViewController.swift in Sources */,
 				06C7070E1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,

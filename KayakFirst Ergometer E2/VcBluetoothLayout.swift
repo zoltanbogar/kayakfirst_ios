@@ -10,9 +10,9 @@ import Foundation
 
 class VcBluetoothLayout: BaseLayout {
     
-    private let trainingViewController: TrainingViewController
+    private let trainingViewController: TrainingViewControllerOld
     
-    init(contentView: UIView, trainingViewController: TrainingViewController) {
+    init(contentView: UIView, trainingViewController: TrainingViewControllerOld) {
         self.trainingViewController = trainingViewController
         
         super.init(contentView: contentView)

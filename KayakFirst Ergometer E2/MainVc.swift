@@ -82,7 +82,7 @@ class MainVc: BaseVC<VcMainLayout>, CLLocationManagerDelegate {
         if !PermissionCheck.hasLocationPermission() {
             permissionViewController = startLocationPermissionVc(viewController: self.parent!, trainingEnvType: trainingEnvironmentType!)
         } else {
-            startTrainingViewController(viewController: self, plan: plan, event: event, trainingEnvType: trainingEnvironmentType!)
+            startTrainingViewController(vc: self, trainingEnvType: trainingEnvironmentType!, plan: plan, event: event)
         }
     }
     

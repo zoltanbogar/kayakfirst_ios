@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ErgometerViewController: TrainingViewController {
+class ErgometerViewController: TrainingViewControllerOld {
     
     //TODO - refactor
     

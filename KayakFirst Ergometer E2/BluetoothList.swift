@@ -28,10 +28,10 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
     private var bluetoothDeviceList: [CBPeripheral]?
     private var isDiscovering = false
     
-    private var trainingViewController: TrainingViewController
+    private var trainingViewController: TrainingViewControllerOld
     
     //MARK: init
-    init(trainingViewController: TrainingViewController) {
+    init(trainingViewController: TrainingViewControllerOld) {
         self.trainingViewController = trainingViewController
         super.init()
         

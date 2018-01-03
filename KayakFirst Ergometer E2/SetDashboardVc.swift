@@ -129,7 +129,7 @@ class SetDashboardVc: BaseVC<VcSetDashboardLayout> {
     override func initTabBarItems() {
         var buttons: [UIBarButtonItem] = [contentLayout!.btnDone]
         
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             if parent.trainingEnvType == TrainingEnvironmentType.ergometer {
                 buttons.append(parent.bluetoothTabBarItem)
             }
@@ -144,19 +144,19 @@ class SetDashboardVc: BaseVC<VcSetDashboardLayout> {
     
     //MARK: button listeners
     @objc private func btnDoneClick() {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             parent.showDashboard()
         }
     }
     
     override func backClick(sender: UIBarButtonItem) {
-        if let parent = self.parent as? TrainingViewController {
+        if let parent = self.parent as? TrainingViewControllerOld {
             parent.closeViewController(shoudlCloseParents: false)
         }
     }
     
     private func viewAdded(dragDropLayout: DragDropLayout, tag: Int) {
-        if let parent = self.navigationController as? TrainingViewController {
+        if let parent = self.navigationController as? TrainingViewControllerOld {
             
             var key = 0
             switch dragDropLayout {

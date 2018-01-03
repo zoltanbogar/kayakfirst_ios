@@ -9,7 +9,11 @@
 import Foundation
 import CoreBluetooth
 
-class BluetoothViewController: BaseVC<VcBluetoothLayout> {
+class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedListener {
+    
+    //MARK: properties
+    var plan: Plan?
+    var event: Event?
     
     //MARK: life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -18,22 +22,32 @@ class BluetoothViewController: BaseVC<VcBluetoothLayout> {
         refreshBluetoothList()
     }
     
-    //MARK: functions
-    func refreshBluetoothList() {
-        contentLayout!.bluetoothList.refresh()
-    }
-    
     //MARK: init view
     override func initView() {
         super.initView()
     }
     
     override func getContentLayout(contentView: UIView) -> VcBluetoothLayout {
-        return VcBluetoothLayout(contentView: contentView, trainingViewController: parent as! TrainingViewController)
+        return VcBluetoothLayout(contentView: contentView, trainingViewController: parent as! TrainingViewControllerOld)
     }
     
     override func initTabBarItems() {
         showLogoCenter(viewController: self)
         showCloseButton()
+    }
+    
+    //MARK: functions
+    func refreshBluetoothList() {
+        contentLayout!.bluetoothList.refresh()
+    }
+    
+    //MARK: protocol
+    func onConnected() {
+        //TODO
+        startTrainingViewController(vc: self, trainingEnvType: TrainingEnvironmentType.ergometer, plan: plan, event: event)
+    }
+    
+    func onDisconnected() {
+        //TODO
     }
 }
