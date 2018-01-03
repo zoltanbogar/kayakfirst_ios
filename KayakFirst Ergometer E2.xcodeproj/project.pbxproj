@@ -20,6 +20,7 @@
 		060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060468A01F189CB400D3408C /* PlanTypeView.swift */; };
 		060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060468A21F18BF6300D3408C /* AppTableViewHeader.swift */; };
 		0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */; };
+		0605BF521FFD0E220065B63F /* OutdoorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605BF511FFD0E220065B63F /* OutdoorService.swift */; };
 		06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */; };
 		06071D411ECA4416004CB736 /* PlanElementDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */; };
 		06071D431ECA4B60004CB736 /* PlanDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */; };
@@ -427,6 +428,7 @@
 		060468A01F189CB400D3408C /* PlanTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTypeView.swift; sourceTree = "<group>"; };
 		060468A21F18BF6300D3408C /* AppTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewHeader.swift; sourceTree = "<group>"; };
 		0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardElementTime.swift; sourceTree = "<group>"; };
+		0605BF511FFD0E220065B63F /* OutdoorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutdoorService.swift; sourceTree = "<group>"; };
 		06071D3E1ECA43FE004CB736 /* PlanDetailsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsTableView.swift; sourceTree = "<group>"; };
 		06071D401ECA4416004CB736 /* PlanElementDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDetailsCell.swift; sourceTree = "<group>"; };
 		06071D421ECA4B60004CB736 /* PlanDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsCell.swift; sourceTree = "<group>"; };
@@ -936,6 +938,7 @@
 				060B99291E64313B00F72404 /* OutdoorServiceOld.swift */,
 				06E840601F37500A00303574 /* ErgometerServiceOld.swift */,
 				0644B7091FFCD0FD001022A4 /* TrainingService.swift */,
+				0605BF511FFD0E220065B63F /* OutdoorService.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -2418,6 +2421,7 @@
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				067A09AB1F38A71400CC8051 /* CalculateElementStrokesErgo.swift in Sources */,
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
+				0605BF521FFD0E220065B63F /* OutdoorService.swift in Sources */,
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */,
 				06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */,

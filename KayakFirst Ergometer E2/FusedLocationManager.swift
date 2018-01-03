@@ -31,10 +31,21 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     var distanceSum: Double = 0
     var speed: Double = 0
     
+    private let commandOutdoorDistance: CommandOutdoorDistance
+    private let commandOutdoorSpeed: CommandOutdoorSpeed
+    private let commandOutdoorStroke: CommandOutdoorStroke
+    private let commandList: [MeasureCommand]
+    
     //MARK: init
     static let sharedInstance = FusedLocationManager()
     private override init() {
         locationManager.allowsBackgroundLocationUpdates = true
+        
+        commandOutdoorDistance = CommandOutdoorDistance()
+        commandOutdoorSpeed = CommandOutdoorSpeed()
+        commandOutdoorStroke = CommandOutdoorStroke()
+        
+        commandList = [commandOutdoorDistance, commandOutdoorSpeed, commandOutdoorStroke]
     }
     
     //MARK: start/stop monitoring
@@ -56,6 +67,14 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         currentTime = 0
         speed = 0
         distanceSum = 0
+    }
+    
+    func getCommandList(appSensorManager: AppSensorManager) -> [MeasureCommand] {
+        commandOutdoorDistance.value = distanceSum
+        commandOutdoorSpeed.value = speed
+        commandOutdoorStroke.value = appSensorManager.strokesPerMin
+        
+        return commandList
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
