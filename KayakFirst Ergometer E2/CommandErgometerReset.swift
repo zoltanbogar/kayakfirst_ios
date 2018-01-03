@@ -14,9 +14,11 @@ class CommandErgometerReset: MeasureCommandErgometer {
     private let numValue = 1
     
     private let resetOk = "OK"
-    let resetSuccess: Int64 = 1
+    
+    static let resetSuccess: Int64 = 1
+    static let tryResetNumber = 8
+    
     private let resetNotSuccess: Int64 = -1
-    let tryResetNumber = 8
     
     override func getCommand() -> String {
         return CommandErgometerEnum.reset.rawValue
@@ -31,7 +33,7 @@ class CommandErgometerReset: MeasureCommandErgometer {
     }
     
     override func isValidCommand(stringValue: String) -> Bool {
-        return initValue(stringValue: stringValue) == resetSuccess || initValue(stringValue: stringValue) == resetNotSuccess
+        return initValue(stringValue: stringValue) == CommandErgometerReset.resetSuccess || initValue(stringValue: stringValue) == resetNotSuccess
     }
     
     override func getValue() -> Double {
@@ -42,7 +44,7 @@ class CommandErgometerReset: MeasureCommandErgometer {
         let subValue = getStringByRowNumber(stringValue: stringValue, rowNumber: numValue)
         
         if resetOk == subValue {
-            return resetSuccess
+            return CommandErgometerReset.resetSuccess
         } else {
             return resetNotSuccess
         }
