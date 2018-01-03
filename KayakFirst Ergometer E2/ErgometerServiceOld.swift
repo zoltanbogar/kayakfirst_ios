@@ -82,7 +82,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
     }
     
     func onDataAvailable(stringData: String) {
-        if dataAvailableTime == 0 {
+        /*if dataAvailableTime == 0 {
             dataAvailableTime = pauseDiff.getAbsoluteTimeStamp()
         }
         
@@ -128,7 +128,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
             }
             
             self.writeBluetoothData()
-        })
+        })*/
     }
     
     private func writeBluetoothData() {
@@ -206,8 +206,8 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
     }
     
     private func setCycleIndex(cycleIndex: Int64, timestampDiff: Double) {
-        self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
-        self.lastCycleIndexTime = pauseDiff.getAbsoluteTimeStamp() - timestampDiff
+        /*self.cycleIndex = pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
+        self.lastCycleIndexTime = pauseDiff.getAbsoluteTimeStamp() - timestampDiff*/
     }
     
     override func onCycleStateChanged(newCycleState: CycleState) {
@@ -240,7 +240,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
     }
     
     private func checkBluetoothInactiveTimeout() {
-        if cycleIndex == telemetry.getCycleIndex() {
+        /*if cycleIndex == telemetry.getCycleIndex() {
             if inactiveTime == 0 {
                 inactiveTime = pauseDiff.getAbsoluteTimeStamp()
             }
@@ -252,7 +252,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
             }
         } else {
             inactiveTime = 0
-        }
+        }*/
     }
     
 }

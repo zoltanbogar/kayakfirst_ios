@@ -61,7 +61,7 @@ class AppSensorManager {
     private var spmTime: Double = 0
     private var ultSPM: Double = 0
     
-    private let pauseDiff = PauseDiff.sharedInstance
+    private let telemetry = Telemetry.sharedInstance
     
     var strokesPerMin: Double = 0
     private var strokes: Int = 0
@@ -78,7 +78,6 @@ class AppSensorManager {
     //MARK: init
     static let sharedInstance = AppSensorManager()
     private init() {
-        
         if sensorManager.isAccelerometerAvailable {
             // ~50Hz
             sensorManager.accelerometerUpdateInterval = (1 / sampleRate)
@@ -140,19 +139,19 @@ class AppSensorManager {
         if !initCycle || shouldSensorRead() {
             if !initCycle {
                 if initAccelerometerTime == 0 {
-                    initAccelerometerTime = pauseDiff.getAbsoluteTimeStamp()
+                    initAccelerometerTime = telemetry.getAbsoluteTimestamp()
                 }
                 
-                if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) < analyzeTime) {
+                if ((telemetry.getAbsoluteTimestamp() - initAccelerometerTime) < analyzeTime) {
                     initValues.append([acceleration.x * 9.81, acceleration.y * 9.81, acceleration.z * 9.81])
                 }
                 
-                if ((pauseDiff.getAbsoluteTimeStamp() - initAccelerometerTime) > analyzeTime) {
+                if ((telemetry.getAbsoluteTimestamp() - initAccelerometerTime) > analyzeTime) {
                     calDefault()
                     initCycle = true
                 }
             } else {
-                let time = pauseDiff.getAbsoluteTimeStamp()
+                let time = telemetry.getAbsoluteTimestamp()
                 if (time - lastSPM > getMaxTimeBetweenStrokes() && accelInit) {
                     lastSPM = time
                 }
@@ -258,7 +257,7 @@ class AppSensorManager {
     
     private func defAccelState(time: Double, val: Double, realVal: Double) {
         if dynamicTime > 0 {
-            if ((pauseDiff.getAbsoluteTimeStamp() - dynamicTime) > getMaxTimeBetweenStrokes()) {
+            if ((telemetry.getAbsoluteTimestamp() - dynamicTime) > getMaxTimeBetweenStrokes()) {
                 if countDyn > (dynamicMed.count - 1) {
                     countDyn = 0
                 }
@@ -278,7 +277,7 @@ class AppSensorManager {
                 accelThresholdN = -thresholdCheckUnit * med
                 accelThresholdP = thresholdCheckUnit * med
                 
-                dynamicTime = pauseDiff.getAbsoluteTimeStamp()
+                dynamicTime = telemetry.getAbsoluteTimestamp()
             }
         }
         
@@ -357,8 +356,8 @@ class AppSensorManager {
         accelThresholdN = -thresholdCheckUnit * size
         accelThresholdP = size * thresholdCheckUnit
         
-        lastSpmTime = pauseDiff.getAbsoluteTimeStamp()
-        dynamicTime = pauseDiff.getAbsoluteTimeStamp()
+        lastSpmTime = telemetry.getAbsoluteTimestamp()
+        dynamicTime = telemetry.getAbsoluteTimestamp()
         lastSPM = maxAccelTime
         size = calcSPM(timeA: maxAccelTime)
         if ((ultSPM - size) > (ultSPM * 0.2)) {

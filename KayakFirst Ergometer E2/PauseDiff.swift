@@ -10,7 +10,7 @@ import Foundation
 class PauseDiff {
     
     //MARK: properties
-    private let telemetry = Telemetry.sharedInstance
+    private let telemetry: Telemetry
     
     private var timeStampDiff: Double = 0
     private var cycleIndexDiff: Int64 = 0
@@ -21,9 +21,8 @@ class PauseDiff {
     private var wasPause = false
     
     //MARK: init
-    static let sharedInstance: PauseDiff = PauseDiff()
-    private init() {
-        //private empty constructor
+    init(telemetry: Telemetry) {
+        self.telemetry = telemetry
     }
     
     func reset() {

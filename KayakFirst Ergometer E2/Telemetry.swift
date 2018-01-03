@@ -16,7 +16,7 @@ class Telemetry {
     //MARK: init
     static let sharedInstance: Telemetry = Telemetry()
     private init() {
-        //private constructor
+        _pauseDiff = PauseDiff(telemetry: self)
     }
     
     //MARK? current values
@@ -37,11 +37,7 @@ class Telemetry {
     var t_1000_av: Double = 0
     
     //MARK: helper values
-    var duration: TimeInterval = 0 {
-        didSet {
-            log("DURATION_TEST", "durationSet: \(duration)")
-        }
-    }
+    var duration: TimeInterval = 0
     private var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
     
@@ -83,7 +79,20 @@ class Telemetry {
     //MARK: cycle state
     var cycleState: CycleState? {
         didSet {
-            if cycleState == CycleState.resumed {
+            switch cycleState! {
+            case CycleState.resumed:
+                pauseDiff.resume()
+            case CycleState.paused:
+                pauseDiff.pause()
+            default:
+                //TODO: handle default
+                let index = 0
+            }
+            
+            SwiftEventBus.post(cycleStateEventBusName, sender: cycleState)
+            
+            //TODO: delete this
+            /*if cycleState == CycleState.resumed {
                 if sessionId == 0 {
                     _sessionId = currentTimeMillis()
                 }
@@ -91,10 +100,13 @@ class Telemetry {
             
             notifyListener(cycleStateChangeListener: planSoundHelperCycleStateChangeListener)
             notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
-            
-            SwiftEventBus.post(cycleStateEventBusName, sender: cycleState)
+            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)*/
         }
+    }
+    
+    private var _pauseDiff: PauseDiff!
+    private var pauseDiff: PauseDiff {
+        return _pauseDiff
     }
     
     private func notifyListener(cycleStateChangeListener: CycleStateChangeListener?) {
@@ -146,6 +158,8 @@ class Telemetry {
         averageIndex = 0
         cycleIndex = 0
         lastCycleIndexTime = 0
+        
+        pauseDiff.reset()
     }
     
     //MARK other functions
@@ -164,6 +178,14 @@ class Telemetry {
     
     func getCycleIndex() -> Int64 {
         return self.cycleIndex
+    }
+    
+    func getAbsoluteTimestamp() -> TimeInterval {
+        return pauseDiff.getAbsoluteTimeStamp()
+    }
+    
+    func getAbsoluteCycleIndex(cycleIndex: Int64) -> Int64 {
+        return pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
     }
 }
 

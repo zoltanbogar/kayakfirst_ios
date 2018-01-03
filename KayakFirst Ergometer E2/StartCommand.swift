@@ -11,7 +11,6 @@ class StartCommand<E: MeasureCommand> {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
-    let pauseDiff = PauseDiff.sharedInstance
     
     private var t200Element: CalculateElementT_200<E>?
     private var t500Element: CalculateElementT_500<E>?
@@ -89,6 +88,6 @@ class StartCommand<E: MeasureCommand> {
     
     //MARK: timestamp
     func getCalculatedTimeStamp() -> Double {
-        return pauseDiff.getAbsoluteTimeStamp()
+        return telemetry.getAbsoluteTimestamp()
     }
 }

@@ -15,7 +15,7 @@ class TrainingServiceOld<M: MeasureCommand>: CycleStateChangeListener {
     var commandList: [M]?
     var startCommand: StartCommand<M>?
     
-    let pauseDiff = PauseDiff.sharedInstance
+    //let pauseDiff = PauseDiff.sharedInstance
     
     private let trainingManager = TrainingManager.sharedInstance
     
@@ -65,13 +65,13 @@ class TrainingServiceOld<M: MeasureCommand>: CycleStateChangeListener {
         if !isCycleState(cycleState: CycleState.paused) {
             reset()
         }
-        pauseDiff.resume()
+        //pauseDiff.resume()
         setTelemetryCycleState(cycleState: CycleState.resumed)
         trainingManager.addTrainingUploadPointer()
     }
     
     func pauseCycle() {
-        pauseDiff.pause()
+        //pauseDiff.pause()
         setTelemetryCycleState(cycleState: CycleState.paused)
     }
     
@@ -85,7 +85,7 @@ class TrainingServiceOld<M: MeasureCommand>: CycleStateChangeListener {
         
         initCommandList()
         
-        pauseDiff.reset()
+        //pauseDiff.reset()
         
         realDuration = 0
         
@@ -127,9 +127,9 @@ class TrainingServiceOld<M: MeasureCommand>: CycleStateChangeListener {
     }
     
     private func setDuration() {
-        let timeDiff = pauseDiff.getAbsoluteTimeStamp() - telemetry.sessionId
+        /*let timeDiff = pauseDiff.getAbsoluteTimeStamp() - telemetry.sessionId
         
-        telemetry.duration = timeDiff
+        telemetry.duration = timeDiff*/
     }
     
     private func setDurationBack() {

@@ -15,7 +15,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     private let accuracyLocation: Double = 10 //10 meters
     
     //MARK: properteis
-    private let pauseDiff = PauseDiff.sharedInstance
+    private let telemetry = Telemetry.sharedInstance
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
     private var currentTime: Double = 0
@@ -88,19 +88,19 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         let distance = getDistance(loc1: location, loc2: currentLocation!)
         
         if currentTime == 0 {
-            currentTime = pauseDiff.getAbsoluteTimeStamp()
+            currentTime = telemetry.getAbsoluteTimestamp()
         }
         
         if location.speed >= 0 {
             speed = location.speed
         } else {
-            let timeDiff = pauseDiff.getAbsoluteTimeStamp() - currentTime
+            let timeDiff = telemetry.getAbsoluteTimestamp() - currentTime
             if timeDiff > 0 {
                 speed = (distance / timeDiff) * 1000
             }
         }
         
-        currentTime = pauseDiff.getAbsoluteTimeStamp()
+        currentTime = telemetry.getAbsoluteTimestamp()
         
         speed = speed * converSationMpsKmph
         
