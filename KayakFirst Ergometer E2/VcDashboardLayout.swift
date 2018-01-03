@@ -12,7 +12,7 @@ class VcDashobardLayout: BaseLayout {
     
     var isLandscape = false
     
-    private let dashboardLayoutDict: [Int:Int]
+    private let dashboardLayoutDict: [Int:Int]?
     private let plan: Plan?
     
     var dashboardElement0: DashBoardElement?
@@ -21,7 +21,7 @@ class VcDashobardLayout: BaseLayout {
     var dashboardElement3: DashBoardElement?
     var dashboardElement4: DashBoardElement?
     
-    init(contentView: UIView, dashboardLayoutDict: [Int:Int], plan: Plan?) {
+    init(contentView: UIView, dashboardLayoutDict: [Int:Int]?, plan: Plan?) {
         self.dashboardLayoutDict = dashboardLayoutDict
         self.plan = plan
         
@@ -115,34 +115,36 @@ class VcDashobardLayout: BaseLayout {
     private func initDashboardViews() {
         var viewToShow: UIView = viewDashboard
         
-        for (position, tag) in dashboardLayoutDict {
-            let dashboardElement = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: true)
-            var view: UIView?
-            switch position {
-            case 0:
-                view = viewDashboard.contentLayout!.view0
-                dashboardElement0 = dashboardElement
-            case 1:
-                view = viewDashboard.contentLayout!.view1
-                dashboardElement1 = dashboardElement
-            case 2:
-                view = viewDashboard.contentLayout!.view2
-                dashboardElement2 = dashboardElement
-            case 3:
-                view = viewDashboard.contentLayout!.view3
-                dashboardElement3 = dashboardElement
-            case 4:
-                view = viewDashboard.contentLayout!.view4
-                dashboardElement4 = dashboardElement
-            default:
-                fatalError()
-            }
-            
-            if let newView = view {
-                newView.removeAllSubviews()
-                newView.addSubview(dashboardElement)
-                dashboardElement.snp.makeConstraints { make in
-                    make.edges.equalTo(newView)
+        if let dashobardLayoutDictValue = dashboardLayoutDict {
+            for (position, tag) in dashobardLayoutDictValue {
+                let dashboardElement = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: true)
+                var view: UIView?
+                switch position {
+                case 0:
+                    view = viewDashboard.contentLayout!.view0
+                    dashboardElement0 = dashboardElement
+                case 1:
+                    view = viewDashboard.contentLayout!.view1
+                    dashboardElement1 = dashboardElement
+                case 2:
+                    view = viewDashboard.contentLayout!.view2
+                    dashboardElement2 = dashboardElement
+                case 3:
+                    view = viewDashboard.contentLayout!.view3
+                    dashboardElement3 = dashboardElement
+                case 4:
+                    view = viewDashboard.contentLayout!.view4
+                    dashboardElement4 = dashboardElement
+                default:
+                    fatalError()
+                }
+                
+                if let newView = view {
+                    newView.removeAllSubviews()
+                    newView.addSubview(dashboardElement)
+                    dashboardElement.snp.makeConstraints { make in
+                        make.edges.equalTo(newView)
+                    }
                 }
             }
         }

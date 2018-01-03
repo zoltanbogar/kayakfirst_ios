@@ -36,7 +36,7 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
     
     var bluetoothViewController: BluetoothViewController?
     
-    private var dashboardVc: DashboardVc?
+    private var dashboardVc: DashboardVcOld?
     
     //MARK: lifeCycle
     override func viewDidLoad() {
@@ -96,7 +96,7 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
             ergometerService.reset()
         }
         
-        dashboardVc = DashboardVc()
+        dashboardVc = DashboardVcOld()
         dashboardVc!.plan = plan
         dashboardVc!.event = event
         pushViewController(dashboardVc!, animated: true)

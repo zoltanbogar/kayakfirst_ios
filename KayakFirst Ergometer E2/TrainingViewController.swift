@@ -38,4 +38,10 @@ class TrainingViewController: PortraitNavController {
         //TODO
     }
     
+    func showDashboardVc(dashboardLayoutDict: [Int:Int]) {
+        let dashboardVc = DashboardVc()
+        dashboardVc.dashboardLayoutDict = dashboardLayoutDict
+        pushViewController(dashboardVc, animated: true)
+    }
+    
 }

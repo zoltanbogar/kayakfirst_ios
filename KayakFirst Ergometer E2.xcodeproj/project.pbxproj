@@ -178,6 +178,7 @@
 		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
 		0654CA211FFD54ED003379D6 /* BaseTrainingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */; };
 		0654CA231FFD59E5003379D6 /* DragDropHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA221FFD59E5003379D6 /* DragDropHelper.swift */; };
+		0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA241FFD62E5003379D6 /* DashboardVc.swift */; };
 		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
 		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
 		065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */; };
@@ -355,7 +356,7 @@
 		06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06DE18451E56D13600374107 /* TrainingViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */; };
-		06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVc.swift */; };
+		06DE184A1E56D24700374107 /* DashboardVcOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18491E56D24700374107 /* DashboardVcOld.swift */; };
 		06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */; };
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
 		06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */; };
@@ -592,6 +593,7 @@
 		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
 		0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrainingVc.swift; sourceTree = "<group>"; };
 		0654CA221FFD59E5003379D6 /* DragDropHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropHelper.swift; sourceTree = "<group>"; };
+		0654CA241FFD62E5003379D6 /* DashboardVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
 		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
 		065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
@@ -777,7 +779,7 @@
 		06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCalendarLayout.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewControllerOld.swift; sourceTree = "<group>"; };
-		06DE18491E56D24700374107 /* DashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
+		06DE18491E56D24700374107 /* DashboardVcOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVcOld.swift; sourceTree = "<group>"; };
 		06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
 		06E82BE41F0A6B21006EC016 /* EventDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDbLoader.swift; sourceTree = "<group>"; };
@@ -1757,12 +1759,13 @@
 			children = (
 				06DE18441E56D13600374107 /* TrainingViewControllerOld.swift */,
 				06DE18421E56D0A100374107 /* SetDashboardVc.swift */,
-				06DE18491E56D24700374107 /* DashboardVc.swift */,
+				06DE18491E56D24700374107 /* DashboardVcOld.swift */,
 				06018D4F1E616D6C00F75919 /* ErgometerViewController.swift */,
 				064766451E75885D007936B5 /* LocationPermissionVc.swift */,
 				06E840501F35E1C300303574 /* BluetoothViewController.swift */,
 				068277861FFD203D003A5667 /* TrainingViewController.swift */,
 				0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */,
+				0654CA241FFD62E5003379D6 /* DashboardVc.swift */,
 			);
 			name = training_viewcontroller;
 			sourceTree = "<group>";
@@ -2215,6 +2218,7 @@
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				066B00441EC749BD00BE0E1F /* BebasUILabel.swift in Sources */,
 				06C707301FFBC93700D72E72 /* ViewTrainingSumLayout.swift in Sources */,
+				0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */,
 				067964721E63804500DFC050 /* CalculateT_1000_AV.swift in Sources */,
 				067129511EC86FAD00362C39 /* CreatePlanViewController.swift in Sources */,
 				06CAFF411F0D2A5000D2EA14 /* ManagerModifyEvent.swift in Sources */,
@@ -2245,7 +2249,7 @@
 				06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */,
-				06DE184A1E56D24700374107 /* DashboardVc.swift in Sources */,
+				06DE184A1E56D24700374107 /* DashboardVcOld.swift in Sources */,
 				069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */,
 				067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */,
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,

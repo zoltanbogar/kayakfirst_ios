@@ -39,14 +39,7 @@ class SetDashboardVc: BaseTrainingVc<VcSetDashboardLayout> {
     
     //MARK: button listeners
     @objc private func btnDoneClick() {
-        if let parent = self.parent as? TrainingViewControllerOld {
-            parent.showDashboard()
-        }
+        getTrainingVc().showDashboardVc(dashboardLayoutDict: dragDropHelper.dashboardLayoutDict)
     }
     
-    override func backClick(sender: UIBarButtonItem) {
-        if let parent = self.parent as? TrainingViewControllerOld {
-            parent.closeViewController(shoudlCloseParents: false)
-        }
-    }
 }
