@@ -50,6 +50,7 @@ PODS:
   - SQLite.swift (0.11.3):
     - SQLite.swift/standard (= 0.11.3)
   - SQLite.swift/standard (0.11.3)
+  - SwiftEventBus (2.2.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -63,7 +64,18 @@ DEPENDENCIES:
   - M13Checkbox
   - SnapKit (~> 3.1.2)
   - SQLite.swift (~> 0.11.0)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.2.0`)
   - SwiftyJSON
+
+EXTERNAL SOURCES:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.2.0
+
+CHECKOUT OPTIONS:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.2.0
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -84,8 +96,9 @@ SPEC CHECKSUMS:
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
+  SwiftEventBus: 39cde57d1881f9d6e8afb1f9e41f973e331bf847
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 55c82a54dbe0939d9fc277999ec38b66f8e05c63
+PODFILE CHECKSUM: e3ba00e2cbad27b1dc0daa318431efa3923ce29a
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

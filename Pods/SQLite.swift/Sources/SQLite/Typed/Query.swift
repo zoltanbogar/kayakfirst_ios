@@ -1,4 +1,4 @@
-//
+ //
 // SQLite.swift
 // https://github.com/stephencelis/SQLite.swift
 // Copyright © 2014-2015 Stephen Celis.

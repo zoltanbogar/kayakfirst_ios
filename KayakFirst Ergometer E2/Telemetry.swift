@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import SwiftEventBus
+
+let cycleStateEventBusName = "cycle_state"
 
 class Telemetry {
     
@@ -90,6 +93,7 @@ class Telemetry {
             notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
             notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)
             
+            SwiftEventBus.post(cycleStateEventBusName, sender: cycleState)
         }
     }
     

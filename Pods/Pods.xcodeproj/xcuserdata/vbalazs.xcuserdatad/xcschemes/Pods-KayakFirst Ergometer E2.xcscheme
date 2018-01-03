@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A55492D3954FD1717A4F6D4D0DEF424"
+               BlueprintIdentifier = "4BBF5E353EA9D74FCA36339CDA65DB89"
                BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
                BlueprintName = "Pods-KayakFirst Ergometer E2"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9A55492D3954FD1717A4F6D4D0DEF424"
+            BlueprintIdentifier = "4BBF5E353EA9D74FCA36339CDA65DB89"
             BuildableName = "Pods_KayakFirst_Ergometer_E2.framework"
             BlueprintName = "Pods-KayakFirst Ergometer E2"
             ReferencedContainer = "container:Pods.xcodeproj">

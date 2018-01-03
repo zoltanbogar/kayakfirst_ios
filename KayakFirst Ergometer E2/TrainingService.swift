@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftEventBus
 
 class TrainingService {
     
@@ -41,11 +42,20 @@ class TrainingService {
     
     //MARK: functions
     func bindService(isBind: Bool) {
-        //TODO: eventBus
+        if isBind {
+            SwiftEventBus.onBackgroundThread(self, name: cycleStateEventBusName, handler: { result in
+                //TODO: nullcheck
+                let cycleState: CycleState = result.object as! CycleState
+                self.onCycleStateChanged(cycleState: cycleState)
+            })
+        } else {
+            SwiftEventBus.unregister(self, name: cycleStateEventBusName)
+        }
     }
     
     func start() {
-        //TODO
+        reset()
+        resume()
     }
     
     func resume() {

@@ -13,4 +13,5 @@ target 'KayakFirst Ergometer E2' do
     pod 'Google/SignIn'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'SwiftEventBus', :tag => '2.2.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 end
