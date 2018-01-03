@@ -16,7 +16,7 @@ class TrainingService {
     
     private let trainingManager: TrainingManager
     
-    private var realDuration: Int64 = 0
+    private var realDuration: Double = 0
     private var isCyclePaused: Bool = false
     
     //MARK: init
@@ -79,11 +79,20 @@ class TrainingService {
     }
     
     internal func onResumed() {
-        //TODO
+        isCyclePaused = false
+        
+        if telemetry.sessionId == 0 {
+            telemetry.sessionId = currentTimeMillis()
+        }
+        trainingManager.addTrainingUploadPointer()
+        
+        startLoop()
     }
     
     internal func onStopped() {
-        //TODO
+        telemetry.resetCurrent()
+        setDurationBack()
+        isCyclePaused = true
     }
     
     internal func onPaused() {
@@ -117,7 +126,7 @@ class TrainingService {
                     
                     self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
                     
-                    self.realDuration = Int64(self.telemetry.duration)
+                    self.realDuration = self.telemetry.duration
                 }
                 
                 usleep(self.getTimeWaitAfterCalculate())
@@ -136,11 +145,11 @@ class TrainingService {
     }
     
     private func setDuration() {
-        //TODO
+        telemetry.duration = (telemetry.getAbsoluteTimestamp() - telemetry.sessionId)
     }
     
     private func setDurationBack() {
-        //TODO
+        telemetry.duration = realDuration
     }
     
     private func onCycleStateChanged(cycleState: CycleState) {

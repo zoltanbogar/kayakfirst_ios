@@ -43,6 +43,9 @@ class Telemetry {
     
     private var _sessionId: Double = 0
     var sessionId: Double {
+        set {
+            _sessionId = Double(Int64(newValue))
+        }
         get {
             return Double(Int64(_sessionId))
         }
