@@ -15,12 +15,7 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     //MARK: properties
     var plan: Plan? {
         didSet {
-            localeValue = 0
-            planElementPosition = 0
-            
-            contentLayout!.peTableView.dataList = self.plan?.planElements
-            
-            setProgressBarPlanElementColor()
+            resetPlan()
         }
     }
     var isDone: Bool {
@@ -37,6 +32,15 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     //MARK: functions
     func viewDidLayoutSubViews() {
         contentLayout!.viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: .verticalSlow)
+    }
+    
+    func resetPlan() {
+        localeValue = 0
+        planElementPosition = 0
+        
+        contentLayout!.peTableView.dataList = self.plan?.planElements
+        
+        setProgressBarPlanElementColor()
     }
     
     override func startRefresh(_ isStart: Bool) {

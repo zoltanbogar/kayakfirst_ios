@@ -14,6 +14,19 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
     var dashboardLayoutDict: [Int : Int]?
     var plan: Plan?
     
+    var isPlanDone: Bool {
+        get {
+            return contentLayout!.viewDashboardPlan.isDone
+        }
+    }
+    
+    //MARK: lifecycle
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        contentLayout!.viewDashboardPlan.viewDidLayoutSubViews()
+    }
+    
     //MARK: init view
     override func initView() {
         super.initView()
@@ -21,12 +34,7 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         contentLayout!.viewSwipePause.delegate = self
         contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         
-        /*contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
-        contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
-        contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
-        contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
-        
-        contentLayout!.btnPowerSaveOn.target = self
+        /*contentLayout!.btnPowerSaveOn.target = self
         contentLayout!.btnPowerSaveOn.action = #selector(clickPowerSaveOff)
         contentLayout!.btnPowerSaveOff.target = self
         contentLayout!.btnPowerSaveOff.action = #selector(clickPowerSaveOn)*/
@@ -37,7 +45,12 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
     }
     
     override func initTabBarItems() {
-        showCustomBackButton()
+        if plan == nil {
+            showCustomBackButton()
+        } else {
+            showCloseButton()
+        }
+
         showLogoCenter(viewController: self)
         
         handleBluetoothMenu(barButtons: nil)
@@ -74,6 +87,12 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
             }
         } else {
             contentLayout!.viewDashboardPlan.stopRefresh()
+        }
+    }
+    
+    func resetPlanDashboardView() {
+        if plan != nil {
+            contentLayout!.viewDashboardPlan.resetPlan()
         }
     }
     

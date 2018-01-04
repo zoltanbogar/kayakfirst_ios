@@ -57,8 +57,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         
         initView()
         
-        //TODO
-        pushViewController(SetDashboardVc(), animated: true)
+        checkPlanLayout()
     }
     
     //MARK: views
@@ -97,6 +96,16 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         pushViewController(dashboardVc!, animated: true)
     }
     
+    func checkPlanLayout() {
+        if plan != nil {
+            dashboardVc = DashboardVc()
+            dashboardVc?.plan = plan
+            pushViewController(dashboardVc!, animated: true)
+        } else {
+            pushViewController(SetDashboardVc(), animated: true)
+        }
+    }
+    
     func playClick() {
         switch trainingEnvType! {
         case TrainingEnvironmentType.outdoor:
@@ -124,7 +133,8 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     func onCounterEnd() {
-        //TODO: reset plan
+        dashboardVc?.resetPlanDashboardView()
+        
         trainingService.start()
     }
     
@@ -180,7 +190,18 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     private func savePlan() {
-        //TODO
+        if let planValue = plan {
+            let planTraining = PlanTraining.createPlanTraining(plan: planValue)
+            planTraining.sessionId = sessionId
+            
+            PlanManager.sharedInstance.savePlanTraining(planTraining: planTraining)
+        }
+        
+        if event != nil && dashboardVc!.isPlanDone {
+            event!.sessionId = sessionId
+            
+            EventManager.sharedInstance.saveEvent(event: event!, managerCallBack: nil)
+        }
     }
     
     private func showCloseButton(isShow: Bool) {
