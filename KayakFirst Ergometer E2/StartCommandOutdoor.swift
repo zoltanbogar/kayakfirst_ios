@@ -24,7 +24,8 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     //MARK: init
     static let sharedInstance: StartCommandOutdoor = StartCommandOutdoor()
     private override init() {
-        //private empty contstructor
+        super.init()
+        reset()
     }
     
     override func reset() {

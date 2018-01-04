@@ -8,7 +8,9 @@
 
 import Foundation
 public enum CycleState: String {
+    //TODO: delete idle
     case idle = "idle"
+    case bluetoothDisconnected = "bluetoothDisconnected"
     case resumed = "resumed"
     case paused = "paused"
     case stopped = "stopped"

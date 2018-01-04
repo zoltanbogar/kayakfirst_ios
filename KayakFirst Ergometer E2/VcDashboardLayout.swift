@@ -180,6 +180,8 @@ class VcDashobardLayout: BaseLayout {
     lazy var viewSwipePause: SwipePauseView! = {
         let view = SwipePauseView()
         
+        view.isHidden = true
+        
         return view
     }()
     

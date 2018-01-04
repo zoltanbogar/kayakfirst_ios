@@ -160,9 +160,7 @@ class TrainingService {
             onStopped()
         case CycleState.paused:
             onPaused()
-        default:
-            //TODO: handle default
-            let index = 0
+        default: break
         }
     }
 

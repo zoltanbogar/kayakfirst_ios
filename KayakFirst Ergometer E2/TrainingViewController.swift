@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftEventBus
 
 func startTrainingViewController(vc: UIViewController, trainingEnvType: TrainingEnvironmentType, plan: Plan?, event: Event?) {
     
@@ -26,12 +27,18 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     var plan: Plan?
     var event: Event?
     
+    private var dashboardVc: DashboardVc?
+    
     private var telemetry = Telemetry.sharedInstance
     private var bluetooth = Bluetooth.sharedInstance
     private var trainingService: TrainingService!
     
     private var calibrationView: CalibrationView?
     private var startDelayView: StartDelayView!
+    
+    private var sessionId: Double = 0
+    
+    private var shouldCloseParents = false
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -42,8 +49,8 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
             trainingService = OutdoorSevice(telemetry: telemetry)
         }
         
-        //TODO: unbind service when click 'finish'
         trainingService.bindService(isBind: true)
+        registerEventBus(isRegister: true)
         
         super.viewDidLoad()
         
@@ -68,15 +75,16 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         }
     }
     
-    //MARK: functions
+    //MARK: public functions
     func showBluetoothDisconnectDialog() {
         //TODO
     }
     
+    //TODO: should everytime create a new one? (Android too)
     func showDashboardVc(dashboardLayoutDict: [Int:Int]) {
-        let dashboardVc = DashboardVc()
-        dashboardVc.dashboardLayoutDict = dashboardLayoutDict
-        pushViewController(dashboardVc, animated: true)
+        dashboardVc = DashboardVc()
+        dashboardVc!.dashboardLayoutDict = dashboardLayoutDict
+        pushViewController(dashboardVc!, animated: true)
     }
     
     func playClick() {
@@ -98,7 +106,77 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     func onCounterEnd() {
+        //TODO: reset plan
+        trainingService.start()
+    }
+    
+    //MARK: private functions
+    private func registerEventBus(isRegister: Bool) {
+        if isRegister {
+            SwiftEventBus.onMainThread(self, name: cycleStateEventBusName, handler: { result in
+                //TODO: nullcheck
+                let cycleState: CycleState = result.object as! CycleState
+                self.onCycleStateChanged(cycleState: cycleState)
+            })
+        } else {
+            SwiftEventBus.unregister(self, name: cycleStateEventBusName)
+        }
+    }
+    
+    private func onCycleStateChanged(cycleState: CycleState) {
+        switch cycleState {
+        case CycleState.bluetoothDisconnected:
+            finish()
+        case CycleState.stopped:
+            savePlan()
+            setLayoutByCycleState(cycleState: cycleState)
+        case CycleState.paused:
+            setLayoutByCycleState(cycleState: cycleState)
+        case CycleState.resumed:
+            sessionId = telemetry.sessionId
+            setLayoutByCycleState(cycleState: cycleState)
+        default: break
+        }
+    }
+    
+    private func setLayoutByCycleState(cycleState: CycleState) {
+        shouldCloseParents = false
+        switch cycleState {
+        case CycleState.resumed:
+            //TODO: battery, plansound
+            dashboardVc?.showViewSwipePause(isShow: true)
+            dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
+            dashboardVc?.refreshDashboardElements(true)
+            setHomeButtonEnabled(isEnable: false)
+        case CycleState.paused:
+            //TODO: showPauseView
+            dashboardVc?.showViewSwipePause(isShow: false)
+            dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
+            dashboardVc?.refreshDashboardElements(false)
+        case CycleState.stopped:
+            dashboardVc?.showViewSwipePause(isShow: false)
+            dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
+            setCloseButtonEnabled(isEnable: true)
+        default: break
+        }
+    }
+    
+    private func savePlan() {
         //TODO
+    }
+    
+    private func setHomeButtonEnabled(isEnable: Bool) {
+        //TODO
+    }
+    
+    private func setCloseButtonEnabled(isEnable: Bool) {
+        //TODO
+    }
+    
+    //TODO
+    private func finish() {
+        trainingService.bindService(isBind: false)
+        registerEventBus(isRegister: false)
     }
     
 }

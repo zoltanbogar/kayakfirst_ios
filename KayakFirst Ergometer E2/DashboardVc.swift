@@ -52,6 +52,24 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         contentLayout!.btnPlaySmall.isHidden = !isShow
     }
     
+    func refreshDashboardElements(_ isRefresh: Bool) {
+        contentLayout!.dashboardElement0?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement1?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement2?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement3?.startRefresh(isRefresh)
+        contentLayout!.dashboardElement4?.startRefresh(isRefresh)
+        
+        if plan != nil {
+            if isRefresh {
+                contentLayout!.viewDashboardPlan.startRefresh(true)
+            } else {
+                contentLayout!.viewDashboardPlan.stopRefresh()
+            }
+        } else {
+            contentLayout!.viewDashboardPlan.stopRefresh()
+        }
+    }
+    
     //MARK: delegate
     func onPauseCLicked() {
         getTrainingVc().pauseClick()
