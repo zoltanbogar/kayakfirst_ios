@@ -35,6 +35,7 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         
         getTrainingVc().initBatterySaveHelper()
+        getTrainingVc().planSoundHelper = contentLayout!.viewDashboardPlan.planSoundHelper
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {

@@ -23,7 +23,7 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     }
     private var localeValue: Double = 0
     private var planElementPosition: Int = 0
-    private let planSoundHelper = PlanSoundHelper.sharedInstance
+    let planSoundHelper = PlanSoundHelper.sharedInstance
     
     override func getContentLayout(contentView: UIView) -> ViewDashboardPlanLayout {
         return ViewDashboardPlanLayout(contentView: contentView)

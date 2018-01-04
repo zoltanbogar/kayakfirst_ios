@@ -40,6 +40,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     private var sessionId: Double = 0
     
     private var batterySaveHelper: BatterySaveHelper?
+    var planSoundHelper: PlanSoundHelper?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -192,12 +193,14 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
             dashboardVc?.refreshDashboardElements(true)
             showCloseButton(isShow: false)
             batterySaveHelper?.cycleResume()
+            planSoundHelper?.cycleResume()
         case CycleState.paused:
             pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
             dashboardVc?.refreshDashboardElements(false)
             batterySaveHelper?.cyclePause()
+            planSoundHelper?.cyclePause()
         case CycleState.stopped:
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)

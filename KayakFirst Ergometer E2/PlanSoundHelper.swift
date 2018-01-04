@@ -9,7 +9,8 @@
 import Foundation
 import AVFoundation
 
-class PlanSoundHelper: CycleStateChangeListener {
+//TODO: first init takes too long, freeze UI (Android too)
+class PlanSoundHelper {
     
     //MARK: constants
     private let soundThresholdTime: Double = 10000 // 10 s
@@ -25,9 +26,10 @@ class PlanSoundHelper: CycleStateChangeListener {
     static let sharedInstance = PlanSoundHelper()
     
     private init() {
-        telemetry.planSoundHelperCycleStateChangeListener = self
+        //private empty constructor
     }
     
+    //MARK: functions
     func stopSound() {
         startSound(false)
     }
@@ -41,6 +43,14 @@ class PlanSoundHelper: CycleStateChangeListener {
         }
         
         startSound(neededPlay && shouldPlay && shouldPlayByCycle)
+    }
+    
+    func cycleResume() {
+        shouldPlayByCycle = true
+    }
+    
+    func cyclePause() {
+        shouldPlayByCycle = false
     }
     
     private func startSound(_ isStart: Bool) {
@@ -68,7 +78,4 @@ class PlanSoundHelper: CycleStateChangeListener {
         }
     }
     
-    func onCycleStateChanged(newCycleState: CycleState) {
-        shouldPlayByCycle = CycleState.resumed == newCycleState
-    }
 }
