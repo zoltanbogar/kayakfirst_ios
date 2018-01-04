@@ -36,6 +36,13 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: dashboardLayoutDict, plan: plan)
     }
     
+    override func initTabBarItems() {
+        showCustomBackButton()
+        showLogoCenter(viewController: self)
+        
+        handleBluetoothMenu(barButtons: nil)
+    }
+    
     //MARK: functions
     func showViewSwipePause(isShow: Bool) {
         contentLayout!.viewSwipePause.isHidden = !isShow

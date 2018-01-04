@@ -32,6 +32,8 @@ class SetDashboardVc: BaseTrainingVc<VcSetDashboardLayout> {
         
         handleBluetoothMenu(barButtons: buttons)
         
+        showCloseButton()
+        
         showLogoOnLeft()
         
         self.title = getString("navigation_set_dashboard")

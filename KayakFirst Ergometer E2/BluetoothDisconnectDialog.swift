@@ -10,8 +10,13 @@ import Foundation
 
 class BluetoothDisconnectDialog: BaseDialog {
     
+    //MARK: properties
+    private let bluetooth: Bluetooth
+    
     //MARK: init
-    init() {
+    init(bluetooth: Bluetooth) {
+        self.bluetooth = bluetooth
+        
         let title = getString("dialog_title_bluetooth_disconnect")
         let message = getString("dialog_message_bluetooth_disconnect")
         super.init(title: title, message: message)
@@ -20,6 +25,6 @@ class BluetoothDisconnectDialog: BaseDialog {
     }
     
     override func btnPosAction() {
-        ErgometerServiceOld.sharedInstance.disconnectBluetoothn()
+        bluetooth.disconnect()
     }
 }

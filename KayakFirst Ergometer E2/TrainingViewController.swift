@@ -79,9 +79,15 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         }
     }
     
+    func finish() {
+        trainingService.bindService(isBind: false)
+        registerEventBus(isRegister: false)
+        dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: public functions
     func showBluetoothDisconnectDialog() {
-        //TODO
+        BluetoothDisconnectDialog(bluetooth: bluetooth).show()
     }
     
     //TODO: should everytime create a new one? (Android too)
@@ -159,7 +165,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
             dashboardVc?.refreshDashboardElements(true)
-            setHomeButtonEnabled(isEnable: false)
+            showCloseButton(isShow: false)
         case CycleState.paused:
             pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
@@ -168,7 +174,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         case CycleState.stopped:
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
-            setCloseButtonEnabled(isEnable: true)
+            showCloseButton(isShow: true)
         default: break
         }
     }
@@ -177,18 +183,12 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         //TODO
     }
     
-    private func setHomeButtonEnabled(isEnable: Bool) {
-        //TODO
-    }
-    
-    private func setCloseButtonEnabled(isEnable: Bool) {
-        //TODO
-    }
-    
-    //TODO
-    private func finish() {
-        trainingService.bindService(isBind: false)
-        registerEventBus(isRegister: false)
+    private func showCloseButton(isShow: Bool) {
+        if isShow {
+            dashboardVc?.showCloseButton()
+        } else {
+            dashboardVc?.removeCloseButton()
+        }
     }
     
 }

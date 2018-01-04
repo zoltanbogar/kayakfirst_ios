@@ -155,9 +155,9 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
     }
     
     func showBluetoothDisconnectDialog(dialogPosListener: (() -> ())?) {
-        let bluetoothDialog = BluetoothDisconnectDialog()
+        /*let bluetoothDialog = BluetoothDisconnectDialog()
         bluetoothDialog.noticeDialogPosListener = dialogPosListener
-        bluetoothDialog.show()
+        bluetoothDialog.show()*/
     }
     
     //MARK: button listeners

@@ -15,10 +15,13 @@ class BaseTrainingVc<E: BaseLayout>: BaseVC<E> {
         return navigationController as! TrainingViewController
     }
     
-    func handleBluetoothMenu(barButtons: [UIBarButtonItem]) {
+    func handleBluetoothMenu(barButtons: [UIBarButtonItem]?) {
         var buttons = barButtons
         if getTrainingEnvType() == TrainingEnvironmentType.ergometer {
-            buttons.append(bluetoothTabBarItem)
+            if buttons == nil {
+                buttons = [UIBarButtonItem]()
+            }
+            buttons!.append(bluetoothTabBarItem)
         }
         
         self.navigationItem.setRightBarButtonItems(buttons, animated: true)
@@ -26,6 +29,14 @@ class BaseTrainingVc<E: BaseLayout>: BaseVC<E> {
     
     func getTrainingEnvType() -> TrainingEnvironmentType {
         return getTrainingVc().trainingEnvType
+    }
+    
+    override func btnCloseClick() {
+        if getTrainingEnvType() == TrainingEnvironmentType.ergometer {
+            showBluetoothDisconnectDialog()
+        } else {
+            getTrainingVc().finish()
+        }
     }
     
     func showBluetoothDisconnectDialog() {
