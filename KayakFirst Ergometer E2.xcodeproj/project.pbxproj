@@ -1579,7 +1579,6 @@
 				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
 				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
-				062369651E9BF44100578017 /* CalibrationView.swift */,
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
 				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
@@ -1781,6 +1780,7 @@
 				06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */,
 				06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */,
 				061966081FFE16750040E59A /* SwipePauseView.swift */,
+				062369651E9BF44100578017 /* CalibrationView.swift */,
 			);
 			name = dashboard;
 			sourceTree = "<group>";

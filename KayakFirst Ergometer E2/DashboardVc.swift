@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DashboardVc: BaseTrainingVc<VcDashobardLayout> {
+class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
     
     //MARK: properties
     var dashboardLayoutDict: [Int : Int]?
@@ -17,6 +17,9 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout> {
     //MARK: init view
     override func initView() {
         super.initView()
+        
+        contentLayout!.viewSwipePause.delegate = self
+        contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         
         /*contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
         contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
@@ -31,6 +34,32 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout> {
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
         return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: dashboardLayoutDict, plan: plan)
+    }
+    
+    //MARK: functions
+    func showViewSwipePause(isShow: Bool) {
+        contentLayout!.viewSwipePause.isHidden = !isShow
+    }
+    
+    func initBtnPlaySmall(showRestart: Bool, isShow: Bool) {
+        var image: UIImage = UIImage(named: "ic_play_48dp")!
+        
+        if showRestart {
+            image = UIImage(named: "ic_refresh_white_48pt")!
+        }
+        
+        contentLayout!.btnPlaySmall.image = image
+        contentLayout!.btnPlaySmall.isHidden = !isShow
+    }
+    
+    //MARK: delegate
+    func onPauseCLicked() {
+        getTrainingVc().pauseClick()
+    }
+    
+    //MARK: callbacks
+    @objc func btnPlayClick() {
+        getTrainingVc().playClick()
     }
     
 }
