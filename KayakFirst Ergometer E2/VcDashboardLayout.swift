@@ -10,8 +10,6 @@ import Foundation
 
 class VcDashobardLayout: BaseLayout {
     
-    var isLandscape = false
-    
     private let dashboardLayoutDict: [Int:Int]?
     private let plan: Plan?
     
@@ -51,6 +49,7 @@ class VcDashobardLayout: BaseLayout {
     }
     
     override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
         mainStackView.axis = .vertical
         pauseStackView.axis = .vertical
         
@@ -63,21 +62,13 @@ class VcDashobardLayout: BaseLayout {
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
-            make.width.equalTo(dashboardPauseSwipeArea)
-            make.height.equalTo(75)
         }
-        btnPause.snp.removeConstraints()
-        btnPause.snp.makeConstraints { (make) in
-            make.left.equalTo(viewSwipePause)
-            make.centerY.equalTo(viewSwipePause)
-        }
-        
-        isLandscape = false
         
         setDashboardElementsOrientation()
     }
     
     override func handleLandscapeLayout(size: CGSize) {
+        super.handleLandscapeLayout(size: size)
         mainStackView.axis = .horizontal
         pauseStackView.axis = .horizontal
         
@@ -90,16 +81,7 @@ class VcDashobardLayout: BaseLayout {
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
-            make.width.equalTo(75)
-            make.height.equalTo(dashboardPauseSwipeArea)
         }
-        btnPause.snp.removeConstraints()
-        btnPause.snp.makeConstraints { (make) in
-            make.bottom.equalTo(viewSwipePause)
-            make.centerX.equalTo(viewSwipePause)
-        }
-        
-        isLandscape = true
         
         setDashboardElementsOrientation()
     }
@@ -195,22 +177,10 @@ class VcDashobardLayout: BaseLayout {
         return button
     }()
     
-    lazy var viewSwipePause: UIView! = {
-        let view = UIView()
-        view.layer.cornerRadius = 75 / 2
-        
-        view.addSubview(self.btnPause)
-        
-        view.backgroundColor = Colors.colorPauseBackground
+    lazy var viewSwipePause: SwipePauseView! = {
+        let view = SwipePauseView()
         
         return view
-    }()
-    
-    lazy var btnPause: RoundButton! = {
-        let button = RoundButton(radius: 75, image: UIImage(named: "ic_pause_white_48pt")!, color: Colors.colorAccent)
-        button.layer.cornerRadius = 75 / 2
-        
-        return button
     }()
     
     lazy var pauseView: UIView! = {

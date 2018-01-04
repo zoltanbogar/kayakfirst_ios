@@ -125,6 +125,8 @@
 		0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */; };
 		0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD281F0D990E00AC1903 /* PlanManager.swift */; };
 		0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */; };
+		061966091FFE16750040E59A /* SwipePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061966081FFE16750040E59A /* SwipePauseView.swift */; };
+		0619660B1FFE168D0040E59A /* ViewSwipePauseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
 		061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DBCB61F12811600D3C129 /* PortraitNavController.swift */; };
@@ -540,6 +542,8 @@
 		0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDays.swift; sourceTree = "<group>"; };
 		0618AD281F0D990E00AC1903 /* PlanManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
 		0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
+		061966081FFE16750040E59A /* SwipePauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePauseView.swift; sourceTree = "<group>"; };
+		0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwipePauseLayout.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		061DBCB61F12811600D3C129 /* PortraitNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitNavController.swift; sourceTree = "<group>"; };
@@ -1697,6 +1701,7 @@
 				06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */,
 				06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */,
 				06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */,
+				0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1775,6 +1780,7 @@
 			children = (
 				06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */,
 				06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */,
+				061966081FFE16750040E59A /* SwipePauseView.swift */,
 			);
 			name = dashboard;
 			sourceTree = "<group>";
@@ -2221,6 +2227,7 @@
 				0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */,
 				067964721E63804500DFC050 /* CalculateT_1000_AV.swift in Sources */,
 				067129511EC86FAD00362C39 /* CreatePlanViewController.swift in Sources */,
+				0619660B1FFE168D0040E59A /* ViewSwipePauseLayout.swift in Sources */,
 				06CAFF411F0D2A5000D2EA14 /* ManagerModifyEvent.swift in Sources */,
 				067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */,
 				06C707281FFBBDB200D72E72 /* ViewRegisterLayout.swift in Sources */,
@@ -2397,6 +2404,7 @@
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
 				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
+				061966091FFE16750040E59A /* SwipePauseView.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,

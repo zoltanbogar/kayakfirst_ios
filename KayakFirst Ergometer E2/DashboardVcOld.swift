@@ -220,7 +220,7 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
         super.initView()
         
         contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
-        contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
+        //contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
         contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
         
@@ -274,7 +274,7 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     
     //MARK: animation
     @objc private func animateBtnPause(pan: UIPanGestureRecognizer) {
-        let translation = pan.translation(in: self.view)
+        /*let translation = pan.translation(in: self.view)
         
         switch pan.state {
         case .began:
@@ -307,12 +307,12 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
             animateBtnPlayPauseToOriginal()
         default:
             break
-        }
+        }*/
     }
     
     private func animateBtnPlayPauseToOriginal() {
-        UIView.animate(withDuration: 0.2, animations: {
+        /*UIView.animate(withDuration: 0.2, animations: {
             self.contentLayout!.btnPause.center = CGPoint(x: self.btnPauseOriginalX, y: self.btnPauseOriginalY)
-        })
+        })*/
     }
 }

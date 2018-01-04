@@ -12,6 +12,8 @@ class BaseLayout {
     
     internal let contentView: UIView
     
+    var isLandscape = false
+    
     init(contentView: UIView) {
         self.contentView = contentView
     }
@@ -21,11 +23,11 @@ class BaseLayout {
     }
     
     func handlePortraitLayout(size: CGSize) {
-        //override if needed
+        isLandscape = false
     }
     
     func handleLandscapeLayout(size: CGSize) {
-        //override if needed
+        isLandscape = true
     }
     
 }
