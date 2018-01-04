@@ -45,6 +45,9 @@ struct Colors {
     static let colorGoogle = getColor("#dc4e41")
     static let colorProfileElement = getColor("#ffffff")
     
+    static let colorBatterySaverInactive = getColor("#AAAAAA")
+    static let colorBatterySaverActive = getColor("#5EB846")
+    
     static let colorPlanLight = getColor("#00b000")
     static let colorPlanMedium = getColor("#ffed00")
     static let colorPlanHard = getColor("#cc0000")

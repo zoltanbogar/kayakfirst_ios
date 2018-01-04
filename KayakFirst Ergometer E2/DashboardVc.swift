@@ -34,10 +34,7 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         contentLayout!.viewSwipePause.delegate = self
         contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         
-        /*contentLayout!.btnPowerSaveOn.target = self
-        contentLayout!.btnPowerSaveOn.action = #selector(clickPowerSaveOff)
-        contentLayout!.btnPowerSaveOff.target = self
-        contentLayout!.btnPowerSaveOff.action = #selector(clickPowerSaveOn)*/
+        getTrainingVc().initBatterySaveHelper()
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
@@ -53,7 +50,9 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
 
         showLogoCenter(viewController: self)
         
-        handleBluetoothMenu(barButtons: nil)
+        let menuItem: [UIBarButtonItem] = [contentLayout!.btnPowerSaveOff]
+        
+        handleBluetoothMenu(barButtons: menuItem)
     }
     
     //MARK: functions

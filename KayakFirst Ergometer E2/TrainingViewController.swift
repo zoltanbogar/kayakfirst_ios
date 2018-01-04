@@ -39,7 +39,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     
     private var sessionId: Double = 0
     
-    private var shouldCloseParents = false
+    private var batterySaveHelper: BatterySaveHelper?
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -60,6 +60,18 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         checkPlanLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        batterySaveHelper?.onResume()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        batterySaveHelper?.onPause()
+    }
+    
     //MARK: views
     private func initView() {
         startDelayView = StartDelayView(superView: view)
@@ -78,13 +90,17 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         }
     }
     
+    //MARK: public functions
+    func initBatterySaveHelper() {
+        batterySaveHelper = BatterySaveHelper(menuItem: dashboardVc!.contentLayout!.btnPowerSaveOff)
+    }
+    
     func finish() {
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: public functions
     func showBluetoothDisconnectDialog() {
         BluetoothDisconnectDialog(bluetooth: bluetooth).show()
     }
@@ -168,23 +184,25 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     private func setLayoutByCycleState(cycleState: CycleState) {
-        shouldCloseParents = false
         switch cycleState {
         case CycleState.resumed:
-            //TODO: battery, plansound
+            //TODO: plansound
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
             dashboardVc?.refreshDashboardElements(true)
             showCloseButton(isShow: false)
+            batterySaveHelper?.cycleResume()
         case CycleState.paused:
             pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
             dashboardVc?.refreshDashboardElements(false)
+            batterySaveHelper?.cyclePause()
         case CycleState.stopped:
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
             showCloseButton(isShow: true)
+            batterySaveHelper?.cycleStop()
         default: break
         }
     }

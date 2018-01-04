@@ -85,12 +85,13 @@ class VcDashobardLayout: BaseLayout {
     }
     
     private func setDashboardElementsOrientation() {
-        //TODO: orientation
-        /*(viewDashboard.contentLayout!.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.contentLayout!.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.contentLayout!.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.contentLayout!.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        (viewDashboard.contentLayout!.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape*/
+        if plan == nil {
+            (viewDashboard.contentLayout!.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+            (viewDashboard.contentLayout!.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+            (viewDashboard.contentLayout!.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+            (viewDashboard.contentLayout!.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+            (viewDashboard.contentLayout!.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        }
     }
     
     private func initDashboardViews() {
@@ -185,16 +186,12 @@ class VcDashobardLayout: BaseLayout {
     }()
     
     //MARK: BarButton items
-    lazy var btnPowerSaveOn: UIBarButtonItem! = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(named: "powerSavingModeActive")?.withRenderingMode(.alwaysOriginal)
-        
-        return button
-    }()
-    
     lazy var btnPowerSaveOff: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "powerSavingMode")?.withRenderingMode(.alwaysOriginal)
+        
+        button.image = UIImage(named: "powerSavingMode")
+        
+        button.tintColor = Colors.colorBatterySaverInactive
         
         return button
     }()

@@ -20,7 +20,7 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     private var btnPauseOriginalX: CGFloat = 0
     private var btnPauseOriginalY: CGFloat = 0
     
-    private let batterySaveHelper = BatterySaveHelper()
+    private let batterySaveHelper: BatterySaveHelper? = nil
     private var isBatterySaveShouldActive = false
     
     var plan: Plan?
@@ -45,13 +45,13 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        batterySaveHelper.activate(isActivate: isBatterySaveShouldActive)
+        //batterySaveHelper.activate(isActivate: isBatterySaveShouldActive)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        batterySaveHelper.activate(isActivate: false)
+        //batterySaveHelper.activate(isActivate: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -102,13 +102,13 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     @objc internal func clickPowerSaveOn() {
         isBatterySaveShouldActive = true
         showPowerSaveOn(isShow: true)
-        batterySaveHelper.activate(isActivate: true)
+        //batterySaveHelper.activate(isActivate: true)
     }
     
     @objc internal func clickPowerSaveOff() {
         isBatterySaveShouldActive = false
         showPowerSaveOn(isShow: false)
-        batterySaveHelper.activate(isActivate: false)
+        //batterySaveHelper.activate(isActivate: false)
     }
     
     //MARK: cycle state
@@ -125,17 +125,17 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
                 self.shouldCloseParents = true
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: true)
                 self.refreshDashboardElements(false)
-                self.batterySaveHelper.activate(isActivate: false)
+                //self.batterySaveHelper.activate(isActivate: false)
                 self.savePlan()
             case CycleState.paused:
                 self.showPauseView(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnRestartState, isShow: false)
-                self.batterySaveHelper.activate(isActivate: false)
+                //self.batterySaveHelper.activate(isActivate: false)
             case CycleState.resumed:
                 self.showViewSwipePause(true)
                 self.initBtnPlaySmall(btnPlayPauseIcon: self.btnPlayState, isShow: false)
                 self.refreshDashboardElements(true)
-                self.batterySaveHelper.activate(isActivate: self.isBatterySaveShouldActive)
+                //self.batterySaveHelper.activate(isActivate: self.isBatterySaveShouldActive)
                 
                 self.sessionId = self.telemetry.sessionId
             default: break
@@ -224,10 +224,10 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
         /*contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
         contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)*/
         
-        contentLayout!.btnPowerSaveOn.target = self
+        /*contentLayout!.btnPowerSaveOn.target = self
         contentLayout!.btnPowerSaveOn.action = #selector(clickPowerSaveOff)
         contentLayout!.btnPowerSaveOff.target = self
-        contentLayout!.btnPowerSaveOff.action = #selector(clickPowerSaveOn)
+        contentLayout!.btnPowerSaveOff.action = #selector(clickPowerSaveOn)*/
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
@@ -260,9 +260,9 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     
     private func showPowerSaveOn(isShow: Bool) {
         var menuItem: [UIBarButtonItem] = [contentLayout!.btnPowerSaveOff]
-        if isShow {
+        /*if isShow {
             menuItem = [contentLayout!.btnPowerSaveOn]
-        }
+        }*/
         
         if let parent = self.parent as? TrainingViewControllerOld {
             if parent.trainingEnvType == TrainingEnvironmentType.ergometer {

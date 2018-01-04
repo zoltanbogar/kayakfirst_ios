@@ -17,9 +17,54 @@ class BatterySaveHelper {
     //MARK: properties
     private let telemetry = Telemetry.sharedInstance
     private var timer: Timer?
+    private let menuItem: UIBarButtonItem
+    
+    private var shouldActive = false
+    
+    //MARK: init
+    init(menuItem: UIBarButtonItem) {
+        self.menuItem = menuItem
+        
+        self.menuItem.target = self
+        self.menuItem.action = #selector(push)
+    }
     
     //MARK: functions
-    public func activate(isActivate: Bool) {
+    func cycleResume() {
+        if shouldActive {
+            activate(isActivate: true)
+        }
+    }
+    
+    func cyclePause() {
+        activate(isActivate: false)
+    }
+    
+    func cycleStop() {
+        activate(isActivate: false)
+    }
+    
+    func onResume() {
+        if shouldActive {
+            activate(isActivate: true)
+        }
+    }
+    
+    func onPause() {
+        activate(isActivate: false)
+    }
+    
+    @objc private func push() {
+        shouldActive = !shouldActive
+        
+        if shouldActive && telemetry.checkCycleState(cycleState: CycleState.resumed) {
+            activate(isActivate: true)
+        } else {
+            activate(isActivate: false)
+        }
+    }
+    
+    private func activate(isActivate: Bool) {
         timer?.invalidate()
         
         if isActivate && telemetry.checkCycleState(cycleState: CycleState.resumed) {
@@ -27,6 +72,8 @@ class BatterySaveHelper {
         } else {
             setBrightness(isFull: true)
         }
+        
+        colorizeMenuItem()
     }
     
     private func startTimerFull() {
@@ -54,5 +101,15 @@ class BatterySaveHelper {
     private func startTimer(timeInterval: TimeInterval, selector: Selector) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: selector, userInfo: nil, repeats: false)
+    }
+    
+    private func colorizeMenuItem() {
+        var color = Colors.colorBatterySaverInactive
+        
+        if shouldActive {
+            color = Colors.colorBatterySaverActive
+        }
+        
+        menuItem.tintColor = color
     }
 }
