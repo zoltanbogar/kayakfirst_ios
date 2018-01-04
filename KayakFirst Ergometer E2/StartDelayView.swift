@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: delegate
 public protocol StartDelayDelegate {
     func onCounterEnd()
 }
@@ -50,7 +51,11 @@ class StartDelayView: CustomUi<ViewStartDelayLayout> {
     }
     
     //MARK: show view
-    func show(_ isShow: Bool) {
+    func startCounter() {
+        show(true)
+    }
+    
+    private func show(_ isShow: Bool) {
         startCounter(isShow)
         isHidden = !isShow
     }

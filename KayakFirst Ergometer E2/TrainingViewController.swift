@@ -18,7 +18,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, CalibrationDelegate {
+class TrainingViewController: PortraitNavController, CalibrationDelegate, StartDelayDelegate {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -31,6 +31,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate {
     private var trainingService: TrainingService!
     
     private var calibrationView: CalibrationView?
+    private var startDelayView: StartDelayView!
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -54,8 +55,8 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate {
     
     //MARK: views
     private func initView() {
-        //startDelayView = StartDelayView(superView: view)
-        //startDelayView!.delegate = self
+        startDelayView = StartDelayView(superView: view)
+        startDelayView!.delegate = self
         
         addCalibrationViewIfNeeded()
     }
@@ -93,6 +94,10 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate {
     
     //MARK: delegate
     func onCalibrationEnd() {
+        startDelayView.startCounter()
+    }
+    
+    func onCounterEnd() {
         //TODO
     }
     

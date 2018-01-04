@@ -205,7 +205,7 @@ class TrainingViewControllerOld: PortraitNavController, StartDelayDelegate, Cali
     
     //MARK: cycle state handling
     func onPlayClicked() {
-        startDelayView?.show(true)
+        //startDelayView?.show(true)
     }
     
     func onPauseClicked() {
