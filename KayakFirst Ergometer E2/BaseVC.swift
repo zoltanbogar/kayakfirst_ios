@@ -159,10 +159,12 @@ class BaseVC<E: BaseLayout>: UIViewController {
     
     func showProgress(baseManagerType: BaseManagerType?) {
         if let managerType = baseManagerType {
-            if let view = progressView {
-                view.show(managerType.isProgressShown())
-            }
+            showProgress(isShow: managerType.isProgressShown())
         }
+    }
+    
+    func showProgress(isShow: Bool) {
+        progressView?.show(isShow)
     }
     
     func dismissProgress() {

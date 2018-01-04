@@ -10,10 +10,12 @@ import Foundation
 
 class VcBluetoothLayout: BaseLayout {
     
-    private let trainingViewController: TrainingViewControllerOld
+    private let bluetoothConnectedListener: OnBluetoothConnectedListener
+    private let bluetoothVc: BluetoothViewController
     
-    init(contentView: UIView, trainingViewController: TrainingViewControllerOld) {
-        self.trainingViewController = trainingViewController
+    init(contentView: UIView, bluetoothVc: BluetoothViewController, bluetoothConnectedListener: OnBluetoothConnectedListener) {
+        self.bluetoothConnectedListener = bluetoothConnectedListener
+        self.bluetoothVc = bluetoothVc
         
         super.init(contentView: contentView)
     }
@@ -44,7 +46,7 @@ class VcBluetoothLayout: BaseLayout {
     }()
     
     lazy var bluetoothList: BluetoothList! = {
-        let bluetoothList = BluetoothList(trainingViewController: self.trainingViewController)
+        let bluetoothList = BluetoothList(bluetoothVc: self.bluetoothVc, bluetoothConnectedListener: self.bluetoothConnectedListener)
         
         bluetoothList.btnBluetooth = self.btnSetting
         

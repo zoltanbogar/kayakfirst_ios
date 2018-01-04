@@ -32,7 +32,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     //MARK: properties
     var bluetoothManager: CBCentralManager?
     var bluetoothStateChangedListener: BluetoothStateChangedListener?
-    var onBluetoothConnectedListener: OnBluetoothConnectedListener?
+    
+    private var onBluetoothConnectedListener: OnBluetoothConnectedListener?
     
     private var bluetoothScanCallback: BluetoothScanCallback?
     
@@ -88,10 +89,14 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         bluetoothManager!.stopScan()
     }
     
-    func connect(bluetoothDevice: CBPeripheral) {
+    func connect(bluetoothDevice: CBPeripheral, onBluetoothConnectedListener: OnBluetoothConnectedListener) {
+        self.onBluetoothConnectedListener = onBluetoothConnectedListener
+        
         if isBluetoothOn() != nil && isBluetoothOn()! {
             connectedPeripheral = bluetoothDevice
             bluetoothManager?.connect(bluetoothDevice, options: nil)
+        } else {
+            self.onBluetoothConnectedListener?.onDisconnected()
         }
     }
     
@@ -143,9 +148,9 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         bluetoothService.stop()
         
-        if let listener = onBluetoothConnectedListener {
-            listener.onDisconnected()
-        }
+        telemetry.cycleState = CycleState.bluetoothDisconnected
+        
+        onBluetoothConnectedListener?.onDisconnected()
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -170,9 +175,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                     
                     bluetoothService.start()
                     
-                    if let listener = onBluetoothConnectedListener {
-                        listener.onConnected()
-                    }
+                    onBluetoothConnectedListener?.onConnected()
                 }
             }
         }

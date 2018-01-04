@@ -28,11 +28,13 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
     private var bluetoothDeviceList: [CBPeripheral]?
     private var isDiscovering = false
     
-    private var trainingViewController: TrainingViewControllerOld
+    private let bluetoothConnectedListener: OnBluetoothConnectedListener
+    private let bluetoothVc: BluetoothViewController
     
     //MARK: init
-    init(trainingViewController: TrainingViewControllerOld) {
-        self.trainingViewController = trainingViewController
+    init(bluetoothVc: BluetoothViewController, bluetoothConnectedListener: OnBluetoothConnectedListener) {
+        self.bluetoothConnectedListener = bluetoothConnectedListener
+        self.bluetoothVc = bluetoothVc
         super.init()
         
         bluetooth.bluetoothStateChangedListener = self
@@ -51,7 +53,10 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
         super.initView()
         
         contentLayout!.bluetoothTableView.rowClickCallback = { bluetoothDevice, position in
-            self.trainingViewController.connectBluetooth(bluetoothDevice: bluetoothDevice)
+            
+            self.bluetoothVc.showProgress(isShow: true)
+            
+            self.bluetooth.connect(bluetoothDevice: bluetoothDevice, onBluetoothConnectedListener: self.bluetoothConnectedListener)
             self.setBluetoothDisconnectTimeout()
             self.stop()
         }
@@ -230,8 +235,6 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
         
         if !bluetooth.isConnected {
             bluetooth.disconnect()
-            self.trainingViewController.progressView?.show(false)
-            self.trainingViewController.bluetoothViewController?.refreshBluetoothList()
         }
         
     }

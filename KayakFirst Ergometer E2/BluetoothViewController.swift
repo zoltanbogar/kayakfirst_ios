@@ -9,6 +9,17 @@
 import Foundation
 import CoreBluetooth
 
+func startBluetoothVc(viewController: UIViewController, plan: Plan?, event: Event?) {
+    let bluetoothVc = BluetoothViewController()
+    bluetoothVc.plan = plan
+    bluetoothVc.event = event
+    
+    let navController = UINavigationController()
+    navController.pushViewController(bluetoothVc, animated: false)
+    
+    viewController.present(navController, animated: true, completion: nil)
+}
+
 class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedListener {
     
     //MARK: properties
@@ -22,13 +33,8 @@ class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedLi
         refreshBluetoothList()
     }
     
-    //MARK: init view
-    override func initView() {
-        super.initView()
-    }
-    
     override func getContentLayout(contentView: UIView) -> VcBluetoothLayout {
-        return VcBluetoothLayout(contentView: contentView, trainingViewController: parent as! TrainingViewControllerOld)
+        return VcBluetoothLayout(contentView: contentView, bluetoothVc: self, bluetoothConnectedListener: self)
     }
     
     override func initTabBarItems() {
@@ -43,11 +49,12 @@ class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedLi
     
     //MARK: protocol
     func onConnected() {
-        //TODO
+        showProgress(isShow: false)
+        
         startTrainingViewController(vc: self, trainingEnvType: TrainingEnvironmentType.ergometer, plan: plan, event: event)
     }
     
     func onDisconnected() {
-        //TODO
+        showProgress(isShow: false)
     }
 }

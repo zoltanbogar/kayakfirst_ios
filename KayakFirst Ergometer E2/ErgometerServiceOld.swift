@@ -50,7 +50,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
     
     //MARK: functions
     func connectBluetooth(bluetoothDevice: CBPeripheral) {
-        bluetooth.connect(bluetoothDevice: bluetoothDevice)
+        //bluetooth.connect(bluetoothDevice: bluetoothDevice)
     }
     
     func disconnectBluetoothn() {
@@ -58,7 +58,7 @@ class ErgometerServiceOld: TrainingServiceOld<MeasureCommandErgometer>, OnBlueto
     }
     
     private func initConnection() {
-        bluetooth.onBluetoothConnectedListener = self
+        //bluetooth.onBluetoothConnectedListener = self
     }
     
     //MARK: delegeta

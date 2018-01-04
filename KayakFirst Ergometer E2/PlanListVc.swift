@@ -75,7 +75,8 @@ class PlanListVc: BaseVC<VcPlanListLayout> {
         showProgress(isShow: false)
     }
     
-    private func showProgress(isShow: Bool) {
+    //TODO: sure?
+    override func showProgress(isShow: Bool) {
         contentLayout?.progressBar.showProgressBar(isShow)
     }
     

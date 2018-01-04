@@ -82,7 +82,12 @@ class MainVc: BaseVC<VcMainLayout>, CLLocationManagerDelegate {
         if !PermissionCheck.hasLocationPermission() {
             permissionViewController = startLocationPermissionVc(viewController: self.parent!, trainingEnvType: trainingEnvironmentType!)
         } else {
-            startTrainingViewController(vc: self, trainingEnvType: trainingEnvironmentType!, plan: plan, event: event)
+            switch trainingEnvironmentType! {
+            case TrainingEnvironmentType.ergometer:
+                startBluetoothVc(viewController: self, plan: plan, event: event)
+            case TrainingEnvironmentType.outdoor:
+                startTrainingViewController(vc: self, trainingEnvType: trainingEnvironmentType!, plan: plan, event: event)
+            }
         }
     }
     
