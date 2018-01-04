@@ -64,11 +64,15 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        keepScreenOn(isOn: true)
+        
         batterySaveHelper?.onResume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        keepScreenOn(isOn: false)
         
         batterySaveHelper?.onPause()
     }
@@ -231,6 +235,11 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         } else {
             dashboardVc?.removeCloseButton()
         }
+    }
+    
+    private func keepScreenOn(isOn: Bool) {
+        WindowHelper.keepScreenOn(isOn: isOn)
+        WindowHelper.setBrightness(isFull: isOn)
     }
     
 }
