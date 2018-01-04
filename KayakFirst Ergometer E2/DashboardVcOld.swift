@@ -153,7 +153,7 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
     }
     
     private func showPauseView(_ isShow: Bool) {
-        contentLayout!.pauseView.isHidden = !isShow
+        //contentLayout!.pauseView.isHidden = !isShow
     }
     
     private func showViewSwipePause(_ isShow: Bool) {
@@ -221,8 +221,8 @@ class DashboardVcOld: BaseVC<VcDashobardLayout>, CycleStateChangeListener {
         
         contentLayout!.btnPlaySmall.addTarget(self, action: #selector(btnPlayPauseClick), for: .touchUpInside)
         //contentLayout!.btnPause.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(animateBtnPause(pan:))))
-        contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
-        contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)
+        /*contentLayout!.btnPlay.addTarget(self, action: #selector(btnPlayClick), for: .touchUpInside)
+        contentLayout!.btnStop.addTarget(self, action: #selector(btnStopClick), for: .touchUpInside)*/
         
         contentLayout!.btnPowerSaveOn.target = self
         contentLayout!.btnPowerSaveOn.action = #selector(clickPowerSaveOff)

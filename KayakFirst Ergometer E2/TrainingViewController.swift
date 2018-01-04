@@ -19,7 +19,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, CalibrationDelegate, StartDelayDelegate {
+class TrainingViewController: PortraitNavController, CalibrationDelegate, StartDelayDelegate, PauseViewDelegate {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -35,6 +35,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     
     private var calibrationView: CalibrationView?
     private var startDelayView: StartDelayView!
+    private var pauseView: PauseView!
     
     private var sessionId: Double = 0
     
@@ -63,7 +64,10 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     //MARK: views
     private func initView() {
         startDelayView = StartDelayView(superView: view)
-        startDelayView!.delegate = self
+        startDelayView.delegate = self
+        
+        pauseView = PauseView(superView: view)
+        pauseView.delegate = self
         
         addCalibrationViewIfNeeded()
     }
@@ -101,6 +105,14 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     //MARK: delegate
+    func onResumeClicked() {
+        trainingService.resume()
+    }
+    
+    func onStopClicked() {
+        trainingService.stop()
+    }
+    
     func onCalibrationEnd() {
         startDelayView.startCounter()
     }
@@ -149,7 +161,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
             dashboardVc?.refreshDashboardElements(true)
             setHomeButtonEnabled(isEnable: false)
         case CycleState.paused:
-            //TODO: showPauseView
+            pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
             dashboardVc?.refreshDashboardElements(false)

@@ -127,6 +127,8 @@
 		0618AD2B1F0D9A6C00AC1903 /* TrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */; };
 		061966091FFE16750040E59A /* SwipePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061966081FFE16750040E59A /* SwipePauseView.swift */; };
 		0619660B1FFE168D0040E59A /* ViewSwipePauseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */; };
+		0619660D1FFE32100040E59A /* ViewPauseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0619660C1FFE32100040E59A /* ViewPauseLayout.swift */; };
+		0619660F1FFE33380040E59A /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0619660E1FFE33380040E59A /* PauseView.swift */; };
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
 		061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DBCB61F12811600D3C129 /* PortraitNavController.swift */; };
@@ -544,6 +546,8 @@
 		0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingManager.swift; sourceTree = "<group>"; };
 		061966081FFE16750040E59A /* SwipePauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePauseView.swift; sourceTree = "<group>"; };
 		0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwipePauseLayout.swift; sourceTree = "<group>"; };
+		0619660C1FFE32100040E59A /* ViewPauseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPauseLayout.swift; sourceTree = "<group>"; };
+		0619660E1FFE33380040E59A /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		061DBCB61F12811600D3C129 /* PortraitNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitNavController.swift; sourceTree = "<group>"; };
@@ -1576,7 +1580,6 @@
 				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
 				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
 				06018D531E61B8D500F75919 /* RoundButton.swift */,
-				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
 				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
@@ -1701,6 +1704,7 @@
 				06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */,
 				06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */,
 				0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */,
+				0619660C1FFE32100040E59A /* ViewPauseLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1781,6 +1785,8 @@
 				06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */,
 				061966081FFE16750040E59A /* SwipePauseView.swift */,
 				062369651E9BF44100578017 /* CalibrationView.swift */,
+				0619660E1FFE33380040E59A /* PauseView.swift */,
+				060B6ADB1E669BD80024E3E6 /* StartDelayView.swift */,
 			);
 			name = dashboard;
 			sourceTree = "<group>";
@@ -2102,6 +2108,7 @@
 				060DDFF21E4BD8C800FE2D14 /* TrainingSumElementAverage.swift in Sources */,
 				064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */,
 				0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */,
+				0619660F1FFE33380040E59A /* PauseView.swift in Sources */,
 				06C7070A1FFB835F00D72E72 /* ViewStartDelayLayout.swift in Sources */,
 				0698BC4B1F004F3100FC7A0E /* RefreshView.swift in Sources */,
 				067129631EC9030800362C39 /* PlanDetailsViewController.swift in Sources */,
@@ -2450,6 +2457,7 @@
 				06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
+				0619660D1FFE32100040E59A /* ViewPauseLayout.swift in Sources */,
 				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				067A09AB1F38A71400CC8051 /* CalculateElementStrokesErgo.swift in Sources */,
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
