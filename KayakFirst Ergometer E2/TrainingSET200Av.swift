@@ -26,10 +26,10 @@ class TrainingSET200Av: TrainingSumElementAvgTime {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingManager.detailsTrainingList![position!].t200List
+        return sumTraining.t200List
     }
     
     override func calculate() -> Double {
-        return UnitHelper.getPaceValue(pace: 200, metricValue: trainingManager.detailsTrainingList![position!].avgT200)
+        return UnitHelper.getPaceValue(pace: 200, metricValue: sumTraining.avgT200)
     }
 }

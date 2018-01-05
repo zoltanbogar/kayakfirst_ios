@@ -30,10 +30,10 @@ class TrainingSEStrokesAv: TrainingSumElementAverage {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingManager.detailsTrainingList![position!].strokesList
+        return sumTraining.strokesList
     }
     
     override func calculate() -> Double {
-        return trainingManager.detailsTrainingList![position!].avgStrokes
+        return sumTraining.avgStrokes
     }
 }

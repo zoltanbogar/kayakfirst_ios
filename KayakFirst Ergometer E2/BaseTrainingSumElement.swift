@@ -11,14 +11,14 @@ import UIKit
 class BaseTrainingSumElement: UIView {
     
     //MARK: properties
-    let trainingManager = TrainingManager.sharedInstance
     var trainingList: [Training]?
-    var position: Int?
+    var sumTraining: SumTraining!
     
     //MARK: init
-    init(position: Int) {
+    init(sumTraining: SumTraining) {
+        self.sumTraining = sumTraining
+        
         super.init(frame: CGRect.zero)
-        self.position = position
 
         initView()
         initTrainingList()

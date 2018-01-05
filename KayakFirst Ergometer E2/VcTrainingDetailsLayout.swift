@@ -16,10 +16,10 @@ class VcTrainingDetailsLayout: BaseLayout {
     private var stackView: UIStackView?
     private var stackViewTitle: UIStackView?
     
-    private let position: Int
+    private let sumTraining: SumTraining
     
-    init(contentView: UIView, position: Int) {
-        self.position = position
+    init(contentView: UIView, sumTraining: SumTraining) {
+        self.sumTraining = sumTraining
         
         super.init(contentView: contentView)
     }
@@ -218,19 +218,19 @@ class VcTrainingDetailsLayout: BaseLayout {
     }()
     
     lazy var sumTrainingView: TrainingSumView! = {
-        let view = TrainingSumView(frame: CGRect.zero, position: self.position)
+        let view = TrainingSumView(frame: CGRect.zero, sumTraining: self.sumTraining)
         
         return view
     }()
     
     lazy var chartTime: ChartView! = {
-        let view = ChartView(position: self.position, chartMode: ChartMode.chartModeTime)
+        let view = ChartView(sumTraining: self.sumTraining, chartMode: ChartMode.chartModeTime)
         
         return view
     }()
     
     lazy var chartDistance: ChartView! = {
-        let view = ChartView(position: self.position, chartMode: ChartMode.chartModeDistance)
+        let view = ChartView(sumTraining: self.sumTraining, chartMode: ChartMode.chartModeDistance)
         
         return view
     }()

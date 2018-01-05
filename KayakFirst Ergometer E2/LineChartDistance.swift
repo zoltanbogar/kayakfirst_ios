@@ -16,9 +16,9 @@ class LineChartDistance: AppLineChartData {
     private let distanceList: [Training]
     
     //MARK: init
-    init(lineChart: LineChartView, distanceList: [Training], position: Int) {
+    init(lineChart: LineChartView, distanceList: [Training], sumTraining: SumTraining) {
         self.distanceList = distanceList
-        super.init(lineChart: lineChart, position: position)
+        super.init(lineChart: lineChart, sumTraining: sumTraining)
     }
     
     override func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {

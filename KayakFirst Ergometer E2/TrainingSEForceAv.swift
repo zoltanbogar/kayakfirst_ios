@@ -31,10 +31,10 @@ class TrainingSEForceAv: TrainingSumElementAverage {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingManager.detailsTrainingList![position!].fList
+        return sumTraining.fList
     }
     
     override func calculate() -> Double {
-        return UnitHelper.getForceValue(metricValue: trainingManager.detailsTrainingList![position!].avgF)
+        return UnitHelper.getForceValue(metricValue: sumTraining.avgF)
     }
 }

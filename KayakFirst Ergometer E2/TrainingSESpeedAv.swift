@@ -30,10 +30,10 @@ class TrainingSESpeedAv: TrainingSumElementAverage {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingManager.detailsTrainingList![position!].vList
+        return sumTraining.vList
     }
     
     override func calculate() -> Double {
-        return UnitHelper.getSpeedValue(metricValue: trainingManager.detailsTrainingList![position!].avgV)
+        return UnitHelper.getSpeedValue(metricValue: sumTraining.avgV)
     }
 }

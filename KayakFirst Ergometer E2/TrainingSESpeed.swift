@@ -26,6 +26,6 @@ class TrainingSESpeed: TrainingSumelementMaximum {
     }
     
     override func getTrainingList() -> [Training] {
-        return trainingManager.detailsTrainingList![position!].vList
+        return sumTraining.vList
     }
 }

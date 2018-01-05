@@ -81,8 +81,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         contentLayout!.tableViewTraining.deleteCallback = self.deleteDataCallback
         contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
         
-        contentLayout!.tableViewTraining.rowClickCallback = { sumTraining, position in
-            startTrainingDetailsPagerVc(navController: self.navigationController!, position: position)
+        contentLayout!.tableViewTraining.trainingClickCallback = { sumTrainings, position in
+            startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
         }
         contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
             startEventDetailsViewController(viewController: self, planEvent: planEvent)

@@ -12,6 +12,7 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
     
     //MARK: properties
     var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+    var trainingClickCallback: ((_ sumTrainings: [SumTraining]?, _ position: Int) -> ())?
     
     //MARK: init
     override init(view: UIView) {
@@ -44,6 +45,10 @@ class TrainingTablewView: TableViewWithEmpty<SumTraining> {
         (cell as! TrainingTablewViewCell).deleteCallback = deleteCallback
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        trainingClickCallback?(dataList, indexPath.row)
     }
     
     private lazy var labelEmpty: UILabel! = {

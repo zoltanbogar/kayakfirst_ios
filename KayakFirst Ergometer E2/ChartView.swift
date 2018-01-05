@@ -18,17 +18,17 @@ enum ChartMode: String {
 class ChartView: CustomUi<ViewChartLayout> {
     
     //MARK: properties
-    private var position: Int?
+    private var sumTraining: SumTraining!
     private var lineChartData: AppLineChartData?
     private var diagramLabelList: [DiagramLabel]?
     private var chartMode: ChartMode?
     
     //MARK: init
-    init(position: Int, chartMode: ChartMode) {
+    init(sumTraining: SumTraining, chartMode: ChartMode) {
+        self.sumTraining = sumTraining
         super.init()
         
         self.chartMode = chartMode
-        self.position = position
         
         disableLabelIfNeeded()
         initLabelList()
@@ -68,9 +68,9 @@ class ChartView: CustomUi<ViewChartLayout> {
     
     private func initChart() {
         if chartMode! == ChartMode.chartModeDistance {
-            lineChartData = LineChartDistance(lineChart: contentLayout!.lineChart, distanceList: TrainingManager.sharedInstance.detailsTrainingList![position!].distanceList, position: position!)
+            lineChartData = LineChartDistance(lineChart: contentLayout!.lineChart, distanceList: sumTraining.distanceList, sumTraining: sumTraining)
         } else {
-            lineChartData = LineChartTime(lineChart: contentLayout!.lineChart, position: position!)
+            lineChartData = LineChartTime(lineChart: contentLayout!.lineChart, sumTraining: sumTraining)
         }
         refreshChart()
     }
@@ -80,7 +80,7 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func disableLabelIfNeeded() {
-        let isOutdoor = TrainingManager.sharedInstance.detailsTrainingList![position!].trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        let isOutdoor = sumTraining.trainingEnvironmentType == TrainingEnvironmentType.outdoor
         
         if isOutdoor {
             contentLayout!.labelForce.isDisabled = true
@@ -88,9 +88,7 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func initPlanTimeLine() {
-        let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList
-        
-        let plan = sumTrainings?[position!].planTraining
+        let plan = sumTraining.planTraining
         
         contentLayout!.planView.isHidden = true
         

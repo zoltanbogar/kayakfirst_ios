@@ -7,12 +7,12 @@
 //
 
 import Charts
-//TODO - refactor: index out of range exception can be
+
 class AppLineChartData {
     
     //MARK: properties
     private var lineChart: LineChartView
-    internal var position: Int
+    internal let sumTraining: SumTraining
     private var lineDataSets: [LineChartDataSet]?
     private var label: CalculateEnum?
     private var hasLeftData = false
@@ -21,9 +21,9 @@ class AppLineChartData {
     fileprivate var leftYDateFormatHelper = DateFormatHelper()
     
     //MARK: init
-    init(lineChart: LineChartView, position: Int) {
+    init(lineChart: LineChartView, sumTraining: SumTraining) {
         self.lineChart = lineChart
-        self.position = position
+        self.sumTraining = sumTraining
         
         initChartDesign()
     }
@@ -150,22 +150,21 @@ class AppLineChartData {
     }
     
     func getTrainingListSumByLabel(label: CalculateEnum) -> [Training] {
-        let trainingManager = TrainingManager.sharedInstance
         switch label {
         case CalculateEnum.T_200:
-            return trainingManager.detailsTrainingList![position].t200List
+            return sumTraining.t200List
         case CalculateEnum.T_500:
-            return trainingManager.detailsTrainingList![position].t500List
+            return sumTraining.t500List
         case CalculateEnum.T_1000:
-            return trainingManager.detailsTrainingList![position].t1000List
+            return sumTraining.t1000List
         case CalculateEnum.STROKES:
-            return trainingManager.detailsTrainingList![position].strokesList
+            return sumTraining.strokesList
         case CalculateEnum.F:
-            return trainingManager.detailsTrainingList![position].fList
+            return sumTraining.fList
         case CalculateEnum.V:
-            return trainingManager.detailsTrainingList![position].vList
+            return sumTraining.vList
         case CalculateEnum.S:
-            return trainingManager.detailsTrainingList![position].distanceList
+            return sumTraining.distanceList
         default:
             fatalError("There is no createTrainingList for this :  \(label)")
         }

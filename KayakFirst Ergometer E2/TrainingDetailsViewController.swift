@@ -51,7 +51,7 @@ class TrainingDetailsViewController: BaseVC<VcTrainingDetailsLayout> {
     }
     
     override func getContentLayout(contentView: UIView) -> VcTrainingDetailsLayout {
-        return VcTrainingDetailsLayout(contentView: contentView, position: position)
+        return VcTrainingDetailsLayout(contentView: contentView, sumTraining: sumTraining!)
     }
     
     //MARK: callbacks

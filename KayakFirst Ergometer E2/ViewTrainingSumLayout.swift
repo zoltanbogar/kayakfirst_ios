@@ -10,10 +10,10 @@ import Foundation
 
 class ViewTrainingSumLayout: BaseLayout {
     
-    private let position: Int
+    private let sumTraining: SumTraining
     
-    init(contentView: UIView, position: Int) {
-        self.position = position
+    init(contentView: UIView, sumTraining: SumTraining) {
+        self.sumTraining = sumTraining
         super.init(contentView: contentView)
     }
     
@@ -97,73 +97,73 @@ class ViewTrainingSumLayout: BaseLayout {
     }()
     
     lazy var seT1000Av: TrainingSET1000Av! = {
-        let se = TrainingSET1000Av(position: self.position)
+        let se = TrainingSET1000Av(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seT500Av: TrainingSET500Av! = {
-        let se = TrainingSET500Av(position: self.position)
+        let se = TrainingSET500Av(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seT200Av: TrainingSET200Av! = {
-        let se = TrainingSET200Av(position: self.position)
+        let se = TrainingSET200Av(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seSpeedAv: TrainingSESpeedAv! = {
-        let se = TrainingSESpeedAv(position: self.position)
+        let se = TrainingSESpeedAv(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seStrokeAv: TrainingSEStrokesAv! = {
-        let se = TrainingSEStrokesAv(position: self.position)
+        let se = TrainingSEStrokesAv(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seForceAv: TrainingSEForceAv! = {
-        let se = TrainingSEForceAv(position: self.position)
+        let se = TrainingSEForceAv(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seT1000: TrainingSET1000! = {
-        let se = TrainingSET1000(position: self.position)
+        let se = TrainingSET1000(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seT500: TrainingSET500! = {
-        let se = TrainingSET500(position: self.position)
+        let se = TrainingSET500(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seT200: TrainingSET200! = {
-        let se = TrainingSET200(position: self.position)
+        let se = TrainingSET200(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seSpeed: TrainingSESpeed! = {
-        let se = TrainingSESpeed(position: self.position)
+        let se = TrainingSESpeed(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seStroke: TrainingSEStroke! = {
-        let se = TrainingSEStroke(position: self.position)
+        let se = TrainingSEStroke(sumTraining: self.sumTraining)
         
         return se
     }()
     
     lazy var seForce: TrainingSEForce! = {
-        let se = TrainingSEForce(position: self.position)
+        let se = TrainingSEForce(sumTraining: self.sumTraining)
         
         return se
     }()

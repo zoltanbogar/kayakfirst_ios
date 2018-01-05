@@ -19,8 +19,6 @@ class TrainingManager: BaseManager {
     //MARK: properties
     private let saveTrainingValues = SaveTrainingValues.sharedInstance
     
-    var detailsTrainingList: [SumTraining]?
-    
     //MARK: callbacks
     var trainingCallback: ((_ data: [SumTraining]?, _ error: Responses?) -> ())?
     var trainingDaysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
@@ -34,14 +32,7 @@ class TrainingManager: BaseManager {
     
     func downloadTrainings(sessionIds: [Double]) -> BaseManagerType {
         let manager = ManagerDownloadTrainingBySessionId(sessionIds: sessionIds)
-        runDownload(managerDownload: manager, managerCallBack: { data, error in
-            
-            self.detailsTrainingList = data
-            
-            if let callback = self.trainingCallback {
-                callback(data, error)
-            }
-        })
+        runDownload(managerDownload: manager, managerCallBack: trainingCallback)
         
         return TrainingManagerType.download_training
     }

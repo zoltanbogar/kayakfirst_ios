@@ -11,13 +11,11 @@ import UIKit
 class TrainingSumView: CustomUi<ViewTrainingSumLayout> {
     
     //MARK: properties
-    private var position: Int?
-    private var sumTraining: SumTraining?
+    private var sumTraining: SumTraining!
     
     //MARK: init
-    init(frame: CGRect, position: Int) {
-        self.position = position
-        self.sumTraining = TrainingManager.sharedInstance.detailsTrainingList![position]
+    init(frame: CGRect, sumTraining: SumTraining) {
+        self.sumTraining = sumTraining
         super.init()
         
         self.frame = frame
@@ -28,7 +26,7 @@ class TrainingSumView: CustomUi<ViewTrainingSumLayout> {
     }
     
     override func getContentLayout(contentView: UIView) -> ViewTrainingSumLayout {
-        return ViewTrainingSumLayout(contentView: contentView, position: position!)
+        return ViewTrainingSumLayout(contentView: contentView, sumTraining: sumTraining)
     }
     
 }

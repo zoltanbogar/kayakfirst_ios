@@ -8,14 +8,16 @@
 
 import UIKit
 
-func startTrainingDetailsPagerVc(navController: UINavigationController, position: Int) {
+func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrainings: [SumTraining]?, position: Int) {
     let viewController = TrainingDetailsPagerViewController()
+    viewController.sumTrainings = sumTrainings
     viewController.position = position
     navController.pushViewController(viewController, animated: true)
 }
 
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+    var sumTrainings: [SumTraining]?
     var position: Int? {
         didSet {
             initViewControllers()
@@ -116,13 +118,13 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }
     
     private func initViewControllers() {
-        if let sumTrainings = TrainingManager.sharedInstance.detailsTrainingList {
+        if let sumTrainingsValue = sumTrainings {
             trainingViewControllers = [TrainingDetailsViewController]()
-            for i in 0..<sumTrainings.count {
+            for i in 0..<sumTrainingsValue.count {
                 let controller = TrainingDetailsViewController()
-                controller.sumTraining = sumTrainings[i]
+                controller.sumTraining = sumTrainingsValue[i]
                 controller.position = i
-                controller.maxPosition = sumTrainings.count
+                controller.maxPosition = sumTrainingsValue.count
                 trainingViewControllers!.append(controller)
             }
         }
