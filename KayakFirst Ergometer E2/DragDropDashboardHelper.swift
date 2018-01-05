@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DragDropHelper {
+class DragDropDashboardHelper {
     
     //MARK: properties
     private var snapShot: UIView?

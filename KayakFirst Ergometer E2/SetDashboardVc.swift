@@ -11,7 +11,7 @@ import UIKit
 class SetDashboardVc: BaseTrainingVc<VcSetDashboardLayout> {
     
     //MARK: properties
-    private var dragDropHelper: DragDropHelper!
+    private var dragDropHelper: DragDropDashboardHelper!
     
     //MARK: views
     override func initView() {
@@ -20,7 +20,7 @@ class SetDashboardVc: BaseTrainingVc<VcSetDashboardLayout> {
         contentLayout?.btnDone.target = self
         contentLayout?.btnDone.action = #selector(btnDoneClick)
         
-        dragDropHelper = DragDropHelper(contentLayout: contentLayout!)
+        dragDropHelper = DragDropDashboardHelper(contentLayout: contentLayout!)
     }
     
     override func getContentLayout(contentView: UIView) -> VcSetDashboardLayout {

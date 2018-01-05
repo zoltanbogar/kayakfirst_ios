@@ -168,6 +168,7 @@
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
 		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
+		064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */; };
 		064FE5A21ECED286004A9F35 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A11ECED286004A9F35 /* SearchTextView.swift */; };
 		064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */; };
 		064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */; };
@@ -178,7 +179,7 @@
 		065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187211F0A506D00B434B0 /* UploadPlan.swift */; };
 		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
 		0654CA211FFD54ED003379D6 /* BaseTrainingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */; };
-		0654CA231FFD59E5003379D6 /* DragDropHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA221FFD59E5003379D6 /* DragDropHelper.swift */; };
+		0654CA231FFD59E5003379D6 /* DragDropDashboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */; };
 		0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA241FFD62E5003379D6 /* DashboardVc.swift */; };
 		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
 		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
@@ -580,6 +581,7 @@
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
 		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
+		064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropPlanHelper.swift; sourceTree = "<group>"; };
 		064FE5A11ECED286004A9F35 /* SearchTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseManagerType.swift; sourceTree = "<group>"; };
 		064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManagerType.swift; sourceTree = "<group>"; };
@@ -590,7 +592,7 @@
 		065187211F0A506D00B434B0 /* UploadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlan.swift; sourceTree = "<group>"; };
 		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
 		0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrainingVc.swift; sourceTree = "<group>"; };
-		0654CA221FFD59E5003379D6 /* DragDropHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropHelper.swift; sourceTree = "<group>"; };
+		0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropDashboardHelper.swift; sourceTree = "<group>"; };
 		0654CA241FFD62E5003379D6 /* DashboardVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
 		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
@@ -893,7 +895,8 @@
 			isa = PBXGroup;
 			children = (
 				060A376B1E578F4F00A973BF /* DragDropLayout.swift */,
-				0654CA221FFD59E5003379D6 /* DragDropHelper.swift */,
+				0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */,
+				064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */,
 			);
 			name = drag_drop;
 			sourceTree = "<group>";
@@ -2099,6 +2102,7 @@
 				067964741E63808100DFC050 /* CalculateV_AV.swift in Sources */,
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */,
+				064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
 				063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */,
 				06AF23331F0625FA008805A2 /* Event.swift in Sources */,
@@ -2106,7 +2110,7 @@
 				06C1B9911E259DB200AB4C47 /* DashBoardElement_Actual500.swift in Sources */,
 				06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */,
 				06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */,
-				0654CA231FFD59E5003379D6 /* DragDropHelper.swift in Sources */,
+				0654CA231FFD59E5003379D6 /* DragDropDashboardHelper.swift in Sources */,
 				06CAFF531F0D36CB00D2EA14 /* ManagerModifyPlanTrainingSave.swift in Sources */,
 				06E840511F35E1C300303574 /* BluetoothViewController.swift in Sources */,
 				0626FBCD1EFCE9DB00DCBB33 /* UserManager.swift in Sources */,
