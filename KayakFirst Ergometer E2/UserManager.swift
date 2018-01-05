@@ -104,7 +104,12 @@ class UserManager: BaseManager {
     
     func logout() -> BaseManagerType {
         let userLogout = UserLogout()
-        runUser(serverService: userLogout, managerCallBack: logoutCallback)
+        runUser(serverService: userLogout, managerCallBack: { (success, error) in
+            if error != nil {
+                self.addLoginDto(loginDto: nil)
+            }
+            self.logoutCallback?(success, error)
+        })
         
         socialLogout()
         
