@@ -239,7 +239,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     
     private func keepScreenOn(isOn: Bool) {
         WindowHelper.keepScreenOn(isOn: isOn)
-        WindowHelper.setBrightness(isFull: isOn)
+        WindowHelper.setBrightness(isFull: true)
     }
     
 }
