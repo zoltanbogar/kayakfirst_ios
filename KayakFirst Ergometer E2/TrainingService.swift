@@ -160,7 +160,8 @@ class TrainingService {
             onStopped()
         case CycleState.paused:
             onPaused()
-        default: break
+        case CycleState.bluetoothDisconnected:
+            onStopped()
         }
     }
 
