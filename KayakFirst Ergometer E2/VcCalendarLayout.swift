@@ -54,8 +54,7 @@ class VcCalendarLayout: BaseLayout {
             make.center.equalTo(tableViewEvent)
         }
     }
-    
-    //TODO: not good portrait
+
     override func handlePortraitLayout(size: CGSize) {
         stackView?.axis = .vertical
         

@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: generic for BaseLayout
 class CustomUi<E: BaseLayout>: UIView {
     
     var contentLayout: E?

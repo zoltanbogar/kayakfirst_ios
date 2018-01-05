@@ -103,8 +103,6 @@ class UserManager: BaseManager {
     }
     
     func logout() -> BaseManagerType {
-        ErgometerServiceOld.sharedInstance.disconnectBluetoothn()
-        
         let userLogout = UserLogout()
         runUser(serverService: userLogout, managerCallBack: logoutCallback)
         

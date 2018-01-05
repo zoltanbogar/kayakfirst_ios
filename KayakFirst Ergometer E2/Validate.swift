@@ -36,13 +36,18 @@ class Validate {
     }
     
     class func isPasswordValid<E>(tfPassword: BaseDialogElementTextField<E>) -> Bool {
-        var isValid = true
-        let passwordCharacters = tfPassword.text == nil ? 0 : tfPassword.text!.characters.count
-        if passwordCharacters < Validate.minCharacterPassword {
+        var isValid = isPasswordValid(password: tfPassword.text)
+        if !isValid {
             tfPassword.error = getString("error_password")
-            isValid = false
         }
         return isValid
+    }
+    
+    class func isPasswordValid(password: String?) -> Bool {
+        if let passwordText = password {
+            return passwordText.characters.count >= minCharacterPassword
+        }
+        return false
     }
     
     class func isValidBodyWeight<E>(tfWeight: BaseDialogElementTextField<E>, isMetric: Bool) -> Bool {

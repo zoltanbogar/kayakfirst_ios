@@ -9,7 +9,6 @@
 import Foundation
 import CoreBluetooth
 
-//TODO - refactor: BaseView class for the init stuffs
 class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedListener, BluetoothScanCallback {
     
     //MARK: constants

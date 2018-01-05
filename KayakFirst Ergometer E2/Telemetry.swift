@@ -87,23 +87,10 @@ class Telemetry {
                 pauseDiff.resume()
             case CycleState.paused:
                 pauseDiff.pause()
-            default:
-                //TODO: handle default
-                let index = 0
+            default: break
             }
             
             SwiftEventBus.post(cycleStateEventBusName, sender: cycleState)
-            
-            //TODO: delete this
-            /*if cycleState == CycleState.resumed {
-                if sessionId == 0 {
-                    _sessionId = currentTimeMillis()
-                }
-            }
-            
-            notifyListener(cycleStateChangeListener: planSoundHelperCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: trainingServiceCycleStateChangeListener)
-            notifyListener(cycleStateChangeListener: dashboardCycleStateChangeListener)*/
         }
     }
     
@@ -111,20 +98,6 @@ class Telemetry {
     private var pauseDiff: PauseDiff {
         return _pauseDiff
     }
-    
-    private func notifyListener(cycleStateChangeListener: CycleStateChangeListener?) {
-        if let listener = cycleStateChangeListener {
-            if cycleState != nil {
-                listener.onCycleStateChanged(newCycleState: cycleState!)
-            }
-        }
-    }
-    
-    var dashboardCycleStateChangeListener: CycleStateChangeListener?
-    
-    var trainingServiceCycleStateChangeListener: CycleStateChangeListener?
-    
-    var planSoundHelperCycleStateChangeListener: CycleStateChangeListener?
     
     private func setAverageIndex() {
         if averageIndex == 0 {
@@ -190,9 +163,4 @@ class Telemetry {
     func getAbsoluteCycleIndex(cycleIndex: Int64) -> Int64 {
         return pauseDiff.getAbsoluteCycleIndex(cycleIndex: cycleIndex)
     }
-}
-
-//MARK: protocol
-public protocol CycleStateChangeListener {
-    func onCycleStateChanged(newCycleState: CycleState)
 }

@@ -57,7 +57,7 @@ class NewPasswordDialog: BaseDialog {
         var isEnabled = false
         
         if textFieldNew?.text == textFieldConfirm?.text {
-            isEnabled = PasswordCheck.isPasswordValid(password: textField.text)
+            isEnabled = Validate.isPasswordValid(password: textField.text)
         }
         
         setEnabledPositive(isEnabled: isEnabled)
