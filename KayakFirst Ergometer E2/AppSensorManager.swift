@@ -93,7 +93,6 @@ class AppSensorManager {
     //MARK: start/stop
     func startSensorMonitoring(start: Bool) {
         if start {
-            reset()
             sensorManager.startAccelerometerUpdates(to: operationQueue, withHandler: {
                 [weak self] (data: CMAccelerometerData?, error: Error?) in
                 if let acceleration = data?.acceleration {
