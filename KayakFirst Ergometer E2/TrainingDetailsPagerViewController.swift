@@ -8,6 +8,12 @@
 
 import UIKit
 
+func startTrainingDetailsPagerVc(navController: UINavigationController, position: Int) {
+    let viewController = TrainingDetailsPagerViewController()
+    viewController.position = position
+    navController.pushViewController(viewController, animated: true)
+}
+
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var position: Int? {

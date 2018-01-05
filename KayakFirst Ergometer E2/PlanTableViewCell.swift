@@ -111,7 +111,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     @objc private func clickPlay() {
         if Validate.isValidPlan(viewController: viewController()!, plan: plan) {
             if viewController()!.parent is UINavigationController {
-                startMainVc(navigationViewController: viewController()!.parent as! UINavigationController, plan: plan, event: nil)
+                startTrainingEnvTypeVc(navigationViewController: viewController()!.parent as! UINavigationController, plan: plan, event: nil)
             }
         }
     }

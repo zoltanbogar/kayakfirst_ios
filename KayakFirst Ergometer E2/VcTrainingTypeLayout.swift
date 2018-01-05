@@ -8,7 +8,7 @@
 
 import Foundation
 
-class VcMainLayout: BaseLayout {
+class VcTrainingTypeLayout: BaseLayout {
     
     override func setView() {
         let stackView = UIStackView()

@@ -8,6 +8,10 @@
 
 import Foundation
 
+func startPlanTypeVc(viewController: UIViewController) {
+    viewController.show(PlanTypeVc(), sender: viewController)
+}
+
 class PlanTypeVc: BaseVC<VcPlanTypeLayout>, PlanTypeSelectListener {
     
     //MARK: protocol

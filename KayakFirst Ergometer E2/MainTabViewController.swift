@@ -84,7 +84,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let baseVc: UIViewController
         
         if UserManager.sharedInstance.isQuickStart {
-            baseVc = MainVc()
+            baseVc = TrainingEnvTypeVc()
         } else {
             baseVc = PlanOrNotPlanVc()
         }

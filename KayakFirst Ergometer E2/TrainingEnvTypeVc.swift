@@ -9,19 +9,19 @@
 import UIKit
 import CoreLocation
 
-func startMainVc(navigationViewController: UINavigationController, plan: Plan?, event: Event?) {
+func startTrainingEnvTypeVc(navigationViewController: UINavigationController, plan: Plan?, event: Event?) {
     
     let isValidPlan = plan == nil || Validate.isValidPlan(viewController: navigationViewController, plan: plan)
     
     if isValidPlan {
-        let mainVc = MainVc()
+        let mainVc = TrainingEnvTypeVc()
         mainVc.plan = plan
         mainVc.event = event
         navigationViewController.pushViewController(mainVc, animated: true)
     }
 }
 
-class MainVc: BaseVC<VcMainLayout>, CLLocationManagerDelegate {
+class TrainingEnvTypeVc: BaseVC<VcTrainingTypeLayout>, CLLocationManagerDelegate {
     
     //MARK: properteis
     private let locationManager = CLLocationManager()
@@ -46,8 +46,8 @@ class MainVc: BaseVC<VcMainLayout>, CLLocationManagerDelegate {
         contentLayout!.btnOutdoor.addTarget(self, action: #selector(clickBtnOutdoor), for: .touchUpInside)
     }
     
-    override func getContentLayout(contentView: UIView) -> VcMainLayout {
-        return VcMainLayout(contentView: contentView)
+    override func getContentLayout(contentView: UIView) -> VcTrainingTypeLayout {
+        return VcTrainingTypeLayout(contentView: contentView)
     }
     
     override func initTabBarItems() {

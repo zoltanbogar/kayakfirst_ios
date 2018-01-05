@@ -82,16 +82,14 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
         
         contentLayout!.tableViewTraining.rowClickCallback = { sumTraining, position in
-            let viewController = TrainingDetailsPagerViewController()
-            viewController.position = position
-            self.navigationController?.pushViewController(viewController, animated: true)
+            startTrainingDetailsPagerVc(navController: self.navigationController!, position: position)
         }
         contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
             startEventDetailsViewController(viewController: self, planEvent: planEvent)
         }
         
         contentLayout!.segmentedControl.selectedSegmentIndex = 0
-        setSegmentedItem(sender: (contentLayout as! VcCalendarLayout).segmentedControl)
+        setSegmentedItem(sender: contentLayout!.segmentedControl)
     }
     
     override func getContentLayout(contentView: UIView) -> VcCalendarLayout {
@@ -331,7 +329,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     
     //TODO: add showPlanType function
     @objc private func addClick() {
-        show(PlanTypeVc(), sender: self)
+        startPlanTypeVc(viewController: self)
     }
     
     func presentationMode() -> CalendarMode {

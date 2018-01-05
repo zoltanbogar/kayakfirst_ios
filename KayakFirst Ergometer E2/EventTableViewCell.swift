@@ -77,7 +77,7 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     //MARK: button listeners
     @objc private func clickPlay() {
         if Validate.isValidPlan(viewController: viewController()!, plan: planEvent?.plan) {
-            startMainVc(navigationViewController: (viewController()?.navigationController)!, plan: planEvent?.plan, event: planEvent?.event)
+            startTrainingEnvTypeVc(navigationViewController: (viewController()?.navigationController)!, plan: planEvent?.plan, event: planEvent?.event)
         }
     }
     

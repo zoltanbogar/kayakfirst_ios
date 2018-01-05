@@ -132,7 +132,7 @@ class CreatePlanViewController: BaseVC<VcCreatePlanLayout>, OnFocusedListener, O
     
     @objc func clickPlay() {
         plan?.planElements = contentLayout?.planElementTableView.dataList
-        startMainVc(navigationViewController: self.navigationController!, plan: plan, event: nil)
+        startTrainingEnvTypeVc(navigationViewController: self.navigationController!, plan: plan, event: nil)
     }
     
     func onClicked(value: Int) {

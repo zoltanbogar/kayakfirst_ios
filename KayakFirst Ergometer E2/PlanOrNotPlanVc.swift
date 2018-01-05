@@ -12,7 +12,7 @@ class PlanOrNotPlanVc: BaseVC<VcPlanOrNotPlanLayout>, PlanTypeSelectListener {
     
     //MARK: button listeners
     @objc private func clickRun() {
-        show(MainVc(), sender: self)
+        show(TrainingEnvTypeVc(), sender: self)
     }
     
     //MARK: protocol

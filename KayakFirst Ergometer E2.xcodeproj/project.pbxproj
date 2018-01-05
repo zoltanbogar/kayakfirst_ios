@@ -153,7 +153,7 @@
 		063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */; };
 		063237D51FF6441B00F04A4B /* VcWelcomeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
-		06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcMainLayout.swift */; };
+		06371C221FF5663500469A46 /* VcTrainingTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcTrainingTypeLayout.swift */; };
 		06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */; };
 		06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C251FF56A7700469A46 /* VcPlanListLayout.swift */; };
 		06371C281FF56C8100469A46 /* VcCreatePlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */; };
@@ -289,7 +289,7 @@
 		06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */; };
 		06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */; };
 		06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseVC.swift */; };
-		06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* MainVc.swift */; };
+		06BCB0D41E564F0200F41652 /* TrainingEnvTypeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */; };
 		06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D51E564F2200F41652 /* CalendarVc.swift */; };
 		06BCB0D81E564F3C00F41652 /* ProfileVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D71E564F3C00F41652 /* ProfileVc.swift */; };
 		06BCB0DA1E564F5800F41652 /* SettingsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D91E564F5800F41652 /* SettingsVc.swift */; };
@@ -565,7 +565,7 @@
 		063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcBluetoothLayout.swift; sourceTree = "<group>"; };
 		063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcWelcomeLayout.swift; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
-		06371C211FF5663500469A46 /* VcMainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcMainLayout.swift; sourceTree = "<group>"; };
+		06371C211FF5663500469A46 /* VcTrainingTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcTrainingTypeLayout.swift; sourceTree = "<group>"; };
 		06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanOrNotPlanLayout.swift; sourceTree = "<group>"; };
 		06371C251FF56A7700469A46 /* VcPlanListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanListLayout.swift; sourceTree = "<group>"; };
 		06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCreatePlanLayout.swift; sourceTree = "<group>"; };
@@ -702,7 +702,7 @@
 		06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanTrainingBySessionId.swift; sourceTree = "<group>"; };
 		06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		06BCB0D11E564D7D00F41652 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		06BCB0D31E564F0200F41652 /* MainVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVc.swift; sourceTree = "<group>"; };
+		06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingEnvTypeVc.swift; sourceTree = "<group>"; };
 		06BCB0D51E564F2200F41652 /* CalendarVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVc.swift; sourceTree = "<group>"; };
 		06BCB0D71E564F3C00F41652 /* ProfileVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVc.swift; sourceTree = "<group>"; };
 		06BCB0D91E564F5800F41652 /* SettingsVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVc.swift; sourceTree = "<group>"; };
@@ -1535,7 +1535,7 @@
 				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
-				06BCB0D31E564F0200F41652 /* MainVc.swift */,
+				06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */,
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
 				06BCB0D91E564F5800F41652 /* SettingsVc.swift */,
@@ -1697,7 +1697,7 @@
 				06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */,
 				06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */,
 				06371C1F1FF5610200469A46 /* VcProfileLayout.swift */,
-				06371C211FF5663500469A46 /* VcMainLayout.swift */,
+				06371C211FF5663500469A46 /* VcTrainingTypeLayout.swift */,
 				06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */,
 				06371C251FF56A7700469A46 /* VcPlanListLayout.swift */,
 				06371C271FF56C8100469A46 /* VcCreatePlanLayout.swift */,
@@ -2170,7 +2170,7 @@
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */,
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
-				06BCB0D41E564F0200F41652 /* MainVc.swift in Sources */,
+				06BCB0D41E564F0200F41652 /* TrainingEnvTypeVc.swift in Sources */,
 				06CAFF4D1F0D304D00D2EA14 /* EventManager.swift in Sources */,
 				06C707141FFB91EC00D72E72 /* ViewBluetoothListLayout.swift in Sources */,
 				06C7070C1FFB864500D72E72 /* ViewCalibrationLayout.swift in Sources */,
@@ -2264,7 +2264,7 @@
 				060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */,
 				066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */,
 				06C707321FFBCAC600D72E72 /* ViewDashboardLayout.swift in Sources */,
-				06371C221FF5663500469A46 /* VcMainLayout.swift in Sources */,
+				06371C221FF5663500469A46 /* VcTrainingTypeLayout.swift in Sources */,
 				061145D61E58D93E0058EAF4 /* LabelSpeed.swift in Sources */,
 				067964771E6381C600DFC050 /* CalculateElementCurrent.swift in Sources */,
 				067964561E63633E00DFC050 /* CycleState.swift in Sources */,
