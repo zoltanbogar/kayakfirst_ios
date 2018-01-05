@@ -8,15 +8,10 @@
 
 import Foundation
 
-//MARK: delegate
-public protocol CalibrationDelegate {
-    func onCalibrationEnd()
-}
-
 class CalibrationView: CustomUi<ViewCalibrationLayout> {
     
     //MARK: properties
-    var delegate: CalibrationDelegate?
+    private var calibrationDuration: Double!
     
     //MARK: init
     init(superView: UIView) {
@@ -38,8 +33,13 @@ class CalibrationView: CustomUi<ViewCalibrationLayout> {
         return ViewCalibrationLayout(contentView: contentView)
     }
     
-    func showView() {
+    func showView(calibrationDuration: Double) {
+        self.calibrationDuration = calibrationDuration
         show(true)
+    }
+    
+    func calibrationEnd() {
+        show(false)
     }
     
     private func startTimer() {
@@ -47,11 +47,11 @@ class CalibrationView: CustomUi<ViewCalibrationLayout> {
         var timeDiff: Double = 0
         
         DispatchQueue.global().async {
-            while timeDiff < analyzeTime {
+            while timeDiff < self.calibrationDuration {
                 usleep(UInt32(refreshMillis * 1000 / 2))
                 timeDiff = currentTimeMillis() - startTime
                 DispatchQueue.main.async {
-                    let percent = timeDiff / analyzeTime
+                    let percent = timeDiff / self.calibrationDuration
                     self.contentLayout!.progressView.progress = Float(percent)
                 }
             }
@@ -66,12 +66,7 @@ class CalibrationView: CustomUi<ViewCalibrationLayout> {
     private func show(_ isShow: Bool) {
         if isShow {
             startTimer()
-        } else {
-            if let delegateValue = delegate {
-                delegateValue.onCalibrationEnd()
-            }
         }
-        
         isHidden = !isShow
     }
     

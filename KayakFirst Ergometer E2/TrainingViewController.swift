@@ -19,7 +19,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, CalibrationDelegate, StartDelayDelegate, PauseViewDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -85,14 +85,7 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         pauseView = PauseView(superView: view)
         pauseView.delegate = self
         
-        addCalibrationViewIfNeeded()
-    }
-    
-    private func addCalibrationViewIfNeeded() {
-        if trainingEnvType == TrainingEnvironmentType.outdoor {
-            calibrationView = CalibrationView(superView: view)
-            calibrationView!.delegate = self
-        }
+        calibrationView = CalibrationView(superView: view)
     }
     
     //MARK: public functions
@@ -128,12 +121,8 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     }
     
     func playClick() {
-        switch trainingEnvType! {
-        case TrainingEnvironmentType.outdoor:
-            calibrationView?.showView()
-        case TrainingEnvironmentType.ergometer:
-            onCalibrationEnd()
-        }
+        calibrationView?.showView(calibrationDuration: trainingService.getCalibrationDuration())
+        trainingService.calibrate()
     }
     
     func pauseClick() {
@@ -147,10 +136,6 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
     
     func onStopClicked() {
         trainingService.stop()
-    }
-    
-    func onCalibrationEnd() {
-        startDelayView.startCounter()
     }
     
     func onCounterEnd() {
@@ -184,6 +169,9 @@ class TrainingViewController: PortraitNavController, CalibrationDelegate, StartD
         case CycleState.resumed:
             sessionId = telemetry.sessionId
             setLayoutByCycleState(cycleState: cycleState)
+        case CycleState.calibrated:
+            calibrationView?.calibrationEnd()
+            startDelayView.startCounter()
         default: break
         }
     }

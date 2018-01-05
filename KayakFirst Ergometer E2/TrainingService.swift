@@ -53,6 +53,10 @@ class TrainingService {
         }
     }
     
+    func calibrate() {
+        setTelemetryCycleState(cycleState: CycleState.calibrated)
+    }
+    
     func start() {
         reset()
         resume()
@@ -68,6 +72,10 @@ class TrainingService {
     
     func stop() {
         setTelemetryCycleState(cycleState: CycleState.stopped)
+    }
+    
+    func getCalibrationDuration() -> Double {
+        return 0
     }
     
     internal func shouldCalculate() -> Bool {
@@ -162,6 +170,7 @@ class TrainingService {
             onPaused()
         case CycleState.bluetoothDisconnected:
             onStopped()
+        default: break
         }
     }
 

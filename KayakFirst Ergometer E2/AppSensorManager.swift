@@ -85,6 +85,11 @@ class AppSensorManager {
         }
     }
     
+    func calibrate() {
+        reset()
+        startSensorMonitoring(start: true)
+    }
+    
     //MARK: start/stop
     func startSensorMonitoring(start: Bool) {
         if start {
@@ -149,6 +154,7 @@ class AppSensorManager {
                 if ((telemetry.getAbsoluteTimestamp() - initAccelerometerTime) > analyzeTime) {
                     calDefault()
                     initCycle = true
+                    telemetry.cycleState = CycleState.calibrated
                 }
             } else {
                 let time = telemetry.getAbsoluteTimestamp()

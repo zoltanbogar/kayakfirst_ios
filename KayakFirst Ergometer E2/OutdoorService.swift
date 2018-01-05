@@ -25,6 +25,14 @@ class OutdoorSevice: TrainingService {
         super.init(telemetry: telemetry)
     }
     
+    override func getCalibrationDuration() -> Double {
+        return analyzeTime
+    }
+    
+    override func calibrate() {
+        sensorManager.calibrate()
+    }
+    
     override func onResumed() {
         super.onResumed()
         
