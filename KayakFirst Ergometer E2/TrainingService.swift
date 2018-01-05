@@ -44,7 +44,6 @@ class TrainingService {
     func bindService(isBind: Bool) {
         if isBind {
             SwiftEventBus.onBackgroundThread(self, name: cycleStateEventBusName, handler: { result in
-                //TODO: nullcheck
                 let cycleState: CycleState = result.object as! CycleState
                 self.onCycleStateChanged(cycleState: cycleState)
             })

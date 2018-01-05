@@ -35,8 +35,7 @@ class KayakLog {
     
     
     class func logUserData(_ logLine: String) {
-        //TODO: reactivate this
-        /*if logNeeded {
+        if logNeeded {
             log("LOG", logLine)
             
             createLogFile()
@@ -48,7 +47,7 @@ class KayakLog {
             catch {
                 log("EXCEPTION", error)
             }
-        }*/
+        }
     }
     
     private class func createLogFile() {

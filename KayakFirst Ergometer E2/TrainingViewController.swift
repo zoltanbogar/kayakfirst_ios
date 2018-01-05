@@ -148,7 +148,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     private func registerEventBus(isRegister: Bool) {
         if isRegister {
             SwiftEventBus.onMainThread(self, name: cycleStateEventBusName, handler: { result in
-                //TODO: nullcheck
                 let cycleState: CycleState = result.object as! CycleState
                 self.onCycleStateChanged(cycleState: cycleState)
             })
@@ -179,7 +178,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     private func setLayoutByCycleState(cycleState: CycleState) {
         switch cycleState {
         case CycleState.resumed:
-            //TODO: plansound
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
             dashboardVc?.refreshDashboardElements(true)

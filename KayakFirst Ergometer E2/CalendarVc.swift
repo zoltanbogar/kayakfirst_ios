@@ -327,7 +327,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         contentLayout!.cvCalendarView?.toggleCurrentDayView()
     }
     
-    //TODO: add showPlanType function
     @objc private func addClick() {
         startPlanTypeVc(viewController: self)
     }
