@@ -13,7 +13,7 @@ class CalculateElementT_1000<M: MeasureCommand>: CalculateElementT<M> {
         return CalculateEnum.T_1000
     }
     
-    override func getDistance() -> Double {
-        return 1000
+    override func getDistance() -> Pace {
+        return Pace.pace1000
     }
 }

@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum Pace: Int {
+    case pace200 = 200
+    case pace500 = 500
+    case pace1000 = 1000
+}
+
 class UnitHelper {
     
     //MARK: constants
@@ -81,23 +87,21 @@ class UnitHelper {
         }
     }
     
-    class func getPaceValue(pace: Int, metricValue: Double) -> Double {
+    class func getPaceValue(pace: Pace, metricValue: Double) -> Double {
         var value: Double = 0
         if isMetricPace() {
             value = metricValue
         } else {
             var correction: Double = 1
             switch pace {
-            case 200:
+            case Pace.pace200:
                 correction = 0.25
-            case 500:
+            case Pace.pace500:
                 correction = 0.5
-            case 1000:
+            case Pace.pace1000:
                 correction = 1
-            default:
-                break
             }
-            value = (metricValue / Double(pace)) * (1609.34 * correction)
+            value = (metricValue / Double(pace.rawValue)) * (1609.34 * correction)
         }
         return value
     }
@@ -114,11 +118,11 @@ class UnitHelper {
             case CalculateEnum.STROKES.rawValue:
                 value = trainingValue.dataValue
             case CalculateEnum.T_200.rawValue:
-                value = getPaceValue(pace: 200, metricValue: trainingValue.dataValue)
+                value = getPaceValue(pace: Pace.pace200, metricValue: trainingValue.dataValue)
             case CalculateEnum.T_500.rawValue:
-                value = getPaceValue(pace: 500, metricValue: trainingValue.dataValue)
+                value = getPaceValue(pace: Pace.pace500, metricValue: trainingValue.dataValue)
             case CalculateEnum.T_1000.rawValue:
-                value = getPaceValue(pace: 1000, metricValue: trainingValue.dataValue)
+                value = getPaceValue(pace: Pace.pace1000, metricValue: trainingValue.dataValue)
             case CalculateEnum.S_SUM.rawValue:
                 value = getDistanceValue(metricValue: trainingValue.dataValue)
             default:
@@ -128,28 +132,26 @@ class UnitHelper {
         return value
     }
     
-    class func getCalculatePaceTitle(pace: Int) -> String {
+    class func getCalculatePaceTitle(pace: Pace) -> String {
         switch pace {
-        case 200:
+        case Pace.pace200:
             if isMetricPace() {
                 return getString("calculate_t200_metric")
             } else {
                 return getString("calculate_t200_imperial")
             }
-        case 500:
+        case Pace.pace500:
             if isMetricPace() {
                 return getString("calculate_t500_metric")
             } else {
                 return getString("calculate_t500_imperial")
             }
-        case 1000:
+        case Pace.pace1000:
             if isMetricPace() {
                 return getString("calculate_t1000_metric")
             } else {
                 return getString("calculate_t1000_imperial")
             }
-        default:
-            fatalError("there is no other pace")
         }
     }
     

@@ -16,7 +16,7 @@ class DashBoardElement_Av200: DashBoardelementTime {
     }
     
     override func getValue() -> Double {
-        return UnitHelper.getPaceValue(pace: 200, metricValue: telemetry.t_200_av)
+        return UnitHelper.getPaceValue(pace: Pace.pace200, metricValue: telemetry.t_200_av)
     }
     
     override func getTitleMetric() -> String {

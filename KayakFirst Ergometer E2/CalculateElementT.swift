@@ -10,12 +10,12 @@ import Foundation
 class CalculateElementT<M: MeasureCommand>: CalculateElementCurrent<M> {
     
     //MARK: abstract method
-    internal func getDistance() -> Double {
+    internal func getDistance() -> Pace {
         fatalError("Must be implemented")
     }
     
     override func run() -> Training {
-        let distance = getDistance()
+        let distance = Double(getDistance().rawValue)
         var v = startCommand.v.dataValue
         
         if v > Double(minSpeedKmh) {
