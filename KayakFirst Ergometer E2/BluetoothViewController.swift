@@ -55,6 +55,7 @@ class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedLi
     }
     
     func onDisconnected() {
+        refreshBluetoothList()
         showProgress(isShow: false)
     }
 }

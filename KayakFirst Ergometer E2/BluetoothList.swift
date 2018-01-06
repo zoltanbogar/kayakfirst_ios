@@ -13,7 +13,6 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
     
     //MARK: constants
     private let bluetoothScanTimeout: Double = 5 //5 sec
-    private let bluetoothConnectTimeout: Double = 5 //5 sec
     
     private let stateBluetoothOff = 0
     private let stateBluetoothFound = 1
@@ -56,7 +55,6 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
             self.bluetoothVc.showProgress(isShow: true)
             
             self.bluetooth.connect(bluetoothDevice: bluetoothDevice, onBluetoothConnectedListener: self.bluetoothConnectedListener)
-            self.setBluetoothDisconnectTimeout()
             self.stop()
         }
     }
@@ -223,19 +221,6 @@ class BluetoothList: CustomUi<ViewBluetoothListLayout>, BluetoothStateChangedLis
             return deviceName.hasPrefix(kayakDeviceFirstLetter) && deviceName.characters.count == kayakDeviceCharacters
         }
         return true
-    }
-    
-    private func setBluetoothDisconnectTimeout() {
-        Timer.scheduledTimer(timeInterval: bluetoothConnectTimeout, target: self, selector: #selector(bluetoothConnectTimeouted), userInfo: nil, repeats: false)
-    }
-    
-    @objc private func bluetoothConnectTimeouted() {
-        let bluetooth = Bluetooth.sharedInstance
-        
-        if !bluetooth.isConnected {
-            bluetooth.disconnect()
-        }
-        
     }
     
 }

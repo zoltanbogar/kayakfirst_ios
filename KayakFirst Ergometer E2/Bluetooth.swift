@@ -26,6 +26,8 @@ protocol OnBluetoothConnectedListener {
 class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     //MARK: constants
+    private let bluetoothConnectTimeout: Double = 5 //5 sec
+    
     private let serviceUuid = CBUUID(string: "0000FFE0-0000-1000-8000-00805F9B34FB")
     private let characteristicUuid = CBUUID(string: "0000FFE1-0000-1000-8000-00805F9B34FB")
 
@@ -95,6 +97,9 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if isBluetoothOn() != nil && isBluetoothOn()! {
             connectedPeripheral = bluetoothDevice
             bluetoothManager?.connect(bluetoothDevice, options: nil)
+            
+            Timer.scheduledTimer(timeInterval: bluetoothConnectTimeout, target: self, selector: #selector(bluetoothConnectTimeouted), userInfo: nil, repeats: false)
+            
         } else {
             self.onBluetoothConnectedListener?.onDisconnected()
         }
@@ -111,6 +116,13 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if isConnected && connectedPeripheral != nil {
             connectedPeripheral?.writeValue(meausreCommandErgometer.getCommand().data(using: String.Encoding.utf8)!, for: characteristic!, type: CBCharacteristicWriteType.withoutResponse)
         }
+    }
+    
+    @objc private func bluetoothConnectTimeouted() {
+        if !isConnected {
+            disconnect()
+        }
+        
     }
     
     private func parseData(data: Data?) -> String {
