@@ -83,7 +83,8 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
         let cycleIndex = telemetry.getCycleIndex()
         
         for measureCommandErgometer in measureCommands {
-            if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMin.rawValue {
+            //TODO
+            /*if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMin.rawValue {
                 if cycleIndex + 1 == measureCommandErgometer.getCycleIndex() {
                     t_min = t_min_future
                     t_min_future = measureCommandErgometer.getValue()
@@ -100,7 +101,7 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
             }
             if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMax.rawValue {
                 t_max = measureCommandErgometer.getValue()
-            }
+            }*/
         }
         
         log("ERGO_TEST", "t_min: \(t_min), t_minFuture \(t_min_future), t_h \(t_h), t_h_future \(t_h_future)")

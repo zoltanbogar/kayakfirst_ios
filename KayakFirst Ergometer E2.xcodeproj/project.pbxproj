@@ -189,6 +189,10 @@
 		066579E81F16013300E43852 /* UploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E71F16013300E43852 /* UploadPushId.swift */; };
 		066579EA1F16065000E43852 /* ManagerUploadPushId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579E91F16065000E43852 /* ManagerUploadPushId.swift */; };
 		066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066579ED1F161BD000E43852 /* PushNotificationHelper.swift */; };
+		066835EC200268F200DA9969 /* AppLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066835EB200268F200DA9969 /* AppLocation.swift */; };
+		066835EE20026C1B00DA9969 /* CommandEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066835ED20026C1B00DA9969 /* CommandEnum.swift */; };
+		066835F020026D8600DA9969 /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066835EF20026D8600DA9969 /* CommandParser.swift */; };
+		066835F2200272E900DA9969 /* MeausreCommandOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066835F1200272E900DA9969 /* MeausreCommandOutdoor.swift */; };
 		066B00361EC7016700BE0E1F /* PlanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00351EC7016700BE0E1F /* PlanElement.swift */; };
 		066B00381EC701B900BE0E1F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B00371EC701B900BE0E1F /* Plan.swift */; };
 		066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */; };
@@ -603,6 +607,10 @@
 		066579E91F16065000E43852 /* ManagerUploadPushId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadPushId.swift; sourceTree = "<group>"; };
 		066579EB1F160FC000E43852 /* KayakFirst Ergometer E2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KayakFirst Ergometer E2.entitlements"; sourceTree = "<group>"; };
 		066579ED1F161BD000E43852 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
+		066835EB200268F200DA9969 /* AppLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocation.swift; sourceTree = "<group>"; };
+		066835ED20026C1B00DA9969 /* CommandEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandEnum.swift; sourceTree = "<group>"; };
+		066835EF20026D8600DA9969 /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		066835F1200272E900DA9969 /* MeausreCommandOutdoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeausreCommandOutdoor.swift; sourceTree = "<group>"; };
 		066B00351EC7016700BE0E1F /* PlanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElement.swift; sourceTree = "<group>"; };
 		066B00371EC701B900BE0E1F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		066B003A1EC71C5500BE0E1F /* PlanElementDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanElementDbLoader.swift; sourceTree = "<group>"; };
@@ -969,6 +977,7 @@
 				06AF232E1F06251B008805A2 /* ModifyAble.swift */,
 				06AF23301F06253B008805A2 /* UploadAble.swift */,
 				060E975D1FE8275F00CB4258 /* SocialUser.swift */,
+				066835EB200268F200DA9969 /* AppLocation.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1442,6 +1451,8 @@
 				06F9D5CB1F389287005ECA8B /* ergometer */,
 				067964911E63881200DFC050 /* outdoor */,
 				0679648F1E6387A000DFC050 /* MeasureCommand.swift */,
+				066835ED20026C1B00DA9969 /* CommandEnum.swift */,
+				066835EF20026D8600DA9969 /* CommandParser.swift */,
 			);
 			name = command;
 			sourceTree = "<group>";
@@ -1452,6 +1463,7 @@
 				067964981E638A2C00DFC050 /* CommandOutdoorSpeed.swift */,
 				0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */,
 				064260DE1E7EA9CA00830278 /* CommandOutdoorDistance.swift */,
+				066835F1200272E900DA9969 /* MeausreCommandOutdoor.swift */,
 			);
 			name = outdoor;
 			sourceTree = "<group>";
@@ -2235,6 +2247,7 @@
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
+				066835EE20026C1B00DA9969 /* CommandEnum.swift in Sources */,
 				06F657BC1E45FBEC002AA9D0 /* ProgressView.swift in Sources */,
 				069ADD951EFB861800F24427 /* PickerHelper.swift in Sources */,
 				067964891E63861300DFC050 /* CalculateElementV.swift in Sources */,
@@ -2420,6 +2433,7 @@
 				061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
+				066835F020026D8600DA9969 /* CommandParser.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				06CAFF431F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift in Sources */,
 				06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */,
@@ -2442,6 +2456,7 @@
 				060A377A1E58521100A973BF /* DashBoardElement_Av500.swift in Sources */,
 				0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */,
 				06C707201FFBB0C100D72E72 /* BaseProfileElement.swift in Sources */,
+				066835F2200272E900DA9969 /* MeausreCommandOutdoor.swift in Sources */,
 				0679646E1E637FCC00DFC050 /* CalculateT_200_AV.swift in Sources */,
 				06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */,
 				06C2F3F41F0A43850077EE21 /* EditEvent.swift in Sources */,
@@ -2451,6 +2466,7 @@
 				06C7072E1FFBC79100D72E72 /* ViewDragDropLayout.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */,
+				066835EC200268F200DA9969 /* AppLocation.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
 				06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */,
 				06CAFF491F0D2E1000D2EA14 /* ManagerModifyPlan.swift in Sources */,

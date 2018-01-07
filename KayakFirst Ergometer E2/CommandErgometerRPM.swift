@@ -13,8 +13,8 @@ class CommandErgometerRPM: MeasureCommandErgometer {
     //MARK: constants
     private let numValue = 2
     
-    override func getCommand() -> String {
-        return CommandErgometerEnum.rpm.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.rpm
     }
     
     override func initValue(stringValue: String) -> Int64 {

@@ -9,12 +9,13 @@
 import Foundation
 class CommandOutdoorStroke: MeasureCommand {
     
-    override func getCommand() -> String {
-        return CommandOutdoorEnum.stroke.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.stroke
     }
     
+    //TODO
     override func getCycleIndex() -> Int64 {
-        return Int64(value)
+        return 0
     }
     
 }

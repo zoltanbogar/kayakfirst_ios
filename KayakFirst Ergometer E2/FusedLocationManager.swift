@@ -70,9 +70,9 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func getCommandList(appSensorManager: AppSensorManager) -> [MeasureCommand] {
-        commandOutdoorDistance.value = distanceSum
+        /*commandOutdoorDistance.setValue(stringValue: <#T##String#>) = distanceSum
         commandOutdoorSpeed.value = speed
-        commandOutdoorStroke.value = appSensorManager.strokesPerMin
+        commandOutdoorStroke.value = appSensorManager.strokesPerMin*/
         
         return commandList
     }

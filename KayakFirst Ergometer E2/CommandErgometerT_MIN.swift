@@ -10,7 +10,7 @@ import Foundation
 
 class CommandErgometerT_MIN: MeasureCommandErgometer {
     
-    override func getCommand() -> String {
-        return CommandErgometerEnum.tMin.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.tMin
     }
 }

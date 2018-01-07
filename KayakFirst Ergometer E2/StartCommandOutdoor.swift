@@ -57,16 +57,17 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     private func fillCommands(commands: [MeasureCommand]) {
         for measureCommandOutdoor in commands {
-            switch measureCommandOutdoor.getCommand() {
-            case CommandOutdoorEnum.distance.rawValue:
+            //TODO
+            /*switch measureCommandOutdoor.getCommand() {
+            case CommandEnum.distance:
                 self.distanceSum = measureCommandOutdoor.value
-            case CommandOutdoorEnum.speed.rawValue:
+            case CommandEnum.speed:
                 self.speed = measureCommandOutdoor.value
-            case CommandOutdoorEnum.stroke.rawValue:
+            case CommandEnum.stroke:
                 self.strokesValue = measureCommandOutdoor.value
             default:
                 fatalError()
-            }
+            }*/
         }
     }
     

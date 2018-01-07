@@ -10,7 +10,7 @@ import Foundation
 
 class CommandErgometerT_MAX: MeasureCommandErgometer {
     
-    override func getCommand() -> String {
-        return CommandErgometerEnum.tMax.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.tMax
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class CommandErgometerT_V: MeasureCommandErgometer {
     
-    override func getCommand() -> String {
-        return CommandErgometerEnum.tV.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.tV
     }
 }

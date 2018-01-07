@@ -134,7 +134,7 @@ class BluetoothService {
             let valueWasParsable = command.setValue(stringValue: stringData)
          
             if self.commandIndex == 0 {
-                if command.getValue() == Double(CommandErgometerReset.resetSuccess) {
+                if command.getValue() == CommandErgometerReset.resetSuccess {
                     self.commandIndex = 1
                     self.bluetoothResetNumber = 0
                 } else {

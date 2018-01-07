@@ -8,37 +8,26 @@
 
 import Foundation
 
-enum CommandErgometerEnum: String {
-    case tMin = "1"
-    case tH = "2"
-    case tMax = "3"
-    case tV = "4"
-    case rpm = "5"
-    case reset = "9"
-}
-
-enum CommandOutdoorEnum: String {
-    case distance = "distance"
-    case speed = "speed"
-    case stroke = "stroke"
-}
-
 class MeasureCommand {
     
     //MARK properties
-    var value: Double = 0
+    var stringValue: String?
+    
+    func setValue(stringValue: String) -> Bool {
+        self.stringValue = stringValue
+        
+        return true
+    }
     
     //MARK: abstract methods
-    func getCommand() -> String {
+    func getCommand() -> CommandEnum {
         fatalError("Must be implemented")
     }
     func getCycleIndex() -> Int64 {
         fatalError("Must be implemented")
     }
-    func getValue() -> Double {
+    func getValue() -> String? {
         fatalError("Must be implemented")
     }
-    func setValue(stringValue: String) -> Bool {
-        fatalError("Must be implemented")
-    }
+
 }

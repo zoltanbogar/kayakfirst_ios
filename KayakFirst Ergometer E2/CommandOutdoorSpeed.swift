@@ -9,8 +9,8 @@
 import Foundation
 class CommandOutdoorSpeed: MeasureCommand {
     
-    override func getCommand() -> String {
-        return CommandOutdoorEnum.speed.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.speed
     }
     
     override func getCycleIndex() -> Int64 {

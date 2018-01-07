@@ -10,8 +10,8 @@ import Foundation
 
 class CommandOutdoorDistance: MeasureCommand {
     
-    override func getCommand() -> String {
-        return CommandOutdoorEnum.distance.rawValue
+    override func getCommand() -> CommandEnum {
+        return CommandEnum.distance
     }
     
     override func getCycleIndex() -> Int64 {

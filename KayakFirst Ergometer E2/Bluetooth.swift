@@ -114,7 +114,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func writeData(meausreCommandErgometer: MeasureCommandErgometer) {
         if isConnected && connectedPeripheral != nil {
-            connectedPeripheral?.writeValue(meausreCommandErgometer.getCommand().data(using: String.Encoding.utf8)!, for: characteristic!, type: CBCharacteristicWriteType.withoutResponse)
+            connectedPeripheral?.writeValue(meausreCommandErgometer.getCommand().rawValue.data(using: String.Encoding.utf8)!, for: characteristic!, type: CBCharacteristicWriteType.withoutResponse)
         }
     }
     

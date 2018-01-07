@@ -18,25 +18,11 @@ class MeasureCommandErgometer: MeasureCommand {
     private let notValidCommandType = -1
     
     //MARK: properties
-    private var stringValue: String?
+    private var value: Double?
     
     //MARK: implement abstract methods
-    override func getCycleIndex() -> Int64 {
-        if let value = stringValue {
-            return initCycleIndex(stringValue: value)
-        }
-        return 0
-    }
-    
-    override func getValue() -> Double {
-        //UNIT: [sec]
-        return value / unitConversion
-    }
-    
     override func setValue(stringValue: String) -> Bool {
-        self.stringValue = stringValue
-        
-        log("BLE_TEST", "stringValue: \(stringValue)")
+        super.setValue(stringValue: stringValue)
         
         if isValidCommand(stringValue: stringValue) {
             value = Double(initValue(stringValue: stringValue))
@@ -46,8 +32,20 @@ class MeasureCommandErgometer: MeasureCommand {
         return false
     }
     
+    override func getValue() -> String {
+        //UNIT: [sec]
+        return getStringValue(value: value! / unitConversion)
+    }
+    
+    override func getCycleIndex() -> Int64 {
+        if let value = stringValue {
+            return initCycleIndex(stringValue: value)
+        }
+        return 0
+    }
+    
     func isValidCommand(stringValue: String) -> Bool {
-        return Int(getCommand()) == initCommandType(stringValue: stringValue)
+        return Int(getCommand().rawValue) == initCommandType(stringValue: stringValue)
     }
     
     //MARK: functions
@@ -94,6 +92,10 @@ class MeasureCommandErgometer: MeasureCommand {
         }
         
         return stringBuilder
+    }
+    
+    func getStringValue(value: Double) -> String {
+        return CommandParser.getString(value: value)
     }
     
 }
