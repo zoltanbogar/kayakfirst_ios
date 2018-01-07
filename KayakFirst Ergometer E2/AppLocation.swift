@@ -19,15 +19,11 @@ struct AppLocation {
         return AppLocation(
             latitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude,
-            altitude: location.altitude,
-            speed: location.speed,
-            timestamp: location.timestamp.timeIntervalSince1970)
+            speed: location.speed)
     }
     
     let latitude: Double
     let longitude: Double
-    let altitude: Double
     let speed: Double
-    let timestamp: Double
     
 }

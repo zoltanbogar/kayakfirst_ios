@@ -54,7 +54,7 @@ class OutdoorSevice: TrainingService {
     }
     
     override func resetServices() {
-        locationService.reset()
+        //nothing here
     }
     
     override func getTimeWaitAfterCalculate() -> useconds_t {

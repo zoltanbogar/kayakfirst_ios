@@ -53,6 +53,9 @@ class StartCommand<E: MeasureCommand> {
         f = Training()
         v = Training()
         s = Training()
+        
+        v_av = 0
+        distanceSum = 0
     }
     
     //MARK: abstract functions
@@ -89,5 +92,9 @@ class StartCommand<E: MeasureCommand> {
     //MARK: timestamp
     func getCalculatedTimeStamp() -> Double {
         return telemetry.getAbsoluteTimestamp()
+    }
+    
+    func getDoubleFromCommand(measureCommand: MeasureCommand) -> Double {
+        return CommandParser.getDouble(stringValue: measureCommand.getValue()!)
     }
 }

@@ -17,22 +17,8 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     //MARK: properteis
     private let telemetry = Telemetry.sharedInstance
     private let locationManager = CLLocationManager()
-    private var currentLocation: CLLocation?
-    private var currentTime: Double = 0
-    private var _isNewLocationAvailable = true
-    var isNewLocationAvailable: Bool {
-        get {
-            let isNew = _isNewLocationAvailable
-            _isNewLocationAvailable = false
-            return isNew
-        }
-    }
     
-    var distanceSum: Double = 0
-    var speed: Double = 0
-    
-    private let commandOutdoorDistance: CommandOutdoorDistance
-    private let commandOutdoorSpeed: CommandOutdoorSpeed
+    private let commandOutdoorLocation: CommandOutdoorLocation
     private let commandOutdoorStroke: CommandOutdoorStroke
     private let commandList: [MeasureCommand]
     
@@ -41,11 +27,10 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     private override init() {
         locationManager.allowsBackgroundLocationUpdates = true
         
-        commandOutdoorDistance = CommandOutdoorDistance()
-        commandOutdoorSpeed = CommandOutdoorSpeed()
+        commandOutdoorLocation = CommandOutdoorLocation()
         commandOutdoorStroke = CommandOutdoorStroke()
         
-        commandList = [commandOutdoorDistance, commandOutdoorSpeed, commandOutdoorStroke]
+        commandList = [commandOutdoorLocation, commandOutdoorStroke]
     }
     
     //MARK: start/stop monitoring
@@ -62,17 +47,8 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func reset() {
-        currentLocation = nil
-        currentTime = 0
-        speed = 0
-        distanceSum = 0
-    }
-    
     func getCommandList(appSensorManager: AppSensorManager) -> [MeasureCommand] {
-        /*commandOutdoorDistance.setValue(stringValue: <#T##String#>) = distanceSum
-        commandOutdoorSpeed.value = speed
-        commandOutdoorStroke.value = appSensorManager.strokesPerMin*/
+        commandOutdoorStroke.setValue(value: appSensorManager.strokesPerMin)
         
         return commandList
     }
@@ -86,51 +62,9 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
             let accuracy = locations[0].horizontalAccuracy
             
             if accuracy <= accuracyLocation {
-                _isNewLocationAvailable = true
-                if currentLocation == nil {
-                    currentLocation = locations[0]
-                }
-                
-                if Telemetry.sharedInstance.cycleState == CycleState.resumed {
-                    calculate(location: locations[0])
-                }
-                currentLocation = locations[0]
-                
-                log("SPEED_TEST", "speed: \(locations[0].speed * 3.6), accuracy: \(locations[0].horizontalAccuracy)")
+                commandOutdoorLocation.setLocation(location: locations[0])
             }
         }
-    }
-    
-    private func calculate(location: CLLocation) {
-        var speed: Double = 0
-        
-        let distance = getDistance(loc1: location, loc2: currentLocation!)
-        
-        if currentTime == 0 {
-            currentTime = telemetry.getAbsoluteTimestamp()
-        }
-        
-        if location.speed >= 0 {
-            speed = location.speed
-        } else {
-            let timeDiff = telemetry.getAbsoluteTimestamp() - currentTime
-            if timeDiff > 0 {
-                speed = (distance / timeDiff) * 1000
-            }
-        }
-        
-        currentTime = telemetry.getAbsoluteTimestamp()
-        
-        speed = speed * converSationMpsKmph
-        
-        if speed <= maxSpeedKmph {
-            self.speed = speed
-            distanceSum += distance
-        }
-    }
-    
-    private func getDistance(loc1: CLLocation, loc2: CLLocation) -> Double {
-        return loc1.distance(from: loc2)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

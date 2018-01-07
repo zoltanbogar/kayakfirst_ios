@@ -29,7 +29,7 @@ class CommandParser {
             return nil
         }
         
-        return "\(appLocation!.latitude)\(separateCharacter)\(appLocation!.longitude)\(separateCharacter)\(appLocation!.altitude)\(separateCharacter)\(appLocation!.speed)\(separateCharacter)\(appLocation!.timestamp)"
+        return "\(appLocation!.latitude)\(separateCharacter)\(appLocation!.longitude)\(separateCharacter)\(appLocation!.speed)"
     }
     
     class func getAppLocation(applocationString: String?) -> AppLocation? {
@@ -39,16 +39,12 @@ class CommandParser {
         let separatedString: [String] = applocationString!.components(separatedBy: separateCharacter)
         let latitude = getDouble(stringValue: separatedString[0])
         let longitude = getDouble(stringValue: separatedString[1])
-        let altitude = getDouble(stringValue: separatedString[2])
-        let speed = getDouble(stringValue: separatedString[3])
-        let timestmap = getDouble(stringValue: separatedString[4])
+        let speed = getDouble(stringValue: separatedString[2])
         
         return AppLocation(
             latitude: latitude,
             longitude: longitude,
-            altitude: altitude,
-            speed: speed,
-            timestamp: timestmap)
+            speed: speed)
     }
     
 }

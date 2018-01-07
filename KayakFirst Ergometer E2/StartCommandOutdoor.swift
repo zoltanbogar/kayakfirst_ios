@@ -10,6 +10,7 @@ import Foundation
 class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     //MARK: properties
+    var location: AppLocation?
     var speed: Double = 0
     var strokesValue: Double = 0
     
@@ -31,7 +32,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     override func reset() {
         super.reset()
         
-        distanceSum = 0
+        location = nil
         speed = 0
         strokesValue = 0
         
@@ -57,17 +58,14 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     
     private func fillCommands(commands: [MeasureCommand]) {
         for measureCommandOutdoor in commands {
-            //TODO
-            /*switch measureCommandOutdoor.getCommand() {
-            case CommandEnum.distance:
-                self.distanceSum = measureCommandOutdoor.value
-            case CommandEnum.speed:
-                self.speed = measureCommandOutdoor.value
+            switch measureCommandOutdoor.getCommand() {
+            case CommandEnum.location:
+                self.location = CommandParser.getAppLocation(applocationString: measureCommandOutdoor.getValue())
             case CommandEnum.stroke:
-                self.strokesValue = measureCommandOutdoor.value
+                self.strokesValue = getDoubleFromCommand(measureCommand: measureCommandOutdoor)
             default:
                 fatalError()
-            }*/
+            }
         }
     }
     

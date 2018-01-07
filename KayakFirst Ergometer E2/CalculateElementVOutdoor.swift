@@ -9,8 +9,6 @@
 import Foundation
 class CalculateElementVOutdoor: CalculateElementV<MeasureCommand, StartCommandOutdoor> {
     
-    private var currentTimeStamp: Double = 0
-    
     override func run() -> Training {
         calculatedValue = startCommand.speed
         

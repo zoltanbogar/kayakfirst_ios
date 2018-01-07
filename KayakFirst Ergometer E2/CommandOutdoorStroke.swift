@@ -7,15 +7,15 @@
 //
 
 import Foundation
-class CommandOutdoorStroke: MeasureCommand {
+class CommandOutdoorStroke: MeasureCommandOutdoor {
+    
+    func setValue(value: Double) {
+        let stringValue = CommandParser.getString(value: value)
+        setValue(stringValue: stringValue)
+    }
     
     override func getCommand() -> CommandEnum {
         return CommandEnum.stroke
-    }
-    
-    //TODO
-    override func getCycleIndex() -> Int64 {
-        return 0
     }
     
 }

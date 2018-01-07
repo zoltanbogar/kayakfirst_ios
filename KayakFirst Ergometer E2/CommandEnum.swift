@@ -19,8 +19,7 @@ enum CommandEnum: String {
     case reset = "9"
     
     //outdoor
-    case distance = "distance"
-    case speed = "speed"
+    case location = "location"
     case stroke = "stroke"
     
 }

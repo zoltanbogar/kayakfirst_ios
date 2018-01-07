@@ -83,25 +83,24 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
         let cycleIndex = telemetry.getCycleIndex()
         
         for measureCommandErgometer in measureCommands {
-            //TODO
-            /*if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMin.rawValue {
+            if measureCommandErgometer.getCommand() == CommandEnum.tMin {
                 if cycleIndex + 1 == measureCommandErgometer.getCycleIndex() {
                     t_min = t_min_future
-                    t_min_future = measureCommandErgometer.getValue()
+                    t_min_future = getDoubleFromCommand(measureCommand: measureCommandErgometer)
                 } else if cycleIndex == measureCommandErgometer.getCycleIndex() {
-                    t_min = measureCommandErgometer.getValue()
+                    t_min = getDoubleFromCommand(measureCommand: measureCommandErgometer)
                 }
-            } else if measureCommandErgometer.getCommand() == CommandErgometerEnum.tH.rawValue {
+            } else if measureCommandErgometer.getCommand() == CommandEnum.tH {
                 if cycleIndex + 1 == measureCommandErgometer.getCycleIndex() {
                     t_h = t_h_future
-                    t_h_future = measureCommandErgometer.getValue()
+                    t_h_future = getDoubleFromCommand(measureCommand: measureCommandErgometer)
                 } else if cycleIndex == measureCommandErgometer.getCycleIndex() {
-                    t_h = measureCommandErgometer.getValue()
+                    t_h = getDoubleFromCommand(measureCommand: measureCommandErgometer)
                 }
             }
-            if measureCommandErgometer.getCommand() == CommandErgometerEnum.tMax.rawValue {
-                t_max = measureCommandErgometer.getValue()
-            }*/
+            if measureCommandErgometer.getCommand() == CommandEnum.tMax {
+                t_max = getDoubleFromCommand(measureCommand: measureCommandErgometer)
+            }
         }
         
         log("ERGO_TEST", "t_min: \(t_min), t_minFuture \(t_min_future), t_h \(t_h), t_h_future \(t_h_future)")
