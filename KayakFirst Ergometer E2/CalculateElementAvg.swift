@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementAvg<M: MeasureCommand>: CalculateElement<TrainingAvg, M,  StartCommand<M>> {
+class CalculateElementAvg<M: MeasureCommand>: CalculateElement<TrainingAvg, M,  CommandProcessor<M>> {
     
     //MARK: abstract functions
     internal func getAvgType() -> CalculateEnum {

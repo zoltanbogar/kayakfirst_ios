@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgometer, CommandProcessorErgometer> {
     
     private var cycleIndex: Int64 = 0
     private var timestamp: Double = 0

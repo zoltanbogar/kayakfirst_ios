@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementVErgo: CalculateElementV<MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementVErgo: CalculateElementV<MeasureCommandErgometer, CommandProcessorErgometer> {
     
     override func run() -> Training {
         if telemetry.getCycleIndex() > 0 {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementVOutdoor: CalculateElementV<MeasureCommand, StartCommandOutdoor> {
+class CalculateElementVOutdoor: CalculateElementV<MeasureCommand, CommandProcessorOutdoor> {
     
     override func run() -> Training {
         calculatedValue = startCommand.speed

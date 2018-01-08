@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
+class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
     
     //MARK: constants
     private let maxNumberToZero: Int64 = 50000000
@@ -36,7 +36,7 @@ class StartCommandErgometer: StartCommand<MeasureCommandErgometer> {
     private var v_av_ergo: CalculateV_AV_Ergo?
     
     //MARK: init
-    static let sharedInstance = StartCommandErgometer()
+    static let sharedInstance = CommandProcessorErgometer()
     private override init() {
         super.init()
         reset()

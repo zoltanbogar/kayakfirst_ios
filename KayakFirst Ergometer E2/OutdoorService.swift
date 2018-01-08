@@ -14,13 +14,13 @@ class OutdoorSevice: TrainingService {
     private let locationService: FusedLocationManager
     private let sensorManager: AppSensorManager
     
-    private let startCommandOutdoor: StartCommandOutdoor
+    private let startCommandOutdoor: CommandProcessorOutdoor
     
     override init(telemetry: Telemetry) {
         locationService = FusedLocationManager.sharedInstance
         sensorManager = AppSensorManager.sharedInstance
         
-        startCommandOutdoor = StartCommandOutdoor.sharedInstance
+        startCommandOutdoor = CommandProcessorOutdoor.sharedInstance
         
         super.init(telemetry: telemetry)
     }

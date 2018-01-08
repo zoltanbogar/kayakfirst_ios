@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class StartCommand<E: MeasureCommand> {
+class CommandProcessor<E: MeasureCommand> {
     
     //MARK: properties
     let telemetry = Telemetry.sharedInstance

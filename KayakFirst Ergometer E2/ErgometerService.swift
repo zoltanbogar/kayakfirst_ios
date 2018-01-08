@@ -11,12 +11,12 @@ import Foundation
 class ErgometerService: TrainingService {
     
     //MARK: properties
-    private let startCommandErgometer: StartCommandErgometer
+    private let startCommandErgometer: CommandProcessorErgometer
     private let bluetoothService: BluetoothService
     
     //MARK: init
     init(telemetry: Telemetry, bluetooth: Bluetooth) {
-        startCommandErgometer = StartCommandErgometer.sharedInstance
+        startCommandErgometer = CommandProcessorErgometer.sharedInstance
         bluetoothService = bluetooth.bluetoothService
         
         super.init(telemetry: telemetry)

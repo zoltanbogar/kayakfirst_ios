@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementOmegaMin: CalculateElement<Double, MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementOmegaMin: CalculateElement<Double, MeasureCommandErgometer, CommandProcessorErgometer> {
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.OMEGA_MIN

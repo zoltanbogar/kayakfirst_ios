@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, StartCommandOutdoor> {
+class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcessorOutdoor> {
     
     private var currentLocation: AppLocation?
     

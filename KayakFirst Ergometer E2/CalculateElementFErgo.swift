@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementFErgo: CalculateElementF<MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementFErgo: CalculateElementF<MeasureCommandErgometer, CommandProcessorErgometer> {
     
     //MARK: constants
     private let maxForce: Double = 20000

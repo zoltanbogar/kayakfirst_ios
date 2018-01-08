@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementOmegaMax: CalculateElement<Double, MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementOmegaMax: CalculateElement<Double, MeasureCommandErgometer, CommandProcessorErgometer> {
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.OMEGA_MAX

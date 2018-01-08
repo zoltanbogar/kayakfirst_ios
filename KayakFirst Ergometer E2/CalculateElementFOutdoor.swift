@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementFOutdoor: CalculateElementF<MeasureCommand, StartCommandOutdoor> {
+class CalculateElementFOutdoor: CalculateElementF<MeasureCommand, CommandProcessorOutdoor> {
     
     override func run() -> Training {
         return createTrainingObject()

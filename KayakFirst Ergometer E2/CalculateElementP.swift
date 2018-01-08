@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementP: CalculateElement<Double, MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementP: CalculateElement<Double, MeasureCommandErgometer, CommandProcessorErgometer> {
     
     override func getDataType() -> CalculateEnum {
         return CalculateEnum.P

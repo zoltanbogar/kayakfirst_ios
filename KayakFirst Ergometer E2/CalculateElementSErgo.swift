@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, StartCommandErgometer> {
+class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, CommandProcessorErgometer> {
 
     private var timestampCal: Double = 0
     

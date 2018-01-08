@@ -225,7 +225,7 @@
 		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
 		0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964591E63665200DFC050 /* TelemetryAvgObject.swift */; };
 		0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645B1E636C9400DFC050 /* CalculateElement.swift */; };
-		0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645E1E636CCE00DFC050 /* StartCommand.swift */; };
+		0679645F1E636CCE00DFC050 /* CommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645E1E636CCE00DFC050 /* CommandProcessor.swift */; };
 		067964611E636E7800DFC050 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964601E636E7800DFC050 /* MovingAverage.swift */; };
 		067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964621E6370F500DFC050 /* SaveTrainingValues.swift */; };
 		067964651E63756E00DFC050 /* PauseDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964641E63756E00DFC050 /* PauseDiff.swift */; };
@@ -248,7 +248,7 @@
 		0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */; };
 		067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648F1E6387A000DFC050 /* MeasureCommand.swift */; };
 		0679649B1E638A4800DFC050 /* CommandOutdoorStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */; };
-		0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */; };
+		0679649D1E638A8200DFC050 /* CommandProcessorOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649C1E638A8200DFC050 /* CommandProcessorOutdoor.swift */; };
 		0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */; };
 		067964A11E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */; };
 		067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */; };
@@ -397,7 +397,7 @@
 		06F9D5D51F389637005ECA8B /* CommandErgometerT_MAX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */; };
 		06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */; };
 		06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */; };
-		06F9D5DB1F38985F005ECA8B /* StartCommandErgometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */; };
+		06F9D5DB1F38985F005ECA8B /* CommandProcessorErgometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5DA1F38985F005ECA8B /* CommandProcessorErgometer.swift */; };
 		06F9D5DE1F38997F005ECA8B /* CalculateElementFErgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */; };
 		F2AE34EE861A1337DC55E42A /* Pods_KayakFirst_Ergometer_E2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */; };
 /* End PBXBuildFile section */
@@ -642,7 +642,7 @@
 		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
 		067964591E63665200DFC050 /* TelemetryAvgObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryAvgObject.swift; sourceTree = "<group>"; };
 		0679645B1E636C9400DFC050 /* CalculateElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElement.swift; sourceTree = "<group>"; };
-		0679645E1E636CCE00DFC050 /* StartCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommand.swift; sourceTree = "<group>"; };
+		0679645E1E636CCE00DFC050 /* CommandProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessor.swift; sourceTree = "<group>"; };
 		067964601E636E7800DFC050 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
 		067964621E6370F500DFC050 /* SaveTrainingValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTrainingValues.swift; sourceTree = "<group>"; };
 		067964641E63756E00DFC050 /* PauseDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseDiff.swift; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 		0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementFOutdoor.swift; sourceTree = "<group>"; };
 		0679648F1E6387A000DFC050 /* MeasureCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureCommand.swift; sourceTree = "<group>"; };
 		0679649A1E638A4800DFC050 /* CommandOutdoorStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandOutdoorStroke.swift; sourceTree = "<group>"; };
-		0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommandOutdoor.swift; sourceTree = "<group>"; };
+		0679649C1E638A8200DFC050 /* CommandProcessorOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessorOutdoor.swift; sourceTree = "<group>"; };
 		0679649E1E639ED900DFC050 /* CalculateElementSOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementSOutdoor.swift; sourceTree = "<group>"; };
 		067964A01E63A07F00DFC050 /* CalculateElementStrokesOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStrokesOutdoor.swift; sourceTree = "<group>"; };
 		067964A21E63A18D00DFC050 /* CalculateElementVOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementVOutdoor.swift; sourceTree = "<group>"; };
@@ -821,7 +821,7 @@
 		06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MAX.swift; sourceTree = "<group>"; };
 		06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MIN.swift; sourceTree = "<group>"; };
 		06F9D5D81F38966E005ECA8B /* CommandErgometerT_V.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_V.swift; sourceTree = "<group>"; };
-		06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCommandErgometer.swift; sourceTree = "<group>"; };
+		06F9D5DA1F38985F005ECA8B /* CommandProcessorErgometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessorErgometer.swift; sourceTree = "<group>"; };
 		06F9D5DD1F38997F005ECA8B /* CalculateElementFErgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementFErgo.swift; sourceTree = "<group>"; };
 		4DB644E899AEB34979F5AA88 /* Pods_KayakFirst_Ergometer_E2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KayakFirst_Ergometer_E2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31816E028C7E966780D9DF9 /* Pods-KayakFirst Ergometer E2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KayakFirst Ergometer E2.release.xcconfig"; path = "Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2.release.xcconfig"; sourceTree = "<group>"; };
@@ -912,7 +912,7 @@
 			children = (
 				060B99161E64191000F72404 /* service */,
 				0679648E1E63878900DFC050 /* command */,
-				0679645D1E636CBB00DFC050 /* start_command */,
+				0679645D1E636CBB00DFC050 /* command_processor */,
 				061145D21E58D6920058EAF4 /* calculate */,
 				060A37751E584FBA00A973BF /* Telemetry.swift */,
 				067964551E63633E00DFC050 /* CycleState.swift */,
@@ -1403,14 +1403,14 @@
 			name = server;
 			sourceTree = "<group>";
 		};
-		0679645D1E636CBB00DFC050 /* start_command */ = {
+		0679645D1E636CBB00DFC050 /* command_processor */ = {
 			isa = PBXGroup;
 			children = (
-				0679645E1E636CCE00DFC050 /* StartCommand.swift */,
-				0679649C1E638A8200DFC050 /* StartCommandOutdoor.swift */,
-				06F9D5DA1F38985F005ECA8B /* StartCommandErgometer.swift */,
+				0679645E1E636CCE00DFC050 /* CommandProcessor.swift */,
+				0679649C1E638A8200DFC050 /* CommandProcessorOutdoor.swift */,
+				06F9D5DA1F38985F005ECA8B /* CommandProcessorErgometer.swift */,
 			);
-			name = start_command;
+			name = command_processor;
 			sourceTree = "<group>";
 		};
 		067964661E637C3700DFC050 /* average */ = {
@@ -2341,7 +2341,7 @@
 				06F7D7B51F17D6260081E473 /* DownloadMessage.swift in Sources */,
 				0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
-				0679645F1E636CCE00DFC050 /* StartCommand.swift in Sources */,
+				0679645F1E636CCE00DFC050 /* CommandProcessor.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
 				065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */,
@@ -2356,7 +2356,7 @@
 				065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */,
 				066B004D1EC759F800BE0E1F /* EventTableView.swift in Sources */,
 				06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */,
-				0679649D1E638A8200DFC050 /* StartCommandOutdoor.swift in Sources */,
+				0679649D1E638A8200DFC050 /* CommandProcessorOutdoor.swift in Sources */,
 				067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */,
 				060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */,
 				060DDFFC1E4BDDFE00FE2D14 /* TrainingSEStrokesAv.swift in Sources */,
@@ -2392,7 +2392,7 @@
 				067A09AF1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift in Sources */,
 				06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */,
 				0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */,
-				06F9D5DB1F38985F005ECA8B /* StartCommandErgometer.swift in Sources */,
+				06F9D5DB1F38985F005ECA8B /* CommandProcessorErgometer.swift in Sources */,
 				063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,

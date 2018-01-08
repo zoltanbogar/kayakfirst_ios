@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class StartCommandOutdoor: StartCommand<MeasureCommand> {
+class CommandProcessorOutdoor: CommandProcessor<MeasureCommand> {
     
     //MARK: properties
     var location: AppLocation?
@@ -23,7 +23,7 @@ class StartCommandOutdoor: StartCommand<MeasureCommand> {
     private var calculateV_av_outdoor: CalculateV_AV_Outdoor?
     
     //MARK: init
-    static let sharedInstance: StartCommandOutdoor = StartCommandOutdoor()
+    static let sharedInstance: CommandProcessorOutdoor = CommandProcessorOutdoor()
     private override init() {
         super.init()
         reset()
