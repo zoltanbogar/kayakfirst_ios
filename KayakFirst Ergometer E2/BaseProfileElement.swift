@@ -37,6 +37,7 @@ class BaseProfileElement<E: ViewProfileElementLayout>: BaseDialogElementTextFiel
                 contentLayout!.labelTitle.textColor = textColorNormalTitle
             }
             isEditable = newValue
+            isUserInteractionEnabled = newValue
             error = nil
         }
     }
