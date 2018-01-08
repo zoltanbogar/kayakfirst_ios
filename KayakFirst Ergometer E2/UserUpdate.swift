@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserUpdate: ServerService<User> {
+class UserUpdate: ServerService<Bool> {
     
     private let userDto: UserDto
     
@@ -18,7 +18,7 @@ class UserUpdate: ServerService<User> {
         self.userDto = userDto
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> User? {
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
         var user: User?
         let response = alamofireRequest.responseJSON()
         
@@ -29,9 +29,10 @@ class UserUpdate: ServerService<User> {
             
             if user != nil {
                 UserManager.sharedInstance.addUser(user: user)
+                return true
             }
         }
-        return user
+        return false
     }
     
     override func initUrlTag() -> String {

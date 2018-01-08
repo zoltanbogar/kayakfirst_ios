@@ -240,8 +240,11 @@ class ProfileVc: BaseVC<VcProfileLayout> {
         (UIApplication.shared.delegate as! AppDelegate).startMainWindow()
     }
     
-    private func updateUserCallback(data: User?, error: Responses?) {
+    private func updateUserCallback(data: Bool?, error: Responses?) {
         handleUpdate(error: error)
+        if error == nil {
+            initUser()
+        }
     }
     
     private func updatePasswordCallback(data: Bool?, error: Responses?) {
