@@ -45,6 +45,8 @@ class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcess
         
         let distance = getDistance(loc1: location, loc2: currentLocation!)
         
+        log("LOC_TEST", "distance: \(distance)")
+        
         if currentTime == 0 {
             currentTime = telemetry.getAbsoluteTimestamp()
         }
@@ -71,9 +73,9 @@ class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcess
     private func getDistance(loc1: AppLocation, loc2: AppLocation) -> Double {
         let location1 = CLLocation(
             latitude: loc1.latitude,
-            longitude: loc2.longitude)
+            longitude: loc1.longitude)
         let location2 = CLLocation(
-            latitude: loc1.latitude,
+            latitude: loc2.latitude,
             longitude: loc2.longitude)
         
         return location1.distance(from: location2)

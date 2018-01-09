@@ -63,10 +63,6 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-        
-        //let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        
         if locations.count > 0 {
             let accuracy = locations[0].horizontalAccuracy
             
