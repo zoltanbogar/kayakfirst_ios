@@ -35,7 +35,7 @@ class ManagerDownload<E> {
             
             addDataToLocale(data: data)
             
-            setCacheInvalid()
+            setCacheValid()
         }
         
         return serverError?.rawValue
@@ -52,7 +52,7 @@ class ManagerDownload<E> {
         return timeDiff >= getCacheTime()
     }
     
-    private func setCacheInvalid() {
+    private func setCacheValid() {
         preferences.set(currentTimeMillis(), forKey: getKeyCacheWithUserId())
         preferences.synchronize()
     }

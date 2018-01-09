@@ -61,6 +61,10 @@ class BaseDbLoader<Input> {
         return queryData(predicate: getSumPredicate(predicates: getUserQuery(), predicate))
     }
     
+    func deleteUserData() -> Int {
+        return deleteData(predicate: getUserQuery())
+    }
+    
     func deleteAll() -> Int {
         var deletedRows = 0
         

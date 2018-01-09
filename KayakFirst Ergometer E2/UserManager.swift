@@ -98,12 +98,13 @@ class UserManager: BaseManager {
             if error != nil {
                 self.addLoginDto(loginDto: nil)
             }
+            
+            self.socialLogout()
+            
+            UploadTimer.stopTimer()
+            
             self.logoutCallback?(success, error)
         })
-        
-        socialLogout()
-        
-        UploadTimer.stopTimer()
         
         return UserManagerType.logout
     }

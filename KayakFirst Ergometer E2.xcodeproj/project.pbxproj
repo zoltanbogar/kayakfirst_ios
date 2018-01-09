@@ -1583,7 +1583,6 @@
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
 				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
-				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
 				066461601F459CC200145960 /* BluetoothList.swift */,
 				066461621F459D0200145960 /* AppProgressBar.swift */,
 			);
@@ -1594,6 +1593,7 @@
 			isa = PBXGroup;
 			children = (
 				06E03B841ECCE55D00AC7CA0 /* dashboard */,
+				0698BC4A1F004F3100FC7A0E /* RefreshView.swift */,
 				06C1B98A1E259C3900AB4C47 /* DashBoardElement.swift */,
 				0605AF231E26E9A80094C9B9 /* DashBoardElementTime.swift */,
 				06C1B98E1E259D9400AB4C47 /* DashBoardElement_Actual200.swift */,
