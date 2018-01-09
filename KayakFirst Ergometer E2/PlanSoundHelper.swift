@@ -9,7 +9,6 @@
 import Foundation
 import AVFoundation
 
-//TODO: first init takes too long, freeze UI (Android too)
 class PlanSoundHelper {
     
     //MARK: constants
@@ -26,7 +25,7 @@ class PlanSoundHelper {
     static let sharedInstance = PlanSoundHelper()
     
     private init() {
-        //private empty constructor
+        initAudio()
     }
     
     //MARK: functions
@@ -53,28 +52,39 @@ class PlanSoundHelper {
         shouldPlayByCycle = false
     }
     
+    func cycleStop() {
+        audio?.stop()
+    }
+    
+    private func initAudio() {
+        let path = Bundle.main.path(forResource: "plan_tick", ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            audio = sound
+            audio!.numberOfLoops = -1
+        } catch {
+            log("AUDIO_EXC", error)
+        }
+    }
+    
     private func startSound(_ isStart: Bool) {
         var isPlaying = false
         
-        isPlaying = audio != nil && audio!.isPlaying
-        
-        if isStart {
-            if !isPlaying {
-                let path = Bundle.main.path(forResource: "plan_tick", ofType: "mp3")!
-                let url = URL(fileURLWithPath: path)
-                do {
-                    let sound = try AVAudioPlayer(contentsOf: url)
-                    audio = sound
-                    sound.numberOfLoops = -1
-                    sound.play()
-                } catch {
-                    log("AUDIO_EXC", error)
+        if audio != nil {
+            isPlaying = audio!.isPlaying
+            
+            if isStart {
+                if !isPlaying {
+                    audio!.play()
+                }
+            } else {
+                if isPlaying {
+                    audio!.pause()
                 }
             }
         } else {
-            if isPlaying {
-                audio?.stop()
-            }
+            initAudio()
         }
     }
     

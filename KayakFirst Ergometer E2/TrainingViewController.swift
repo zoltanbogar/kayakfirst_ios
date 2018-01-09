@@ -196,6 +196,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
             showCloseButton(isShow: true)
             batterySaveHelper?.cycleStop()
+            planSoundHelper?.cycleStop()
         default: break
         }
     }
