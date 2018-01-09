@@ -40,6 +40,10 @@ class TrainingService {
         fatalError("must be implemented")
     }
     
+    internal func shouldCalculate() -> Bool {
+        fatalError("must be implemented")
+    }
+    
     //MARK: functions
     func bindService(isBind: Bool) {
         if isBind {
@@ -74,14 +78,6 @@ class TrainingService {
     }
     
     func getCalibrationDuration() -> Double {
-        return 0
-    }
-    
-    internal func shouldCalculate() -> Bool {
-        return true
-    }
-    
-    internal func getTimeWaitAfterCalculate() -> useconds_t {
         return 0
     }
     
@@ -135,8 +131,6 @@ class TrainingService {
                     
                     self.realDuration = self.telemetry.duration
                 }
-                
-                usleep(self.getTimeWaitAfterCalculate())
             }
         }
     }

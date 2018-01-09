@@ -57,8 +57,8 @@ class OutdoorSevice: TrainingService {
         //nothing here
     }
     
-    override func getTimeWaitAfterCalculate() -> useconds_t {
-        return getTimeBasedMaxSpm() * 2
+    override func shouldCalculate() -> Bool {
+        return locationService.isNewLocationAvailable
     }
     
     private func startLocationMonitoring() {

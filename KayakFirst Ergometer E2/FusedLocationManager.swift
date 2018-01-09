@@ -22,6 +22,15 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     private let commandOutdoorStroke: CommandOutdoorStroke
     private let commandList: [MeasureCommand]
     
+    private var _isNewLocationAvailable = false
+    var isNewLocationAvailable: Bool {
+        get {
+            let isNew = _isNewLocationAvailable
+            _isNewLocationAvailable = false
+            return isNew
+        }
+    }
+    
     //MARK: init
     static let sharedInstance = FusedLocationManager()
     private override init() {
@@ -62,6 +71,8 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
             let accuracy = locations[0].horizontalAccuracy
             
             if accuracy <= accuracyLocation {
+                _isNewLocationAvailable = true
+                
                 commandOutdoorLocation.setLocation(location: locations[0])
             }
         }
