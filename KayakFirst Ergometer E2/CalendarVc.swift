@@ -318,7 +318,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     //MARK: error
     private func errorHandling() {
         if let globalError = self.error {
-            errorHandlingWithAlert(viewController: self, error: globalError)
+            errorHandlingWithToast(viewController: self, error: globalError)
         }
     }
     

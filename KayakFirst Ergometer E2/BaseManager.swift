@@ -7,15 +7,29 @@
 //
 import Foundation
 
+func errorHandlingWithToast<E>(viewController: BaseVC<E>, error: Responses?) {
+    let text = getErrorText(error: error)
+    
+    if let text = text {
+        viewController.showToast(text: text)
+    }
+}
+
 func errorHandlingWithAlert<E>(viewController: BaseVC<E>, error: Responses?) {
+    let text = getErrorText(error: error)
+    
+    if let text = text {
+        ErrorDialog(errorString: text).show(viewController: viewController)
+    }
+}
+
+private func getErrorText(error: Responses?) -> String? {
     if let errorValue = error {
         var textRes: String? = nil
-        var isNoInternet = false
         
         switch errorValue {
         case Responses.error_no_internet:
             textRes = "error_no_internet"
-            isNoInternet = true
         case Responses.error_invalid_credentials:
             textRes = "error_user_invalid_credentials"
         case Responses.error_registration_required:
@@ -31,13 +45,10 @@ func errorHandlingWithAlert<E>(viewController: BaseVC<E>, error: Responses?) {
         }
         
         if let textResValue = textRes {
-            if isNoInternet {
-                viewController.showToast(text: getString(textResValue))
-            } else {
-                ErrorDialog(errorString: getString(textResValue)).show(viewController: viewController)
-            }
+            return getString(textResValue)
         }
     }
+    return nil
 }
 
 class BaseManager {

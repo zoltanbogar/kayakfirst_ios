@@ -52,7 +52,7 @@ class PlanListVc: BaseVC<VcPlanListLayout> {
             contentLayout?.tableViewPlan.dataList = data
         }
         
-        errorHandlingWithAlert(viewController: self, error: error)
+        errorHandlingWithToast(viewController: self, error: error)
     }
     
     private func deleteCallback(data: Bool?, error: Responses?) {
@@ -60,7 +60,7 @@ class PlanListVc: BaseVC<VcPlanListLayout> {
             setPlanList()
         }
         
-        errorHandlingWithAlert(viewController: self, error: error)
+        errorHandlingWithToast(viewController: self, error: error)
     }
     
     override func showProgress(baseManagerType: BaseManagerType?) {

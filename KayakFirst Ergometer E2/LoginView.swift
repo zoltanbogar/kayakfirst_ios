@@ -87,7 +87,6 @@ class LoginView: CustomUi<ViewLoginLayout> {
                 viewController.showRegistrationView(socialUser: userManager.socialUser!)
             }
             
-            //TODO: if keyboard is open the 'AppToast' not visible
             errorHandlingWithAlert(viewController: self.viewController, error: userError)
         }
     }
