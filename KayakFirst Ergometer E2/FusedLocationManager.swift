@@ -66,6 +66,8 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         if locations.count > 0 {
             let accuracy = locations[0].horizontalAccuracy
             
+            log("LOC_TEST", "newLocation: \(locations[0].horizontalAccuracy)")
+            
             if accuracy <= accuracyLocation {
                 _isNewLocationAvailable = true
                 

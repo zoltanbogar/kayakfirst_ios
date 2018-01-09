@@ -45,8 +45,6 @@ class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcess
         
         let distance = getDistance(loc1: location, loc2: currentLocation!)
         
-        log("LOC_TEST", "distance: \(distance)")
-        
         if currentTime == 0 {
             currentTime = telemetry.getAbsoluteTimestamp()
         }

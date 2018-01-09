@@ -30,6 +30,7 @@ class OutdoorSevice: TrainingService {
     }
     
     override func calibrate() {
+        locationService.startLocationMonitoring(start: true)
         sensorManager.calibrate()
     }
     
@@ -54,7 +55,7 @@ class OutdoorSevice: TrainingService {
     }
     
     override func resetServices() {
-        //nothing here
+        startCommandOutdoor.reset()
     }
     
     override func shouldCalculate() -> Bool {
@@ -62,21 +63,12 @@ class OutdoorSevice: TrainingService {
     }
     
     private func startLocationMonitoring() {
-        locationService.startLocationMonitoring(start: true)
         sensorManager.startSensorMonitoring(start: true)
     }
     
     private func stopLocationMonitoring() {
         locationService.startLocationMonitoring(start: false)
         sensorManager.startSensorMonitoring(start: false)
-    }
-    
-    private func getTimeBasedMaxSpm() -> useconds_t {
-        let maxSpm = AppSensorManager.maxSpm
-        
-        let timeWait = useconds_t((Double(1000) / (Double(maxSpm) / Double(60)))) * 1000
-        
-        return timeWait
     }
     
 }
