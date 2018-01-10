@@ -34,8 +34,6 @@ class ErgometerService: TrainingService {
         if bluetoothService.cycleIndex > telemetryCycleIndex {
             telemetry.setCycleIndex(cycleIndex: bluetoothService.cycleIndex, lastCycleIndexTime: bluetoothService.lastCycleIndexTime)
             shouldCalculate = true
-        } else if telemetryCycleIndex == 0 && telemetry.duration <= BluetoothService.bluetoothInactiveTime {
-            shouldCalculate = true
         }
         
         return shouldCalculate
