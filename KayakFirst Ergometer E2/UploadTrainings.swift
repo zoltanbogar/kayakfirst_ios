@@ -13,7 +13,7 @@ import SwiftyJSON
 class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
-    private let maxUploadTrainings = 2500
+    private let maxUploadTrainings = 75 //one batch contains 8 object, so max objects are: 75 * 8 = 600
     
     //MARK: properties
     private let trainingDbLoader = TrainingDbLoader.sharedInstance

@@ -16,7 +16,9 @@ class UploadTimer {
     private static var timer: Timer?
 
     class func startTimer(forceStart: Bool) {
-        if forceStart && timer == nil {
+        if forceStart {
+            timer?.invalidate()
+            timer = nil
             timerUpdate()
         }
         startTimer()
