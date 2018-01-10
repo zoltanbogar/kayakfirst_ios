@@ -38,8 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     var window: UIWindow?
+    
+    var alamofireManager = SessionManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        configureAlamofire()
+        
         startMainWindow()
         initColors()
         initKeyboardManager()
@@ -194,8 +198,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAlamofire() {
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = 60 // in seconds
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = 60 // in seconds
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 120 // in seconds
+        configuration.timeoutIntervalForResource = 120 // in seconds
+        alamofireManager = Alamofire.SessionManager(configuration: configuration)
     }
     
     private func initColors() {

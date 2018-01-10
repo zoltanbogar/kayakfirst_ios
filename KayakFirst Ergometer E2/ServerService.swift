@@ -133,7 +133,8 @@ class ServerService<E> {
     
     private func initAlamofire() -> DataRequest {
         let url = baseUrl + initUrlTag()
-        let dataRequest = Alamofire.request(
+        let alamofireManager = (UIApplication.shared.delegate as! AppDelegate).alamofireManager
+        let dataRequest = alamofireManager.request(
             url,
             method: initMethod(),
             parameters: initParameters(),

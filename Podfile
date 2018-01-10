@@ -8,7 +8,7 @@ target 'KayakFirst Ergometer E2' do
     pod 'Alamofire-Synchronous', '~> 4.0'
     pod 'SwiftyJSON'
     pod 'CVCalendar', '~> 1.4.1'
-    pod 'Charts'
+    pod 'Charts', '3.0.2'
     pod 'SQLite.swift', '~> 0.11.0'
     pod 'Google/SignIn'
     pod 'Fabric'
