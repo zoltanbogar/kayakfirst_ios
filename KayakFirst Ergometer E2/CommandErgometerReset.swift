@@ -30,11 +30,6 @@ class CommandErgometerReset: MeasureCommandErgometer {
         return true
     }
     
-    //TODO: de we need this?
-    /*override func isValidCommand(stringValue: String) -> Bool {
-        return initValue(stringValue: stringValue) == CommandErgometerReset.resetSuccess || initValue(stringValue: stringValue) == resetNotSuccess
-    }*/
-    
     override func getValue() -> String {
         return stringValue!
     }

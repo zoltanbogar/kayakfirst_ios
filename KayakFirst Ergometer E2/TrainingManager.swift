@@ -37,7 +37,6 @@ class TrainingManager: BaseManager {
         return TrainingManagerType.download_training
     }
     
-    //TODO: not upload data
     func addTrainingUploadPointer() {
         let sessionId = "\(Telemetry.sharedInstance.sessionId)"
         ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
