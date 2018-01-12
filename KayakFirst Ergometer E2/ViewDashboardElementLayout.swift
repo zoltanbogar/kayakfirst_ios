@@ -43,19 +43,22 @@ class ViewDashboardElementLayout: BaseLayout {
     }
     
     func initLandscape() {
+        let width = contentView.frame.width
+        
         labelTitle.snp.removeConstraints()
         labelValue.snp.removeConstraints()
         labelTitle.snp.makeConstraints { make in
             make.left.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin05, 0, 0))
             make.centerY.equalTo(contentView)
             make.height.equalTo(contentView)
-            make.width.equalTo(contentView)
+            make.width.equalTo(width * 0.3)
         }
         
         labelValue.snp.makeConstraints { make in
             make.left.equalTo(labelTitle.snp.right)
-            make.center.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, 0))
+            make.centerY.equalTo(contentView).inset(UIEdgeInsetsMake(0, margin, 0, 0))
             make.height.equalTo(contentView)
+            make.width.equalTo(width * 0.7)
         }
     }
     
@@ -71,7 +74,7 @@ class ViewDashboardElementLayout: BaseLayout {
     }()
     
     lazy var labelValue: UILabel! = {
-        let label = LabelWithAdaptiveTextHeight()
+        let label = LabelWithAdaptiveTextHeight(maxFontSize: 200)
         label.textAlignment = .center
         label.textColor = Colors.colorWhite
         
