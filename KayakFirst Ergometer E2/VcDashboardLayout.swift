@@ -10,6 +10,8 @@ import Foundation
 
 class VcDashobardLayout: BaseLayout {
     
+    private let buttonViewWidth: CGFloat = 100
+    
     private let dashboardLayoutDict: [Int:Int]?
     private let plan: Plan?
     
@@ -54,13 +56,16 @@ class VcDashobardLayout: BaseLayout {
         
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(buttonViewWidth)
             make.width.equalTo(mainStackView)
         }
         
+        viewSwipePause.contentLayout?.handlePortraitLayout(size: size)
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
+            make.width.equalTo(pauseViewSwipeArea)
+            make.height.equalTo(pauseViewHeight)
         }
         
         setDashboardElementsOrientation()
@@ -72,13 +77,16 @@ class VcDashobardLayout: BaseLayout {
         
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(buttonViewWidth)
             make.height.equalTo(mainStackView)
         }
         
+        viewSwipePause.contentLayout?.handleLandscapeLayout(size: size)
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
+            make.width.equalTo(pauseViewHeight)
+            make.height.equalTo(pauseViewSwipeArea)
         }
         
         setDashboardElementsOrientation()

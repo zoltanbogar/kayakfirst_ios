@@ -23,6 +23,8 @@ let planRadius: CGFloat = 9
 let colorNormalDialogElement = Colors.colorWhite
 let colorHighlitedDialogElement = Colors.colorAccent
 let refreshMillis: Double = 66
+let pauseViewSwipeArea: CGFloat = 180
+let pauseViewHeight: CGFloat = 75
 
 //text
 let planElementCellTextSize: CGFloat = 18

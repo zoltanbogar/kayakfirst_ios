@@ -32,11 +32,6 @@ class SwipePauseView: CustomUi<ViewSwipePauseLayout> {
         return ViewSwipePauseLayout(contentView: contentView)
     }
     
-    //MARK: size
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: contentLayout!.dashboardPauseSwipeArea, height: 75)
-    }
-    
     //MARK: animation
     @objc private func animateBtnPause(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: self)
@@ -61,7 +56,7 @@ class SwipePauseView: CustomUi<ViewSwipePauseLayout> {
                 swipe = abs(btnPauseOriginalX - diffX)
             }
             
-            if swipe > (contentLayout!.dashboardPauseSwipeArea - 75) {
+            if swipe > (pauseViewSwipeArea - pauseViewHeight) {
                 animateBtnPlayPauseToOriginal()
                 if let delegateValue = delegate {
                     delegateValue.onPauseCLicked()

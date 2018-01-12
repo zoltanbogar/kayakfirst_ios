@@ -10,12 +10,23 @@ import Foundation
 
 class ViewSwipePauseLayout: BaseLayout {
     
-    //MARK: properties
-    let dashboardPauseSwipeArea: CGFloat = 180
-    
     //MARK: init views
     override func setView() {
         handlePortraitLayout(size: CGSize.zero)
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
+        viewSwipePause.snp.removeConstraints()
+        viewSwipePause.snp.makeConstraints { (make) in
+            make.width.equalTo(pauseViewSwipeArea)
+            make.height.equalTo(pauseViewHeight)
+        }
+        btnPause.snp.removeConstraints()
+        btnPause.snp.makeConstraints { (make) in
+            make.left.equalTo(viewSwipePause)
+            make.centerY.equalTo(viewSwipePause)
+        }
         
         contentView.addSubview(viewSwipePause)
         viewSwipePause.snp.makeConstraints { (make) in
@@ -23,38 +34,29 @@ class ViewSwipePauseLayout: BaseLayout {
         }
     }
     
-    override func handlePortraitLayout(size: CGSize) {
-        super.handlePortraitLayout(size: size)
-        viewSwipePause.snp.removeConstraints()
-        viewSwipePause.snp.makeConstraints { (make) in
-            make.width.equalTo(dashboardPauseSwipeArea)
-            make.height.equalTo(75)
-        }
-        btnPause.snp.removeConstraints()
-        btnPause.snp.makeConstraints { (make) in
-            make.left.equalTo(viewSwipePause)
-            make.centerY.equalTo(viewSwipePause)
-        }
-    }
-    
     override func handleLandscapeLayout(size: CGSize) {
         super.handleLandscapeLayout(size: size)
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
-            make.width.equalTo(75)
-            make.height.equalTo(dashboardPauseSwipeArea)
+            make.width.equalTo(pauseViewHeight)
+            make.height.equalTo(pauseViewSwipeArea)
         }
         btnPause.snp.removeConstraints()
         btnPause.snp.makeConstraints { (make) in
             make.bottom.equalTo(viewSwipePause)
             make.centerX.equalTo(viewSwipePause)
         }
+        
+        contentView.addSubview(viewSwipePause)
+        viewSwipePause.snp.makeConstraints { (make) in
+            make.center.equalTo(contentView)
+        }
     }
     
     //MARK: views
     lazy var viewSwipePause: UIView! = {
         let view = UIView()
-        view.layer.cornerRadius = 75 / 2
+        view.layer.cornerRadius = pauseViewHeight / 2
         
         view.addSubview(self.btnPause)
         
@@ -64,8 +66,8 @@ class ViewSwipePauseLayout: BaseLayout {
     }()
     
     lazy var btnPause: RoundButton! = {
-        let button = RoundButton(radius: 75, image: UIImage(named: "ic_pause_white_48pt")!, color: Colors.colorAccent)
-        button.layer.cornerRadius = 75 / 2
+        let button = RoundButton(radius: pauseViewHeight, image: UIImage(named: "ic_pause_white_48pt")!, color: Colors.colorAccent)
+        button.layer.cornerRadius = pauseViewHeight / 2
         
         return button
     }()
