@@ -42,6 +42,10 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     private var batterySaveHelper: BatterySaveHelper?
     var planSoundHelper: PlanSoundHelper?
     
+    override var rotationEnabled: Bool {
+        return trainingEnvType == TrainingEnvironmentType.ergometer
+    }
+    
     //MARK: lifecycle
     override func viewDidLoad() {
         switch trainingEnvType! {

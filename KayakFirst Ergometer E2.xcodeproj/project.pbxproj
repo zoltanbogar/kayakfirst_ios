@@ -168,6 +168,7 @@
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
 		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
 		064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */; };
+		064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D9B022008EBD40057137C /* OrientationNavController.swift */; };
 		064FE5A21ECED286004A9F35 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A11ECED286004A9F35 /* SearchTextView.swift */; };
 		064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */; };
 		064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */; };
@@ -585,6 +586,7 @@
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
 		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
 		064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropPlanHelper.swift; sourceTree = "<group>"; };
+		064D9B022008EBD40057137C /* OrientationNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationNavController.swift; sourceTree = "<group>"; };
 		064FE5A11ECED286004A9F35 /* SearchTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseManagerType.swift; sourceTree = "<group>"; };
 		064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManagerType.swift; sourceTree = "<group>"; };
@@ -1212,6 +1214,15 @@
 			name = ui;
 			sourceTree = "<group>";
 		};
+		064D9B012008EBBC0057137C /* orientation */ = {
+			isa = PBXGroup;
+			children = (
+				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
+				064D9B022008EBD40057137C /* OrientationNavController.swift */,
+			);
+			name = orientation;
+			sourceTree = "<group>";
+		};
 		064FE5A31ED09DCE004A9F35 /* manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1561,6 +1572,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				064D9B012008EBBC0057137C /* orientation */,
 				067545C41F11326B008759E7 /* weight */,
 				060958E61EDE973A009A824C /* dialog_element */,
 				067129591EC896EF00362C39 /* plan */,
@@ -1581,7 +1593,6 @@
 				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
-				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
 				066461601F459CC200145960 /* BluetoothList.swift */,
 				066461621F459D0200145960 /* AppProgressBar.swift */,
@@ -2217,6 +2228,7 @@
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
+				064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */,
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
