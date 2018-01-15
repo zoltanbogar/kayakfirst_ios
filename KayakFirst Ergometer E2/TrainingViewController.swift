@@ -48,12 +48,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     //MARK: lifecycle
     override func viewDidLoad() {
-        switch trainingEnvType! {
-        case TrainingEnvironmentType.ergometer:
-            trainingService = ErgometerService(telemetry: telemetry, bluetooth: bluetooth)
-        case TrainingEnvironmentType.outdoor:
-            trainingService = OutdoorSevice(telemetry: telemetry)
-        }
+        initTrainingService()
         
         trainingService.bindService(isBind: true)
         registerEventBus(isRegister: true)
@@ -149,6 +144,15 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     //MARK: private functions
+    private func initTrainingService() {
+        switch trainingEnvType! {
+        case TrainingEnvironmentType.ergometer:
+            trainingService = ErgometerService.getInstance(bluetooth: bluetooth)
+        case TrainingEnvironmentType.outdoor:
+            trainingService = OutdoorSevice.getInstance()
+        }
+    }
+    
     private func registerEventBus(isRegister: Bool) {
         if isRegister {
             SwiftEventBus.onMainThread(self, name: cycleStateEventBusName, handler: { result in

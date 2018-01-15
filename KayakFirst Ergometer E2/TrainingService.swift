@@ -20,8 +20,8 @@ class TrainingService {
     private var isCyclePaused: Bool = false
     
     //MARK: init
-    init(telemetry: Telemetry) {
-        self.telemetry = telemetry
+    internal init() {
+        self.telemetry = Telemetry.sharedInstance
         trainingManager = TrainingManager.sharedInstance
         
         reset()
@@ -102,7 +102,7 @@ class TrainingService {
         isCyclePaused = true
     }
     
-    private func reset() {
+    internal func reset() {
         realDuration = 0
         telemetry.resetCurrent()
         telemetry.resetOthers()

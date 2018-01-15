@@ -14,12 +14,22 @@ class ErgometerService: TrainingService {
     private let startCommandErgometer: CommandProcessorErgometer
     private let bluetoothService: BluetoothService
     
+    private static var instance: ErgometerService?
+    
+    class func getInstance(bluetooth: Bluetooth) -> ErgometerService {
+        if ErgometerService.instance == nil {
+            ErgometerService.instance = ErgometerService(bluetooth: bluetooth)
+        }
+        ErgometerService.instance!.reset()
+        return ErgometerService.instance!
+    }
+    
     //MARK: init
-    init(telemetry: Telemetry, bluetooth: Bluetooth) {
+    private init(bluetooth: Bluetooth) {
         startCommandErgometer = CommandProcessorErgometer.sharedInstance
         bluetoothService = bluetooth.bluetoothService
         
-        super.init(telemetry: telemetry)
+        super.init()
     }
     
     override func shouldCalculate() -> Bool {

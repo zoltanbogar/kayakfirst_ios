@@ -16,13 +16,23 @@ class OutdoorSevice: TrainingService {
     
     private let startCommandOutdoor: CommandProcessorOutdoor
     
-    override init(telemetry: Telemetry) {
+    private static var instance: OutdoorSevice?
+    
+    class func getInstance() -> OutdoorSevice {
+        if OutdoorSevice.instance == nil {
+            OutdoorSevice.instance = OutdoorSevice()
+        }
+        OutdoorSevice.instance!.reset()
+        return OutdoorSevice.instance!
+    }
+    
+    private override init() {
         locationService = FusedLocationManager.sharedInstance
         sensorManager = AppSensorManager.sharedInstance
         
         startCommandOutdoor = CommandProcessorOutdoor.sharedInstance
         
-        super.init(telemetry: telemetry)
+        super.init()
     }
     
     override func getCalibrationDuration() -> Double {
