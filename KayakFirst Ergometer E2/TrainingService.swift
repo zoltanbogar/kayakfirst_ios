@@ -102,7 +102,7 @@ class TrainingService {
         isCyclePaused = true
     }
     
-    internal func reset() {
+    private func reset() {
         realDuration = 0
         telemetry.resetCurrent()
         telemetry.resetOthers()

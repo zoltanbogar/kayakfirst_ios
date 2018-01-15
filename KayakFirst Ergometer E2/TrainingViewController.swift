@@ -43,7 +43,9 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     var planSoundHelper: PlanSoundHelper?
     
     override var rotationEnabled: Bool {
-        return trainingEnvType == TrainingEnvironmentType.ergometer
+        //TODO: delete this
+        return true
+        //return trainingEnvType == TrainingEnvironmentType.ergometer
     }
     
     //MARK: lifecycle
@@ -170,21 +172,18 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
             finish()
         case CycleState.stopped:
             savePlan()
-            setLayoutByCycleState(cycleState: cycleState)
-        case CycleState.paused:
-            setLayoutByCycleState(cycleState: cycleState)
         case CycleState.resumed:
             sessionId = telemetry.sessionId
-            setLayoutByCycleState(cycleState: cycleState)
-        case CycleState.calibrated:
-            calibrationView?.calibrationEnd()
-            startDelayView.startCounter()
         default: break
         }
+        setLayoutByCycleState(cycleState: cycleState)
     }
     
     private func setLayoutByCycleState(cycleState: CycleState) {
         switch cycleState {
+        case CycleState.calibrated:
+            calibrationView?.calibrationEnd()
+            startDelayView.startCounter()
         case CycleState.resumed:
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)

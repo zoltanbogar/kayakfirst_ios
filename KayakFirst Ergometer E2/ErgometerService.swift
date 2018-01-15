@@ -20,7 +20,6 @@ class ErgometerService: TrainingService {
         if ErgometerService.instance == nil {
             ErgometerService.instance = ErgometerService(bluetooth: bluetooth)
         }
-        ErgometerService.instance!.reset()
         return ErgometerService.instance!
     }
     

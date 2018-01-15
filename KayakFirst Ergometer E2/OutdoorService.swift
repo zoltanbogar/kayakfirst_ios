@@ -22,7 +22,6 @@ class OutdoorSevice: TrainingService {
         if OutdoorSevice.instance == nil {
             OutdoorSevice.instance = OutdoorSevice()
         }
-        OutdoorSevice.instance!.reset()
         return OutdoorSevice.instance!
     }
     
