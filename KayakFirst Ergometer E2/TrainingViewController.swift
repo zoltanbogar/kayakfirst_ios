@@ -90,6 +90,14 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     //MARK: public functions
+    func handlePortraitLayout() {
+        pauseView.contentLayout!.handlePortraitLayout(size: CGSize.zero)
+    }
+    
+    func handleLandscapeLayout() {
+        pauseView.contentLayout!.handleLandscapeLayout(size: CGSize.zero)
+    }
+    
     func initBatterySaveHelper() {
         batterySaveHelper = BatterySaveHelper(menuItem: dashboardVc!.contentLayout!.btnPowerSaveOff)
     }

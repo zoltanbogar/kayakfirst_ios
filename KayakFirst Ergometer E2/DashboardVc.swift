@@ -42,6 +42,18 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: dashboardLayoutDict, plan: plan)
     }
     
+    override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
+        
+        getTrainingVc().handlePortraitLayout()
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        super.handleLandscapeLayout(size: size)
+        
+        getTrainingVc().handleLandscapeLayout()
+    }
+    
     override func initTabBarItems() {
         if plan == nil {
             showCustomBackButton()
