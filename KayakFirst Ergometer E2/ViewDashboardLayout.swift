@@ -10,6 +10,12 @@ import Foundation
 
 class ViewDashboardLayout: BaseLayout {
     
+    var dashboardElement0: DashBoardElement?
+    var dashboardElement1: DashBoardElement?
+    var dashboardElement2: DashBoardElement?
+    var dashboardElement3: DashBoardElement?
+    var dashboardElement4: DashBoardElement?
+    
     override func setView() {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -51,6 +57,26 @@ class ViewDashboardLayout: BaseLayout {
         stackView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
         }
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
+        
+        (view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        super.handleLandscapeLayout(size: size)
+        
+        (view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        (view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
     }
     
     //MARK: views

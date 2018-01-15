@@ -43,7 +43,7 @@ class LabelWithAdaptiveTextHeight: UILabel {
             
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
             
-            guard text!.characters.count > 0 else {
+            guard text != nil && text!.characters.count > 0 else {
                 break
             }
             

@@ -263,6 +263,7 @@
 		067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */; };
 		067A09B31F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */; };
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
+		067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */; };
 		067F7663200363A300A3F613 /* UserDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067F7662200363A300A3F613 /* UserDb.swift */; };
 		068277831FFD13E5003A5667 /* ErgometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277821FFD13E5003A5667 /* ErgometerService.swift */; };
 		068277851FFD146A003A5667 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277841FFD146A003A5667 /* BluetoothService.swift */; };
@@ -682,6 +683,7 @@
 		067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Ergo.swift; sourceTree = "<group>"; };
 		067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Outdoor.swift; sourceTree = "<group>"; };
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
+		067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshDashboardHelper.swift; sourceTree = "<group>"; };
 		067F7662200363A300A3F613 /* UserDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDb.swift; sourceTree = "<group>"; };
 		068277821FFD13E5003A5667 /* ErgometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErgometerService.swift; sourceTree = "<group>"; };
 		068277841FFD146A003A5667 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
@@ -1170,6 +1172,7 @@
 				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
+				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -2156,6 +2159,7 @@
 				061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */,
 				067964651E63756E00DFC050 /* PauseDiff.swift in Sources */,
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
+				067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
 				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,

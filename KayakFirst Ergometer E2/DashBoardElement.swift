@@ -155,6 +155,7 @@ class DashBoardElement: RefreshView<ViewDashboardElementLayout> {
         default:
             fatalError("Error in dashBoardelement tag")
         }
+        dashBoardelement.refreshUi()
         dashBoardelement.isValueVisible = isValueVisible
         
         return dashBoardelement

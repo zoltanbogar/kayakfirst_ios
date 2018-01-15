@@ -43,26 +43,13 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
         setProgressBarPlanElementColor()
     }
     
-    override func startRefresh(_ isStart: Bool) {
-        if isStart {
-            super.startRefresh(true)
-        }
-        
-        contentLayout!.deActual1000.startRefresh(isStart)
-        contentLayout!.deSpm.startRefresh(isStart)
-        
-        planSoundHelper.shouldPlay = isStart
-    }
-    
-    func stopRefresh() {
-        startRefresh(false)
-        
-        planSoundHelper.stopSound()
-        
-        timer?.invalidate()
-    }
-    
     override func refreshUi() {
+        //TODO: what is whits PlanSoundHelper?
+        //planSoundHelper.shouldPlay = isStart
+        
+        contentLayout!.deActual1000.refreshUi()
+        contentLayout!.deSpm.refreshUi()
+        
         if plan != nil && plan?.planElements != nil {
             let totalPercent = getTotalPercent()
             

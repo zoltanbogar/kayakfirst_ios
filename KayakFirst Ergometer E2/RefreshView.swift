@@ -9,32 +9,10 @@
 import Foundation
 
 class RefreshView<E: BaseLayout>: CustomUi<E> {
-
-    //MARK: properties
-    var timer: Timer?
     
     //MARK: abstract functions
-    internal func refreshUi() {
+    func refreshUi() {
         fatalError("must be implemented")
     }
     
-    //MARK: functions
-    func startRefresh(_ isStart: Bool) {
-        if isStart {
-            timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
-        } else {
-            timer?.invalidate()
-        }
-    }
-    
-    @objc private func refresh() {
-        refreshUi()
-    }
-    
-    //MARK: view
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        refresh()
-    }
 }

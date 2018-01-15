@@ -19,7 +19,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate, RefresDashboardHelperDelegate {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -39,6 +39,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     private var sessionId: Double = 0
     
+    private var refreshDashboardHelper: RefreshDashboardHelper?
     private var batterySaveHelper: BatterySaveHelper?
     var planSoundHelper: PlanSoundHelper?
     
@@ -54,6 +55,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         
         trainingService.bindService(isBind: true)
         registerEventBus(isRegister: true)
+        refreshDashboardHelper = RefreshDashboardHelper.getInstance(delegate: self)
         
         super.viewDidLoad()
         
@@ -68,6 +70,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         keepScreenOn(isOn: true)
         
         batterySaveHelper?.onResume()
+        refreshDashboardHelper?.onResume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,6 +79,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         keepScreenOn(isOn: false)
         
         batterySaveHelper?.onPause()
+        refreshDashboardHelper?.onPause()
     }
     
     //MARK: views
@@ -153,6 +157,11 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         trainingService.start()
     }
     
+    //MARK: delegate
+    func refreshUi() {
+        dashboardVc?.refreshUi()
+    }
+    
     //MARK: private functions
     private func initTrainingService() {
         switch trainingEnvType! {
@@ -195,23 +204,24 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         case CycleState.resumed:
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
-            dashboardVc?.refreshDashboardElements(true)
             showCloseButton(isShow: false)
             batterySaveHelper?.cycleResume()
             planSoundHelper?.cycleResume()
+            refreshDashboardHelper?.cycleResume()
         case CycleState.paused:
             pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
-            dashboardVc?.refreshDashboardElements(false)
             batterySaveHelper?.cyclePause()
             planSoundHelper?.cyclePause()
+            refreshDashboardHelper?.cyclePause()
         case CycleState.stopped:
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
             showCloseButton(isShow: true)
             batterySaveHelper?.cycleStop()
             planSoundHelper?.cycleStop()
+            refreshDashboardHelper?.cycleStop()
         default: break
         }
     }

@@ -15,12 +15,6 @@ class VcDashobardLayout: BaseLayout {
     private let dashboardLayoutDict: [Int:Int]?
     private let plan: Plan?
     
-    var dashboardElement0: DashBoardElement?
-    var dashboardElement1: DashBoardElement?
-    var dashboardElement2: DashBoardElement?
-    var dashboardElement3: DashBoardElement?
-    var dashboardElement4: DashBoardElement?
-    
     init(contentView: UIView, dashboardLayoutDict: [Int:Int]?, plan: Plan?) {
         self.dashboardLayoutDict = dashboardLayoutDict
         self.plan = plan
@@ -67,8 +61,7 @@ class VcDashobardLayout: BaseLayout {
             make.width.equalTo(pauseViewSwipeArea)
             make.height.equalTo(pauseViewHeight)
         }
-        
-        setDashboardElementsOrientation()
+        viewDashboard.contentLayout!.handlePortraitLayout(size: size)
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -88,55 +81,14 @@ class VcDashobardLayout: BaseLayout {
             make.width.equalTo(pauseViewHeight)
             make.height.equalTo(pauseViewSwipeArea)
         }
-        
-        setDashboardElementsOrientation()
-    }
-    
-    private func setDashboardElementsOrientation() {
-        if plan == nil {
-            (viewDashboard.contentLayout!.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-        }
+        viewDashboard.contentLayout!.handleLandscapeLayout(size: size)
     }
     
     private func initDashboardViews() {
         var viewToShow: UIView = viewDashboard
         
         if let dashobardLayoutDictValue = dashboardLayoutDict {
-            for (position, tag) in dashobardLayoutDictValue {
-                let dashboardElement = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: true)
-                var view: UIView?
-                switch position {
-                case 0:
-                    view = viewDashboard.contentLayout!.view0
-                    dashboardElement0 = dashboardElement
-                case 1:
-                    view = viewDashboard.contentLayout!.view1
-                    dashboardElement1 = dashboardElement
-                case 2:
-                    view = viewDashboard.contentLayout!.view2
-                    dashboardElement2 = dashboardElement
-                case 3:
-                    view = viewDashboard.contentLayout!.view3
-                    dashboardElement3 = dashboardElement
-                case 4:
-                    view = viewDashboard.contentLayout!.view4
-                    dashboardElement4 = dashboardElement
-                default:
-                    fatalError()
-                }
-                
-                if let newView = view {
-                    newView.removeAllSubviews()
-                    newView.addSubview(dashboardElement)
-                    dashboardElement.snp.makeConstraints { make in
-                        make.edges.equalTo(newView)
-                    }
-                }
-            }
+            viewDashboard.setDashboardLayoutDict(dashboardLayoutDict: dashobardLayoutDictValue)
         }
         
         if plan != nil {
