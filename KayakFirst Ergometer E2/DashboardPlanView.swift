@@ -31,7 +31,11 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     
     //MARK: functions
     func viewDidLayoutSubViews() {
-        contentLayout!.viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: .verticalSlow)
+        var gradientOrientation: GradientOrientation = .verticalPortrait
+        if contentLayout!.isLandscape {
+            gradientOrientation = .verticalLandscape
+        }
+        contentLayout!.viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: gradientOrientation)
     }
     
     func resetPlan() {

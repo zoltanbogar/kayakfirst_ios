@@ -61,7 +61,13 @@ class VcDashobardLayout: BaseLayout {
             make.width.equalTo(pauseViewSwipeArea)
             make.height.equalTo(pauseViewHeight)
         }
-        viewDashboard.contentLayout!.handlePortraitLayout(size: size)
+        
+        if dashboardLayoutDict != nil {
+             viewDashboard.contentLayout!.handlePortraitLayout(size: size)
+        }
+        if plan != nil {
+            viewDashboardPlan.contentLayout!.handlePortraitLayout(size: size)
+        }
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -81,7 +87,12 @@ class VcDashobardLayout: BaseLayout {
             make.width.equalTo(pauseViewHeight)
             make.height.equalTo(pauseViewSwipeArea)
         }
-        viewDashboard.contentLayout!.handleLandscapeLayout(size: size)
+        if dashboardLayoutDict != nil {
+            viewDashboard.contentLayout!.handleLandscapeLayout(size: size)
+        }
+        if plan != nil {
+            viewDashboardPlan.contentLayout!.handleLandscapeLayout(size: size)
+        }
     }
     
     private func initDashboardViews() {
