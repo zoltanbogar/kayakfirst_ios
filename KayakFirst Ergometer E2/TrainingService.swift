@@ -131,6 +131,8 @@ class TrainingService {
                     
                     self.realDuration = self.telemetry.duration
                 }
+                
+                usleep(300000)
             }
         }
     }
