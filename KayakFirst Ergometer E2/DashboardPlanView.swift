@@ -89,6 +89,8 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
                 break
             }
         }
+        
+        contentLayout!.peTableView.showPlanElementByPosition(position: planElementPosition)
     }
     
     private func getCurrentTotalValue() -> Double {
@@ -162,9 +164,10 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
         }
         
         setTextsByPercent(percent: 0)
-        contentLayout!.peTableView.removePlanElement(position: 0)
         
         setProgressBarPlanElementColor()
+        
+        contentLayout!.peTableView.showPlanElementByPosition(position: planElementPosition)
     }
     
     private func getFormattedTimeText(value: Double) -> String {

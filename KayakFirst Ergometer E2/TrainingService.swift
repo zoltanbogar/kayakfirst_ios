@@ -57,6 +57,7 @@ class TrainingService {
     }
     
     func idle() {
+        reset()
         setTelemetryCycleState(cycleState: CycleState.idle)
     }
     
