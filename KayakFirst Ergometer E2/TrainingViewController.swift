@@ -41,7 +41,11 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     private var refreshDashboardHelper: RefreshDashboardHelper?
     private var batterySaveHelper: BatterySaveHelper?
-    var planSoundHelper: PlanSoundHelper?
+    var planSoundHelper: PlanSoundHelper? {
+        didSet {
+            planSoundHelper?.onResume()
+        }
+    }
     
     override var rotationEnabled: Bool {
         //TODO: delete this
@@ -71,6 +75,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         
         batterySaveHelper?.onResume()
         refreshDashboardHelper?.onResume()
+        planSoundHelper?.onResume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,6 +85,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         
         batterySaveHelper?.onPause()
         refreshDashboardHelper?.onPause()
+        planSoundHelper?.onPause()
     }
     
     //MARK: views

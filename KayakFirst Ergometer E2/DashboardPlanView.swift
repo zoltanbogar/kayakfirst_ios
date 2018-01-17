@@ -48,9 +48,6 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     }
     
     override func refreshUi() {
-        //TODO: what is whits PlanSoundHelper?
-        //planSoundHelper.shouldPlay = isStart
-        
         contentLayout!.deActual1000.refreshUi()
         contentLayout!.deSpm.refreshUi()
         
