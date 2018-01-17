@@ -36,6 +36,8 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         
         getTrainingVc().initBatterySaveHelper()
         getTrainingVc().planSoundHelper = contentLayout!.viewDashboardPlan.planSoundHelper
+        
+        refreshUi()
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {

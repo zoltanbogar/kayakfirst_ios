@@ -91,6 +91,8 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         pauseView.delegate = self
         
         calibrationView = CalibrationView(superView: view)
+        
+        restoreLayout()
     }
     
     //MARK: public functions
@@ -109,6 +111,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     func finish() {
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
+        trainingService.stop()
         dismiss(animated: true, completion: nil)
     }
     
@@ -160,6 +163,12 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     //MARK: delegate
     func refreshUi() {
         dashboardVc?.refreshUi()
+    }
+    
+    private func restoreLayout() {
+        if let cycleState = telemetry.cycleState {
+            setLayoutByCycleState(cycleState: cycleState)
+        }
     }
     
     //MARK: private functions

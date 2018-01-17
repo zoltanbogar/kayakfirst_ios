@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KayakFirst Ergometer E2/DashboardView.swift"
-            timestampString = "537804564.195845"
+            filePath = "KayakFirst Ergometer E2/TrainingViewController.swift"
+            timestampString = "537871788.428242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "refreshUi()"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "restoreLayout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
