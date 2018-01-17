@@ -109,9 +109,9 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func finish() {
+        trainingService.stop()
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
-        trainingService.stop()
         dismiss(animated: true, completion: nil)
     }
     
@@ -124,13 +124,21 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         dashboardVc = DashboardVc()
         dashboardVc!.dashboardLayoutDict = dashboardLayoutDict
         pushViewController(dashboardVc!, animated: true)
+        
+        trainingService?.idle()
+    }
+    
+    func showDashboardVc(plan: Plan) {
+        dashboardVc = DashboardVc()
+        dashboardVc!.plan = plan
+        pushViewController(dashboardVc!, animated: true)
+        
+        trainingService?.idle()
     }
     
     func checkPlanLayout() {
-        if plan != nil {
-            dashboardVc = DashboardVc()
-            dashboardVc?.plan = plan
-            pushViewController(dashboardVc!, animated: true)
+        if let plan = plan {
+            showDashboardVc(plan: plan)
         } else {
             pushViewController(SetDashboardVc(), animated: true)
         }
@@ -207,6 +215,9 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     private func setLayoutByCycleState(cycleState: CycleState) {
         switch cycleState {
+        case CycleState.idle:
+            showCloseButton(isShow: true)
+            dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: true)
         case CycleState.calibrated:
             calibrationView?.calibrationEnd()
             startDelayView.startCounter()

@@ -82,8 +82,8 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
             image = UIImage(named: "ic_refresh_white_48pt")!
         }
         
-        contentLayout!.btnPlaySmall.image = image
-        contentLayout!.btnPlaySmall.isHidden = !isShow
+        contentLayout?.btnPlaySmall.image = image
+        contentLayout?.btnPlaySmall.isHidden = !isShow
     }
     
     func refreshUi() {

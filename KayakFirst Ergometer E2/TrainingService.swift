@@ -56,6 +56,10 @@ class TrainingService {
         }
     }
     
+    func idle() {
+        setTelemetryCycleState(cycleState: CycleState.idle)
+    }
+    
     func calibrate() {
         setTelemetryCycleState(cycleState: CycleState.calibrated)
     }
@@ -131,6 +135,8 @@ class TrainingService {
                     
                     self.realDuration = self.telemetry.duration
                 }
+                
+                usleep(300000)
             }
         }
     }

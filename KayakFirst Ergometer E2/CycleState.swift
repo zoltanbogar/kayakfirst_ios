@@ -8,6 +8,7 @@
 
 import Foundation
 public enum CycleState: String {
+    case idle = "idle"
     case calibrated = "calibrated"
     case bluetoothDisconnected = "bluetoothDisconnected"
     case resumed = "resumed"
