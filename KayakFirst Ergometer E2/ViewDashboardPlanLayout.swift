@@ -184,9 +184,6 @@ class ViewDashboardPlanLayout: BaseLayout {
         label.textAlignment = .center
         label.font = label.font.withSize(self.valueFontSize)
         
-        //TODO: delete this
-        label.text = "0"
-        
         return label
     }()
     
@@ -195,9 +192,6 @@ class ViewDashboardPlanLayout: BaseLayout {
         
         label.textAlignment = .center
         label.font = label.font.withSize(self.valueFontSize)
-        
-        //TODO: delete this
-        label.text = "0"
         
         return label
     }()

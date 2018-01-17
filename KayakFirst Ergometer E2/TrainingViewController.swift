@@ -48,9 +48,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     override var rotationEnabled: Bool {
-        //TODO: delete this
-        return true
-        //return trainingEnvType == TrainingEnvironmentType.ergometer
+        return trainingEnvType == TrainingEnvironmentType.ergometer
     }
     
     //MARK: lifecycle
