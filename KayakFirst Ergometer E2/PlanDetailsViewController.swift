@@ -45,15 +45,11 @@ class PlanDetailsViewController: BaseVC<VcPlanDetailsLayout> {
         automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setPlanToTableView()
+    override func onResume() {
+         setPlanToTableView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    override func onPause() {
         initPlanFromAdapter()
     }
     

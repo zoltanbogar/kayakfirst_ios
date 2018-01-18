@@ -66,9 +66,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         checkPlanLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func onResume() {
         keepScreenOn(isOn: true)
         
         batterySaveHelper?.onResume()
@@ -76,9 +74,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         planSoundHelper?.onResume()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    func onPause() {
         keepScreenOn(isOn: false)
         
         batterySaveHelper?.onPause()

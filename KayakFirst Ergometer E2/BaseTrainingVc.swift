@@ -10,6 +10,15 @@ import Foundation
 
 class BaseTrainingVc<E: BaseLayout>: BaseVC<E> {
     
+    //MARK: lifecycle
+    override func onResume() {
+        getTrainingVc().onResume()
+    }
+    
+    override func onPause() {
+        getTrainingVc().onPause()
+    }
+    
     //MARK: functions
     func getTrainingVc() -> TrainingViewController {
         return navigationController as! TrainingViewController

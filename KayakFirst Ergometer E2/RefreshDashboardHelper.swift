@@ -28,6 +28,7 @@ class RefreshDashboardHelper {
         if RefreshDashboardHelper.instance == nil {
             RefreshDashboardHelper.instance = RefreshDashboardHelper(delegate: delegate)
         }
+        RefreshDashboardHelper.instance?.delegate = delegate
         return RefreshDashboardHelper.instance!
     }
     
@@ -62,6 +63,7 @@ class RefreshDashboardHelper {
     
     //MARK: functions
     func startRefresh(_ isStart: Bool) {
+        log("REF_TEST", "startRefresh: \(isStart)")
         timer?.invalidate()
         if isStart && shouldActive && onResumed {
             timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
