@@ -10,6 +10,8 @@ import Foundation
 
 class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     
+    private var showPosition: Int = 0
+    
     //MARK: init
     override init(view: UIView) {
         super.init(view: view)
@@ -20,15 +22,6 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    //MARK: functions
-    func removePlanElement(position: Int) {
-        if dataList != nil && dataList!.count > position {
-            dataList?.remove(at: position)
-            
-            reloadData()
-        }
     }
     
     override func getEmptyView() -> UIView {

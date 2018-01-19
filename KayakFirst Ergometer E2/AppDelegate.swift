@@ -17,7 +17,6 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: properties
-    private var welcomeViewController: WelcomeViewController?
     static var versionString: String {
         get {
             if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -68,10 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if isUserLoggedIn {
             viewController = MainTabViewController()
-            welcomeViewController = nil
         } else {
             viewController = WelcomeViewController()
-            welcomeViewController = viewController as! WelcomeViewController
         }
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
@@ -98,9 +95,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         
-        if let vc = welcomeViewController {
-            vc.resetFields()
-            vc.socialLogoutIfNeeded()
+        let currentVc = self.window?.currentViewController()
+        
+        if let vc = currentVc {
+            if vc is BaseVcProtocol {
+                (vc as! BaseVcProtocol).onPause()
+            }
         }
     }
 
@@ -112,6 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         startUploadTimer()
+        
+        let currentVc = self.window?.currentViewController()
+        
+        if let vc = currentVc {
+            if vc is BaseVcProtocol {
+                (vc as! BaseVcProtocol).onResume()
+            }
+        }
         
     }
 

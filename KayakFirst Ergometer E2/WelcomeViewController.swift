@@ -14,9 +14,8 @@ import Fabric
 
 class WelcomeViewController: BaseVC<VcWelcomeLayout> {
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    //MARK: lifecycle
+    override func onPause() {
         resetFields()
         
         socialLogoutIfNeeded()

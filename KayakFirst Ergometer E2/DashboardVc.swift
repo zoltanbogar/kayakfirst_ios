@@ -36,10 +36,24 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         
         getTrainingVc().initBatterySaveHelper()
         getTrainingVc().planSoundHelper = contentLayout!.viewDashboardPlan.planSoundHelper
+        
+        refreshUi()
     }
     
     override func getContentLayout(contentView: UIView) -> VcDashobardLayout {
         return VcDashobardLayout(contentView: contentView, dashboardLayoutDict: dashboardLayoutDict, plan: plan)
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
+        
+        getTrainingVc().handlePortraitLayout()
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        super.handleLandscapeLayout(size: size)
+        
+        getTrainingVc().handleLandscapeLayout()
     }
     
     override func initTabBarItems() {
@@ -68,31 +82,15 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
             image = UIImage(named: "ic_refresh_white_48pt")!
         }
         
-        contentLayout!.btnPlaySmall.image = image
-        contentLayout!.btnPlaySmall.isHidden = !isShow
+        contentLayout?.btnPlaySmall.image = image
+        contentLayout?.btnPlaySmall.isHidden = !isShow
     }
     
-    func refreshDashboardElements(_ isRefresh: Bool) {
-        contentLayout!.dashboardElement0?.startRefresh(isRefresh)
-        contentLayout!.dashboardElement1?.startRefresh(isRefresh)
-        contentLayout!.dashboardElement2?.startRefresh(isRefresh)
-        contentLayout!.dashboardElement3?.startRefresh(isRefresh)
-        contentLayout!.dashboardElement4?.startRefresh(isRefresh)
-        
+    func refreshUi() {
         if plan != nil {
-            if isRefresh {
-                contentLayout!.viewDashboardPlan.startRefresh(true)
-            } else {
-                contentLayout!.viewDashboardPlan.stopRefresh()
-            }
+            contentLayout!.viewDashboardPlan.refreshUi()
         } else {
-            contentLayout!.viewDashboardPlan.stopRefresh()
-        }
-    }
-    
-    func resetPlanDashboardView() {
-        if plan != nil {
-            contentLayout!.viewDashboardPlan.resetPlan()
+            contentLayout!.viewDashboard.refreshUi()
         }
     }
     

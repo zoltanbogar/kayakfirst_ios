@@ -43,7 +43,7 @@ class VcSetDashboardLayout: BaseLayout {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually
-        mainStackView.spacing = dashboardDividerWidth * 5
+        mainStackView.spacing = dashboardDividerWidth * 2
         
         return mainStackView
     }()

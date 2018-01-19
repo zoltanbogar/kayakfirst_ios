@@ -19,7 +19,7 @@ class PlanSoundHelper {
     private var audio: AVAudioPlayer?
     private let telemetry = Telemetry.sharedInstance
     private var shouldPlayByCycle = false
-    var shouldPlay = false
+    private var shouldPlay = false
     
     //MARK: init
     static let sharedInstance = PlanSoundHelper()
@@ -29,10 +29,6 @@ class PlanSoundHelper {
     }
     
     //MARK: functions
-    func stopSound() {
-        startSound(false)
-    }
-
     func playSoundIfNeeded(value: Double, planType: PlanType) {
         var neededPlay = false
         if PlanType.distance == planType {
@@ -41,7 +37,18 @@ class PlanSoundHelper {
             neededPlay = value <= soundThresholdTime
         }
         
+        neededPlay = neededPlay && value > 0
+        
         startSound(neededPlay && shouldPlay && shouldPlayByCycle)
+    }
+    
+    func onResume() {
+        shouldPlay = true
+    }
+    
+    func onPause() {
+        shouldPlay = false
+        startSound(false)
     }
     
     func cycleResume() {
@@ -50,6 +57,7 @@ class PlanSoundHelper {
     
     func cyclePause() {
         shouldPlayByCycle = false
+        startSound(false)
     }
     
     func cycleStop() {

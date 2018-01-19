@@ -46,7 +46,13 @@ let logoBarItem: UIBarButtonItem! = {
 
 let logoHeader = UIImage(named: "logo_header")?.withRenderingMode(.alwaysOriginal)
 
-class BaseVC<E: BaseLayout>: UIViewController {
+//MARK: protocol
+protocol BaseVcProtocol {
+    func onResume()
+    func onPause()
+}
+
+class BaseVC<E: BaseLayout>: UIViewController, BaseVcProtocol {
     
     //MARK: properties
     let contentView = UIView()
@@ -73,6 +79,14 @@ class BaseVC<E: BaseLayout>: UIViewController {
         super.viewWillAppear(animated)
         
         initTabBarItems()
+        
+        onResume()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        onPause()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,6 +99,14 @@ class BaseVC<E: BaseLayout>: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         
         handleScreenOrientation(size: size)
+    }
+    
+    func onResume() {
+        //override if needed
+    }
+    
+    func onPause() {
+        //override if needed
     }
     
     func initTabBarItems() {

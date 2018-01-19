@@ -10,14 +10,10 @@ import Foundation
 
 class VcDashobardLayout: BaseLayout {
     
+    private let buttonViewWidth: CGFloat = 100
+    
     private let dashboardLayoutDict: [Int:Int]?
     private let plan: Plan?
-    
-    var dashboardElement0: DashBoardElement?
-    var dashboardElement1: DashBoardElement?
-    var dashboardElement2: DashBoardElement?
-    var dashboardElement3: DashBoardElement?
-    var dashboardElement4: DashBoardElement?
     
     init(contentView: UIView, dashboardLayoutDict: [Int:Int]?, plan: Plan?) {
         self.dashboardLayoutDict = dashboardLayoutDict
@@ -54,16 +50,24 @@ class VcDashobardLayout: BaseLayout {
         
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(buttonViewWidth)
             make.width.equalTo(mainStackView)
         }
         
+        viewSwipePause.contentLayout?.handlePortraitLayout(size: size)
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
+            make.width.equalTo(pauseViewSwipeArea)
+            make.height.equalTo(pauseViewHeight)
         }
         
-        setDashboardElementsOrientation()
+        if dashboardLayoutDict != nil {
+             viewDashboard.contentLayout!.handlePortraitLayout(size: size)
+        }
+        if plan != nil {
+            viewDashboardPlan.contentLayout!.handlePortraitLayout(size: size)
+        }
     }
     
     override func handleLandscapeLayout(size: CGSize) {
@@ -72,25 +76,22 @@ class VcDashobardLayout: BaseLayout {
         
         buttonView.snp.removeConstraints()
         buttonView.snp.makeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(buttonViewWidth)
             make.height.equalTo(mainStackView)
         }
         
+        viewSwipePause.contentLayout?.handleLandscapeLayout(size: size)
         viewSwipePause.snp.removeConstraints()
         viewSwipePause.snp.makeConstraints { (make) in
             make.center.equalTo(buttonView)
+            make.width.equalTo(pauseViewHeight)
+            make.height.equalTo(pauseViewSwipeArea)
         }
-        
-        setDashboardElementsOrientation()
-    }
-    
-    private func setDashboardElementsOrientation() {
-        if plan == nil {
-            (viewDashboard.contentLayout!.view0.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view1.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view2.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view3.subviews[0] as! DashBoardElement).isLandscape = isLandscape
-            (viewDashboard.contentLayout!.view4.subviews[0] as! DashBoardElement).isLandscape = isLandscape
+        if dashboardLayoutDict != nil {
+            viewDashboard.contentLayout!.handleLandscapeLayout(size: size)
+        }
+        if plan != nil {
+            viewDashboardPlan.contentLayout!.handleLandscapeLayout(size: size)
         }
     }
     
@@ -98,37 +99,7 @@ class VcDashobardLayout: BaseLayout {
         var viewToShow: UIView = viewDashboard
         
         if let dashobardLayoutDictValue = dashboardLayoutDict {
-            for (position, tag) in dashobardLayoutDictValue {
-                let dashboardElement = DashBoardElement.getDashBoardElementByTag(tag: tag, isValueVisible: true)
-                var view: UIView?
-                switch position {
-                case 0:
-                    view = viewDashboard.contentLayout!.view0
-                    dashboardElement0 = dashboardElement
-                case 1:
-                    view = viewDashboard.contentLayout!.view1
-                    dashboardElement1 = dashboardElement
-                case 2:
-                    view = viewDashboard.contentLayout!.view2
-                    dashboardElement2 = dashboardElement
-                case 3:
-                    view = viewDashboard.contentLayout!.view3
-                    dashboardElement3 = dashboardElement
-                case 4:
-                    view = viewDashboard.contentLayout!.view4
-                    dashboardElement4 = dashboardElement
-                default:
-                    fatalError()
-                }
-                
-                if let newView = view {
-                    newView.removeAllSubviews()
-                    newView.addSubview(dashboardElement)
-                    dashboardElement.snp.makeConstraints { make in
-                        make.edges.equalTo(newView)
-                    }
-                }
-            }
+            viewDashboard.setDashboardLayoutDict(dashboardLayoutDict: dashobardLayoutDictValue)
         }
         
         if plan != nil {

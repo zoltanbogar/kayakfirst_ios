@@ -20,8 +20,8 @@ class TrainingService {
     private var isCyclePaused: Bool = false
     
     //MARK: init
-    init(telemetry: Telemetry) {
-        self.telemetry = telemetry
+    internal init() {
+        self.telemetry = Telemetry.sharedInstance
         trainingManager = TrainingManager.sharedInstance
         
         reset()
@@ -56,6 +56,11 @@ class TrainingService {
         }
     }
     
+    func idle() {
+        reset()
+        setTelemetryCycleState(cycleState: CycleState.idle)
+    }
+    
     func calibrate() {
         setTelemetryCycleState(cycleState: CycleState.calibrated)
     }
@@ -75,6 +80,11 @@ class TrainingService {
     
     func stop() {
         setTelemetryCycleState(cycleState: CycleState.stopped)
+    }
+    
+    func destroy() {
+        stop()
+        reset()
     }
     
     func getCalibrationDuration() -> Double {

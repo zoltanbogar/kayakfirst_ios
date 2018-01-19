@@ -19,7 +19,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate, RefresDashboardHelperDelegate {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -39,20 +39,25 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     private var sessionId: Double = 0
     
+    private var refreshDashboardHelper: RefreshDashboardHelper?
     private var batterySaveHelper: BatterySaveHelper?
-    var planSoundHelper: PlanSoundHelper?
+    var planSoundHelper: PlanSoundHelper? {
+        didSet {
+            planSoundHelper?.onResume()
+        }
+    }
+    
+    override var rotationEnabled: Bool {
+        return trainingEnvType == TrainingEnvironmentType.ergometer
+    }
     
     //MARK: lifecycle
     override func viewDidLoad() {
-        switch trainingEnvType! {
-        case TrainingEnvironmentType.ergometer:
-            trainingService = ErgometerService(telemetry: telemetry, bluetooth: bluetooth)
-        case TrainingEnvironmentType.outdoor:
-            trainingService = OutdoorSevice(telemetry: telemetry)
-        }
+        initTrainingService()
         
         trainingService.bindService(isBind: true)
         registerEventBus(isRegister: true)
+        refreshDashboardHelper = RefreshDashboardHelper.getInstance(delegate: self)
         
         super.viewDidLoad()
         
@@ -61,20 +66,20 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         checkPlanLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func onResume() {
         keepScreenOn(isOn: true)
         
         batterySaveHelper?.onResume()
+        refreshDashboardHelper?.onResume()
+        planSoundHelper?.onResume()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    func onPause() {
         keepScreenOn(isOn: false)
         
         batterySaveHelper?.onPause()
+        refreshDashboardHelper?.onPause()
+        planSoundHelper?.onPause()
     }
     
     //MARK: views
@@ -86,14 +91,26 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         pauseView.delegate = self
         
         calibrationView = CalibrationView(superView: view)
+        
+        restoreLayout()
     }
     
     //MARK: public functions
+    func handlePortraitLayout() {
+        pauseView.contentLayout!.handlePortraitLayout(size: CGSize.zero)
+    }
+    
+    func handleLandscapeLayout() {
+        pauseView.contentLayout!.handleLandscapeLayout(size: CGSize.zero)
+    }
+    
     func initBatterySaveHelper() {
         batterySaveHelper = BatterySaveHelper(menuItem: dashboardVc!.contentLayout!.btnPowerSaveOff)
     }
     
     func finish() {
+        plan = nil
+        trainingService.destroy()
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
         dismiss(animated: true, completion: nil)
@@ -108,13 +125,22 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         dashboardVc = DashboardVc()
         dashboardVc!.dashboardLayoutDict = dashboardLayoutDict
         pushViewController(dashboardVc!, animated: true)
+        
+        trainingService?.idle()
+    }
+    
+    func showDashboardVc(plan: Plan) {
+        dashboardVc = DashboardVc()
+        dashboardVc!.plan = plan
+        pushViewController(dashboardVc!, animated: true)
+        
+        trainingService?.idle()
     }
     
     func checkPlanLayout() {
-        if plan != nil {
-            dashboardVc = DashboardVc()
-            dashboardVc?.plan = plan
-            pushViewController(dashboardVc!, animated: true)
+        if let plan = plan {
+            telemetry.plan = plan
+            showDashboardVc(plan: plan)
         } else {
             pushViewController(SetDashboardVc(), animated: true)
         }
@@ -139,12 +165,30 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func onCounterEnd() {
-        dashboardVc?.resetPlanDashboardView()
-        
         trainingService.start()
     }
     
+    //MARK: delegate
+    func refreshUi() {
+        dashboardVc?.refreshUi()
+    }
+    
+    private func restoreLayout() {
+        if let cycleState = telemetry.cycleState {
+            setLayoutByCycleState(cycleState: cycleState)
+        }
+    }
+    
     //MARK: private functions
+    private func initTrainingService() {
+        switch trainingEnvType! {
+        case TrainingEnvironmentType.ergometer:
+            trainingService = ErgometerService.getInstance(bluetooth: bluetooth)
+        case TrainingEnvironmentType.outdoor:
+            trainingService = OutdoorSevice.getInstance()
+        }
+    }
+    
     private func registerEventBus(isRegister: Bool) {
         if isRegister {
             SwiftEventBus.onMainThread(self, name: cycleStateEventBusName, handler: { result in
@@ -162,41 +206,41 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
             finish()
         case CycleState.stopped:
             savePlan()
-            setLayoutByCycleState(cycleState: cycleState)
-        case CycleState.paused:
-            setLayoutByCycleState(cycleState: cycleState)
-        case CycleState.resumed:
-            sessionId = telemetry.sessionId
-            setLayoutByCycleState(cycleState: cycleState)
-        case CycleState.calibrated:
-            calibrationView?.calibrationEnd()
-            startDelayView.startCounter()
         default: break
         }
+        setLayoutByCycleState(cycleState: cycleState)
     }
     
     private func setLayoutByCycleState(cycleState: CycleState) {
         switch cycleState {
+        case CycleState.idle:
+            showCloseButton(isShow: true)
+            dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: true)
+        case CycleState.calibrated:
+            calibrationView?.calibrationEnd()
+            startDelayView.startCounter()
         case CycleState.resumed:
+            sessionId = telemetry.sessionId
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
-            dashboardVc?.refreshDashboardElements(true)
             showCloseButton(isShow: false)
             batterySaveHelper?.cycleResume()
             planSoundHelper?.cycleResume()
+            refreshDashboardHelper?.cycleResume()
         case CycleState.paused:
             pauseView.showPauseView()
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: false)
-            dashboardVc?.refreshDashboardElements(false)
             batterySaveHelper?.cyclePause()
             planSoundHelper?.cyclePause()
+            refreshDashboardHelper?.cyclePause()
         case CycleState.stopped:
             dashboardVc?.showViewSwipePause(isShow: false)
             dashboardVc?.initBtnPlaySmall(showRestart: true, isShow: true)
             showCloseButton(isShow: true)
             batterySaveHelper?.cycleStop()
             planSoundHelper?.cycleStop()
+            refreshDashboardHelper?.cycleStop()
         default: break
         }
     }

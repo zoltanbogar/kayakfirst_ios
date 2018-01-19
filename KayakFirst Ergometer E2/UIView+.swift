@@ -76,7 +76,8 @@ enum GradientOrientation {
     case topLeftBottomRight
     case horizontal
     case vertical
-    case verticalSlow
+    case verticalPortrait
+    case verticalLandscape
     
     var startPoint : CGPoint {
         get { return points.startPoint }
@@ -97,8 +98,10 @@ enum GradientOrientation {
                 return (CGPoint.init(x: 0.0,y: 0.5), CGPoint.init(x: 1.0,y: 0.5))
             case .vertical:
                 return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 0.0,y: 1.0))
-            case .verticalSlow:
+            case .verticalPortrait:
                 return (CGPoint.init(x: 0.0,y: 0.25), CGPoint.init(x: 0.0,y: 0.45))
+            case .verticalLandscape:
+                return (CGPoint.init(x: 0.0,y: 0.25), CGPoint.init(x: 0.0,y: 0.60))
             }
         }
     }

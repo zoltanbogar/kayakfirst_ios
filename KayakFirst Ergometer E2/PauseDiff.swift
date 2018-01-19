@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+//TODO: it should be singleton
 class PauseDiff {
     
     //MARK: properties

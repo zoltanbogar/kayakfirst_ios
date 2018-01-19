@@ -14,6 +14,9 @@ class ViewDashboardPlanLayout: BaseLayout {
     private let progressHeight: CGFloat = 12
     private let valueFontSize: CGFloat = 70
     
+    //MARK: properties
+    private let tableStackView = UIStackView()
+    
     override func setView() {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
@@ -30,26 +33,7 @@ class ViewDashboardPlanLayout: BaseLayout {
         
         mainStackView.addArrangedSubview(progressViewPlanElement)
         
-        let spaceView = UIView()
-        spaceView.backgroundColor = Colors.colorTransparent
-        mainStackView.addArrangedSubview(spaceView)
-        
-        mainStackView.addArrangedSubview(tableView)
-        
-        let horizontalDivider = DividerView()
-        mainStackView.addArrangedSubview(horizontalDivider)
-        horizontalDivider.snp.makeConstraints { (make) in
-            make.height.equalTo(dashboardDividerWidth)
-        }
-        
-        let deElementStackView = UIStackView()
-        deElementStackView.axis = .horizontal
-        deElementStackView.addArrangedSubview(deActual1000)
-        let deDivider = HalfDivider()
-        deElementStackView.addArrangedSubview(deDivider)
-        deElementStackView.addArrangedSubview(deSpm)
-        
-        mainStackView.addArrangedSubview(deElementStackView)
+        mainStackView.addArrangedSubview(tableStackView)
         
         contentView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { (make) in
@@ -62,20 +46,117 @@ class ViewDashboardPlanLayout: BaseLayout {
         progressViewPlanElement.snp.makeConstraints { (make) in
             make.height.equalTo(progressViewComplete)
         }
+        
+        tableStackView.snp.makeConstraints { (make) in
+            make.width.equalTo(contentView)
+            make.top.equalTo(progressViewPlanElement.snp.bottom)
+            make.bottom.equalTo(contentView)
+        }
+        
+        handlePortraitLayout(size: CGSize.zero)
+        
+        contentView.backgroundColor = Colors.colorPrimary
+    }
+    
+    override func handlePortraitLayout(size: CGSize) {
+        super.handlePortraitLayout(size: size)
+        
+        tableStackView.axis = .vertical
+        tableStackView.removeAllSubviews()
+        
+        let spaceView = UIView()
+        spaceView.backgroundColor = Colors.colorTransparent
+        tableStackView.addArrangedSubview(spaceView)
+        
         spaceView.snp.makeConstraints { (make) in
             make.height.equalTo(margin)
         }
+        
+        tableStackView.addArrangedSubview(tableView)
+        
+        let horizontalDivider = DividerView()
+        tableStackView.addArrangedSubview(horizontalDivider)
+        horizontalDivider.snp.makeConstraints { (make) in
+            make.height.equalTo(dashboardDividerWidth)
+        }
+        
+        let deElementStackView = UIStackView()
+        deElementStackView.axis = .horizontal
+        deElementStackView.addArrangedSubview(deActual1000)
+        let deDivider = HalfDivider()
+        deElementStackView.addArrangedSubview(deDivider)
+        deElementStackView.addArrangedSubview(deSpm)
+        
+        tableStackView.addArrangedSubview(deElementStackView)
+        
+        deActual1000.snp.removeConstraints()
         deActual1000.snp.makeConstraints { (make) in
             make.width.equalTo(deSpm)
         }
         deDivider.snp.makeConstraints { (make) in
             make.width.equalTo(dashboardDividerWidth)
+            make.left.equalTo(deActual1000.snp.right)
         }
         deElementStackView.snp.makeConstraints { (make) in
             make.height.equalTo(130)
         }
+    }
+    
+    override func handleLandscapeLayout(size: CGSize) {
+        super.handleLandscapeLayout(size: size)
         
-        contentView.backgroundColor = Colors.colorPrimary
+        let width = contentView.frame.width
+        
+        tableStackView.axis = .horizontal
+        tableStackView.removeAllSubviews()
+        
+        let leftStackView = UIStackView()
+        leftStackView.axis = .vertical
+        
+        let spaceView = UIView()
+        spaceView.backgroundColor = Colors.colorTransparent
+        leftStackView.addArrangedSubview(spaceView)
+        
+        spaceView.snp.makeConstraints { (make) in
+            make.height.equalTo(margin)
+        }
+        
+        leftStackView.addArrangedSubview(tableView)
+        
+        tableStackView.addArrangedSubview(leftStackView)
+        
+        let verticalDivider = DividerView()
+        tableStackView.addArrangedSubview(verticalDivider)
+        verticalDivider.snp.makeConstraints { (make) in
+            make.width.equalTo(dashboardDividerWidth)
+            make.height.equalToSuperview()
+        }
+        
+        let deElementStackView = UIStackView()
+        deElementStackView.axis = .vertical
+        deElementStackView.addArrangedSubview(deActual1000)
+        let deDivider = DividerView()
+        deElementStackView.addArrangedSubview(deDivider)
+        deElementStackView.addArrangedSubview(deSpm)
+        
+        tableStackView.addArrangedSubview(deElementStackView)
+        
+        leftStackView.snp.makeConstraints { (make) in
+            make.width.equalTo(width * 2 / 3)
+        }
+        
+        deActual1000.snp.removeConstraints()
+        deActual1000.snp.makeConstraints { (make) in
+            make.height.equalTo(deSpm)
+        }
+        deDivider.snp.makeConstraints { (make) in
+            make.height.equalTo(dashboardDividerWidth)
+            make.left.equalTo(deActual1000).offset(margin)
+            make.right.equalToSuperview().offset(-margin)
+        }
+        deElementStackView.snp.makeConstraints { (make) in
+            make.width.equalTo(width / 3)
+        }
     }
     
     //MARK: views

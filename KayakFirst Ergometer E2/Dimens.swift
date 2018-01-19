@@ -13,7 +13,7 @@ let margin: CGFloat = 20.0
 let margin1_5: CGFloat = 30
 let margin2: CGFloat = 40.0
 let buttonHeight: CGFloat = 40.0
-let dashboardDividerWidth: CGFloat = 0.5
+let dashboardDividerWidth: CGFloat = 1
 let chartLineWidth: CGFloat = 2
 let trainingRowHeight: CGFloat = 56
 let profileElementHeight: CGFloat = 50
@@ -23,6 +23,8 @@ let planRadius: CGFloat = 9
 let colorNormalDialogElement = Colors.colorWhite
 let colorHighlitedDialogElement = Colors.colorAccent
 let refreshMillis: Double = 66
+let pauseViewSwipeArea: CGFloat = 180
+let pauseViewHeight: CGFloat = 75
 
 //text
 let planElementCellTextSize: CGFloat = 18

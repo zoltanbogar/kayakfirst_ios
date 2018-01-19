@@ -8,24 +8,10 @@
 
 import Foundation
 
-class PortraitNavController: UINavigationController {
+class PortraitNavController: OrientationNavController {
     
-    //MARK: lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
-    
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
-    }
-    
-    override var shouldAutorotate: Bool {
+    override var rotationEnabled: Bool {
         return false
     }
+    
 }

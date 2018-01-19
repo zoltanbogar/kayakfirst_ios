@@ -17,6 +17,7 @@ class Telemetry {
     static let sharedInstance: Telemetry = Telemetry()
     private init() {
         _pauseDiff = PauseDiff(telemetry: self)
+        _planDisplayHelper = PlanDisplayHelper.getInstance(telemetry: self)
     }
     
     //MARK? current values
@@ -37,7 +38,11 @@ class Telemetry {
     var t_1000_av: Double = 0
     
     //MARK: helper values
-    var duration: TimeInterval = 0
+    var duration: TimeInterval = 0 {
+        didSet {
+            planDisplayHelper.setData(duration: duration, distance: distance)
+        }
+    }
     private var cycleIndex: Int64 = 0
     var averageIndex: Int64 = 0
     
@@ -94,6 +99,18 @@ class Telemetry {
         }
     }
     
+    //MARK: plan
+    var plan: Plan? {
+        didSet {
+            planDisplayHelper.setPlane(plan: plan)
+        }
+    }
+    var planTelemetryObject: PlanTelemetryObject?
+    private var _planDisplayHelper: PlanDisplayHelper!
+    private var planDisplayHelper: PlanDisplayHelper {
+        return _planDisplayHelper
+    }
+    
     private var _pauseDiff: PauseDiff!
     private var pauseDiff: PauseDiff {
         return _pauseDiff
@@ -136,6 +153,7 @@ class Telemetry {
         lastCycleIndexTime = 0
         
         pauseDiff.reset()
+        planDisplayHelper.reset()
     }
     
     //MARK other functions

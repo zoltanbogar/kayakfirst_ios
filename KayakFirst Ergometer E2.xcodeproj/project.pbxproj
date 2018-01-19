@@ -91,6 +91,8 @@
 		060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060EE3911E7538E700203DB6 /* HalfDivider.swift */; };
 		060EE8D21EC2E3CD0060FD6F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060EE8D11EC2E3CD0060FD6F /* String+.swift */; };
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
+		060F2D8A201219E8004E7EB1 /* PlanTelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F2D89201219E8004E7EB1 /* PlanTelemetryObject.swift */; };
+		060F2D8D20122727004E7EB1 /* PlanDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */; };
 		060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */; };
 		061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145CD1E58C97F0058EAF4 /* ChartView.swift */; };
 		061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D01E58CF600058EAF4 /* DiagramLabel.swift */; };
@@ -168,6 +170,7 @@
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
 		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
 		064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */; };
+		064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D9B022008EBD40057137C /* OrientationNavController.swift */; };
 		064FE5A21ECED286004A9F35 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A11ECED286004A9F35 /* SearchTextView.swift */; };
 		064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */; };
 		064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */; };
@@ -262,6 +265,7 @@
 		067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */; };
 		067A09B31F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */; };
 		067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */; };
+		067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */; };
 		067F7663200363A300A3F613 /* UserDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067F7662200363A300A3F613 /* UserDb.swift */; };
 		068277831FFD13E5003A5667 /* ErgometerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277821FFD13E5003A5667 /* ErgometerService.swift */; };
 		068277851FFD146A003A5667 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068277841FFD146A003A5667 /* BluetoothService.swift */; };
@@ -507,6 +511,8 @@
 		060EE3911E7538E700203DB6 /* HalfDivider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfDivider.swift; sourceTree = "<group>"; };
 		060EE8D11EC2E3CD0060FD6F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
+		060F2D89201219E8004E7EB1 /* PlanTelemetryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTelemetryObject.swift; sourceTree = "<group>"; };
+		060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDisplayHelper.swift; sourceTree = "<group>"; };
 		060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
 		061145CD1E58C97F0058EAF4 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		061145D01E58CF600058EAF4 /* DiagramLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramLabel.swift; sourceTree = "<group>"; };
@@ -585,6 +591,7 @@
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
 		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
 		064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropPlanHelper.swift; sourceTree = "<group>"; };
+		064D9B022008EBD40057137C /* OrientationNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationNavController.swift; sourceTree = "<group>"; };
 		064FE5A11ECED286004A9F35 /* SearchTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseManagerType.swift; sourceTree = "<group>"; };
 		064FE5A71ED09EAF004A9F35 /* PlanManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanManagerType.swift; sourceTree = "<group>"; };
@@ -680,6 +687,7 @@
 		067A09B01F38AC8100CC8051 /* CalculateV_AV_Ergo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Ergo.swift; sourceTree = "<group>"; };
 		067A09B21F38B03A00CC8051 /* CalculateV_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateV_AV_Outdoor.swift; sourceTree = "<group>"; };
 		067B4E3C1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewHeader.swift; sourceTree = "<group>"; };
+		067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshDashboardHelper.swift; sourceTree = "<group>"; };
 		067F7662200363A300A3F613 /* UserDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDb.swift; sourceTree = "<group>"; };
 		068277821FFD13E5003A5667 /* ErgometerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErgometerService.swift; sourceTree = "<group>"; };
 		068277841FFD146A003A5667 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
@@ -916,10 +924,8 @@
 				0679648E1E63878900DFC050 /* command */,
 				0679645D1E636CBB00DFC050 /* command_processor */,
 				061145D21E58D6920058EAF4 /* calculate */,
-				060A37751E584FBA00A973BF /* Telemetry.swift */,
 				067964551E63633E00DFC050 /* CycleState.swift */,
 				067964601E636E7800DFC050 /* MovingAverage.swift */,
-				067964641E63756E00DFC050 /* PauseDiff.swift */,
 			);
 			name = training_calculate;
 			sourceTree = "<group>";
@@ -1042,6 +1048,15 @@
 				060E97611FE828CB00CB4258 /* GoogleLoginHelper.swift */,
 			);
 			name = social;
+			sourceTree = "<group>";
+		};
+		060F2D8B20121ABF004E7EB1 /* telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				060A37751E584FBA00A973BF /* Telemetry.swift */,
+				067964641E63756E00DFC050 /* PauseDiff.swift */,
+			);
+			name = telemetry;
 			sourceTree = "<group>";
 		};
 		061145CB1E58A2BC0058EAF4 /* calendar */ = {
@@ -1168,6 +1183,8 @@
 				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
+				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
+				060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1187,6 +1204,7 @@
 		064D91F71FE685B600179498 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				060F2D8B20121ABF004E7EB1 /* telemetry */,
 				060E975A1FE8267C00CB4258 /* social */,
 				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
 				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
@@ -1210,6 +1228,15 @@
 				069433E61E28361B00CE6398 /* dialog */,
 			);
 			name = ui;
+			sourceTree = "<group>";
+		};
+		064D9B012008EBBC0057137C /* orientation */ = {
+			isa = PBXGroup;
+			children = (
+				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
+				064D9B022008EBD40057137C /* OrientationNavController.swift */,
+			);
+			name = orientation;
 			sourceTree = "<group>";
 		};
 		064FE5A31ED09DCE004A9F35 /* manager */ = {
@@ -1516,6 +1543,7 @@
 				06AF23341F0627CF008805A2 /* PlanEvent.swift */,
 				06AF23361F062812008805A2 /* PlanTraining.swift */,
 				06C2F3F71F0A48F00077EE21 /* PlanObject.swift */,
+				060F2D89201219E8004E7EB1 /* PlanTelemetryObject.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -1561,6 +1589,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				064D9B012008EBBC0057137C /* orientation */,
 				067545C41F11326B008759E7 /* weight */,
 				060958E61EDE973A009A824C /* dialog_element */,
 				067129591EC896EF00362C39 /* plan */,
@@ -1581,7 +1610,6 @@
 				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
 				066B00451EC7504400BE0E1F /* DividerView.swift */,
 				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
-				061DBCB61F12811600D3C129 /* PortraitNavController.swift */,
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
 				066461601F459CC200145960 /* BluetoothList.swift */,
 				066461621F459D0200145960 /* AppProgressBar.swift */,
@@ -2145,6 +2173,7 @@
 				061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */,
 				067964651E63756E00DFC050 /* PauseDiff.swift in Sources */,
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
+				067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
 				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
@@ -2187,6 +2216,7 @@
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* TrainingEnvTypeVc.swift in Sources */,
 				06CAFF4D1F0D304D00D2EA14 /* EventManager.swift in Sources */,
+				060F2D8D20122727004E7EB1 /* PlanDisplayHelper.swift in Sources */,
 				06C707141FFB91EC00D72E72 /* ViewBluetoothListLayout.swift in Sources */,
 				06C7070C1FFB864500D72E72 /* ViewCalibrationLayout.swift in Sources */,
 				067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */,
@@ -2217,6 +2247,7 @@
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
+				064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */,
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
@@ -2315,6 +2346,7 @@
 				06F8A08E1F0E783B006CE6FB /* DeletePlanDialog.swift in Sources */,
 				067790C21ED9A54D0002AA59 /* PlanTimeLineView.swift in Sources */,
 				069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */,
+				060F2D8A201219E8004E7EB1 /* PlanTelemetryObject.swift in Sources */,
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
 				06CAFF4B1F0D2EDE00D2EA14 /* ManagerModifyPlanDelete.swift in Sources */,
 				067545C31F1131FF008759E7 /* WeightButton.swift in Sources */,

@@ -10,6 +10,21 @@ import UIKit
 
 class LabelWithAdaptiveTextHeight: UILabel {
     
+    private var defMaxFontSize: CGFloat = 300
+    
+    init(maxFontSize: CGFloat) {
+        self.defMaxFontSize = maxFontSize
+        super.init(frame: CGRect.zero)
+    }
+    
+    init() {
+        super.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         font = fontToFitHeight()
@@ -19,7 +34,8 @@ class LabelWithAdaptiveTextHeight: UILabel {
     private func fontToFitHeight() -> UIFont {
         
         var minFontSize: CGFloat = 18
-        var maxFontSize: CGFloat = 300
+        var maxFontSize = defMaxFontSize
+
         var fontSizeAverage: CGFloat = 0
         var textAndLabelHeightDiff: CGFloat = 0
         
@@ -27,7 +43,7 @@ class LabelWithAdaptiveTextHeight: UILabel {
             
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
             
-            guard text!.characters.count > 0 else {
+            guard text != nil && text!.characters.count > 0 else {
                 break
             }
             
@@ -52,8 +68,8 @@ class LabelWithAdaptiveTextHeight: UILabel {
                     
                 } else if (textAndLabelHeightDiff > 0) {
                     minFontSize = fontSizeAverage + 1
-                    
                 } else {
+                    log("ROT_TEST", "fontSize: \(fontSizeAverage)")
                     return font.withSize(fontSizeAverage)
                 }
             }
