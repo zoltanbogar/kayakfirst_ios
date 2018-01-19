@@ -82,6 +82,11 @@ class TrainingService {
         setTelemetryCycleState(cycleState: CycleState.stopped)
     }
     
+    func destroy() {
+        stop()
+        reset()
+    }
+    
     func getCalibrationDuration() -> Double {
         return 0
     }

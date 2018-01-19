@@ -109,7 +109,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func finish() {
-        trainingService.stop()
+        trainingService.destroy()
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
         dismiss(animated: true, completion: nil)

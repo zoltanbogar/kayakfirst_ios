@@ -48,7 +48,8 @@ class RefreshDashboardHelper {
     }
     
     func cycleStop() {
-        startRefresh(false)
+        cyclePause()
+        refresh()
     }
     
     func onResume() {
