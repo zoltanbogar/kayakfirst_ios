@@ -14,7 +14,7 @@ func startBluetoothVc(viewController: UIViewController, plan: Plan?, event: Even
     bluetoothVc.plan = plan
     bluetoothVc.event = event
     
-    let navController = UINavigationController()
+    let navController = PortraitNavController()
     navController.pushViewController(bluetoothVc, animated: false)
     
     viewController.present(navController, animated: true, completion: nil)
@@ -27,9 +27,7 @@ class BluetoothViewController: BaseVC<VcBluetoothLayout>, OnBluetoothConnectedLi
     var event: Event?
     
     //MARK: life cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func onResume() {
         refreshBluetoothList()
     }
     
