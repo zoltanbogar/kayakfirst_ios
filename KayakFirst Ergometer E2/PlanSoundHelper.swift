@@ -29,10 +29,6 @@ class PlanSoundHelper {
     }
     
     //MARK: functions
-    func stopSound() {
-        startSound(false)
-    }
-
     func playSoundIfNeeded(value: Double, planType: PlanType) {
         var neededPlay = false
         if PlanType.distance == planType {
@@ -40,6 +36,8 @@ class PlanSoundHelper {
         } else if PlanType.time == planType {
             neededPlay = value <= soundThresholdTime
         }
+        
+        neededPlay = neededPlay && value > 0
         
         startSound(neededPlay && shouldPlay && shouldPlayByCycle)
     }

@@ -109,6 +109,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func finish() {
+        plan = nil
         trainingService.destroy()
         trainingService.bindService(isBind: false)
         registerEventBus(isRegister: false)
@@ -138,6 +139,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     func checkPlanLayout() {
         if let plan = plan {
+            telemetry.plan = plan
             showDashboardVc(plan: plan)
         } else {
             pushViewController(SetDashboardVc(), animated: true)
@@ -163,8 +165,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func onCounterEnd() {
-        dashboardVc?.resetPlanDashboardView()
-        
         trainingService.start()
     }
     
@@ -206,8 +206,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
             finish()
         case CycleState.stopped:
             savePlan()
-        case CycleState.resumed:
-            sessionId = telemetry.sessionId
         default: break
         }
         setLayoutByCycleState(cycleState: cycleState)
@@ -222,6 +220,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
             calibrationView?.calibrationEnd()
             startDelayView.startCounter()
         case CycleState.resumed:
+            sessionId = telemetry.sessionId
             dashboardVc?.showViewSwipePause(isShow: true)
             dashboardVc?.initBtnPlaySmall(showRestart: false, isShow: false)
             showCloseButton(isShow: false)

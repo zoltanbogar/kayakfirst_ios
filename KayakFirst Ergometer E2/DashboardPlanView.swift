@@ -13,17 +13,13 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
     private let telemetry = Telemetry.sharedInstance
     
     //MARK: properties
-    var plan: Plan? {
-        didSet {
-            resetPlan()
-        }
-    }
+    var plan: Plan?
     var isDone: Bool {
-        return planElementPosition == plan?.planElements?.count
+        return planTelemetryObject != nil && planTelemetryObject!.isDone
     }
-    private var localeValue: Double = 0
-    private var planElementPosition: Int = 0
     let planSoundHelper = PlanSoundHelper.sharedInstance
+    
+    private var planTelemetryObject: PlanTelemetryObject? = nil
     
     override func getContentLayout(contentView: UIView) -> ViewDashboardPlanLayout {
         return ViewDashboardPlanLayout(contentView: contentView)
@@ -38,133 +34,38 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
         contentLayout!.viewGrad.superview?.layer.mask = getGradient(withColours: [Colors.colorPrimary, Colors.colorTransparent], gradientOrientation: gradientOrientation)
     }
     
-    func resetPlan() {
-        localeValue = 0
-        planElementPosition = 0
-        
-        contentLayout!.peTableView.dataList = self.plan?.planElements
-        
-        setProgressBarPlanElementColor()
-    }
-    
     override func refreshUi() {
         contentLayout!.deActual1000.refreshUi()
         contentLayout!.deSpm.refreshUi()
         
-        if plan != nil && plan?.planElements != nil {
-            let totalPercent = getTotalPercent()
-            
-            if totalPercent > 0 {
-                setPlanElementPosition()
-                let currentPercent = getCurrentPercent()
-                
-                contentLayout!.progressViewComplete.progress = Float(totalPercent / 100)
-                contentLayout!.progressViewPlanElement.progress = (Float((Double(1) - currentPercent)))
-                
-                setTextsByPercent(percent: currentPercent)
-            } else {
-                planElementPosition = plan!.planElements!.count
-                
-                planSoundHelper.stopSound()
-                reset()
-            }
-        }
-    }
-    
-    private func setPlanElementPosition() {
-        let localPlanElementPos = planElementPosition
-        var sum: Double = 0
-        for i in 0..<plan!.planElements!.count {
-            sum += plan!.planElements![i].value
-            
-            if sum >= getCurrentTotalValue() {
-                planElementPosition = i
-                
-                if localPlanElementPos != i {
-                    reset()
-                }
-                break
-            }
-        }
+        planTelemetryObject = telemetry.planTelemetryObject
         
-        contentLayout!.peTableView.showPlanElementByPosition(position: planElementPosition)
-    }
-    
-    private func getCurrentTotalValue() -> Double {
-        var valueToCheck = telemetry.duration
-        if plan!.type == PlanType.distance {
-            valueToCheck = telemetry.distance
-        }
-        return valueToCheck
-    }
-    
-    private func getTotalPercent() -> Double {
-        if getCurrentTotalValue() > plan!.length {
-            return -1
-        } else {
-            let percent: Double = getCurrentTotalValue() / plan!.length
+        if let planTelemetryObject = planTelemetryObject {
+            setTexts(value: planTelemetryObject.value, accentValue: planTelemetryObject.valueAccent)
+            contentLayout!.progressViewComplete.progress = Float(planTelemetryObject.totalProgress / 100)
+            contentLayout!.progressViewPlanElement.progress = (Float(planTelemetryObject.actualProgress / 100))
+            setProgressBarPlanElementColor(color: planTelemetryObject.planElementColor)
+            contentLayout!.peTableView.dataList = planTelemetryObject.planElementList
             
-            return (Double(100) * (Double(1) - percent))
+            planSoundHelper.playSoundIfNeeded(value: planTelemetryObject.value, planType: plan!.type)
         }
     }
     
-    private func getCurrentPercent() -> Double {
-        if let currentPlanElement = getCurrentPlanElement() {
-            var sum: Double = 0
-            for i in 0..<planElementPosition {
-                sum += plan!.planElements![i].value
-            }
-            
-            let diff = getCurrentTotalValue() - sum
-            let percent = diff / currentPlanElement.value
-            
-            return percent
-        }
-        return 1
-    }
-    
-    private func setTextsByPercent(percent: Double) {
-        var valueText = getFormattedTimeText(value: 0)
-        var valueAccentText = getFormattedDistanceText(value: 0)
+    private func setTexts(value: Double, accentValue: Double) {
+        var valueText = getFormattedTimeText(value: value)
+        var valueAccentText = getFormattedDistanceText(value: accentValue)
         
         if plan!.type == PlanType.distance {
-            valueText = getFormattedDistanceText(value: 0)
-            valueAccentText = getFormattedTimeText(value: 0)
+            valueText = getFormattedDistanceText(value: value)
+            valueAccentText = getFormattedTimeText(value: accentValue)
         }
         
-        if let currentPlanElement = getCurrentPlanElement() {
-            let value = (1 - percent) * currentPlanElement.value
-            
-            valueText = getFormattedTimeText(value: value)
-            valueAccentText = getFormattedDistanceText(value: (telemetry.distance - localeValue))
-            
-            if plan!.type == PlanType.distance {
-                valueText = getFormattedDistanceText(value: value)
-                valueAccentText = getFormattedTimeText(value: (telemetry.duration - localeValue))
-            }
-            
-            planSoundHelper.playSoundIfNeeded(value: value, planType: plan!.type)
-        }
         setTexts(valueText: valueText, valueAccentText: valueAccentText)
     }
     
     private func setTexts(valueText: String, valueAccentText: String) {
         contentLayout!.labelValue.text = valueText
         contentLayout!.labelValueAccent.text = valueAccentText
-    }
-    
-    private func reset() {
-        localeValue = telemetry.distance
-        
-        if plan!.type == PlanType.distance {
-            localeValue = telemetry.duration
-        }
-        
-        setTextsByPercent(percent: 0)
-        
-        setProgressBarPlanElementColor()
-        
-        contentLayout!.peTableView.showPlanElementByPosition(position: planElementPosition)
     }
     
     private func getFormattedTimeText(value: Double) -> String {
@@ -175,20 +76,7 @@ class DashboardPlanView: RefreshView<ViewDashboardPlanLayout> {
         return "" + "\(Int(value))" + " " + UnitHelper.getDistanceUnit()
     }
     
-    private func getCurrentPlanElement() -> PlanElement? {
-        if plan?.planElements != nil && planElementPosition < (plan?.planElements?.count)! {
-            return plan?.planElements?[planElementPosition]
-        }
-        return nil
-    }
-    
-    private func setProgressBarPlanElementColor() {
-        var color = Colors.colorAccent
-        
-        if let currentPlanElement = getCurrentPlanElement() {
-            color = getPlanElementColor(planElement: currentPlanElement)
-        }
-        
+    private func setProgressBarPlanElementColor(color: UIColor) {
         contentLayout!.progressViewPlanElement.trackTintColor = color
     }
     

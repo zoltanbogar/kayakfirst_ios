@@ -94,12 +94,6 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         }
     }
     
-    func resetPlanDashboardView() {
-        if plan != nil {
-            contentLayout!.viewDashboardPlan.resetPlan()
-        }
-    }
-    
     //MARK: delegate
     func onPauseCLicked() {
         getTrainingVc().pauseClick()

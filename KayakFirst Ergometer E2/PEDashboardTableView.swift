@@ -10,17 +10,6 @@ import Foundation
 
 class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     
-    //MARK: properties
-    private var planElementsOriginal: [PlanElement]?
-    override var dataList: [PlanElement]? {
-        didSet {
-            if dataList != nil && planElementsOriginal == nil {
-                planElementsOriginal = dataList!.map { $0 }
-            }
-            reloadData()
-        }
-    }
-    
     private var showPosition: Int = 0
     
     //MARK: init
@@ -33,21 +22,6 @@ class PEDashboardTableView: TableViewWithEmpty<PlanElement> {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    //MARK: functions
-    func showPlanElementByPosition(position: Int) {
-        if dataList != nil && showPosition != position {
-            var newElements = [PlanElement]()
-            
-            for i in position..<planElementsOriginal!.count {
-                newElements.append(planElementsOriginal![i])
-            }
-            dataList = newElements
-            
-            reloadData()
-        }
-        self.showPosition = position
     }
     
     override func getEmptyView() -> UIView {
