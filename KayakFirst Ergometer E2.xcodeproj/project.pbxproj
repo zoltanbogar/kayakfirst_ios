@@ -136,6 +136,7 @@
 		061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C01F0BED4F0068E6E6 /* UploadType.swift */; };
 		061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */; };
 		0621004E1F0FB15C0024A2AA /* PlanNoElementsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */; };
+		06217B0D2015EA6A004DC885 /* UpdateDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06217B0C2015EA6A004DC885 /* UpdateDialog.swift */; };
 		0621F7AA1E3FCC99006FF613 /* AppUiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7A91E3FCC99006FF613 /* AppUiButton.swift */; };
 		0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */; };
 		0621F7B01E3FF6D6006FF613 /* ScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */; };
@@ -557,6 +558,7 @@
 		061FF0C01F0BED4F0068E6E6 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
 		061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModify.swift; sourceTree = "<group>"; };
 		0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanNoElementsDialog.swift; sourceTree = "<group>"; };
+		06217B0C2015EA6A004DC885 /* UpdateDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDialog.swift; sourceTree = "<group>"; };
 		0621F7A91E3FCC99006FF613 /* AppUiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiButton.swift; sourceTree = "<group>"; };
 		0621F7AD1E3FEF5A006FF613 /* NSLocale+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLocale+.swift"; sourceTree = "<group>"; };
 		0621F7AF1E3FF6D6006FF613 /* ScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollView+.swift"; sourceTree = "<group>"; };
@@ -1518,6 +1520,7 @@
 				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
 				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
 				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
+				06217B0C2015EA6A004DC885 /* UpdateDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -2306,6 +2309,7 @@
 				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
 				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
+				06217B0D2015EA6A004DC885 /* UpdateDialog.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,

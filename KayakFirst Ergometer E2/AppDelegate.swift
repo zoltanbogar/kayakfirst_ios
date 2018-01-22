@@ -83,12 +83,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func downloadMessage() {
+        getAppMessage()
+        getActualVersionCode()
+    }
+    
+    private func getAppMessage() {
         UserManager.sharedInstance.messageCallback = { data, error in
-            if data != nil && "" != data {
-                ErrorDialog(errorString: data!).show()
-            }
+            showAppMessage(message: data)
         }
         UserManager.sharedInstance.getMessage()
+    }
+    
+    private func getActualVersionCode() {
+        UserManager.sharedInstance.versionCallback = { data, error in
+            showUpdateDialog(actualVersionCode: data)
+        }
+        UserManager.sharedInstance.getActualVersionCode()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

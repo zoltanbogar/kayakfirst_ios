@@ -44,6 +44,7 @@ class UserManager: BaseManager {
     var updateUserCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var updatePwCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var messageCallback: ((_ data: String?, _ error: Responses?) -> ())?
+    var versionCallback: ((_ data: Int?, _ error: Responses?) -> ())?
     
     //MARK: server endpoints
     func register(userDto: UserDto) -> BaseManagerType {
@@ -145,6 +146,11 @@ class UserManager: BaseManager {
     func getMessage() {
         let downloadMessage = DownloadMessage()
         runUser(serverService: downloadMessage, managerCallBack: messageCallback)
+    }
+    
+    //TODO: change it to the real implementation
+    func getActualVersionCode() {
+        versionCallback?(24, nil)
     }
     
     func addUser(user: User?) {

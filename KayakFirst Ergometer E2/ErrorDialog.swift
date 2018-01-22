@@ -8,6 +8,12 @@
 
 import UIKit
 
+func showAppMessage(message: String?) {
+    if message != nil && "" != message {
+        ErrorDialog(errorString: message!).show()
+    }
+}
+
 class ErrorDialog: BaseDialog {
     
     init(errorString: String) {

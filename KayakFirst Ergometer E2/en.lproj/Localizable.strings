@@ -103,6 +103,8 @@
 "dialog_event_add_message"="Add to calendar?";
 "dialog_event_delete_title"="Do you really want to delete";
 "dialog_event_delete_message"="This event will be lost, but the session you can find it in Plans for add to another day.";
+"dialog_update_title"="Update available!";
+"dialog_update_pos_button"="update";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";

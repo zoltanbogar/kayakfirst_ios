@@ -103,6 +103,8 @@
 "dialog_event_add_message"="Napárba teszed?";
 "dialog_event_delete_title"="Biztos törölni akarod";
 "dialog_event_delete_message"="Ez a naptáresemény törölve lesz, de az összeállítást megtalálod a Tervek közt.";
+"dialog_update_title"="Frissítés elérhető!";
+"dialog_update_pos_button"="frissítés";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
