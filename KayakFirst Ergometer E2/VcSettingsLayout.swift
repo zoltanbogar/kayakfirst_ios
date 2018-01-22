@@ -14,6 +14,7 @@ class VcSettingsLayout: BaseLayout {
         contentView.addSubview(imgLogo)
         contentView.addSubview(textFieldWebsite)
         contentView.addSubview(textFieldTermsCondition)
+        contentView.addSubview(textFieldFeedback)
         contentView.addSubview(labelVersion)
     }
     
@@ -21,6 +22,7 @@ class VcSettingsLayout: BaseLayout {
         imgLogo.snp.removeConstraints()
         textFieldWebsite.snp.removeConstraints()
         textFieldTermsCondition.snp.removeConstraints()
+        textFieldFeedback.snp.removeConstraints()
         labelVersion.snp.removeConstraints()
         
         imgLogo.snp.makeConstraints { (make) in
@@ -38,6 +40,11 @@ class VcSettingsLayout: BaseLayout {
             make.top.equalTo(textFieldWebsite.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin2, 0))
         }
         
+        textFieldFeedback.snp.makeConstraints { (make) in
+            make.centerX.equalTo(contentView)
+            make.top.equalTo(textFieldTermsCondition.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin2, 0))
+        }
+        
         labelVersion.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin, 0))
@@ -48,6 +55,7 @@ class VcSettingsLayout: BaseLayout {
         imgLogo.snp.removeConstraints()
         textFieldWebsite.snp.removeConstraints()
         textFieldTermsCondition.snp.removeConstraints()
+        textFieldFeedback.snp.removeConstraints()
         labelVersion.snp.removeConstraints()
         
         imgLogo.snp.makeConstraints { (make) in
@@ -65,9 +73,14 @@ class VcSettingsLayout: BaseLayout {
             make.top.equalTo(textFieldWebsite.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
         }
         
-        labelVersion.snp.makeConstraints { (make) in
+        textFieldFeedback.snp.makeConstraints { (make) in
             make.centerX.equalTo(contentView)
             make.top.equalTo(textFieldTermsCondition.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
+        }
+        
+        labelVersion.snp.makeConstraints { (make) in
+            make.centerX.equalTo(contentView)
+            make.top.equalTo(textFieldFeedback.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
             make.bottom.equalTo(contentView).inset(UIEdgeInsetsMake(0, 0, margin05, 0))
         }
     }
@@ -96,6 +109,15 @@ class VcSettingsLayout: BaseLayout {
         textField.setBottomBorder(Colors.colorWhite)
         textField.textColor = Colors.colorWhite
         textField.text = getString("user_terms_conditions_short")
+        
+        return textField
+    }()
+    
+    lazy var textFieldFeedback: UITextField! = {
+        let textField = UITextField()
+        textField.setBottomBorder(Colors.colorWhite)
+        textField.textColor = Colors.colorWhite
+        textField.text = getString("feedback_title")
         
         return textField
     }()

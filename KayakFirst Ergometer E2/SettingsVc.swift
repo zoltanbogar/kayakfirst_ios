@@ -23,6 +23,7 @@ class SettingsVc: BaseVC<VcSettingsLayout>, UITextFieldDelegate {
         
         contentLayout!.textFieldWebsite.delegate = self
         contentLayout!.textFieldTermsCondition.delegate = self
+        contentLayout!.textFieldFeedback.delegate = self
     }
     
     override func getContentLayout(contentView: UIView) -> VcSettingsLayout {
@@ -40,6 +41,9 @@ class SettingsVc: BaseVC<VcSettingsLayout>, UITextFieldDelegate {
             return false
         } else if textField == contentLayout!.textFieldWebsite {
             UIApplication.shared.openURL(NSURL(string: "http://kayakfirst.com")! as URL)
+            return false
+        } else if textField == contentLayout!.textFieldFeedback {
+            showFeedbackVc(viewController: self)
             return false
         } else {
             return true

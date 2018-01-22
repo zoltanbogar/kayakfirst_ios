@@ -184,6 +184,8 @@
 		0654CA211FFD54ED003379D6 /* BaseTrainingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */; };
 		0654CA231FFD59E5003379D6 /* DragDropDashboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */; };
 		0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA241FFD62E5003379D6 /* DashboardVc.swift */; };
+		065573AE201661C200012E19 /* VcFeedbackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065573AD201661C200012E19 /* VcFeedbackLayout.swift */; };
+		065573B02016620C00012E19 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065573AF2016620C00012E19 /* FeedbackViewController.swift */; };
 		065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */; };
 		065B3C5D1F0E65240029C7DF /* PlanTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */; };
 		065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */; };
@@ -606,6 +608,8 @@
 		0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrainingVc.swift; sourceTree = "<group>"; };
 		0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropDashboardHelper.swift; sourceTree = "<group>"; };
 		0654CA241FFD62E5003379D6 /* DashboardVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
+		065573AD201661C200012E19 /* VcFeedbackLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcFeedbackLayout.swift; sourceTree = "<group>"; };
+		065573AF2016620C00012E19 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		065B3C5A1F0E61EE0029C7DF /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		065B3C5C1F0E65240029C7DF /* PlanTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewHeader.swift; sourceTree = "<group>"; };
 		065B3C5E1F0E65E20029C7DF /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
@@ -1585,6 +1589,7 @@
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
 				06BCB0D91E564F5800F41652 /* SettingsVc.swift */,
+				065573AF2016620C00012E19 /* FeedbackViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -1756,6 +1761,7 @@
 				063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */,
 				063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */,
 				063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */,
+				065573AD201661C200012E19 /* VcFeedbackLayout.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -2291,6 +2297,7 @@
 				06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */,
+				065573AE201661C200012E19 /* VcFeedbackLayout.swift in Sources */,
 				069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */,
 				067129611EC8E6A700362C39 /* PECellBlank.swift in Sources */,
 				06018D541E61B8D500F75919 /* RoundButton.swift in Sources */,
@@ -2390,6 +2397,7 @@
 				063237CB1FF629B000F04A4B /* VcSetDsahboardLayout.swift in Sources */,
 				066B00411EC7406F00BE0E1F /* PlanOrNotPlanVc.swift in Sources */,
 				06C7071A1FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift in Sources */,
+				065573B02016620C00012E19 /* FeedbackViewController.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,

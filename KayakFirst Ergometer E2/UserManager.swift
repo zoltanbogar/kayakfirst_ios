@@ -150,7 +150,15 @@ class UserManager: BaseManager {
     
     //TODO: change it to the real implementation
     func getActualVersionCode() {
-        versionCallback?(24, nil)
+        versionCallback?(20, nil)
+    }
+    
+    //TODO: change it to the real implementation
+    func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> ()) -> BaseManagerType {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            managerCallback(true, nil)
+        })
+        return UserManagerType.send_feedback
     }
     
     func addUser(user: User?) {

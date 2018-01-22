@@ -21,6 +21,7 @@ enum UserManagerType: Int, BaseManagerType {
     case update_user = 8
     case update_pw = 9
     case reset_pw = 10
+    case send_feedback = 11
     
     func isProgressShown() -> Bool {
         return self.rawValue > UserManagerType.token_refresh.rawValue

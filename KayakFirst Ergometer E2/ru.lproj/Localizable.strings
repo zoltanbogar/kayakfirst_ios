@@ -125,6 +125,13 @@
 "other_delete"="Удалить";
 "other_power_save"="Энергосберегательный режим";
 "other_search"="Поиск";
+"other_send"="Send";
+
+//Feedback
+"feedback_title"="Обратная связь";
+"feedback_hint"="Write your feedback";
+"feedback_system_information"="system informations";
+"feedback_sending"="Sending feedback";
 
 //Navigation
 "navigation_profile"="Профиль";

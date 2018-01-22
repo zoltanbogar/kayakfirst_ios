@@ -125,6 +125,13 @@
 "other_delete"="Delete";
 "other_power_save"="Power saving";
 "other_search"="Search";
+"other_send"="Send";
+
+//Feedback
+"feedback_title"="Feedback";
+"feedback_hint"="Write your feedback";
+"feedback_system_information"="system informations";
+"feedback_sending"="Sending feedback";
 
 //Navigation
 "navigation_profile"="Profile";

@@ -125,6 +125,13 @@
 "other_delete"="Törlés";
 "other_power_save"="Energiatakarékos mód";
 "other_search"="Keresés";
+"other_send"="Küldés";
+
+//Feedback
+"feedback_title"="Visszajelzés";
+"feedback_hint"="Írj visszajelzést";
+"feedback_system_information"="rendszer információk";
+"feedback_sending"="Sending feedback";
 
 //Navigation
 "navigation_profile"="Profil";
