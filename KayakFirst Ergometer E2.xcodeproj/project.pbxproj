@@ -163,6 +163,7 @@
 		06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */; };
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
+		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
 		0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644B7091FFCD0FD001022A4 /* TrainingService.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -587,6 +588,7 @@
 		06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
+		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
 		0644B7091FFCD0FD001022A4 /* TrainingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -1284,6 +1286,7 @@
 				06AF23451F06801B008805A2 /* DownloadPlanByName.swift */,
 				06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */,
 				06F7D7B41F17D6260081E473 /* DownloadMessage.swift */,
+				064498A92017320200DF9915 /* DownloadVersionCode.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -2359,6 +2362,7 @@
 				069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */,
 				060F2D8A201219E8004E7EB1 /* PlanTelemetryObject.swift in Sources */,
 				0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */,
+				064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */,
 				06CAFF4B1F0D2EDE00D2EA14 /* ManagerModifyPlanDelete.swift in Sources */,
 				067545C31F1131FF008759E7 /* WeightButton.swift in Sources */,
 				0679646C1E637EE800DFC050 /* CalculateStrokes_AV.swift in Sources */,

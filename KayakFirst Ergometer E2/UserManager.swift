@@ -145,12 +145,18 @@ class UserManager: BaseManager {
     
     func getMessage() {
         let downloadMessage = DownloadMessage()
-        runUser(serverService: downloadMessage, managerCallBack: messageCallback)
+        runUser(serverService: downloadMessage, managerCallBack: { (data, error) in
+            if let callback = self.messageCallback {
+                callback(data, error)
+            }
+            
+            self.getActualVersionCode()
+        })
     }
     
-    //TODO: change it to the real implementation
     func getActualVersionCode() {
-        versionCallback?(20, nil)
+        let downloadVersionCode = DownloadVersionCode()
+        runUser(serverService: downloadVersionCode, managerCallBack: versionCallback)
     }
     
     //TODO: change it to the real implementation
