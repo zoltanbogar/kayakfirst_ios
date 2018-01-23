@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         downloadMessage()
         
+        checkSystemInfo()
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

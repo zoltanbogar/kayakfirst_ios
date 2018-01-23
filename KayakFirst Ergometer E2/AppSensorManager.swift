@@ -337,7 +337,7 @@ class AppSensorManager {
         logString.append("\(getFormattedLogValue(gyroZ));")
         logString.append("\(getFormattedLogValue(Telemetry.sharedInstance.speed));")
         
-        KayakLog.logUserData(logString)
+        AppLog.logUserData(logString)
         
         lastStrokes = strokes
     }

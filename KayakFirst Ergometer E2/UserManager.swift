@@ -163,6 +163,10 @@ class UserManager: BaseManager {
     func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> ()) -> BaseManagerType {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             managerCallback(true, nil)
+            
+            let systemInfo = AppLog.getSystemInfo()
+            
+            log("SYSTEM_TEST", "systemInfo: \(systemInfo)")
         })
         return UserManagerType.send_feedback
     }
@@ -173,6 +177,8 @@ class UserManager: BaseManager {
     
     func addLoginDto(loginDto: LoginDto?) {
         UserDb.addLoginDto(loginDto: loginDto)
+        
+        checkSystemInfo()
     }
     
     func getTrainingType() -> TrainingType {

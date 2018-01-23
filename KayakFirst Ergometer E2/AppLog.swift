@@ -28,11 +28,18 @@ func initCrashlytics(appdelegate: AppDelegate) {
     }
 }
 
-class KayakLog {
+func checkSystemInfo() {
+    SystemInfoHelper.addSystemInfoToDb()
+}
+
+class AppLog {
     
     private static var sessionId: Double = 0
     private static var file: URL?
     
+    class func getSystemInfo() -> SystemInfo? {
+        return SystemInfoHelper.getActualSystemInfo()
+    }
     
     class func logUserData(_ logLine: String) {
         if logNeeded {

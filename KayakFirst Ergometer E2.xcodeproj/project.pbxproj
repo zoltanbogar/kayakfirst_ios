@@ -164,10 +164,14 @@
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
 		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
+		064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498AC20176B1900DF9915 /* SystemInfo.swift */; };
+		064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */; };
+		064498B72017732D00DF9915 /* SystemInfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B62017732D00DF9915 /* SystemInfoHelper.swift */; };
+		064498B92017781400DF9915 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B82017781400DF9915 /* UIDevice+.swift */; };
 		0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644B7091FFCD0FD001022A4 /* TrainingService.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
-		064764C71E237035004B9ED3 /* KayakLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* KayakLog.swift */; };
+		064764C71E237035004B9ED3 /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* AppLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
 		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
@@ -589,10 +593,14 @@
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
 		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
+		064498AC20176B1900DF9915 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
+		064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDbLoader.swift; sourceTree = "<group>"; };
+		064498B62017732D00DF9915 /* SystemInfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoHelper.swift; sourceTree = "<group>"; };
+		064498B82017781400DF9915 /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		0644B7091FFCD0FD001022A4 /* TrainingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
-		064764C61E237035004B9ED3 /* KayakLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KayakLog.swift; sourceTree = "<group>"; };
+		064764C61E237035004B9ED3 /* AppLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
 		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
@@ -898,6 +906,7 @@
 				06018D551E61D9D700F75919 /* UIView+.swift */,
 				06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */,
 				06287D041F0F639B00F102C8 /* UITableView+.swift */,
+				064498B82017781400DF9915 /* UIDevice+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -985,6 +994,7 @@
 		060C8B751E4068220057DD61 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				064498AB20176B0900DF9915 /* log */,
 				06AF232B1F062278008805A2 /* training */,
 				06AF232A1F06226C008805A2 /* plan */,
 				060C8B761E40682C0057DD61 /* User.swift */,
@@ -1038,6 +1048,7 @@
 		060DDFEE1E4BD2BF00FE2D14 /* database */ = {
 			isa = PBXGroup;
 			children = (
+				064498B020176BD400DF9915 /* log */,
 				06AF233A1F067749008805A2 /* training */,
 				066B00391EC7156300BE0E1F /* plan */,
 				06018D571E620FFC00F75919 /* AppSql.swift */,
@@ -1181,6 +1192,31 @@
 			name = modify;
 			sourceTree = "<group>";
 		};
+		064498AB20176B0900DF9915 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				064498AC20176B1900DF9915 /* SystemInfo.swift */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
+		064498B020176BD400DF9915 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
+		064498B3201771F700DF9915 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				064764C61E237035004B9ED3 /* AppLog.swift */,
+				064498B62017732D00DF9915 /* SystemInfoHelper.swift */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1200,9 +1236,9 @@
 		064D91F61FE6853300179498 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				064498B3201771F700DF9915 /* log */,
 				0602D3AA1E31568F001E382E /* extensions */,
 				06C6ABB11E2267A000562B27 /* AppDelegate.swift */,
-				064764C61E237035004B9ED3 /* KayakLog.swift */,
 				0602B44D1E23CAF000ABA70F /* Localize.swift */,
 				0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */,
 			);
@@ -2378,6 +2414,7 @@
 				060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */,
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				066B00491EC7554400BE0E1F /* PlanListVc.swift in Sources */,
+				064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */,
 				06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */,
 				066B004F1EC75ABB00BE0E1F /* EventTableViewCell.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */,
@@ -2433,6 +2470,7 @@
 				06C7070E1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,
+				064498B92017781400DF9915 /* UIDevice+.swift in Sources */,
 				068277831FFD13E5003A5667 /* ErgometerService.swift in Sources */,
 				06C7072A1FFBC22A00D72E72 /* ViewDiagramLabelLayout.swift in Sources */,
 				06C707071FFB824D00D72E72 /* ViewProgressLayout.swift in Sources */,
@@ -2442,6 +2480,7 @@
 				064FE5A81ED09EAF004A9F35 /* PlanManagerType.swift in Sources */,
 				062369661E9BF44100578017 /* CalibrationView.swift in Sources */,
 				067A09AF1F38AB4400CC8051 /* CalculateStrokes_AV_Ergo.swift in Sources */,
+				064498B72017732D00DF9915 /* SystemInfoHelper.swift in Sources */,
 				06E82BE51F0A6B21006EC016 /* EventDbLoader.swift in Sources */,
 				0613698A1E7C2D8C00896282 /* UploadTimer.swift in Sources */,
 				06F9D5DB1F38985F005ECA8B /* CommandProcessorErgometer.swift in Sources */,
@@ -2451,6 +2490,7 @@
 				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
 				061966091FFE16750040E59A /* SwipePauseView.swift in Sources */,
+				064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,
@@ -2463,7 +2503,7 @@
 				067A09A71F38A40E00CC8051 /* CalculateElementP.swift in Sources */,
 				06071D3F1ECA43FE004CB736 /* PlanDetailsTableView.swift in Sources */,
 				06C2F3F01F0A42360077EE21 /* DeleteTraining.swift in Sources */,
-				064764C71E237035004B9ED3 /* KayakLog.swift in Sources */,
+				064764C71E237035004B9ED3 /* AppLog.swift in Sources */,
 				06C707241FFBB8E800D72E72 /* ViewPlanTypeLayout.swift in Sources */,
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,
