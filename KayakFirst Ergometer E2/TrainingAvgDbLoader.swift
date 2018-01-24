@@ -165,7 +165,7 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     }
     
     override func getDeleteOldDataPredicate() -> Expression<Bool> {
-        return self.sessionId < getOldDataTimestamp()
+        return self.sessionId < getOldDataTimestamp(oldDataDays: oldDataDays)
     }
     
 }

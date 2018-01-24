@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         downloadMessage()
         
-        checkSystemInfo()
+        checkSystem()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -92,6 +92,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showUpdateDialog(actualVersionCode: data)
         }
         UserManager.sharedInstance.getMessage()
+    }
+    
+    private func checkSystem() {
+        DispatchQueue.global().async {
+            SystemInfoDbLoader.sharedInstance.deleteOldData()
+            LogObjectDbLoader.sharedInstance.deleteOldData()
+            
+            checkSystemInfo()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -107,6 +107,11 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     }
     
     //MARK: delete
+    func deleteOldData() {
+        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataLogDays)
+        deleteData(predicate: predicate)
+    }
+    
     override func deleteData(predicate: Expression<Bool>?) -> Int {
         var deletedRows = 0
         

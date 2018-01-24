@@ -13,7 +13,8 @@ class BaseDbLoader<Input> {
     
     //MARK: constants
     let databaseLogTag = "DATABASE"
-    private let oldDataDays: TimeInterval = 30
+    let oldDataDays: TimeInterval = 30
+    let oldDataLogDays: TimeInterval = 10
     
     //MARK: properties
     let db = AppSql.sharedInstance.db
@@ -81,7 +82,7 @@ class BaseDbLoader<Input> {
         return self.userId == UserManager.sharedInstance.getUser()!.id
     }
     
-    func getOldDataTimestamp() -> Double {
+    func getOldDataTimestamp(oldDataDays: TimeInterval) -> Double {
         let oldaDataDaysInMillis: TimeInterval = oldDataDays * 24 * 60 * 60 * 1000
         let timestamp = currentTimeMillis() - oldaDataDaysInMillis
         
