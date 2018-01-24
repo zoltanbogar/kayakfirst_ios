@@ -164,9 +164,7 @@ class UserManager: BaseManager {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             managerCallback(true, nil)
             
-            let systemInfo = AppLog.getSystemInfo()
-            
-            log("SYSTEM_TEST", "systemInfo: \(systemInfo)")
+            AppLog.createLogFile()
         })
         return UserManagerType.send_feedback
     }

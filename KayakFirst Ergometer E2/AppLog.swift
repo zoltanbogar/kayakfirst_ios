@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 //TODO
-let logNeeded = false
+let logNeeded = true
 
 private let logDateFormat = "HH.mm.ss.SSS"
 
@@ -41,11 +41,19 @@ class AppLog {
         return SystemInfoHelper.getActualSystemInfo()
     }
     
+    class func logEvent(event: String) {
+        LogEventHelper.logEvent(event: event)
+    }
+    
+    class func createLogFile() {
+        LogEventHelper.createLogFile()
+    }
+    
     class func logUserData(_ logLine: String) {
         if logNeeded {
             log("LOG", logLine)
             
-            createLogFile()
+            //createLogFile()
             
             do {
                 try logLine.appendLineToURL(fileURL: file!)
@@ -57,13 +65,14 @@ class AppLog {
         }
     }
     
-    private class func createLogFile() {
+    //TODO: delete this
+    /*private class func createLogFile() {
         if sessionId != Telemetry.sharedInstance.sessionId {
             file = getDocumentsDirectory().appendingPathComponent("M_\(DateFormatHelper.getDate(dateFormat: "yyyyMMddkkmmss", timeIntervallSince1970: currentTimeMillis())).txt")
             
             sessionId = Telemetry.sharedInstance.sessionId
         }
-    }
+    }*/
     
     private class func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

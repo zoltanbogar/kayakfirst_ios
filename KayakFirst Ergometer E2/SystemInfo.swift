@@ -8,7 +8,14 @@
 
 import Foundation
 
-struct SystemInfo {
+struct SystemInfo: Equatable {
+    
+    static func ==(lhs: SystemInfo, rhs: SystemInfo) -> Bool {
+        return lhs.versionCode == rhs.versionCode &&
+        lhs.locale == rhs.locale &&
+        lhs.userName == rhs.userName
+    }
+    
     let versionCode: Int
     let versionName: String
     let timestamp: Double
@@ -16,6 +23,6 @@ struct SystemInfo {
     let brand: String
     let model: String
     let osVersion: String
-    let userName: String?
+    let userName: String
     let userId: Int64
 }

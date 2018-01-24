@@ -38,7 +38,7 @@ class SystemInfoDbLoader: BaseDbLoader<SystemInfo> {
     private let brand = Expression<String>(PropertyKey.brandKey)
     private let model = Expression<String>(PropertyKey.modelKey)
     private let osVersion = Expression<String>(PropertyKey.osVersionKey)
-    private let userName = Expression<String?>(PropertyKey.userNameKey)
+    private let userName = Expression<String>(PropertyKey.userNameKey)
     
     override func getTableName() -> String {
         return SystemInfoDbLoader.tableName
@@ -47,6 +47,7 @@ class SystemInfoDbLoader: BaseDbLoader<SystemInfo> {
     //MARK: init database
     override func initDatabase(database: Connection) throws {
         try database.run(table!.create(ifNotExists: true) { t in
+            t.column(baseId, primaryKey: .autoincrement)
             t.column(versionCode)
             t.column(versionName)
             t.column(timestamp)
@@ -56,11 +57,28 @@ class SystemInfoDbLoader: BaseDbLoader<SystemInfo> {
             t.column(osVersion)
             t.column(userName)
             t.column(userId)
-            t.primaryKey(versionCode, locale, userId)
         })
     }
     
     //MARK: insert
+    func addSystemInfo(systemInfo: SystemInfo) {
+        let systemInfoList = loadData(predicate: nil)
+        var shouldInsert = true
+        
+        if let systemInfoList = systemInfoList {
+            for i in systemInfoList {
+                if i == systemInfo {
+                    shouldInsert = false
+                    break
+                }
+            }
+        }
+        
+        if shouldInsert {
+            addData(data: systemInfo)
+        }
+    }
+    
     override func addData(data: SystemInfo?) {
         if let systemInfo = data {
             let insert = table!.insert(self.versionCode <- systemInfo.versionCode, self.versionName <- systemInfo.versionName, self.timestamp <- Double(Int64(systemInfo.timestamp)), self.locale <- systemInfo.locale, self.brand <- systemInfo.brand, self.model <- systemInfo.model, self.osVersion <- systemInfo.osVersion, self.userName <- systemInfo.userName, self.userId <- systemInfo.userId)

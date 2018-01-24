@@ -12,21 +12,25 @@ class SystemInfoHelper {
     
     //MARK: functions
     class func addSystemInfoToDb() {
-        SystemInfoDbLoader.sharedInstance.addData(data: createSystemInfo())
+        SystemInfoDbLoader.sharedInstance.addSystemInfo(systemInfo: createSystemInfo())
     }
     
     class func getActualSystemInfo() -> SystemInfo? {
-        let list = SystemInfoDbLoader.sharedInstance.loadData(predicate: nil)
+        let list = getSystemInfos()
         
         if let list = list {
-            return list[0]
+            return list[list.count - 1]
         }
         return nil
     }
     
+    class func getSystemInfos() -> [SystemInfo]? {
+        return SystemInfoDbLoader.sharedInstance.loadData(predicate: nil)
+    }
+    
     private class func createSystemInfo() -> SystemInfo {
         let user = UserManager.sharedInstance.getUser()
-        let userName = user != nil ? user?.userName : nil
+        let userName = user != nil ? user!.userName : ""
         let userId: Int64 = user != nil ? user!.id : 0
         
         return SystemInfo(
@@ -37,7 +41,7 @@ class SystemInfoHelper {
             brand: "Apple",
             model: UIDevice.current.modelName,
             osVersion: UIDevice.current.systemVersion,
-            userName: userName,
+            userName: userName!,
             userId: userId)
     }
     

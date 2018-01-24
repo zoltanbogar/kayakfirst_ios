@@ -23,6 +23,7 @@ class BaseDbLoader<Input> {
     let planId = Expression<String>("planId")
     let name = Expression<String>("name")
     let timestamp = Expression<Double>("timestamp")
+    let baseId = Expression<Int>("id")
     
     var table: Table?
     

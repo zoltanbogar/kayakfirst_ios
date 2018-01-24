@@ -73,6 +73,9 @@ class BaseVC<E: BaseLayout>: UIViewController, BaseVcProtocol {
         view.backgroundColor = Colors.colorPrimary
         
         initProgressView()
+        
+        //TODO: delete this
+        AppLog.logEvent(event: "viewDidLoad: \(String(describing: type(of: self)))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
