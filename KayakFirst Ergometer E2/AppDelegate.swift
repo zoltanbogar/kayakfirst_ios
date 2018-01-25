@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showAppMessage(message: data)
         }
         UserManager.sharedInstance.versionCallback = { data, error in
-            showUpdateDialog(actualVersionCode: data)
+            UpdateDialog.showUpdateDialog(actualVersionCode: data)
         }
         UserManager.sharedInstance.getMessage()
     }

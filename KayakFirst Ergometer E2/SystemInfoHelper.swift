@@ -18,8 +18,8 @@ class SystemInfoHelper {
     class func getActualSystemInfo() -> SystemInfo? {
         let list = getSystemInfos()
         
-        if let list = list {
-            return list[list.count - 1]
+        if list != nil && list!.count > 0 {
+            return list![list!.count - 1]
         }
         return nil
     }

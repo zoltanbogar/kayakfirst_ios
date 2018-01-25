@@ -105,6 +105,7 @@
 "dialog_event_delete_message"="Это календарьное событие будет удалено,но его можете найти в Планах";
 "dialog_update_title"="Доступно обновление";
 "dialog_update_pos_button"="Обновить";
+"dialog_update_neut_button"="remind me next week";
 
 //Notification
 "notification_title_bluetooth_connected"="Эргометр  Bluetooth подключен";

@@ -11,17 +11,20 @@ import SQLite
 
 class LogObject {
     
-    class func createLogObject(log: String) -> LogObject {
+    class func createLogObject(log: String) -> LogObject? {
         let systemInfo = AppLog.getSystemInfo()
         
-        let user = UserManager.sharedInstance.getUser()
-        let userId = user != nil ? user!.id : 0
-        
-        return LogObject(
-            log: log,
-            timestamp: currentTimeMillis(),
-            systemInfoTimestamp: systemInfo!.timestamp,
-            userId: userId)
+        if let systemInfo = systemInfo {
+            let user = UserManager.sharedInstance.getUser()
+            let userId = user != nil ? user!.id : 0
+            
+            return LogObject(
+                log: log,
+                timestamp: currentTimeMillis(),
+                systemInfoTimestamp: systemInfo.timestamp,
+                userId: userId)
+        }
+        return nil
     }
     
     let log: String
