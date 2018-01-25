@@ -12,7 +12,7 @@ class BluetoothService {
     
     //MARK: constants
     private let bluetoothDisconnectedTime: Double = 2 * 60 * 1000 //2 min
-    static let bluetoothInactiveTime: Double = 20 * 1000 //20 sec
+    static let bluetoothInactiveTime: Double = 60 * 1000 //60 sec
     private let bluetoothMaxSleep: Double = 300 //300 millisec
     
     //MARK: properties
