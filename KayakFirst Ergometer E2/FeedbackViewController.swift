@@ -10,7 +10,7 @@ import Foundation
 
 func showFeedbackVc(viewController: UIViewController) {
     let feedbackVc = FeedbackViewController()
-    let navController = UINavigationController()
+    let navController = PortraitNavController()
     navController.pushViewController(feedbackVc, animated: false)
     viewController.present(navController, animated: true, completion: nil)
 }
