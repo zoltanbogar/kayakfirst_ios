@@ -133,6 +133,14 @@
 "feedback_hint"="Write your feedback";
 "feedback_system_information"="system informations";
 "feedback_sending"="Sending feedback";
+"feedback_version_code"="Version code";
+"feedback_version_name"="Version name";
+"feedback_timestamp"="Timestamp";
+"feedback_locale"="Locale";
+"feedback_brand"="Brand";
+"feedback_model"="Model";
+"feedback_os_version"="OS version";
+"feedback_username"="Username";
 
 //Navigation
 "navigation_profile"="Профиль";

@@ -374,6 +374,7 @@
 		06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */; };
 		06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */; };
 		06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */; };
+		06CD9E3E201A0CA40069F260 /* SystemInfoDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD9E3D201A0CA40069F260 /* SystemInfoDialog.swift */; };
 		06DE18431E56D0A100374107 /* SetDashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE18421E56D0A100374107 /* SetDashboardVc.swift */; };
 		06E03B861ECCE56F00AC7CA0 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */; };
 		06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */; };
@@ -814,6 +815,7 @@
 		06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
 		06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSettingsLayout.swift; sourceTree = "<group>"; };
 		06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcCalendarLayout.swift; sourceTree = "<group>"; };
+		06CD9E3D201A0CA40069F260 /* SystemInfoDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDialog.swift; sourceTree = "<group>"; };
 		06DE18421E56D0A100374107 /* SetDashboardVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDashboardVc.swift; sourceTree = "<group>"; };
 		06E03B851ECCE56F00AC7CA0 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		06E03B871ECCE91800AC7CA0 /* DashboardPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPlanView.swift; sourceTree = "<group>"; };
@@ -1573,6 +1575,7 @@
 				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
 				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
 				06217B0C2015EA6A004DC885 /* UpdateDialog.swift */,
+				06CD9E3D201A0CA40069F260 /* SystemInfoDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -2450,6 +2453,7 @@
 				066B00411EC7406F00BE0E1F /* PlanOrNotPlanVc.swift in Sources */,
 				06C7071A1FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift in Sources */,
 				065573B02016620C00012E19 /* FeedbackViewController.swift in Sources */,
+				06CD9E3E201A0CA40069F260 /* SystemInfoDialog.swift in Sources */,
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,

@@ -67,7 +67,7 @@ class LogEventHelper {
     }
     
     private class func getFormattedTimestamp(timestamp: Double) -> String {
-        return DateFormatHelper.getDate(dateFormat: "yyyy.MM.dd. kk:mm.ss.SSS", timeIntervallSince1970: timestamp)
+        return DateFormatHelper.getDate(dateFormat: DateFormatHelper.dateTimeFormat, timeIntervallSince1970: timestamp)
     }
     
 }

@@ -23,6 +23,9 @@ class FeedbackViewController: BaseVC<VcFeedbackLayout> {
         
         contentLayout?.btnDone.target = self
         contentLayout?.btnDone.action = #selector(btnDoneClick)
+        
+        //TODO: delete this
+        SystemInfoDialog.showSystemInfoDialog()
     }
     
     override func getContentLayout(contentView: UIView) -> VcFeedbackLayout {
