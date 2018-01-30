@@ -23,23 +23,15 @@ protocol OnFocusedListener {
     func hasFocus(planEditText: PlanEditText)
 }
 
-class PlanEditText: UITextView, UITextViewDelegate {
+class PlanEditText: TextViewWithHint {
     
     //MARK: properties
-    var hint: String? {
-        didSet {
-            setHintText(isHint: true, textShow: hint)
-        }
-    }
-    var isHasText = false
     var onTextChangedListener: OnTextChangedListener?
     var onFocusedListener: OnFocusedListener?
     
     //MARK: init
     init() {
         super.init(frame: CGRect.zero, textContainer: nil)
-        
-        delegate = self
         
         addContentSizeObserver()
         
@@ -69,40 +61,19 @@ class PlanEditText: UITextView, UITextViewDelegate {
         }
     }
     
-    private func setHintText(isHint: Bool, textShow: String?) {
-        if isHint {
-            text = hint
-            textColor = Colors.colorGrey
-        } else {
-            text = textShow
-            textColor = UIColor.black
-        }
-    }
-    
     //MARK: delegate
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        isHasText = "" != textView.text && hint != textView.text
+    override func textViewDidChangeSelection(_ textView: UITextView) {
+        super.textViewDidChangeSelection(textView)
         
         if let listener = onTextChangedListener {
             listener.onTextChanged(etType: getType(), hasText: isHasText)
         }
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    override func textViewDidBeginEditing(_ textView: UITextView) {
+        super.textViewDidBeginEditing(textView)
         if let listener = onFocusedListener {
             listener.hasFocus(planEditText: self)
-        }
-        
-        setHintText(isHint: false, textShow: "")
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        let oldText = textView.text
-        
-        if oldText == "" {
-            setHintText(isHint: true, textShow: hint)
-        } else {
-            setHintText(isHint: false, textShow: oldText)
         }
     }
     

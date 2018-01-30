@@ -307,6 +307,8 @@
 		06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23431F067F06008805A2 /* DownloadPlanById.swift */; };
 		06AF23461F06801B008805A2 /* DownloadPlanByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23451F06801B008805A2 /* DownloadPlanByName.swift */; };
 		06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */; };
+		06B6755B2020BFF900ACB5A6 /* AppLinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */; };
+		06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */; };
 		06BB76CE1E6FF0EC00A897B4 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */; };
 		06BCB0D21E564D7D00F41652 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D11E564D7D00F41652 /* BaseVC.swift */; };
 		06BCB0D41E564F0200F41652 /* TrainingEnvTypeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */; };
@@ -741,6 +743,8 @@
 		06AF23431F067F06008805A2 /* DownloadPlanById.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanById.swift; sourceTree = "<group>"; };
 		06AF23451F06801B008805A2 /* DownloadPlanByName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanByName.swift; sourceTree = "<group>"; };
 		06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanTrainingBySessionId.swift; sourceTree = "<group>"; };
+		06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinkHelper.swift; sourceTree = "<group>"; };
+		06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithHint.swift; sourceTree = "<group>"; };
 		06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		06BCB0D11E564D7D00F41652 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingEnvTypeVc.swift; sourceTree = "<group>"; };
@@ -1240,6 +1244,7 @@
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
 				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
 				060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */,
+				06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1672,6 +1677,7 @@
 				068D387F1F207DEB005A1197 /* AppToast.swift */,
 				066461601F459CC200145960 /* BluetoothList.swift */,
 				066461621F459D0200145960 /* AppProgressBar.swift */,
+				06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */,
 			);
 			name = design;
 			sourceTree = "<group>";
@@ -2109,6 +2115,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KayakFirst Ergometer E2/Pods-KayakFirst Ergometer E2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-Synchronous/Alamofire_Synchronous.framework",
 				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
@@ -2125,6 +2132,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_Synchronous.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
@@ -2331,6 +2339,7 @@
 				06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */,
 				063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */,
 				06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */,
+				06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */,
@@ -2538,6 +2547,7 @@
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				066835F020026D8600DA9969 /* CommandParser.swift in Sources */,
+				06B6755B2020BFF900ACB5A6 /* AppLinkHelper.swift in Sources */,
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				06CAFF431F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift in Sources */,
 				06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */,

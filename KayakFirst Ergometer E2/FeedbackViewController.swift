@@ -24,8 +24,7 @@ class FeedbackViewController: BaseVC<VcFeedbackLayout> {
         contentLayout?.btnDone.target = self
         contentLayout?.btnDone.action = #selector(btnDoneClick)
         
-        //TODO: delete this
-        SystemInfoDialog.showSystemInfoDialog()
+        linkText()
     }
     
     override func getContentLayout(contentView: UIView) -> VcFeedbackLayout {
@@ -42,6 +41,24 @@ class FeedbackViewController: BaseVC<VcFeedbackLayout> {
             
             showLogoCenter(viewController: self)
         }
+    }
+    
+    //MARK: functions
+    private func linkText() {
+        let textInfo = getString("feedback_info_text") + " "
+        let textInfoHelper = LinkHelper(clickListener: nil, text: textInfo, color: UIColor.black)
+        
+        let textSystemInfo = getString("feedback_info_logs")
+        let systemInfoHelper = LinkHelper(clickListener: {
+            SystemInfoDialog.showSystemInfoDialog()
+        }, text: textSystemInfo, color: Colors.colorAccent)
+        
+        let dotHelper = LinkHelper(clickListener: nil, text: ".", color: UIColor.black)
+        
+        let linkHelpers = [textInfoHelper, systemInfoHelper, dotHelper]
+        
+        
+        AppLinkHelper.linkText(activeLabel: contentLayout!.labelInfo, linkHelpers: linkHelpers)
     }
     
     //MARK: button listeners

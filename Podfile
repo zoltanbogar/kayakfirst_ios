@@ -14,4 +14,6 @@ target 'KayakFirst Ergometer E2' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SwiftEventBus', :tag => '2.2.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+    pod 'ActiveLabel', '~> 0.7.1'
+    
 end

@@ -141,6 +141,9 @@
 "feedback_model"="Model";
 "feedback_os_version"="OS version";
 "feedback_username"="Username";
+"feedback_info_text"="A gomb megnyomásával elküldöd nekünk a rendszernaplókat és a";
+"feedback_info_logs"="rendszerinformációkat";
+"feedback_info_message"="Segíteni tudsz nekünk a hiba leírásával is!";
 
 //Navigation
 "navigation_profile"="Profil";
