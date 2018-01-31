@@ -14,7 +14,6 @@ class BaseDbLoader<Input> {
     //MARK: constants
     let databaseLogTag = "DATABASE"
     let oldDataDays: TimeInterval = 30
-    let oldDataLogDays: TimeInterval = 10
     
     //MARK: properties
     let db = AppSql.sharedInstance.db

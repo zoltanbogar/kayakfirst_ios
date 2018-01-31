@@ -150,7 +150,7 @@ class SystemInfoDbLoader: BaseDbLoader<SystemInfo> {
     
     //MARK: delete
     func deleteOldData() {
-        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataLogDays)
+        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataDays)
         deleteData(predicate: predicate)
     }
     

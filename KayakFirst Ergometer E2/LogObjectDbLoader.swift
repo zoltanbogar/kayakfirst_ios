@@ -13,6 +13,7 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     
     //MARK: constants
     static let tableName = "log_object_table"
+    private let maxRows: Int = 3000
     
     //MARK: init
     static let sharedInstance = LogObjectDbLoader()
@@ -46,11 +47,31 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     }
     
     //MARK: insert
+    //TODO: too slow by bluetooth data...
     override func addData(data: LogObject?) {
-        if let logObject = data {
-            let insert = table!.insert(self.logColumn <- logObject.log, self.timestamp <- Double(Int64(logObject.timestamp)), self.systemInfoTimestamp <- Double(Int64(logObject.systemInfoTimestamp)), self.userId <- logObject.userId)
-            
-            let rowId = try? db?.run(insert)
+        DispatchQueue.global().async {
+            if let logObject = data {
+                log("LOG_TEST", "addLogStart")
+                
+                let logObjects = self.loadData(predicate: nil)
+                
+                if let logObjects = logObjects {
+                    log("LOG_TEST", "logObjects: \(logObjects.count)")
+                }
+                
+                if logObjects != nil && logObjects!.count > self.maxRows {
+                    let deletePosition: Int = Int(Double(self.maxRows) / 3)
+                    let lastTimestamp = logObjects![deletePosition].timestamp
+                    
+                    self.deleteData(predicate: self.timestamp < lastTimestamp)
+                }
+                
+                let insert = self.table!.insert(self.logColumn <- logObject.log, self.timestamp <- Double(Int64(logObject.timestamp)), self.systemInfoTimestamp <- Double(Int64(logObject.systemInfoTimestamp)), self.userId <- logObject.userId)
+                
+                let rowId = try? self.db?.run(insert)
+                
+                log("LOG_TEST", "addLogEnd")
+            }
         }
     }
     
@@ -108,7 +129,7 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     
     //MARK: delete
     func deleteOldData() {
-        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataLogDays)
+        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataDays)
         deleteData(predicate: predicate)
     }
     
