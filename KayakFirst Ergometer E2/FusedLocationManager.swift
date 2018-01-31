@@ -54,17 +54,16 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
     //MARK: start/stop monitoring
     func startLocationMonitoring(start: Bool) {
+        gpsAvailableCheck.startChecking(isStart: start)
         if start {
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 locationManager.activityType = .fitness
                 locationManager.startUpdatingLocation()
-                gpsAvailableCheck.startChecking(isStart: true)
             }
         } else {
             locationManager.stopUpdatingLocation()
-            gpsAvailableCheck.startChecking(isStart: false)
         }
     }
     
