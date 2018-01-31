@@ -9,10 +9,11 @@
 import Foundation
 import CoreLocation
 
+protocol GpsAvailableListener {
+    func gpsAvailabilityChanged(isAvailable: Bool)
+}
+
 class FusedLocationManager: NSObject, CLLocationManagerDelegate {
-    
-    //MARK: constants
-    private let accuracyLocation: Double = 10 //10 meters
     
     //MARK: properteis
     private let telemetry = Telemetry.sharedInstance
@@ -30,6 +31,11 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
             return isNew
         }
     }
+    private var _gpsAvailableCheck: GpsAvailableCheck!
+    private var gpsAvailableCheck: GpsAvailableCheck {
+        return _gpsAvailableCheck
+    }
+    var gpsAvailableListener: GpsAvailableListener?
     
     //MARK: init
     static let sharedInstance = FusedLocationManager()
@@ -40,6 +46,10 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
         commandOutdoorStroke = CommandOutdoorStroke()
         
         commandList = [commandOutdoorLocation, commandOutdoorStroke]
+        
+        super.init()
+        
+        _gpsAvailableCheck = GpsAvailableCheck(locationService: self)
     }
     
     //MARK: start/stop monitoring
@@ -50,9 +60,11 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 locationManager.activityType = .fitness
                 locationManager.startUpdatingLocation()
+                gpsAvailableCheck.startChecking(isStart: true)
             }
         } else {
             locationManager.stopUpdatingLocation()
+            gpsAvailableCheck.startChecking(isStart: false)
         }
     }
     
@@ -64,11 +76,11 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
-            let accuracy = locations[0].horizontalAccuracy
-            
             log("LOC_TEST", "newLocation: \(locations[0].horizontalAccuracy)")
             
-            if accuracy <= accuracyLocation {
+            gpsAvailableCheck.onLocationAvailable(location: locations[0])
+            
+            if gpsAvailableCheck.isGpsAvailable() {
                 _isNewLocationAvailable = true
                 
                 commandOutdoorLocation.setLocation(location: locations[0])
@@ -78,6 +90,12 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         log("LOCATION", "error: \(error.localizedDescription)")
+    }
+    
+    func gpsAvailable(isAvailabe: Bool) {
+        DispatchQueue.main.async {
+            self.gpsAvailableListener?.gpsAvailabilityChanged(isAvailable: isAvailabe)
+        }
     }
     
 }

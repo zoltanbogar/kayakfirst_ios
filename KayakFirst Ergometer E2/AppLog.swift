@@ -51,17 +51,17 @@ class AppLog {
     
     class func logUserData(_ logLine: String) {
         if logNeeded {
-            log("LOG", logLine)
+            //log("LOG", logLine)
             
             //createLogFile()
             
-            do {
+           /* do {
                 try logLine.appendLineToURL(fileURL: file!)
                 _ = try String(contentsOf: file!, encoding: String.Encoding.utf8)
             }
             catch {
                 log("EXCEPTION", error)
-            }
+            } */
         }
     }
     

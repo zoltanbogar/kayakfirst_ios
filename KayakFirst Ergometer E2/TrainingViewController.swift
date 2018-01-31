@@ -19,7 +19,7 @@ func startTrainingViewController(vc: UIViewController, trainingEnvType: Training
     vc.present(trainingVc, animated: true, completion: nil)
 }
 
-class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate, RefresDashboardHelperDelegate {
+class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseViewDelegate, RefresDashboardHelperDelegate, GpsAvailableListener {
     
     //MARK: properties
     var trainingEnvType: TrainingEnvironmentType!
@@ -84,6 +84,11 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     //MARK: views
     private func initView() {
+        view.addSubview(labelGpsAvailable)
+        labelGpsAvailable.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+        
         startDelayView = StartDelayView(superView: view)
         startDelayView.delegate = self
         
@@ -173,6 +178,10 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         dashboardVc?.refreshUi()
     }
     
+    func gpsAvailabilityChanged(isAvailable: Bool) {
+        labelGpsAvailable.isHidden = isAvailable
+    }
+    
     private func restoreLayout() {
         if let cycleState = telemetry.cycleState {
             setLayoutByCycleState(cycleState: cycleState)
@@ -185,7 +194,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         case TrainingEnvironmentType.ergometer:
             trainingService = ErgometerService.getInstance(bluetooth: bluetooth)
         case TrainingEnvironmentType.outdoor:
-            trainingService = OutdoorSevice.getInstance()
+            trainingService = OutdoorSevice.getInstance(gpsAvailableListener: self)
         }
     }
     
@@ -272,5 +281,20 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         WindowHelper.keepScreenOn(isOn: isOn)
         WindowHelper.setBrightness(isFull: true)
     }
+    
+    //MARK: views
+    //TODO: real implementaion
+    private lazy var labelGpsAvailable: UILabel! = {
+        let label = UILabel()
+        
+        label.text = "GPS SIGNAL WEEK!"
+        label.backgroundColor = Colors.colorAccent
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        
+        label.isHidden = true
+        
+        return label
+    }()
     
 }

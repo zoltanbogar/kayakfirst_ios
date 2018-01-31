@@ -16,12 +16,19 @@ class OutdoorSevice: TrainingService {
     
     private let startCommandOutdoor: CommandProcessorOutdoor
     
+    private var gpsAvailableListener: GpsAvailableListener? {
+        didSet {
+            locationService.gpsAvailableListener = gpsAvailableListener
+        }
+    }
+    
     private static var instance: OutdoorSevice?
     
-    class func getInstance() -> OutdoorSevice {
+    class func getInstance(gpsAvailableListener: GpsAvailableListener) -> OutdoorSevice {
         if OutdoorSevice.instance == nil {
             OutdoorSevice.instance = OutdoorSevice()
         }
+        OutdoorSevice.instance!.gpsAvailableListener = gpsAvailableListener
         return OutdoorSevice.instance!
     }
     

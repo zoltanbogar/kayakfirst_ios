@@ -179,6 +179,7 @@
 		064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766451E75885D007936B5 /* LocationPermissionVc.swift */; };
 		064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064766471E759ACE007936B5 /* LocationSettingsDialog.swift */; };
 		064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */; };
+		064A899B2021BB350000F520 /* GpsAvailableCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064A899A2021BB350000F520 /* GpsAvailableCheck.swift */; };
 		064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D9B022008EBD40057137C /* OrientationNavController.swift */; };
 		064FE5A21ECED286004A9F35 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A11ECED286004A9F35 /* SearchTextView.swift */; };
 		064FE5A51ED09E15004A9F35 /* BaseManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */; };
@@ -614,6 +615,7 @@
 		064766451E75885D007936B5 /* LocationPermissionVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionVc.swift; sourceTree = "<group>"; };
 		064766471E759ACE007936B5 /* LocationSettingsDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSettingsDialog.swift; sourceTree = "<group>"; };
 		064820611FFF9082009A47C9 /* DragDropPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropPlanHelper.swift; sourceTree = "<group>"; };
+		064A899A2021BB350000F520 /* GpsAvailableCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsAvailableCheck.swift; sourceTree = "<group>"; };
 		064D9B022008EBD40057137C /* OrientationNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationNavController.swift; sourceTree = "<group>"; };
 		064FE5A11ECED286004A9F35 /* SearchTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		064FE5A41ED09E15004A9F35 /* BaseManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseManagerType.swift; sourceTree = "<group>"; };
@@ -999,6 +1001,7 @@
 			children = (
 				060B99251E64289700F72404 /* FusedLocationManager.swift */,
 				060B99271E642AEE00F72404 /* AppSensorManager.swift */,
+				064A899A2021BB350000F520 /* GpsAvailableCheck.swift */,
 			);
 			name = location;
 			sourceTree = "<group>";
@@ -2577,6 +2580,7 @@
 				06F939001E3F720A00920753 /* Dimens.swift in Sources */,
 				061145E21E58E8CA0058EAF4 /* LineChartTime.swift in Sources */,
 				061145DE1E58D9A50058EAF4 /* LabelT1000.swift in Sources */,
+				064A899B2021BB350000F520 /* GpsAvailableCheck.swift in Sources */,
 				06C7072E1FFBC79100D72E72 /* ViewDragDropLayout.swift in Sources */,
 				060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */,
 				06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */,
