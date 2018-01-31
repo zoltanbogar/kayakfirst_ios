@@ -45,7 +45,9 @@ class TextViewWithHint: UITextView, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        setHintText(isHint: false, textShow: "")
+        if !isHasText {
+            setHintText(isHint: false, textShow: "")
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

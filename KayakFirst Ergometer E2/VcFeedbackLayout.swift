@@ -12,44 +12,34 @@ import ActiveLabel
 class VcFeedbackLayout: BaseLayout {
     
     override func setView() {
-        let view = UIView()
-        view.addSubview(labelInfo)
-        view.addSubview(labelInfoDetails)
-        view.addSubview(tvFeedback)
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        
+        stackView.addArrangedSubview(labelInfo)
+        stackView.addVerticalSpacing(spacing: margin05)
+        stackView.addArrangedSubview(labelInfoDetails)
+        stackView.addVerticalSpacing(spacing: margin)
+        stackView.addArrangedSubview(tvFeedback)
         
         let dividerView = UIView()
         dividerView.backgroundColor = Colors.colorAccent
         
-        view.addSubview(dividerView)
+        stackView.addArrangedSubview(dividerView)
         
-        labelInfo.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-        }
-        labelInfoDetails.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalTo(labelInfo.snp.bottom).offset(margin05)
-        }
-        tvFeedback.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalTo(labelInfoDetails.snp.bottom).offset(margin)
-        }
         dividerView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.height.equalTo(dashboardDividerWidth)
-            make.top.equalTo(tvFeedback.snp.bottom)
         }
         
-        contentView.addSubview(view)
-        view.snp.makeConstraints { (make) in
+        let scrollView = AppScrollView(view: contentView)
+        scrollView.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(margin)
             make.right.equalToSuperview().offset(-margin)
             make.top.equalToSuperview().offset(margin)
-            make.bottom.equalToSuperview().offset(margin)
+            make.bottom.equalToSuperview().offset(-margin)
         }
     }
     

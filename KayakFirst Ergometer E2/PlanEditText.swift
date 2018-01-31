@@ -71,7 +71,8 @@ class PlanEditText: TextViewWithHint {
     }
     
     override func textViewDidBeginEditing(_ textView: UITextView) {
-        super.textViewDidBeginEditing(textView)
+        setHintText(isHint: false, textShow: "")
+        
         if let listener = onFocusedListener {
             listener.hasFocus(planEditText: self)
         }

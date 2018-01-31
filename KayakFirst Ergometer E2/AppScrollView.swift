@@ -41,7 +41,6 @@ class AppScrollView: UIView, UIScrollViewDelegate {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(scrollContainer)
-            
         }
         
         scrollView.addSubview(containerView)
