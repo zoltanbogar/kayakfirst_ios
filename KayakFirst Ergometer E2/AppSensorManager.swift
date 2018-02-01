@@ -325,7 +325,8 @@ class AppSensorManager {
             negativeA = true
         }
         
-        var logString: String = "\(Int64(time));"
+        //TODO: useful for outdoor logging
+        /*var logString: String = "\(Int64(time));"
         logString.append("\(getFormattedLogValue(val));")
         logString.append("\(getFormattedLogValue(realVal));")
         logString.append("\((strokes - lastStrokes));")
@@ -337,7 +338,7 @@ class AppSensorManager {
         logString.append("\(getFormattedLogValue(gyroZ));")
         logString.append("\(getFormattedLogValue(Telemetry.sharedInstance.speed));")
         
-        AppLog.logUserData(logString)
+        AppLog.logUserData(logString)*/
         
         lastStrokes = strokes
     }

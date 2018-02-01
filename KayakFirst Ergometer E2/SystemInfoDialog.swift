@@ -11,7 +11,7 @@ import Foundation
 class SystemInfoDialog: BaseDialog {
     
     class func showSystemInfoDialog() {
-        let systemInfo = AppLog.getSystemInfo()
+        let systemInfo = LogManager.sharedInstance.getSystemInfo()
         
         if let systemInfo = systemInfo {
             let title = getString("feedback_system_information").capitalized

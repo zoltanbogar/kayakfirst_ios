@@ -12,7 +12,7 @@ import SQLite
 class LogObject {
     
     class func createLogObject(log: String) -> LogObject? {
-        let systemInfo = AppLog.getSystemInfo()
+        let systemInfo = LogManager.sharedInstance.getSystemInfo()
         
         if let systemInfo = systemInfo {
             let user = UserManager.sharedInstance.getUser()

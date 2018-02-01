@@ -63,7 +63,7 @@ class FeedbackViewController: BaseVC<VcFeedbackLayout> {
     
     //MARK: button listeners
     @objc private func btnDoneClick() {
-        let managerType = UserManager.sharedInstance.sendFeedback(managerCallback: { (data, error) in
+        let managerType = LogManager.sharedInstance.sendFeedback(managerCallback: { (data, error) in
             self.dismissProgress()
             
             if let error = error {

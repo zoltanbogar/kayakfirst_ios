@@ -43,8 +43,6 @@ class UserManager: BaseManager {
     var resetPwCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var updateUserCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     var updatePwCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
-    var messageCallback: ((_ data: String?, _ error: Responses?) -> ())?
-    var versionCallback: ((_ data: Int?, _ error: Responses?) -> ())?
     
     //MARK: server endpoints
     func register(userDto: UserDto) -> BaseManagerType {
@@ -143,32 +141,6 @@ class UserManager: BaseManager {
         return ManagerUpload.addToStack(uploadType: UploadType.pushIdUpload, pointer: pushId)
     }
     
-    func getMessage() {
-        let downloadMessage = DownloadMessage()
-        runUser(serverService: downloadMessage, managerCallBack: { (data, error) in
-            if let callback = self.messageCallback {
-                callback(data, error)
-            }
-            
-            self.getActualVersionCode()
-        })
-    }
-    
-    func getActualVersionCode() {
-        let downloadVersionCode = DownloadVersionCode()
-        runUser(serverService: downloadVersionCode, managerCallBack: versionCallback)
-    }
-    
-    //TODO: change it to the real implementation
-    func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> ()) -> BaseManagerType {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-            managerCallback(true, nil)
-            
-            AppLog.createLogFile()
-        })
-        return UserManagerType.send_feedback
-    }
-    
     func addUser(user: User?) {
         UserDb.addUser(user: user)
     }
@@ -176,7 +148,7 @@ class UserManager: BaseManager {
     func addLoginDto(loginDto: LoginDto?) {
         UserDb.addLoginDto(loginDto: loginDto)
         
-        checkSystemInfo()
+        LogManager.sharedInstance.checkSystemInfo()
     }
     
     func getTrainingType() -> TrainingType {

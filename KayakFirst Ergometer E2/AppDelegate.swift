@@ -85,13 +85,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func downloadMessage() {
-        UserManager.sharedInstance.messageCallback = { data, error in
+        LogManager.sharedInstance.messageCallback = { data, error in
             showAppMessage(message: data)
         }
-        UserManager.sharedInstance.versionCallback = { data, error in
+        LogManager.sharedInstance.versionCallback = { data, error in
             UpdateDialog.showUpdateDialog(actualVersionCode: data)
         }
-        UserManager.sharedInstance.getMessage()
+        LogManager.sharedInstance.getMessage()
     }
     
     private func checkSystem() {
@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SystemInfoDbLoader.sharedInstance.deleteOldData()
             LogObjectDbLoader.sharedInstance.deleteOldData()
             
-            checkSystemInfo()
+            LogManager.sharedInstance.checkSystemInfo()
         }
     }
 

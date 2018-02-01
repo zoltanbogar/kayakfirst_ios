@@ -10,11 +10,6 @@ import Foundation
 
 class LogEventHelper {
     
-    class func logEvent(event: String) {
-        let logObject = LogObject.createLogObject(log: event)
-        LogObjectDbLoader.sharedInstance.addData(data: logObject)
-    }
-    
     //TODO: add real implementation
     class func createLogFile() {
         let systemInfoList = SystemInfoHelper.getSystemInfos()

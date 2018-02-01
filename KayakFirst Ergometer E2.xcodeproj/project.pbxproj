@@ -163,6 +163,7 @@
 		06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */; };
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
+		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
 		064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498AC20176B1900DF9915 /* SystemInfo.swift */; };
 		064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */; };
@@ -599,6 +600,7 @@
 		06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
+		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
 		064498AC20176B1900DF9915 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDbLoader.swift; sourceTree = "<group>"; };
@@ -1313,6 +1315,7 @@
 				06CAFF4C1F0D304D00D2EA14 /* EventManager.swift */,
 				0618AD281F0D990E00AC1903 /* PlanManager.swift */,
 				0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */,
+				0643A3192022FA8D00120DED /* LogManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -2378,6 +2381,7 @@
 				064FE5AE1ED0A0A5004A9F35 /* BaseManager.swift in Sources */,
 				06C1B98B1E259C3900AB4C47 /* DashBoardElement.swift in Sources */,
 				060DE0081E4BE00B00FE2D14 /* TrainingSET200.swift in Sources */,
+				0643A31A2022FA8D00120DED /* LogManager.swift in Sources */,
 				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
 				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
