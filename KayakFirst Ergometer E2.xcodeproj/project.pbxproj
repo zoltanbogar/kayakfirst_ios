@@ -164,6 +164,7 @@
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
+		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
 		064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498AC20176B1900DF9915 /* SystemInfo.swift */; };
 		064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */; };
@@ -601,6 +602,7 @@
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
 		064498AC20176B1900DF9915 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDbLoader.swift; sourceTree = "<group>"; };
@@ -1328,6 +1330,7 @@
 				064FE5A91ED09F5A004A9F35 /* UserManagerType.swift */,
 				064FE5AB1ED0A002004A9F35 /* TrainingManagerType.swift */,
 				06AF23411F067DEC008805A2 /* EventManagerType.swift */,
+				0643A31B2022FDDF00120DED /* LogManagerType.swift */,
 			);
 			name = manager_type;
 			sourceTree = "<group>";
@@ -2473,6 +2476,7 @@
 				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,
+				0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */,
 				065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */,
 				066B004D1EC759F800BE0E1F /* EventTableView.swift in Sources */,
 				06287D051F0F639B00F102C8 /* UITableView+.swift in Sources */,

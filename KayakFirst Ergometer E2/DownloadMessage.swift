@@ -44,6 +44,6 @@ class DownloadMessage: ServerService<String> {
     }
     
     override func getManagerType() -> BaseManagerType {
-        return UserManagerType.downloadMessage
+        return LogManagerType.downloadMessage
     }
 }
