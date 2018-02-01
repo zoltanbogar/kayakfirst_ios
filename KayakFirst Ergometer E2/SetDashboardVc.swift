@@ -30,7 +30,7 @@ class SetDashboardVc: BaseTrainingVc<VcSetDashboardLayout> {
     override func initTabBarItems() {
         let buttons: [UIBarButtonItem] = [contentLayout!.btnDone]
         
-        handleBluetoothMenu(barButtons: buttons)
+        handleBluetoothMenu(barButtons: buttons, badGpsTabBarItem: nil)
         
         showCloseButton()
         

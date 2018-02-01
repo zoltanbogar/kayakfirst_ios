@@ -24,13 +24,20 @@ class BaseTrainingVc<E: BaseLayout>: BaseVC<E> {
         return navigationController as! TrainingViewController
     }
     
-    func handleBluetoothMenu(barButtons: [UIBarButtonItem]?) {
+    func handleBluetoothMenu(barButtons: [UIBarButtonItem]?, badGpsTabBarItem: UIBarButtonItem?) {
         var buttons = barButtons
         if getTrainingEnvType() == TrainingEnvironmentType.ergometer {
             if buttons == nil {
                 buttons = [UIBarButtonItem]()
             }
             buttons!.append(bluetoothTabBarItem)
+        } else {
+            if let badGpsTabBarItem = badGpsTabBarItem {
+                if buttons == nil {
+                    buttons = [UIBarButtonItem]()
+                }
+                buttons!.append(badGpsTabBarItem)
+            }
         }
         
         self.navigationItem.setRightBarButtonItems(buttons, animated: true)

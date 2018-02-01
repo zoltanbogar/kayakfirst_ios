@@ -38,7 +38,7 @@ class DownloadVersionCode: ServerService<Int> {
     }
     
     override func getManagerType() -> BaseManagerType {
-        return UserManagerType.downloadVersion
+        return LogManagerType.downloadVersion
     }
     
 }

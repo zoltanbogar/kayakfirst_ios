@@ -84,11 +84,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     
     //MARK: views
     private func initView() {
-        view.addSubview(labelGpsAvailable)
-        labelGpsAvailable.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-        }
-        
         startDelayView = StartDelayView(superView: view)
         startDelayView.delegate = self
         
@@ -179,7 +174,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func gpsAvailabilityChanged(isAvailable: Bool) {
-        labelGpsAvailable.isHidden = isAvailable
+        dashboardVc?.showBadGpsLayout(isShow: !isAvailable)
     }
     
     private func restoreLayout() {
@@ -281,20 +276,5 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         WindowHelper.keepScreenOn(isOn: isOn)
         WindowHelper.setBrightness(isFull: true)
     }
-    
-    //MARK: views
-    //TODO: real implementaion
-    private lazy var labelGpsAvailable: UILabel! = {
-        let label = UILabel()
-        
-        label.text = "GPS SIGNAL WEEK!"
-        label.backgroundColor = Colors.colorAccent
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        
-        label.isHidden = true
-        
-        return label
-    }()
     
 }

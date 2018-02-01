@@ -67,7 +67,19 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
         
         let menuItem: [UIBarButtonItem] = [contentLayout!.btnPowerSaveOff]
         
-        handleBluetoothMenu(barButtons: menuItem)
+        handleBluetoothMenu(barButtons: menuItem, badGpsTabBarItem: badGpsTabBarItem)
+    }
+    
+    func showBadGpsLayout(isShow: Bool) {
+        var color: UIColor
+        
+        if isShow {
+            color = UIColor.black
+        } else {
+            color = Colors.colorTransparent
+        }
+        
+        badGpsTabBarItem.tintColor = color
     }
     
     //MARK: functions
@@ -103,5 +115,15 @@ class DashboardVc: BaseTrainingVc<VcDashobardLayout>, SwipePauseViewDelegate {
     @objc func btnPlayClick() {
         getTrainingVc().playClick()
     }
+    
+    //MARK: views
+    lazy var badGpsTabBarItem: UIBarButtonItem! = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(named: "bad_gps")
+        
+        button.tintColor = Colors.colorTransparent
+        
+        return button
+    }()
     
 }
