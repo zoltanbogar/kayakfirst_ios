@@ -35,11 +35,9 @@ class LogManager: BaseManager {
         LogObjectDbLoader.sharedInstance.addData(data: logObject)
     }
     
-    //TODO: change it to the real implementation
-    func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> ()) -> BaseManagerType {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-            managerCallback(true, nil)
-        })
+    func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> (), message: String) -> BaseManagerType {
+        let uploadLogs = UploadLogs(message: message)
+        runUser(serverService: uploadLogs, managerCallBack: managerCallback)
         return LogManagerType.send_feedback
     }
     

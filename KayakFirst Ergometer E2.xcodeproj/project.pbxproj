@@ -84,6 +84,9 @@
 		060DE00E1E4BE28A00FE2D14 /* TrainingSET1000Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */; };
 		060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */; };
 		060DE0121E4BE31200FE2D14 /* TrainingSET500Av.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */; };
+		060E1078202311C300D08C0C /* SystemInfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E1077202311C300D08C0C /* SystemInfoDto.swift */; };
+		060E107A2023130500D08C0C /* FeedbackDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E10792023130500D08C0C /* FeedbackDto.swift */; };
+		060E107C2023145900D08C0C /* UploadLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E107B2023145900D08C0C /* UploadLogs.swift */; };
 		060E975C1FE826A200CB4258 /* SocialLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E975B1FE826A200CB4258 /* SocialLoginHelper.swift */; };
 		060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E975D1FE8275F00CB4258 /* SocialUser.swift */; };
 		060E97601FE8286400CB4258 /* FacebookLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060E975F1FE8286400CB4258 /* FacebookLoginHelper.swift */; };
@@ -165,6 +168,7 @@
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
+		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
 		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
 		064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498AC20176B1900DF9915 /* SystemInfo.swift */; };
 		064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */; };
@@ -521,6 +525,9 @@
 		060DE00D1E4BE28A00FE2D14 /* TrainingSET1000Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET1000Av.swift; sourceTree = "<group>"; };
 		060DE00F1E4BE2F800FE2D14 /* TrainingSET200Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET200Av.swift; sourceTree = "<group>"; };
 		060DE0111E4BE31200FE2D14 /* TrainingSET500Av.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSET500Av.swift; sourceTree = "<group>"; };
+		060E1077202311C300D08C0C /* SystemInfoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDto.swift; sourceTree = "<group>"; };
+		060E10792023130500D08C0C /* FeedbackDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDto.swift; sourceTree = "<group>"; };
+		060E107B2023145900D08C0C /* UploadLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadLogs.swift; sourceTree = "<group>"; };
 		060E975B1FE826A200CB4258 /* SocialLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginHelper.swift; sourceTree = "<group>"; };
 		060E975D1FE8275F00CB4258 /* SocialUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialUser.swift; sourceTree = "<group>"; };
 		060E975F1FE8286400CB4258 /* FacebookLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginHelper.swift; sourceTree = "<group>"; };
@@ -603,6 +610,7 @@
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
+		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
 		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
 		064498AC20176B1900DF9915 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDbLoader.swift; sourceTree = "<group>"; };
@@ -1211,6 +1219,16 @@
 			name = modify;
 			sourceTree = "<group>";
 		};
+		0643A31D20230A8C00120DED /* log */ = {
+			isa = PBXGroup;
+			children = (
+				0643A31E20230A9C00120DED /* LogDto.swift */,
+				060E1077202311C300D08C0C /* SystemInfoDto.swift */,
+				060E10792023130500D08C0C /* FeedbackDto.swift */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
 		064498AB20176B0900DF9915 /* log */ = {
 			isa = PBXGroup;
 			children = (
@@ -1367,6 +1385,7 @@
 				065187211F0A506D00B434B0 /* UploadPlan.swift */,
 				065187231F0A50D000B434B0 /* UploadPlanTraining.swift */,
 				066579E71F16013300E43852 /* UploadPushId.swift */,
+				060E107B2023145900D08C0C /* UploadLogs.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1909,6 +1928,7 @@
 		06F9145F1E42801C0041B303 /* backend */ = {
 			isa = PBXGroup;
 			children = (
+				0643A31D20230A8C00120DED /* log */,
 				06F914601E42802B0041B303 /* LoginDto.swift */,
 				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
 				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
@@ -2488,6 +2508,7 @@
 				064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */,
 				061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */,
 				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */,
+				0643A31F20230A9C00120DED /* LogDto.swift in Sources */,
 				060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* EventTablewViewHeader.swift in Sources */,
@@ -2496,6 +2517,7 @@
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
+				060E107C2023145900D08C0C /* UploadLogs.swift in Sources */,
 				06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */,
 				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
 				06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */,
@@ -2505,6 +2527,7 @@
 				06C7070E1FFB87AC00D72E72 /* ViewHaldDividerLayout.swift in Sources */,
 				0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */,
 				06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */,
+				060E1078202311C300D08C0C /* SystemInfoDto.swift in Sources */,
 				064498B92017781400DF9915 /* UIDevice+.swift in Sources */,
 				068277831FFD13E5003A5667 /* ErgometerService.swift in Sources */,
 				06C7072A1FFBC22A00D72E72 /* ViewDiagramLabelLayout.swift in Sources */,
@@ -2524,6 +2547,7 @@
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
 				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
+				060E107A2023130500D08C0C /* FeedbackDto.swift in Sources */,
 				061966091FFE16750040E59A /* SwipePauseView.swift in Sources */,
 				064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
