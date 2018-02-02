@@ -959,6 +959,7 @@
 		060A37741E584F6F00A973BF /* training_calculate */ = {
 			isa = PBXGroup;
 			children = (
+				060F2D8B20121ABF004E7EB1 /* telemetry */,
 				060B99161E64191000F72404 /* service */,
 				0679648E1E63878900DFC050 /* command */,
 				0679645D1E636CBB00DFC050 /* command_processor */,
@@ -1284,7 +1285,6 @@
 		064D91F71FE685B600179498 /* service */ = {
 			isa = PBXGroup;
 			children = (
-				060F2D8B20121ABF004E7EB1 /* telemetry */,
 				060E975A1FE8267C00CB4258 /* social */,
 				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
 				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,

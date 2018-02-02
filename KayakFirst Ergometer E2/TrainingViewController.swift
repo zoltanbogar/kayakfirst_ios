@@ -10,6 +10,7 @@ import Foundation
 import SwiftEventBus
 
 func startTrainingViewController(vc: UIViewController, trainingEnvType: TrainingEnvironmentType, plan: Plan?, event: Event?) {
+    LogManager.sharedInstance.logPlanEvent(plan: plan, event: event)
     
     let trainingVc = TrainingViewController()
     trainingVc.trainingEnvType = trainingEnvType
@@ -161,6 +162,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func onStopClicked() {
+        LogManager.sharedInstance.logStopCycle(stopByWho: "button")
         trainingService.stop()
     }
     

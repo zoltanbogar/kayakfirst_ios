@@ -69,6 +69,8 @@ class Telemetry {
             t_500 = telemetryObject!.t500.dataValue
             t_1000 = telemetryObject!.t1000.dataValue
             
+            logManager.logTelemetryObject(telemetryObject: telemetryObject!)
+            
             setAverageIndex()
         }
     }
@@ -87,6 +89,8 @@ class Telemetry {
     //MARK: cycle state
     var cycleState: CycleState? {
         didSet {
+            logManager.logEvent(event: "cycleState: \(cycleState!.rawValue)")
+            
             switch cycleState! {
             case CycleState.resumed:
                 pauseDiff.resume()
@@ -111,10 +115,13 @@ class Telemetry {
         return _planDisplayHelper
     }
     
+    //other
     private var _pauseDiff: PauseDiff!
     private var pauseDiff: PauseDiff {
         return _pauseDiff
     }
+    
+    private let logManager = LogManager.sharedInstance
     
     private func setAverageIndex() {
         if averageIndex == 0 {

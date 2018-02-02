@@ -21,6 +21,8 @@ class RefreshDashboardHelper {
     private var shouldActive: Bool = false
     private var onResumed: Bool = false
     
+    private let logManager = LogManager.sharedInstance
+    
     //MARK: init
     private static var instance: RefreshDashboardHelper?
     
@@ -64,8 +66,14 @@ class RefreshDashboardHelper {
     
     //MARK: functions
     func startRefresh(_ isStart: Bool) {
+        if !isStart {
+            logManager.logDashboardRefresh(isRefresh: false)
+        }
+        
         timer?.invalidate()
         if isStart && shouldActive && onResumed {
+            logManager.logDashboardRefresh(isRefresh: true)
+            
             timer = Timer.scheduledTimer(timeInterval: (refreshMillis / 1000), target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
         }
     }

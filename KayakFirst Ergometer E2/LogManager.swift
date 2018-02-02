@@ -57,6 +57,45 @@ class LogManager: BaseManager {
         logEvent(event: "bt disconnect by \(disconnectByWho)")
     }
     
+    //MARK: training
+    func logPlanEvent(plan: Plan?, event: Event?) {
+        let planId: String? = plan != nil ? plan!.planId : nil
+        let eventId: String? = event != nil ? event!.eventId : nil
+        
+        var message: String? = nil
+        
+        if let planId = planId {
+            message = "StartTrainingActivity: Plan - \(planId)"
+            if let eventId = eventId {
+                let eventMessage = "Event - \(eventId)"
+                message = message! + " ; " + eventMessage
+            }
+        }
+        
+        if let message = message {
+            logEvent(event: message)
+        }
+    }
+    
+    func logStopCycle(stopByWho: String) {
+        logEvent(event: "cycle stop by \(stopByWho)")
+    }
+    
+    func logTelemetryObject(telemetryObject: TelemetryObject) {
+        let f = "f: \(telemetryObject.f.dataValue)"
+        let v = "v: \(telemetryObject.v.dataValue)"
+        let s = "s: \(telemetryObject.s_sum.dataValue)"
+        let spm = "spm: \(telemetryObject.strokes.dataValue)"
+        let t200 = "t200: \(telemetryObject.t200.dataValue)"
+        
+        let message = f + " ; " + v + " ; " + s + " ; " + spm + " ; " + t200
+        logEvent(event: message)
+    }
+    
+    func logDashboardRefresh(isRefresh: Bool) {
+        logEvent(event: "dashboardRefresh: \(isRefresh)")
+    }
+    
     func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> (), message: String) -> BaseManagerType {
         let uploadLogs = UploadLogs(message: message)
         runUser(serverService: uploadLogs, managerCallBack: managerCallback)

@@ -13,7 +13,7 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     
     //MARK: constants
     static let tableName = "log_object_table"
-    private let maxRows: Int = 15000
+    private let maxRows: Int = 8000
     
     //MARK: init
     static let sharedInstance = LogObjectDbLoader()

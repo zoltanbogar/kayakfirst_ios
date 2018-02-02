@@ -37,6 +37,7 @@ class ErgometerService: TrainingService {
         let telemetryCycleIndex = telemetry.getCycleIndex()
         
         if bluetoothService.checkBluetoothInactiveTimeout() {
+            LogManager.sharedInstance.logStopCycle(stopByWho: "bluetooth inactive timeout")
             stop()
         }
         

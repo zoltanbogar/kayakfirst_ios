@@ -95,7 +95,10 @@ class TrainingService {
         isCyclePaused = false
         
         if telemetry.sessionId == 0 {
-            telemetry.sessionId = currentTimeMillis()
+            let sessionId = currentTimeMillis()
+            LogManager.sharedInstance.logEvent(event: "setSessionId: \(sessionId)")
+            
+            telemetry.sessionId = sessionId
         }
         trainingManager.addTrainingUploadPointer()
         
