@@ -172,8 +172,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         
-        log("PUSH_MESSAGE", "token: \(deviceTokenString)")
-        
         PushNotificationHelper.setToken(pushToken: deviceTokenString)
     }
     
@@ -188,8 +186,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func handlePushMessage(userInfo: [AnyHashable : Any]) {
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSString {
-                log("PUSH_MESSAGE", "message: \(alert)")
-                
                 ErrorDialog(errorString: alert as String).show()
             }
         }

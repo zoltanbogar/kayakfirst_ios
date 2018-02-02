@@ -69,7 +69,6 @@ class LabelWithAdaptiveTextHeight: UILabel {
                 } else if (textAndLabelHeightDiff > 0) {
                     minFontSize = fontSizeAverage + 1
                 } else {
-                    log("ROT_TEST", "fontSize: \(fontSizeAverage)")
                     return font.withSize(fontSizeAverage)
                 }
             }

@@ -88,7 +88,7 @@ class FusedLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        log("LOCATION", "error: \(error.localizedDescription)")
+        //nothing here
     }
     
     func gpsAvailable(isAvailabe: Bool) {

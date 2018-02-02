@@ -176,7 +176,6 @@
 		064498B92017781400DF9915 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B82017781400DF9915 /* UIDevice+.swift */; };
 		064498BB201878BE00DF9915 /* LogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498BA201878BE00DF9915 /* LogObject.swift */; };
 		064498BD201879F600DF9915 /* LogObjectDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498BC201879F600DF9915 /* LogObjectDbLoader.swift */; };
-		064498BF2018867200DF9915 /* LogEventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498BE2018867200DF9915 /* LogEventHelper.swift */; };
 		0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644B7091FFCD0FD001022A4 /* TrainingService.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
@@ -617,7 +616,6 @@
 		064498B82017781400DF9915 /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		064498BA201878BE00DF9915 /* LogObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogObject.swift; sourceTree = "<group>"; };
 		064498BC201879F600DF9915 /* LogObjectDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogObjectDbLoader.swift; sourceTree = "<group>"; };
-		064498BE2018867200DF9915 /* LogEventHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEventHelper.swift; sourceTree = "<group>"; };
 		0644B7091FFCD0FD001022A4 /* TrainingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
@@ -1250,7 +1248,6 @@
 			children = (
 				064764C61E237035004B9ED3 /* AppLog.swift */,
 				064498B62017732D00DF9915 /* SystemInfoHelper.swift */,
-				064498BE2018867200DF9915 /* LogEventHelper.swift */,
 			);
 			name = log;
 			sourceTree = "<group>";
@@ -2319,7 +2316,6 @@
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */,
 				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
-				064498BF2018867200DF9915 /* LogEventHelper.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,

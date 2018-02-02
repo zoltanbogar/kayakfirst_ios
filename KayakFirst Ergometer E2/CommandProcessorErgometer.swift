@@ -102,8 +102,6 @@ class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
                 t_max = getDoubleFromCommand(measureCommand: measureCommandErgometer)
             }
         }
-        
-        log("ERGO_TEST", "t_min: \(t_min), t_minFuture \(t_min_future), t_h \(t_h), t_h_future \(t_h_future)")
     }
     
     private func fillHelperValues() {

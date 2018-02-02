@@ -378,7 +378,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     
     func presentedDateUpdated(_ date: CVDate) {
         refreshMonth(timeStamp: date.getTimeMillis())
-        log("DATE", DateFormatHelper.getDate(dateFormat: "yyyy.mm.dd", timeIntervallSince1970: date.getTimeMillis()))
         
         if selectedDate != date.getTimeMillis() {
             selectedDate = date.getTimeMillis()
