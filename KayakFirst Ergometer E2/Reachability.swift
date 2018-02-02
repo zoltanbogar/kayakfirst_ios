@@ -18,6 +18,18 @@ public class Reachability {
     }
     
     class func isConnectedToNetwork() -> Bool {
+        let status = currentReachabilityStatus
+        
+        let isInternetAvailable = status != .notReachable
+        
+        let logManager = LogManager.sharedInstance
+        
+        if isInternetAvailable {
+            logManager.logEvent(event: "useInternet: \(getNetworkType(status: status))")
+        } else {
+            logManager.logEvent(event: "no internet")
+        }
+        
         return currentReachabilityStatus != .notReachable
     }
     
@@ -58,6 +70,17 @@ public class Reachability {
         }
         else {
             return .notReachable
+        }
+    }
+    
+    private static func getNetworkType(status: ReachabilityStatus) -> String {
+        switch status {
+        case .reachableViaWWAN:
+            return "mobile"
+        case .reachableViaWiFi:
+            return "wifi"
+        default:
+            return "not available"
         }
     }
 }

@@ -14,6 +14,8 @@ class UploadTimer {
     private static let timeUploadTrainingsSec: Double = 3 * 60 //3 min
     
     private static var timer: Timer?
+    
+    private static let logManager = LogManager.sharedInstance
 
     class func startTimer(forceStart: Bool) {
         if forceStart {
@@ -28,7 +30,7 @@ class UploadTimer {
         if UserManager.sharedInstance.getUser() != nil {
             DispatchQueue.main.async {
                 if timer == nil {
-                    log("SERVER_TEST", "startTimer")
+                    logManager.logEvent(event: "UploadTimer: start")
                     timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
                 }
             }
@@ -36,7 +38,7 @@ class UploadTimer {
     }
     
     class func stopTimer() {
-        log("SERVER_TEST", "stopTimer")
+        logManager.logEvent(event: "UploadTimer: stop")
         timer?.invalidate()
         timer = nil
     }

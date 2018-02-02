@@ -16,6 +16,8 @@ class ManagerUpload {
     //MARK: properties
     private static let preferences = UserDefaults.standard
     
+    private static let logManager = LogManager.sharedInstance
+    
     //MARK: functions
     func callServer() {
         let serverWasReachable = runServer(pointers: getPointers())
@@ -68,13 +70,11 @@ class ManagerUpload {
     }
     
     class func getStack() -> [String]? {
-        log("UPLOAD_TEST", "getStack...")
         let dictionary = getDictionary()
         
         var stack = [String]()
         
         for key in dictionary.keys {
-            log("UPLOAD_TEST", "stackElement: \(key)")
             stack.append(key)
         }
         
@@ -84,7 +84,7 @@ class ManagerUpload {
     class func addToStack(uploadType: UploadType, pointer: String?) -> Bool {
         if UserManager.sharedInstance.getUser() != nil {
             
-            log("UPLOAD_TEST", "addToStack: \(uploadType.rawValue) - \(pointer)")
+            logManager.logEvent(event: "addStack: \(uploadType.rawValue) - \(pointer)")
             
             UploadTimer.startTimer()
             
@@ -136,7 +136,7 @@ class ManagerUpload {
     }
     
     internal func removeFromStack(uploadType: UploadType) {
-        log("UPLOAD_TEST", "removeFromStack: \(uploadType.rawValue)")
+        ManagerUpload.logManager.logEvent(event: "removeStack: \(uploadType.rawValue)")
         var dictionary = ManagerUpload.getDictionary()
         
         dictionary.removeValue(forKey: uploadType.rawValue)

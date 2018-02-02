@@ -208,6 +208,9 @@ class BaseManager {
             if let stackValue = stack {
                 if stackValue.count > 0 {
                     for s in stackValue {
+                        
+                        LogManager.sharedInstance.logEvent(event: "getStack: \(s)")
+                        
                         let managerUploadList = ManagerUpload.getManagerUploadByType(uploadType: s)
                         
                         for managerUpload in managerUploadList {
