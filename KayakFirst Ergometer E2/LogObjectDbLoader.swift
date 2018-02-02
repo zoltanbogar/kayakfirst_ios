@@ -13,7 +13,7 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     
     //MARK: constants
     static let tableName = "log_object_table"
-    private let maxRows: Int = 3000
+    private let maxRows: Int = 15000
     
     //MARK: init
     static let sharedInstance = LogObjectDbLoader()
@@ -82,10 +82,6 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     }
     
     //MARK: query
-    func getLogObjects(systemInfoTimestamp: Double) -> [LogObject]? {
-        return loadData(predicate: self.systemInfoTimestamp == systemInfoTimestamp)
-    }
-    
     override func loadData(predicate: Expression<Bool>?) -> [LogObject]? {
         var logList: [LogObject]?
         
@@ -137,8 +133,22 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     
     //MARK: delete
     func deleteOldData() {
-        let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataDays)
-        deleteData(predicate: predicate)
+        /*let predicate = self.timestamp < getOldDataTimestamp(oldDataDays: oldDataDays)
+        deleteData(predicate: predicate)*/
+        
+        let logObjects = self.loadData(predicate: nil)
+        
+        if let logObjects = logObjects {
+            log("LOG_TEST", "logObjects: \(logObjects.count)")
+        }
+        
+        if logObjects != nil && logObjects!.count > self.maxRows {
+            let maxCount: Int = Int(Double(self.maxRows) * 2 / 3)
+            let deletePosition: Int = logObjects!.count - maxCount
+            let lastTimestamp = logObjects![deletePosition].timestamp
+            
+            self.deleteData(predicate: self.timestamp < lastTimestamp)
+        }
     }
     
     override func deleteData(predicate: Expression<Bool>?) -> Int {
