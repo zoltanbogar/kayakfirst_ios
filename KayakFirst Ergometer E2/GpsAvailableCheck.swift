@@ -23,6 +23,8 @@ class GpsAvailableCheck {
     private var lastLocationTimestamp: Double = 0
     private var location: CLLocation?
     
+    private var gpsAvailable = true
+    
     //MARK: init
     init(locationService: FusedLocationManager) {
         self.locationService = locationService
@@ -64,6 +66,12 @@ class GpsAvailableCheck {
     }
     
     @objc private func checkAvailability() {
-        locationService.gpsAvailable(isAvailabe: isGpsAvailable())
+        let isAvailable = isGpsAvailable()
+        locationService.gpsAvailable(isAvailabe: isAvailable)
+        
+        if self.gpsAvailable != isAvailable {
+            LogManager.sharedInstance.logEvent(event: "gps available: \(isAvailable)")
+            self.gpsAvailable = isAvailable
+        }
     }
 }
