@@ -49,7 +49,7 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
     //MARK: insert
     //TODO: too slow by bluetooth data...
     override func addData(data: LogObject?) {
-        DispatchQueue.global().async {
+        /*DispatchQueue.global().async {
             if let logObject = data {
                 log("LOG_TEST", "addLogStart")
                 
@@ -72,6 +72,12 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
                 
                 log("LOG_TEST", "addLogEnd")
             }
+        }*/
+        
+        if let logObject = data {
+            let insert = self.table!.insert(self.logColumn <- logObject.log, self.timestamp <- Double(Int64(logObject.timestamp)), self.systemInfoTimestamp <- Double(Int64(logObject.systemInfoTimestamp)), self.userId <- logObject.userId)
+            
+            let rowId = try? self.db?.run(insert)
         }
     }
     
@@ -111,6 +117,8 @@ class LogObjectDbLoader: BaseDbLoader<LogObject> {
                     timestampExpression: timestamp,
                     systemInfoTimestampExpression: systemInfoTimestamp,
                     userIdExpression: self.userId)
+                
+                log("LOG_TEST", "\(logObject.log)")
                 
                 logList?.append(logObject)
                 

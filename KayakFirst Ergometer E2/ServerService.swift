@@ -28,7 +28,8 @@ class ServerService<E> {
     //MARK: constants
     //let baseUrl = "http://api.kayakfirst.com/api/"
     //TODO
-    let baseUrl = "http://192.168.0.2:8000/api/"
+    //let baseUrl = "http://192.168.0.2:8000/api/"
+    let baseUrl = "http://192.168.0.105:8000/api/"
     
     //MARK: properties
     var error: Responses?

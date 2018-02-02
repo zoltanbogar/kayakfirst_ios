@@ -36,6 +36,8 @@ class BluetoothService {
     private var maDataAvailableTime = MovingAverage()
     private var avgDataAvailableTime: Double = 0
     
+    private let logManager = LogManager.sharedInstance
+    
     
     //MARK: init
     private static var instance: BluetoothService?
@@ -147,6 +149,8 @@ class BluetoothService {
                 if self.commandIndex == self.commandList.count - 1 {
                     self.setCycleIndex(cycleIndex: command.getCycleIndex(), timestampDiff: diffAvg)
                     self.commandIndex = 0
+                    
+                    self.logManager.logErgoCommandList(commandList: self.commandList)
                 }
                 if valueWasParsable {
                     self.commandIndex = self.commandIndex + 1

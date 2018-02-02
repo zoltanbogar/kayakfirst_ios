@@ -31,8 +31,25 @@ class LogManager: BaseManager {
     }
     
     func logEvent(event: String) {
-        let logObject = LogObject.createLogObject(log: event)
+        let dateString = DateFormatHelper.getDate(dateFormat: "yyyy.MM.dd kk:mm:ss.sss", timeIntervallSince1970: currentTimeMillis())
+        let logEvent = event + " \(dateString)"
+        
+        let logObject = LogObject.createLogObject(log: logEvent)
         LogObjectDbLoader.sharedInstance.addData(data: logObject)
+    }
+    
+    func logErgoCommandList(commandList: [MeasureCommandErgometer]) {
+        var message = ""
+        for command in commandList {
+            let commandName = command.getCommand().rawValue
+            let cycleIndex = command.getCycleIndex()
+            let value = command.getValue()
+            
+            let commandMessage = commandName + " - " + "\(cycleIndex)" + " - " + "\(value)" + " ; "
+            
+            message += commandMessage
+        }
+        logEvent(event: "bt command: \(message)")
     }
     
     func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> (), message: String) -> BaseManagerType {
