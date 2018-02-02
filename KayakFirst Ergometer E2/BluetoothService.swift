@@ -143,6 +143,7 @@ class BluetoothService {
          
                 if self.bluetoothResetNumber == CommandErgometerReset.tryResetNumber {
                     self.bluetoothResetNumber = 0
+                    self.logManager.logBtDisconnect(disconnectByWho: "reset not success")
                     self.disconnectBluetooth()
                 }
             } else {
@@ -183,6 +184,7 @@ class BluetoothService {
             let timeDiff = currentTimeMillis() - inactiveDisconnectTime
             
             if timeDiff > bluetoothDisconnectedTime {
+                logManager.logBtDisconnect(disconnectByWho: "inactive timeout")
                 disconnectBluetooth()
             }
         } else {

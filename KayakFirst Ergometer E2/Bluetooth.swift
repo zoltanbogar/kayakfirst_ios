@@ -52,6 +52,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     var isConnected = false
     
+    private let logManager = LogManager.sharedInstance
+    
     //MARK: init
     static let sharedInstance = Bluetooth()
     private override init() {
@@ -92,6 +94,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func connect(bluetoothDevice: CBPeripheral, onBluetoothConnectedListener: OnBluetoothConnectedListener) {
+        logManager.logEvent(event: "bt connecting: \(bluetoothDevice.name!)")
+        
         self.onBluetoothConnectedListener = onBluetoothConnectedListener
         
         if isBluetoothOn() != nil && isBluetoothOn()! {
@@ -106,6 +110,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func disconnect() {
+        logManager.logEvent(event: "bt disconnecting")
+        
         if let peripheral = connectedPeripheral {
             isConnected = false
             bluetoothManager?.cancelPeripheralConnection(peripheral)
@@ -120,6 +126,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     @objc private func bluetoothConnectTimeouted() {
         if !isConnected {
+            logManager.logBtDisconnect(disconnectByWho: "connection timeout")
             disconnect()
         }
         
@@ -162,6 +169,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         telemetry.cycleState = CycleState.bluetoothDisconnected
         
+        logManager.logEvent(event: "bt disconnected: \(peripheral.name!)")
+        
         onBluetoothConnectedListener?.onDisconnected()
     }
     
@@ -186,6 +195,8 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                     isConnected = true
                     
                     bluetoothService.start()
+                    
+                    logManager.logEvent(event: "bt connected: \(peripheral.name)")
                     
                     onBluetoothConnectedListener?.onConnected()
                 }

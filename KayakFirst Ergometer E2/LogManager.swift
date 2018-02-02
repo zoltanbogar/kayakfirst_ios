@@ -38,6 +38,7 @@ class LogManager: BaseManager {
         LogObjectDbLoader.sharedInstance.addData(data: logObject)
     }
     
+    //MARK: ergo
     func logErgoCommandList(commandList: [MeasureCommandErgometer]) {
         var message = ""
         for command in commandList {
@@ -50,6 +51,10 @@ class LogManager: BaseManager {
             message += commandMessage
         }
         logEvent(event: "bt command: \(message)")
+    }
+    
+    func logBtDisconnect(disconnectByWho: String) {
+        logEvent(event: "bt disconnect by \(disconnectByWho)")
     }
     
     func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> (), message: String) -> BaseManagerType {

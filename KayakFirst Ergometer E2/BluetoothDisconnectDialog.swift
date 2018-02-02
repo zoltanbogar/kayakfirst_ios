@@ -25,6 +25,7 @@ class BluetoothDisconnectDialog: BaseDialog {
     }
     
     override func btnPosAction() {
+        LogManager.sharedInstance.logBtDisconnect(disconnectByWho: "disconnect dialog")
         bluetooth.disconnect()
     }
 }
