@@ -418,7 +418,6 @@
 		06F939021E3F793100920753 /* AppUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F939011E3F793100920753 /* AppUILabel.swift */; };
 		06F9D5CD1F3892A1005ECA8B /* MeasureCommandErgometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */; };
 		06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */; };
-		06F9D5D11F389595005ECA8B /* CommandErgometerRPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */; };
 		06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */; };
 		06F9D5D51F389637005ECA8B /* CommandErgometerT_MAX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */; };
 		06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */; };
@@ -868,7 +867,6 @@
 		06F939011E3F793100920753 /* AppUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUILabel.swift; sourceTree = "<group>"; };
 		06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureCommandErgometer.swift; sourceTree = "<group>"; };
 		06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerReset.swift; sourceTree = "<group>"; };
-		06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerRPM.swift; sourceTree = "<group>"; };
 		06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_H.swift; sourceTree = "<group>"; };
 		06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MAX.swift; sourceTree = "<group>"; };
 		06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandErgometerT_MIN.swift; sourceTree = "<group>"; };
@@ -1944,7 +1942,6 @@
 			children = (
 				06F9D5CC1F3892A1005ECA8B /* MeasureCommandErgometer.swift */,
 				06F9D5CE1F389436005ECA8B /* CommandErgometerReset.swift */,
-				06F9D5D01F389595005ECA8B /* CommandErgometerRPM.swift */,
 				06F9D5D21F389609005ECA8B /* CommandErgometerT_H.swift */,
 				06F9D5D41F389637005ECA8B /* CommandErgometerT_MAX.swift */,
 				06F9D5D61F389652005ECA8B /* CommandErgometerT_MIN.swift */,
@@ -2440,7 +2437,6 @@
 				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
 				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,
 				061C80191E693F8700BCE509 /* RegisterView.swift in Sources */,
-				06F9D5D11F389595005ECA8B /* CommandErgometerRPM.swift in Sources */,
 				060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */,
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,

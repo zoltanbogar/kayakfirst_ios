@@ -15,7 +15,6 @@ enum CommandEnum: String {
     case tH = "2"
     case tMax = "3"
     case tV = "4"
-    case rpm = "5"
     case reset = "9"
     
     //outdoor

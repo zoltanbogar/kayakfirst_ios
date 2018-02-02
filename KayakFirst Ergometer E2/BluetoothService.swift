@@ -50,7 +50,6 @@ class BluetoothService {
         self.telemetry = telemetry
         
         let commandErgometerReset = CommandErgometerReset()
-        let commandErgometerRPM = CommandErgometerRPM()
         let commandErgometerT_h = CommandErgometerT_H()
         let commandErgometerT_max = CommandErgometerT_MAX()
         let commandErgometerT_min = CommandErgometerT_MIN()
@@ -58,7 +57,6 @@ class BluetoothService {
         
         commandList = [
             commandErgometerReset,
-            commandErgometerRPM,
             commandErgometerT_min,
             commandErgometerT_h,
             commandErgometerT_max,
