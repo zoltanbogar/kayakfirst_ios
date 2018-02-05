@@ -70,6 +70,8 @@ class FeedbackViewController: BaseVC<VcFeedbackLayout> {
             
             if let error = error {
                 errorHandlingWithAlert(viewController: self, error: error)
+            } else {
+                self.dismiss(animated: true, completion: nil)
             }
         }, message: message)
         showProgress(baseManagerType: managerType)
