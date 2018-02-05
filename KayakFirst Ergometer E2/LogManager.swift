@@ -96,6 +96,13 @@ class LogManager: BaseManager {
         logEvent(event: "dashboardRefresh: \(isRefresh)")
     }
     
+    //MARK: sync
+    func logServer(message: Any) {
+        log(alamofireLogTag, message)
+        
+        logEvent(event: "\(message)")
+    }
+    
     func sendFeedback(managerCallback: @escaping (_ data: Bool?, _ error: Responses?) -> (), message: String) -> BaseManagerType {
         let uploadLogs = UploadLogs(message: message)
         runUser(serverService: uploadLogs, managerCallBack: managerCallback)

@@ -34,6 +34,8 @@ class ServerService<E> {
     var error: Responses?
     var serverWasReachable = false
     
+    private let logManager = LogManager.sharedInstance
+    
     func run() -> E? {
         serverWasReachable = true
         
@@ -57,7 +59,7 @@ class ServerService<E> {
                 
                 let statusCode = response.responseString().response?.statusCode == nil ? 0 : response.response?.statusCode
                 
-                log(alamofireLogTag, response)
+                logManager.logServer(message: response)
                 
                 if statusCode! >= 200 && statusCode! < 300 {
                     result = handleServiceCommunication(alamofireRequest: response)
@@ -151,7 +153,7 @@ class ServerService<E> {
     private func initError(alamofireRequest: DataRequest) -> Responses? {
         let response = alamofireRequest.responseJSON()
         
-        log(alamofireLogTag, response)
+        logManager.logServer(message: response)
         
         var errorString = response.result.debugDescription
         
