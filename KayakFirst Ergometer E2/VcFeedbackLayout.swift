@@ -77,7 +77,7 @@ class VcFeedbackLayout: BaseLayout {
     //MARK: tabbar items
     lazy var btnDone: UIBarButtonItem! = {
         let button = UIBarButtonItem()
-        button.image = UIImage(named: "done_24dp")?.withRenderingMode(.alwaysOriginal)
+        button.title = getString("other_send")
         
         return button
     }()
