@@ -30,6 +30,14 @@ class TextViewWithHint: UITextView, UITextViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func getText() -> String {
+        if isHasText {
+            return text
+        } else {
+            return ""
+        }
+    }
+    
     func setHintText(isHint: Bool, textShow: String?) {
         if isHint {
             text = hint

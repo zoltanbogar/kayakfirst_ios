@@ -39,14 +39,11 @@ class UploadLogs: ServerService<Bool> {
         
         let feedbackDto = FeedbackDto(message: message, systemInfos: systemInfos, logs: logObjest)
         
-        var parameters = Array<[String:Any]>()
-        parameters.append(feedbackDto.getParameters())
-        
-        return parameters.asParameters()
+        return feedbackDto.getParameters()
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return ArrayEncoding()
+        return JSONEncoding.default
     }
     
     override func getManagerType() -> BaseManagerType {
