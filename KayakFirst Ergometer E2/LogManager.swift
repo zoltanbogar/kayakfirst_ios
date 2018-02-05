@@ -31,10 +31,7 @@ class LogManager: BaseManager {
     }
     
     func logEvent(event: String) {
-        let dateString = DateFormatHelper.getDate(dateFormat: "yyyy.MM.dd kk:mm:ss.sss", timeIntervallSince1970: currentTimeMillis())
-        let logEvent = event + " \(dateString)"
-        
-        let logObject = LogObject.createLogObject(log: logEvent)
+        let logObject = LogObject.createLogObject(log: event)
         LogObjectDbLoader.sharedInstance.addData(data: logObject)
     }
     
