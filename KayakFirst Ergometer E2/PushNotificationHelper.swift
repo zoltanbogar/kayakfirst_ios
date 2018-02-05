@@ -17,6 +17,11 @@ class PushNotificationHelper {
     //MARK: properties
     private static let preferences = UserDefaults.standard
     
+    class func deleteToken() {
+        preferences.removeObject(forKey: keyPush)
+        preferences.synchronize()
+    }
+    
     class func setToken(pushToken: String) {
         let previousToken = getToken()
         

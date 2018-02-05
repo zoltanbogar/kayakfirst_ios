@@ -101,6 +101,7 @@ class UserManager: BaseManager {
             self.socialLogout()
             
             UploadTimer.stopTimer()
+            PushNotificationHelper.deleteToken()
             
             self.logoutCallback?(success, error)
         })
