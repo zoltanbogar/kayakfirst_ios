@@ -187,6 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSString {
                 ErrorDialog(errorString: alert as String).show()
+                downloadMessage()
             }
         }
     }

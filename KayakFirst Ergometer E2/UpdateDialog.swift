@@ -21,7 +21,6 @@ class UpdateDialog: BaseDialog {
         }
     }
 
-    
     //MARK: constants
     private static let dbUpdateReminder = "db_update_reminder"
     private static let keyReminderTimestamp = "key_reminder_timestamp"
