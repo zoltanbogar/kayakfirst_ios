@@ -102,7 +102,7 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             connectedPeripheral = bluetoothDevice
             bluetoothManager?.connect(bluetoothDevice, options: nil)
             
-            Timer.scheduledTimer(timeInterval: bluetoothConnectTimeout, target: self, selector: #selector(bluetoothConnectTimeouted), userInfo: nil, repeats: false)
+            disconnectIfNeededByTimeout()
             
         } else {
             self.onBluetoothConnectedListener?.onDisconnected()
@@ -138,6 +138,10 @@ class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             stringValue = String(data: dataValue, encoding: String.Encoding.utf8)!
         }
         return stringValue
+    }
+    
+    private func disconnectIfNeededByTimeout() {
+        Timer.scheduledTimer(timeInterval: bluetoothConnectTimeout, target: self, selector: #selector(bluetoothConnectTimeouted), userInfo: nil, repeats: false)
     }
     
     //MARK: delegate
