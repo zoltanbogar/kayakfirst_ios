@@ -95,12 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func checkSystem() {
-        DispatchQueue.global().async {
-            SystemInfoDbLoader.sharedInstance.deleteOldData()
-            LogObjectDbLoader.sharedInstance.deleteOldData()
-            
-            LogManager.sharedInstance.checkSystemInfo()
-        }
+        LogManager.sharedInstance.checkSystemInfo()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

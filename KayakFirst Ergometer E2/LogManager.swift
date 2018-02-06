@@ -23,7 +23,12 @@ class LogManager: BaseManager {
     
     //MARK: functions
     func checkSystemInfo() {
-        SystemInfoHelper.addSystemInfoToDb()
+        DispatchQueue.global().async {
+            SystemInfoDbLoader.sharedInstance.deleteOldData()
+            LogObjectDbLoader.sharedInstance.deleteOldData()
+            
+            SystemInfoHelper.addSystemInfoToDb()
+        }
     }
     
     func getSystemInfo() -> SystemInfo? {

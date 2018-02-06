@@ -68,6 +68,8 @@ class TrainingService {
     func start() {
         reset()
         resume()
+        
+        LogManager.sharedInstance.checkSystemInfo()
     }
     
     func resume() {
