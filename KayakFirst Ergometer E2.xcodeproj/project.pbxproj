@@ -959,11 +959,11 @@
 		060A37741E584F6F00A973BF /* training_calculate */ = {
 			isa = PBXGroup;
 			children = (
-				060F2D8B20121ABF004E7EB1 /* telemetry */,
-				060B99161E64191000F72404 /* service */,
+				061145D21E58D6920058EAF4 /* calculate */,
 				0679648E1E63878900DFC050 /* command */,
 				0679645D1E636CBB00DFC050 /* command_processor */,
-				061145D21E58D6920058EAF4 /* calculate */,
+				060B99161E64191000F72404 /* service */,
+				060F2D8B20121ABF004E7EB1 /* telemetry */,
 				067964551E63633E00DFC050 /* CycleState.swift */,
 				067964601E636E7800DFC050 /* MovingAverage.swift */,
 			);
@@ -976,9 +976,8 @@
 				064FE5AF1ED0A32B004A9F35 /* download */,
 				064FE5B01ED0A340004A9F35 /* upload */,
 				064FE5B11ED0A351004A9F35 /* user */,
-				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
 				06F657C11E461F3E002AA9D0 /* RefreshToken.swift */,
-				061369891E7C2D8C00896282 /* UploadTimer.swift */,
+				060A7D0A1E41B44100F6A29F /* ServerService.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -1019,13 +1018,13 @@
 			isa = PBXGroup;
 			children = (
 				064498AB20176B0900DF9915 /* log */,
-				06AF232B1F062278008805A2 /* training */,
 				06AF232A1F06226C008805A2 /* plan */,
-				060C8B761E40682C0057DD61 /* User.swift */,
-				06AF232E1F06251B008805A2 /* ModifyAble.swift */,
-				06AF23301F06253B008805A2 /* UploadAble.swift */,
-				060E975D1FE8275F00CB4258 /* SocialUser.swift */,
+				06AF232B1F062278008805A2 /* training */,
 				066835EB200268F200DA9969 /* AppLocation.swift */,
+				06AF232E1F06251B008805A2 /* ModifyAble.swift */,
+				060E975D1FE8275F00CB4258 /* SocialUser.swift */,
+				06AF23301F06253B008805A2 /* UploadAble.swift */,
+				060C8B761E40682C0057DD61 /* User.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1073,8 +1072,8 @@
 			isa = PBXGroup;
 			children = (
 				064498B020176BD400DF9915 /* log */,
-				06AF233A1F067749008805A2 /* training */,
 				066B00391EC7156300BE0E1F /* plan */,
+				06AF233A1F067749008805A2 /* training */,
 				06018D571E620FFC00F75919 /* AppSql.swift */,
 				06018D591E6218C100F75919 /* BaseDbLoader.swift */,
 				06AF23381F06760C008805A2 /* UploadAbleDbLoader.swift */,
@@ -1086,9 +1085,9 @@
 		060E975A1FE8267C00CB4258 /* social */ = {
 			isa = PBXGroup;
 			children = (
-				060E975B1FE826A200CB4258 /* SocialLoginHelper.swift */,
 				060E975F1FE8286400CB4258 /* FacebookLoginHelper.swift */,
 				060E97611FE828CB00CB4258 /* GoogleLoginHelper.swift */,
+				060E975B1FE826A200CB4258 /* SocialLoginHelper.swift */,
 			);
 			name = social;
 			sourceTree = "<group>";
@@ -1256,16 +1255,16 @@
 		064764C51E237022004B9ED3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */,
+				06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */,
+				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
 				06703F701E24025A0028135A /* Colors.swift */,
+				064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */,
 				06BF94F31E2A36140010C8A7 /* DesignUtils.swift */,
 				06F938FF1E3F720A00920753 /* Dimens.swift */,
-				060958E41EDDFA74009A824C /* BatterySaveHelper.swift */,
+				060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */,
+				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
-				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
-				060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */,
-				06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1285,14 +1284,15 @@
 		064D91F71FE685B600179498 /* service */ = {
 			isa = PBXGroup;
 			children = (
-				060E975A1FE8267C00CB4258 /* social */,
-				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
-				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
+				06765775202B4ED100E9339C /* alarm */,
 				06E840561F35F50900303574 /* bluetooth */,
 				066579EC1F161BBD00E43852 /* cloud_message */,
 				060B99241E64288B00F72404 /* location */,
 				0677FEF91E41396300A9B977 /* server */,
+				060E975A1FE8267C00CB4258 /* social */,
 				060A37741E584F6F00A973BF /* training_calculate */,
+				0698BC4E1F005EC100FC7A0E /* PlanSoundHelper.swift */,
+				0626FBCA1EFCE98B00DCBB33 /* UnitHelper.swift */,
 			);
 			name = service;
 			sourceTree = "<group>";
@@ -1324,13 +1324,13 @@
 			children = (
 				061FF0B51F0BE2820068E6E6 /* helper */,
 				064FE5A61ED09E8A004A9F35 /* manager_type */,
-				067964621E6370F500DFC050 /* SaveTrainingValues.swift */,
 				064FE5AD1ED0A0A5004A9F35 /* BaseManager.swift */,
-				0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */,
 				06CAFF4C1F0D304D00D2EA14 /* EventManager.swift */,
-				0618AD281F0D990E00AC1903 /* PlanManager.swift */,
-				0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */,
 				0643A3192022FA8D00120DED /* LogManager.swift */,
+				0618AD281F0D990E00AC1903 /* PlanManager.swift */,
+				067964621E6370F500DFC050 /* SaveTrainingValues.swift */,
+				0618AD2A1F0D9A6C00AC1903 /* TrainingManager.swift */,
+				0626FBCC1EFCE9DB00DCBB33 /* UserManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -1504,15 +1504,23 @@
 			name = weight;
 			sourceTree = "<group>";
 		};
+		06765775202B4ED100E9339C /* alarm */ = {
+			isa = PBXGroup;
+			children = (
+				061369891E7C2D8C00896282 /* UploadTimer.swift */,
+			);
+			name = alarm;
+			sourceTree = "<group>";
+		};
 		0677FEF91E41396300A9B977 /* server */ = {
 			isa = PBXGroup;
 			children = (
-				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
 				06F9145F1E42801C0041B303 /* backend */,
 				060DDFEE1E4BD2BF00FE2D14 /* database */,
 				064FE5A31ED09DCE004A9F35 /* manager */,
 				060A7D091E41B43500F6A29F /* service */,
 				0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */,
+				060A7D0C1E41B5C900F6A29F /* Reachability.swift */,
 			);
 			name = server;
 			sourceTree = "<group>";
@@ -1590,20 +1598,20 @@
 		069433E61E28361B00CE6398 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
 				069433E71E28362800CE6398 /* BaseDialog.swift */,
-				069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */,
-				069433ED1E28419600CE6398 /* ProgressDialog.swift */,
-				069433F51E28462D00CE6398 /* NewPasswordDialog.swift */,
-				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
-				064766471E759ACE007936B5 /* LocationSettingsDialog.swift */,
+				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
+				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
 				06F8A08D1F0E783B006CE6FB /* DeletePlanDialog.swift */,
 				06F8A08F1F0E82C1006CE6FB /* DeleteTrainingDialog.swift */,
-				06F8A0911F0E8357006CE6FB /* DeleteEventDialog.swift */,
-				06287D021F0F5C8100F102C8 /* AddEventDialog.swift */,
+				06F657B91E45F19F002AA9D0 /* ErrorDialog.swift */,
+				064766471E759ACE007936B5 /* LocationSettingsDialog.swift */,
+				069433F51E28462D00CE6398 /* NewPasswordDialog.swift */,
 				0621004D1F0FB15C0024A2AA /* PlanNoElementsDialog.swift */,
-				06E840621F37656E00303574 /* BluetoothDisconnectDialog.swift */,
-				06217B0C2015EA6A004DC885 /* UpdateDialog.swift */,
+				069433ED1E28419600CE6398 /* ProgressDialog.swift */,
+				069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */,
 				06CD9E3D201A0CA40069F260 /* SystemInfoDialog.swift */,
+				06217B0C2015EA6A004DC885 /* UpdateDialog.swift */,
 			);
 			name = dialog;
 			sourceTree = "<group>";
@@ -1658,17 +1666,17 @@
 		06BF94F01E2A30E20010C8A7 /* view_controller */ = {
 			isa = PBXGroup;
 			children = (
-				066B00471EC7552C00BE0E1F /* plan */,
 				061145CB1E58A2BC0058EAF4 /* calendar */,
+				066B00471EC7552C00BE0E1F /* plan */,
 				06DE18481E56D22B00374107 /* training_viewcontroller */,
-				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
-				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D11E564D7D00F41652 /* BaseVC.swift */,
-				06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */,
 				06BCB0D51E564F2200F41652 /* CalendarVc.swift */,
+				065573AF2016620C00012E19 /* FeedbackViewController.swift */,
+				061148801E467A13003A8FE6 /* MainTabViewController.swift */,
 				06BCB0D71E564F3C00F41652 /* ProfileVc.swift */,
 				06BCB0D91E564F5800F41652 /* SettingsVc.swift */,
-				065573AF2016620C00012E19 /* FeedbackViewController.swift */,
+				06BCB0D31E564F0200F41652 /* TrainingEnvTypeVc.swift */,
+				06F657C91E4638FC002AA9D0 /* WelcomeViewController.swift */,
 			);
 			name = view_controller;
 			sourceTree = "<group>";
@@ -1676,30 +1684,30 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
-				064D9B012008EBBC0057137C /* orientation */,
-				067545C41F11326B008759E7 /* weight */,
+				061145CC1E58C9750058EAF4 /* chart */,
+				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
+				061145CF1E58CF540058EAF4 /* diagram_label */,
 				060958E61EDE973A009A824C /* dialog_element */,
-				067129591EC896EF00362C39 /* plan */,
+				060A376A1E578F4000A973BF /* drag_drop */,
 				066B00421EC749A700BE0E1F /* label */,
 				061C80151E693F3100BCE509 /* login_register */,
-				061145CF1E58CF540058EAF4 /* diagram_label */,
-				061145CC1E58C9750058EAF4 /* chart */,
-				060A376A1E578F4000A973BF /* drag_drop */,
-				060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */,
+				064D9B012008EBBC0057137C /* orientation */,
+				067129591EC896EF00362C39 /* plan */,
 				060D9BA11E4A6539006DD8AB /* table_view */,
-				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
-				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
-				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
-				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
-				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
-				06018D531E61B8D500F75919 /* RoundButton.swift */,
-				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
-				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
-				066B00451EC7504400BE0E1F /* DividerView.swift */,
-				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
-				068D387F1F207DEB005A1197 /* AppToast.swift */,
-				066461601F459CC200145960 /* BluetoothList.swift */,
+				060DDFEB1E4BCFB000FE2D14 /* training_sum_elements */,
+				067545C41F11326B008759E7 /* weight */,
 				066461621F459D0200145960 /* AppProgressBar.swift */,
+				060F02561E56C5C300D5BF43 /* AppScrollView.swift */,
+				068D387F1F207DEB005A1197 /* AppToast.swift */,
+				0621F7A91E3FCC99006FF613 /* AppUiButton.swift */,
+				066461601F459CC200145960 /* BluetoothList.swift */,
+				06C1B9871E25962800AB4C47 /* CustomUi.swift */,
+				066B00451EC7504400BE0E1F /* DividerView.swift */,
+				060EE3911E7538E700203DB6 /* HalfDivider.swift */,
+				0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */,
+				06F657BB1E45FBEC002AA9D0 /* ProgressView.swift */,
+				06018D531E61B8D500F75919 /* RoundButton.swift */,
+				064FE5A11ECED286004A9F35 /* SearchTextView.swift */,
 				06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */,
 			);
 			name = design;
@@ -1869,8 +1877,8 @@
 		06CBFCBD1FF244CE0017E9B5 /* layout */ = {
 			isa = PBXGroup;
 			children = (
-				06C707081FFB830200D72E72 /* view_controller */,
 				06C707051FFB823900D72E72 /* view */,
+				06C707081FFB830200D72E72 /* view_controller */,
 				06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */,
 			);
 			name = layout;
@@ -1924,12 +1932,12 @@
 			isa = PBXGroup;
 			children = (
 				0643A31D20230A8C00120DED /* log */,
+				06117BD41E4998AE0066C072 /* DownloadDto.swift */,
+				06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */,
 				06F914601E42802B0041B303 /* LoginDto.swift */,
 				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
-				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
-				06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */,
-				06117BD41E4998AE0066C072 /* DownloadDto.swift */,
 				060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */,
+				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
 			);
 			name = backend;
 			sourceTree = "<group>";
