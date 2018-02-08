@@ -105,7 +105,7 @@
 "dialog_event_delete_message"="This event will be lost, but the session you can find it in Plans for add to another day.";
 "dialog_update_title"="Update available!";
 "dialog_update_pos_button"="update";
-"dialog_update_neut_button"="remind me next week";
+"dialog_update_neut_button"="Remind me next week";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth connected";
@@ -141,9 +141,9 @@
 "feedback_model"="Model";
 "feedback_os_version"="OS version";
 "feedback_username"="Username";
-"feedback_info_text"="A gomb megnyomásával elküldöd nekünk a rendszernaplókat és a";
-"feedback_info_logs"="rendszerinformációkat";
-"feedback_info_message"="Segíteni tudsz nekünk a hiba leírásával is!";
+"feedback_info_text"="Clicking the button you send us system logs and";
+"feedback_info_logs"="system informations";
+"feedback_info_message"="You can help us with describing the problem.";
 
 //Navigation
 "navigation_profile"="Profile";
@@ -289,6 +289,7 @@
 "error_user_email_used"="The email is already used.";
 "error_event_timestamp_past"="Event cannot start in the past.";
 "error_plan_name"="Please, add name!";
+"error_bad_gps"="Week GPS signal!";
 
 //Date
 "date_format"="dd.MM.yyyy";

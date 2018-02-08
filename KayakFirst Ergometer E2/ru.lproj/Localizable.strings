@@ -103,9 +103,9 @@
 "dialog_event_add_message"="Введёте в календарь?";
 "dialog_event_delete_title"="Точно хотите удалить";
 "dialog_event_delete_message"="Это календарьное событие будет удалено,но его можете найти в Планах";
-"dialog_update_title"="Доступно обновление";
-"dialog_update_pos_button"="Обновить";
-"dialog_update_neut_button"="remind me next week";
+"dialog_update_title"="Обновление доступно ";
+"dialog_update_pos_button"="Обновление";
+"dialog_update_neut_button"="Напомни через неделью";
 
 //Notification
 "notification_title_bluetooth_connected"="Эргометр  Bluetooth подключен";
@@ -126,24 +126,24 @@
 "other_delete"="Удалить";
 "other_power_save"="Энергосберегательный режим";
 "other_search"="Поиск";
-"other_send"="Send";
+"other_send"="Ссылка";
 
 //Feedback
 "feedback_title"="Обратная связь";
-"feedback_hint"="Write your feedback";
-"feedback_system_information"="system informations";
-"feedback_sending"="Sending feedback";
-"feedback_version_code"="Version code";
-"feedback_version_name"="Version name";
-"feedback_timestamp"="Timestamp";
-"feedback_locale"="Locale";
-"feedback_brand"="Brand";
-"feedback_model"="Model";
-"feedback_os_version"="OS version";
-"feedback_username"="Username";
-"feedback_info_text"="A gomb megnyomásával elküldöd nekünk a rendszernaplókat és a";
-"feedback_info_logs"="rendszerinformációkat";
-"feedback_info_message"="Segíteni tudsz nekünk a hiba leírásával is!";
+"feedback_hint"="Напиши отзыв";
+"feedback_system_information"="информации системы";
+"feedback_sending"="Ссылка отзыва";
+"feedback_version_code"="Код версии";
+"feedback_version_name"="Название версии";
+"feedback_timestamp"="Временная метка";
+"feedback_locale"="Локация";
+"feedback_brand"="Марка";
+"feedback_model"="Модель";
+"feedback_os_version"="Версия Операционной системы";
+"feedback_username"="Имя";
+"feedback_info_text"="Нажатием кнопки вы сможете нам переслать  дневник и информаций";
+"feedback_info_logs"="системы";
+"feedback_info_message"="Этим сможеш нам  помочь  с описанием проблем";
 
 //Navigation
 "navigation_profile"="Профиль";
@@ -289,6 +289,7 @@
 "error_user_email_used"="Эл.почта уже занята!";
 "error_event_timestamp_past"="Календарьное событие не может быть начинаться в прошлом!";
 "error_plan_name"="Пожалуйста заполните название плана тренировки!";
+"error_bad_gps"="Слабый сигнал GPS!";
 
 //Date
 "date_format"="dd.MM.yyyy";

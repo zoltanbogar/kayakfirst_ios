@@ -105,7 +105,7 @@
 "dialog_event_delete_message"="Ez a naptáresemény törölve lesz, de az összeállítást megtalálod a Tervek közt.";
 "dialog_update_title"="Frissítés elérhető!";
 "dialog_update_pos_button"="frissítés";
-"dialog_update_neut_button"="remind me next week";
+"dialog_update_neut_button"="Emlékeztessen egy hét múlva";
 
 //Notification
 "notification_title_bluetooth_connected"="Ergometer Bluetooth csatlakoztatva";
@@ -132,18 +132,18 @@
 "feedback_title"="Visszajelzés";
 "feedback_hint"="Írj visszajelzést";
 "feedback_system_information"="rendszer információk";
-"feedback_sending"="Sending feedback";
-"feedback_version_code"="Version code";
-"feedback_version_name"="Version name";
-"feedback_timestamp"="Timestamp";
-"feedback_locale"="Locale";
-"feedback_brand"="Brand";
-"feedback_model"="Model";
-"feedback_os_version"="OS version";
-"feedback_username"="Username";
+"feedback_sending"="Visszajelzés küldése";
+"feedback_version_code"="Verziószám";
+"feedback_version_name"="Verzió neve";
+"feedback_timestamp"="Időbélyeg";
+"feedback_locale"="Lokáció";
+"feedback_brand"="Márka";
+"feedback_model"="Modell";
+"feedback_os_version"="Operációs rendszer verziószám";
+"feedback_username"="Felhasználónév";
 "feedback_info_text"="A gomb megnyomásával elküldöd nekünk a rendszernaplókat és a";
 "feedback_info_logs"="rendszerinformációkat";
-"feedback_info_message"="Segíteni tudsz nekünk a hiba leírásával is!";
+"feedback_info_message"="Segíteni tudsz nekünk a hiba leírásával.";
 
 //Navigation
 "navigation_profile"="Profil";
@@ -289,6 +289,7 @@
 "error_user_email_used"="Az email már foglalt!";
 "error_event_timestamp_past"="Naptáresemény nem indulhat a múltban!";
 "error_plan_name"="Kérjük, töltsd ki az elnevezést!";
+"error_bad_gps"="Gyenge GPS jel!";
 
 //Date
 "date_format"="yyyy.MM.dd";
