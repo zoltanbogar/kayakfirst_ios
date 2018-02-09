@@ -129,7 +129,7 @@ class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
                 queryPredicate = queryPredicate && predicateValue
             }
             
-            let dbList = try db!.prepare(table!.filter(queryPredicate))
+            let dbList = try db!.prepare(table!.filter(queryPredicate).order(self.timeStamp))
             
             trainingList = [Training]()
             
