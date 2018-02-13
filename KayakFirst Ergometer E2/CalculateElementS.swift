@@ -9,7 +9,4 @@
 import Foundation
 class CalculateElementS<M: MeasureCommand, E: CommandProcessor<M>>: CalculateElement<M, E> {
     
-    override func getDataType() -> CalculateEnum {
-        return CalculateEnum.S
-    }
 }

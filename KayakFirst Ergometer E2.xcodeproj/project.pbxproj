@@ -266,10 +266,7 @@
 		067964791E63820500DFC050 /* CalculateElementF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964781E63820500DFC050 /* CalculateElementF.swift */; };
 		0679647B1E6382CE00DFC050 /* CalculateElementS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679647A1E6382CE00DFC050 /* CalculateElementS.swift */; };
 		0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */; };
-		067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964801E63851A00DFC050 /* CalculateElementT.swift */; };
 		067964831E6385AC00DFC050 /* CalculateElementT_200.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964821E6385AC00DFC050 /* CalculateElementT_200.swift */; };
-		067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964841E6385D900DFC050 /* CalculateElementT_500.swift */; };
-		067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964861E6385EC00DFC050 /* CalculateElementT_1000.swift */; };
 		067964891E63861300DFC050 /* CalculateElementV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964881E63861300DFC050 /* CalculateElementV.swift */; };
 		0679648B1E63868500DFC050 /* CalculateElementFOutdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */; };
 		067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679648F1E6387A000DFC050 /* MeasureCommand.swift */; };
@@ -713,10 +710,7 @@
 		067964781E63820500DFC050 /* CalculateElementF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementF.swift; sourceTree = "<group>"; };
 		0679647A1E6382CE00DFC050 /* CalculateElementS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementS.swift; sourceTree = "<group>"; };
 		0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementStroke.swift; sourceTree = "<group>"; };
-		067964801E63851A00DFC050 /* CalculateElementT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT.swift; sourceTree = "<group>"; };
 		067964821E6385AC00DFC050 /* CalculateElementT_200.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT_200.swift; sourceTree = "<group>"; };
-		067964841E6385D900DFC050 /* CalculateElementT_500.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT_500.swift; sourceTree = "<group>"; };
-		067964861E6385EC00DFC050 /* CalculateElementT_1000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementT_1000.swift; sourceTree = "<group>"; };
 		067964881E63861300DFC050 /* CalculateElementV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementV.swift; sourceTree = "<group>"; };
 		0679648A1E63868500DFC050 /* CalculateElementFOutdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElementFOutdoor.swift; sourceTree = "<group>"; };
 		0679648F1E6387A000DFC050 /* MeasureCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureCommand.swift; sourceTree = "<group>"; };
@@ -1159,10 +1153,7 @@
 				067964781E63820500DFC050 /* CalculateElementF.swift */,
 				0679647A1E6382CE00DFC050 /* CalculateElementS.swift */,
 				0679647E1E6384CA00DFC050 /* CalculateElementStroke.swift */,
-				067964801E63851A00DFC050 /* CalculateElementT.swift */,
 				067964821E6385AC00DFC050 /* CalculateElementT_200.swift */,
-				067964841E6385D900DFC050 /* CalculateElementT_500.swift */,
-				067964861E6385EC00DFC050 /* CalculateElementT_1000.swift */,
 				067964881E63861300DFC050 /* CalculateElementV.swift */,
 			);
 			name = calculate;
@@ -2339,7 +2330,6 @@
 				06C7070C1FFB864500D72E72 /* ViewCalibrationLayout.swift in Sources */,
 				067A09B11F38AC8100CC8051 /* CalculateV_AV_Ergo.swift in Sources */,
 				061369881E7BD78700896282 /* UploadTrainings.swift in Sources */,
-				067964851E6385D900DFC050 /* CalculateElementT_500.swift in Sources */,
 				06F938FC1E3F2B5400920753 /* DialogElementTextField.swift in Sources */,
 				065B3C5F1F0E65E20029C7DF /* PlanTableView.swift in Sources */,
 				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
@@ -2541,7 +2531,6 @@
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
 				060E107C2023145900D08C0C /* UploadLogs.swift in Sources */,
 				06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */,
-				067964871E6385EC00DFC050 /* CalculateElementT_1000.swift in Sources */,
 				06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */,
 				06AF23401F067D2D008805A2 /* DownloadEventDays.swift in Sources */,
 				060E975E1FE8275F00CB4258 /* SocialUser.swift in Sources */,
@@ -2616,7 +2605,6 @@
 				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
-				067964811E63851A00DFC050 /* CalculateElementT.swift in Sources */,
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
 				06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,

@@ -10,10 +10,6 @@ import Foundation
 //abstract class
 class CalculateStrokes_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
-    override func getAvgType() -> CalculateEnum {
-        return CalculateEnum.STROKES_AV
-    }
-    
     override func getActValue() -> Double {
         return telemetry.strokes
     }

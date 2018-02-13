@@ -7,14 +7,10 @@
 //
 
 import Foundation
-class CalculateT_200_AV<M: MeasureCommand>: CalculateT_AV<M> {
+class CalculateT_200_AV<M: MeasureCommand>: CalculateElementT_200<M> {
     
-    override func getAvgType() -> CalculateEnum {
-        return CalculateEnum.T_200_AV
-    }
-    
-    override func getDistance() -> Double {
-        return 200
+    override func getSpeed() -> Double {
+        return startCommand.speedAv
     }
     
 }

@@ -10,10 +10,6 @@ import Foundation
 
 class CalculateElementP: CalculateElement<MeasureCommandErgometer, CommandProcessorErgometer> {
     
-    override func getDataType() -> CalculateEnum {
-        return CalculateEnum.P
-    }
-    
     override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             let w_min = (j * pow(startCommand.omegaMin, 2)) / 2

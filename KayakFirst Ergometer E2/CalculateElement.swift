@@ -30,20 +30,11 @@ class CalculateElement<M: MeasureCommand, S: CommandProcessor<M>> {
     
     var calculatedValue: Double = 0
     
-    //MARK: moving averages
-    private var maF = MovingAverage()
-    private var maV = MovingAverage()
-    private var maStrokes = MovingAverage()
-    private var maT_200 = MovingAverage()
-    private var maT_500 = MovingAverage()
-    private var maT_1000 = MovingAverage()
-    
     private let trainingManager = TrainingManager.sharedInstance
     
     //MARK: init
     init(startCommand: S) {
         self.startCommand = startCommand
-        reset()
     }
     
     //MARK: abstract functions
@@ -53,15 +44,6 @@ class CalculateElement<M: MeasureCommand, S: CommandProcessor<M>> {
     
     func getDataType() -> CalculateEnum {
         fatalError("Must be implemented")
-    }
-    
-    private func reset() {
-        maF = MovingAverage()
-        maV = MovingAverage(numAverage: 5)
-        maStrokes = MovingAverage(numAverage: 5)
-        maT_200 = MovingAverage()
-        maT_500 = MovingAverage()
-        maT_1000 = MovingAverage()
     }
     
     func getWeight() -> Double {
@@ -75,49 +57,4 @@ class CalculateElement<M: MeasureCommand, S: CommandProcessor<M>> {
         
         return bodyWeight! + weightBoat
     }
-    
-    func createTrainingObject() -> Training {
-        let timeStamp = startCommand.getCalculatedTimeStamp()
-        let currentDistance = telemetry.distance
-        let userId = userManager.getUser()?.id
-        let sessionId = telemetry.sessionId
-        let trainingType = userManager.getTrainingType()
-        let trainingEnvironmentType = startCommand.getTrainingEnvironmentType()
-        let dataType = getDataType()
-        var dataValue = calculatedValue
-        
-        switch dataType {
-        case CalculateEnum.F:
-            dataValue = maF.calAverage(newValue: dataValue)
-        case CalculateEnum.V:
-            dataValue = maV.calAverage(newValue: dataValue)
-        case CalculateEnum.STROKES:
-            dataValue = maStrokes.calAverage(newValue: dataValue)
-        case CalculateEnum.T_200:
-            dataValue = maT_200.calAverage(newValue: dataValue)
-        case CalculateEnum.T_500:
-            dataValue = maT_500.calAverage(newValue: dataValue)
-        case CalculateEnum.T_1000:
-            dataValue = maT_1000.calAverage(newValue: dataValue)
-        default:
-            dataValue = calculatedValue
-        }
-        
-        let training = Training(
-            timeStamp: timeStamp,
-            currentDistance: currentDistance,
-            userId: userId,
-            sessionId: sessionId,
-            trainingType: trainingType,
-            trainingEnvironmentType: trainingEnvironmentType,
-            dataType: dataType.rawValue,
-            dataValue: dataValue)
-        
-        usleep(10000)
-        trainingManager.saveTraining(training: training)
-        
-        return training
-    }
-    
-    
 }

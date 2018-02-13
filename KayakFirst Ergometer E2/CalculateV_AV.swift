@@ -9,10 +9,6 @@
 import Foundation
 class CalculateV_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
-    override func getAvgType() -> CalculateEnum {
-        return CalculateEnum.V_AV
-    }
-    
     override func getActValue() -> Double {
         return telemetry.speed
     }

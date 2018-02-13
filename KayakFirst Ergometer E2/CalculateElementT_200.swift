@@ -7,13 +7,27 @@
 //
 
 import Foundation
-class CalculateElementT_200<M: MeasureCommand>: CalculateElementT<M> {
+class CalculateElementT_200<M: MeasureCommand>: CalculateElementCurrent<M> {
     
-    override func getDataType() -> CalculateEnum {
-        return CalculateEnum.T_200
+    /**
+     * if speed less than the CalculateElement.minSpeed the pace value would be extreme high
+     * in this situation we use the previous value
+     */
+    override func run() -> Double {
+        let distance = Double(Pace.pace200.rawValue)
+        var v = getSpeed()
+        
+        if v > Double(minSpeedKmh) {
+            v = v / converSationMpsKmph
+            
+            calculatedValue = distance / v
+            
+            calculatedValue = calculatedValue * 1000
+        }
+        return calculatedValue
     }
     
-    override func getDistance() -> Pace {
-        return Pace.pace200
+    func getSpeed() -> Double {
+        return startCommand.speed
     }
 }

@@ -9,8 +9,4 @@
 import Foundation
 class CalculateElementStroke<M: MeasureCommand, E: CommandProcessor<M>>: CalculateElement<M, E> {
     
-    override func getDataType() -> CalculateEnum {
-        return CalculateEnum.STROKES
-    }
-    
 }

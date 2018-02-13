@@ -10,10 +10,6 @@ import Foundation
 
 class CalculateElementOmegaMin: CalculateElement<MeasureCommandErgometer, CommandProcessorErgometer> {
     
-    override func getDataType() -> CalculateEnum {
-        return CalculateEnum.OMEGA_MIN
-    }
-    
     override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             let tMax = startCommand.t_max

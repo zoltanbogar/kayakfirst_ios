@@ -10,10 +10,6 @@ import Foundation
 class CalculateElementAvg<M: MeasureCommand>: CalculateElement<M,  CommandProcessor<M>> {
     
     //MARK: abstract functions
-    internal func getAvgType() -> CalculateEnum {
-        fatalError("Must be implemented")
-    }
-    
     internal func getActValue() -> Double {
         fatalError("Must be implemented")
     }
