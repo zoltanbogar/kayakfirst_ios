@@ -23,6 +23,11 @@ class PlanManager: BaseManager {
         return PlanManagerType.download_plan
     }
     
+    func getPlanTrainingBySessionId(sessionId: Double, managerCallBack: ((_ data: PlanTraining?, _ error: Responses?) -> ())?) {
+        let dbHelper = PlanDbHelper(sessionId: sessionId)
+        runDbLoad(dbHelper: dbHelper, managerCallBack: managerCallBack)
+    }
+    
     func savePlan(plan: Plan, managerCallBack: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
         let manager = ManagerModifyPlanSave(data: plan)
         runModify(managerModify: manager, managerCallBack: managerCallBack)

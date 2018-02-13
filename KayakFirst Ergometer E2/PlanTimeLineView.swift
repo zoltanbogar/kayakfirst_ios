@@ -48,6 +48,8 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
         self.lineChart = lineChart
         self.lineChart?.delegate = self
         initPlanElements()
+        
+        zoomTimeLine()
     }
     
     //MARK: init view

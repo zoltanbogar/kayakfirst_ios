@@ -67,7 +67,7 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     override func addData(data: PlanTraining?) {
         if let planTraining = data {
-            let insert = table!.insert(self.planTrainingId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- planTraining.sessionId)
+            let insert = table!.insert(self.planTrainingId <- planTraining.planId, self.userId <- planTraining.userId, self.planType <- planTraining.type.rawValue, self.name <- planTraining.name ?? "", self.notes <- planTraining.notes, self.length <- planTraining.length, self.sessionId <- Double(Int64(planTraining.sessionId)))
             
             let rowId = try? db?.run(insert)
             

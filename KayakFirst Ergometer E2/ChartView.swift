@@ -67,7 +67,7 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func initChart() {
-        contentLayout!.progressBar.showProgressBar(false)
+        contentLayout!.progressBar.showProgressBar(true)
         
         TrainingManager.sharedInstance.getChartData(sessionId: sumTraining.sessionId, managerCallback: { (sumChartTraining, error) in
             if let data = sumChartTraining {
@@ -77,6 +77,8 @@ class ChartView: CustomUi<ViewChartLayout> {
                     self.lineChartData = LineChartTime(lineChart: self.contentLayout!.lineChart, sumChartTraining: data)
                 }
                 self.refreshChart()
+                
+                self.contentLayout!.progressBar.showProgressBar(false)
             }
             })
     }
@@ -94,20 +96,24 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func initPlanTimeLine() {
-        //TODO
-        /*let plan = sumTraining.planTraining
+        let planId = sumTraining.planTrainingId
+        let planType = sumTraining.planTrainingType
         
         contentLayout!.planView.isHidden = true
         
-        if plan != nil && isModeCorrect(plan: plan!) {
-            contentLayout!.planView.isHidden = false
-            contentLayout!.planView.setData(plan: plan!, lineChart: contentLayout!.lineChart)
-        }*/
+        if planType != nil && isModeCorrect(planType: planType!) {
+            PlanManager.sharedInstance.getPlanTrainingBySessionId(sessionId: sumTraining.sessionId, managerCallBack: { (planTraining, error) in
+                if let data = planTraining {
+                    self.contentLayout!.planView.isHidden = false
+                    self.contentLayout!.planView.setData(plan: data, lineChart: self.contentLayout!.lineChart)
+                }
+                })
+        }
     }
     
-    private func isModeCorrect(plan: Plan) -> Bool {
-        return (plan.type == PlanType.time && chartMode == ChartMode.chartModeTime) ||
-        (plan.type == PlanType.distance && chartMode == ChartMode.chartModeDistance)
+    private func isModeCorrect(planType: PlanType) -> Bool {
+        return (planType == PlanType.time && chartMode == ChartMode.chartModeTime) ||
+        (planType == PlanType.distance && chartMode == ChartMode.chartModeDistance)
     }
     
     //MARK: listeners
