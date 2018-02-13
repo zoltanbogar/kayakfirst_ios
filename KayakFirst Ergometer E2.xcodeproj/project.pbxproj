@@ -172,6 +172,9 @@
 		063BE17B2032F853002C3886 /* ChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17A2032F853002C3886 /* ChartTraining.swift */; };
 		063BE17D2032F889002C3886 /* SumChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17C2032F889002C3886 /* SumChartTraining.swift */; };
 		063BE17F2032F925002C3886 /* SumTrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17E2032F925002C3886 /* SumTrainingNew.swift */; };
+		063BE18120331D25002C3886 /* SumTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */; };
+		063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */; };
+		063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
@@ -615,6 +618,9 @@
 		063BE17A2032F853002C3886 /* ChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTraining.swift; sourceTree = "<group>"; };
 		063BE17C2032F889002C3886 /* SumChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumChartTraining.swift; sourceTree = "<group>"; };
 		063BE17E2032F925002C3886 /* SumTrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingNew.swift; sourceTree = "<group>"; };
+		063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingDbLoader.swift; sourceTree = "<group>"; };
+		063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgNewDbLoader.swift; sourceTree = "<group>"; };
+		063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingNewDbLoader.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
@@ -1668,6 +1674,9 @@
 			children = (
 				060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */,
 				06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */,
+				063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */,
+				063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */,
+				063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -2323,6 +2332,7 @@
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */,
 				060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */,
+				063BE18120331D25002C3886 /* SumTrainingDbLoader.swift in Sources */,
 				06BCB0D41E564F0200F41652 /* TrainingEnvTypeVc.swift in Sources */,
 				06CAFF4D1F0D304D00D2EA14 /* EventManager.swift in Sources */,
 				060F2D8D20122727004E7EB1 /* PlanDisplayHelper.swift in Sources */,
@@ -2354,6 +2364,7 @@
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
 				06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */,
 				060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */,
+				063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
@@ -2555,6 +2566,7 @@
 				06F9D5DB1F38985F005ECA8B /* CommandProcessorErgometer.swift in Sources */,
 				063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
+				063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */,
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
 				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,

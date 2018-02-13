@@ -27,13 +27,11 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     //MARK: keys
     struct PropertyKey {
-        static let idKey = "planTrainingId"
         static let notesKey = "notes"
         static let lengthKey = "length"
     }
     
     //MARK: columns
-    private let planTrainingId = Expression<String> (PropertyKey.idKey)
     private let notes = Expression<String?>(PropertyKey.notesKey)
     private let length = Expression<Double>(PropertyKey.lengthKey)
     

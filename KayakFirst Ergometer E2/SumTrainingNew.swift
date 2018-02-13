@@ -23,7 +23,7 @@ enum ArtOfPaddle: String {
     case rowing = "rowing"
 }
 
-func createSumTraining(sessionId: Double, trainingEnvType: TrainingEnvironmentType, planTrainingId: String, planTrainingType: PlanType) -> SumTrainingNew {
+func createSumTraining(sessionId: Double, trainingEnvType: String, planTrainingId: String, planTrainingType: PlanType) -> SumTrainingNew {
     
     let userManager = UserManager.sharedInstance
     let userId = userManager.getUserId()
@@ -51,7 +51,7 @@ class SumTrainingNew: Equatable, ModifyAble {
     let sessionId: Double
     let userId: Int64
     let artOfPaddle: String
-    let trainingEnvironmentType: TrainingEnvironmentType
+    let trainingEnvironmentType: String
     var trainingCount: Int
     let planTrainingId: String
     let planTrainingType: PlanType
@@ -83,7 +83,7 @@ class SumTrainingNew: Equatable, ModifyAble {
         }
     }
     
-    init(sessionId: Double, userId: Int64, artOfPaddle: String, trainingEnvironmentType: TrainingEnvironmentType, trainingCount: Int, planTrainingId: String, planTrainingType: PlanType, startTime: Double, duration: Double, distance: Double) {
+    init(sessionId: Double, userId: Int64, artOfPaddle: String, trainingEnvironmentType: String, trainingCount: Int, planTrainingId: String, planTrainingType: PlanType, startTime: Double, duration: Double, distance: Double) {
         self.sessionId = sessionId
         self.userId = userId
         self.artOfPaddle = artOfPaddle
@@ -110,7 +110,7 @@ class SumTrainingNew: Equatable, ModifyAble {
             "sessionId":"\(Int64(sessionId))",
             "userId":"\(Int64(userId))",
             "artOfPaddle":"\(artOfPaddle)",
-            "trainingEnvironmentType":"\(trainingEnvironmentType.rawValue)",
+            "trainingEnvironmentType":"\(trainingEnvironmentType)",
             "trainingCount":"\(trainingCount)",
             "planTrainingId":"\(planTrainingId)",
             "planTrainingType":"\(planTrainingType.rawValue)",

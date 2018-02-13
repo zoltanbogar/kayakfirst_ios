@@ -17,13 +17,24 @@ class BaseDbLoader<Input> {
     
     //MARK: properties
     let db = AppSql.sharedInstance.db
+    
     let sessionId = Expression<Double>("sessionId")
     let userId = Expression<Int64>("userId")
+    let timestamp = Expression<Double>("timestamp")
+    let baseId = Expression<Int>("id")
+    
+    //training
+    let force = Expression<Double>("force")
+    let speed = Expression<Double>("speed")
+    let distance = Expression<Double>("distance")
+    let strokes = Expression<Double>("strokes")
+    let t200 = Expression<Double>("t200")
+    
+    //plan
+    let planTrainingId = Expression<String> ("planTrainingId")
     let planType = Expression<String>("planType")
     let planId = Expression<String>("planId")
     let name = Expression<String>("name")
-    let timestamp = Expression<Double>("timestamp")
-    let baseId = Expression<Int>("id")
     
     var table: Table?
     
