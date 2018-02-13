@@ -20,7 +20,7 @@ class TrainingManager: BaseManager {
     private let saveTrainingValues = SaveTrainingValues.sharedInstance
     
     //MARK: callbacks
-    var trainingCallback: ((_ data: [SumTraining]?, _ error: Responses?) -> ())?
+    var trainingCallback: ((_ data: [SumTrainingNew]?, _ error: Responses?) -> ())?
     var trainingDaysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
     
     //MARK: functions
@@ -48,7 +48,7 @@ class TrainingManager: BaseManager {
         saveTrainingValues.saveTrainingData(training: training, trainingAvg: trainingAvg, sumTrainig: sumTrainig)
     }
     
-    func deleteTraining(sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
+    func deleteTraining(sumTraining: SumTrainingNew, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
         let manager = ManagerModifyTrainingDelete(data: sumTraining)
         runModify(managerModify: manager, managerCallBack: managerCallback)
         return TrainingManagerType.delete_training

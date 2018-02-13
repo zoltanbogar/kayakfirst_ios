@@ -82,7 +82,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
         
         contentLayout!.tableViewTraining.trainingClickCallback = { sumTrainings, position in
-            startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
+            //TODO
+            //startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
         }
         contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
             startEventDetailsViewController(viewController: self, planEvent: planEvent)
@@ -218,7 +219,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         return hasData
     }
     
-    private func refreshTableViewTraining(sumTrainings: [SumTraining]?) {
+    private func refreshTableViewTraining(sumTrainings: [SumTrainingNew]?) {
         contentLayout!.tableViewTraining?.dataList = sumTrainings
     }
     
@@ -249,7 +250,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         initError(error: error)
     }
     
-    private func trainigCallback(data: [SumTraining]?, error: Responses?) {
+    private func trainigCallback(data: [SumTrainingNew]?, error: Responses?) {
         showProgressBarTraining(isShow: false)
         if data != nil && data!.count > 0 {
             if isDataCorrectDay(timestamp: data![0].sessionId) {

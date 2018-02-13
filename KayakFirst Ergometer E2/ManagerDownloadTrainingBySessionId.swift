@@ -9,11 +9,12 @@
 import Foundation
 import SQLite
 
-class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, ManagerDownloadProtocol {
+class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTrainingNew]>, ManagerDownloadProtocol {
     
     //MARK: constants
     private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+    private let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
     private let planTrainingDbLoader = PlanTrainingDbLoader.sharedInstance
     
     //MARK: properties
@@ -23,7 +24,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
     private var trainingAvgs: [TrainingAvg]?
     private var planTrainings: [PlanTraining]?
     
-    private var localeSumTrainings: [SumTraining]?
+    private var localeSumTrainings: [SumTrainingNew]?
     
     //MARK: init
     init(sessionIds: [Double]) {
@@ -39,14 +40,14 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         return serverError?.rawValue
     }
     
-    override func getDataFromServer() -> [SumTraining]? {
+    override func getDataFromServer() -> [SumTrainingNew]? {
         return localeSumTrainings
     }
     
-    override func getDataFromLocale() -> [SumTraining]? {
+    override func getDataFromLocale() -> [SumTrainingNew]? {
         var localeSessionIds: [Double]? = nil
         
-        localeSumTrainings = [SumTraining]()
+        localeSumTrainings = [SumTrainingNew]()
         
         for sessionId in sessionIds {
             if localeSessionIds == nil {
@@ -83,8 +84,9 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         return localeSumTrainings
     }
     
-    override func runServer() -> [SumTraining]? {
-        for sessionId in sessionIds {
+    override func runServer() -> [SumTrainingNew]? {
+        //TODO
+        /*for sessionId in sessionIds {
             if trainings == nil {
                 trainings = [Training]()
             }
@@ -112,7 +114,7 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
                 planTrainings! += planValue
             }
             serverError = downloadPlanBySessionId.error
-        }
+        }*/
         
         return nil
     }
@@ -121,7 +123,8 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         //nothing here
     }
     
-    override func addDataToLocale(data: [SumTraining]?) {
+    override func addDataToLocale(data: [SumTrainingNew]?) {
+        //TODO: save sumTraining
         if let trainingsValue = trainings {
             trainingDbLoader.addTrainings(trainings: trainingsValue)
         }
@@ -167,72 +170,8 @@ class ManagerDownloadTrainingBySessionId: ManagerDownload<[SumTraining]>, Manage
         return planTrainingDbLoader.getExpressionBySessionId(sessionId: sessionId)
     }
     
-    private func getSumTrainingBySessionId(sessionId: Double) -> SumTraining? {
-        var sumTraining: SumTraining? = nil
-        
-        let t200List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_200))
-        let t500List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_500))
-        let t1000List = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.T_1000))
-        let strokesList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.STROKES))
-        let fList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.F))
-        let vList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.V))
-        let sList = trainingDbLoader.loadData(predicate: getQueryTrainingByType(sessionId: sessionId, type: CalculateEnum.S))
-        
-        var t200Avg: TrainingAvg? = nil
-        var t200AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_200_AV))
-        if t200AvgList != nil && t200AvgList!.count > 0 {
-            t200Avg = t200AvgList![0]
-        }
-        var t500Avg: TrainingAvg? = nil
-        var t500AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_500_AV))
-        if t500AvgList != nil && t500AvgList!.count > 0 {
-            t500Avg = t500AvgList![0]
-        }
-        var t1000Avg: TrainingAvg? = nil
-        var t1000AvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.T_1000_AV))
-        if t1000AvgList != nil && t1000AvgList!.count > 0 {
-            t1000Avg = t1000AvgList![0]
-        }
-        var strokesAvg: TrainingAvg? = nil
-        var strokesAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.STROKES_AV))
-        if strokesAvgList != nil && strokesAvgList!.count > 0 {
-            strokesAvg = strokesAvgList![0]
-        }
-        var fAvg: TrainingAvg? = nil
-        var fAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.F_AV))
-        if fAvgList != nil && fAvgList!.count > 0 {
-            fAvg = fAvgList![0]
-        }
-        var vAvg: TrainingAvg? = nil
-        var vAvgList = trainingAvgDbLoader.loadData(predicate: getQueryTrainingAvgByType(sessionId: sessionId, type: CalculateEnum.V_AV))
-        if vAvgList != nil && vAvgList!.count > 0 {
-            vAvg = vAvgList![0]
-        }
-        
-        var planTraining: PlanTraining? = nil
-        var planTrainingList = planTrainingDbLoader.loadData(predicate: getQueryPlanBySessionId(sessionId: sessionId))
-        if planTrainingList != nil && planTrainingList!.count > 0 {
-            planTraining = planTrainingList![0]
-        }
-        
-        if t200List != nil && t500List != nil && t1000List != nil && strokesList != nil && fList != nil && vList != nil && sList != nil {
-            sumTraining = SumTraining(
-                t200List: t200List!,
-                t500List: t500List!,
-                t1000List: t1000List!,
-                strokesList: strokesList!,
-                fList: fList!,
-                vList: vList!,
-                distanceList: sList!,
-                trainingAvgT200: t200Avg,
-                trainingAvgT500: t500Avg,
-                trainingAvgT1000: t1000Avg,
-                trainingAvgStrokes: strokesAvg,
-                trainingAvgF: fAvg,
-                trainingAvgV: vAvg,
-                planTraining: planTraining)
-        }
-        return sumTraining
+    private func getSumTrainingBySessionId(sessionId: Double) -> SumTrainingNew? {
+        return sumTrainingDbLoader.getSumTrainingBySessionId(sessionId: sessionId)
     }
 
 }

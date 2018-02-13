@@ -10,16 +10,16 @@ import Foundation
 
 class DeleteTrainingDialog: BaseDialog {
     
-    static func showDeleteTrainingDialog(viewController: UIViewController, sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+    static func showDeleteTrainingDialog(viewController: UIViewController, sumTraining: SumTrainingNew, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         DeleteTrainingDialog(sumTraining: sumTraining, managerCallback: managerCallback).show(viewController: viewController)
     }
     
     //MARK: properties
-    private let sumTraining: SumTraining
+    private let sumTraining: SumTrainingNew
     private let managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     
     //MARK: init
-    private init(sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+    private init(sumTraining: SumTrainingNew, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         self.sumTraining = sumTraining
         self.managerCallback = managerCallback
         

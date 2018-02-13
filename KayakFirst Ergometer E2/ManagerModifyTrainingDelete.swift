@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
+class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTrainingNew> {
     
     //MARK: constants
     private let trainingDbLoader = TrainingDbLoader.sharedInstance

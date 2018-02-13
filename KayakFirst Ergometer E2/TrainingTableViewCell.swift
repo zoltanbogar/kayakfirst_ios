@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
+class TrainingTablewViewCell: AppUITableViewCell<SumTrainingNew> {
     
     //MARK: constants
     static let fontSize: CGFloat = 15
@@ -16,7 +16,7 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
     //MARK: properties
     private let stackView = UIStackView()
     var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
-    private var sumTraining: SumTraining?
+    private var sumTraining: SumTrainingNew?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -29,26 +29,26 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTraining> {
         super.init(coder: aDecoder)
     }
     
-    override func initData(data: SumTraining?) {
+    override func initData(data: SumTrainingNew?) {
         self.sumTraining = data
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration
         labelDistance.text = data?.formattedDistance
         
         var imagePlanType: UIImage?
-        if sumTraining?.planTraining == nil {
+        if sumTraining?.planTrainingId == nil {
             imagePlanType = UIImage(named: "")
         } else {
-            imagePlanType = Plan.getTypeIconSmall(plan: sumTraining?.planTraining)
+            imagePlanType = Plan.getTypeIconSmall(planType: sumTraining?.planTrainingType)
         }
         btnPlanType.setImage(imagePlanType, for: .normal)
         
         if let envType = data?.trainingEnvironmentType {
             var imageEnviromentType: UIImage?
             switch envType {
-            case TrainingEnvironmentType.ergometer:
+            case TrainingEnvironmentType.ergometer.rawValue:
                 imageEnviromentType = UIImage(named: "lightBulbCopy")
-            case TrainingEnvironmentType.outdoor:
+            case TrainingEnvironmentType.outdoor.rawValue:
                 imageEnviromentType = UIImage(named: "sunCopy")
             default:
                 break

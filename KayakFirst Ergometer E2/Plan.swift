@@ -136,8 +136,6 @@ class Plan: PlanObject, ModifyAble {
             return "\(formattedValue) \(unit)"
         case PlanType.time:
             return DateFormatHelper.getDate(dateFormat: DateFormatHelper.minSecFormat, timeIntervallSince1970: Double(value))
-        default:
-            fatalError("there is no other type")
         }
     }
     
@@ -157,17 +155,17 @@ class Plan: PlanObject, ModifyAble {
         return "\(name)_\(Int64(currentTimeMillis()))_\(createValue)"
     }
     
-    class func setTypeIcon(plan: Plan?, imageView: UIImageView) {
-        if let planValue = plan {
+    class func setTypeIcon(planType: PlanType?, imageView: UIImageView) {
+        if let planType = planType {
             imageView.isHidden = false
-            imageView.image = getTypeIcon(plan: planValue)
+            imageView.image = getTypeIcon(planType: planType)
         } else {
             imageView.isHidden = true
         }
     }
     
-    class func getTypeIconSmall(plan: Plan?) -> UIImage? {
-        var image = Plan.getTypeIcon(plan: plan)
+    class func getTypeIconSmall(planType: PlanType?) -> UIImage? {
+        var image = Plan.getTypeIcon(planType: planType)
         
         if image != nil {
             image = image!.resizeImage(targetSize: CGSize(width: 24, height: 24))
@@ -176,14 +174,13 @@ class Plan: PlanObject, ModifyAble {
         return image
     }
     
-    class func getTypeIcon(plan: Plan?) -> UIImage? {
-        if let planValue = plan {
-            switch planValue.type {
+    class func getTypeIcon(planType: PlanType?) -> UIImage? {
+        if let planType = planType {
+            switch planType {
             case PlanType.distance:
                 return UIImage(named: "distanceIcon")
             case PlanType.time:
                 return UIImage(named: "durationIcon")
-            default: break
             }
         }
         return nil

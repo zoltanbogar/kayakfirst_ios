@@ -20,16 +20,19 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
     }
     
     override func getDataFromLocale() -> [Double]? {
-        localeDaysList = TrainingDbLoader.sharedInstance.getSessionIds()
+        localeDaysList = SumTrainingDbLoader.sharedInstance.getSessionIds()
         return localeDaysList
     }
     
     override func getDataFromServer() -> [Double]? {
-        return serverDaysList
+        //TODO: reactivate
+        //return serverDaysList
+        return localeDaysList
     }
     
     override func runServer() -> [Double]? {
-        let serverService = getServerService()
+        //TODO
+        /*let serverService = getServerService()
         
         serverDaysList = serverService.run()
         
@@ -64,7 +67,9 @@ class ManagerDownloadTrainingDays: ManagerDownload<[Double]>, ManagerDownloadPro
         
         serverError = serverService.error
         
-        return serverDaysList
+        return serverDaysList*/
+        //TODO: delete this
+        return localeDaysList
     }
     
     internal func getServerService() -> ServerService<[Double]> {

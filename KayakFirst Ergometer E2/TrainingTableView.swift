@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TrainingTablewView: TableViewWithEmpty<SumTraining> {
+class TrainingTablewView: TableViewWithEmpty<SumTrainingNew> {
     
     //MARK: properties
     var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
-    var trainingClickCallback: ((_ sumTrainings: [SumTraining]?, _ position: Int) -> ())?
+    var trainingClickCallback: ((_ sumTrainings: [SumTrainingNew]?, _ position: Int) -> ())?
     
     //MARK: init
     override init(view: UIView) {

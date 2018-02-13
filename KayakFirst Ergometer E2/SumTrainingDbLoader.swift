@@ -80,7 +80,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
     
     //MARK: update
     override func updateData(data: SumTrainingNew) {
-        let sum = table!.filter(self.sessionId == data.sessionId)
+        let sum = table!.filter(self.sessionId == Double(Int64(data.sessionId)))
         do {
             try db!.run(sum.update(self.trainingCount <- data.trainingCount, self.duration <- data.duration, self.distance <- data.distance))
         } catch {
@@ -155,7 +155,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
                 let trainingEnvironmentType = sumTrainingDb[self.trainingEnvironmentType]
                 let trainingCount = sumTrainingDb[self.trainingCount]
                 let planTrainingId = sumTrainingDb[self.planTrainingId]
-                let planType = sumTrainingDb[self.planType]
+                let planType = PlanType(rawValue: sumTrainingDb[self.planType])
                 let startTime = sumTrainingDb[self.startTime]
                 let duration = sumTrainingDb[self.duration]
                 let distance = sumTrainingDb[self.distance]
@@ -167,7 +167,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
                     trainingEnvironmentType: trainingEnvironmentType,
                     trainingCount: trainingCount,
                     planTrainingId: planTrainingId,
-                    planTrainingType: PlanType(rawValue: planType)!,
+                    planTrainingType: planType ?? nil,
                     startTime: startTime,
                     duration: duration,
                     distance: distance)

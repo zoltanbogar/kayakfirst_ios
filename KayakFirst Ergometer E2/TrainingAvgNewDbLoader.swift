@@ -57,7 +57,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
             if sessionIdValue != trainingAvg.sessionId {
                 sessionIdValue = trainingAvg.sessionId
                 
-                let insert = table!.insert(self.sessionId <- trainingAvg.sessionId, self.force <- trainingAvg.force, self.speed <- trainingAvg.speed, self.strokes <- trainingAvg.strokes, self.t200 <- trainingAvg.t200)
+                let insert = table!.insert(self.sessionId <- Double(Int64(trainingAvg.sessionId)), self.force <- trainingAvg.force, self.speed <- trainingAvg.speed, self.strokes <- trainingAvg.strokes, self.t200 <- trainingAvg.t200)
                 
                 let rowId = try? db?.run(insert)
             } else {
@@ -125,7 +125,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     
     //MARK: update
     private func updateData(trainingAvg: TrainingAvgNew) {
-        let avg = table!.filter(self.sessionId == trainingAvg.sessionId)
+        let avg = table!.filter(self.sessionId == Double(Int64(trainingAvg.sessionId)))
         do {
             try db!.run(avg.update(self.force <- trainingAvg.force, self.speed <- trainingAvg.speed, self.strokes <- trainingAvg.strokes, self.t200 <- trainingAvg.t200))
         } catch {
