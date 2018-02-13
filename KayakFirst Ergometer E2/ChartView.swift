@@ -28,13 +28,12 @@ class ChartView: CustomUi<ViewChartLayout> {
         self.sumTraining = sumTraining
         super.init()
         
-        //TODO
-        /*self.chartMode = chartMode
+        self.chartMode = chartMode
         
         disableLabelIfNeeded()
         initLabelList()
         initChart()
-        initPlanTimeLine()*/
+        initPlanTimeLine()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,13 +67,18 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func initChart() {
-        //TODO
-        /*if chartMode! == ChartMode.chartModeDistance {
-            lineChartData = LineChartDistance(lineChart: contentLayout!.lineChart, distanceList: sumTraining.distanceList, sumTraining: sumTraining)
-        } else {
-            lineChartData = LineChartTime(lineChart: contentLayout!.lineChart, sumTraining: sumTraining)
-        }
-        refreshChart()*/
+        contentLayout!.progressBar.showProgressBar(false)
+        
+        TrainingManager.sharedInstance.getChartData(sessionId: sumTraining.sessionId, managerCallback: { (sumChartTraining, error) in
+            if let data = sumChartTraining {
+                if self.chartMode! == ChartMode.chartModeDistance {
+                    self.lineChartData = LineChartDistance(lineChart: self.contentLayout!.lineChart, sumChartTraining: data)
+                } else {
+                    self.lineChartData = LineChartTime(lineChart: self.contentLayout!.lineChart, sumChartTraining: data)
+                }
+                self.refreshChart()
+            }
+            })
     }
     
     private func refreshChart() {
@@ -82,12 +86,11 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func disableLabelIfNeeded() {
-        //TODO
-        /*let isOutdoor = sumTraining.trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        let isOutdoor = sumTraining.trainingEnvironmentType == TrainingEnvironmentType.outdoor.rawValue
         
         if isOutdoor {
             contentLayout!.labelForce.isDisabled = true
-        }*/
+        }
     }
     
     private func initPlanTimeLine() {

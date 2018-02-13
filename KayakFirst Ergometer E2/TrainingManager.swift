@@ -42,6 +42,11 @@ class TrainingManager: BaseManager {
         runDbLoad(dbHelper: dbHelper, managerCallBack: managerCallback)
     }
     
+    func getChartData(sessionId: Double, managerCallback: ((_ data: SumChartTraining?, _ error: Responses?) -> ())?) {
+        let dbHelper = TrainingDbHelper(sessionId: sessionId)
+        runDbLoad(dbHelper: dbHelper, managerCallBack: managerCallback)
+    }
+    
     func addTrainingUploadPointer() {
         //TODO
         /*let sessionId = "\(Telemetry.sharedInstance.sessionId)"

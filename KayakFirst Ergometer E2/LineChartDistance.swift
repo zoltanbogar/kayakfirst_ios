@@ -11,49 +11,24 @@ import Charts
 
 class LineChartDistance: AppLineChartData {
     
-    //MARK: properties
-    private var seqDistance: Double = 0
-    private let distanceList: [Training]
-    
-    //MARK: init
-    init(lineChart: LineChartView, distanceList: [Training], sumTraining: SumTraining) {
-        self.distanceList = distanceList
-        super.init(lineChart: lineChart, sumTraining: sumTraining)
-    }
-    
-    override func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
+    override func createEntries(trainingList: [ChartTraining]) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
-        seqDistance = 0
         if trainingList.count > 0 {
             entries = getDistanceEntryList(trainings: trainingList)
         }
         return entries
     }
     
-    private func getDistanceEntryList(trainings: [Training]) -> [ChartDataEntry] {
+    private func getDistanceEntryList(trainings: [ChartTraining]) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
         var distance: Double = 0
         
         for i in 0..<trainings.count {
-            if trainings[i].currentDistance == 0 {
-                if i<distanceList.count {
-                    distance = UnitHelper.getTrainingValue(training: distanceList[i])
-                    
-                    entries.append(ChartDataEntry(x: seqDistance, y: UnitHelper.getTrainingValue(training: trainings[i])))
-                    
-                    seqDistance = seqDistance + distance
-                } else {
-                    break
-                }
-            } else {
-                distance = UnitHelper.getDistanceValue(metricValue: trainings[i].currentDistance)
-                
-                entries.append(ChartDataEntry(x: distance, y: UnitHelper.getTrainingValue(training: trainings[i])))
-                
-                seqDistance = distance
-            }
+            distance = UnitHelper.getDistanceValue(metricValue: trainings[i].distance)
+            
+            entries.append(ChartDataEntry(x: distance, y: trainings[i].value))
         }
         return entries
     }

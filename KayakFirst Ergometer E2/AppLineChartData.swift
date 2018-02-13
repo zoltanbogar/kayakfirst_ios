@@ -12,7 +12,7 @@ class AppLineChartData {
     
     //MARK: properties
     private var lineChart: LineChartView
-    internal let sumTraining: SumTraining
+    internal let sumChartTraining: SumChartTraining
     private var lineDataSets: [LineChartDataSet]?
     private var label: CalculateEnum?
     private var hasLeftData = false
@@ -21,15 +21,15 @@ class AppLineChartData {
     fileprivate var leftYDateFormatHelper = DateFormatHelper()
     
     //MARK: init
-    init(lineChart: LineChartView, sumTraining: SumTraining) {
+    init(lineChart: LineChartView, sumChartTraining: SumChartTraining) {
         self.lineChart = lineChart
-        self.sumTraining = sumTraining
+        self.sumChartTraining = sumChartTraining
         
         initChartDesign()
     }
     
     //MARK: abstract functions
-    func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
+    func createEntries(trainingList: [ChartTraining]) -> [ChartDataEntry] {
         fatalError("Must be implemented")
     }
     func xAxisFormatter() -> IAxisValueFormatter {
@@ -45,7 +45,7 @@ class AppLineChartData {
         
         for l in diagramLabels {
             if l.isActive {
-                addData(trainingList: getTrainingListSumByLabel(label: l.getLabel()), diagramLabel: l)
+                addData(trainingList: getChartTrainingListByLabel(label: l.getLabel()), diagramLabel: l)
             } else {
                 label = nil
             }
@@ -63,8 +63,8 @@ class AppLineChartData {
         lineChart.doubleTapToZoomEnabled = false
     }
     
-    private func addData(trainingList: [Training], diagramLabel: DiagramLabel) {
-        lineDataSets?.append(createLineDataSet(entries: createEntries(trainingList: trainingList, label: diagramLabel.getLabel()), diagramLabel: diagramLabel))
+    private func addData(trainingList: [ChartTraining], diagramLabel: DiagramLabel) {
+        lineDataSets?.append(createLineDataSet(entries: createEntries(trainingList: trainingList), diagramLabel: diagramLabel))
     }
     
     private func refreshChart() {
@@ -149,22 +149,20 @@ class AppLineChartData {
         lineChart.rightAxis.enabled = hasRightData
     }
     
-    func getTrainingListSumByLabel(label: CalculateEnum) -> [Training] {
+    func getChartTrainingListByLabel(label: CalculateEnum) -> [ChartTraining] {
         switch label {
         case CalculateEnum.T_200:
-            return sumTraining.t200List
+            return sumChartTraining.t200Charts
         case CalculateEnum.T_500:
-            return sumTraining.t500List
+            return sumChartTraining.t500Charts
         case CalculateEnum.T_1000:
-            return sumTraining.t1000List
+            return sumChartTraining.t1000Charts
         case CalculateEnum.STROKES:
-            return sumTraining.strokesList
+            return sumChartTraining.strokesCharts
         case CalculateEnum.F:
-            return sumTraining.fList
+            return sumChartTraining.forceCharts
         case CalculateEnum.V:
-            return sumTraining.vList
-        case CalculateEnum.S:
-            return sumTraining.distanceList
+            return sumChartTraining.speedCharts
         default:
             fatalError("There is no createTrainingList for this :  \(label)")
         }

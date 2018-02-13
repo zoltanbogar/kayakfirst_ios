@@ -56,7 +56,18 @@ class ViewChartLayout: BaseLayout {
             make.left.equalTo(lineChart).offset(margin2)
             make.right.equalTo(lineChart).offset(-margin)
         }
+        
+        contentView.addSubview(progressBar)
+        progressBar.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
     }
+    
+    lazy var progressBar: AppProgressBar! = {
+        let progressBar = AppProgressBar()
+        
+        return progressBar
+    }()
     
     lazy var planView: PlanTimeLineView! = {
         let view = PlanTimeLineView()

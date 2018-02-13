@@ -12,13 +12,13 @@ import Charts
 class LineChartTime: AppLineChartData {
     
     //MARK: properties
-    private var seqTimeStamp: TimeInterval = 0
+    private var seqTimestamp: TimeInterval = 0
     fileprivate let dateFormatHelper = DateFormatHelper()
     
-    override func createEntries(trainingList: [Training], label: CalculateEnum) -> [ChartDataEntry] {
+    override func createEntries(trainingList: [ChartTraining]) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
-        seqTimeStamp = 0
+        seqTimestamp = 0
         if trainingList.count > 0 {
             entries = getTimeEntryList(trainings: trainingList)
         }
@@ -26,17 +26,17 @@ class LineChartTime: AppLineChartData {
         return entries
     }
     
-    private func getTimeEntryList(trainings: [Training]) -> [ChartDataEntry] {
+    private func getTimeEntryList(trainings: [ChartTraining]) -> [ChartDataEntry] {
         var entries = [ChartDataEntry]()
         
-        var timeStamp = trainings[0].timeStamp
+        var timestamp = trainings[0].timestamp
         for training in trainings {
-            let timeStampDiff = training.timeStamp - timeStamp
-            timeStamp = training.timeStamp
+            let timestampDiff = training.timestamp - timestamp
+            timestamp = training.timestamp
             
-            entries.append(ChartDataEntry(x: seqTimeStamp, y: UnitHelper.getTrainingValue(training: training)))
+            entries.append(ChartDataEntry(x: seqTimestamp, y: training.value))
             
-            seqTimeStamp = seqTimeStamp + timeStampDiff
+            seqTimestamp = seqTimestamp + timestampDiff
         }
         return entries
     }
