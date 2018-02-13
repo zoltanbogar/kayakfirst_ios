@@ -57,6 +57,10 @@ class ErgometerService: TrainingService {
         return commandProcessErgometer.calculateAvg()
     }
     
+    override func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+        return commandProcessErgometer.updateSumTraining(sumTraining: sumTraining)
+    }
+    
     override func resetServices() {
         bluetoothService.reset()
         

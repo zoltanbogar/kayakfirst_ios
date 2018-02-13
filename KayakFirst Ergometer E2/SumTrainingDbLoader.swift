@@ -67,7 +67,9 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
             if sessionIdValue != sumTraining.sessionId {
                 sessionIdValue = sumTraining.sessionId
                 
-                let insert = table!.insert(self.sessionId <- Double(Int64(sumTraining.sessionId)), self.userId <- sumTraining.userId, self.artOfPaddle <- sumTraining.artOfPaddle, self.trainingEnvironmentType <- sumTraining.trainingEnvironmentType, self.trainingCount <- sumTraining.trainingCount, self.planTrainingId <- sumTraining.planTrainingId, self.planType <- sumTraining.planTrainingType.rawValue, self.startTime <- sumTraining.startTime, self.duration <- sumTraining.duration, self.distance <- sumTraining.distance)
+                let planType = sumTraining.planTrainingType != nil ? sumTraining.planTrainingType!.rawValue : ""
+                
+                let insert = table!.insert(self.sessionId <- Double(Int64(sumTraining.sessionId)), self.userId <- sumTraining.userId, self.artOfPaddle <- sumTraining.artOfPaddle, self.trainingEnvironmentType <- sumTraining.trainingEnvironmentType, self.trainingCount <- sumTraining.trainingCount, self.planTrainingId <- sumTraining.planTrainingId, self.planType <- planType, self.startTime <- sumTraining.startTime, self.duration <- sumTraining.duration, self.distance <- sumTraining.distance)
                 
                 let rowId = try? db?.run(insert)
             } else {

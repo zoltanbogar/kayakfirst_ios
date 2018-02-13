@@ -70,6 +70,10 @@ class OutdoorSevice: TrainingService {
         return commandProcessorOutdoor.calculateAvg()
     }
     
+    override func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+        return commandProcessorOutdoor.updateSumTraining(sumTraining: sumTraining)
+    }
+    
     override func resetServices() {
         commandProcessorOutdoor.reset()
     }

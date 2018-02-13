@@ -37,6 +37,14 @@ class CommandProcessor<E: MeasureCommand> {
         return createTrainingAvg()
     }
     
+    func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+        sumTraining.distance = distance
+        sumTraining.duration = telemetry.duration
+        sumTraining.trainingCount = Int(telemetry.averageIndex)
+        
+        return sumTraining
+    }
+    
     func reset() {
         f_avElement = CalculateF_AV(startCommand: self)
         t200Av = CalculateT_200_AV(startCommand: self)

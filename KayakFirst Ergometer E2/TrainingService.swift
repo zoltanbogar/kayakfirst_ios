@@ -16,6 +16,10 @@ class TrainingService {
     
     private let trainingManager: TrainingManager
     
+    private var sumTraining: SumTrainingNew?
+    private var trainingEnvType: TrainingEnvironmentType?
+    private var plan: Plan?
+    
     private var realDuration: Double = 0
     private var isCyclePaused: Bool = false
     
@@ -33,6 +37,10 @@ class TrainingService {
     }
     
     internal func getTrainingAvgObject() -> TrainingAvgNew {
+        fatalError("must be implemented")
+    }
+    
+    internal func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
         fatalError("must be implemented")
     }
     
@@ -65,8 +73,12 @@ class TrainingService {
         setTelemetryCycleState(cycleState: CycleState.calibrated)
     }
     
-    func start() {
+    func start(trainingEnvType: TrainingEnvironmentType, plan: Plan?) {
         reset()
+        
+        self.trainingEnvType = trainingEnvType
+        self.plan = plan
+        
         resume()
         
         LogManager.sharedInstance.checkSystemInfo()
@@ -96,12 +108,8 @@ class TrainingService {
     internal func onResumed() {
         isCyclePaused = false
         
-        if telemetry.sessionId == 0 {
-            let sessionId = currentTimeMillis()
-            LogManager.sharedInstance.logEvent(event: "setSessionId: \(sessionId)")
-            
-            telemetry.sessionId = sessionId
-        }
+        setSessionId()
+        
         trainingManager.addTrainingUploadPointer()
         
         startLoop()
@@ -122,6 +130,8 @@ class TrainingService {
         telemetry.resetCurrent()
         telemetry.resetOthers()
         
+        plan = nil
+        
         resetServices()
     }
     
@@ -138,12 +148,12 @@ class TrainingService {
                 if self.shouldCalculate() {
                     let training = self.getTrainingObject()
                     let trainingAvg = self.getTrainingAvgObject()
+                    self.sumTraining = self.updateSumTraining(sumTraining: self.sumTraining!)
                     
                     self.telemetry.telemetryObject = training
                     self.telemetry.telemetryAvgObject = trainingAvg
                     
-                    //TODO: save
-                    //self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+                    self.trainingManager.saveTrainingData(training: training, trainingAvg: trainingAvg, sumTrainig: self.sumTraining!)
                     
                     self.realDuration = self.telemetry.duration
                 }
@@ -169,6 +179,30 @@ class TrainingService {
     
     private func setDurationBack() {
         telemetry.duration = realDuration
+    }
+    
+    private func setSessionId() {
+        if telemetry.sessionId == 0 {
+            let sessionId = currentTimeMillis()
+            LogManager.sharedInstance.logEvent(event: "setSessionId: \(sessionId)")
+            
+            telemetry.sessionId = sessionId
+            
+            var planTraining: PlanTraining? = nil
+            
+            if let plan = plan {
+                planTraining = PlanTraining.createPlanTraining(plan: plan)
+                planTraining?.sessionId = sessionId
+                
+                PlanManager.sharedInstance.savePlanTraining(planTraining: planTraining!)
+            }
+            
+            sumTraining = createSumTraining(
+                sessionId: sessionId,
+                trainingEnvType: trainingEnvType!.rawValue,
+                planTrainingId: planTraining != nil ? planTraining!.planId : "",
+                planTrainingType: planTraining != nil ? planTraining!.type : nil)
+        }
     }
     
     private func onCycleStateChanged(cycleState: CycleState) {

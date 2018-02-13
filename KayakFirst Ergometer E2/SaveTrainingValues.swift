@@ -10,11 +10,10 @@ import Foundation
 class SaveTrainingValues {
     
     //MARK: properties
-    private let trainingDbLoader = TrainingDbLoader.sharedInstance
-    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
+    private let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
     private let userManager = UserManager.sharedInstance
-    
-    private var localeSessionId: Double = 0
     
     //MARK: init
     static let sharedInstance: SaveTrainingValues = SaveTrainingValues()
@@ -22,29 +21,11 @@ class SaveTrainingValues {
         //private constructor
     }
     
-    func addValue(training: Training) {
-        if CalculateEnum.savingTypes.contains(CalculateEnum(rawValue: training.dataType)!) && userManager.getUser() != nil {
-            trainingDbLoader.addData(data: training)
-        }
-    }
-    
-    func saveTrainingAvgData(telemetryObject: TelemetryObject, telemetryAvgObject: TelemetryAvgObject) {
+    func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {
         if userManager.getUser() != nil {
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.f_av)
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.v_av)
-            trainingAvgDbLoader.addData(data: createTrainingAvgObject(training: telemetryObject.s_sum))
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.strokes_av)
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.t_200_av)
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.t_500_av)
-            trainingAvgDbLoader.addData(data: telemetryAvgObject.t_1000_av)
+            trainingDbLoader.addData(data: training)
+            trainingAvgDbLoader.addData(data: trainingAvg)
+            sumTrainingDbLoader.addData(data: sumTrainig)
         }
-    }
-    
-    private func createTrainingAvgObject(training: Training) -> TrainingAvg {
-        return TrainingAvg(
-            userId: training.userId!,
-            sessionId: training.sessionId,
-            avgType: training.dataType,
-            avgValue: training.dataValue)
     }
 }

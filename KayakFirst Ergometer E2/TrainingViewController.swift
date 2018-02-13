@@ -167,7 +167,9 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     func onCounterEnd() {
-        trainingService.start()
+        trainingService.start(
+            trainingEnvType: trainingEnvType,
+            plan: plan)
     }
     
     //MARK: delegate
@@ -252,13 +254,6 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
     }
     
     private func savePlan() {
-        if let planValue = plan {
-            let planTraining = PlanTraining.createPlanTraining(plan: planValue)
-            planTraining.sessionId = sessionId
-            
-            PlanManager.sharedInstance.savePlanTraining(planTraining: planTraining)
-        }
-        
         if event != nil && dashboardVc!.isPlanDone {
             event!.sessionId = sessionId
             

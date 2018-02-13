@@ -38,17 +38,14 @@ class TrainingManager: BaseManager {
     }
     
     func addTrainingUploadPointer() {
-        let sessionId = "\(Telemetry.sharedInstance.sessionId)"
+        //TODO
+        /*let sessionId = "\(Telemetry.sharedInstance.sessionId)"
         ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
-        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)
+        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)*/
     }
     
-    func saveTraining(training: Training) {
-        saveTrainingValues.addValue(training: training)
-    }
-    
-    func saveTrainingAvg(telemetryObject: TelemetryObject, telemetryAvgObject: TelemetryAvgObject) {
-        saveTrainingValues.saveTrainingAvgData(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+    func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {
+        saveTrainingValues.saveTrainingData(training: training, trainingAvg: trainingAvg, sumTrainig: sumTrainig)
     }
     
     func deleteTraining(sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
