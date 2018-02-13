@@ -11,14 +11,16 @@ import UIKit
 class TrainingSumView: CustomUi<ViewTrainingSumLayout> {
     
     //MARK: properties
-    private var sumTraining: SumTraining!
+    private var sumTraining: SumTrainingNew!
     
     //MARK: init
-    init(frame: CGRect, sumTraining: SumTraining) {
+    init(frame: CGRect, sumTraining: SumTrainingNew) {
         self.sumTraining = sumTraining
         super.init()
         
         self.frame = frame
+        
+        initSumElements()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,6 +29,23 @@ class TrainingSumView: CustomUi<ViewTrainingSumLayout> {
     
     override func getContentLayout(contentView: UIView) -> ViewTrainingSumLayout {
         return ViewTrainingSumLayout(contentView: contentView, sumTraining: sumTraining)
+    }
+    
+    private func initSumElements() {
+        contentLayout?.progressBar.showProgressBar(true)
+        
+        TrainingManager.sharedInstance.getTrainingAvg(sessionId: sumTraining.sessionId, managerCallback: { (trainingAvgNew, error) in
+            if let data = trainingAvgNew {
+                self.contentLayout?.seSpeedAv.sumData = data.speed
+                self.contentLayout?.seStrokeAv.sumData = data.strokes
+                self.contentLayout?.seForceAv.sumData = data.force
+                self.contentLayout?.seT1000Av.sumData = data.t1000
+                self.contentLayout?.seT500Av.sumData = data.t500
+                self.contentLayout?.seT200Av.sumData = data.t200
+            }
+            
+            self.contentLayout?.progressBar.showProgressBar(false)
+            })
     }
     
 }

@@ -88,6 +88,15 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     }
     
     //MARK: query
+    func getPlanTrainingBySessionId(sessionId: Double) -> PlanTraining? {
+        let planTrainings = loadData(predicate: getPredicateSessionId(sessionId: sessionId))
+        
+        if planTrainings != nil && planTrainings!.count > 0 {
+            return planTrainings?[0]
+        }
+        return nil
+    }
+    
     override func queryData(predicate: Expression<Bool>?) -> [PlanTraining]? {
         var planList: [PlanTraining]?
         
@@ -194,5 +203,9 @@ class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
             planElementDbLoader.deleteData(predicate: planElementDbLoader.getExpressionDelete(planId: plan.planId))
         }
         return deletedRows
+    }
+    
+    private func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
     }
 }

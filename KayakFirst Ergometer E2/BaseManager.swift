@@ -67,6 +67,10 @@ class BaseManager {
     }
     
     //MARK: functions
+    func runDbLoad<E>(dbHelper: BaseDbHelper<E>, managerCallBack: ((_ data: E?, _ error: Responses?) -> ())?) {
+        LoadDbData(managerCallBack: managerCallBack, baseDbHelper: dbHelper).execute()
+    }
+    
     func runUser<E>(serverService: ServerService<E>, managerCallBack: ((_ userData: E?, _ error: Responses?) -> ())?) {
         if shouldRunUser() {
             LoadUserData(userDataCallBack: managerCallBack, serverService: serverService, baseManager: self).execute()
@@ -157,6 +161,28 @@ class BaseManager {
     }
     
     //MARK: AsyncTasks
+    private class LoadDbData<E>: AsyncTask<Any, Any, E> {
+        
+        let managerCallBack: ((_ data: E?, _ error: Responses?) -> ())?
+        let baseDbHelper: BaseDbHelper<E>
+        
+        init(managerCallBack: ((_ data: E?, _ error: Responses?) -> ())?,
+             baseDbHelper: BaseDbHelper<E>) {
+            self.managerCallBack = managerCallBack
+            self.baseDbHelper = baseDbHelper
+        }
+        
+        override func doInBackground(param: Any?) -> E? {
+            return baseDbHelper.run()
+        }
+        
+        override func onPostExecute(result: E?) {
+            if let callback = managerCallBack {
+                callback(result, nil)
+            }
+        }
+    }
+    
     private class LoadUserData<E>: AsyncTask<Any, Any, E> {
         
         let userDataCallBack: ((_ userData: E?, _ error: Responses?) -> ())?

@@ -91,12 +91,7 @@ class SystemInfoDbLoader: BaseDbLoader<SystemInfo> {
     override func loadData(predicate: Expression<Bool>?) -> [SystemInfo]? {
         var systemInfoList: [SystemInfo]?
         
-        let user = UserManager.sharedInstance.getUser()
-        var userId: Int64 = 0
-        
-        if let user = user {
-            userId = user.id
-        }
+        let userId = UserManager.sharedInstance.getUserId()
         
         do {
             var queryPredicate = self.userId == userId

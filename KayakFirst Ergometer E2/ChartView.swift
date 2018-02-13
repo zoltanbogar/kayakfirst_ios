@@ -18,22 +18,23 @@ enum ChartMode: String {
 class ChartView: CustomUi<ViewChartLayout> {
     
     //MARK: properties
-    private var sumTraining: SumTraining!
+    private var sumTraining: SumTrainingNew!
     private var lineChartData: AppLineChartData?
     private var diagramLabelList: [DiagramLabel]?
     private var chartMode: ChartMode?
     
     //MARK: init
-    init(sumTraining: SumTraining, chartMode: ChartMode) {
+    init(sumTraining: SumTrainingNew, chartMode: ChartMode) {
         self.sumTraining = sumTraining
         super.init()
         
-        self.chartMode = chartMode
+        //TODO
+        /*self.chartMode = chartMode
         
         disableLabelIfNeeded()
         initLabelList()
         initChart()
-        initPlanTimeLine()
+        initPlanTimeLine()*/
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,12 +68,13 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func initChart() {
-        if chartMode! == ChartMode.chartModeDistance {
+        //TODO
+        /*if chartMode! == ChartMode.chartModeDistance {
             lineChartData = LineChartDistance(lineChart: contentLayout!.lineChart, distanceList: sumTraining.distanceList, sumTraining: sumTraining)
         } else {
             lineChartData = LineChartTime(lineChart: contentLayout!.lineChart, sumTraining: sumTraining)
         }
-        refreshChart()
+        refreshChart()*/
     }
     
     private func refreshChart() {
@@ -80,22 +82,24 @@ class ChartView: CustomUi<ViewChartLayout> {
     }
     
     private func disableLabelIfNeeded() {
-        let isOutdoor = sumTraining.trainingEnvironmentType == TrainingEnvironmentType.outdoor
+        //TODO
+        /*let isOutdoor = sumTraining.trainingEnvironmentType == TrainingEnvironmentType.outdoor
         
         if isOutdoor {
             contentLayout!.labelForce.isDisabled = true
-        }
+        }*/
     }
     
     private func initPlanTimeLine() {
-        let plan = sumTraining.planTraining
+        //TODO
+        /*let plan = sumTraining.planTraining
         
         contentLayout!.planView.isHidden = true
         
         if plan != nil && isModeCorrect(plan: plan!) {
             contentLayout!.planView.isHidden = false
             contentLayout!.planView.setData(plan: plan!, lineChart: contentLayout!.lineChart)
-        }
+        }*/
     }
     
     private func isModeCorrect(plan: Plan) -> Bool {

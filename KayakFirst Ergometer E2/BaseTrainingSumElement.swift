@@ -11,17 +11,17 @@ import UIKit
 class BaseTrainingSumElement: UIView {
     
     //MARK: properties
-    var trainingList: [Training]?
-    var sumTraining: SumTraining!
+    var sumData: Double = 0 {
+        didSet {
+            run()
+        }
+    }
     
     //MARK: init
-    init(sumTraining: SumTraining) {
-        self.sumTraining = sumTraining
-        
+    init() {
         super.init(frame: CGRect.zero)
 
         initView()
-        initTrainingList()
         
         run()
     }
@@ -46,10 +46,6 @@ class BaseTrainingSumElement: UIView {
             labelTitle.text = getTitleImperial()
         }
         labelValue.text = getFormattedValue(value: calculate())
-    }
-    
-    private func initTrainingList() {
-        trainingList = getTrainingList()
     }
     
     //MARK: views
@@ -83,10 +79,6 @@ class BaseTrainingSumElement: UIView {
     }()
     
     //MARK: abstract functions
-    func getTrainingList() -> [Training] {
-        fatalError("Must be implemented")
-    }
-    
     func getTitleMetric() -> String {
         fatalError("Must be implemented")
     }

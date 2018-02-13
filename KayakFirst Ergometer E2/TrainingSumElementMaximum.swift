@@ -14,14 +14,15 @@ class TrainingSumelementMaximum: BaseTrainingSumElement {
         return String(format: getFormatter(), value)
     }
     
+    //TODO: could delete?
     override func calculate() -> Double {
         var maxValue: Double = 0
         
-        for training in trainingList! {
+        /*for training in trainingList! {
             if training.dataValue > maxValue {
                 maxValue = training.dataValue
             }
-        }
+        }*/
         
         return maxValue
     }

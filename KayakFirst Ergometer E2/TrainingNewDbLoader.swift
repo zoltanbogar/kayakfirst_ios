@@ -83,13 +83,8 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
         return loadData(predicate: predicate)
     }
     
-    func getTrainingBySessionId(sessionId: Double) -> TrainingNew? {
-        let trainings = loadData(predicate: getPredicateSessionId(sessionId: sessionId))
-        
-        if trainings != nil && trainings!.count > 0 {
-            return trainings![0]
-        }
-        return nil
+    func getTrainingsBySessionId(sessionId: Double) -> [TrainingNew]? {
+        return loadData(predicate: getPredicateSessionId(sessionId: sessionId))
     }
     
     override func loadData(predicate: Expression<Bool>?) -> [TrainingNew]? {

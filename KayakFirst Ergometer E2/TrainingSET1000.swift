@@ -21,7 +21,4 @@ class TrainingSET1000: TrainingSumElementMinimumTime {
         return UnitHelper.isMetricPace()
     }
     
-    override func getTrainingList() -> [Training] {
-        return sumTraining.t1000List
-    }
 }

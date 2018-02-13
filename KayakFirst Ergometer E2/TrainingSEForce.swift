@@ -25,8 +25,4 @@ class TrainingSEForce: TrainingSumelementMaximum {
         return UnitHelper.isMetricWeight()
     }
     
-    override func getTrainingList() -> [Training] {
-        return sumTraining.fList
-    }
-    
 }

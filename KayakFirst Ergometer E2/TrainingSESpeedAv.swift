@@ -29,11 +29,7 @@ class TrainingSESpeedAv: TrainingSumElementAverage {
         return UnitHelper.isMetricDistance()
     }
     
-    override func getTrainingList() -> [Training] {
-        return sumTraining.vList
-    }
-    
     override func calculate() -> Double {
-        return UnitHelper.getSpeedValue(metricValue: sumTraining.avgV)
+        return UnitHelper.getSpeedValue(metricValue: sumData)
     }
 }

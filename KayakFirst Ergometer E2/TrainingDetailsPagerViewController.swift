@@ -8,7 +8,7 @@
 
 import UIKit
 
-func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrainings: [SumTraining]?, position: Int) {
+func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrainings: [SumTrainingNew]?, position: Int) {
     let viewController = TrainingDetailsPagerViewController()
     viewController.sumTrainings = sumTrainings
     viewController.position = position
@@ -17,7 +17,7 @@ func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrain
 
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var sumTrainings: [SumTraining]?
+    var sumTrainings: [SumTrainingNew]?
     var position: Int? {
         didSet {
             initViewControllers()
@@ -144,17 +144,17 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }()
     
     private func initEnvType(viewController: TrainingDetailsViewController) {
-        switch viewController.sumTraining!.trainingEnvironmentType! {
-        case TrainingEnvironmentType.ergometer:
+        switch viewController.sumTraining!.trainingEnvironmentType {
+        case TrainingEnvironmentType.ergometer.rawValue:
             btnTrainingType.image = UIImage(named: "lightBulbCopy")
-        case TrainingEnvironmentType.outdoor:
+        case TrainingEnvironmentType.outdoor.rawValue:
             btnTrainingType.image = UIImage(named: "sunCopy")
         default:
             break
         }
         
-        if viewController.sumTraining?.planTraining != nil {
-            btnPlanType.image = Plan.getTypeIconSmall(plan: viewController.sumTraining!.planTraining)?.withRenderingMode(.alwaysOriginal)
+        if viewController.sumTraining?.planTrainingType != nil {
+            btnPlanType.image = Plan.getTypeIconSmall(planType: viewController.sumTraining!.planTrainingType!)?.withRenderingMode(.alwaysOriginal)
             self.navigationItem.setRightBarButtonItems([btnTrainingType, btnPlanType], animated: true)
         } else {
             self.navigationItem.setRightBarButtonItems([btnTrainingType], animated: true)

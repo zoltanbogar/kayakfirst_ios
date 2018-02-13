@@ -67,7 +67,14 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     //MARK: query
-    
+    func getTrainingAvgBySessionId(sessionId: Double) -> TrainingAvgNew? {
+        let trainingAvgs = loadData(predicate: getPredicateSessionId(sessionId: sessionId))
+        
+        if trainingAvgs != nil && trainingAvgs!.count > 0 {
+            return trainingAvgs?[0]
+        }
+        return nil
+    }
     
     func getTrainingAvgsBetweenSessionIdPredicate(sessionIdFrom: Double, sessionIdTo: Double) -> Expression<Bool> {
         return self.sessionId >= sessionIdFrom && self.sessionId <= sessionIdTo
@@ -149,6 +156,10 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     
     override func getDeleteOldDataPredicate() -> Expression<Bool> {
         return self.sessionId < getOldDataTimestamp(oldDataDays: oldDataDays)
+    }
+    
+    private func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {
+        return self.sessionId == sessionId
     }
     
 }

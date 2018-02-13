@@ -82,8 +82,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
         
         contentLayout!.tableViewTraining.trainingClickCallback = { sumTrainings, position in
-            //TODO
-            //startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
+            startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
         }
         contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
             startEventDetailsViewController(viewController: self, planEvent: planEvent)
@@ -181,7 +180,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         
         if sessionIds.count > 0 {
             showProgressBarTraining(isShow: true)
-            trainingManager.downloadTrainings(sessionIds: sessionIds)
+            trainingManager.downloadSumTrainings(sessionIds: sessionIds)
         } else {
             showProgressBarTraining(isShow: false)
         }

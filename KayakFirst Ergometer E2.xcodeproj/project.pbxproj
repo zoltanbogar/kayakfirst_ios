@@ -175,6 +175,10 @@
 		063BE18120331D25002C3886 /* SumTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */; };
 		063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */; };
 		063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */; };
+		063BE18720334649002C3886 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18620334649002C3886 /* DatabaseHelper.swift */; };
+		063BE18A203346B3002C3886 /* TrainingAvgDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */; };
+		063BE18C20334842002C3886 /* PlanDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18B20334842002C3886 /* PlanDbHelper.swift */; };
+		063BE18E203349C9002C3886 /* TrainingDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18D203349C9002C3886 /* TrainingDbHelper.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
@@ -621,6 +625,10 @@
 		063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingDbLoader.swift; sourceTree = "<group>"; };
 		063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgNewDbLoader.swift; sourceTree = "<group>"; };
 		063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingNewDbLoader.swift; sourceTree = "<group>"; };
+		063BE18620334649002C3886 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbHelper.swift; sourceTree = "<group>"; };
+		063BE18B20334842002C3886 /* PlanDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDbHelper.swift; sourceTree = "<group>"; };
+		063BE18D203349C9002C3886 /* TrainingDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDbHelper.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
@@ -1083,6 +1091,7 @@
 		060DDFEE1E4BD2BF00FE2D14 /* database */ = {
 			isa = PBXGroup;
 			children = (
+				063BE18820334686002C3886 /* db_helper */,
 				064498B020176BD400DF9915 /* log */,
 				066B00391EC7156300BE0E1F /* plan */,
 				06AF233A1F067749008805A2 /* training */,
@@ -1222,6 +1231,17 @@
 				06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */,
 			);
 			name = modify;
+			sourceTree = "<group>";
+		};
+		063BE18820334686002C3886 /* db_helper */ = {
+			isa = PBXGroup;
+			children = (
+				063BE18620334649002C3886 /* DatabaseHelper.swift */,
+				063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */,
+				063BE18B20334842002C3886 /* PlanDbHelper.swift */,
+				063BE18D203349C9002C3886 /* TrainingDbHelper.swift */,
+			);
+			name = db_helper;
 			sourceTree = "<group>";
 		};
 		0643A31D20230A8C00120DED /* log */ = {
@@ -2296,6 +2316,7 @@
 				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
+				063BE18A203346B3002C3886 /* TrainingAvgDbHelper.swift in Sources */,
 				06F657BE1E4601FF002AA9D0 /* UpdatePassword.swift in Sources */,
 				06C2F3EC1F0A3F5D0077EE21 /* DeleteEvent.swift in Sources */,
 				06BF94F41E2A36140010C8A7 /* DesignUtils.swift in Sources */,
@@ -2312,6 +2333,7 @@
 				067B4E3D1E6B5B47005E4AD9 /* TrainingTableViewHeader.swift in Sources */,
 				06F9D5D51F389637005ECA8B /* CommandErgometerT_MAX.swift in Sources */,
 				06C2F3F61F0A44B40077EE21 /* EditPlan.swift in Sources */,
+				063BE18720334649002C3886 /* DatabaseHelper.swift in Sources */,
 				067964791E63820500DFC050 /* CalculateElementF.swift in Sources */,
 				06C1B98F1E259D9400AB4C47 /* DashBoardElement_Actual200.swift in Sources */,
 				060DE00C1E4BE0AF00FE2D14 /* TrainingSumView.swift in Sources */,
@@ -2491,6 +2513,7 @@
 				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				066B00491EC7554400BE0E1F /* PlanListVc.swift in Sources */,
 				064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */,
+				063BE18E203349C9002C3886 /* TrainingDbHelper.swift in Sources */,
 				06C2F3F81F0A48F00077EE21 /* PlanObject.swift in Sources */,
 				066B004F1EC75ABB00BE0E1F /* EventTableViewCell.swift in Sources */,
 				061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */,
@@ -2594,6 +2617,7 @@
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
 				06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */,
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
+				063BE18C20334842002C3886 /* PlanDbHelper.swift in Sources */,
 				06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */,
 				063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,

@@ -30,11 +30,16 @@ class TrainingManager: BaseManager {
         return TrainingManagerType.download_training_days
     }
     
-    func downloadTrainings(sessionIds: [Double]) -> BaseManagerType {
+    func downloadSumTrainings(sessionIds: [Double]) -> BaseManagerType {
         let manager = ManagerDownloadTrainingBySessionId(sessionIds: sessionIds)
         runDownload(managerDownload: manager, managerCallBack: trainingCallback)
         
         return TrainingManagerType.download_training
+    }
+    
+    func getTrainingAvg(sessionId: Double, managerCallback: ((_ data: TrainingAvgNew?, _ error: Responses?) -> ())?) {
+        let dbHelper = TrainingAvgDbHelper(sessionId: sessionId)
+        runDbLoad(dbHelper: dbHelper, managerCallBack: managerCallback)
     }
     
     func addTrainingUploadPointer() {

@@ -16,10 +16,11 @@ class TrainingSumElementMinimumTime: BaseTrainingSumElement {
         return dateFormatHelper.getTime(millisec: value)!
     }
     
+    //TODO: can be deleted?
     override func calculate() -> Double {
         var minValue: Double = 0
         
-        if trainingList!.count > 0 {
+        /*if trainingList!.count > 0 {
             for training in trainingList! {
                 minValue = training.dataValue
                 
@@ -33,7 +34,7 @@ class TrainingSumElementMinimumTime: BaseTrainingSumElement {
                     minValue = training.dataValue
                 }
             }
-        }
+        }*/
         return minValue
     }
     

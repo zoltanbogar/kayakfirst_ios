@@ -10,9 +10,9 @@ import Foundation
 
 class ViewTrainingSumLayout: BaseLayout {
     
-    private let sumTraining: SumTraining
+    private let sumTraining: SumTrainingNew
     
-    init(contentView: UIView, sumTraining: SumTraining) {
+    init(contentView: UIView, sumTraining: SumTrainingNew) {
         self.sumTraining = sumTraining
         super.init(contentView: contentView)
     }
@@ -70,7 +70,18 @@ class ViewTrainingSumLayout: BaseLayout {
         mainStackView.snp.makeConstraints { make in
             make.edges.equalTo(scrollView.containerView)
         }
+        
+        contentView.addSubview(progressBar)
+        progressBar.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
     }
+    
+    lazy var progressBar: AppProgressBar! = {
+        let progressBar = AppProgressBar()
+        
+        return progressBar
+    }()
     
     lazy var labelAverage: AppUILabel! = {
         let label = AppUILabel()
@@ -97,73 +108,73 @@ class ViewTrainingSumLayout: BaseLayout {
     }()
     
     lazy var seT1000Av: TrainingSET1000Av! = {
-        let se = TrainingSET1000Av(sumTraining: self.sumTraining)
+        let se = TrainingSET1000Av()
         
         return se
     }()
     
     lazy var seT500Av: TrainingSET500Av! = {
-        let se = TrainingSET500Av(sumTraining: self.sumTraining)
+        let se = TrainingSET500Av()
         
         return se
     }()
     
     lazy var seT200Av: TrainingSET200Av! = {
-        let se = TrainingSET200Av(sumTraining: self.sumTraining)
+        let se = TrainingSET200Av()
         
         return se
     }()
     
     lazy var seSpeedAv: TrainingSESpeedAv! = {
-        let se = TrainingSESpeedAv(sumTraining: self.sumTraining)
+        let se = TrainingSESpeedAv()
         
         return se
     }()
     
     lazy var seStrokeAv: TrainingSEStrokesAv! = {
-        let se = TrainingSEStrokesAv(sumTraining: self.sumTraining)
+        let se = TrainingSEStrokesAv()
         
         return se
     }()
     
     lazy var seForceAv: TrainingSEForceAv! = {
-        let se = TrainingSEForceAv(sumTraining: self.sumTraining)
+        let se = TrainingSEForceAv()
         
         return se
     }()
     
     lazy var seT1000: TrainingSET1000! = {
-        let se = TrainingSET1000(sumTraining: self.sumTraining)
+        let se = TrainingSET1000()
         
         return se
     }()
     
     lazy var seT500: TrainingSET500! = {
-        let se = TrainingSET500(sumTraining: self.sumTraining)
+        let se = TrainingSET500()
         
         return se
     }()
     
     lazy var seT200: TrainingSET200! = {
-        let se = TrainingSET200(sumTraining: self.sumTraining)
+        let se = TrainingSET200()
         
         return se
     }()
     
     lazy var seSpeed: TrainingSESpeed! = {
-        let se = TrainingSESpeed(sumTraining: self.sumTraining)
+        let se = TrainingSESpeed()
         
         return se
     }()
     
     lazy var seStroke: TrainingSEStroke! = {
-        let se = TrainingSEStroke(sumTraining: self.sumTraining)
+        let se = TrainingSEStroke()
         
         return se
     }()
     
     lazy var seForce: TrainingSEForce! = {
-        let se = TrainingSEForce(sumTraining: self.sumTraining)
+        let se = TrainingSEForce()
         
         return se
     }()

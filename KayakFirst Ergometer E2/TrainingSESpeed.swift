@@ -24,8 +24,4 @@ class TrainingSESpeed: TrainingSumelementMaximum {
     override func isMetric() -> Bool {
         return UnitHelper.isMetricDistance()
     }
-    
-    override func getTrainingList() -> [Training] {
-        return sumTraining.vList
-    }
 }

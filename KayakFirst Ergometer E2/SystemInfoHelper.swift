@@ -12,7 +12,8 @@ class SystemInfoHelper {
     
     //MARK: functions
     class func addSystemInfoToDb() {
-        SystemInfoDbLoader.sharedInstance.addSystemInfo(systemInfo: createSystemInfo())
+        let systemInfo = createSystemInfo()
+        SystemInfoDbLoader.sharedInstance.addSystemInfo(systemInfo: systemInfo)
     }
     
     class func getActualSystemInfo() -> SystemInfo? {

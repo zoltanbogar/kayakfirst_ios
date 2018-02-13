@@ -10,7 +10,7 @@ import UIKit
 class TrainingDetailsViewController: BaseVC<VcTrainingDetailsLayout> {
     
     //MARK: properties
-    var sumTraining: SumTraining?
+    var sumTraining: SumTrainingNew?
     var titleString: String? {
         get {
             let timeStamp = sumTraining!.startTime
