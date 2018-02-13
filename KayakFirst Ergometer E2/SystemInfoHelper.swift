@@ -29,9 +29,8 @@ class SystemInfoHelper {
     }
     
     private class func createSystemInfo() -> SystemInfo {
-        let user = UserManager.sharedInstance.getUser()
-        let userName = user != nil ? user!.userName : ""
-        let userId: Int64 = user != nil ? user!.id : 0
+        let userName = UserManager.sharedInstance.getUserName()
+        let userId = UserManager.sharedInstance.getUserId()
         
         return SystemInfo(
             versionCode: Int(AppDelegate.buildString)!,
@@ -41,7 +40,7 @@ class SystemInfoHelper {
             brand: "Apple",
             model: UIDevice.current.modelName,
             osVersion: UIDevice.current.systemVersion,
-            userName: userName!,
+            userName: userName,
             userId: userId)
     }
     

@@ -160,6 +160,25 @@ class UserManager: BaseManager {
         return UserDb.getUser()
     }
     
+    func getUserId() -> Int64 {
+        let user = getUser()
+        
+        return user != nil ? user!.id : 0
+    }
+    
+    func getUserName() -> String {
+        let user = getUser()
+        
+        return user != nil ? (user!.userName)! : ""
+    }
+    
+    func getArtOfPaddle() -> String {
+        let user = getUser()
+        
+        return user != nil ? (user?.artOfPaddling!)! : ArtOfPaddle.racingKayaking.rawValue
+    }
+    
+    
     func setTokens(token: String?, refreshToken: String?) {
         UserDb.setTokens(token: token, refreshToken: refreshToken)
     }

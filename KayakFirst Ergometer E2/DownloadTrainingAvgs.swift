@@ -28,7 +28,7 @@ class DownloadTrainingAvgs: ServerService<[TrainingAvg]> {
             let jsonValue = JSON(json)
             
             if let jsonArray = jsonValue.array {
-                 let userId = UserManager.sharedInstance.getUser()!.id
+                 let userId = UserManager.sharedInstance.getUserId()
                 
                 trainingAvgList = [TrainingAvg]()
                 

@@ -172,7 +172,7 @@ class EventDetailsViewController: BaseVC<VcEventDetailsLayout>, UITextFieldDeleg
             var event: Event? = nil
             if self.planEvent == nil {
                 event = Event(
-                    userId: UserManager.sharedInstance.getUser()!.id,
+                    userId: UserManager.sharedInstance.getUserId(),
                     sessionId: 0,
                     timestamp: timestamp,
                     name: name!,

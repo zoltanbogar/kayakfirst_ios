@@ -15,8 +15,7 @@ class LogObject {
         let systemInfo = LogManager.sharedInstance.getSystemInfo()
         
         if let systemInfo = systemInfo {
-            let user = UserManager.sharedInstance.getUser()
-            let userId = user != nil ? user!.id : 0
+            let userId = UserManager.sharedInstance.getUserId()
             
             return LogObject(
                 log: log,

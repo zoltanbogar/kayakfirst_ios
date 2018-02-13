@@ -23,8 +23,24 @@ enum ArtOfPaddle: String {
     case rowing = "rowing"
 }
 
-func createSumTraining(sessionId: Double, trainingEnvType: TrainingEnvironmentType, planTrainingId: String, planTrainingType: PlanType) {
-    //TODO: add implementation
+func createSumTraining(sessionId: Double, trainingEnvType: TrainingEnvironmentType, planTrainingId: String, planTrainingType: PlanType) -> SumTrainingNew {
+    
+    let userManager = UserManager.sharedInstance
+    let userId = userManager.getUserId()
+    let paddleOfArt = userManager.getArtOfPaddle()
+    
+    return SumTrainingNew(
+        sessionId: sessionId,
+        userId: userId,
+        artOfPaddle: paddleOfArt,
+        trainingEnvironmentType: trainingEnvType,
+        trainingCount: 0,
+        planTrainingId: planTrainingId,
+        planTrainingType: planTrainingType,
+        startTime: sessionId,
+        duration: 0,
+        distance: 0)
+    
 }
 
 class SumTrainingNew: Equatable, ModifyAble {
@@ -34,7 +50,7 @@ class SumTrainingNew: Equatable, ModifyAble {
     
     let sessionId: Double
     let userId: Int64
-    let artOfPaddle: ArtOfPaddle
+    let artOfPaddle: String
     let trainingEnvironmentType: TrainingEnvironmentType
     var trainingCount: Int
     let planTrainingId: String
@@ -67,7 +83,7 @@ class SumTrainingNew: Equatable, ModifyAble {
         }
     }
     
-    init(sessionId: Double, userId: Int64, artOfPaddle: ArtOfPaddle, trainingEnvironmentType: TrainingEnvironmentType, trainingCount: Int, planTrainingId: String, planTrainingType: PlanType, startTime: Double, duration: Double, distance: Double) {
+    init(sessionId: Double, userId: Int64, artOfPaddle: String, trainingEnvironmentType: TrainingEnvironmentType, trainingCount: Int, planTrainingId: String, planTrainingType: PlanType, startTime: Double, duration: Double, distance: Double) {
         self.sessionId = sessionId
         self.userId = userId
         self.artOfPaddle = artOfPaddle
@@ -93,7 +109,7 @@ class SumTrainingNew: Equatable, ModifyAble {
         return [
             "sessionId":"\(Int64(sessionId))",
             "userId":"\(Int64(userId))",
-            "artOfPaddle":"\(artOfPaddle.rawValue)",
+            "artOfPaddle":"\(artOfPaddle)",
             "trainingEnvironmentType":"\(trainingEnvironmentType.rawValue)",
             "trainingCount":"\(trainingCount)",
             "planTrainingId":"\(planTrainingId)",

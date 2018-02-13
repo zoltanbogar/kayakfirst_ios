@@ -78,7 +78,7 @@ class BaseDbLoader<Input> {
     }
     
     func getUserQuery() -> Expression<Bool> {
-        return self.userId == UserManager.sharedInstance.getUser()!.id
+        return self.userId == UserManager.sharedInstance.getUserId()
     }
     
     func getOldDataTimestamp(oldDataDays: TimeInterval) -> Double {

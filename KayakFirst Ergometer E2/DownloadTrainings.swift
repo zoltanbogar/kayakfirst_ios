@@ -28,7 +28,7 @@ class DownloadTrainings: ServerService<[Training]> {
             let jsonValue = JSON(json)
             
             if let jsonArray = jsonValue.array {
-                let userId = UserManager.sharedInstance.getUser()!.id
+                let userId = UserManager.sharedInstance.getUserId()
                 trainingList = [Training]()
                 
                 for downloadDtoJson in jsonArray {

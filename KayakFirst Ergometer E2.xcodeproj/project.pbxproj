@@ -1657,17 +1657,17 @@
 		06AF232B1F062278008805A2 /* training */ = {
 			isa = PBXGroup;
 			children = (
+				063BE1742032F25F002C3886 /* BaseTraining.swift */,
+				063BE17A2032F853002C3886 /* ChartTraining.swift */,
+				063BE17C2032F889002C3886 /* SumChartTraining.swift */,
 				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
+				063BE17E2032F925002C3886 /* SumTrainingNew.swift */,
 				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
 				067964571E63661200DFC050 /* TelemetryObject.swift */,
 				06117BD01E4996350066C072 /* Training.swift */,
 				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
-				063BE1742032F25F002C3886 /* BaseTraining.swift */,
-				063BE1762032F351002C3886 /* TrainingNew.swift */,
 				063BE1782032F68C002C3886 /* TrainingAvgNew.swift */,
-				063BE17A2032F853002C3886 /* ChartTraining.swift */,
-				063BE17C2032F889002C3886 /* SumChartTraining.swift */,
-				063BE17E2032F925002C3886 /* SumTrainingNew.swift */,
+				063BE1762032F351002C3886 /* TrainingNew.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
