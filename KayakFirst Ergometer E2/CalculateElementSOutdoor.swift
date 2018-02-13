@@ -17,7 +17,7 @@ class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcess
     private var distanceSum: Double = 0
     private var speed: Double = 0
     
-    override func run() -> Training {
+    override func run() -> Double {
         let location = startCommand.location
         
         if location != nil {
@@ -30,14 +30,14 @@ class CalculateElementSOutdoor: CalculateElementS<MeasureCommand, CommandProcess
                 
                 calculatedValue = distanceSum
                 
-                startCommand.distanceSum = distanceSum
+                startCommand.distance = distanceSum
                 startCommand.speed = speed
             }
             
             currentLocation = location
         }
         
-        return createTrainingObject()
+        return calculatedValue
     }
     
     private func calculate(location: AppLocation) {

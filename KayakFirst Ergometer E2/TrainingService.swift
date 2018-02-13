@@ -28,11 +28,11 @@ class TrainingService {
     }
     
     //MARK: abstract functions
-    internal func getTelemetryObject() -> TelemetryObject {
+    internal func getTrainingObject() -> TrainingNew {
         fatalError("must be implemented")
     }
     
-    internal func getTelemetryAvgObject() -> TelemetryAvgObject {
+    internal func getTrainingAvgObject() -> TrainingAvgNew {
         fatalError("must be implemented")
     }
     
@@ -136,13 +136,14 @@ class TrainingService {
             while self.telemetry.checkCycleState(cycleState: CycleState.resumed) {
                 
                 if self.shouldCalculate() {
-                    let telemetryObject = self.getTelemetryObject()
-                    let telemetryAvgObject = self.getTelemetryAvgObject()
+                    let training = self.getTrainingObject()
+                    let trainingAvg = self.getTrainingAvgObject()
                     
-                    self.telemetry.telemetryObject = telemetryObject
-                    self.telemetry.telemetryAvgObject = telemetryAvgObject
+                    self.telemetry.telemetryObject = training
+                    self.telemetry.telemetryAvgObject = trainingAvg
                     
-                    self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
+                    //TODO: save
+                    //self.trainingManager.saveTrainingAvg(telemetryObject: telemetryObject, telemetryAvgObject: telemetryAvgObject)
                     
                     self.realDuration = self.telemetry.duration
                 }

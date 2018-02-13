@@ -12,50 +12,48 @@ class CommandProcessor<E: MeasureCommand> {
     //MARK: properties
     let telemetry = Telemetry.sharedInstance
     
-    private var t200Element: CalculateElementT_200<E>?
-    private var t500Element: CalculateElementT_500<E>?
-    private var t1000Element: CalculateElementT_1000<E>?
     private var f_avElement: CalculateF_AV<E>?
-    private var t200_avElement: CalculateT_200_AV<E>?
-    private var t500_avElement: CalculateT_500_AV<E>?
-    private var t1000_avElement: CalculateT_1000_AV<E>?
+    private var t200Av: CalculateT_200_AV<E>?
+    private var t200Element: CalculateElementT_200<E>?
     
-    var strokes: Training = Training()
-    var f: Training = Training()
-    var v: Training = Training()
-    var s: Training = Training()
+    var force: Double = 0
+    var speed: Double = 0
+    var distance: Double = 0
+    var strokes: Double = 0
     
-    var strokesAv: TrainingAvg?
-    var vAv: TrainingAvg?
+    var forceAv: Double = 0
+    var speedAv: Double = 0
+    var strokesAv: Double = 0
     
-    var v_av: Double = 0
-    var distanceSum: Double = 0
+    private var maF = MovingAverage()
+    private var maV = MovingAverage()
+    private var maStrokes = MovingAverage()
     
-    func calculate(measureCommands: [E]) -> TelemetryObject {
+    func calculate(measureCommands: [E]) -> TrainingNew {
         return calculateValues(measureCommands: measureCommands)
     }
     
-    func calculateAvg() -> TelemetryAvgObject {
-        return createTelemetryAvgObject()
+    func calculateAvg() -> TrainingAvgNew {
+        return createTrainingAvg()
     }
     
     func reset() {
-        t200Element = CalculateElementT_200(startCommand: self)
-        t500Element = CalculateElementT_500(startCommand: self)
-        t1000Element = CalculateElementT_1000(startCommand: self)
-        
         f_avElement = CalculateF_AV(startCommand: self)
-        t200_avElement = CalculateT_200_AV(startCommand: self)
-        t500_avElement = CalculateT_500_AV(startCommand: self)
-        t1000_avElement = CalculateT_1000_AV(startCommand: self)
+        t200Av = CalculateT_200_AV(startCommand: self)
+        t200Element = CalculateElementT_200(startCommand: self)
         
-        strokes = Training()
-        f = Training()
-        v = Training()
-        s = Training()
+        force = 0
+        speed = 0
+        distance = 0
+        strokes = 0
         
-        v_av = 0
-        distanceSum = 0
+        forceAv = 0
+        speedAv = 0
+        strokesAv = 0
+        
+        maF = MovingAverage()
+        maV = MovingAverage()
+        maStrokes = MovingAverage(numAverage: 5)
     }
     
     //MARK: abstract functions
@@ -63,30 +61,26 @@ class CommandProcessor<E: MeasureCommand> {
         fatalError("Must be implemented")
     }
     
-    func calculateValues(measureCommands: [E]) -> TelemetryObject {
+    func calculateValues(measureCommands: [E]) -> TrainingNew {
         fatalError("Must be implemented")
     }
     
-    //MARK: create telemetry objects
-    func createTelemetryOjbect() -> TelemetryObject {
-        return TelemetryObject(
-            f: f,
-            v: v,
-            s_sum: s,
-            strokes: strokes,
-            t200: t200Element!.run(),
-            t500: t500Element!.run(),
-            t1000: t1000Element!.run())
+    func createTraining() -> TrainingNew {
+        return KayakFirst_Ergometer_E2.createTraining(
+            timestamp: getCalculatedTimeStamp(),
+            force: maF.calAverage(newValue: force),
+            speed: maV.calAverage(newValue: speed),
+            distance: distance,
+            strokes: maStrokes.calAverage(newValue: strokes),
+            t200: t200Element!.run())
     }
     
-    func createTelemetryAvgObject() -> TelemetryAvgObject {
-        return TelemetryAvgObject(
-            f_av: f_avElement!.run(),
-            v_av: vAv!,
-            strokes_av: strokesAv!,
-            t_200_av: t200_avElement!.run(),
-            t_500_av: t500_avElement!.run(),
-            t_1000_av: t1000_avElement!.run())
+    func createTrainingAvg() -> TrainingAvgNew {
+        return KayakFirst_Ergometer_E2.createTrainingAvg(
+            force: f_avElement!.run(),
+            speed: speedAv,
+            strokes: strokesAv,
+            t200: t200Av!.run())
     }
     
     //MARK: timestamp

@@ -15,7 +15,7 @@ class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgomete
     
     private var maSpm = MovingAverage(numAverage: 5)
     
-    override func run() -> Training {
+    override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             let diffCycleIndex = telemetry.getCycleIndex() - cycleIndex
             
@@ -38,7 +38,7 @@ class CalculateElementStrokesErgo: CalculateElementStroke<MeasureCommandErgomete
             }
         }
         
-        return createTrainingObject()
+        return calculatedValue
     }
     
 }

@@ -9,9 +9,9 @@
 import Foundation
 class CalculateElementVOutdoor: CalculateElementV<MeasureCommand, CommandProcessorOutdoor> {
     
-    override func run() -> Training {
+    override func run() -> Double {
         calculatedValue = startCommand.speed
         
-        return createTrainingObject()
+        return calculatedValue
     }
 }

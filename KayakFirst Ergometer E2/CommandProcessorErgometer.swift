@@ -72,11 +72,11 @@ class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
         return TrainingEnvironmentType.ergometer
     }
     
-    override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> TelemetryObject {
+    override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> TrainingNew {
         fillCommands(measureCommands: measureCommands)
         fillHelperValues()
         
-        return createTelemetryOjbect()
+        return createTraining()
     }
     
     private func fillCommands(measureCommands: [MeasureCommand]) {
@@ -108,13 +108,13 @@ class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
         omegaMin = omegaMinElement!.run()
         omegaMax = omegaMaxElement!.run()
         p = pElement!.run()
-        f = fElement!.run()
-        v = vElement!.run()
-        s = sElement!.run()
+        force = fElement!.run()
+        speed = vElement!.run()
+        distance = sElement!.run()
         
         strokes = strokesElement!.run()
         strokesAv = strokes_av_ergo!.run()
-        vAv = v_av_ergo!.run()
+        speedAv = v_av_ergo!.run()
     }
     
 }

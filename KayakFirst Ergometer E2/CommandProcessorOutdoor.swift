@@ -11,7 +11,6 @@ class CommandProcessorOutdoor: CommandProcessor<MeasureCommand> {
     
     //MARK: properties
     var location: AppLocation?
-    var speed: Double = 0
     var strokesValue: Double = 0
     
     private var sElement: CalculateElementSOutdoor?
@@ -49,11 +48,11 @@ class CommandProcessorOutdoor: CommandProcessor<MeasureCommand> {
         return TrainingEnvironmentType.outdoor
     }
     
-    override func calculateValues(measureCommands: [MeasureCommand]) -> TelemetryObject {
+    override func calculateValues(measureCommands: [MeasureCommand]) -> TrainingNew {
         fillCommands(commands: measureCommands)
         fillHelperValues()
         
-        return createTelemetryOjbect()
+        return createTraining()
     }
     
     private func fillCommands(commands: [MeasureCommand]) {
@@ -70,13 +69,13 @@ class CommandProcessorOutdoor: CommandProcessor<MeasureCommand> {
     }
     
     private func fillHelperValues() {
-        s = sElement!.run()
-        f = fElement!.run()
-        v = vElement!.run()
+        distance = sElement!.run()
+        force = fElement!.run()
+        speed = vElement!.run()
         strokes = strokeElement!.run()
         
-        strokesAv = calculateStrokes_av_outdoor?.run()
-        vAv = calculateV_av_outdoor!.run()
+        strokesAv = calculateStrokes_av_outdoor!.run()
+        speedAv = calculateV_av_outdoor!.run()
     }
     
 }

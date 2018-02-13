@@ -13,7 +13,7 @@ class CalculateElementFErgo: CalculateElementF<MeasureCommandErgometer, CommandP
     //MARK: constants
     private let maxForce: Double = 20000
     
-    override func run() -> Training {
+    override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             let omegaMin = startCommand.omegaMin
             let omegaMax = startCommand.omegaMax
@@ -28,7 +28,7 @@ class CalculateElementFErgo: CalculateElementF<MeasureCommandErgometer, CommandP
                 }
             }
         }
-        return createTrainingObject()
+        return calculatedValue
     }
     
 }

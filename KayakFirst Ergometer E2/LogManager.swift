@@ -83,12 +83,12 @@ class LogManager: BaseManager {
         logEvent(event: "cycle stop by \(stopByWho)")
     }
     
-    func logTelemetryObject(telemetryObject: TelemetryObject) {
-        let f = "f: \(telemetryObject.f.dataValue)"
-        let v = "v: \(telemetryObject.v.dataValue)"
-        let s = "s: \(telemetryObject.s_sum.dataValue)"
-        let spm = "spm: \(telemetryObject.strokes.dataValue)"
-        let t200 = "t200: \(telemetryObject.t200.dataValue)"
+    func logTelemetryObject(training: TrainingNew) {
+        let f = "f: \(training.force)"
+        let v = "v: \(training.speed)"
+        let s = "s: \(training.distance)"
+        let spm = "spm: \(training.strokes)"
+        let t200 = "t200: \(training.t200)"
         
         let message = f + " ; " + v + " ; " + s + " ; " + spm + " ; " + t200
         logEvent(event: message)

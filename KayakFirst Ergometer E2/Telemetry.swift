@@ -59,30 +59,30 @@ class Telemetry {
     var lastCycleIndexTime: Double = 0
     
     //MARK telemtry objects
-    var telemetryObject: TelemetryObject? {
+    var telemetryObject: TrainingNew? {
         didSet {
-            force = telemetryObject!.f.dataValue
-            speed = telemetryObject!.v.dataValue
-            distance = telemetryObject!.s_sum.dataValue
-            strokes = telemetryObject!.strokes.dataValue
-            t_200 = telemetryObject!.t200.dataValue
-            t_500 = telemetryObject!.t500.dataValue
-            t_1000 = telemetryObject!.t1000.dataValue
+            force = telemetryObject!.force
+            speed = telemetryObject!.speed
+            distance = telemetryObject!.distance
+            strokes = telemetryObject!.strokes
+            t_200 = telemetryObject!.t200
+            t_500 = telemetryObject!.t500
+            t_1000 = telemetryObject!.t1000
             
-            logManager.logTelemetryObject(telemetryObject: telemetryObject!)
+            logManager.logTelemetryObject(training: telemetryObject!)
             
             setAverageIndex()
         }
     }
     
-    var telemetryAvgObject: TelemetryAvgObject? {
+    var telemetryAvgObject: TrainingAvgNew? {
         didSet {
-            force_av = telemetryAvgObject!.f_av.avgValue
-            speed_av = telemetryAvgObject!.v_av.avgValue
-            strokes_av = telemetryAvgObject!.strokes_av.avgValue
-            t_200_av = telemetryAvgObject!.t_200_av.avgValue
-            t_500_av = telemetryAvgObject!.t_500_av.avgValue
-            t_1000_av = telemetryAvgObject!.t_1000_av.avgValue
+            force_av = telemetryAvgObject!.force
+            speed_av = telemetryAvgObject!.speed
+            strokes_av = telemetryAvgObject!.strokes
+            t_200_av = telemetryAvgObject!.t200
+            t_500_av = telemetryAvgObject!.t500
+            t_1000_av = telemetryAvgObject!.t1000
         }
     }
     

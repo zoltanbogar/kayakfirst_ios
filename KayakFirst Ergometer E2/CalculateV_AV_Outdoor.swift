@@ -18,7 +18,7 @@ class CalculateV_AV_Outdoor: CalculateV_AV<MeasureCommand> {
             calculatedValue = (distance / duration) * 1000 * converSationMpsKmph
         }
         
-        startCommand.v_av = calculatedValue
+        startCommand.speedAv = calculatedValue
         
         return calculatedValue
     }

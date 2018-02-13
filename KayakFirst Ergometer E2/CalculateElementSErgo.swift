@@ -12,7 +12,7 @@ class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, CommandP
 
     private var timestampCal: Double = 0
     
-    override func run() -> Training {
+    override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             
             var timestampCurrent = startCommand.getCalculatedTimeStamp()
@@ -22,7 +22,7 @@ class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, CommandP
             }
             
             let t_1_2 = (timestampCurrent - timestampCal) / 1000
-            let v = startCommand.v.dataValue
+            let v = startCommand.speed
             
             if t_1_2 > 0 && !v.isNaN {
                 calculatedValue += (v / converSationMpsKmph) * t_1_2
@@ -30,11 +30,11 @@ class CalculateElementSErgo: CalculateElementS<MeasureCommandErgometer, CommandP
             
             timestampCal = timestampCurrent
             
-            startCommand.distanceSum = calculatedValue
+            startCommand.distance = calculatedValue
             
         }
         
-        return createTrainingObject()
+        return calculatedValue
     }
     
 }

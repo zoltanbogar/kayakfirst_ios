@@ -11,7 +11,7 @@ import Foundation
 class ErgometerService: TrainingService {
     
     //MARK: properties
-    private let startCommandErgometer: CommandProcessorErgometer
+    private let commandProcessErgometer: CommandProcessorErgometer
     private let bluetoothService: BluetoothService
     
     private static var instance: ErgometerService?
@@ -25,7 +25,7 @@ class ErgometerService: TrainingService {
     
     //MARK: init
     private init(bluetooth: Bluetooth) {
-        startCommandErgometer = CommandProcessorErgometer.sharedInstance
+        commandProcessErgometer = CommandProcessorErgometer.sharedInstance
         bluetoothService = bluetooth.bluetoothService
         
         super.init()
@@ -49,18 +49,18 @@ class ErgometerService: TrainingService {
         return shouldCalculate
     }
     
-    override func getTelemetryObject() -> TelemetryObject {
-        return startCommandErgometer.calculateValues(measureCommands: bluetoothService.commandList)
+    override func getTrainingObject() -> TrainingNew {
+        return commandProcessErgometer.calculateValues(measureCommands: bluetoothService.commandList)
     }
     
-    override func getTelemetryAvgObject() -> TelemetryAvgObject {
-        return startCommandErgometer.calculateAvg()
+    override func getTrainingAvgObject() -> TrainingAvgNew {
+        return commandProcessErgometer.calculateAvg()
     }
     
     override func resetServices() {
         bluetoothService.reset()
         
-        startCommandErgometer.reset()
+        commandProcessErgometer.reset()
     }
     
 }

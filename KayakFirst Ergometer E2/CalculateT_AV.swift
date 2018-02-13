@@ -16,7 +16,7 @@ class CalculateT_AV<M: MeasureCommand>: CalculateElementAvg<M> {
     
     override func calculate() -> Double {
         let distance = getDistance()
-        var v = startCommand.v_av
+        var v = startCommand.speedAv
         
         if v > 0 {
             v = v / converSationMpsKmph

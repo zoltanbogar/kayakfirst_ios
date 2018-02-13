@@ -9,8 +9,9 @@
 import Foundation
 class CalculateElementFOutdoor: CalculateElementF<MeasureCommand, CommandProcessorOutdoor> {
     
-    override func run() -> Training {
-        return createTrainingObject()
+    override func run() -> Double {
+        //there is no F calculation yet
+        return 0
     }
     
 }

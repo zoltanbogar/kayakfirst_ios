@@ -14,7 +14,7 @@ class OutdoorSevice: TrainingService {
     private let locationService: FusedLocationManager
     private let sensorManager: AppSensorManager
     
-    private let startCommandOutdoor: CommandProcessorOutdoor
+    private let commandProcessorOutdoor: CommandProcessorOutdoor
     
     private var gpsAvailableListener: GpsAvailableListener? {
         didSet {
@@ -36,7 +36,7 @@ class OutdoorSevice: TrainingService {
         locationService = FusedLocationManager.sharedInstance
         sensorManager = AppSensorManager.sharedInstance
         
-        startCommandOutdoor = CommandProcessorOutdoor.sharedInstance
+        commandProcessorOutdoor = CommandProcessorOutdoor.sharedInstance
         
         super.init()
     }
@@ -62,16 +62,16 @@ class OutdoorSevice: TrainingService {
         stopLocationMonitoring()
     }
     
-    override func getTelemetryObject() -> TelemetryObject {
-        return startCommandOutdoor.calculate(measureCommands: locationService.getCommandList(appSensorManager: sensorManager))
+    override func getTrainingObject() -> TrainingNew {
+        return commandProcessorOutdoor.calculate(measureCommands: locationService.getCommandList(appSensorManager: sensorManager))
     }
     
-    override func getTelemetryAvgObject() -> TelemetryAvgObject {
-        return startCommandOutdoor.calculateAvg()
+    override func getTrainingAvgObject() -> TrainingAvgNew {
+        return commandProcessorOutdoor.calculateAvg()
     }
     
     override func resetServices() {
-        startCommandOutdoor.reset()
+        commandProcessorOutdoor.reset()
     }
     
     override func shouldCalculate() -> Bool {

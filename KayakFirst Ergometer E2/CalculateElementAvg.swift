@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CalculateElementAvg<M: MeasureCommand>: CalculateElement<TrainingAvg, M,  CommandProcessor<M>> {
+class CalculateElementAvg<M: MeasureCommand>: CalculateElement<M,  CommandProcessor<M>> {
     
     //MARK: abstract functions
     internal func getAvgType() -> CalculateEnum {
@@ -22,8 +22,8 @@ class CalculateElementAvg<M: MeasureCommand>: CalculateElement<TrainingAvg, M,  
         fatalError("Must be implemented")
     }
     
-    override func run() -> TrainingAvg {
-        return createTrainingAvg()
+    override func run() -> Double {
+        return calculate()
     }
     
     internal func calculate() -> Double {
@@ -34,16 +34,5 @@ class CalculateElementAvg<M: MeasureCommand>: CalculateElement<TrainingAvg, M,  
         }
         
         return calculatedValue
-    }
-    
-    private func createTrainingAvg() -> TrainingAvg {
-        let userId = userManager.getUser()?.id
-        let sessionId = telemetry.sessionId
-        
-        return TrainingAvg(
-            userId: userId,
-            sessionId: sessionId,
-            avgType: getAvgType().rawValue,
-            avgValue: calculate())
     }
 }

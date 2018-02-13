@@ -14,9 +14,9 @@ class CalculateElementT<M: MeasureCommand>: CalculateElementCurrent<M> {
         fatalError("Must be implemented")
     }
     
-    override func run() -> Training {
+    override func run() -> Double {
         let distance = Double(getDistance().rawValue)
-        var v = startCommand.v.dataValue
+        var v = startCommand.speed
         
         if v > Double(minSpeedKmh) {
             v = v / converSationMpsKmph
@@ -25,6 +25,6 @@ class CalculateElementT<M: MeasureCommand>: CalculateElementCurrent<M> {
             
             calculatedValue = calculatedValue * 1000
         }
-        return createTrainingObject()
+        return calculatedValue
     }
 }

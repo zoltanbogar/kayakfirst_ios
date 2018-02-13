@@ -9,7 +9,7 @@
 import Foundation
 class CalculateElementStrokesOutdoor: CalculateElementStroke<MeasureCommand, CommandProcessorOutdoor> {
     
-    override func run() -> Training {
+    override func run() -> Double {
         let currentSpeed = telemetry.speed
         
         if currentSpeed < Double(minSpeedKmh) {
@@ -18,6 +18,6 @@ class CalculateElementStrokesOutdoor: CalculateElementStroke<MeasureCommand, Com
             calculatedValue = startCommand.strokesValue
         }
         
-        return createTrainingObject()
+        return calculatedValue
     }
 }

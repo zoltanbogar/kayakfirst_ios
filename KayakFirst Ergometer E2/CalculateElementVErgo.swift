@@ -10,7 +10,7 @@ import Foundation
 
 class CalculateElementVErgo: CalculateElementV<MeasureCommandErgometer, CommandProcessorErgometer> {
     
-    override func run() -> Training {
+    override func run() -> Double {
         if telemetry.getCycleIndex() > 0 {
             let p = startCommand.p
             let mass = pow(getWeight(), 0.666667)
@@ -25,7 +25,7 @@ class CalculateElementVErgo: CalculateElementV<MeasureCommandErgometer, CommandP
             }
         }
         
-        return createTrainingObject()
+        return calculatedValue
     }
     
 }

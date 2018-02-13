@@ -13,7 +13,7 @@ class CalculateV_AV_Ergo: CalculateV_AV<MeasureCommandErgometer> {
     override func calculate() -> Double {
         super.calculate()
         
-        startCommand.v_av = calculatedValue
+        startCommand.speedAv = calculatedValue
         
         return calculatedValue
     }
