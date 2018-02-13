@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum TrainingEnvironmentType: String {
-    case ergometer = "ergometer"
-    case outdoor = "outdoor"
-}
-
 enum TrainingType: String {
     case kayak = "kayak"
     case canoe = "canoe"

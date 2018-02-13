@@ -12,13 +12,6 @@ class PickerHelperArtOfPaddling: PickerHelper {
     
     //MARK: constants
     private static let artOfPaddlingOptions = [getString("user_art_of_paddling_racing_kayaking"), getString("user_art_of_paddling_racing_canoeing"), getString("user_art_of_paddling_recreational_kayaking"), getString("user_art_of_paddling_recreational_canoeing"), getString("user_art_of_paddling_sup"), getString("user_art_of_paddling_dragon"), getString("user_art_of_paddling_rowing")]
-    private static let artOfPaddlingRacingKayaking = "racing_kayaking"
-    private static let artOfPaddlingRacingCanoeing = "racing_canoeing"
-    private static let artOfPaddlingRecreationalKayaking = "recreational_kayaking"
-    private static let artOfPaddlingRecreationalCanoeing = "recreational_canoeing"
-    private static let artOfPaddlingSup = "sup"
-    private static let artOfPaddlingDragon = "dragon"
-    private static let artOfPaddlingRowing = "rowing"
     
     //MARK: functions
     override func getOptions() -> [String] {
@@ -27,19 +20,19 @@ class PickerHelperArtOfPaddling: PickerHelper {
     
     override func getTitle(value: String) -> String {
         switch value {
-        case PickerHelperArtOfPaddling.artOfPaddlingRacingKayaking:
+        case ArtOfPaddle.racingKayaking.rawValue:
             return getString("user_art_of_paddling_racing_kayaking")
-        case PickerHelperArtOfPaddling.artOfPaddlingRacingCanoeing:
+        case ArtOfPaddle.racingCanoeing.rawValue:
             return getString("user_art_of_paddling_racing_canoeing")
-        case PickerHelperArtOfPaddling.artOfPaddlingRecreationalKayaking:
+        case ArtOfPaddle.recreationalKayaking.rawValue:
             return getString("user_art_of_paddling_recreational_kayaking")
-        case PickerHelperArtOfPaddling.artOfPaddlingRecreationalCanoeing:
+        case ArtOfPaddle.recreationalCanoeing.rawValue:
             return getString("user_art_of_paddling_recreational_canoeing")
-        case PickerHelperArtOfPaddling.artOfPaddlingSup:
+        case ArtOfPaddle.sup.rawValue:
             return getString("user_art_of_paddling_sup")
-        case PickerHelperArtOfPaddling.artOfPaddlingDragon:
+        case ArtOfPaddle.dragon.rawValue:
             return getString("user_art_of_paddling_dragon")
-        case PickerHelperArtOfPaddling.artOfPaddlingRowing:
+        case ArtOfPaddle.rowing.rawValue:
             return getString("user_art_of_paddling_rowing")
         default:
             break
@@ -52,19 +45,19 @@ class PickerHelperArtOfPaddling: PickerHelper {
         if (textField.text != nil) {
             switch textField.text! {
             case getString("user_art_of_paddling_racing_kayaking"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingRacingKayaking
+                value = ArtOfPaddle.racingKayaking.rawValue
             case getString("user_art_of_paddling_racing_canoeing"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingRacingCanoeing
+                value = ArtOfPaddle.racingCanoeing.rawValue
             case getString("user_art_of_paddling_recreational_kayaking"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingRecreationalKayaking
+                value = ArtOfPaddle.recreationalKayaking.rawValue
             case getString("user_art_of_paddling_recreational_canoeing"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingRecreationalCanoeing
+                value = ArtOfPaddle.recreationalCanoeing.rawValue
             case getString("user_art_of_paddling_sup"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingSup
+                value = ArtOfPaddle.sup.rawValue
             case getString("user_art_of_paddling_dragon"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingDragon
+                value = ArtOfPaddle.dragon.rawValue
             case getString("user_art_of_paddling_rowing"):
-                value = PickerHelperArtOfPaddling.artOfPaddlingRowing
+                value = ArtOfPaddle.rowing.rawValue
             default:
                 break
             }

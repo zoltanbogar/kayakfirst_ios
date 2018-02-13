@@ -31,29 +31,21 @@ class DateFormatHelper {
 
     //MARK: Functions
     func getTime(millisec: Double) -> String? {
+        return DateFormatHelper.getTime(millisec: millisec, format: format!)
+    }
+    
+    class func getTime(millisec: Double, format: TimeEnum) -> String? {
         var timeText: String? = nil
         
         let hours = Int(millisec / (1000 * 60 * 60))
         let minutes = Int((millisec / (1000 * 60)).truncatingRemainder(dividingBy: 60))
         let seconds = Int((millisec / 1000).truncatingRemainder(dividingBy: 60))
-        if getFormatValues() == 3 {
-            timeText = String(format: (format?.rawValue)!, hours, minutes, seconds)
+        if getFormatValues(format: format) == 3 {
+            timeText = String(format: (format.rawValue), hours, minutes, seconds)
         } else  {
-           timeText = String(format: (format?.rawValue)!, minutes, seconds)
+            timeText = String(format: (format.rawValue), minutes, seconds)
         }
         return timeText
-    }
-    
-    private func getFormatValues() -> Int {
-        var formatValues = 0
-        if let formatString = format?.rawValue {
-            for c in formatString.characters {
-                if c == "%" {
-                    formatValues += 1
-                }
-            }
-        }
-        return formatValues
     }
     
     class func getZeroHour(timeStamp: TimeInterval) -> TimeInterval {
@@ -108,5 +100,15 @@ class DateFormatHelper {
     
     class func getMilliSeconds(date: Date) -> TimeInterval {
         return date.timeIntervalSince1970 * 1000
+    }
+    
+    private class func getFormatValues(format: TimeEnum) -> Int {
+        var formatValues = 0
+        for c in format.rawValue.characters {
+            if c == "%" {
+                formatValues += 1
+            }
+        }
+        return formatValues
     }
 }

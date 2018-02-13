@@ -166,6 +166,12 @@
 		06371C2A1FF5723D00469A46 /* VcPlanDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */; };
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
+		063BE1752032F25F002C3886 /* BaseTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1742032F25F002C3886 /* BaseTraining.swift */; };
+		063BE1772032F351002C3886 /* TrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1762032F351002C3886 /* TrainingNew.swift */; };
+		063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1782032F68C002C3886 /* TrainingAvgNew.swift */; };
+		063BE17B2032F853002C3886 /* ChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17A2032F853002C3886 /* ChartTraining.swift */; };
+		063BE17D2032F889002C3886 /* SumChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17C2032F889002C3886 /* SumChartTraining.swift */; };
+		063BE17F2032F925002C3886 /* SumTrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17E2032F925002C3886 /* SumTrainingNew.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
@@ -606,6 +612,12 @@
 		06371C291FF5723D00469A46 /* VcPlanDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
+		063BE1742032F25F002C3886 /* BaseTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTraining.swift; sourceTree = "<group>"; };
+		063BE1762032F351002C3886 /* TrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingNew.swift; sourceTree = "<group>"; };
+		063BE1782032F68C002C3886 /* TrainingAvgNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgNew.swift; sourceTree = "<group>"; };
+		063BE17A2032F853002C3886 /* ChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTraining.swift; sourceTree = "<group>"; };
+		063BE17C2032F889002C3886 /* SumChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumChartTraining.swift; sourceTree = "<group>"; };
+		063BE17E2032F925002C3886 /* SumTrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingNew.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
@@ -1650,6 +1662,12 @@
 				067964571E63661200DFC050 /* TelemetryObject.swift */,
 				06117BD01E4996350066C072 /* Training.swift */,
 				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
+				063BE1742032F25F002C3886 /* BaseTraining.swift */,
+				063BE1762032F351002C3886 /* TrainingNew.swift */,
+				063BE1782032F68C002C3886 /* TrainingAvgNew.swift */,
+				063BE17A2032F853002C3886 /* ChartTraining.swift */,
+				063BE17C2032F889002C3886 /* SumChartTraining.swift */,
+				063BE17E2032F925002C3886 /* SumTrainingNew.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -2260,6 +2278,7 @@
 				061145E01E58DF750058EAF4 /* AppLineChartData.swift in Sources */,
 				060B3DC01EE85E5900AF43DE /* PlanEtIntensity.swift in Sources */,
 				06CAFF451F0D2C8900D2EA14 /* ManagerModifyEventSave.swift in Sources */,
+				063BE17B2032F853002C3886 /* ChartTraining.swift in Sources */,
 				06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */,
 				061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */,
 				064FE5A21ECED286004A9F35 /* SearchTextView.swift in Sources */,
@@ -2326,6 +2345,7 @@
 				067545BD1F10AB3C008759E7 /* PlanTypeVc.swift in Sources */,
 				06F939021E3F793100920753 /* AppUILabel.swift in Sources */,
 				06287D031F0F5C8100F102C8 /* AddEventDialog.swift in Sources */,
+				063BE1752032F25F002C3886 /* BaseTraining.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				06C7071C1FFBADF000D72E72 /* BaseDialogelementTextField.swift in Sources */,
 				060E97601FE8286400CB4258 /* FacebookLoginHelper.swift in Sources */,
@@ -2368,6 +2388,7 @@
 				06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */,
 				06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */,
 				063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */,
+				063BE1772032F351002C3886 /* TrainingNew.swift in Sources */,
 				06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */,
 				06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
@@ -2377,6 +2398,7 @@
 				066835F42002813900DA9969 /* CommandOutdoorLocation.swift in Sources */,
 				06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */,
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
+				063BE17D2032F889002C3886 /* SumChartTraining.swift in Sources */,
 				06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */,
 				060C8B771E40682C0057DD61 /* User.swift in Sources */,
 				061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */,
@@ -2552,6 +2574,7 @@
 				064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
+				063BE17F2032F925002C3886 /* SumTrainingNew.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,
 				06C707341FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
@@ -2571,6 +2594,7 @@
 				06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */,
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
 				06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */,
+				063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				06C707121FFB90AD00D72E72 /* ViewAppToastLayout.swift in Sources */,
 				064498BD201879F600DF9915 /* LogObjectDbLoader.swift in Sources */,
