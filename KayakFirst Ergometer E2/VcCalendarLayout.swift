@@ -7,12 +7,10 @@
 //
 
 import Foundation
-import CVCalendar
 
 class VcCalendarLayout: BaseLayout {
     
     private let segmentItems = [getString("plan_plan"), getString("training_log").capitalized]
-    private let calendarHeight: CGFloat = 190
     
     private var stackView: UIStackView?
     let viewTableView = UIView()
@@ -22,9 +20,7 @@ class VcCalendarLayout: BaseLayout {
         stackView = UIStackView()
         stackView?.spacing = margin
         
-        viewCalendar.addSubview(cvCalendarView)
-        viewCalendar.addSubview(labelMonth)
-        viewCalendar.addSubview(calendarMenuView)
+        viewCalendar.addSubview(calendarView)
         viewCalendar.addSubview(segmentedControl)
         segmentedControl.snp.makeConstraints { (make) in
             make.width.equalTo(viewCalendar).offset(-2 * margin2)
@@ -32,13 +28,13 @@ class VcCalendarLayout: BaseLayout {
             make.top.equalTo(viewCalendar).inset(UIEdgeInsetsMake(margin05, 0, 0, 0))
             make.height.equalTo(25)
         }
-        labelMonth.snp.makeConstraints { (make) in
-            make.width.equalTo(viewCalendar)
-            make.top.equalTo(segmentedControl.snp.bottom).inset(UIEdgeInsetsMake(0, 0, -margin05, 0))
-        }
         
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
+        
+        calendarView.snp.makeConstraints { (make) in
+            make.edges.equalTo(viewCalendar)
+        }
         
         contentView.addSubview(stackView!)
         stackView?.snp.makeConstraints { make in
@@ -58,11 +54,7 @@ class VcCalendarLayout: BaseLayout {
     override func handlePortraitLayout(size: CGSize) {
         stackView?.axis = .vertical
         
-        let width: CGFloat = size.width
-        let height: CGFloat = calendarHeight
-        
-        cvCalendarView.frame = CGRect(x: 0, y: 100, width: width, height: height)
-        calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
+        calendarView.handlePortraitLayout(size: size)
         
         let screenheight = UIScreen.main.bounds.height
         let tableViewHeight = screenheight >= 600 ? (screenheight / 2.6) : (screenheight / 3.7)
@@ -77,10 +69,8 @@ class VcCalendarLayout: BaseLayout {
         stackView?.axis = .horizontal
         
         let width: CGFloat = size.width / 2
-        let height: CGFloat = calendarHeight
         
-        cvCalendarView.frame = CGRect(x: 0, y: 90, width: width, height: height)
-        calendarMenuView.frame = CGRect(x: 0, y: 75, width: width, height: 20)
+        calendarView.handleLandscapeLayout(size: size)
         
         viewTableView.snp.removeConstraints()
         viewTableView.snp.makeConstraints { (make) in
@@ -89,10 +79,14 @@ class VcCalendarLayout: BaseLayout {
     }
     
     func designCalendarView() {
-        cvCalendarView.appearance.dayLabelWeekdayInTextColor = Colors.colorWhite
-        cvCalendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.colorAccent
-        cvCalendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.colorAccent
+        calendarView.designCalendarView()
     }
+    
+    lazy var calendarView: CalendarView! = {
+        let calendarView = CalendarView()
+        
+        return calendarView
+    }()
     
     lazy var tableViewTraining: TrainingTablewView! = {
         let tableViewTraining = TrainingTablewView(view: self.viewTableView)
@@ -116,28 +110,6 @@ class VcCalendarLayout: BaseLayout {
         let spinner = AppProgressBar()
         
         return spinner
-    }()
-    
-    lazy var labelMonth: UILabel! = {
-        let label = AppUILabel()
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
-    lazy var cvCalendarView: CVCalendarView! = {
-        let calendarView = CVCalendarView(frame: CGRect(x: 0, y: 120, width: self.contentView.frame.width, height: 200))
-        
-        self.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: currentTimeMillis())
-        
-        return calendarView
-    }()
-    
-    lazy var calendarMenuView: CVCalendarMenuView! = {
-        let calendarMenuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 95, width: self.contentView.frame.width, height: 20))
-        calendarMenuView.dayOfWeekTextColor = Colors.colorWhite
-        
-        return calendarMenuView
     }()
     
     lazy var segmentedControl: UISegmentedControl! = {

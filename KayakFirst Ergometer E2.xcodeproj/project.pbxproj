@@ -181,6 +181,8 @@
 		063BE18E203349C9002C3886 /* TrainingDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18D203349C9002C3886 /* TrainingDbHelper.swift */; };
 		063C41A6203461DB00BCE734 /* PlanDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41A5203461DB00BCE734 /* PlanDesignHelper.swift */; };
 		063C41A8203464E900BCE734 /* TrainingDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41A7203464E900BCE734 /* TrainingDesignHelper.swift */; };
+		063C41AB20348BE100BCE734 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41AA20348BE100BCE734 /* CalendarView.swift */; };
+		063C41AD20348C3A00BCE734 /* ViewCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41AC20348C3A00BCE734 /* ViewCalendarLayout.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
@@ -633,6 +635,8 @@
 		063BE18D203349C9002C3886 /* TrainingDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDbHelper.swift; sourceTree = "<group>"; };
 		063C41A5203461DB00BCE734 /* PlanDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDesignHelper.swift; sourceTree = "<group>"; };
 		063C41A7203464E900BCE734 /* TrainingDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDesignHelper.swift; sourceTree = "<group>"; };
+		063C41AA20348BE100BCE734 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		063C41AC20348C3A00BCE734 /* ViewCalendarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalendarLayout.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
@@ -1248,6 +1252,14 @@
 			name = db_helper;
 			sourceTree = "<group>";
 		};
+		063C41A920348B9400BCE734 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				063C41AA20348BE100BCE734 /* CalendarView.swift */,
+			);
+			name = calendar;
+			sourceTree = "<group>";
+		};
 		0643A31D20230A8C00120DED /* log */ = {
 			isa = PBXGroup;
 			children = (
@@ -1728,6 +1740,7 @@
 		06C1B9861E25961300AB4C47 /* design */ = {
 			isa = PBXGroup;
 			children = (
+				063C41A920348B9400BCE734 /* calendar */,
 				061145CC1E58C9750058EAF4 /* chart */,
 				06C1B9891E259C1000AB4C47 /* dashboard_elements */,
 				061145CF1E58CF540058EAF4 /* diagram_label */,
@@ -1870,6 +1883,7 @@
 				06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */,
 				0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */,
 				0619660C1FFE32100040E59A /* ViewPauseLayout.swift */,
+				063C41AC20348C3A00BCE734 /* ViewCalendarLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2320,6 +2334,7 @@
 				067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
 				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
+				063C41AB20348BE100BCE734 /* CalendarView.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
 				063BE18A203346B3002C3886 /* TrainingAvgDbHelper.swift in Sources */,
@@ -2385,6 +2400,7 @@
 				067129581EC8958600362C39 /* PECellNormal.swift in Sources */,
 				060958E51EDDFA74009A824C /* BatterySaveHelper.swift in Sources */,
 				0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */,
+				063C41AD20348C3A00BCE734 /* ViewCalendarLayout.swift in Sources */,
 				06018D581E620FFC00F75919 /* AppSql.swift in Sources */,
 				064498BB201878BE00DF9915 /* LogObject.swift in Sources */,
 				06F9145E1E427FFC0041B303 /* UserLogin.swift in Sources */,

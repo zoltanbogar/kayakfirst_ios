@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import CVCalendar
 
-class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMenuViewDelegate, CVCalendarViewAppearanceDelegate {
+class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
     
     //MARK: constants
     private static let modeEvent = "mode_event"
@@ -25,7 +24,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     private let eventManager = EventManager.sharedInstance
     
     //MARK: properties
-    private var selectedDate: TimeInterval = currentTimeMillis()
+    private var selectedDate: TimeInterval = 0
     private var error: Responses?
     private var mode = CalendarVc.modeEvent
     var shouldRefresh = false
@@ -39,6 +38,9 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
         
         eventManager.planEventCallback = eventCallback
         eventManager.eventDaysCallback = eventDaysCallback
+        
+        contentLayout!.calendarView.delegate = self
+        selectedDate = contentLayout!.calendarView.selectedDate
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,10 +68,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     
     internal override func initView() {
         super.initView()
-        
-        contentLayout!.cvCalendarView.calendarAppearanceDelegate = self
-        contentLayout!.cvCalendarView.calendarDelegate = self
-        contentLayout!.calendarMenuView.menuViewDelegate = self
         
         contentLayout!.segmentedControl.addTarget(self, action: #selector(setSegmentedItem), for: .valueChanged)
         contentLayout!.btnToday.target = self
@@ -109,8 +107,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     }
     
     private func refreshCalendarDesign() {
-        contentLayout!.cvCalendarView.commitCalendarViewUpdate()
-        contentLayout!.calendarMenuView?.commitMenuViewUpdate()
         contentLayout!.designCalendarView()
     }
     
@@ -128,7 +124,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     }
     
     private func refreshContentWithMode() {
-        contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
+        contentLayout!.calendarView.timestamps = nil
         switch mode {
         case CalendarVc.modeEvent:
             getEventDays()
@@ -152,7 +148,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     private func initTrainingDays(trainingDays: [TimeInterval]) {
         self.trainingDaysList = trainingDays
         if self.mode == CalendarVc.modeTraining {
-            contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
+            contentLayout!.calendarView.timestamps = trainingDays
+            
             getTrainigsList()
         }
     }
@@ -160,7 +157,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     private func initEventDays(eventDays: [TimeInterval]) {
         self.eventDaysList = eventDays
         if self.mode == CalendarVc.modeEvent {
-            contentLayout!.cvCalendarView?.contentController.refreshPresentedMonth()
+            contentLayout!.calendarView.timestamps = eventDays
+            
             getEventList()
         }
     }
@@ -227,6 +225,19 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     }
     
     //MARK: callbacks
+    func onDateSelected(timestamp: Double) {
+        selectedDate = timestamp
+        
+        switch mode {
+        case CalendarVc.modeEvent:
+            getEventList()
+        case CalendarVc.modeTraining:
+            getTrainigsList()
+        default:
+            break
+        }
+    }
+    
     private func trainingDaysCallback(data: [Double]?, error: Responses?) {
         showProgressBarTraining(isShow: false)
         
@@ -324,78 +335,11 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CVCalendarViewDelegate, CVCalendarMe
     
     //MARK: buttons listeners
     @objc private func btnTodayClick() {
-        contentLayout!.cvCalendarView?.toggleCurrentDayView()
+        contentLayout!.calendarView.setToday()
     }
     
     @objc private func addClick() {
         startPlanTypeVc(viewController: self)
-    }
-    
-    func presentationMode() -> CalendarMode {
-        return .monthView
-    }
-    
-    func firstWeekday() -> Weekday {
-        return .monday
-    }
-    
-    func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
-        switch mode {
-        case CalendarVc.modeEvent:
-            if let eventDayList = eventDaysList {
-                if eventDayList.contains(dayView.date.getTimeMillis()) {
-                    return true
-                }
-            } else {
-                return false
-            }
-        case CalendarVc.modeTraining:
-            if let trainingDayList = trainingDaysList { 
-                
-                if trainingDayList.contains(dayView.date.getTimeMillis()) {
-                    return true
-                }
-            } else {
-                return false
-            }
-        default:
-            return false
-        }
-        return false
-    }
-    
-    func dotMarker(moveOffsetOnDayView dayView: DayView) -> CGFloat {
-        return 10.0
-    }
-    
-    func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
-        return [Colors.colorAccent]
-    }
-    
-    func dayLabelWeekdayInTextColor() -> UIColor {
-        return Colors.colorWhite
-    }
-    
-    func presentedDateUpdated(_ date: CVDate) {
-        refreshMonth(timeStamp: date.getTimeMillis())
-        
-        if selectedDate != date.getTimeMillis() {
-            selectedDate = date.getTimeMillis()
-            
-            switch mode {
-            case CalendarVc.modeEvent:
-                getEventList()
-            case CalendarVc.modeTraining:
-                getTrainigsList()
-            default:
-                break
-            }
-        }
-    }
-    
-    private func refreshMonth(timeStamp: TimeInterval) {
-        contentLayout!.labelMonth.text = DateFormatHelper.getDate(dateFormat: getString("date_format_month"), timeIntervallSince1970: timeStamp)
-        contentLayout!.cvCalendarView.contentController.refreshPresentedMonth()
     }
     
     @objc private func setSegmentedItem(sender: UISegmentedControl) {
