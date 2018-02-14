@@ -30,7 +30,7 @@ class PlanTableViewCell: AppUITableViewCell<Plan> {
     override func initData(data: Plan?) {
         self.plan = data
         labelName.text = data?.name
-        btnType.setImage(Plan.getTypeIconSmall(planType: data?.type), for: .normal)
+        btnType.setImage(getPlanTypeIconSmall(planType: data?.type), for: .normal)
     }
     
     //MARK: init view

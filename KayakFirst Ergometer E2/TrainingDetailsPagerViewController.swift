@@ -144,17 +144,10 @@ class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewContro
     }()
     
     private func initEnvType(viewController: TrainingDetailsViewController) {
-        switch viewController.sumTraining!.trainingEnvironmentType {
-        case TrainingEnvironmentType.ergometer.rawValue:
-            btnTrainingType.image = UIImage(named: "lightBulbCopy")
-        case TrainingEnvironmentType.outdoor.rawValue:
-            btnTrainingType.image = UIImage(named: "sunCopy")
-        default:
-            break
-        }
+        btnTrainingType.image = getTrainingTypeIcon(trainingEnvType: viewController.sumTraining?.trainingEnvironmentType)
         
         if viewController.sumTraining?.planTrainingType != nil {
-            btnPlanType.image = Plan.getTypeIconSmall(planType: viewController.sumTraining!.planTrainingType!)?.withRenderingMode(.alwaysOriginal)
+            btnPlanType.image = getPlanTypeIconSmall(planType: viewController.sumTraining!.planTrainingType!)?.withRenderingMode(.alwaysOriginal)
             self.navigationItem.setRightBarButtonItems([btnTrainingType, btnPlanType], animated: true)
         } else {
             self.navigationItem.setRightBarButtonItems([btnTrainingType], animated: true)

@@ -179,6 +179,8 @@
 		063BE18A203346B3002C3886 /* TrainingAvgDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */; };
 		063BE18C20334842002C3886 /* PlanDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18B20334842002C3886 /* PlanDbHelper.swift */; };
 		063BE18E203349C9002C3886 /* TrainingDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18D203349C9002C3886 /* TrainingDbHelper.swift */; };
+		063C41A6203461DB00BCE734 /* PlanDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41A5203461DB00BCE734 /* PlanDesignHelper.swift */; };
+		063C41A8203464E900BCE734 /* TrainingDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C41A7203464E900BCE734 /* TrainingDesignHelper.swift */; };
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
@@ -629,6 +631,8 @@
 		063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbHelper.swift; sourceTree = "<group>"; };
 		063BE18B20334842002C3886 /* PlanDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDbHelper.swift; sourceTree = "<group>"; };
 		063BE18D203349C9002C3886 /* TrainingDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDbHelper.swift; sourceTree = "<group>"; };
+		063C41A5203461DB00BCE734 /* PlanDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDesignHelper.swift; sourceTree = "<group>"; };
+		063C41A7203464E900BCE734 /* TrainingDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDesignHelper.swift; sourceTree = "<group>"; };
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
@@ -1294,6 +1298,8 @@
 				067C2F76200D0AFF0045111A /* RefreshDashboardHelper.swift */,
 				0626FBCE1EFCF0C800DCBB33 /* Validate.swift */,
 				062F02CC1F485CCA003CEE36 /* WindowHelper.swift */,
+				063C41A5203461DB00BCE734 /* PlanDesignHelper.swift */,
+				063C41A7203464E900BCE734 /* TrainingDesignHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1329,12 +1335,12 @@
 		064D91F81FE6861000179498 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				06CBFCBD1FF244CE0017E9B5 /* layout */,
-				064764C51E237022004B9ED3 /* utils */,
-				06BF94F01E2A30E20010C8A7 /* view_controller */,
 				06C1B9861E25961300AB4C47 /* design */,
-				0683EA361E74856D00F39988 /* fonts */,
 				069433E61E28361B00CE6398 /* dialog */,
+				0683EA361E74856D00F39988 /* fonts */,
+				06CBFCBD1FF244CE0017E9B5 /* layout */,
+				06BF94F01E2A30E20010C8A7 /* view_controller */,
+				064764C51E237022004B9ED3 /* utils */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -2350,6 +2356,7 @@
 				060A7D0B1E41B44100F6A29F /* ServerService.swift in Sources */,
 				06E840631F37656E00303574 /* BluetoothDisconnectDialog.swift in Sources */,
 				067964681E637C4600DFC050 /* CalculateElementAvg.swift in Sources */,
+				063C41A6203461DB00BCE734 /* PlanDesignHelper.swift in Sources */,
 				06371C281FF56C8100469A46 /* VcCreatePlanLayout.swift in Sources */,
 				0621F7AE1E3FEF5A006FF613 /* NSLocale+.swift in Sources */,
 				064766461E75885D007936B5 /* LocationPermissionVc.swift in Sources */,
@@ -2394,6 +2401,7 @@
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
+				063C41A8203464E900BCE734 /* TrainingDesignHelper.swift in Sources */,
 				066B00441EC749BD00BE0E1F /* BebasUILabel.swift in Sources */,
 				06C707301FFBC93700D72E72 /* ViewTrainingSumLayout.swift in Sources */,
 				0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */,

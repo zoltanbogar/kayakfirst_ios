@@ -154,35 +154,4 @@ class Plan: PlanObject, ModifyAble {
     static func createPlanId(name: String, createValue: String) -> String {
         return "\(name)_\(Int64(currentTimeMillis()))_\(createValue)"
     }
-    
-    class func setTypeIcon(planType: PlanType?, imageView: UIImageView) {
-        if let planType = planType {
-            imageView.isHidden = false
-            imageView.image = getTypeIcon(planType: planType)
-        } else {
-            imageView.isHidden = true
-        }
-    }
-    
-    class func getTypeIconSmall(planType: PlanType?) -> UIImage? {
-        var image = Plan.getTypeIcon(planType: planType)
-        
-        if image != nil {
-            image = image!.resizeImage(targetSize: CGSize(width: 24, height: 24))
-        }
-        
-        return image
-    }
-    
-    class func getTypeIcon(planType: PlanType?) -> UIImage? {
-        if let planType = planType {
-            switch planType {
-            case PlanType.distance:
-                return UIImage(named: "distanceIcon")
-            case PlanType.time:
-                return UIImage(named: "durationIcon")
-            }
-        }
-        return nil
-    }
 }

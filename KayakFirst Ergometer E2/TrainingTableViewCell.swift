@@ -39,23 +39,11 @@ class TrainingTablewViewCell: AppUITableViewCell<SumTrainingNew> {
         if sumTraining?.planTrainingId == nil {
             imagePlanType = UIImage(named: "")
         } else {
-            imagePlanType = Plan.getTypeIconSmall(planType: sumTraining?.planTrainingType)
+            imagePlanType = getPlanTypeIconSmall(planType: sumTraining?.planTrainingType)
         }
         btnPlanType.setImage(imagePlanType, for: .normal)
         
-        if let envType = data?.trainingEnvironmentType {
-            var imageEnviromentType: UIImage?
-            switch envType {
-            case TrainingEnvironmentType.ergometer.rawValue:
-                imageEnviromentType = UIImage(named: "lightBulbCopy")
-            case TrainingEnvironmentType.outdoor.rawValue:
-                imageEnviromentType = UIImage(named: "sunCopy")
-            default:
-                break
-            }
-            
-            imgErgoOutdoor.image = imageEnviromentType
-        }
+        setTrainingTypeIcon(trainingEnvType: data?.trainingEnvironmentType, imageView: imgErgoOutdoor)
     }
     
     //MARK: button listener
