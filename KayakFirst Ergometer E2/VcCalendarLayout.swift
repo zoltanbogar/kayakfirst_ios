@@ -32,6 +32,16 @@ class VcCalendarLayout: BaseLayout {
         stackView?.addArrangedSubview(viewCalendar)
         stackView?.addArrangedSubview(viewTableView)
         
+        viewTableView.addSubview(trainingListView)
+        viewTableView.addSubview(eventListView)
+        
+        trainingListView.snp.makeConstraints { make in
+            make.edges.equalTo(viewTableView)
+        }
+        eventListView.snp.makeConstraints { make in
+            make.edges.equalTo(viewTableView)
+        }
+        
         calendarView.snp.makeConstraints { (make) in
             make.edges.equalTo(viewCalendar)
         }

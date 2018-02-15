@@ -10,11 +10,20 @@ import Foundation
 
 class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
     
-    private var calendarVc: CalendarVc?
+    private var dataHelper: BaseCalendarDateHelper<LAYOUT, DATA>?
     
     private var tableView: BaseCalendarTableView<DATA>?
     
     private var selectedDate: Double = 0
+    
+    override init() {
+        super.init()
+        getManager().dataListCallback = listCallback
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: abstract functions
     func getTableView() -> BaseCalendarTableView<DATA> {
@@ -25,7 +34,7 @@ class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
         fatalError("must be implemented")
     }
     
-    func callManager(timestamps: [Double]) {
+    func getManager() -> BaseCalendarManager<DATA> {
         fatalError("must be implemented")
     }
     
@@ -33,8 +42,8 @@ class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
         fatalError("must be implemented")
     }
     
-    func initTableView(calendarVc: CalendarVc, clickCallback: ((_ data: [DATA]?, _ position: Int) -> ())?, deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
-        self.calendarVc = calendarVc
+    func initTableView(dataHelper: BaseCalendarDateHelper<LAYOUT, DATA>, clickCallback: ((_ data: [DATA]?, _ position: Int) -> ())?, deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) {
+        self.dataHelper = dataHelper
         
         tableView = getTableView()
         tableView?.clickCallback = clickCallback
@@ -48,7 +57,7 @@ class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
         
         if timestamps != nil && timestamps!.count > 0 {
             getProgressBar().showProgressBar(true)
-            callManager(timestamps: timestamps!)
+            getManager().getDataList(timestamps: timestamps!)
         } else {
             getProgressBar().showProgressBar(false)
         }
@@ -65,7 +74,7 @@ class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
             tableView?.dataList = nil
         }
         
-        calendarVc?.initError(error: error)
+        dataHelper?.errorHandling(error: error)
     }
     
     private func isDataCorrectDay(timestamp: Double) -> Bool {

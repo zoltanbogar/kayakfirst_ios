@@ -10,14 +10,6 @@ import Foundation
 
 class TrainingCalendarListView: BaseCalendarListView<ViewTrainingCalendarListLayout, SumTrainingNew> {
     
-    private let trainingManager = TrainingManager.sharedInstance
-    
-    override func initView() {
-        super.initView()
-        
-        trainingManager.trainingCallback = listCallback
-    }
-    
     override func getContentLayout(contentView: UIView) -> ViewTrainingCalendarListLayout {
         return ViewTrainingCalendarListLayout(contentView: contentView)
     }
@@ -30,8 +22,8 @@ class TrainingCalendarListView: BaseCalendarListView<ViewTrainingCalendarListLay
         return contentLayout!.progressBar
     }
     
-    override func callManager(timestamps: [Double]) {
-        trainingManager.downloadSumTrainings(sessionIds: timestamps)
+    override func getManager() -> BaseCalendarManager<SumTrainingNew> {
+        return TrainingManager.sharedInstance
     }
     
     override func getDataTimestampToCheck(data: SumTrainingNew) -> Double {

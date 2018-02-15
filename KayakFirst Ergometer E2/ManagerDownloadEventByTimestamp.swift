@@ -12,22 +12,20 @@ import SQLite
 class ManagerDownloadEventByTimestamp: ManagerDownloadPlan<[PlanEvent]>, ManagerDownloadProtocol {
     
     //MARK: properties
-    private let timestampFrom: Double
-    private let timestampTo: Double
+    private let timestamps: [Double]
     
     private var planIds: [String]?
     
     //MARK: init
-    init(timestampFrom: Double, timestampTo: Double) {
-        self.timestampFrom = timestampFrom
-        self.timestampTo = timestampTo
+    init(timestamps: [Double]) {
+        self.timestamps = timestamps
     }
     
     //MARK: funtions
     override func getDataFromLocale() -> [PlanEvent]? {
         var planEvents = [PlanEvent]()
         
-        let events = eventDbLoader.loadData(predicate: getQueryEventTimestamp())
+        let events = eventDbLoader.getEventsByTimestamps(timestamps: timestamps)
         
         if let eventValue = events {
             for event in eventValue {
@@ -57,10 +55,6 @@ class ManagerDownloadEventByTimestamp: ManagerDownloadPlan<[PlanEvent]>, Manager
     }
     
     //MARK: helper
-    private func getQueryEventTimestamp() -> Expression<Bool> {
-        return eventDbLoader.getEventBetweenTimestampPredicate(timestampFrom: timestampFrom, timestampTo: timestampTo)
-    }
-    
     private func getQueryPlanId(planId: String) -> Expression<Bool> {
         return planDbLoader.getIdPredicate(planId: planId)
     }

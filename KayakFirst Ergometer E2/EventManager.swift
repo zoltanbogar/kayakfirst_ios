@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventManager: BaseManager {
+class EventManager: BaseCalendarManager<PlanEvent> {
     
     //MARK: init
     static let sharedInstance = EventManager()
@@ -16,20 +16,16 @@ class EventManager: BaseManager {
         //private constructor
     }
     
-    //MARK: callback
-    var planEventCallback: ((_ data: [PlanEvent]?, _ error: Responses?) -> ())?
-    var eventDaysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
-    
     //MARK: functions
-    func getEventDays() -> BaseManagerType {
+    override func getDays() -> BaseManagerType {
         let managerDownloadEventDays = ManagerDownloadEventDays()
-        runDownload(managerDownload: managerDownloadEventDays, managerCallBack: eventDaysCallback)
+        runDownload(managerDownload: managerDownloadEventDays, managerCallBack: daysCallback)
         return EventManagerType.download_event_days
     }
     
-    func getEventByTimestamp(timestampFrom: Double, timestampTo: Double) -> BaseManagerType {
-        let managerDownloadEventByTimestamp = ManagerDownloadEventByTimestamp(timestampFrom: timestampFrom, timestampTo: timestampTo)
-        runDownload(managerDownload: managerDownloadEventByTimestamp, managerCallBack: planEventCallback)
+    override func getDataList(timestamps: [Double]) -> BaseManagerType {
+        let managerDownloadEventByTimestamp = ManagerDownloadEventByTimestamp(timestamps: timestamps)
+        runDownload(managerDownload: managerDownloadEventByTimestamp, managerCallBack: dataListCallback)
         return EventManagerType.download_event
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrainingManager: BaseManager {
+class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     
     //MARK: init
     static let sharedInstance = TrainingManager()
@@ -19,21 +19,16 @@ class TrainingManager: BaseManager {
     //MARK: properties
     private let saveTrainingValues = SaveTrainingValues.sharedInstance
     
-    //MARK: callbacks
-    var trainingCallback: ((_ data: [SumTrainingNew]?, _ error: Responses?) -> ())?
-    var trainingDaysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
-    
     //MARK: functions
-    func getTrainingDays() -> BaseManagerType {
+    override func getDays() -> BaseManagerType {
         let managerDownloadTrainingDays = ManagerDownloadTrainingDays()
-        runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: trainingDaysCallback)
+        runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
         return TrainingManagerType.download_training_days
     }
     
-    func downloadSumTrainings(sessionIds: [Double]) -> BaseManagerType {
-        let manager = ManagerDownloadTrainingBySessionId(sessionIds: sessionIds)
-        runDownload(managerDownload: manager, managerCallBack: trainingCallback)
-        
+    override func getDataList(timestamps: [Double]) -> BaseManagerType {
+        let manager = ManagerDownloadTrainingBySessionId(sessionIds: timestamps)
+        runDownload(managerDownload: manager, managerCallBack: dataListCallback)
         return TrainingManagerType.download_training
     }
     

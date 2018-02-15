@@ -97,14 +97,23 @@ class EventDbLoader: BaseDbLoader<Event> {
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
-                let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.timestamp])
-                eventDays.append(midnightTime)
+                //let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.timestamp])
+                //TODO
+                //eventDays.append(midnightTime)
+                eventDays.append(days[self.timestamp])
             }
         } catch {
             log(databaseLogTag, error)
         }
         
         return eventDays
+    }
+    
+    func getEventsByTimestamps(timestamps: [Double]?) -> [Event]? {
+        if let timestamps = timestamps {
+            return loadData(predicate: getSumPredicateOr(column: self.timestamp, values: timestamps))
+        }
+        return nil
     }
     
     func getEventsByPlanId(planId: String) -> [Event]? {
@@ -135,15 +144,26 @@ class EventDbLoader: BaseDbLoader<Event> {
         return events
     }
     
-    func getEventBetweenTimestampPredicate(timestampFrom: Double, timestampTo: Double) -> Expression<Bool> {
-        return self.timestamp > timestampFrom && self.timestamp <= timestampTo
-    }
-    
     func getIdPredicate(eventId: String?) -> Expression<Bool>? {
         if let eventIdValue = eventId {
             return self.id == eventId!
         }
         return nil
+    }
+    
+    private func getSumPredicateOr(column: Expression<Double>, values: [Double]?) -> Expression<Bool>? {
+        var sumPredicate: Expression<Bool>? = nil
+        if let values = values {
+            for value in values {
+                let predicate: Expression<Bool> = column == value
+                if sumPredicate == nil {
+                    sumPredicate = predicate
+                } else {
+                    sumPredicate = sumPredicate! || predicate
+                }
+            }
+        }
+        return sumPredicate
     }
     
     //MARK: delete

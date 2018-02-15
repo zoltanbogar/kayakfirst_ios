@@ -10,14 +10,6 @@ import Foundation
 
 class EventCalendarListView: BaseCalendarListView<ViewEventCalendarListLayout, PlanEvent> {
     
-    private let eventManager = EventManager.sharedInstance
-    
-    override func initView() {
-        super.initView()
-        
-        eventManager.planEventCallback = listCallback
-    }
-    
     override func getContentLayout(contentView: UIView) -> ViewEventCalendarListLayout {
         return ViewEventCalendarListLayout(contentView: contentView)
     }
@@ -30,8 +22,8 @@ class EventCalendarListView: BaseCalendarListView<ViewEventCalendarListLayout, P
         return contentLayout!.progressBar
     }
     
-    override func callManager(timestamps: [Double]) {
-        eventManager.getEventByTimestamp(timestampFrom: timestamps[0], timestampTo: timestamps[timestamps.count - 1])
+    override func getManager() -> BaseCalendarManager<PlanEvent> {
+        return EventManager.sharedInstance
     }
     
     override func getDataTimestampToCheck(data: PlanEvent) -> Double {

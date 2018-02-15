@@ -99,7 +99,7 @@ class BaseDbLoader<Input> {
         return timestamp
     }
     
-    //MARK: static functions
+    //MARK: functions
     func getSumPredicate(predicates: Expression<Bool>?...) -> Expression<Bool>? {
         var sumPredicate: Expression<Bool>? = nil
         for predicate in predicates {
