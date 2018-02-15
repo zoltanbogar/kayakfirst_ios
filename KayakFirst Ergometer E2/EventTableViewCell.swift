@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
+class EventTabLeViewCell: BaseCalendarTableViewCell<PlanEvent> {
     
     //MARK: constants
     static let playWidth = 80
@@ -23,7 +23,6 @@ class EventTabLeViewCell: AppUITableViewCell<PlanEvent> {
     //MARK: properties
     private let stackView = UIStackView()
     private var planEvent: PlanEvent?
-    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

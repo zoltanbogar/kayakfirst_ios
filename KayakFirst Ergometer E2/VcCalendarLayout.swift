@@ -40,15 +40,6 @@ class VcCalendarLayout: BaseLayout {
         stackView?.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
-        
-        tableViewTraining.addSubview(progressBarTraining)
-        progressBarTraining.snp.makeConstraints { make in
-            make.center.equalTo(tableViewTraining)
-        }
-        tableViewEvent.addSubview(progressBarEvent)
-        progressBarEvent.snp.makeConstraints { (make) in
-            make.center.equalTo(tableViewEvent)
-        }
     }
 
     override func handlePortraitLayout(size: CGSize) {
@@ -88,28 +79,16 @@ class VcCalendarLayout: BaseLayout {
         return calendarView
     }()
     
-    lazy var tableViewTraining: TrainingTablewView! = {
-        let tableViewTraining = TrainingTablewView(view: self.viewTableView)
+    lazy var trainingListView: TrainingCalendarListView! = {
+        let view = TrainingCalendarListView()
         
-        return tableViewTraining
+        return view
     }()
     
-    lazy var progressBarTraining: AppProgressBar! = {
-        let spinner = AppProgressBar()
+    lazy var eventListView: EventCalendarListView! = {
+        let view = EventCalendarListView()
         
-        return spinner
-    }()
-    
-    lazy var tableViewEvent: EventTableView! = {
-        let tableViewEvent = EventTableView(view: self.viewTableView)
-        
-        return tableViewEvent
-    }()
-    
-    lazy var progressBarEvent: AppProgressBar! = {
-        let spinner = AppProgressBar()
-        
-        return spinner
+        return view
     }()
     
     lazy var segmentedControl: UISegmentedControl! = {

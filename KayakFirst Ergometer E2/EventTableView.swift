@@ -8,10 +8,7 @@
 
 import Foundation
 
-class EventTableView: TableViewWithEmpty<PlanEvent> {
-    
-    //MARK: properties
-    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
+class EventTableView: BaseCalendarTableView<PlanEvent> {
     
     //MARK: init
     override init(view: UIView) {
@@ -36,14 +33,6 @@ class EventTableView: TableViewWithEmpty<PlanEvent> {
     
     override func getHeaderView() -> AppTableViewHeader? {
         return headerView
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
-        (cell as! EventTabLeViewCell).deleteCallback = deleteCallback
-        
-        return cell
     }
     
     //MARK: views

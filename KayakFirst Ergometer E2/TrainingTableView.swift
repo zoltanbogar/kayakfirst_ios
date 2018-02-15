@@ -8,11 +8,7 @@
 
 import UIKit
 
-class TrainingTablewView: TableViewWithEmpty<SumTrainingNew> {
-    
-    //MARK: properties
-    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
-    var trainingClickCallback: ((_ sumTrainings: [SumTrainingNew]?, _ position: Int) -> ())?
+class TrainingTablewView: BaseCalendarTableView<SumTrainingNew> {
     
     //MARK: init
     override init(view: UIView) {
@@ -37,18 +33,6 @@ class TrainingTablewView: TableViewWithEmpty<SumTrainingNew> {
     
     override func getHeaderView() -> AppTableViewHeader? {
         return headerView
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
-        (cell as! TrainingTablewViewCell).deleteCallback = deleteCallback
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        trainingClickCallback?(dataList, indexPath.row)
     }
     
     private lazy var labelEmpty: UILabel! = {

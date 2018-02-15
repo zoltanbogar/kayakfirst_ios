@@ -33,10 +33,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trainingManager.trainingCallback = trainigCallback
         trainingManager.trainingDaysCallback = trainingDaysCallback
         
-        eventManager.planEventCallback = eventCallback
         eventManager.eventDaysCallback = eventDaysCallback
         
         contentLayout!.calendarView.delegate = self
@@ -76,15 +74,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         contentLayout!.btnAdd.target = self
         contentLayout!.btnAdd.action = #selector(addClick)
         
-        contentLayout!.tableViewTraining.deleteCallback = self.deleteDataCallback
-        contentLayout!.tableViewEvent.deleteCallback = self.deleteDataCallback
-        
-        contentLayout!.tableViewTraining.trainingClickCallback = { sumTrainings, position in
-            startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: sumTrainings, position: position)
-        }
-        contentLayout!.tableViewEvent.rowClickCallback = { planEvent, position in
-            startEventDetailsViewController(viewController: self, planEvent: planEvent)
-        }
+        contentLayout!.trainingListView.initTableView(calendarVc: self, clickCallback: trainingClick, deleteCallback: deleteDataCallback)
+        contentLayout!.eventListView.initTableView(calendarVc: self, clickCallback: eventClick, deleteCallback: deleteDataCallback)
         
         contentLayout!.segmentedControl.selectedSegmentIndex = 0
         setSegmentedItem(sender: contentLayout!.segmentedControl)
@@ -136,12 +127,10 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
     }
     
     func getTrainingDays() {
-        showProgressBarTraining(isShow: true)
         trainingManager.getTrainingDays()
     }
     
     func getEventDays() {
-        showProgressBarEvent(isShow: true)
         eventManager.getEventDays()
     }
     
@@ -164,8 +153,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
     }
     
     private func getTrainigsList() {
-        contentLayout!.tableViewTraining.dataList = nil
-        
         var sessionIds = [Double]()
         
         if let trainingDaysValue = sessionIdList {
@@ -176,28 +163,23 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
             }
         }
         
-        if sessionIds.count > 0 {
-            showProgressBarTraining(isShow: true)
-            trainingManager.downloadSumTrainings(sessionIds: sessionIds)
-        } else {
-            showProgressBarTraining(isShow: false)
-        }
+        contentLayout!.trainingListView.showData(timestamps: sessionIds, selectedDate: selectedDate)
         
         errorHandling()
     }
     
     private func getEventList() {
-        contentLayout!.tableViewEvent.dataList = nil
-        
+        var timestamps = [Double]()
         if hasData(listToCheck: eventDaysList) {
             let fromDate = DateFormatHelper.getZeroHour(timeStamp: selectedDate)
             let toDate = DateFormatHelper.get23Hour(timeStamp: selectedDate)
             
-            showProgressBarEvent(isShow: true)
-            eventManager.getEventByTimestamp(timestampFrom: fromDate, timestampTo: toDate)
-        } else {
-            showProgressBarEvent(isShow: false)
+            timestamps.append(fromDate)
+            timestamps.append(toDate)
         }
+        
+        contentLayout!.eventListView.showData(timestamps: timestamps, selectedDate: selectedDate)
+        
         errorHandling()
     }
     
@@ -216,14 +198,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         return hasData
     }
     
-    private func refreshTableViewTraining(sumTrainings: [SumTrainingNew]?) {
-        contentLayout!.tableViewTraining?.dataList = sumTrainings
-    }
-    
-    private func refreshTableViewEvent(planEvents: [PlanEvent]?) {
-        contentLayout!.tableViewEvent.dataList = planEvents
-    }
-    
     //MARK: callbacks
     func onDateSelected(timestamp: Double) {
         selectedDate = timestamp
@@ -239,8 +213,6 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
     }
     
     private func trainingDaysCallback(data: [Double]?, error: Responses?) {
-        showProgressBarTraining(isShow: false)
-        
         self.sessionIdList = data
         
         var trainingDays = [Double]()
@@ -260,22 +232,7 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         initError(error: error)
     }
     
-    private func trainigCallback(data: [SumTrainingNew]?, error: Responses?) {
-        showProgressBarTraining(isShow: false)
-        if data != nil && data!.count > 0 {
-            if isDataCorrectDay(timestamp: data![0].sessionId) {
-                refreshTableViewTraining(sumTrainings: data!)
-            }
-        } else {
-            refreshTableViewTraining(sumTrainings: nil)
-        }
-        
-        initError(error: error)
-    }
-    
     private func eventDaysCallback(data: [Double]?, error: Responses?) {
-        showProgressBarEvent(isShow: false)
-        
         var eventDays = [Double]()
         
         if let dataValue = data {
@@ -293,15 +250,13 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         initError(error: error)
     }
     
-    private func eventCallback(data: [PlanEvent]?, error: Responses?) {
-        if data != nil && data!.count > 0 {
-            if isDataCorrectDay(timestamp: data![0].event.timestamp) {
-                refreshTableViewEvent(planEvents: data!)
-                showProgressBarEvent(isShow: false)
-            }
-        }
-        
-        initError(error: error)
+    private func trainingClick(data: [SumTrainingNew]?, position: Int) {
+        startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: data, position: position)
+    }
+    
+    private func eventClick(data: [PlanEvent]?, position: Int) {
+        let planEvent = data![position]
+        startEventDetailsViewController(viewController: self, planEvent: planEvent)
     }
     
     private func deleteDataCallback(data: Bool?, error: Responses?) {
@@ -311,17 +266,8 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         initError(error: error)
     }
     
-    private func isDataCorrectDay(timestamp: Double) -> Bool {
-        return DateFormatHelper.isSameDay(timeStamp1: timestamp, timeStamp2: self.selectedDate)
-    }
-    
-    private func initError(error: Responses?) {
+    func initError(error: Responses?) {
         self.error = error
-        
-        if (error != nil) {
-            showProgressBarEvent(isShow: false)
-            showProgressBarTraining(isShow: false)
-        }
         
         errorHandling()
     }
@@ -346,10 +292,10 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         let viewSub: UIView
         switch sender.selectedSegmentIndex {
         case 0:
-            viewSub = contentLayout!.tableViewEvent
+            viewSub = contentLayout!.eventListView
             setMode(mode: CalendarVc.modeEvent)
         default:
-            viewSub = contentLayout!.tableViewTraining
+            viewSub = contentLayout!.trainingListView
             setMode(mode: CalendarVc.modeTraining)
         }
         
@@ -358,17 +304,5 @@ class CalendarVc: BaseVC<VcCalendarLayout>, CalendarDelegate {
         viewSub.snp.makeConstraints { make in
             make.edges.equalTo(contentLayout!.viewTableView)
         }
-    }
-    
-    private func showProgressBarTraining(isShow: Bool) {
-        showProgressBar(progressBar: contentLayout!.progressBarTraining, isShow: isShow)
-    }
-    
-    private func showProgressBarEvent(isShow: Bool) {
-        showProgressBar(progressBar: contentLayout!.progressBarEvent, isShow: isShow)
-    }
-    
-    private func showProgressBar(progressBar: AppProgressBar, isShow: Bool) {
-        progressBar.showProgressBar(isShow)
     }
 }

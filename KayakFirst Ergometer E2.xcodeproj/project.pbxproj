@@ -212,6 +212,9 @@
 		065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */; };
 		065187221F0A506D00B434B0 /* UploadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187211F0A506D00B434B0 /* UploadPlan.swift */; };
 		065187241F0A50D000B434B0 /* UploadPlanTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065187231F0A50D000B434B0 /* UploadPlanTraining.swift */; };
+		06533A1720355D54006FD371 /* BaseCalendarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06533A1620355D54006FD371 /* BaseCalendarListView.swift */; };
+		06533A1920355F97006FD371 /* BaseCalendarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06533A1820355F97006FD371 /* BaseCalendarTableView.swift */; };
+		06533A1B20356081006FD371 /* BaseCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06533A1A20356081006FD371 /* BaseCalendarTableViewCell.swift */; };
 		0654CA211FFD54ED003379D6 /* BaseTrainingVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */; };
 		0654CA231FFD59E5003379D6 /* DragDropDashboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */; };
 		0654CA251FFD62E5003379D6 /* DashboardVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654CA241FFD62E5003379D6 /* DashboardVc.swift */; };
@@ -304,6 +307,10 @@
 		0683EA351E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */; };
 		0683EA381E74860100F39988 /* BebasNeue.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0683EA371E74858A00F39988 /* BebasNeue.otf */; };
 		068D38801F207DEB005A1197 /* AppToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068D387F1F207DEB005A1197 /* AppToast.swift */; };
+		068FD3E5203566600019D8DF /* EventCalendarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD3E4203566600019D8DF /* EventCalendarListView.swift */; };
+		068FD3E7203566890019D8DF /* ViewEventCalendarListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD3E6203566890019D8DF /* ViewEventCalendarListLayout.swift */; };
+		068FD3E9203568B20019D8DF /* TrainingCalendarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD3E8203568B20019D8DF /* TrainingCalendarListView.swift */; };
+		068FD3EB203569360019D8DF /* ViewTrainingCalendarListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD3EA203569360019D8DF /* ViewTrainingCalendarListLayout.swift */; };
 		069433E81E28362800CE6398 /* BaseDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E71E28362800CE6398 /* BaseDialog.swift */; };
 		069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */; };
 		069433EE1E28419600CE6398 /* ProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069433ED1E28419600CE6398 /* ProgressDialog.swift */; };
@@ -666,6 +673,9 @@
 		0651871F1F0A4ECF00B434B0 /* UploadEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEvent.swift; sourceTree = "<group>"; };
 		065187211F0A506D00B434B0 /* UploadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlan.swift; sourceTree = "<group>"; };
 		065187231F0A50D000B434B0 /* UploadPlanTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPlanTraining.swift; sourceTree = "<group>"; };
+		06533A1620355D54006FD371 /* BaseCalendarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCalendarListView.swift; sourceTree = "<group>"; };
+		06533A1820355F97006FD371 /* BaseCalendarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCalendarTableView.swift; sourceTree = "<group>"; };
+		06533A1A20356081006FD371 /* BaseCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		0654CA201FFD54ED003379D6 /* BaseTrainingVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrainingVc.swift; sourceTree = "<group>"; };
 		0654CA221FFD59E5003379D6 /* DragDropDashboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropDashboardHelper.swift; sourceTree = "<group>"; };
 		0654CA241FFD62E5003379D6 /* DashboardVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVc.swift; sourceTree = "<group>"; };
@@ -759,6 +769,10 @@
 		0683EA341E747CFE00F39988 /* LabelWithAdaptiveTextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithAdaptiveTextHeight.swift; sourceTree = "<group>"; };
 		0683EA371E74858A00F39988 /* BebasNeue.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeue.otf; sourceTree = "<group>"; };
 		068D387F1F207DEB005A1197 /* AppToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToast.swift; sourceTree = "<group>"; };
+		068FD3E4203566600019D8DF /* EventCalendarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarListView.swift; sourceTree = "<group>"; };
+		068FD3E6203566890019D8DF /* ViewEventCalendarListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventCalendarListLayout.swift; sourceTree = "<group>"; };
+		068FD3E8203568B20019D8DF /* TrainingCalendarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCalendarListView.swift; sourceTree = "<group>"; };
+		068FD3EA203569360019D8DF /* ViewTrainingCalendarListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTrainingCalendarListLayout.swift; sourceTree = "<group>"; };
 		069433E71E28362800CE6398 /* BaseDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDialog.swift; sourceTree = "<group>"; };
 		069433E91E283BFD00CE6398 /* ResetPasswordDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordDialog.swift; sourceTree = "<group>"; };
 		069433ED1E28419600CE6398 /* ProgressDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressDialog.swift; sourceTree = "<group>"; };
@@ -1067,6 +1081,8 @@
 				060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */,
 				060D9B9D1E4A5E46006DD8AB /* TableViewWithEmpty.swift */,
 				060468A21F18BF6300D3408C /* AppTableViewHeader.swift */,
+				06533A1820355F97006FD371 /* BaseCalendarTableView.swift */,
+				06533A1A20356081006FD371 /* BaseCalendarTableViewCell.swift */,
 			);
 			name = table_view;
 			sourceTree = "<group>";
@@ -1256,6 +1272,9 @@
 			isa = PBXGroup;
 			children = (
 				063C41AA20348BE100BCE734 /* CalendarView.swift */,
+				06533A1620355D54006FD371 /* BaseCalendarListView.swift */,
+				068FD3E4203566600019D8DF /* EventCalendarListView.swift */,
+				068FD3E8203568B20019D8DF /* TrainingCalendarListView.swift */,
 			);
 			name = calendar;
 			sourceTree = "<group>";
@@ -1884,6 +1903,8 @@
 				0619660A1FFE168D0040E59A /* ViewSwipePauseLayout.swift */,
 				0619660C1FFE32100040E59A /* ViewPauseLayout.swift */,
 				063C41AC20348C3A00BCE734 /* ViewCalendarLayout.swift */,
+				068FD3E6203566890019D8DF /* ViewEventCalendarListLayout.swift */,
+				068FD3EA203569360019D8DF /* ViewTrainingCalendarListLayout.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -2392,6 +2413,7 @@
 				063BE1752032F25F002C3886 /* BaseTraining.swift in Sources */,
 				0618AD291F0D990E00AC1903 /* PlanManager.swift in Sources */,
 				06C7071C1FFBADF000D72E72 /* BaseDialogelementTextField.swift in Sources */,
+				068FD3EB203569360019D8DF /* ViewTrainingCalendarListLayout.swift in Sources */,
 				060E97601FE8286400CB4258 /* FacebookLoginHelper.swift in Sources */,
 				0671295B1EC896FE00362C39 /* PlanUtils.swift in Sources */,
 				061C80171E693F4700BCE509 /* LoginView.swift in Sources */,
@@ -2412,6 +2434,7 @@
 				063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
+				068FD3E9203568B20019D8DF /* TrainingCalendarListView.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
 				064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */,
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
@@ -2477,6 +2500,7 @@
 				0643A31A2022FA8D00120DED /* LogManager.swift in Sources */,
 				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
+				068FD3E7203566890019D8DF /* ViewEventCalendarListLayout.swift in Sources */,
 				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
 				06217B0D2015EA6A004DC885 /* UpdateDialog.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
@@ -2506,12 +2530,14 @@
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
 				06F9D5DE1F38997F005ECA8B /* CalculateElementFErgo.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
+				06533A1920355F97006FD371 /* BaseCalendarTableView.swift in Sources */,
 				064FE5AC1ED0A002004A9F35 /* TrainingManagerType.swift in Sources */,
 				060A37711E57A99000A973BF /* DashBoardElement_Actual1000.swift in Sources */,
 				060DE00A1E4BE02100FE2D14 /* TrainingSET500.swift in Sources */,
 				061C80191E693F8700BCE509 /* RegisterView.swift in Sources */,
 				060DE0101E4BE2F800FE2D14 /* TrainingSET200Av.swift in Sources */,
 				060DDFFE1E4BDE5F00FE2D14 /* TrainingSumElementAvgTime.swift in Sources */,
+				068FD3E5203566600019D8DF /* EventCalendarListView.swift in Sources */,
 				06F657BA1E45F19F002AA9D0 /* ErrorDialog.swift in Sources */,
 				06F657C21E461F3E002AA9D0 /* RefreshToken.swift in Sources */,
 				063237C91FF61F2A00F04A4B /* VcTrainingDetailsLayout.swift in Sources */,
@@ -2615,6 +2641,7 @@
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
 				063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */,
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
+				06533A1B20356081006FD371 /* BaseCalendarTableViewCell.swift in Sources */,
 				06C707181FFBA7DD00D72E72 /* ViewProfileElementLayout.swift in Sources */,
 				06F9D5CF1F389436005ECA8B /* CommandErgometerReset.swift in Sources */,
 				060E107A2023130500D08C0C /* FeedbackDto.swift in Sources */,
@@ -2645,6 +2672,7 @@
 				06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */,
 				063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
+				06533A1720355D54006FD371 /* BaseCalendarListView.swift in Sources */,
 				06C707121FFB90AD00D72E72 /* ViewAppToastLayout.swift in Sources */,
 				064498BD201879F600DF9915 /* LogObjectDbLoader.swift in Sources */,
 				064766481E759ACE007936B5 /* LocationSettingsDialog.swift in Sources */,

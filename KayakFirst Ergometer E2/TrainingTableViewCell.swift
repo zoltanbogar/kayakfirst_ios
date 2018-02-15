@@ -8,14 +8,13 @@
 
 import UIKit
 
-class TrainingTablewViewCell: AppUITableViewCell<SumTrainingNew> {
+class TrainingTablewViewCell: BaseCalendarTableViewCell<SumTrainingNew> {
     
     //MARK: constants
     static let fontSize: CGFloat = 15
     
     //MARK: properties
     private let stackView = UIStackView()
-    var deleteCallback: ((_ data: Bool?, _ error: Responses?) -> ())?
     private var sumTraining: SumTrainingNew?
     
     //MARK: init
