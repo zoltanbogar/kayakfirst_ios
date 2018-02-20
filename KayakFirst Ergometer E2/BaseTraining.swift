@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class BaseTraining {
     
@@ -32,6 +33,14 @@ class BaseTraining {
         self.speed = speed
         self.strokes = strokes
         self.t200 = t200
+    }
+    
+    init?(json: JSON) {
+        self.sessionId = json["sessionId"].doubleValue
+        self.force = json["force"].doubleValue
+        self.speed = json["speed"].doubleValue
+        self.strokes = json["strokes"].doubleValue
+        self.t200 = json["t200"].doubleValue
     }
     
 }

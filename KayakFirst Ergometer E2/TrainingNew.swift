@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 func createTraining(timestamp: Double, force: Double, speed: Double, distance: Double, strokes: Double, t200: Double) -> TrainingNew {
     let sessionId = Telemetry.sharedInstance.sessionId
@@ -32,6 +33,13 @@ class TrainingNew: BaseTraining, UploadAble {
         self.distance = distance
         
         super.init(sessionId: sessionId, force: force, speed: speed, strokes: strokes, t200: t200)
+    }
+    
+    override init?(json: JSON) {
+        self.timestamp = json["timestamp"].doubleValue
+        self.distance = json["distance"].doubleValue
+        
+        super.init(json: json)
     }
     
     func getUploadPointer() -> Double {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum TrainingEnvironmentType: String {
     case ergometer = "ergometer"
@@ -94,6 +95,19 @@ class SumTrainingNew: Equatable, ModifyAble {
         self.startTime = startTime
         self.duration = duration
         self.distance = distance
+    }
+    
+    init?(json: JSON) {
+        self.sessionId = json["sessionId"].doubleValue
+        self.userId = json["userId"].int64Value
+        self.artOfPaddle = json["artOfPaddle"].stringValue
+        self.trainingEnvironmentType = json["trainingEnvironmentType"].stringValue
+        self.trainingCount = json["trainingCount"].intValue
+        self.planTrainingId = json["planTrainingId"].stringValue
+        self.planTrainingType = PlanType(rawValue: json["planTrainingType"].stringValue)
+        self.startTime = json["startTime"].doubleValue
+        self.duration = json["duration"].doubleValue
+        self.distance = json["distance"].doubleValue
     }
     
     //MARK: protocol

@@ -16,6 +16,7 @@ enum TrainingManagerType: Int, BaseManagerType {
     case download_training_days = 4
     case download_training = 5
     case download_training_avg = 6
+    case download_training_sum = 7
     
     func isProgressShown() -> Bool {
         return self.rawValue >= TrainingManagerType.upload_training_avg.rawValue
