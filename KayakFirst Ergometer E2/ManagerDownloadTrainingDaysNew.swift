@@ -61,14 +61,14 @@ class ManagerDownloadTrainingDaysNew: ManagerDownloadNew<DaysObject> {
         if deletedSessionIds != nil && serverIds != nil {
             return Array(Set(serverIds!).subtracting(deletedSessionIds!))
         }
-        return nil
+        return serverIds
     }
     
     private func removeDeletedIdsFromLocale(deletedSessionIds: [Double]?, localeIds: [Double]?) -> [Double]? {
         if deletedSessionIds != nil && localeIds != nil {
             return Array(Set(localeIds!).subtracting(deletedSessionIds!))
         }
-        return nil
+        return localeIds
     }
     
     private func getSessionIdsToDelete(serverIds: [Double]?, localeIds: [Double]?, notUploadedIds: [Double]?) -> [Double] {

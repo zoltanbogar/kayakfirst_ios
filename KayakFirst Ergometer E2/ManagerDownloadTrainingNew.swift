@@ -64,4 +64,8 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
         }
     }
     
+    override func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
+        return anotherManagerDownload is ManagerDownloadTrainingNew
+    }
+    
 }

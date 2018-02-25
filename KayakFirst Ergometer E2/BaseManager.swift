@@ -333,12 +333,9 @@ class BaseManager {
             self.baseManager = baseManager
         }
         
-        override func onPreExecute() {
-            baseManager.handlePreExecuteDownloadNew(managerDownload: managerDownload)
-        }
-        
         override func doInBackground(param: Any?) -> E? {
             if baseManager.shouldRunDownloadNew(managerDownload: managerDownload) {
+                 baseManager.handlePreExecuteDownloadNew(managerDownload: managerDownload)
                 return managerDownload.getData()
             }
             return nil
