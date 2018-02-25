@@ -322,6 +322,11 @@
 		069ADD971EFB897400F24427 /* PickerHelperGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD961EFB897400F24427 /* PickerHelperGender.swift */; };
 		069ADD991EFB8BF800F24427 /* PickerHelperLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */; };
 		069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */; };
+		06A660982042F46400E5ED9B /* DaysObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A660972042F46400E5ED9B /* DaysObject.swift */; };
+		06A6609A2042F48E00E5ED9B /* TimestampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A660992042F48E00E5ED9B /* TimestampObject.swift */; };
+		06A6609C2042F8DD00E5ED9B /* ManagerDownloadNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */; };
+		06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */; };
+		06A660A0204302D600E5ED9B /* ManagerDownloadTrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */; };
 		06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232E1F06251B008805A2 /* ModifyAble.swift */; };
 		06AF23311F06253B008805A2 /* UploadAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23301F06253B008805A2 /* UploadAble.swift */; };
 		06AF23331F0625FA008805A2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23321F0625FA008805A2 /* Event.swift */; };
@@ -791,6 +796,11 @@
 		069ADD961EFB897400F24427 /* PickerHelperGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperGender.swift; sourceTree = "<group>"; };
 		069ADD981EFB8BF800F24427 /* PickerHelperLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperLocale.swift; sourceTree = "<group>"; };
 		069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperArtOfPaddling.swift; sourceTree = "<group>"; };
+		06A660972042F46400E5ED9B /* DaysObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysObject.swift; sourceTree = "<group>"; };
+		06A660992042F48E00E5ED9B /* TimestampObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampObject.swift; sourceTree = "<group>"; };
+		06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadNew.swift; sourceTree = "<group>"; };
+		06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDaysNew.swift; sourceTree = "<group>"; };
+		06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingNew.swift; sourceTree = "<group>"; };
 		06AF232E1F06251B008805A2 /* ModifyAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyAble.swift; sourceTree = "<group>"; };
 		06AF23301F06253B008805A2 /* UploadAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAble.swift; sourceTree = "<group>"; };
 		06AF23321F0625FA008805A2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -1081,6 +1091,8 @@
 				060E975D1FE8275F00CB4258 /* SocialUser.swift */,
 				06AF23301F06253B008805A2 /* UploadAble.swift */,
 				060C8B761E40682C0057DD61 /* User.swift */,
+				06A660972042F46400E5ED9B /* DaysObject.swift */,
+				06A660992042F48E00E5ED9B /* TimestampObject.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1237,6 +1249,7 @@
 				06CBD6D81F40958900BB570B /* training */,
 				06CBD6D71F40958100BB570B /* plan */,
 				061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */,
+				06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -1968,6 +1981,8 @@
 			children = (
 				06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */,
 				06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */,
+				06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */,
+				06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -2350,7 +2365,9 @@
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */,
 				06D8FC2E2035A555007423BD /* BaseCalendarManager.swift in Sources */,
+				06A660A0204302D600E5ED9B /* ManagerDownloadTrainingNew.swift in Sources */,
 				064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */,
+				06A660982042F46400E5ED9B /* DaysObject.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
 				063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */,
 				06AF23331F0625FA008805A2 /* Event.swift in Sources */,
@@ -2469,6 +2486,7 @@
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
 				064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */,
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
+				06A6609C2042F8DD00E5ED9B /* ManagerDownloadNew.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				063C41A8203464E900BCE734 /* TrainingDesignHelper.swift in Sources */,
@@ -2496,6 +2514,7 @@
 				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
+				06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift in Sources */,
 				066835F42002813900DA9969 /* CommandOutdoorLocation.swift in Sources */,
 				06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */,
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
@@ -2729,6 +2748,7 @@
 				067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
 				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
+				06A6609A2042F48E00E5ED9B /* TimestampObject.swift in Sources */,
 				06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,

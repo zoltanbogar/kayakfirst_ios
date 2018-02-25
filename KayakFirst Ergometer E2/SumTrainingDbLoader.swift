@@ -62,6 +62,18 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
     }
     
     //MARK: insert
+    func addSumTrainings(sumTrainings: [SumTrainingNew]) {
+        do {
+            try db!.transaction {
+                for sumTraining in sumTrainings {
+                    self.addData(data: sumTraining)
+                }
+            }
+        } catch {
+            log(databaseLogTag, error)
+        }
+    }
+    
     override func addData(data: SumTrainingNew?) {
         if let sumTraining = data {
             if sessionIdValue != sumTraining.sessionId {
@@ -119,6 +131,13 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         }
         
         return trainingDays
+    }
+    
+    func getSumTrainingsBySessionId(sessionIds: [Double]?) -> [SumTrainingNew]? {
+        if let sessionIds = sessionIds {
+            return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
+        }
+        return nil
     }
     
     func getSumTrainingBySessionId(sessionId: Double) -> SumTrainingNew? {
@@ -193,6 +212,21 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
     
     private func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {
         return self.sessionId == sessionId
+    }
+    
+    private func getSumPredicateOr(column: Expression<Double>, values: [Double]?) -> Expression<Bool>? {
+        var sumPredicate: Expression<Bool>? = nil
+        if let values = values {
+            for value in values {
+                let predicate: Expression<Bool> = column == value
+                if sumPredicate == nil {
+                    sumPredicate = predicate
+                } else {
+                    sumPredicate = sumPredicate! || predicate
+                }
+            }
+        }
+        return sumPredicate
     }
     
 }

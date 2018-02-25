@@ -65,6 +65,19 @@ class ManagerUploadTrainings: ManagerUpload {
         return UploadType.trainingUpload
     }
     
+    func getNotUploadedSessionIds() -> [Double]? {
+        var sessionIds = [Double]()
+        
+        let pointers = getPointers()
+        
+        if let pointers = pointers {
+            for s in pointers {
+                sessionIds.append(Double(s)!)
+            }
+        }
+        return sessionIds
+    }
+    
     private func setLocaelPointer(timestamp: Double) {
         preferences.set(timestamp, forKey: getLocalePointerKey())
     }

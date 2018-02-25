@@ -21,14 +21,20 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     
     //MARK: functions
     override func getDays() -> BaseManagerType {
-        let managerDownloadTrainingDays = ManagerDownloadTrainingDays()
-        runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
+        let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
+        let downloadTrainingDays = DownloadTrainingDays()
+        let managerModifyTrainingDelete = ManagerModifyTrainingDelete(data: nil)
+        let managerUploadTrainings = ManagerUploadTrainings()
+        
+        let managerDownloadTrainingDays = ManagerDownloadTrainingDaysNew(sumTrainingDbLoader: sumTrainingDbLoader, downloadTrainingDays: downloadTrainingDays, managerModifyTrainingDelete: managerModifyTrainingDelete, managerUploadTrainings: managerUploadTrainings)
+        runDownloadNew(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
+        
         return TrainingManagerType.download_training_days
     }
     
-    override func getDataList(timestamps: [Double]) -> BaseManagerType {
-        let manager = ManagerDownloadTrainingBySessionId(sessionIds: timestamps)
-        runDownload(managerDownload: manager, managerCallBack: dataListCallback)
+    override func getDataList(localeTimestamps: [Double]?, serverTimestamps: [Double]?) -> BaseManagerType {
+        let manager = ManagerDownloadTrainingNew(localeSessionIds: localeTimestamps, serverSessionIds: serverTimestamps)
+        runDownloadNew(managerDownload: manager, managerCallBack: dataListCallback)
         return TrainingManagerType.download_training
     }
     
@@ -43,10 +49,9 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     }
     
     func addTrainingUploadPointer() {
-        //TODO
-        /*let sessionId = "\(Telemetry.sharedInstance.sessionId)"
+        let sessionId = "\(Telemetry.sharedInstance.sessionId)"
         ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
-        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)*/
+        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)
     }
     
     func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {

@@ -58,6 +58,7 @@ class BaseManager {
     
     private var managerDownloadServerList: [ManagerDownloadProtocol]?
     private var managerDownloadLocaleList: [ManagerDownloadProtocol]?
+    private var managerDownloadNewList: [ManagerDownloadProtocol]?
     
     private var uploadRunning = false
     
@@ -87,6 +88,10 @@ class BaseManager {
         Download(managerCallback: managerCallBack, managerDownload: managerDownload, baseManager: self).execute()
     }
     
+    func runDownloadNew<E>(managerDownload: ManagerDownloadNew<E>, managerCallBack: ((_ data: E?, _ error: Responses?) -> ())?) {
+        DownloadNew(managerCallback: managerCallBack, managerDownload: managerDownload, baseManager: self).execute()
+    }
+    
     func runModify<E: ModifyAble>(managerModify: ManagerModify<E>, managerCallBack: ((_ data: Bool?, _ error: Responses?) -> ())?) {
         Modify(managerCallback: managerCallBack, managerModify: managerModify).execute()
     }
@@ -113,6 +118,15 @@ class BaseManager {
         return !contains
     }
     
+    private func shouldRunDownloadNew(managerDownload: ManagerDownloadProtocol) -> Bool {
+        var contains = false
+        if managerDownloadNewList != nil {
+            contains = managerDownloadNewList?.contains(where: {$0.isEqual(anotherManagerDownload: managerDownload)}) ?? false
+        }
+        
+        return !contains
+    }
+    
     //MARK: helper
     private func handlePreExecuteUser<E>(serverService: ServerService<E>) {
         self.userStack = serverService.getManagerType()
@@ -129,6 +143,13 @@ class BaseManager {
         managerDownloadServerList?.append(managerDownload)
     }
     
+    private func handlePreExecuteDownloadNew(managerDownload: ManagerDownloadProtocol) {
+        if managerDownloadNewList == nil {
+            managerDownloadNewList = [ManagerDownloadProtocol]()
+        }
+        managerDownloadNewList?.append(managerDownload)
+    }
+    
     private func handlePreExecuteDownloadLocale(managerDownload: ManagerDownloadProtocol) {
         if managerDownloadLocaleList == nil {
             managerDownloadLocaleList = [ManagerDownloadProtocol]()
@@ -142,6 +163,18 @@ class BaseManager {
                 
                 if managerDownloadServerList![i].isEqual(anotherManagerDownload: managerDownload) {
                     managerDownloadServerList!.remove(at: i)
+                    break
+                }
+            }
+        }
+    }
+    
+    private func handlePostExecuteDownloadNew(managerDownload: ManagerDownloadProtocol) {
+        if managerDownloadNewList != nil {
+            for i in 0..<managerDownloadNewList!.count {
+                
+                if managerDownloadNewList![i].isEqual(anotherManagerDownload: managerDownload) {
+                    managerDownloadNewList!.remove(at: i)
                     break
                 }
             }
@@ -282,6 +315,40 @@ class BaseManager {
             
             if let callback = managerCallback {
                 callback(true, nil)
+            }
+        }
+    }
+    
+    private class DownloadNew<E>: AsyncTask<Any, E, E> {
+        
+        private let managerCallback: ((_ data: E?, _ error: Responses?) -> ())?
+        private let managerDownload: ManagerDownloadNew<E>
+        private let baseManager: BaseManager
+        
+        init(managerCallback: ((_ data: E?, _ error: Responses?) -> ())?,
+             managerDownload: ManagerDownloadNew<E>,
+             baseManager: BaseManager) {
+            self.managerCallback = managerCallback
+            self.managerDownload = managerDownload
+            self.baseManager = baseManager
+        }
+        
+        override func onPreExecute() {
+            baseManager.handlePreExecuteDownloadNew(managerDownload: managerDownload)
+        }
+        
+        override func doInBackground(param: Any?) -> E? {
+            if baseManager.shouldRunDownloadNew(managerDownload: managerDownload) {
+                return managerDownload.getData()
+            }
+            return nil
+        }
+        
+        override func onPostExecute(result: E?) {
+            baseManager.handlePostExecuteDownloadNew(managerDownload: managerDownload)
+            
+            if let callback = managerCallback {
+                callback(result, managerDownload.serverError)
             }
         }
         

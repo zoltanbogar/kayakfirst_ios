@@ -12,13 +12,13 @@ class BaseCalendarManager<E>: BaseManager {
     
     //MARK: callback
     var dataListCallback: ((_ data: [E]?, _ error: Responses?) -> ())?
-    var daysCallback: ((_ data: [Double]?, _ error: Responses?) -> ())?
+    var daysCallback: ((_ data: DaysObject?, _ error: Responses?) -> ())?
     
     func getDays() -> BaseManagerType {
         fatalError("must be implemented")
     }
     
-    func getDataList(timestamps: [Double]) -> BaseManagerType {
+    func getDataList(localeTimestamps: [Double]?, serverTimestamps: [Double]?) -> BaseManagerType {
        fatalError("must be implemented")
     }
     

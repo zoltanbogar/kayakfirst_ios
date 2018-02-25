@@ -27,14 +27,15 @@ class UploadTimer {
     }
     
     class func startTimer() {
-        if UserManager.sharedInstance.getUser() != nil {
+        //TODO: reactivate this
+        /*if UserManager.sharedInstance.getUser() != nil {
             DispatchQueue.main.async {
                 if timer == nil {
                     logManager.logEvent(event: "UploadTimer: start")
                     timer = Timer.scheduledTimer(timeInterval: timeUploadTrainingsSec, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
                 }
             }
-        }
+        }*/
     }
     
     class func stopTimer() {

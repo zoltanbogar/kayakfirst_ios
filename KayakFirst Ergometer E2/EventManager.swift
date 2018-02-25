@@ -18,14 +18,16 @@ class EventManager: BaseCalendarManager<PlanEvent> {
     
     //MARK: functions
     override func getDays() -> BaseManagerType {
-        let managerDownloadEventDays = ManagerDownloadEventDays()
-        runDownload(managerDownload: managerDownloadEventDays, managerCallBack: daysCallback)
+        //TODO
+        /*let managerDownloadEventDays = ManagerDownloadEventDays()
+        runDownload(managerDownload: managerDownloadEventDays, managerCallBack: daysCallback)*/
         return EventManagerType.download_event_days
     }
     
-    override func getDataList(timestamps: [Double]) -> BaseManagerType {
-        let managerDownloadEventByTimestamp = ManagerDownloadEventByTimestamp(timestamps: timestamps)
-        runDownload(managerDownload: managerDownloadEventByTimestamp, managerCallBack: dataListCallback)
+    override func getDataList(localeTimestamps: [Double]?, serverTimestamps: [Double]?) -> BaseManagerType {
+        //TODO
+        /*let managerDownloadEventByTimestamp = ManagerDownloadEventByTimestamp(timestamps: timestamps)
+        runDownload(managerDownload: managerDownloadEventByTimestamp, managerCallBack: dataListCallback)*/
         return EventManagerType.download_event
     }
     

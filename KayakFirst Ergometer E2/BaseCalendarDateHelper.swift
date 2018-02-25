@@ -14,7 +14,7 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
     private let calendarView: CalendarView
     private let listView: BaseCalendarListView<LAYOUT, DATA>
     
-    private var daysList: [Double]? = nil
+    private var daysObject: DaysObject? = nil
     
     private var viewVisible = false
     
@@ -66,33 +66,31 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
         getManager().getDays()
     }
     
-    private func initDays(daysList: [Double]) {
-        self.daysList = daysList
+    private func initDays(daysObject: DaysObject) {
+        self.daysObject = daysObject
         
         if viewVisible {
-            calendarView.timestamps = daysList
+            calendarView.timestamps = Array(daysObject.keys)
             
             getDataList()
         }
     }
     
     private func getDataList() {
-        var timestamps = [Double]()
+        var serverTimestamps: [Double]? = nil
+        var localeTimestamps: [Double]? = nil
         
-        if let daysList = daysList {
-            for timestamp in daysList {
-                if DateFormatHelper.isSameDay(timeStamp1: timestamp, timeStamp2: selectedDate) {
-                    timestamps.append(timestamp)
-                }
-            }
+        if daysObject != nil && daysObject![selectedDate] != nil {
+            serverTimestamps = daysObject![selectedDate]?.timestampsServer
+            localeTimestamps = daysObject![selectedDate]?.timestampsLocale
         }
         
-        listView.showData(timestamps: timestamps, selectedDate: selectedDate)
+        listView.showData(selectedDate: selectedDate, serverTimestamps: serverTimestamps, localeTimestamps: localeTimestamps)
     }
     
-    private func daysCallback(data: [Double]?, error: Responses?) {
+    private func daysCallback(data: DaysObject?, error: Responses?) {
         if let data = data {
-            initDays(daysList: data)
+            initDays(daysObject: data)
         }
         
         errorHandling(error: error)
