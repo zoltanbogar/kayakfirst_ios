@@ -18,8 +18,9 @@ class PlanManager: BaseManager {
     
     //MARK: functions
     func getPlanByName(name: String, managerCallBack: ((_ data: [Plan]?, _ error: Responses?) -> ())?) -> BaseManagerType {
-        let manager = ManagerDownloadPlanByName(name: name)
-        runDownload(managerDownload: manager, managerCallBack: managerCallBack)
+        let manager = ManagerDownloadPlanByNameNew(name: name)
+        runDownloadNew(managerDownload: manager, managerCallBack: managerCallBack)
+        
         return PlanManagerType.download_plan
     }
     

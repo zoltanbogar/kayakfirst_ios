@@ -195,6 +195,10 @@
 		064498BD201879F600DF9915 /* LogObjectDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498BC201879F600DF9915 /* LogObjectDbLoader.swift */; };
 		0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644B7091FFCD0FD001022A4 /* TrainingService.swift */; };
 		0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */; };
+		064608922043D4DB007BD78A /* ManagerDownloadPlanNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064608912043D4DB007BD78A /* ManagerDownloadPlanNew.swift */; };
+		064608942043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064608932043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift */; };
+		064608962043D870007BD78A /* ManagerDownloadEventDaysNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064608952043D870007BD78A /* ManagerDownloadEventDaysNew.swift */; };
+		064608982043D966007BD78A /* ManagerDownloadEventByTimestampNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064608972043D966007BD78A /* ManagerDownloadEventByTimestampNew.swift */; };
 		0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646A4AB1EF3A9000074101E /* ColorizedButton.swift */; };
 		064764C71E237035004B9ED3 /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C61E237035004B9ED3 /* AppLog.swift */; };
 		064764C91E2372FE004B9ED3 /* DateFormatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */; };
@@ -668,6 +672,10 @@
 		064498BC201879F600DF9915 /* LogObjectDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogObjectDbLoader.swift; sourceTree = "<group>"; };
 		0644B7091FFCD0FD001022A4 /* TrainingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingService.swift; sourceTree = "<group>"; };
 		0644D1D21E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateStrokes_AV_Outdoor.swift; sourceTree = "<group>"; };
+		064608912043D4DB007BD78A /* ManagerDownloadPlanNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlanNew.swift; sourceTree = "<group>"; };
+		064608932043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlanByNameNew.swift; sourceTree = "<group>"; };
+		064608952043D870007BD78A /* ManagerDownloadEventDaysNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDaysNew.swift; sourceTree = "<group>"; };
+		064608972043D966007BD78A /* ManagerDownloadEventByTimestampNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestampNew.swift; sourceTree = "<group>"; };
 		0646A4AB1EF3A9000074101E /* ColorizedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedButton.swift; sourceTree = "<group>"; };
 		064764C61E237035004B9ED3 /* AppLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
 		064764C81E2372FE004B9ED3 /* DateFormatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatHelper.swift; sourceTree = "<group>"; };
@@ -1972,6 +1980,10 @@
 				06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */,
 				06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */,
 				06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */,
+				064608912043D4DB007BD78A /* ManagerDownloadPlanNew.swift */,
+				064608932043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift */,
+				064608952043D870007BD78A /* ManagerDownloadEventDaysNew.swift */,
+				064608972043D966007BD78A /* ManagerDownloadEventByTimestampNew.swift */,
 			);
 			name = plan;
 			sourceTree = "<group>";
@@ -2554,6 +2566,7 @@
 				068FD3E7203566890019D8DF /* ViewEventCalendarListLayout.swift in Sources */,
 				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
 				06217B0D2015EA6A004DC885 /* UpdateDialog.swift in Sources */,
+				064608922043D4DB007BD78A /* ManagerDownloadPlanNew.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
 				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
@@ -2719,6 +2732,7 @@
 				0679649F1E639ED900DFC050 /* CalculateElementSOutdoor.swift in Sources */,
 				066B003D1EC7233F00BE0E1F /* JoinPlanPlanElementsDbLoader.swift in Sources */,
 				06C2F3EE1F0A41CF0077EE21 /* DeletePlan.swift in Sources */,
+				064608962043D870007BD78A /* ManagerDownloadEventDaysNew.swift in Sources */,
 				0679646A1E637EB100DFC050 /* CalculateF_AV.swift in Sources */,
 				06E82BE71F0A75CD006EC016 /* PlanTrainingDbLoader.swift in Sources */,
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
@@ -2777,8 +2791,10 @@
 				06BADDE2203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift in Sources */,
 				06CAFF491F0D2E1000D2EA14 /* ManagerModifyPlan.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,
+				064608942043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift in Sources */,
 				06C707221FFBB5EC00D72E72 /* ViewKeyboardNumLayout.swift in Sources */,
 				0613DA9F1E47741C00CAD5A6 /* CVDate+.swift in Sources */,
+				064608982043D966007BD78A /* ManagerDownloadEventByTimestampNew.swift in Sources */,
 				060EE3921E7538E700203DB6 /* HalfDivider.swift in Sources */,
 				066579EA1F16065000E43852 /* ManagerUploadPushId.swift in Sources */,
 				060A378A1E58551400A973BF /* DashBoardElement_Distance.swift in Sources */,
