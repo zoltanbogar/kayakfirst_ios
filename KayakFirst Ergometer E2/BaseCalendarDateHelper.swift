@@ -36,9 +36,9 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
         fatalError("must be implemented")
     }
     
-    func show(isShow: Bool, selectedDate: Double) {
+    func show(isShow: Bool) {
         viewVisible = isShow
-        self.selectedDate = selectedDate
+        self.selectedDate = DateFormatHelper.getZeroHour(timeStamp: calendarView.selectedDate)
         
         calendarView.timestamps = nil
         if isShow {

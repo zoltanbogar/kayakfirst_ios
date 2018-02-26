@@ -97,16 +97,13 @@ class CalendarVc: BaseVC<VcCalendarLayout> {
     }
     
     private func refreshContentWithMode() {
-        var selectedDate: Double = 0
         switch mode {
         case CalendarVc.modeEvent:
-            selectedDate = trainingDataHelper!.selectedDate
-            trainingDataHelper?.show(isShow: false, selectedDate: selectedDate)
-            eventDataHelper?.show(isShow: true, selectedDate: selectedDate)
+            trainingDataHelper?.show(isShow: false)
+            eventDataHelper?.show(isShow: true)
         case CalendarVc.modeTraining:
-            selectedDate = eventDataHelper!.selectedDate
-            eventDataHelper?.show(isShow: false, selectedDate: selectedDate)
-            trainingDataHelper?.show(isShow: true, selectedDate: selectedDate)
+            eventDataHelper?.show(isShow: false)
+            trainingDataHelper?.show(isShow: true)
         default:
             break
         }
