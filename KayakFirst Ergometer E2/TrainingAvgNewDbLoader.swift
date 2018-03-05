@@ -130,6 +130,13 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
         return loadData(predicate: predicate)
     }
     
+    func loadUploadAbleData(sessionIds: [Double]?) -> [TrainingAvgNew]? {
+        if let sessionIds = sessionIds {
+            return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
+        }
+        return nil
+    }
+    
     //MARK: update
     private func updateData(trainingAvg: TrainingAvgNew) {
         let avg = table!.filter(self.sessionId == Double(Int64(trainingAvg.sessionId)))
@@ -160,6 +167,21 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     
     private func getPredicateSessionId(sessionId: Double) -> Expression<Bool> {
         return self.sessionId == sessionId
+    }
+    
+    private func getSumPredicateOr(column: Expression<Double>, values: [Double]?) -> Expression<Bool>? {
+        var sumPredicate: Expression<Bool>? = nil
+        if let values = values {
+            for value in values {
+                let predicate: Expression<Bool> = column == value
+                if sumPredicate == nil {
+                    sumPredicate = predicate
+                } else {
+                    sumPredicate = sumPredicate! || predicate
+                }
+            }
+        }
+        return sumPredicate
     }
     
 }

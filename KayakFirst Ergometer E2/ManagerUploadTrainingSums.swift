@@ -1,14 +1,14 @@
 //
-//  ManagerUploadTrainingAvgs.swift
+//  ManagerUploadTrainingSums.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 07. 05..
-//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//  Created by Balazs Vidumanszki on 2018. 03. 05..
+//  Copyright © 2018. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 
-class ManagerUploadTrainingAvgs: ManagerUpload {
+class ManagerUploadTrainingSums: ManagerUpload {
     
     override func runServer(pointers: [String]?) -> Bool {
         var serverWasReachable = true
@@ -16,14 +16,14 @@ class ManagerUploadTrainingAvgs: ManagerUpload {
             let localePointers = pointersValue.map { stringPointer in
                 Double(stringPointer)!
             }
-            let uploadTrainingAvgs = UploadTrainingAvgs(sessionIds: localePointers)
-            uploadTrainingAvgs.run()
-            serverWasReachable = uploadTrainingAvgs.error == nil
+            let uploadSumTrainings = UploadTrainingSums(sessionIds: localePointers)
+            uploadSumTrainings.run()
+            serverWasReachable = uploadSumTrainings.error == nil
         }
         return serverWasReachable
     }
     
     override func getUploadType() -> UploadType {
-        return UploadType.trainingAvgUpload
+        return UploadType.trainingSumUpload
     }
 }

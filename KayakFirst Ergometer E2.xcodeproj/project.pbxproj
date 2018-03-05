@@ -186,6 +186,8 @@
 		0643A31A2022FA8D00120DED /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A3192022FA8D00120DED /* LogManager.swift */; };
 		0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31B2022FDDF00120DED /* LogManagerType.swift */; };
 		0643A31F20230A9C00120DED /* LogDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643A31E20230A9C00120DED /* LogDto.swift */; };
+		064490B2204D15BC001E80D7 /* UploadTrainingSums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064490B1204D15BC001E80D7 /* UploadTrainingSums.swift */; };
+		064490B4204D179F001E80D7 /* ManagerUploadTrainingSums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064490B3204D179F001E80D7 /* ManagerUploadTrainingSums.swift */; };
 		064498AA2017320200DF9915 /* DownloadVersionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498A92017320200DF9915 /* DownloadVersionCode.swift */; };
 		064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498AC20176B1900DF9915 /* SystemInfo.swift */; };
 		064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */; };
@@ -663,6 +665,8 @@
 		0643A3192022FA8D00120DED /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		0643A31B2022FDDF00120DED /* LogManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerType.swift; sourceTree = "<group>"; };
 		0643A31E20230A9C00120DED /* LogDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDto.swift; sourceTree = "<group>"; };
+		064490B1204D15BC001E80D7 /* UploadTrainingSums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTrainingSums.swift; sourceTree = "<group>"; };
+		064490B3204D179F001E80D7 /* ManagerUploadTrainingSums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainingSums.swift; sourceTree = "<group>"; };
 		064498A92017320200DF9915 /* DownloadVersionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionCode.swift; sourceTree = "<group>"; };
 		064498AC20176B1900DF9915 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		064498B120176BE500DF9915 /* SystemInfoDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfoDbLoader.swift; sourceTree = "<group>"; };
@@ -1270,6 +1274,7 @@
 				06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */,
 				06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */,
 				066579E91F16065000E43852 /* ManagerUploadPushId.swift */,
+				064490B3204D179F001E80D7 /* ManagerUploadTrainingSums.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -1487,6 +1492,7 @@
 				065187231F0A50D000B434B0 /* UploadPlanTraining.swift */,
 				066579E71F16013300E43852 /* UploadPushId.swift */,
 				060E107B2023145900D08C0C /* UploadLogs.swift */,
+				064490B1204D15BC001E80D7 /* UploadTrainingSums.swift */,
 			);
 			name = upload;
 			sourceTree = "<group>";
@@ -2642,6 +2648,7 @@
 				06F7D7B51F17D6260081E473 /* DownloadMessage.swift in Sources */,
 				0644B70A1FFCD0FD001022A4 /* TrainingService.swift in Sources */,
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
+				064490B2204D15BC001E80D7 /* UploadTrainingSums.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* CommandProcessor.swift in Sources */,
 				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
@@ -2678,6 +2685,7 @@
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */,
 				060DDFFA1E4BDDC100FE2D14 /* TrainingSESpeedAv.swift in Sources */,
+				064490B4204D179F001E80D7 /* ManagerUploadTrainingSums.swift in Sources */,
 				060E107C2023145900D08C0C /* UploadLogs.swift in Sources */,
 				06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */,
 				06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */,

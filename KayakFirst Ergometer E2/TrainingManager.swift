@@ -51,7 +51,6 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     func addTrainingUploadPointer() {
         let sessionId = "\(Telemetry.sharedInstance.sessionId)"
         ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
-        ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: sessionId)
     }
     
     func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {

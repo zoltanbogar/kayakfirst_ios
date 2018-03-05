@@ -206,6 +206,13 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         return nil
     }
     
+    func loadUploadAbleData(sessionIds: [Double]?) -> [SumTrainingNew]? {
+        if let sessionIds = sessionIds {
+            return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
+        }
+        return nil
+    }
+    
     override func getDeleteOldDataPredicate() -> Expression<Bool> {
         return self.sessionId < getOldDataTimestamp(oldDataDays: oldDataDays)
     }

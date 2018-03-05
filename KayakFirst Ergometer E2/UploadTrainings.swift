@@ -13,10 +13,10 @@ import SwiftyJSON
 class UploadTrainings: ServerService<Bool> {
     
     //MARK: constants
-    private let maxUploadTrainings = 750 //one batch contains 8 object, so max objects are: 750 * 8 = 6000
+    private let maxUploadTrainings = 6000
     
     //MARK: properties
-    private let trainingDbLoader = TrainingDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
     private var sessionId: Double
@@ -46,7 +46,7 @@ class UploadTrainings: ServerService<Bool> {
     }
     
     override func initUrlTag() -> String {
-        return "training/upload"
+        return "training/uploadTrainings"
     }
     
     override func initMethod() -> HTTPMethod {

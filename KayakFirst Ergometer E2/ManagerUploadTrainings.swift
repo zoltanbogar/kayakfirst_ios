@@ -44,17 +44,19 @@ class ManagerUploadTrainings: ManagerUpload {
                 isUploadReady = isUploadReady && uploadTrainings.isUploadReady
                 
                 if serverWasReachable {
-                    log("UPLOAD_TEST", "serverWasReachable")
                     if uploadTrainings.pointer != 0 {
                         timestamp = uploadTrainings.pointer
                         setLocaelPointer(timestamp: timestamp)
                     }
-                } else {
-                    log("UPLOAD_TEST", "serverWasNotReachable")
                 }
                 
                 if !serverWasReachable || !isUploadReady {
                     break
+                }
+                
+                if isUploadReady && serverWasReachable {
+                    ManagerUpload.addToStack(uploadType: UploadType.trainingAvgUpload, pointer: s)
+                    ManagerUpload.addToStack(uploadType: UploadType.trainingSumUpload, pointer: s)
                 }
             }
         }

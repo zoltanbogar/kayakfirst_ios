@@ -114,6 +114,8 @@ class ManagerUpload {
             managerUploads.append(ManagerUploadTrainings())
         case UploadType.trainingAvgUpload.rawValue:
             managerUploads.append(ManagerUploadTrainingAvgs())
+        case UploadType.trainingSumUpload.rawValue:
+            managerUploads.append(ManagerUploadTrainingSums())
         case UploadType.planSave.rawValue:
             managerUploads.append(ManagerModifyPlanSave(data: nil))
         case UploadType.planDelete.rawValue:

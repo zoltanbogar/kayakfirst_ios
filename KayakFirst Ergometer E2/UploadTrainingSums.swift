@@ -1,20 +1,20 @@
 //
-//  UploadTrainingAvgs.swift
+//  UploadTrainingSums.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 03. 17..
-//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//  Created by Balazs Vidumanszki on 2018. 03. 05..
+//  Copyright © 2018. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UploadTrainingAvgs: ServerService<Bool> {
+class UploadTrainingSums: ServerService<Bool> {
     
     //MARK: properties
-    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
-    private var trainingAvgArrayList: Array<[String:Any]>?
+    private let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
+    private var dataList: Array<[String:Any]>?
     
     //MARK: init
     init(sessionIds: [Double]?) {
@@ -24,13 +24,13 @@ class UploadTrainingAvgs: ServerService<Bool> {
             let normalizedSessionIds = sessionIds.map { sessionId in
                 Double(Int64(sessionId))
             }
-                
+            
             initTrainingList(sessionIds: normalizedSessionIds)
         }
     }
     
     override func preCheck() -> Bool {
-        return trainingAvgArrayList != nil && trainingAvgArrayList!.count > 0
+        return dataList != nil && dataList!.count > 0
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> Bool? {
@@ -38,7 +38,7 @@ class UploadTrainingAvgs: ServerService<Bool> {
     }
     
     override func initUrlTag() -> String {
-        return "avgtraining/uploadAvgTrainings"
+        return "training/uploadSumTrainings"
     }
     
     override func initMethod() -> HTTPMethod {
@@ -46,7 +46,7 @@ class UploadTrainingAvgs: ServerService<Bool> {
     }
     
     override func initParameters() -> Parameters? {
-        return trainingAvgArrayList!.asParameters()
+        return dataList!.asParameters()
     }
     
     override func initEncoding() -> ParameterEncoding {
@@ -58,20 +58,21 @@ class UploadTrainingAvgs: ServerService<Bool> {
         
         var list: Array<[String:Any]> = []
         
-        let originalList = trainingAvgDbLoader.loadUploadAbleData(sessionIds: sessionIds)
+        let originalList = sumTrainingDbLoader.loadUploadAbleData(sessionIds: sessionIds)
         
         if originalList != nil && originalList!.count > 0 {
-            for trainingAvg in originalList! {
-                arrayList = trainingAvg.getParameters()
+            for trainingSum in originalList! {
+                arrayList = trainingSum.getParameters()
                 
                 list.append(arrayList)
             }
             
-            self.trainingAvgArrayList = list
+            self.dataList = list
         }
     }
     
     override func getManagerType() -> BaseManagerType {
-        return TrainingManagerType.upload_training_avg
+        return TrainingManagerType.upload_training_sum
     }
+    
 }
