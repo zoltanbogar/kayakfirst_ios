@@ -344,7 +344,7 @@
 		06AF23421F067DEC008805A2 /* EventManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23411F067DEC008805A2 /* EventManagerType.swift */; };
 		06AF23441F067F06008805A2 /* DownloadPlanById.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23431F067F06008805A2 /* DownloadPlanById.swift */; };
 		06AF23461F06801B008805A2 /* DownloadPlanByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23451F06801B008805A2 /* DownloadPlanByName.swift */; };
-		06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */; };
+		06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionIds.swift */; };
 		06B6755B2020BFF900ACB5A6 /* AppLinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */; };
 		06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */; };
 		06BADDE2203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BADDE1203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift */; };
@@ -824,7 +824,7 @@
 		06AF23411F067DEC008805A2 /* EventManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerType.swift; sourceTree = "<group>"; };
 		06AF23431F067F06008805A2 /* DownloadPlanById.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanById.swift; sourceTree = "<group>"; };
 		06AF23451F06801B008805A2 /* DownloadPlanByName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanByName.swift; sourceTree = "<group>"; };
-		06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanTrainingBySessionId.swift; sourceTree = "<group>"; };
+		06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPlanTrainingBySessionIds.swift; sourceTree = "<group>"; };
 		06B6755A2020BFF900ACB5A6 /* AppLinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinkHelper.swift; sourceTree = "<group>"; };
 		06B6755C2020D90A00ACB5A6 /* TextViewWithHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithHint.swift; sourceTree = "<group>"; };
 		06BADDE1203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTrainingsBySessionIds.swift; sourceTree = "<group>"; };
@@ -1466,7 +1466,7 @@
 				06AF233F1F067D2D008805A2 /* DownloadEventDays.swift */,
 				06AF23431F067F06008805A2 /* DownloadPlanById.swift */,
 				06AF23451F06801B008805A2 /* DownloadPlanByName.swift */,
-				06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift */,
+				06AF23471F0680C0008805A2 /* DownloadPlanTrainingBySessionIds.swift */,
 				06F7D7B41F17D6260081E473 /* DownloadMessage.swift */,
 				064498A92017320200DF9915 /* DownloadVersionCode.swift */,
 				06BADDE1203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift */,
@@ -2675,7 +2675,7 @@
 				06F657CA1E4638FC002AA9D0 /* WelcomeViewController.swift in Sources */,
 				064FE5AA1ED09F5A004A9F35 /* UserManagerType.swift in Sources */,
 				061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */,
-				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionId.swift in Sources */,
+				06AF23481F0680C0008805A2 /* DownloadPlanTrainingBySessionIds.swift in Sources */,
 				0643A31F20230A9C00120DED /* LogDto.swift in Sources */,
 				060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,

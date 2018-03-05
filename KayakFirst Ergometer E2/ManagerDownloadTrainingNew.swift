@@ -56,10 +56,22 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
                 return
             }
             
+            let downloadPlans = DownloadPlanTrainingBySessionIds(sessionIds: serverSessionIds)
+            let plans = downloadPlans.run()
+            serverError = downloadPlans.error
+            
+            if serverError != nil {
+                return
+            }
+            
             if sumTrainings != nil && avgTrainings != nil && trainings != nil {
                 SumTrainingDbLoader.sharedInstance.addSumTrainings(sumTrainings: sumTrainings!)
                 TrainingAvgNewDbLoader.sharedInstance.addTrainingAvgs(trainingAvgs: avgTrainings!)
                 TrainingNewDbLoader.sharedInstance.addTrainings(trainings: trainings!)
+                
+                if let plans = plans {
+                    PlanTrainingDbLoader.sharedInstance.addPlanTrainings(planTrainings: plans)
+                }
             }
         }
     }

@@ -10,14 +10,13 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
+class DownloadPlanTrainingBySessionIds: ServerService<[PlanTraining]> {
     
-    let sessionIdFrom: TimeInterval
-    let sessionIdTo: TimeInterval
+    private let sessionIds: [Double]
     
-    init(sessionIdFrom: TimeInterval, sessionIdTo: TimeInterval) {
-        self.sessionIdFrom = sessionIdFrom
-        self.sessionIdTo = sessionIdTo
+    //TODO: maybe: Double(Int64(sessionId))
+    init(sessionIds: [Double]) {
+        self.sessionIds = sessionIds
     }
     
     override func handleServiceCommunication(alamofireRequest: DataRequest) -> [PlanTraining]? {
@@ -45,7 +44,7 @@ class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
     }
     
     override func initUrlTag() -> String {
-        return "planTraining/downloadBySessionId"
+        return "planTraining/downloadBySessionIds"
     }
     
     override func initMethod() -> HTTPMethod {
@@ -54,13 +53,12 @@ class DownloadPlanTrainingBySessionId: ServerService<[PlanTraining]> {
     
     override func initParameters() -> Parameters? {
         return [
-            "sessionIdFrom": sessionIdFrom,
-            "sessionIdTo": sessionIdTo
+            "sessionIds": sessionIds
         ]
     }
     
     override func initEncoding() -> ParameterEncoding {
-        return JSONEncoding.default
+        return ArrayEncoding()
     }
     
     override func getManagerType() -> BaseManagerType {
