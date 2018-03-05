@@ -15,8 +15,8 @@ class ManagerDownloadEventByTimestampNew: ManagerDownloadPlanNew<[PlanEvent]> {
     private let timestamps: [Double]?
     
     //MARK: init
-    init(timestamps: [Double]?) {
-        self.timestamps = timestamps
+    init(timestampObject: TimestampObject?) {
+        self.timestamps = timestampObject?.timestampsLocale
     }
     
     override func getDataFromLocale() -> [PlanEvent]? {

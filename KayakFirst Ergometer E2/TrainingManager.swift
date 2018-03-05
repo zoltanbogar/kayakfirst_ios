@@ -32,8 +32,8 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
         return TrainingManagerType.download_training_days
     }
     
-    override func getDataList(localeTimestamps: [Double]?, serverTimestamps: [Double]?) -> BaseManagerType {
-        let manager = ManagerDownloadTrainingNew(localeSessionIds: localeTimestamps, serverSessionIds: serverTimestamps)
+    override func getDataList(timestampObject: TimestampObject) -> BaseManagerType {
+        let manager = ManagerDownloadTrainingNew(timestampObject: timestampObject)
         runDownloadNew(managerDownload: manager, managerCallBack: dataListCallback)
         return TrainingManagerType.download_training
     }

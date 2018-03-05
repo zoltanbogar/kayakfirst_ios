@@ -18,7 +18,7 @@ class BaseCalendarManager<E>: BaseManager {
         fatalError("must be implemented")
     }
     
-    func getDataList(localeTimestamps: [Double]?, serverTimestamps: [Double]?) -> BaseManagerType {
+    func getDataList(timestampObject: TimestampObject) -> BaseManagerType {
        fatalError("must be implemented")
     }
     

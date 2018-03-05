@@ -77,15 +77,9 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
     }
     
     private func getDataList() {
-        var serverTimestamps: [Double]? = nil
-        var localeTimestamps: [Double]? = nil
-        
-        if daysObject != nil && daysObject![selectedDate] != nil {
-            serverTimestamps = daysObject![selectedDate]?.timestampsServer
-            localeTimestamps = daysObject![selectedDate]?.timestampsLocale
+        if daysObject != nil {
+            listView.showData(selectedDate: selectedDate, timestampObject: daysObject![selectedDate])
         }
-        
-        listView.showData(selectedDate: selectedDate, serverTimestamps: serverTimestamps, localeTimestamps: localeTimestamps)
     }
     
     private func daysCallback(data: DaysObject?, error: Responses?) {

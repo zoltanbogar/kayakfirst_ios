@@ -11,12 +11,15 @@ import Foundation
 //TODO: test
 class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
     
+    private var timestampObject: TimestampObject
     private var localeSessionIds: [Double]?
-    private let serverSessionIds: [Double]?
+    private var serverSessionIds: [Double]?
     
-    init(localeSessionIds: [Double]?, serverSessionIds: [Double]?) {
-        self.localeSessionIds = localeSessionIds
-        self.serverSessionIds = serverSessionIds
+    init(timestampObject: TimestampObject) {
+        self.timestampObject = timestampObject
+        
+        self.localeSessionIds = timestampObject.timestampsLocale
+        self.serverSessionIds = timestampObject.timestampsServer
     }
     
     override func getData() -> [SumTrainingNew]? {
@@ -29,6 +32,13 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
         } else {
             localeSessionIds = serverSessionIds
         }
+        
+        if serverError == nil {
+            serverSessionIds = nil //all data cached, so no more serverSessionIds
+        }
+        
+        timestampObject.timestampsLocale = localeSessionIds
+        timestampObject.timestampsServer = serverSessionIds
         
         return SumTrainingDbLoader.sharedInstance.getSumTrainingsBySessionId(sessionIds: localeSessionIds)
     }

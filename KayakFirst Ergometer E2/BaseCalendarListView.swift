@@ -50,16 +50,18 @@ class BaseCalendarListView<LAYOUT: BaseLayout, DATA>: CustomUi<LAYOUT> {
         tableView?.deleteCallback = deleteCallback
     }
     
-    func showData(selectedDate: Double, serverTimestamps: [Double]?, localeTimestamps: [Double]?) {
+    func showData(selectedDate: Double, timestampObject: TimestampObject?) {
         self.selectedDate = selectedDate
         
         tableView?.dataList = nil
         
-        if (serverTimestamps != nil && serverTimestamps!.count > 0) || (localeTimestamps != nil && localeTimestamps!.count > 0) {
-            getProgressBar().showProgressBar(true)
-            getManager().getDataList(localeTimestamps: localeTimestamps, serverTimestamps: serverTimestamps)
-        } else {
-            getProgressBar().showProgressBar(false)
+        if let timestampObject = timestampObject {
+            if (timestampObject.timestampsServer != nil && timestampObject.timestampsServer!.count > 0) || (timestampObject.timestampsLocale != nil && timestampObject.timestampsLocale!.count > 0) {
+                getProgressBar().showProgressBar(true)
+                getManager().getDataList(timestampObject: timestampObject)
+            } else {
+                getProgressBar().showProgressBar(false)
+            }
         }
     }
     
