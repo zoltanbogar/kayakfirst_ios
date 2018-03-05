@@ -11,8 +11,8 @@ import Foundation
 class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTrainingNew> {
     
     //MARK: constants
-    private let trainingDbLoader = TrainingDbLoader.sharedInstance
-    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
     
     //MARK: functions
     override func modifyLocale() {

@@ -24,7 +24,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     override func getTableName() -> String {
-        return TrainingAvgDbLoader.tableName
+        return TrainingAvgNewDbLoader.tableName
     }
     
     //MARK: init database

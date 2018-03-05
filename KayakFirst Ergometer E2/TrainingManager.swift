@@ -66,10 +66,10 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     func deleteOldData() {
         if !ManagerUpload.hasStackToWait() {
             DispatchQueue.global().async {
-                let trainingDbLoader = TrainingDbLoader.sharedInstance
+                let trainingDbLoader = TrainingNewDbLoader.sharedInstance
                 trainingDbLoader.deleteData(predicate: trainingDbLoader.getDeleteOldDataPredicate())
                 
-                let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+                let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
                 trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getDeleteOldDataPredicate())
             }
         }

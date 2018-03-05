@@ -9,6 +9,12 @@
 import Foundation
 import SwiftyJSON
 
+enum TrainingType: String {
+    case kayak = "kayak"
+    case canoe = "canoe"
+    case dragonBoat = "dragonBoat"
+}
+
 func createTraining(timestamp: Double, force: Double, speed: Double, distance: Double, strokes: Double, t200: Double) -> TrainingNew {
     let sessionId = Telemetry.sharedInstance.sessionId
     

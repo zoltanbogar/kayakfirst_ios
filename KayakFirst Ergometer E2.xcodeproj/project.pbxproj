@@ -11,7 +11,6 @@
 		06018D561E61D9D700F75919 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D551E61D9D700F75919 /* UIView+.swift */; };
 		06018D581E620FFC00F75919 /* AppSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D571E620FFC00F75919 /* AppSql.swift */; };
 		06018D5A1E6218C100F75919 /* BaseDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D591E6218C100F75919 /* BaseDbLoader.swift */; };
-		06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */; };
 		0602B4491E23C9B400ABA70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0602B44B1E23C9B400ABA70F /* Localizable.strings */; };
 		0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602B44D1E23CAF000ABA70F /* Localize.swift */; };
 		0602D3AC1E3156CA001E382E /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0602D3AB1E3156CA001E382E /* UIStackView+.swift */; };
@@ -58,12 +57,8 @@
 		060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */; };
 		060D9BA31E4A654E006DD8AB /* TrainingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA21E4A654E006DD8AB /* TrainingTableView.swift */; };
 		060D9BA51E4A68DC006DD8AB /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */; };
-		060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */; };
 		060D9BAA1E4A854B006DD8AB /* CalculateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */; };
 		060D9BB21E4A8EC7006DD8AB /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */; };
-		060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */; };
-		060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */; };
-		060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */; };
 		060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */; };
 		060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */; };
 		060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */; };
@@ -96,7 +91,6 @@
 		060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F02561E56C5C300D5BF43 /* AppScrollView.swift */; };
 		060F2D8A201219E8004E7EB1 /* PlanTelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F2D89201219E8004E7EB1 /* PlanTelemetryObject.swift */; };
 		060F2D8D20122727004E7EB1 /* PlanDisplayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */; };
-		060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */; };
 		061145CE1E58C97F0058EAF4 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145CD1E58C97F0058EAF4 /* ChartView.swift */; };
 		061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D01E58CF600058EAF4 /* DiagramLabel.swift */; };
 		061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145D31E58D91F0058EAF4 /* LabelForce.swift */; };
@@ -110,10 +104,6 @@
 		061145E41E5900440058EAF4 /* LineChartDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061145E31E5900440058EAF4 /* LineChartDistance.swift */; };
 		061148811E467A13003A8FE6 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148801E467A13003A8FE6 /* MainTabViewController.swift */; };
 		061148831E468121003A8FE6 /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061148821E468121003A8FE6 /* UserUpdate.swift */; };
-		06117BD11E4996350066C072 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD01E4996350066C072 /* Training.swift */; };
-		06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */; };
-		06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD41E4998AE0066C072 /* DownloadDto.swift */; };
-		06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06117BD61E4999FA0066C072 /* DownloadTrainings.swift */; };
 		0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */; };
 		0613590F1E8325C80085578E /* CalculateT_AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0613590E1E8325C80085578E /* CalculateT_AV.swift */; };
 		061369881E7BD78700896282 /* UploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061369871E7BD78700896282 /* UploadTrainings.swift */; };
@@ -268,8 +258,6 @@
 		067790C41ED9B4AE0002AA59 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067790C31ED9B4AE0002AA59 /* WeightView.swift */; };
 		0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */; };
 		067964561E63633E00DFC050 /* CycleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964551E63633E00DFC050 /* CycleState.swift */; };
-		067964581E63661200DFC050 /* TelemetryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964571E63661200DFC050 /* TelemetryObject.swift */; };
-		0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964591E63665200DFC050 /* TelemetryAvgObject.swift */; };
 		0679645C1E636C9400DFC050 /* CalculateElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645B1E636C9400DFC050 /* CalculateElement.swift */; };
 		0679645F1E636CCE00DFC050 /* CommandProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0679645E1E636CCE00DFC050 /* CommandProcessor.swift */; };
 		067964611E636E7800DFC050 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067964601E636E7800DFC050 /* MovingAverage.swift */; };
@@ -395,11 +383,6 @@
 		06C707321FFBCAC600D72E72 /* ViewDashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */; };
 		06C707341FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */; };
 		06C707361FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */; };
-		06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */; };
-		06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */; };
-		06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */; };
-		06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */; };
-		06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */; };
 		06CAFF3F1F0D28CD00D2EA14 /* ManagerModifyEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF3E1F0D28CD00D2EA14 /* ManagerModifyEditable.swift */; };
 		06CAFF411F0D2A5000D2EA14 /* ManagerModifyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF401F0D2A5000D2EA14 /* ManagerModifyEvent.swift */; };
 		06CAFF431F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF421F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift */; };
@@ -413,7 +396,6 @@
 		06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */; };
 		06CAFF571F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */; };
 		06CAFF591F0D3D7600D2EA14 /* ManagerUploadTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */; };
-		06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */; };
 		06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */; };
 		06CBFCC31FF245B70017E9B5 /* VcSettingsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */; };
 		06CBFCC51FF256000017E9B5 /* VcCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CBFCC41FF256000017E9B5 /* VcCalendarLayout.swift */; };
@@ -487,7 +469,6 @@
 		06018D551E61D9D700F75919 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		06018D571E620FFC00F75919 /* AppSql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSql.swift; sourceTree = "<group>"; };
 		06018D591E6218C100F75919 /* BaseDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDbLoader.swift; sourceTree = "<group>"; };
-		06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDbLoader.swift; sourceTree = "<group>"; };
 		0602B4461E23C76E00ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0602B44A1E23C9B400ABA70F /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0602B44C1E23C9B900ABA70F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -536,12 +517,8 @@
 		060D9B9F1E4A6212006DD8AB /* AppUiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUiTableViewCell.swift; sourceTree = "<group>"; };
 		060D9BA21E4A654E006DD8AB /* TrainingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableView.swift; sourceTree = "<group>"; };
 		060D9BA41E4A68DC006DD8AB /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
-		060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTraining.swift; sourceTree = "<group>"; };
 		060D9BA91E4A854B006DD8AB /* CalculateEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateEnum.swift; sourceTree = "<group>"; };
 		060D9BB11E4A8EC7006DD8AB /* UIImageView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
-		060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvg.swift; sourceTree = "<group>"; };
-		060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingAvgs.swift; sourceTree = "<group>"; };
-		060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDtoDownload.swift; sourceTree = "<group>"; };
 		060DDFE31E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsPagerViewController.swift; sourceTree = "<group>"; };
 		060DDFE51E4BA80300FE2D14 /* TrainingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingDetailsViewController.swift; sourceTree = "<group>"; };
 		060DDFEC1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTrainingSumElement.swift; sourceTree = "<group>"; };
@@ -574,7 +551,6 @@
 		060F02561E56C5C300D5BF43 /* AppScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScrollView.swift; sourceTree = "<group>"; };
 		060F2D89201219E8004E7EB1 /* PlanTelemetryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTelemetryObject.swift; sourceTree = "<group>"; };
 		060F2D8C20122727004E7EB1 /* PlanDisplayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDisplayHelper.swift; sourceTree = "<group>"; };
-		060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
 		061145CD1E58C97F0058EAF4 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		061145D01E58CF600058EAF4 /* DiagramLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramLabel.swift; sourceTree = "<group>"; };
 		061145D31E58D91F0058EAF4 /* LabelForce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelForce.swift; sourceTree = "<group>"; };
@@ -588,10 +564,6 @@
 		061145E31E5900440058EAF4 /* LineChartDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartDistance.swift; sourceTree = "<group>"; };
 		061148801E467A13003A8FE6 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		061148821E468121003A8FE6 /* UserUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUpdate.swift; sourceTree = "<group>"; };
-		06117BD01E4996350066C072 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
-		06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainingDto.swift; sourceTree = "<group>"; };
-		06117BD41E4998AE0066C072 /* DownloadDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadDto.swift; sourceTree = "<group>"; };
-		06117BD61E4999FA0066C072 /* DownloadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTrainings.swift; sourceTree = "<group>"; };
 		0612D1171E84FC67005D0FE6 /* PermissionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionCheck.swift; sourceTree = "<group>"; };
 		0613590E1E8325C80085578E /* CalculateT_AV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateT_AV.swift; sourceTree = "<group>"; };
 		061369871E7BD78700896282 /* UploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTrainings.swift; sourceTree = "<group>"; };
@@ -748,8 +720,6 @@
 		067790C31ED9B4AE0002AA59 /* WeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		0677FEFC1E413DDA00A9B977 /* AsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTask.swift; sourceTree = "<group>"; };
 		067964551E63633E00DFC050 /* CycleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleState.swift; sourceTree = "<group>"; };
-		067964571E63661200DFC050 /* TelemetryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryObject.swift; sourceTree = "<group>"; };
-		067964591E63665200DFC050 /* TelemetryAvgObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryAvgObject.swift; sourceTree = "<group>"; };
 		0679645B1E636C9400DFC050 /* CalculateElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateElement.swift; sourceTree = "<group>"; };
 		0679645E1E636CCE00DFC050 /* CommandProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandProcessor.swift; sourceTree = "<group>"; };
 		067964601E636E7800DFC050 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
@@ -881,11 +851,6 @@
 		06C707311FFBCAC600D72E72 /* ViewDashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardLayout.swift; sourceTree = "<group>"; };
 		06C707331FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardPlanLayout.swift; sourceTree = "<group>"; };
 		06C707351FFBCD9E00D72E72 /* ViewDashboardElementLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDashboardElementLayout.swift; sourceTree = "<group>"; };
-		06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventByTimestamp.swift; sourceTree = "<group>"; };
-		06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
-		06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadEventDays.swift; sourceTree = "<group>"; };
-		06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlanByName.swift; sourceTree = "<group>"; };
-		06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingBySessionId.swift; sourceTree = "<group>"; };
 		06CAFF3E1F0D28CD00D2EA14 /* ManagerModifyEditable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyEditable.swift; sourceTree = "<group>"; };
 		06CAFF401F0D2A5000D2EA14 /* ManagerModifyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyEvent.swift; sourceTree = "<group>"; };
 		06CAFF421F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyEventDelete.swift; sourceTree = "<group>"; };
@@ -899,7 +864,6 @@
 		06CAFF541F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModifyTrainingDelete.swift; sourceTree = "<group>"; };
 		06CAFF561F0D3C6300D2EA14 /* ManagerUploadTrainingAvgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainingAvgs.swift; sourceTree = "<group>"; };
 		06CAFF581F0D3D7600D2EA14 /* ManagerUploadTrainings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUploadTrainings.swift; sourceTree = "<group>"; };
-		06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownloadPlan.swift; sourceTree = "<group>"; };
 		06CBD6DB1F40EFF300BB570B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06CBFCBE1FF244EE0017E9B5 /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
 		06CBFCC21FF245B70017E9B5 /* VcSettingsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcSettingsLayout.swift; sourceTree = "<group>"; };
@@ -1459,9 +1423,7 @@
 		064FE5AF1ED0A32B004A9F35 /* download */ = {
 			isa = PBXGroup;
 			children = (
-				060DDFDD1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift */,
 				0613DAA21E4786C500CAD5A6 /* DownloadTrainingDays.swift */,
-				06117BD61E4999FA0066C072 /* DownloadTrainings.swift */,
 				06AF233D1F067AB2008805A2 /* DownloadEventByTimestamp.swift */,
 				06AF233F1F067D2D008805A2 /* DownloadEventDays.swift */,
 				06AF23431F067F06008805A2 /* DownloadPlanById.swift */,
@@ -1760,12 +1722,7 @@
 				063BE1742032F25F002C3886 /* BaseTraining.swift */,
 				063BE17A2032F853002C3886 /* ChartTraining.swift */,
 				063BE17C2032F889002C3886 /* SumChartTraining.swift */,
-				060D9BA61E4A7EB8006DD8AB /* SumTraining.swift */,
 				063BE17E2032F925002C3886 /* SumTrainingNew.swift */,
-				067964591E63665200DFC050 /* TelemetryAvgObject.swift */,
-				067964571E63661200DFC050 /* TelemetryObject.swift */,
-				06117BD01E4996350066C072 /* Training.swift */,
-				060DDFDB1E4AF55000FE2D14 /* TrainingAvg.swift */,
 				063BE1782032F68C002C3886 /* TrainingAvgNew.swift */,
 				063BE1762032F351002C3886 /* TrainingNew.swift */,
 			);
@@ -1775,8 +1732,6 @@
 		06AF233A1F067749008805A2 /* training */ = {
 			isa = PBXGroup;
 			children = (
-				060FE55E1E6221EE002529B7 /* TrainingAvgDbLoader.swift */,
-				06018D5B1E6219E000F75919 /* TrainingDbLoader.swift */,
 				063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */,
 				063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */,
 				063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */,
@@ -1982,10 +1937,6 @@
 		06CBD6D71F40958100BB570B /* plan */ = {
 			isa = PBXGroup;
 			children = (
-				06CAFF341F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift */,
-				06CAFF381F0D134800D2EA14 /* ManagerDownloadEventDays.swift */,
-				06CAFF3A1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift */,
-				06CBD6D91F4095A400BB570B /* ManagerDownloadPlan.swift */,
 				064608912043D4DB007BD78A /* ManagerDownloadPlanNew.swift */,
 				064608932043D7E4007BD78A /* ManagerDownloadPlanByNameNew.swift */,
 				064608952043D870007BD78A /* ManagerDownloadEventDaysNew.swift */,
@@ -1997,8 +1948,6 @@
 		06CBD6D81F40958900BB570B /* training */ = {
 			isa = PBXGroup;
 			children = (
-				06CAFF361F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift */,
-				06CAFF3C1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift */,
 				06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */,
 				06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */,
 			);
@@ -2073,11 +2022,8 @@
 			isa = PBXGroup;
 			children = (
 				0643A31D20230A8C00120DED /* log */,
-				06117BD41E4998AE0066C072 /* DownloadDto.swift */,
-				06117BD21E4997FE0066C072 /* DownloadTrainingDto.swift */,
 				06F914601E42802B0041B303 /* LoginDto.swift */,
 				06F657C51E461F76002AA9D0 /* RefreshTokenDto.swift */,
-				060DDFDF1E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift */,
 				06F657CD1E463DD5002AA9D0 /* UserDto.swift */,
 			);
 			name = backend;
@@ -2419,7 +2365,6 @@
 				067129551EC8828200362C39 /* PlanEditText.swift in Sources */,
 				067C2F77200D0AFF0045111A /* RefreshDashboardHelper.swift in Sources */,
 				06AF23351F0627CF008805A2 /* PlanEvent.swift in Sources */,
-				06CAFF3D1F0D183C00D2EA14 /* ManagerDownloadTrainingBySessionId.swift in Sources */,
 				063C41AB20348BE100BCE734 /* CalendarView.swift in Sources */,
 				060DDFE61E4BA80300FE2D14 /* TrainingDetailsViewController.swift in Sources */,
 				060D9BA01E4A6212006DD8AB /* AppUiTableViewCell.swift in Sources */,
@@ -2522,14 +2467,12 @@
 				067F7663200363A300A3F613 /* UserDb.swift in Sources */,
 				060B99281E642AEE00F72404 /* AppSensorManager.swift in Sources */,
 				066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */,
-				06CBD6DA1F4095A400BB570B /* ManagerDownloadPlan.swift in Sources */,
 				06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */,
 				063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */,
 				063BE1772032F351002C3886 /* TrainingNew.swift in Sources */,
 				06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */,
 				06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
-				06117BD51E4998AE0066C072 /* DownloadDto.swift in Sources */,
 				06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
 				06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift in Sources */,
@@ -2546,7 +2489,6 @@
 				067964891E63861300DFC050 /* CalculateElementV.swift in Sources */,
 				060A37781E5851D400A973BF /* DashBoardElement_Av200.swift in Sources */,
 				060A37761E584FBA00A973BF /* Telemetry.swift in Sources */,
-				06CAFF3B1F0D13CE00D2EA14 /* ManagerDownloadPlanByName.swift in Sources */,
 				06F657CE1E463DD5002AA9D0 /* UserDto.swift in Sources */,
 				0646A4AC1EF3A9000074101E /* ColorizedButton.swift in Sources */,
 				065573AE201661C200012E19 /* VcFeedbackLayout.swift in Sources */,
@@ -2570,11 +2512,9 @@
 				061145D11E58CF600058EAF4 /* DiagramLabel.swift in Sources */,
 				060A378E1E58559600A973BF /* DashBoardElement_Strokes.swift in Sources */,
 				068FD3E7203566890019D8DF /* ViewEventCalendarListLayout.swift in Sources */,
-				067964581E63661200DFC050 /* TelemetryObject.swift in Sources */,
 				06217B0D2015EA6A004DC885 /* UpdateDialog.swift in Sources */,
 				064608922043D4DB007BD78A /* ManagerDownloadPlanNew.swift in Sources */,
 				060DE0041E4BDF6E00FE2D14 /* TrainingSEStroke.swift in Sources */,
-				06117BD71E4999FA0066C072 /* DownloadTrainings.swift in Sources */,
 				061145DC1E58D9950058EAF4 /* LabelT500.swift in Sources */,
 				060B3DBE1EE85D1300AF43DE /* PlanEtDistance.swift in Sources */,
 				066B003F1EC7253B00BE0E1F /* PlanDbLoader.swift in Sources */,
@@ -2596,7 +2536,6 @@
 				06C2F3F21F0A42A10077EE21 /* DeleteTrainingAvg.swift in Sources */,
 				06AF23311F06253B008805A2 /* UploadAble.swift in Sources */,
 				067129531EC8775600362C39 /* KeyboardNumView.swift in Sources */,
-				06018D5C1E6219E000F75919 /* TrainingDbLoader.swift in Sources */,
 				06018D561E61D9D700F75919 /* UIView+.swift in Sources */,
 				06F9D5DE1F38997F005ECA8B /* CalculateElementFErgo.swift in Sources */,
 				06F657C81E4628C7002AA9D0 /* UserLogout.swift in Sources */,
@@ -2624,13 +2563,11 @@
 				067964901E6387A000DFC050 /* MeasureCommand.swift in Sources */,
 				06F657C61E461F76002AA9D0 /* RefreshTokenDto.swift in Sources */,
 				0621004E1F0FB15C0024A2AA /* PlanNoElementsDialog.swift in Sources */,
-				060D9BA71E4A7EB8006DD8AB /* SumTraining.swift in Sources */,
 				0644D1D31E79759900CD0D5F /* CalculateStrokes_AV_Outdoor.swift in Sources */,
 				067964A31E63A18D00DFC050 /* CalculateElementVOutdoor.swift in Sources */,
 				066461631F459D0200145960 /* AppProgressBar.swift in Sources */,
 				06AF23421F067DEC008805A2 /* EventManagerType.swift in Sources */,
 				060F02571E56C5C300D5BF43 /* AppScrollView.swift in Sources */,
-				060DDFE01E4AF73300FE2D14 /* TrainingAvgDtoDownload.swift in Sources */,
 				066B00491EC7554400BE0E1F /* PlanListVc.swift in Sources */,
 				064498AD20176B1900DF9915 /* SystemInfo.swift in Sources */,
 				063BE18E203349C9002C3886 /* TrainingDbHelper.swift in Sources */,
@@ -2641,7 +2578,6 @@
 				060DDFF61E4BDB0800FE2D14 /* TrainingSumElementMinimumTime.swift in Sources */,
 				060A37861E5854AE00A973BF /* DashBoardElement_CurrentSpeed.swift in Sources */,
 				060B3DC41EE85EEB00AF43DE /* PlanEtSec.swift in Sources */,
-				06CAFF351F0D0B2F00D2EA14 /* ManagerDownloadEventByTimestamp.swift in Sources */,
 				066B003B1EC71C5500BE0E1F /* PlanElementDbLoader.swift in Sources */,
 				06C707101FFB88D200D72E72 /* ViewDividerLayout.swift in Sources */,
 				06F657CC1E463DB6002AA9D0 /* UserRegister.swift in Sources */,
@@ -2650,7 +2586,6 @@
 				0602B44E1E23CAF000ABA70F /* Localize.swift in Sources */,
 				064490B2204D15BC001E80D7 /* UploadTrainingSums.swift in Sources */,
 				0679645F1E636CCE00DFC050 /* CommandProcessor.swift in Sources */,
-				060DDFDC1E4AF55000FE2D14 /* TrainingAvg.swift in Sources */,
 				0698BC4F1F005EC100FC7A0E /* PlanSoundHelper.swift in Sources */,
 				065B3C5B1F0E61EE0029C7DF /* PlanTableViewCell.swift in Sources */,
 				0654CA211FFD54ED003379D6 /* BaseTrainingVc.swift in Sources */,
@@ -2660,7 +2595,6 @@
 				06C7071A1FFBA8FC00D72E72 /* ViewProfileElementExpandableLayout.swift in Sources */,
 				065573B02016620C00012E19 /* FeedbackViewController.swift in Sources */,
 				06CD9E3E201A0CA40069F260 /* SystemInfoDialog.swift in Sources */,
-				060DDFDE1E4AF65C00FE2D14 /* DownloadTrainingAvgs.swift in Sources */,
 				06F657C01E4618E4002AA9D0 /* UserResetPassword.swift in Sources */,
 				067964701E63800E00DFC050 /* CalculateT_500_AV.swift in Sources */,
 				0643A31C2022FDDF00120DED /* LogManagerType.swift in Sources */,
@@ -2680,7 +2614,6 @@
 				060468A11F189CB400D3408C /* PlanTypeView.swift in Sources */,
 				0613DAA31E4786C500CAD5A6 /* DownloadTrainingDays.swift in Sources */,
 				066B00511EC769DA00BE0E1F /* EventTablewViewHeader.swift in Sources */,
-				0679645A1E63665200DFC050 /* TelemetryAvgObject.swift in Sources */,
 				0612D1181E84FC67005D0FE6 /* PermissionCheck.swift in Sources */,
 				0613698C1E7C4B7200896282 /* UploadTrainingAvgs.swift in Sources */,
 				061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */,
@@ -2763,19 +2696,15 @@
 				061145D41E58D91F0058EAF4 /* LabelForce.swift in Sources */,
 				06CAFF431F0D2A7D00D2EA14 /* ManagerModifyEventDelete.swift in Sources */,
 				06C707261FFBBBCD00D72E72 /* ViewLoginLayout.swift in Sources */,
-				06CAFF371F0D129800D2EA14 /* ManagerDownloadTrainingDays.swift in Sources */,
 				069433F61E28462D00CE6398 /* NewPasswordDialog.swift in Sources */,
 				06C707161FFBA53300D72E72 /* ViewDialogElementTextFieldLayout.swift in Sources */,
-				06117BD11E4996350066C072 /* Training.swift in Sources */,
 				067A09A31F38A2DA00CC8051 /* CalculateElementOmegaMax.swift in Sources */,
 				0609B5381E6C06A100011CED /* ProfileElement.swift in Sources */,
-				060FE55F1E6221EE002529B7 /* TrainingAvgDbLoader.swift in Sources */,
 				06A6609A2042F48E00E5ED9B /* TimestampObject.swift in Sources */,
 				06F9D5D31F389609005ECA8B /* CommandErgometerT_H.swift in Sources */,
 				06F938FE1E3F386500920753 /* UITextField+.swift in Sources */,
 				06C6ABB21E2267A000562B27 /* AppDelegate.swift in Sources */,
 				0619660D1FFE32100040E59A /* ViewPauseLayout.swift in Sources */,
-				06117BD31E4997FE0066C072 /* DownloadTrainingDto.swift in Sources */,
 				067A09AB1F38A71400CC8051 /* CalculateElementStrokesErgo.swift in Sources */,
 				0602DEB61ECD635A000E4793 /* PEDashboardTableView.swift in Sources */,
 				0605BF521FFD0E220065B63F /* OutdoorService.swift in Sources */,
@@ -2795,7 +2724,6 @@
 				06E8405D1F360A7000303574 /* BluetoothDeviceTableView.swift in Sources */,
 				066835EC200268F200DA9969 /* AppLocation.swift in Sources */,
 				060DE0001E4BDEC100FE2D14 /* TrainingSEForce.swift in Sources */,
-				06CAFF391F0D134800D2EA14 /* ManagerDownloadEventDays.swift in Sources */,
 				06BADDE2203C12F8007DC5CC /* DownloadTrainingsBySessionIds.swift in Sources */,
 				06CAFF491F0D2E1000D2EA14 /* ManagerModifyPlan.swift in Sources */,
 				0677FEFD1E413DDA00A9B977 /* AsyncTask.swift in Sources */,

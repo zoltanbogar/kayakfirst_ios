@@ -106,32 +106,6 @@ class UnitHelper {
         return value
     }
     
-    class func getTrainingValue(training: Training?) -> Double {
-        var value: Double = 0
-        
-        if let trainingValue = training {
-            switch trainingValue.dataType {
-            case CalculateEnum.F.rawValue:
-                value = getForceValue(metricValue: trainingValue.dataValue)
-            case CalculateEnum.V.rawValue:
-                value = getSpeedValue(metricValue: trainingValue.dataValue)
-            case CalculateEnum.STROKES.rawValue:
-                value = trainingValue.dataValue
-            case CalculateEnum.T_200.rawValue:
-                value = getPaceValue(pace: Pace.pace200, metricValue: trainingValue.dataValue)
-            case CalculateEnum.T_500.rawValue:
-                value = getPaceValue(pace: Pace.pace500, metricValue: trainingValue.dataValue)
-            case CalculateEnum.T_1000.rawValue:
-                value = getPaceValue(pace: Pace.pace1000, metricValue: trainingValue.dataValue)
-            case CalculateEnum.S_SUM.rawValue:
-                value = getDistanceValue(metricValue: trainingValue.dataValue)
-            default:
-                break
-            }
-        }
-        return value
-    }
-    
     class func getCalculatePaceTitle(pace: Pace) -> String {
         switch pace {
         case Pace.pace200:
