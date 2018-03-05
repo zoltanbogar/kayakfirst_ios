@@ -24,13 +24,13 @@ enum ArtOfPaddle: String {
     case rowing = "rowing"
 }
 
-func createSumTraining(sessionId: Double, trainingEnvType: String, planTrainingId: String, planTrainingType: PlanType?) -> SumTrainingNew {
+func createSumTraining(sessionId: Double, trainingEnvType: String, planTrainingId: String, planTrainingType: PlanType?) -> SumTraining {
     
     let userManager = UserManager.sharedInstance
     let userId = userManager.getUserId()
     let paddleOfArt = userManager.getArtOfPaddle()
     
-    return SumTrainingNew(
+    return SumTraining(
         sessionId: sessionId,
         userId: userId,
         artOfPaddle: paddleOfArt,
@@ -44,7 +44,7 @@ func createSumTraining(sessionId: Double, trainingEnvType: String, planTrainingI
     
 }
 
-class SumTrainingNew: Equatable, ModifyAble {
+class SumTraining: Equatable, ModifyAble {
     
     //MARK: constants
     private let oneHourMilliseconds: TimeInterval = 60 * 60 * 1000
@@ -111,7 +111,7 @@ class SumTrainingNew: Equatable, ModifyAble {
     }
     
     //MARK: protocol
-    static func == (lhs: SumTrainingNew, rhs: SumTrainingNew) -> Bool {
+    static func == (lhs: SumTraining, rhs: SumTraining) -> Bool {
         return Int64(lhs.sessionId) == Int64(rhs.sessionId)
     }
     

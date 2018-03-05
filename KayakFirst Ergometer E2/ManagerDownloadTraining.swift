@@ -9,7 +9,7 @@
 import Foundation
 
 //TODO: test
-class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
+class ManagerDownloadTraining: ManagerDownload<[SumTraining]> {
     
     private var timestampObject: TimestampObject
     private var localeSessionIds: [Double]?
@@ -22,7 +22,7 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
         self.serverSessionIds = timestampObject.timestampsServer
     }
     
-    override func getData() -> [SumTrainingNew]? {
+    override func getData() -> [SumTraining]? {
         downloadTrainings()
         
         if localeSessionIds != nil {
@@ -80,8 +80,8 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
             
             if sumTrainings != nil && avgTrainings != nil && trainings != nil {
                 SumTrainingDbLoader.sharedInstance.addSumTrainings(sumTrainings: sumTrainings!)
-                TrainingAvgNewDbLoader.sharedInstance.addTrainingAvgs(trainingAvgs: avgTrainings!)
-                TrainingNewDbLoader.sharedInstance.addTrainings(trainings: trainings!)
+                TrainingAvgDbLoader.sharedInstance.addTrainingAvgs(trainingAvgs: avgTrainings!)
+                TrainingDbLoader.sharedInstance.addTrainings(trainings: trainings!)
                 
                 if let plans = plans {
                     PlanTrainingDbLoader.sharedInstance.addPlanTrainings(planTrainings: plans)
@@ -91,7 +91,7 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
     }
     
     override func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
-        return anotherManagerDownload is ManagerDownloadTrainingNew
+        return anotherManagerDownload is ManagerDownloadTraining
     }
     
 }

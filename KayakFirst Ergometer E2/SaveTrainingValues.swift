@@ -10,8 +10,8 @@ import Foundation
 class SaveTrainingValues {
     
     //MARK: properties
-    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
-    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     private let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
     private let userManager = UserManager.sharedInstance
     
@@ -21,7 +21,7 @@ class SaveTrainingValues {
         //private constructor
     }
     
-    func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {
+    func saveTrainingData(training: Training, trainingAvg: TrainingAvg, sumTrainig: SumTraining) {
         if userManager.getUser() != nil {
             trainingDbLoader.addData(data: training)
             trainingAvgDbLoader.addData(data: trainingAvg)

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTrainingNew> {
+class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
     
     //MARK: constants
-    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
-    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     
     //MARK: functions
     override func modifyLocale() {

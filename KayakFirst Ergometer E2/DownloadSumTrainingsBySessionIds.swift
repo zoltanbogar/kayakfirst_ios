@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class DownloadSumTrainingsBySessionIds: ServerService<[SumTrainingNew]> {
+class DownloadSumTrainingsBySessionIds: ServerService<[SumTraining]> {
     
     private let sessionIds: [Double]
     
@@ -19,18 +19,18 @@ class DownloadSumTrainingsBySessionIds: ServerService<[SumTrainingNew]> {
         self.sessionIds = sessionIds
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> [SumTrainingNew]? {
-        var trainingSums: [SumTrainingNew]?
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> [SumTraining]? {
+        var trainingSums: [SumTraining]?
         let response = alamofireRequest.responseJSON()
         
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
             if let jsonArray = jsonValue.array {
-                trainingSums = [SumTrainingNew]()
+                trainingSums = [SumTraining]()
                 
                 for trainingSumDto in jsonArray {
-                    let trainingSum = SumTrainingNew(json: trainingSumDto)
+                    let trainingSum = SumTraining(json: trainingSumDto)
                     
                     if trainingSum != nil {
                         trainingSums?.append(trainingSum!)

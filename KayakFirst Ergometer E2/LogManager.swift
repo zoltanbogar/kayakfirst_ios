@@ -83,7 +83,7 @@ class LogManager: BaseManager {
         logEvent(event: "cycle stop by \(stopByWho)")
     }
     
-    func logTelemetryObject(training: TrainingNew) {
+    func logTelemetryObject(training: Training) {
         let f = "f: \(training.force)"
         let v = "v: \(training.speed)"
         let s = "s: \(training.distance)"

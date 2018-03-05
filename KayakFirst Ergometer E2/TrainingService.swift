@@ -16,7 +16,7 @@ class TrainingService {
     
     private let trainingManager: TrainingManager
     
-    private var sumTraining: SumTrainingNew?
+    private var sumTraining: SumTraining?
     private var trainingEnvType: TrainingEnvironmentType?
     private var plan: Plan?
     
@@ -32,15 +32,15 @@ class TrainingService {
     }
     
     //MARK: abstract functions
-    internal func getTrainingObject() -> TrainingNew {
+    internal func getTrainingObject() -> Training {
         fatalError("must be implemented")
     }
     
-    internal func getTrainingAvgObject() -> TrainingAvgNew {
+    internal func getTrainingAvgObject() -> TrainingAvg {
         fatalError("must be implemented")
     }
     
-    internal func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+    internal func updateSumTraining(sumTraining: SumTraining) -> SumTraining {
         fatalError("must be implemented")
     }
     

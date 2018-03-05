@@ -24,7 +24,7 @@ class TrainingDbHelper: BaseDbHelper<SumChartTraining> {
         var forceCharts = [ChartTraining]()
         var strokesCharts = [ChartTraining]()
         
-        let trainingList = TrainingNewDbLoader.sharedInstance.getTrainingsBySessionId(sessionId: sessionId)
+        let trainingList = TrainingDbLoader.sharedInstance.getTrainingsBySessionId(sessionId: sessionId)
         
         if let trainingList = trainingList {
             for training in trainingList {

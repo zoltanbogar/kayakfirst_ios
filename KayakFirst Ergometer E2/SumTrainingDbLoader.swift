@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
+class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
     
     //MARK: constants
     static let tableName = "training_sum_table"
@@ -62,7 +62,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
     }
     
     //MARK: insert
-    func addSumTrainings(sumTrainings: [SumTrainingNew]) {
+    func addSumTrainings(sumTrainings: [SumTraining]) {
         do {
             try db!.transaction {
                 for sumTraining in sumTrainings {
@@ -74,7 +74,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         }
     }
     
-    override func addData(data: SumTrainingNew?) {
+    override func addData(data: SumTraining?) {
         if let sumTraining = data {
             if sessionIdValue != sumTraining.sessionId {
                 sessionIdValue = sumTraining.sessionId
@@ -91,7 +91,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
     }
     
     //MARK: update
-    override func updateData(data: SumTrainingNew) {
+    override func updateData(data: SumTraining) {
         let sum = table!.filter(self.sessionId == Double(Int64(data.sessionId)))
         do {
             try db!.run(sum.update(self.trainingCount <- data.trainingCount, self.duration <- data.duration, self.distance <- data.distance))
@@ -133,14 +133,14 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         return trainingDays
     }
     
-    func getSumTrainingsBySessionId(sessionIds: [Double]?) -> [SumTrainingNew]? {
+    func getSumTrainingsBySessionId(sessionIds: [Double]?) -> [SumTraining]? {
         if let sessionIds = sessionIds {
             return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
         }
         return nil
     }
     
-    func getSumTrainingBySessionId(sessionId: Double) -> SumTrainingNew? {
+    func getSumTrainingBySessionId(sessionId: Double) -> SumTraining? {
         let sumTrainings = loadData(predicate: getPredicateSessionId(sessionId: sessionId))
         
         if sumTrainings != nil && sumTrainings!.count > 0 {
@@ -149,12 +149,12 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         return nil
     }
     
-    override func queryData(predicate: Expression<Bool>?) -> [SumTrainingNew]? {
+    override func queryData(predicate: Expression<Bool>?) -> [SumTraining]? {
         return loadData(predicate: predicate)
     }
     
-    override func loadData(predicate: Expression<Bool>?) -> [SumTrainingNew]? {
-        var sumTrainingList: [SumTrainingNew]?
+    override func loadData(predicate: Expression<Bool>?) -> [SumTraining]? {
+        var sumTrainingList: [SumTraining]?
         
         do {
             var queryPredicate = self.userId == UserManager.sharedInstance.getUserId()
@@ -165,7 +165,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
             
             let dbList = try db!.prepare(table!.filter(queryPredicate).order(self.sessionId))
             
-            sumTrainingList = [SumTrainingNew]()
+            sumTrainingList = [SumTraining]()
             
             for sumTrainingDb in dbList {
                 let sessionId = sumTrainingDb[self.sessionId]
@@ -179,7 +179,7 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
                 let duration = sumTrainingDb[self.duration]
                 let distance = sumTrainingDb[self.distance]
                 
-                let sumTraining = SumTrainingNew(
+                let sumTraining = SumTraining(
                     sessionId: sessionId,
                     userId: userId,
                     artOfPaddle: artOfPaddle,
@@ -201,12 +201,12 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTrainingNew, Double> {
         return sumTrainingList
     }
     
-    override func loadUploadAbleData(pointer: Double) -> [SumTrainingNew]? {
+    override func loadUploadAbleData(pointer: Double) -> [SumTraining]? {
         //TODO
         return nil
     }
     
-    func loadUploadAbleData(sessionIds: [Double]?) -> [SumTrainingNew]? {
+    func loadUploadAbleData(sessionIds: [Double]?) -> [SumTraining]? {
         if let sessionIds = sessionIds {
             return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
         }

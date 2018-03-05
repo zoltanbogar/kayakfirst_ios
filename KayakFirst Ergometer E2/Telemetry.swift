@@ -59,7 +59,7 @@ class Telemetry {
     var lastCycleIndexTime: Double = 0
     
     //MARK telemtry objects
-    var telemetryObject: TrainingNew? {
+    var telemetryObject: Training? {
         didSet {
             force = telemetryObject!.force
             speed = telemetryObject!.speed
@@ -75,7 +75,7 @@ class Telemetry {
         }
     }
     
-    var telemetryAvgObject: TrainingAvgNew? {
+    var telemetryAvgObject: TrainingAvg? {
         didSet {
             force_av = telemetryAvgObject!.force
             speed_av = telemetryAvgObject!.speed

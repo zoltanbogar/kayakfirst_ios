@@ -124,7 +124,6 @@
 		061C80171E693F4700BCE509 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80161E693F4600BCE509 /* LoginView.swift */; };
 		061C80191E693F8700BCE509 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C80181E693F8700BCE509 /* RegisterView.swift */; };
 		061DBCB71F12811600D3C129 /* PortraitNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061DBCB61F12811600D3C129 /* PortraitNavController.swift */; };
-		061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */; };
 		061FF0BF1F0BEC4F0068E6E6 /* ManagerUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */; };
 		061FF0C11F0BED4F0068E6E6 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C01F0BED4F0068E6E6 /* UploadType.swift */; };
 		061FF0C61F0BF1BB0068E6E6 /* ManagerModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */; };
@@ -157,14 +156,14 @@
 		06371C2C1FF573E500469A46 /* VcEventDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */; };
 		06371C2E1FF5766D00469A46 /* VcPlanTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */; };
 		063BE1752032F25F002C3886 /* BaseTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1742032F25F002C3886 /* BaseTraining.swift */; };
-		063BE1772032F351002C3886 /* TrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1762032F351002C3886 /* TrainingNew.swift */; };
-		063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1782032F68C002C3886 /* TrainingAvgNew.swift */; };
+		063BE1772032F351002C3886 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1762032F351002C3886 /* Training.swift */; };
+		063BE1792032F68C002C3886 /* TrainingAvg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE1782032F68C002C3886 /* TrainingAvg.swift */; };
 		063BE17B2032F853002C3886 /* ChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17A2032F853002C3886 /* ChartTraining.swift */; };
 		063BE17D2032F889002C3886 /* SumChartTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17C2032F889002C3886 /* SumChartTraining.swift */; };
-		063BE17F2032F925002C3886 /* SumTrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17E2032F925002C3886 /* SumTrainingNew.swift */; };
+		063BE17F2032F925002C3886 /* SumTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE17E2032F925002C3886 /* SumTraining.swift */; };
 		063BE18120331D25002C3886 /* SumTrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */; };
-		063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */; };
-		063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */; };
+		063BE183203325F1002C3886 /* TrainingAvgDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE182203325F1002C3886 /* TrainingAvgDbLoader.swift */; };
+		063BE18520332A10002C3886 /* TrainingDbLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18420332A10002C3886 /* TrainingDbLoader.swift */; };
 		063BE18720334649002C3886 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18620334649002C3886 /* DatabaseHelper.swift */; };
 		063BE18A203346B3002C3886 /* TrainingAvgDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */; };
 		063BE18C20334842002C3886 /* PlanDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BE18B20334842002C3886 /* PlanDbHelper.swift */; };
@@ -318,9 +317,9 @@
 		069ADD9B1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */; };
 		06A660982042F46400E5ED9B /* DaysObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A660972042F46400E5ED9B /* DaysObject.swift */; };
 		06A6609A2042F48E00E5ED9B /* TimestampObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A660992042F48E00E5ED9B /* TimestampObject.swift */; };
-		06A6609C2042F8DD00E5ED9B /* ManagerDownloadNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */; };
-		06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */; };
-		06A660A0204302D600E5ED9B /* ManagerDownloadTrainingNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */; };
+		06A6609C2042F8DD00E5ED9B /* ManagerDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609B2042F8DD00E5ED9B /* ManagerDownload.swift */; };
+		06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDays.swift */; };
+		06A660A0204302D600E5ED9B /* ManagerDownloadTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6609F204302D600E5ED9B /* ManagerDownloadTraining.swift */; };
 		06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF232E1F06251B008805A2 /* ModifyAble.swift */; };
 		06AF23311F06253B008805A2 /* UploadAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23301F06253B008805A2 /* UploadAble.swift */; };
 		06AF23331F0625FA008805A2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF23321F0625FA008805A2 /* Event.swift */; };
@@ -585,7 +584,6 @@
 		061C80161E693F4600BCE509 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		061C80181E693F8700BCE509 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		061DBCB61F12811600D3C129 /* PortraitNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitNavController.swift; sourceTree = "<group>"; };
-		061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
 		061FF0BE1F0BEC4F0068E6E6 /* ManagerUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerUpload.swift; sourceTree = "<group>"; };
 		061FF0C01F0BED4F0068E6E6 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
 		061FF0C51F0BF1BB0068E6E6 /* ManagerModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerModify.swift; sourceTree = "<group>"; };
@@ -618,14 +616,14 @@
 		06371C2B1FF573E500469A46 /* VcEventDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcEventDetailsLayout.swift; sourceTree = "<group>"; };
 		06371C2D1FF5766D00469A46 /* VcPlanTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanTypeLayout.swift; sourceTree = "<group>"; };
 		063BE1742032F25F002C3886 /* BaseTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTraining.swift; sourceTree = "<group>"; };
-		063BE1762032F351002C3886 /* TrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingNew.swift; sourceTree = "<group>"; };
-		063BE1782032F68C002C3886 /* TrainingAvgNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgNew.swift; sourceTree = "<group>"; };
+		063BE1762032F351002C3886 /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		063BE1782032F68C002C3886 /* TrainingAvg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvg.swift; sourceTree = "<group>"; };
 		063BE17A2032F853002C3886 /* ChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTraining.swift; sourceTree = "<group>"; };
 		063BE17C2032F889002C3886 /* SumChartTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumChartTraining.swift; sourceTree = "<group>"; };
-		063BE17E2032F925002C3886 /* SumTrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingNew.swift; sourceTree = "<group>"; };
+		063BE17E2032F925002C3886 /* SumTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTraining.swift; sourceTree = "<group>"; };
 		063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTrainingDbLoader.swift; sourceTree = "<group>"; };
-		063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgNewDbLoader.swift; sourceTree = "<group>"; };
-		063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingNewDbLoader.swift; sourceTree = "<group>"; };
+		063BE182203325F1002C3886 /* TrainingAvgDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbLoader.swift; sourceTree = "<group>"; };
+		063BE18420332A10002C3886 /* TrainingDbLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDbLoader.swift; sourceTree = "<group>"; };
 		063BE18620334649002C3886 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		063BE189203346B3002C3886 /* TrainingAvgDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingAvgDbHelper.swift; sourceTree = "<group>"; };
 		063BE18B20334842002C3886 /* PlanDbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDbHelper.swift; sourceTree = "<group>"; };
@@ -780,9 +778,9 @@
 		069ADD9A1EFB8DE700F24427 /* PickerHelperArtOfPaddling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerHelperArtOfPaddling.swift; sourceTree = "<group>"; };
 		06A660972042F46400E5ED9B /* DaysObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysObject.swift; sourceTree = "<group>"; };
 		06A660992042F48E00E5ED9B /* TimestampObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampObject.swift; sourceTree = "<group>"; };
-		06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadNew.swift; sourceTree = "<group>"; };
-		06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDaysNew.swift; sourceTree = "<group>"; };
-		06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingNew.swift; sourceTree = "<group>"; };
+		06A6609B2042F8DD00E5ED9B /* ManagerDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownload.swift; sourceTree = "<group>"; };
+		06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTrainingDays.swift; sourceTree = "<group>"; };
+		06A6609F204302D600E5ED9B /* ManagerDownloadTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDownloadTraining.swift; sourceTree = "<group>"; };
 		06AF232E1F06251B008805A2 /* ModifyAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyAble.swift; sourceTree = "<group>"; };
 		06AF23301F06253B008805A2 /* UploadAble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAble.swift; sourceTree = "<group>"; };
 		06AF23321F0625FA008805A2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -1224,8 +1222,7 @@
 			children = (
 				06CBD6D81F40958900BB570B /* training */,
 				06CBD6D71F40958100BB570B /* plan */,
-				061FF0B91F0BE2AB0068E6E6 /* ManagerDownload.swift */,
-				06A6609B2042F8DD00E5ED9B /* ManagerDownloadNew.swift */,
+				06A6609B2042F8DD00E5ED9B /* ManagerDownload.swift */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -1722,9 +1719,9 @@
 				063BE1742032F25F002C3886 /* BaseTraining.swift */,
 				063BE17A2032F853002C3886 /* ChartTraining.swift */,
 				063BE17C2032F889002C3886 /* SumChartTraining.swift */,
-				063BE17E2032F925002C3886 /* SumTrainingNew.swift */,
-				063BE1782032F68C002C3886 /* TrainingAvgNew.swift */,
-				063BE1762032F351002C3886 /* TrainingNew.swift */,
+				063BE17E2032F925002C3886 /* SumTraining.swift */,
+				063BE1782032F68C002C3886 /* TrainingAvg.swift */,
+				063BE1762032F351002C3886 /* Training.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -1733,8 +1730,8 @@
 			isa = PBXGroup;
 			children = (
 				063BE18020331D25002C3886 /* SumTrainingDbLoader.swift */,
-				063BE182203325F1002C3886 /* TrainingAvgNewDbLoader.swift */,
-				063BE18420332A10002C3886 /* TrainingNewDbLoader.swift */,
+				063BE182203325F1002C3886 /* TrainingAvgDbLoader.swift */,
+				063BE18420332A10002C3886 /* TrainingDbLoader.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -1948,8 +1945,8 @@
 		06CBD6D81F40958900BB570B /* training */ = {
 			isa = PBXGroup;
 			children = (
-				06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift */,
-				06A6609F204302D600E5ED9B /* ManagerDownloadTrainingNew.swift */,
+				06A6609D2042FBFE00E5ED9B /* ManagerDownloadTrainingDays.swift */,
+				06A6609F204302D600E5ED9B /* ManagerDownloadTraining.swift */,
 			);
 			name = training;
 			sourceTree = "<group>";
@@ -2329,7 +2326,7 @@
 				06703F711E24025A0028135A /* Colors.swift in Sources */,
 				06F9D5D91F38966E005ECA8B /* CommandErgometerT_V.swift in Sources */,
 				06D8FC2E2035A555007423BD /* BaseCalendarManager.swift in Sources */,
-				06A660A0204302D600E5ED9B /* ManagerDownloadTrainingNew.swift in Sources */,
+				06A660A0204302D600E5ED9B /* ManagerDownloadTraining.swift in Sources */,
 				064820621FFF9082009A47C9 /* DragDropPlanHelper.swift in Sources */,
 				06A660982042F46400E5ED9B /* DaysObject.swift in Sources */,
 				060B6ADC1E669BD80024E3E6 /* StartDelayView.swift in Sources */,
@@ -2442,14 +2439,14 @@
 				06E03B881ECCE91800AC7CA0 /* DashboardPlanView.swift in Sources */,
 				06E8405F1F360ABE00303574 /* BluetoothTableViewCell.swift in Sources */,
 				060468A31F18BF6300D3408C /* AppTableViewHeader.swift in Sources */,
-				063BE183203325F1002C3886 /* TrainingAvgNewDbLoader.swift in Sources */,
+				063BE183203325F1002C3886 /* TrainingAvgDbLoader.swift in Sources */,
 				067964631E6370F500DFC050 /* SaveTrainingValues.swift in Sources */,
 				06C1B9881E25962800AB4C47 /* CustomUi.swift in Sources */,
 				068FD3E9203568B20019D8DF /* TrainingCalendarListView.swift in Sources */,
 				06AF232F1F06251B008805A2 /* ModifyAble.swift in Sources */,
 				064D9B032008EBD40057137C /* OrientationNavController.swift in Sources */,
 				06C7072C1FFBC4A100D72E72 /* ViewChartLayout.swift in Sources */,
-				06A6609C2042F8DD00E5ED9B /* ManagerDownloadNew.swift in Sources */,
+				06A6609C2042F8DD00E5ED9B /* ManagerDownload.swift in Sources */,
 				06BCB0D61E564F2200F41652 /* CalendarVc.swift in Sources */,
 				060DE0021E4BDF3700FE2D14 /* TrainingSESpeed.swift in Sources */,
 				063C41A8203464E900BCE734 /* TrainingDesignHelper.swift in Sources */,
@@ -2469,13 +2466,13 @@
 				066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */,
 				06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */,
 				063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */,
-				063BE1772032F351002C3886 /* TrainingNew.swift in Sources */,
+				063BE1772032F351002C3886 /* Training.swift in Sources */,
 				06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */,
 				06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */,
 				060A37731E57A9E500A973BF /* DashBoardElement_Duration.swift in Sources */,
 				06F9D5D71F389652005ECA8B /* CommandErgometerT_MIN.swift in Sources */,
 				060A377E1E58528400A973BF /* DashBoardElementBase.swift in Sources */,
-				06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDaysNew.swift in Sources */,
+				06A6609E2042FBFE00E5ED9B /* ManagerDownloadTrainingDays.swift in Sources */,
 				066835F42002813900DA9969 /* CommandOutdoorLocation.swift in Sources */,
 				06CAFF551F0D38E100D2EA14 /* ManagerModifyTrainingDelete.swift in Sources */,
 				06F8A0901F0E82C1006CE6FB /* DeleteTrainingDialog.swift in Sources */,
@@ -2645,7 +2642,7 @@
 				06F9D5DB1F38985F005ECA8B /* CommandProcessorErgometer.swift in Sources */,
 				063237CD1FF62CDA00F04A4B /* VcDashboardLayout.swift in Sources */,
 				0679647F1E6384CA00DFC050 /* CalculateElementStroke.swift in Sources */,
-				063BE18520332A10002C3886 /* TrainingNewDbLoader.swift in Sources */,
+				063BE18520332A10002C3886 /* TrainingDbLoader.swift in Sources */,
 				067A09A91F38A56000CC8051 /* CalculateElementSErgo.swift in Sources */,
 				06533A1B20356081006FD371 /* BaseCalendarTableViewCell.swift in Sources */,
 				06BADDE6203C1978007DC5CC /* DownloadSumTrainingsBySessionIds.swift in Sources */,
@@ -2657,7 +2654,7 @@
 				064498B220176BE500DF9915 /* SystemInfoDbLoader.swift in Sources */,
 				060DDFED1E4BCFC800FE2D14 /* BaseTrainingSumElement.swift in Sources */,
 				06AF233E1F067AB2008805A2 /* DownloadEventByTimestamp.swift in Sources */,
-				063BE17F2032F925002C3886 /* SumTrainingNew.swift in Sources */,
+				063BE17F2032F925002C3886 /* SumTraining.swift in Sources */,
 				066B00461EC7504400BE0E1F /* DividerView.swift in Sources */,
 				06C707341FFBCBEB00D72E72 /* ViewDashboardPlanLayout.swift in Sources */,
 				069433EA1E283BFD00CE6398 /* ResetPasswordDialog.swift in Sources */,
@@ -2679,7 +2676,7 @@
 				065187201F0A4ECF00B434B0 /* UploadEvent.swift in Sources */,
 				063BE18C20334842002C3886 /* PlanDbHelper.swift in Sources */,
 				06CBFCBF1FF244EE0017E9B5 /* BaseLayout.swift in Sources */,
-				063BE1792032F68C002C3886 /* TrainingAvgNew.swift in Sources */,
+				063BE1792032F68C002C3886 /* TrainingAvg.swift in Sources */,
 				060A37801E5853C500A973BF /* DashBoardElement_AvPullForce.swift in Sources */,
 				06533A1720355D54006FD371 /* BaseCalendarListView.swift in Sources */,
 				06C707121FFB90AD00D72E72 /* ViewAppToastLayout.swift in Sources */,
@@ -2688,7 +2685,6 @@
 				060A378C1E58555800A973BF /* DashBoardElement_PullForce.swift in Sources */,
 				0605AF241E26E9A80094C9B9 /* DashBoardElementTime.swift in Sources */,
 				060DDFE41E4BA6E700FE2D14 /* TrainingDetailsPagerViewController.swift in Sources */,
-				061FF0BA1F0BE2AB0068E6E6 /* ManagerDownload.swift in Sources */,
 				0609EAE21E69FA99006094EC /* UserLoginFacebook.swift in Sources */,
 				0671295D1EC8981A00362C39 /* PlanElementTableView.swift in Sources */,
 				066835F020026D8600DA9969 /* CommandParser.swift in Sources */,

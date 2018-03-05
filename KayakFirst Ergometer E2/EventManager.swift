@@ -19,14 +19,14 @@ class EventManager: BaseCalendarManager<PlanEvent> {
     //MARK: functions
     override func getDays() -> BaseManagerType {
         let manager = ManagerDownloadEventDaysNew()
-        runDownloadNew(managerDownload: manager, managerCallBack: daysCallback)
+        runDownload(managerDownload: manager, managerCallBack: daysCallback)
         
         return EventManagerType.download_event_days
     }
     
     override func getDataList(timestampObject: TimestampObject?) -> BaseManagerType {
         let manager = ManagerDownloadEventByTimestampNew(timestampObject: timestampObject)
-        runDownloadNew(managerDownload: manager, managerCallBack: dataListCallback)
+        runDownload(managerDownload: manager, managerCallBack: dataListCallback)
         return EventManagerType.download_event
     }
     

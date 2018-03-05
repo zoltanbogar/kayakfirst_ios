@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ManagerDownloadPlanNew<DATA>: ManagerDownloadNew<DATA> {
+class ManagerDownloadPlanNew<DATA>: ManagerDownload<DATA> {
     
     //MARK: constants
     private let timeCacheMillis: Double = 60 * 60 * 1000 //60 mins

@@ -8,9 +8,9 @@
 
 import Foundation
 
-class CalendarTrainingDataHelper: BaseCalendarDateHelper<ViewTrainingCalendarListLayout, SumTrainingNew> {
+class CalendarTrainingDataHelper: BaseCalendarDateHelper<ViewTrainingCalendarListLayout, SumTraining> {
     
-    override func getManager() -> BaseCalendarManager<SumTrainingNew> {
+    override func getManager() -> BaseCalendarManager<SumTraining> {
         return TrainingManager.sharedInstance
     }
     

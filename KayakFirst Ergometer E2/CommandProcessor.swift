@@ -29,15 +29,15 @@ class CommandProcessor<E: MeasureCommand> {
     private var maV = MovingAverage()
     private var maStrokes = MovingAverage()
     
-    func calculate(measureCommands: [E]) -> TrainingNew {
+    func calculate(measureCommands: [E]) -> Training {
         return calculateValues(measureCommands: measureCommands)
     }
     
-    func calculateAvg() -> TrainingAvgNew {
+    func calculateAvg() -> TrainingAvg {
         return createTrainingAvg()
     }
     
-    func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+    func updateSumTraining(sumTraining: SumTraining) -> SumTraining {
         sumTraining.distance = distance
         sumTraining.duration = telemetry.duration
         sumTraining.trainingCount = Int(telemetry.averageIndex)
@@ -69,11 +69,11 @@ class CommandProcessor<E: MeasureCommand> {
         fatalError("Must be implemented")
     }
     
-    func calculateValues(measureCommands: [E]) -> TrainingNew {
+    func calculateValues(measureCommands: [E]) -> Training {
         fatalError("Must be implemented")
     }
     
-    func createTraining() -> TrainingNew {
+    func createTraining() -> Training {
         return KayakFirst_Ergometer_E2.createTraining(
             timestamp: getCalculatedTimeStamp(),
             force: maF.calAverage(newValue: force),
@@ -83,7 +83,7 @@ class CommandProcessor<E: MeasureCommand> {
             t200: t200Element!.run())
     }
     
-    func createTrainingAvg() -> TrainingAvgNew {
+    func createTrainingAvg() -> TrainingAvg {
         return KayakFirst_Ergometer_E2.createTrainingAvg(
             force: f_avElement!.run(),
             speed: speedAv,

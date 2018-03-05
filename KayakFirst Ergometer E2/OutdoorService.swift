@@ -62,15 +62,15 @@ class OutdoorSevice: TrainingService {
         stopLocationMonitoring()
     }
     
-    override func getTrainingObject() -> TrainingNew {
+    override func getTrainingObject() -> Training {
         return commandProcessorOutdoor.calculate(measureCommands: locationService.getCommandList(appSensorManager: sensorManager))
     }
     
-    override func getTrainingAvgObject() -> TrainingAvgNew {
+    override func getTrainingAvgObject() -> TrainingAvg {
         return commandProcessorOutdoor.calculateAvg()
     }
     
-    override func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+    override func updateSumTraining(sumTraining: SumTraining) -> SumTraining {
         return commandProcessorOutdoor.updateSumTraining(sumTraining: sumTraining)
     }
     

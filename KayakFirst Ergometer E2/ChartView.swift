@@ -18,13 +18,13 @@ enum ChartMode: String {
 class ChartView: CustomUi<ViewChartLayout> {
     
     //MARK: properties
-    private var sumTraining: SumTrainingNew!
+    private var sumTraining: SumTraining!
     private var lineChartData: AppLineChartData?
     private var diagramLabelList: [DiagramLabel]?
     private var chartMode: ChartMode?
     
     //MARK: init
-    init(sumTraining: SumTrainingNew, chartMode: ChartMode) {
+    init(sumTraining: SumTraining, chartMode: ChartMode) {
         self.sumTraining = sumTraining
         super.init()
         

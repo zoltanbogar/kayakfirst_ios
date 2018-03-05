@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class DownloadTrainingAvgsBySessionIds: ServerService<[TrainingAvgNew]> {
+class DownloadTrainingAvgsBySessionIds: ServerService<[TrainingAvg]> {
     
     private let sessionIds: [Double]
     
@@ -19,18 +19,18 @@ class DownloadTrainingAvgsBySessionIds: ServerService<[TrainingAvgNew]> {
         self.sessionIds = sessionIds
     }
     
-    override func handleServiceCommunication(alamofireRequest: DataRequest) -> [TrainingAvgNew]? {
-        var trainingAvgs: [TrainingAvgNew]?
+    override func handleServiceCommunication(alamofireRequest: DataRequest) -> [TrainingAvg]? {
+        var trainingAvgs: [TrainingAvg]?
         let response = alamofireRequest.responseJSON()
         
         if let json = response.result.value {
             let jsonValue = JSON(json)
             
             if let jsonArray = jsonValue.array {
-                trainingAvgs = [TrainingAvgNew]()
+                trainingAvgs = [TrainingAvg]()
                 
                 for trainingAvgDto in jsonArray {
-                    let trainingAvg = TrainingAvgNew(json: trainingAvgDto)
+                    let trainingAvg = TrainingAvg(json: trainingAvgDto)
                     
                     if trainingAvg != nil {
                         trainingAvgs?.append(trainingAvg!)

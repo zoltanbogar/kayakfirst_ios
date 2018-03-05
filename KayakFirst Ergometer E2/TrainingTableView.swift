@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainingTablewView: BaseCalendarTableView<SumTrainingNew> {
+class TrainingTablewView: BaseCalendarTableView<SumTraining> {
     
     //MARK: init
     override init(view: UIView) {

@@ -16,7 +16,7 @@ class UploadTrainings: ServerService<Bool> {
     private let maxUploadTrainings = 6000
     
     //MARK: properties
-    private let trainingDbLoader = TrainingNewDbLoader.sharedInstance
+    private let trainingDbLoader = TrainingDbLoader.sharedInstance
     private var trainingArrayList: Array<[String:Any]>?
     
     private var sessionId: Double

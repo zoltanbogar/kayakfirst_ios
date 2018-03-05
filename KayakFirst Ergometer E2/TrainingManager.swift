@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrainingManager: BaseCalendarManager<SumTrainingNew> {
+class TrainingManager: BaseCalendarManager<SumTraining> {
     
     //MARK: init
     static let sharedInstance = TrainingManager()
@@ -26,19 +26,19 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
         let managerModifyTrainingDelete = ManagerModifyTrainingDelete(data: nil)
         let managerUploadTrainings = ManagerUploadTrainings()
         
-        let managerDownloadTrainingDays = ManagerDownloadTrainingDaysNew(sumTrainingDbLoader: sumTrainingDbLoader, downloadTrainingDays: downloadTrainingDays, managerModifyTrainingDelete: managerModifyTrainingDelete, managerUploadTrainings: managerUploadTrainings)
-        runDownloadNew(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
+        let managerDownloadTrainingDays = ManagerDownloadTrainingDays(sumTrainingDbLoader: sumTrainingDbLoader, downloadTrainingDays: downloadTrainingDays, managerModifyTrainingDelete: managerModifyTrainingDelete, managerUploadTrainings: managerUploadTrainings)
+        runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
         
         return TrainingManagerType.download_training_days
     }
     
     override func getDataList(timestampObject: TimestampObject) -> BaseManagerType {
-        let manager = ManagerDownloadTrainingNew(timestampObject: timestampObject)
-        runDownloadNew(managerDownload: manager, managerCallBack: dataListCallback)
+        let manager = ManagerDownloadTraining(timestampObject: timestampObject)
+        runDownload(managerDownload: manager, managerCallBack: dataListCallback)
         return TrainingManagerType.download_training
     }
     
-    func getTrainingAvg(sessionId: Double, managerCallback: ((_ data: TrainingAvgNew?, _ error: Responses?) -> ())?) {
+    func getTrainingAvg(sessionId: Double, managerCallback: ((_ data: TrainingAvg?, _ error: Responses?) -> ())?) {
         let dbHelper = TrainingAvgDbHelper(sessionId: sessionId)
         runDbLoad(dbHelper: dbHelper, managerCallBack: managerCallback)
     }
@@ -53,11 +53,11 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
         ManagerUpload.addToStack(uploadType: UploadType.trainingUpload, pointer: sessionId)
     }
     
-    func saveTrainingData(training: TrainingNew, trainingAvg: TrainingAvgNew, sumTrainig: SumTrainingNew) {
+    func saveTrainingData(training: Training, trainingAvg: TrainingAvg, sumTrainig: SumTraining) {
         saveTrainingValues.saveTrainingData(training: training, trainingAvg: trainingAvg, sumTrainig: sumTrainig)
     }
     
-    func deleteTraining(sumTraining: SumTrainingNew, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
+    func deleteTraining(sumTraining: SumTraining, managerCallback: ((_ data: Bool?, _ error: Responses?) -> ())?) -> BaseManagerType {
         let manager = ManagerModifyTrainingDelete(data: sumTraining)
         runModify(managerModify: manager, managerCallBack: managerCallback)
         return TrainingManagerType.delete_training
@@ -66,10 +66,10 @@ class TrainingManager: BaseCalendarManager<SumTrainingNew> {
     func deleteOldData() {
         if !ManagerUpload.hasStackToWait() {
             DispatchQueue.global().async {
-                let trainingDbLoader = TrainingNewDbLoader.sharedInstance
+                let trainingDbLoader = TrainingDbLoader.sharedInstance
                 trainingDbLoader.deleteData(predicate: trainingDbLoader.getDeleteOldDataPredicate())
                 
-                let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
+                let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
                 trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getDeleteOldDataPredicate())
             }
         }

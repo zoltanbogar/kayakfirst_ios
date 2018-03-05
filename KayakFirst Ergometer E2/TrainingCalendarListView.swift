@@ -8,13 +8,13 @@
 
 import Foundation
 
-class TrainingCalendarListView: BaseCalendarListView<ViewTrainingCalendarListLayout, SumTrainingNew> {
+class TrainingCalendarListView: BaseCalendarListView<ViewTrainingCalendarListLayout, SumTraining> {
     
     override func getContentLayout(contentView: UIView) -> ViewTrainingCalendarListLayout {
         return ViewTrainingCalendarListLayout(contentView: contentView)
     }
     
-    override func getTableView() -> BaseCalendarTableView<SumTrainingNew> {
+    override func getTableView() -> BaseCalendarTableView<SumTraining> {
         return contentLayout!.tableView
     }
     
@@ -22,11 +22,11 @@ class TrainingCalendarListView: BaseCalendarListView<ViewTrainingCalendarListLay
         return contentLayout!.progressBar
     }
     
-    override func getManager() -> BaseCalendarManager<SumTrainingNew> {
+    override func getManager() -> BaseCalendarManager<SumTraining> {
         return TrainingManager.sharedInstance
     }
     
-    override func getDataTimestampToCheck(data: SumTrainingNew) -> Double {
+    override func getDataTimestampToCheck(data: SumTraining) -> Double {
         return data.sessionId
     }
     

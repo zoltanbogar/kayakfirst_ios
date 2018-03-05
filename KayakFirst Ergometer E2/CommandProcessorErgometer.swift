@@ -72,7 +72,7 @@ class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
         return TrainingEnvironmentType.ergometer
     }
     
-    override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> TrainingNew {
+    override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> Training {
         fillCommands(measureCommands: measureCommands)
         fillHelperValues()
         

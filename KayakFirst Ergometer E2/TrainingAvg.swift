@@ -8,10 +8,10 @@
 
 import Foundation
 
-func createTrainingAvg(force: Double, speed: Double, strokes: Double, t200: Double) -> TrainingAvgNew {
+func createTrainingAvg(force: Double, speed: Double, strokes: Double, t200: Double) -> TrainingAvg {
     let sessionId = Telemetry.sharedInstance.sessionId
     
-    return TrainingAvgNew(
+    return TrainingAvg(
         sessionId: sessionId,
         force: force,
         speed: speed,
@@ -19,7 +19,7 @@ func createTrainingAvg(force: Double, speed: Double, strokes: Double, t200: Doub
         t200: t200)
 }
 
-class TrainingAvgNew: BaseTraining, UploadAble {
+class TrainingAvg: BaseTraining, UploadAble {
     typealias E = Double
     
     func getUploadPointer() -> Double {

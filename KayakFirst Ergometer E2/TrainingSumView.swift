@@ -11,10 +11,10 @@ import UIKit
 class TrainingSumView: CustomUi<ViewTrainingSumLayout> {
     
     //MARK: properties
-    private var sumTraining: SumTrainingNew!
+    private var sumTraining: SumTraining!
     
     //MARK: init
-    init(frame: CGRect, sumTraining: SumTrainingNew) {
+    init(frame: CGRect, sumTraining: SumTraining) {
         self.sumTraining = sumTraining
         super.init()
         

@@ -16,9 +16,9 @@ class VcTrainingDetailsLayout: BaseLayout {
     private var stackView: UIStackView?
     private var stackViewTitle: UIStackView?
     
-    private let sumTraining: SumTrainingNew
+    private let sumTraining: SumTraining
     
-    init(contentView: UIView, sumTraining: SumTrainingNew) {
+    init(contentView: UIView, sumTraining: SumTraining) {
         self.sumTraining = sumTraining
         
         super.init(contentView: contentView)

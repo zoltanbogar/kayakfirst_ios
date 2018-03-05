@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrainingAvgDbHelper: BaseDbHelper<TrainingAvgNew> {
+class TrainingAvgDbHelper: BaseDbHelper<TrainingAvg> {
     
     private let sessionId: Double
     
@@ -16,8 +16,8 @@ class TrainingAvgDbHelper: BaseDbHelper<TrainingAvgNew> {
         self.sessionId = sessionId
     }
     
-    override func run() -> TrainingAvgNew? {
-        return TrainingAvgNewDbLoader.sharedInstance.getTrainingAvgBySessionId(sessionId: sessionId)
+    override func run() -> TrainingAvg? {
+        return TrainingAvgDbLoader.sharedInstance.getTrainingAvgBySessionId(sessionId: sessionId)
     }
     
 }

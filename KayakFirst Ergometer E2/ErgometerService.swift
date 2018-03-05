@@ -49,15 +49,15 @@ class ErgometerService: TrainingService {
         return shouldCalculate
     }
     
-    override func getTrainingObject() -> TrainingNew {
+    override func getTrainingObject() -> Training {
         return commandProcessErgometer.calculateValues(measureCommands: bluetoothService.commandList)
     }
     
-    override func getTrainingAvgObject() -> TrainingAvgNew {
+    override func getTrainingAvgObject() -> TrainingAvg {
         return commandProcessErgometer.calculateAvg()
     }
     
-    override func updateSumTraining(sumTraining: SumTrainingNew) -> SumTrainingNew {
+    override func updateSumTraining(sumTraining: SumTraining) -> SumTraining {
         return commandProcessErgometer.updateSumTraining(sumTraining: sumTraining)
     }
     

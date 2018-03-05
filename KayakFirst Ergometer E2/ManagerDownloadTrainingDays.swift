@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ManagerDownloadTrainingDaysNew: ManagerDownloadNew<DaysObject> {
+class ManagerDownloadTrainingDays: ManagerDownload<DaysObject> {
     
     private let sumTrainingDbLoader: SumTrainingDbLoader
     private let downloadTrainingDays: DownloadTrainingDays
@@ -140,7 +140,7 @@ class ManagerDownloadTrainingDaysNew: ManagerDownloadNew<DaysObject> {
     }
     
     override func isEqual(anotherManagerDownload: ManagerDownloadProtocol) -> Bool {
-        return anotherManagerDownload is ManagerDownloadTrainingDaysNew
+        return anotherManagerDownload is ManagerDownloadTrainingDays
     }
     
 }

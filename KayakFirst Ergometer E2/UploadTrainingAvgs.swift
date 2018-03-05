@@ -13,7 +13,7 @@ import SwiftyJSON
 class UploadTrainingAvgs: ServerService<Bool> {
     
     //MARK: properties
-    private let trainingAvgDbLoader = TrainingAvgNewDbLoader.sharedInstance
+    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
     private var trainingAvgArrayList: Array<[String:Any]>?
     
     //MARK: init

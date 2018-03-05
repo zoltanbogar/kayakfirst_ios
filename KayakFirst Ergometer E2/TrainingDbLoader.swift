@@ -9,19 +9,19 @@
 import Foundation
 import SQLite
 
-class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
+class TrainingDbLoader: UploadAbleDbLoader<Training, Double> {
     
     //MARK: constants
     static let tableName = "training_table"
     
     //MARK: init
-    static let sharedInstance = TrainingNewDbLoader()
+    static let sharedInstance = TrainingDbLoader()
     private override init() {
         super.init()
     }
     
     override func getTableName() -> String {
-        return TrainingNewDbLoader.tableName
+        return TrainingDbLoader.tableName
     }
     
     //MARK: init database
@@ -39,7 +39,7 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
     }
     
     //MARK: insert
-    func addTrainings(trainings: [TrainingNew]) {
+    func addTrainings(trainings: [Training]) {
         do {
             try db!.transaction {
                 for training in trainings {
@@ -51,7 +51,7 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
         }
     }
     
-    override func addData(data: TrainingNew?) {
+    override func addData(data: Training?) {
         if let training = data {
             let insert = table!.insert(self.sessionId <- Double(Int64(training.sessionId)), self.timestamp <- Double(Int64(training.timestamp)), self.force <- training.force, self.speed <- training.speed, self.distance <- training.distance, self.strokes <- training.strokes, self.t200 <- training.t200)
             
@@ -60,7 +60,7 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
     }
     
     //MARK: update
-    override func updateData(data: TrainingNew) {
+    override func updateData(data: Training) {
         //nothing here
     }
     
@@ -79,16 +79,16 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
     }
     
     //MARK: query
-    override func queryData(predicate: Expression<Bool>?) -> [TrainingNew]? {
+    override func queryData(predicate: Expression<Bool>?) -> [Training]? {
         return loadData(predicate: predicate)
     }
     
-    func getTrainingsBySessionId(sessionId: Double) -> [TrainingNew]? {
+    func getTrainingsBySessionId(sessionId: Double) -> [Training]? {
         return loadData(predicate: getPredicateSessionId(sessionId: sessionId))
     }
     
-    override func loadData(predicate: Expression<Bool>?) -> [TrainingNew]? {
-        var trainingList: [TrainingNew]?
+    override func loadData(predicate: Expression<Bool>?) -> [Training]? {
+        var trainingList: [Training]?
         
         do {
             var queryPredicate = self.sessionId > 0
@@ -99,7 +99,7 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
             
             let dbList = try db!.prepare(table!.filter(queryPredicate).order(self.timestamp))
             
-            trainingList = [TrainingNew]()
+            trainingList = [Training]()
             
             for trainingDb in dbList {
                 let sessionId = trainingDb[self.sessionId]
@@ -110,7 +110,7 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
                 let strokes = trainingDb[self.strokes]
                 let t200 = trainingDb[self.t200]
                 
-                let training = TrainingNew(
+                let training = Training(
                     sessionId: sessionId,
                     force: force,
                     speed: speed,
@@ -134,12 +134,12 @@ class TrainingNewDbLoader: UploadAbleDbLoader<TrainingNew, Double> {
     }
     
     //MARK: protocol
-    override func loadUploadAbleData(pointer: Double) -> [TrainingNew]? {
+    override func loadUploadAbleData(pointer: Double) -> [Training]? {
         let predicate = self.timestamp > pointer
         return loadData(predicate: predicate)
     }
     
-    func loadUploadAbleData(sessionId: Double, timestampPointer: Double) -> [TrainingNew]? {
+    func loadUploadAbleData(sessionId: Double, timestampPointer: Double) -> [Training]? {
         let predicateTimestamp = self.timestamp > timestampPointer
         let predicateSessionId = self.sessionId == sessionId
         return loadData(predicate: getSumPredicate(predicates: predicateTimestamp, predicateSessionId))

@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
+class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
     
     //MARK: constants
     static let tableName = "training_avg_table"
@@ -18,13 +18,13 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     private var sessionIdValue: Double?
     
     //MARK: init
-    static let sharedInstance = TrainingAvgNewDbLoader()
+    static let sharedInstance = TrainingAvgDbLoader()
     private override init() {
         super.init()
     }
     
     override func getTableName() -> String {
-        return TrainingAvgNewDbLoader.tableName
+        return TrainingAvgDbLoader.tableName
     }
     
     //MARK: init database
@@ -40,7 +40,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     //MARK: insert
-    func addTrainingAvgs(trainingAvgs: [TrainingAvgNew]) {
+    func addTrainingAvgs(trainingAvgs: [TrainingAvg]) {
         do {
             try db!.transaction {
                 for trainingAvg in trainingAvgs {
@@ -52,7 +52,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
         }
     }
     
-    override func addData(data: TrainingAvgNew?) {
+    override func addData(data: TrainingAvg?) {
         if let trainingAvg = data {
             if sessionIdValue != trainingAvg.sessionId {
                 sessionIdValue = trainingAvg.sessionId
@@ -67,7 +67,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     //MARK: query
-    func getTrainingAvgBySessionId(sessionId: Double) -> TrainingAvgNew? {
+    func getTrainingAvgBySessionId(sessionId: Double) -> TrainingAvg? {
         let trainingAvgs = loadData(predicate: getPredicateSessionId(sessionId: sessionId))
         
         if trainingAvgs != nil && trainingAvgs!.count > 0 {
@@ -84,8 +84,8 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
         return self.sessionId == sessionId
     }
     
-    override func loadData(predicate: Expression<Bool>?) -> [TrainingAvgNew]? {
-        var trainingAvgList: [TrainingAvgNew]?
+    override func loadData(predicate: Expression<Bool>?) -> [TrainingAvg]? {
+        var trainingAvgList: [TrainingAvg]?
         
         do {
             var queryPredicate = self.sessionId > 0
@@ -98,7 +98,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
             
             let dbList = try db!.prepare(table!.filter(queryPredicate))
             
-            trainingAvgList = [TrainingAvgNew]()
+            trainingAvgList = [TrainingAvg]()
             
             for trainingAvgDb in dbList {
                 let sessionId = trainingAvgDb[self.sessionId]
@@ -107,7 +107,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
                 let strokes = trainingAvgDb[self.strokes]
                 let t200 = trainingAvgDb[self.t200]
                 
-                let trainingAvg = TrainingAvgNew(
+                let trainingAvg = TrainingAvg(
                     sessionId: sessionId,
                     force: force,
                     speed: speed,
@@ -125,12 +125,12 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     //MARK: protocol
-    override func loadUploadAbleData(pointer: Double) -> [TrainingAvgNew]? {
+    override func loadUploadAbleData(pointer: Double) -> [TrainingAvg]? {
         let predicate = self.sessionId == pointer
         return loadData(predicate: predicate)
     }
     
-    func loadUploadAbleData(sessionIds: [Double]?) -> [TrainingAvgNew]? {
+    func loadUploadAbleData(sessionIds: [Double]?) -> [TrainingAvg]? {
         if let sessionIds = sessionIds {
             return loadData(predicate: getSumPredicateOr(column: self.sessionId, values: sessionIds))
         }
@@ -138,7 +138,7 @@ class TrainingAvgNewDbLoader: UploadAbleDbLoader<TrainingAvgNew, Double> {
     }
     
     //MARK: update
-    private func updateData(trainingAvg: TrainingAvgNew) {
+    private func updateData(trainingAvg: TrainingAvg) {
         let avg = table!.filter(self.sessionId == Double(Int64(trainingAvg.sessionId)))
         do {
             try db!.run(avg.update(self.force <- trainingAvg.force, self.speed <- trainingAvg.speed, self.strokes <- trainingAvg.strokes, self.t200 <- trainingAvg.t200))

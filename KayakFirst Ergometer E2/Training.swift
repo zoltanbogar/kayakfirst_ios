@@ -15,10 +15,10 @@ enum TrainingType: String {
     case dragonBoat = "dragonBoat"
 }
 
-func createTraining(timestamp: Double, force: Double, speed: Double, distance: Double, strokes: Double, t200: Double) -> TrainingNew {
+func createTraining(timestamp: Double, force: Double, speed: Double, distance: Double, strokes: Double, t200: Double) -> Training {
     let sessionId = Telemetry.sharedInstance.sessionId
     
-    return TrainingNew(
+    return Training(
         sessionId: sessionId,
         force: force,
         speed: speed,
@@ -28,7 +28,7 @@ func createTraining(timestamp: Double, force: Double, speed: Double, distance: D
         distance: distance)
 }
 
-class TrainingNew: BaseTraining, UploadAble {
+class Training: BaseTraining, UploadAble {
     typealias E = Double
     
     let timestamp: Double

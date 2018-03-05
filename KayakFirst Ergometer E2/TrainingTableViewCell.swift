@@ -8,14 +8,14 @@
 
 import UIKit
 
-class TrainingTablewViewCell: BaseCalendarTableViewCell<SumTrainingNew> {
+class TrainingTablewViewCell: BaseCalendarTableViewCell<SumTraining> {
     
     //MARK: constants
     static let fontSize: CGFloat = 15
     
     //MARK: properties
     private let stackView = UIStackView()
-    private var sumTraining: SumTrainingNew?
+    private var sumTraining: SumTraining?
     
     //MARK: init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -28,7 +28,7 @@ class TrainingTablewViewCell: BaseCalendarTableViewCell<SumTrainingNew> {
         super.init(coder: aDecoder)
     }
     
-    override func initData(data: SumTrainingNew?) {
+    override func initData(data: SumTraining?) {
         self.sumTraining = data
         labelStart.text = data?.formattedStartTime
         labelDuration.text = data?.formattedDuration

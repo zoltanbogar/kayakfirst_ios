@@ -110,7 +110,7 @@ class CalendarVc: BaseVC<VcCalendarLayout> {
     }
     
     //MARK: callbacks
-    private func trainingClick(data: [SumTrainingNew]?, position: Int) {
+    private func trainingClick(data: [SumTraining]?, position: Int) {
         startTrainingDetailsPagerVc(navController: self.navigationController!, sumTrainings: data, position: position)
     }
     

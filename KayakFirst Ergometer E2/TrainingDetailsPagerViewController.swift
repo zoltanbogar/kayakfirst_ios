@@ -8,7 +8,7 @@
 
 import UIKit
 
-func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrainings: [SumTrainingNew]?, position: Int) {
+func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrainings: [SumTraining]?, position: Int) {
     let viewController = TrainingDetailsPagerViewController()
     viewController.sumTrainings = sumTrainings
     viewController.position = position
@@ -17,7 +17,7 @@ func startTrainingDetailsPagerVc(navController: UINavigationController, sumTrain
 
 class TrainingDetailsPagerViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var sumTrainings: [SumTrainingNew]?
+    var sumTrainings: [SumTraining]?
     var position: Int? {
         didSet {
             initViewControllers()
