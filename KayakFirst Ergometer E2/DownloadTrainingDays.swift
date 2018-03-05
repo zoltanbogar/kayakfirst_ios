@@ -29,15 +29,18 @@ class DownloadTrainingDays: ServerService<[TimeInterval]> {
     }
     
     override func initUrlTag() -> String {
-        return "training/days"
+        return "training/downloadDays"
     }
     
     override func initMethod() -> HTTPMethod {
-        return .get
+        return .post
     }
     
     override func initParameters() -> Parameters? {
-        return nil
+        return [
+            "timestampFrom": 0,
+            "timestampTo": Double(INT64_MAX)
+        ]
     }
     
     override func initEncoding() -> ParameterEncoding {

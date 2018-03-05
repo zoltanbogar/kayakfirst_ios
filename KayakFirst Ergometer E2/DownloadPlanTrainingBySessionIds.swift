@@ -52,9 +52,7 @@ class DownloadPlanTrainingBySessionIds: ServerService<[PlanTraining]> {
     }
     
     override func initParameters() -> Parameters? {
-        return [
-            "sessionIds": sessionIds
-        ]
+        return sessionIds.asParameters()
     }
     
     override func initEncoding() -> ParameterEncoding {

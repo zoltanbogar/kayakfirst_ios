@@ -54,9 +54,7 @@ class DownloadTrainingAvgsBySessionIds: ServerService<[TrainingAvgNew]> {
     }
     
     override func initParameters() -> Parameters? {
-        return [
-            "sessionIds": sessionIds
-        ]
+        return sessionIds.asParameters()
     }
     
     override func getManagerType() -> BaseManagerType {

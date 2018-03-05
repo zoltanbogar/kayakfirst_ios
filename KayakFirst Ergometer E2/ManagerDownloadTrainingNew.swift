@@ -22,8 +22,12 @@ class ManagerDownloadTrainingNew: ManagerDownloadNew<[SumTrainingNew]> {
     override func getData() -> [SumTrainingNew]? {
         downloadTrainings()
         
-        if localeSessionIds != nil && serverSessionIds != nil {
-            localeSessionIds!.append(contentsOf: serverSessionIds!)
+        if localeSessionIds != nil {
+            if serverSessionIds != nil {
+                localeSessionIds!.append(contentsOf: serverSessionIds!)
+            }
+        } else {
+            localeSessionIds = serverSessionIds
         }
         
         return SumTrainingDbLoader.sharedInstance.getSumTrainingsBySessionId(sessionIds: localeSessionIds)
