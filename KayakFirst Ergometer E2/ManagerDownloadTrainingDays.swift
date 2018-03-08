@@ -30,11 +30,13 @@ class ManagerDownloadTrainingDays: ManagerDownload<DaysObject> {
         
         serverSessionIds = removeDeletedIdsFromServerIds(deletedSessionIds: deletedSessionIds, serverIds: serverSessionIds)
         
-        var sessionIdsToDelete = getSessionIdsToDelete(serverIds: serverSessionIds, localeIds: localeSessionIds, notUploadedIds: notUploadedSessionIds)
-        
-        deleteTrainingsDataBySessionIds(sessionIds: sessionIdsToDelete)
-        
-        localeSessionIds = removeDeletedIdsFromLocale(deletedSessionIds: sessionIdsToDelete, localeIds: localeSessionIds)
+        if serverError == nil {
+            var sessionIdsToDelete = getSessionIdsToDelete(serverIds: serverSessionIds, localeIds: localeSessionIds, notUploadedIds: notUploadedSessionIds)
+            
+            deleteTrainingsDataBySessionIds(sessionIds: sessionIdsToDelete)
+            
+            localeSessionIds = removeDeletedIdsFromLocale(deletedSessionIds: sessionIdsToDelete, localeIds: localeSessionIds)
+        }
         
         return createDaysObject(serverSessionIds: serverSessionIds, localeIds: localeSessionIds)
     }
