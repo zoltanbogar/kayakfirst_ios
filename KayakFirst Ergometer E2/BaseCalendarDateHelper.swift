@@ -63,6 +63,7 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
     }
     
     private func getDays() {
+        listView.showProgress(isShow: true)
         getManager().getDays()
     }
     
@@ -83,6 +84,7 @@ class BaseCalendarDateHelper<LAYOUT: BaseLayout, DATA>: CalendarDelegate {
     }
     
     private func daysCallback(data: DaysObject?, error: Responses?) {
+        listView.showProgress(isShow: false)
         if let data = data {
             initDays(daysObject: data)
         }
