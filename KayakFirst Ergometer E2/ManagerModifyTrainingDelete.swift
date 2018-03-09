@@ -11,20 +11,17 @@ import Foundation
 class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
     
     //MARK: constants
-    private let trainingDbLoader = TrainingDbLoader.sharedInstance
-    private let trainingAvgDbLoader = TrainingAvgDbLoader.sharedInstance
+    private let sumTrainingDbLoader = SumTrainingDbLoader.sharedInstance
     
     //MARK: functions
     override func modifyLocale() {
         if let sumTraining = data {
-            trainingDbLoader.deleteData(predicate: trainingDbLoader.getPredicateSessionId(sessionId: sumTraining.sessionId))
-            trainingAvgDbLoader.deleteData(predicate: trainingAvgDbLoader.getSessionIdPredicate(sessionId: sumTraining.sessionId))
+            sumTrainingDbLoader.deleteDataBySessionId(sessionId: sumTraining.sessionId)
         }
     }
     
     override func runServer(pointers: [String]?) -> Bool {
         var serverWasReachableTraining = true
-        var serverWasReachableTrainingAvg = true
         
         if let pointersValue = pointers {
             var sessionIds = [String]()
@@ -39,13 +36,9 @@ class ManagerModifyTrainingDelete: ManagerModifyEditable<SumTraining> {
                 let deleteTraining = DeleteTraining(sessionIds: sessionIds)
                 deleteTraining.run()
                 serverWasReachableTraining = deleteTraining.serverWasReachable
-                
-                let deleteTrainingAvg = DeleteTrainingAvg(sessionIds: sessionIds)
-                deleteTrainingAvg.run()
-                serverWasReachableTrainingAvg = deleteTrainingAvg.serverWasReachable
             }
         }
-        return serverWasReachableTraining && serverWasReachableTrainingAvg
+        return serverWasReachableTraining
     }
     
     override func getUploadType() -> UploadType {

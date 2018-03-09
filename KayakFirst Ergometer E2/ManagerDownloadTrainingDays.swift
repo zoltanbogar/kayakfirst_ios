@@ -94,7 +94,9 @@ class ManagerDownloadTrainingDays: ManagerDownload<DaysObject> {
     }
     
     private func deleteTrainingsDataBySessionIds(sessionIds: [Double]?) {
-        //TODO: delete Training, TrainingAvg, SumTraining, PlanTraining
+        if let sessionIds = sessionIds {
+            sumTrainingDbLoader.deleteDataBySessionIds(sessionIds: sessionIds)
+        }
     }
     
     private func createDaysObject(serverSessionIds: [Double]?, localeIds: [Double]?) -> DaysObject {

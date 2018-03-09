@@ -114,6 +114,33 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
         return deletedRows
     }
     
+    func deleteDataBySessionId(sessionId: Double) {
+        var sessionIds = [Double]()
+        sessionIds.append(sessionId)
+        deleteDataBySessionIds(sessionIds: sessionIds)
+    }
+    
+    //TODO: test it
+    func deleteDataBySessionIds(sessionIds: [Double]) {
+        let predicate = getSumPredicateOr(column: self.sessionId, values: sessionIds)
+        
+        if let predicate = predicate {
+            deleteData(predicate: predicate)
+            TrainingAvgDbLoader.sharedInstance.deleteData(predicate: predicate)
+            TrainingDbLoader.sharedInstance.deleteData(predicate: predicate)
+            PlanTrainingDbLoader.sharedInstance.deleteData(predicate: predicate)
+        }
+    }
+    
+    func deleteOldData() {
+        let predicate = getDeleteOldDataPredicate()
+        
+        deleteData(predicate: predicate)
+        TrainingAvgDbLoader.sharedInstance.deleteData(predicate: predicate)
+        TrainingDbLoader.sharedInstance.deleteData(predicate: predicate)
+        PlanTrainingDbLoader.sharedInstance.deleteData(predicate: predicate)
+    }
+    
     //MARK: query
     func getSessionIds() -> [Double] {
         var trainingDays = [Double]()
