@@ -173,11 +173,13 @@ class TrainingAvgDbLoader: UploadAbleDbLoader<TrainingAvg, Double> {
         var sumPredicate: Expression<Bool>? = nil
         if let values = values {
             for value in values {
-                let predicate: Expression<Bool> = column == value
-                if sumPredicate == nil {
-                    sumPredicate = predicate
-                } else {
-                    sumPredicate = sumPredicate! || predicate
+                if values.count > 0 {
+                    let predicate: Expression<Bool> = column == value
+                    if sumPredicate == nil {
+                        sumPredicate = predicate
+                    } else {
+                        sumPredicate = sumPredicate! || predicate
+                    }
                 }
             }
         }

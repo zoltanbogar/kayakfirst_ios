@@ -14,12 +14,14 @@ class ManagerDownloadTrainingDays: ManagerDownload<DaysObject> {
     private let downloadTrainingDays: DownloadTrainingDays
     private let managerModifyTrainingDelete: ManagerModifyTrainingDelete
     private let managerUploadTrainings: ManagerUploadTrainings
+    private let managerUploadTrainingSums: ManagerUploadTrainingSums
     
-    init(sumTrainingDbLoader: SumTrainingDbLoader, downloadTrainingDays: DownloadTrainingDays, managerModifyTrainingDelete: ManagerModifyTrainingDelete, managerUploadTrainings: ManagerUploadTrainings) {
+    init(sumTrainingDbLoader: SumTrainingDbLoader, downloadTrainingDays: DownloadTrainingDays, managerModifyTrainingDelete: ManagerModifyTrainingDelete, managerUploadTrainings: ManagerUploadTrainings, managerUploadTrainingSums: ManagerUploadTrainingSums) {
         self.sumTrainingDbLoader = sumTrainingDbLoader
         self.downloadTrainingDays = downloadTrainingDays
         self.managerModifyTrainingDelete = managerModifyTrainingDelete
         self.managerUploadTrainings = managerUploadTrainings
+        self.managerUploadTrainingSums = managerUploadTrainingSums
     }
     
     override func getData() -> DaysObject {
@@ -56,7 +58,19 @@ class ManagerDownloadTrainingDays: ManagerDownload<DaysObject> {
     }
     
     private func getNotUploadedSessionIds() -> [Double]? {
-        return managerUploadTrainings.getNotUploadedSessionIds()
+        let trainingSessionIds = managerUploadTrainings.getNotUploadedSessionIds()
+        let sumTrainingSessionIds = managerUploadTrainingSums.getNotUploadedSessionIds()
+        
+        var notUploadedSessionIds = [Double]()
+        if let trainingSessionIds = trainingSessionIds {
+            notUploadedSessionIds.append(contentsOf: trainingSessionIds)
+        }
+        
+        if let sumTrainingSessionIds = sumTrainingSessionIds {
+            notUploadedSessionIds.append(contentsOf: sumTrainingSessionIds)
+        }
+        
+        return notUploadedSessionIds
     }
     
     private func removeDeletedIdsFromServerIds(deletedSessionIds: [Double]?, serverIds: [Double]?) -> [Double]? {

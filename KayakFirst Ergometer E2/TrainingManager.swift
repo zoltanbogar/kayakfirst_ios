@@ -25,8 +25,9 @@ class TrainingManager: BaseCalendarManager<SumTraining> {
         let downloadTrainingDays = DownloadTrainingDays()
         let managerModifyTrainingDelete = ManagerModifyTrainingDelete(data: nil)
         let managerUploadTrainings = ManagerUploadTrainings()
+        let managerUploadTrainingSums = ManagerUploadTrainingSums()
         
-        let managerDownloadTrainingDays = ManagerDownloadTrainingDays(sumTrainingDbLoader: sumTrainingDbLoader, downloadTrainingDays: downloadTrainingDays, managerModifyTrainingDelete: managerModifyTrainingDelete, managerUploadTrainings: managerUploadTrainings)
+        let managerDownloadTrainingDays = ManagerDownloadTrainingDays(sumTrainingDbLoader: sumTrainingDbLoader, downloadTrainingDays: downloadTrainingDays, managerModifyTrainingDelete: managerModifyTrainingDelete, managerUploadTrainings: managerUploadTrainings, managerUploadTrainingSums: managerUploadTrainingSums)
         runDownload(managerDownload: managerDownloadTrainingDays, managerCallBack: daysCallback)
         
         return TrainingManagerType.download_training_days

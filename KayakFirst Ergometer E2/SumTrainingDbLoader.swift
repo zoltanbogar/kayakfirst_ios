@@ -123,7 +123,6 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
     //TODO: test it
     func deleteDataBySessionIds(sessionIds: [Double]) {
         let predicate = getSumPredicateOr(column: self.sessionId, values: sessionIds)
-        
         if let predicate = predicate {
             deleteData(predicate: predicate)
             TrainingAvgDbLoader.sharedInstance.deleteData(predicate: predicate)
@@ -251,12 +250,14 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
     private func getSumPredicateOr(column: Expression<Double>, values: [Double]?) -> Expression<Bool>? {
         var sumPredicate: Expression<Bool>? = nil
         if let values = values {
-            for value in values {
-                let predicate: Expression<Bool> = column == value
-                if sumPredicate == nil {
-                    sumPredicate = predicate
-                } else {
-                    sumPredicate = sumPredicate! || predicate
+            if values.count > 0 {
+                for value in values {
+                    let predicate: Expression<Bool> = column == value
+                    if sumPredicate == nil {
+                        sumPredicate = predicate
+                    } else {
+                        sumPredicate = sumPredicate! || predicate
+                    }
                 }
             }
         }
