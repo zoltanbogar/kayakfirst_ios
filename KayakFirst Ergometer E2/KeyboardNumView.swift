@@ -28,7 +28,7 @@ class KeyboardNumView: CustomUi<ViewKeyboardNumLayout> {
         
         enableEnter(isEnable: false)
         
-        //TODO: extension for UIButton: onClickListener, eithout .toucupinside
+        //TODO - refactor: extension for UIButton: onClickListener, eithout .toucupinside
         contentLayout!.btn0.addTarget(self, action: #selector(btn0Click), for: .touchUpInside)
         contentLayout!.btn1.addTarget(self, action: #selector(btn1Click), for: .touchUpInside)
         contentLayout!.btn2.addTarget(self, action: #selector(btn2Click), for: .touchUpInside)

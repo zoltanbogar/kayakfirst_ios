@@ -325,7 +325,7 @@ class AppSensorManager {
             negativeA = true
         }
         
-        //TODO: useful for outdoor logging
+        //TODO - SPM: useful for outdoor logging
         /*var logString: String = "\(Int64(time));"
         logString.append("\(getFormattedLogValue(val));")
         logString.append("\(getFormattedLogValue(realVal));")

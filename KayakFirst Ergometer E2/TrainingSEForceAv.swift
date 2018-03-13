@@ -2,8 +2,8 @@
 //  TrainingSEForceAv.swift
 //  KayakFirst Ergometer E2
 //
-//  Created by Balazs Vidumanszki on 2017. 02. 09..
-//  Copyright © 2017. Balazs Vidumanszki. All rights reserved.
+//  Created by Balazs Vidumanszki on 2018. 03. 13..
+//  Copyright © 2018. Balazs Vidumanszki. All rights reserved.
 //
 
 import Foundation

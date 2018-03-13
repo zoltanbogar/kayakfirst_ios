@@ -14,7 +14,6 @@ class DownloadTrainingAvgsBySessionIds: ServerService<[TrainingAvg]> {
     
     private let sessionIds: [Double]
     
-    //TODO: maybe: Double(Int64(sessionId))
     init(sessionIds: [Double]) {
         self.sessionIds = sessionIds
     }

@@ -121,7 +121,7 @@ class TrainingViewController: PortraitNavController, StartDelayDelegate, PauseVi
         BluetoothDisconnectDialog(bluetooth: bluetooth).show()
     }
     
-    //TODO: should everytime create a new one? (Android too)
+    //TODO - refactor: should everytime create a new one? (Android too)
     func showDashboardVc(dashboardLayoutDict: [Int:Int]) {
         dashboardVc = DashboardVc()
         dashboardVc!.dashboardLayoutDict = dashboardLayoutDict

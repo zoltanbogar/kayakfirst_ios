@@ -67,8 +67,9 @@ class TrainingManager: BaseCalendarManager<SumTraining> {
     func deleteOldData() {
         if !ManagerUpload.hasStackToWait() {
             DispatchQueue.global().async {
-                //TODO: test it on Android too
-                SumTrainingDbLoader.sharedInstance.deleteOldData()
+                if !ManagerUpload.hasStackToWait() {
+                    SumTrainingDbLoader.sharedInstance.deleteOldData()
+                }
             }
         }
     }

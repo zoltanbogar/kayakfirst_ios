@@ -26,7 +26,7 @@ enum Responses: String {
 class ServerService<E> {
     
     //MARK: constants
-    //TODO
+    //TODO - final
     let baseUrl = "http://192.168.0.2:8000/api/"
     
     //MARK: properties

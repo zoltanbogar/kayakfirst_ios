@@ -65,10 +65,6 @@ class CommandProcessor<E: MeasureCommand> {
     }
     
     //MARK: abstract functions
-    func getTrainingEnvironmentType() -> TrainingEnvironmentType {
-        fatalError("Must be implemented")
-    }
-    
     func calculateValues(measureCommands: [E]) -> Training {
         fatalError("Must be implemented")
     }

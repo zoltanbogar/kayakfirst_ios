@@ -8,7 +8,7 @@
 
 import Foundation
 
-//TODO: test
+//TODO: unitTest
 class ManagerDownloadTraining: ManagerDownload<[SumTraining]> {
     
     private var timestampObject: TimestampObject
@@ -43,7 +43,6 @@ class ManagerDownloadTraining: ManagerDownload<[SumTraining]> {
         return SumTrainingDbLoader.sharedInstance.getSumTrainingsBySessionId(sessionIds: localeSessionIds)
     }
     
-    //TODO: downloadPlan
     private func downloadTrainings() {
         if let serverSessionIds = serverSessionIds {
             let downloadSumTrainings = DownloadSumTrainingsBySessionIds(sessionIds: serverSessionIds)

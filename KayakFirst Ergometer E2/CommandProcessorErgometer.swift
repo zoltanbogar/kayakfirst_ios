@@ -68,10 +68,6 @@ class CommandProcessorErgometer: CommandProcessor<MeasureCommandErgometer> {
         omegaMin = 0
     }
     
-    override func getTrainingEnvironmentType() -> TrainingEnvironmentType {
-        return TrainingEnvironmentType.ergometer
-    }
-    
     override func calculateValues(measureCommands: [MeasureCommandErgometer]) -> Training {
         fillCommands(measureCommands: measureCommands)
         fillHelperValues()

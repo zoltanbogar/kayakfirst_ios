@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-//TODO - refactor: refactor this class (it is a copy of PlanDbLoader)
+//TODO - DB: refactor this class (it is a copy of PlanDbLoader)
 class PlanTrainingDbLoader: BaseDbLoader<PlanTraining> {
     
     //MARK: constants

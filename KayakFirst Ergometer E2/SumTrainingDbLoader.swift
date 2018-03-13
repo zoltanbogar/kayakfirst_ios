@@ -120,7 +120,6 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
         deleteDataBySessionIds(sessionIds: sessionIds)
     }
     
-    //TODO: test it
     func deleteDataBySessionIds(sessionIds: [Double]) {
         let predicate = getSumPredicateOr(column: self.sessionId, values: sessionIds)
         if let predicate = predicate {
@@ -228,7 +227,6 @@ class SumTrainingDbLoader: UploadAbleDbLoader<SumTraining, Double> {
     }
     
     override func loadUploadAbleData(pointer: Double) -> [SumTraining]? {
-        //TODO
         return nil
     }
     

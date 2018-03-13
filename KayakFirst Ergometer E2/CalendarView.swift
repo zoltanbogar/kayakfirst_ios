@@ -90,7 +90,6 @@ class CalendarView: CustomUi<ViewCalendarLayout>, CVCalendarViewDelegate, CVCale
         return .monday
     }
     
-    //TODO: add HashMap with correct eventDays
     func dotMarker(shouldShowOnDayView dayView: DayView) -> Bool {
         if let timestamps = timestamps {
             if timestamps.contains(dayView.date.getTimeMillis()) {

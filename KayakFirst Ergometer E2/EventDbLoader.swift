@@ -45,7 +45,7 @@ class EventDbLoader: BaseDbLoader<Event> {
         })
     }
     
-    //TODO - refactor: event does not heave name
+    //TODO - DB: event does not heave name
     //MARK: insert
     override func addData(data: Event?) {
         if let event = data {
@@ -97,9 +97,6 @@ class EventDbLoader: BaseDbLoader<Event> {
             let dbList = try db!.prepare(query!.filter(getUserQuery()))
             
             for days in dbList {
-                //let midnightTime = DateFormatHelper.getZeroHour(timeStamp: days[self.timestamp])
-                //TODO
-                //eventDays.append(midnightTime)
                 eventDays.append(days[self.timestamp])
             }
         } catch {

@@ -44,28 +44,6 @@ class ViewTrainingSumLayout: BaseLayout {
         horizontalStackView2.addArrangedSubview(seForceAv)
         mainStackView.addArrangedSubview(horizontalStackView2)
         
-        //maximum values are not shown
-        /*mainStackView.addArrangedSubview(labelBest)
-         labelBest.snp.makeConstraints { (make) in
-         make.height.equalTo(labelBest.intrinsicContentSize.height)
-         }
-         
-         let horizontalStackView3 = UIStackView()
-         horizontalStackView3.axis = .horizontal
-         horizontalStackView3.distribution = .fillEqually
-         horizontalStackView3.addArrangedSubview(seT1000)
-         horizontalStackView3.addArrangedSubview(seT500)
-         horizontalStackView3.addArrangedSubview(seT200)
-         mainStackView.addArrangedSubview(horizontalStackView3)
-         
-         let horizontalStackView4 = UIStackView()
-         horizontalStackView4.axis = .horizontal
-         horizontalStackView4.distribution = .fillEqually
-         horizontalStackView4.addArrangedSubview(seSpeed)
-         horizontalStackView4.addArrangedSubview(seStroke)
-         horizontalStackView4.addArrangedSubview(seForce)
-         mainStackView.addArrangedSubview(horizontalStackView4)*/
-        
         scrollView.addSubview(mainStackView)
         mainStackView.snp.makeConstraints { make in
             make.edges.equalTo(scrollView.containerView)
@@ -139,42 +117,6 @@ class ViewTrainingSumLayout: BaseLayout {
     
     lazy var seForceAv: TrainingSEForceAv! = {
         let se = TrainingSEForceAv()
-        
-        return se
-    }()
-    
-    lazy var seT1000: TrainingSET1000! = {
-        let se = TrainingSET1000()
-        
-        return se
-    }()
-    
-    lazy var seT500: TrainingSET500! = {
-        let se = TrainingSET500()
-        
-        return se
-    }()
-    
-    lazy var seT200: TrainingSET200! = {
-        let se = TrainingSET200()
-        
-        return se
-    }()
-    
-    lazy var seSpeed: TrainingSESpeed! = {
-        let se = TrainingSESpeed()
-        
-        return se
-    }()
-    
-    lazy var seStroke: TrainingSEStroke! = {
-        let se = TrainingSEStroke()
-        
-        return se
-    }()
-    
-    lazy var seForce: TrainingSEForce! = {
-        let se = TrainingSEForce()
         
         return se
     }()

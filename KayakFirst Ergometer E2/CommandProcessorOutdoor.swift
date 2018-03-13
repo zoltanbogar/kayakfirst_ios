@@ -44,10 +44,6 @@ class CommandProcessorOutdoor: CommandProcessor<MeasureCommand> {
         calculateV_av_outdoor = CalculateV_AV_Outdoor(startCommand: self)
     }
     
-    override func getTrainingEnvironmentType() -> TrainingEnvironmentType {
-        return TrainingEnvironmentType.outdoor
-    }
-    
     override func calculateValues(measureCommands: [MeasureCommand]) -> Training {
         fillCommands(commands: measureCommands)
         fillHelperValues()

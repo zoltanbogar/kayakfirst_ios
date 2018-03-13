@@ -8,7 +8,7 @@
 
 import Foundation
 
-//TODO: it should be singleton
+//TODO - refactor: it should be singleton
 class PauseDiff {
     
     //MARK: properties
