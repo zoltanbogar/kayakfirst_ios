@@ -33,7 +33,6 @@ class ChartView: CustomUi<ViewChartLayout> {
         disableLabelIfNeeded()
         initLabelList()
         initChart()
-        initPlanTimeLine()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +76,8 @@ class ChartView: CustomUi<ViewChartLayout> {
                     self.lineChartData = LineChartTime(lineChart: self.contentLayout!.lineChart, sumChartTraining: data)
                 }
                 self.refreshChart()
+                
+                self.initPlanTimeLine()
                 
                 self.contentLayout!.progressBar.showProgressBar(false)
             }

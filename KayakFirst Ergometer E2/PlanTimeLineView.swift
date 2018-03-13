@@ -121,19 +121,21 @@ class PlanTimeLineView: UIView, ChartViewDelegate {
     
     private func zoomTimeLine() {
         if let chart = lineChart {
-            let diffZoomX = chart.highestVisibleX - chart.lowestVisibleX
-            let scaleX: CGFloat = (CGFloat(plan!.length / diffZoomX))
-            
-            widthConstant = originalWidth * scaleX
-            
-            let moveXBase: CGFloat = (originalWidth * scaleX - originalWidth) / 2
-            let scaleLayoutX: CGFloat = CGFloat(chart.lineData!.xMax / diffZoomX)
-            let leftPercent: CGFloat = CGFloat(chart.lowestVisibleX / chart.lineData!.xMax)
-            let moveX = -(leftPercent * originalWidth * scaleLayoutX)
-            
-            leftConstant = moveXBase + moveX
-            
-            initConstraints()
+            if chart.lineData != nil {
+                let diffZoomX = chart.highestVisibleX - chart.lowestVisibleX
+                let scaleX: CGFloat = (CGFloat(plan!.length / diffZoomX))
+                
+                widthConstant = originalWidth * scaleX
+                
+                let moveXBase: CGFloat = (originalWidth * scaleX - originalWidth) / 2
+                let scaleLayoutX: CGFloat = CGFloat(chart.lineData!.xMax / diffZoomX)
+                let leftPercent: CGFloat = CGFloat(chart.lowestVisibleX / chart.lineData!.xMax)
+                let moveX = -(leftPercent * originalWidth * scaleLayoutX)
+                
+                leftConstant = moveXBase + moveX
+                
+                initConstraints()
+            }
         }
     }
     
