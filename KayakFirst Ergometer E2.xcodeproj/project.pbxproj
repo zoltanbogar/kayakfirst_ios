@@ -137,6 +137,7 @@
 		063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */; };
 		063237D11FF638B600F04A4B /* VcBluetoothLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */; };
 		063237D51FF6441B00F04A4B /* VcWelcomeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */; };
+		0634009920D9118F0063616C /* Connection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0634009820D9118F0063616C /* Connection+.swift */; };
 		06371C201FF5610200469A46 /* VcProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C1F1FF5610200469A46 /* VcProfileLayout.swift */; };
 		06371C221FF5663500469A46 /* VcTrainingTypeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C211FF5663500469A46 /* VcTrainingTypeLayout.swift */; };
 		06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */; };
@@ -585,6 +586,7 @@
 		063237CE1FF6377E00F04A4B /* VcLocationPermissionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcLocationPermissionLayout.swift; sourceTree = "<group>"; };
 		063237D01FF638B600F04A4B /* VcBluetoothLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcBluetoothLayout.swift; sourceTree = "<group>"; };
 		063237D41FF6441B00F04A4B /* VcWelcomeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcWelcomeLayout.swift; sourceTree = "<group>"; };
+		0634009820D9118F0063616C /* Connection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Connection+.swift"; sourceTree = "<group>"; };
 		06371C1F1FF5610200469A46 /* VcProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcProfileLayout.swift; sourceTree = "<group>"; };
 		06371C211FF5663500469A46 /* VcTrainingTypeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcTrainingTypeLayout.swift; sourceTree = "<group>"; };
 		06371C231FF5690000469A46 /* VcPlanOrNotPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VcPlanOrNotPlanLayout.swift; sourceTree = "<group>"; };
@@ -945,6 +947,7 @@
 				06BB76CD1E6FF0EC00A897B4 /* UIImage+.swift */,
 				06287D041F0F639B00F102C8 /* UITableView+.swift */,
 				064498B82017781400DF9915 /* UIDevice+.swift */,
+				0634009820D9118F0063616C /* Connection+.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -2427,6 +2430,7 @@
 				066579EE1F161BD000E43852 /* PushNotificationHelper.swift in Sources */,
 				06371C241FF5690000469A46 /* VcPlanOrNotPlanLayout.swift in Sources */,
 				063237CF1FF6377E00F04A4B /* VcLocationPermissionLayout.swift in Sources */,
+				0634009920D9118F0063616C /* Connection+.swift in Sources */,
 				063BE1772032F351002C3886 /* Training.swift in Sources */,
 				06371C261FF56A7700469A46 /* VcPlanListLayout.swift in Sources */,
 				06B6755D2020D90A00ACB5A6 /* TextViewWithHint.swift in Sources */,
